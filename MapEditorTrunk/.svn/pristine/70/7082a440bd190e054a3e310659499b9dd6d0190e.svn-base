@@ -1,0 +1,8 @@
+<ApplicationManager>
+   <ImagesList>
+   </ImagesList>
+   <GraphicsSystem>
+      <MapPanel/>
+      <BmpPanel/>
+   </GraphicsSystem>
+</ApplicationManager>

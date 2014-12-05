@@ -1,0 +1,44 @@
+Zadania do wykonania:
+
+------------------------------------
+007. Stworzyæ metody segment.set_name(); segment.get_name(). Zastapiæ nimi set_filename(), get_filename().
+
+
+------------------------------------
+001. Zapisywanie mapy do pliku
+
+Menu->File->New->Zapisaæ zmiany?->Tak
+Zapisywanie bêdzie obs³ugiwane przez MapApiSaver. 
+Parametry wejœciowe to: MapApi, stream 
+
+------------------------------------
+002. Wczytywanie mapy
+
+Menu->File->Open
+Mapê bêdzie wczytywa³ MapApiLoader
+------------------------------------
+003. Zamykanie
+
+Menu->File->Close
+------------------------------------
+004. Zapisywanie 
+
+Menu->File->Save
+------------------------------------
+005. Zmiana rozmiaru
+
+Edit->Resize
+Powinna zachowaæ czêœæ mapy. 
+------------------------------------
+006. Atrybuty obiektów
+Popup Menu -> okno atrybutów
+Dostosowaæ mechanizm zapisywania i odczytywania mapy.
+
+------------------------------------
+008. Mapa heksagonalna / w kratkê
+
+Zrobiæ prze³¹cznik zmieniaj¹cy mapê heksagonaln¹ na mapê w kratkê.
+Dostosowaæ mechanizm zapisywania i odczytywania mapy.
+
+
+

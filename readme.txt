@@ -4,3 +4,6 @@ git add README.txt
 git commit -m "first commit"
 git remote add origin https://github.com/krzy4ztof/Main.git
 git push -u origin master
+
+svnvars.bat
+svn co https://krzysztof-pc/svn/svn/MapEditor/trunk/ MapEditorTrunk
