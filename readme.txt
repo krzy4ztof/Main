@@ -10,10 +10,17 @@ svn co https://krzysztof-pc/svn/svn/MapEditor/trunk/ MapEditorTrunk
 
 git co https://github.com/krzy4ztof/Main
 
+***************************
+***	Nowe repozytorium	***
+***************************
 
-Nowe repozytorium
-zalozyc nowy katalog
-wejsc do niego
+zalozyc nowy katalog NewRepo
+cd NewRepo
 git init
 git remote add origin https://github.com/krzy4ztof/Main.git
 git co https://github.com/krzy4ztof/Main
+
+***************************************************************
+***	Pobranie do repozytorium zmian z remote repozytorium	***
+***************************************************************
+git pull
