@@ -1,4 +1,4 @@
-package mapEditor.mapApi;
+package mapeditor.mapapi;
 
 public class MapSegment {
 

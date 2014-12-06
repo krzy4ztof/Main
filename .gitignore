@@ -1,3 +1,5 @@
 *.class
 .classpath
 bin
+.svn
+

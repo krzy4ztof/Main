@@ -1,4 +1,4 @@
-package mapEditor.mapApi;
+package mapeditor.mapapi;
 
 import java.io.File;
 import java.util.LinkedList;

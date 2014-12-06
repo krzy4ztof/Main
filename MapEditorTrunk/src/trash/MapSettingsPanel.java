@@ -1,6 +1,6 @@
 package trash;
 
-import mapEditor.mainWindow.GraphicsSystem;
+import mapeditor.mainwindow.GraphicsSystem;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import mapEditor.mapApi.MapApi;
+import mapeditor.mapapi.MapApi;
 
 public class MapSettingsPanel extends JDialog implements ActionListener {
     /* Okno wywo�ywane po wybraniu pozycji z Plik->Nowy...

@@ -1,12 +1,12 @@
-package mapEditor.saveLoad;
+package mapeditor.saveload;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import mapEditor.mapApi.MapObject;
-import mapEditor.mapApi.MapApi;
+import mapeditor.mapapi.MapObject;
+import mapeditor.mapapi.MapApi;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,8 +17,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import javax.xml.transform.OutputKeys;
-import mapEditor.themesApi.MapObjectsTheme;
-import mapEditor.themesApi.MapThemesList;
+import mapeditor.themesapi.MapObjectsTheme;
+import mapeditor.themesapi.MapThemesList;
 
 public class MapSaver {
 

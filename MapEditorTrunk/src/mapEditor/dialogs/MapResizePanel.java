@@ -1,4 +1,4 @@
-package mapEditor.dialogs;
+package mapeditor.dialogs;
 
 import java.awt.Container;
 import java.awt.Dialog;
@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import mapEditor.mapApi.MapApi;
+import mapeditor.mapapi.MapApi;
 
 public class MapResizePanel extends JDialog implements ActionListener {
 

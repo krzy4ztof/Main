@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mapEditor.themesApi;
+package mapeditor.themesapi;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import mapEditor.mapApi.MapObject;
+import mapeditor.mapapi.MapObject;
 
 /**
  *

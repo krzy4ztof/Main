@@ -1,4 +1,4 @@
-package mapEditor.mainWindow;
+package mapeditor.mainwindow;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

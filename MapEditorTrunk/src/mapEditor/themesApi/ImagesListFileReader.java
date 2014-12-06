@@ -1,8 +1,8 @@
-package mapEditor.themesApi;
+package mapeditor.themesapi;
 
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
-import mapEditor.mapApi.MapObject;
+import mapeditor.mapapi.MapObject;
 import java.io.File;
 
 import javax.swing.ImageIcon;

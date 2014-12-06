@@ -1,4 +1,4 @@
-package mapEditor.saveLoad;
+package mapeditor.saveload;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,9 +10,9 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import mapEditor.mapApi.MapObject;
-import mapEditor.mapApi.MapApi;
-import mapEditor.themesApi.MapThemesList;
+import mapeditor.mapapi.MapObject;
+import mapeditor.mapapi.MapApi;
+import mapeditor.themesapi.MapThemesList;
 
 /**
  *

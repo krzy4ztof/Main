@@ -2,15 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mapEditor.main;
+package mapeditor.main;
 
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.xml.parsers.ParserConfigurationException;
-import mapEditor.mainWindow.GraphicsSystem;
-import mapEditor.themesApi.ImagesListFileReader;
-import mapEditor.themesApi.MapThemesList;
+import mapeditor.mainwindow.GraphicsSystem;
+import mapeditor.themesapi.ImagesListFileReader;
+import mapeditor.themesapi.MapThemesList;
 import org.xml.sax.SAXException;
 
 /**
@@ -35,7 +35,7 @@ public class ApplicationManager {
         currentLocale = new Locale(language, country);
         ResourceBundle messages = ResourceBundle.getBundle("mapEditor.messages.MessagesBundle", currentLocale);
         ImagesListFileReader r_ImagesListFileReader = new ImagesListFileReader();
-        MapThemesList mapThemesList = r_ImagesListFileReader.ReadConfigurationFile("Images", "Configuration.xml");
+        MapThemesList mapThemesList = r_ImagesListFileReader.ReadConfigurationFile("images", "configuration.xml");
         GraphicsSystem p_GraphicsSystem = new GraphicsSystem(messages, mapThemesList);
 
         p_GraphicsSystem.activate();

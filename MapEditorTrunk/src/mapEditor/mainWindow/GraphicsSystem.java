@@ -1,4 +1,4 @@
-package mapEditor.mainWindow;
+package mapeditor.mainwindow;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -17,14 +17,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import mapEditor.dialogs.MapResizePanel;
-import mapEditor.mapApi.MapApi;
-import mapEditor.mapApi.MapObject;
-import mapEditor.saveLoad.MapLoader;
-import mapEditor.saveLoad.MapSaver;
-import mapEditor.themesApi.MapObjectsTheme;
-import mapEditor.themesApi.MapThemesList;
-import otherProds.ExampleFileFilter;
+import mapeditor.dialogs.MapResizePanel;
+import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.MapObject;
+import mapeditor.saveload.MapLoader;
+import mapeditor.saveload.MapSaver;
+import mapeditor.themesapi.MapObjectsTheme;
+import mapeditor.themesapi.MapThemesList;
+import otherprods.ExampleFileFilter;
 
 public class GraphicsSystem implements ActionListener {
 

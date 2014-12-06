@@ -1,4 +1,4 @@
-package mapEditor.mainWindow;
+package mapeditor.mainwindow;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,9 +11,9 @@ import java.util.Hashtable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import mapEditor.themesApi.MapObjectsTheme;
-import mapEditor.themesApi.MapThemesList;
-import mapEditor.mapApi.MapObject;
+import mapeditor.themesapi.MapObjectsTheme;
+import mapeditor.themesapi.MapThemesList;
+import mapeditor.mapapi.MapObject;
 
 public class BmpPanel extends JPanel implements ActionListener {
 

@@ -1,7 +1,7 @@
-package mapEditor.mainWindow;
+package mapeditor.mainwindow;
 
-import mapEditor.mapApi.MapObject;
-import mapEditor.mapApi.MapApi;
+import mapeditor.mapapi.MapObject;
+import mapeditor.mapapi.MapApi;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,9 +11,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import mapEditor.dialogs.SegmentAttributesPanel;
+import mapeditor.dialogs.SegmentAttributesPanel;
 
-import otherProds.ExampleFileFilter;
+import otherprods.ExampleFileFilter;
 
 public class MapPanel extends JPanel implements MouseListener,
         MouseMotionListener {

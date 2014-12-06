@@ -1,4 +1,4 @@
-package mapEditor.dialogs;
+package mapeditor.dialogs;
 
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
