@@ -1,0 +1,30 @@
+<Images_List>
+	<Theme name="AllTheme">
+		<Image name="Pusty">*</Image>
+		<Image name="Trojkaty"> trojkaty.jpg </Image>
+		<Image name="Psi_zab"> psi_zab.jpg </Image>
+		<Image name="Prazek"> prazek.jpg </Image>
+		<Image name="Nity"> nity.jpg </Image>
+		<Image name="Niebieski"> niebieski.jpg </Image>
+		<Image name="Mata"> mata.jpg </Image>
+		<Image name="Kolka"> kolka.jpg </Image>
+		<Image name="Kafelki"> kafelki.jpg </Image>
+		<Image name="Fale"> fale.jpg </Image>
+		<Image name="Egipt"> egipt.jpg </Image>
+		<Image name="Bloki"> bloki.jpg </Image>
+		<Image name="Babelki"> babelki.jpg </Image>
+	</Theme> 
+	<Theme name="EmptyTheme">
+	</Theme>
+	<Theme name="OtherTheme">
+		<Image name="Pusty">*</Image>
+		<Image name="Malpa1"> rys.jpg </Image>
+		<Image name="Malpa2"> rys2.jpg </Image>
+	</Theme>
+	<Theme name="PngTheme">
+		<Image name="Pusty">*</Image>
+		<Image name="png1"> bodyar.png </Image>
+		<Image name="png2"> frontwheelar.png </Image>
+		<Image name="png3"> rearwheelar.png </Image>
+	</Theme>
+</Images_List>
