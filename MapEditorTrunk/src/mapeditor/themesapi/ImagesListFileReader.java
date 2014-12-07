@@ -18,9 +18,8 @@ public class ImagesListFileReader extends DefaultHandler {
     private MapObjectsTheme curMapObjectsTheme;
     private MapObject curMapObject;
     private MapThemesList mapThemesList;
-    private ImageIcon ImageFile;
-    private String FilePath;
-    private int ImageId;
+    private String filePath;
+    private int imageId;
 
     @Override
     public void startDocument() throws SAXException {
@@ -59,38 +58,37 @@ public class ImagesListFileReader extends DefaultHandler {
         String curString = new String(ch, start, length).trim();
         if (curString.equals("*")) {
             this.curMapObject.setImageName("");
-            ImageFile = new ImageIcon(FilePath + "");
+            ImageIcon imageFile = new ImageIcon(filePath + "");
             /* If there is no path+l_str file ImageFile
             will be blank.*/
-            this.curMapObject.setImageIcon(ImageFile);
+            this.curMapObject.setImageIcon(imageFile);
             // This is blank image so id=0
             this.curMapObject.setObjectId(0);
             this.curMapObjectsTheme.addMapObject(curMapObject);
         } else if (curString.equals("") == false) {
             this.curMapObject.setImageName(curString);
-            ImageFile = new ImageIcon(FilePath + curString);
+            ImageIcon imageFile = new ImageIcon(filePath + curString);
             /* If there is no path+l_str file ImageFile
             will be blank.*/
-            this.curMapObject.setImageIcon(ImageFile);
-            this.ImageId++;
-            this.curMapObject.setObjectId(this.ImageId);
+            this.curMapObject.setImageIcon(imageFile);
+            this.imageId++;
+            this.curMapObject.setObjectId(this.imageId);
             this.curMapObjectsTheme.addMapObject(curMapObject);
         }
     }
 
-    public MapThemesList ReadConfigurationFile(String p_path, String p_file)
+    public MapThemesList ReadConfigurationFile(String path, String file)
             throws ParserConfigurationException, SAXException, IOException {
         this.curMapObjectsTheme = null;
         this.curMapObject = null;
         mapThemesList = new MapThemesList();
-        ImageFile = new ImageIcon();
-        ImageId = 0;
-        this.FilePath = p_path + File.separator;
+        imageId = 0;
+        this.filePath = path + File.separator;
 
         // Use the default (non-validating) parser
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
-        saxParser.parse(new File(this.FilePath + p_file), this);
+        saxParser.parse(new File(this.filePath + file), this);
         return mapThemesList;
     }
 }

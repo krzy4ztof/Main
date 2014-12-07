@@ -4,10 +4,16 @@ import java.util.ResourceBundle;
 
 public class Config {
 	
-	private final String mapapiDefaultColumnsNumber = "mapapi.default.columns.number";
+	private final String mapApiColumnsNumber = "mapapi.columns.number";
 	
-	private final String mapapiDefaultRowsNumber = "mapapi.default.rows.number";
+	private final String mapApiRowsNumber = "mapapi.rows.number";
 	
+	private final String mapApiLayout =	"mapapi.layout";
+
+	private final String guiLanguage = "gui.language";
+
+	
+
 	private ResourceBundle resourceBundle;
 	
 	
@@ -15,15 +21,38 @@ public class Config {
 		resourceBundle = ResourceBundle.getBundle("mapeditor.config.config");
 	}
 	
-	public Integer getMapApiDefaultColumnsNumber(){
-		String string = resourceBundle.getString(mapapiDefaultColumnsNumber);
+	public Integer getMapApiColumnsNumber(){
+		String string = resourceBundle.getString(mapApiColumnsNumber);
 		Integer integer = new Integer(string);
 		return integer;
 	}
 	
-	public Integer getMapApiDefaultRowsNumber(){
-		String string = resourceBundle.getString(mapapiDefaultRowsNumber);
+	public Integer getMapApiRowsNumber(){
+		String string = resourceBundle.getString(mapApiRowsNumber);
 		Integer integer = new Integer(string);
 		return integer;
 	}
+	
+	public boolean isMapApiLayoutHex(){
+		String string = resourceBundle.getString(mapApiLayout);
+		if (string.equalsIgnoreCase("HEX")){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isMapApiLayoutSqr(){
+		String string = resourceBundle.getString(mapApiLayout);
+		if (string.equalsIgnoreCase("SQR")){
+			return true;
+		}
+		return false;
+	}
+	
+
+	public String getLanguage(){
+		String language = resourceBundle.getString(guiLanguage);
+		return language;
+	}
+
 }

@@ -109,35 +109,56 @@ public class MapPanel extends JPanel implements MouseListener,
         }
     }
 
-    private void DrawMap(Graphics g) {
-        /* rysuje map�*/
-        int ImMap;
-        CorrectMap();// to musi by� wywo�ane na pocz�tku
+    /**
+     * Draws Map
+     * @param graphics
+     */
+    private void DrawMap(Graphics graphics) {
+        CorrectMap();// must be invoked as first
 
-        g.setColor(Color.RED);
+        graphics.setColor(Color.RED);
 
-        for (int x = 0; x < HowManyColumns(); x++) {
-            for (int y = 0; y < HowManyRows(); y++) {
-                if (((LUcornerMap.x + x) % 2) == 0) {
-                    g.drawRect(x * SegmentWidth, y * SegmentHeight,
-                            SegmentWidth, SegmentHeight);
-                    g.drawImage(this.getImage(y + LUcornerMap.y,
-                            x + LUcornerMap.x),
-                            x * SegmentWidth, y * SegmentHeight,
-                            SegmentWidth, SegmentHeight,
-                            getBackground(), this);
+        int divider=1;
+       	if (mapApi.isLayoutHex()){
+       		divider = 2;
+       	}
+        
+        for (int column = 0; column < HowManyColumns(); column++) {
+            for (int row = 0; row < HowManyRows(); row++) {
+                if (((LUcornerMap.x + column) % 2) == 0) {
+                	drawSegment(graphics, column,row, 1);
                 } else {
-                    g.drawRect(x * SegmentWidth, (int) ((y + 0.5) * SegmentHeight),
-                            SegmentWidth, SegmentHeight);
-                    g.drawImage(this.getImage(y + LUcornerMap.y,
-                            x + LUcornerMap.x),
-                            x * SegmentWidth, (int) ((y + 0.5) * SegmentHeight),
-                            SegmentWidth, SegmentHeight,
-                            getBackground(), this);
+                	drawSegment(graphics, column,row, divider);
                 }
             }
         }
     }
+    
+    private void drawSegment(Graphics graphics, int column, int row, int divider){
+    	//int currentHeight = (int) ((row + offset) * SegmentHeight);
+    	
+    	int currentHeight = row * SegmentHeight + (SegmentHeight - SegmentHeight / divider);
+    	
+    	
+    	graphics.drawRect(column * SegmentWidth, currentHeight,
+                SegmentWidth, SegmentHeight);
+    	graphics.drawImage(this.getImage(row + LUcornerMap.y,
+                column + LUcornerMap.x),
+                column * SegmentWidth, currentHeight,
+                SegmentWidth, SegmentHeight,
+                getBackground(), this);
+    	
+    	/*graphics.drawRect(column * SegmentWidth, row * SegmentHeight,
+                SegmentWidth, SegmentHeight);
+    	graphics.drawImage(this.getImage(row + LUcornerMap.y,
+                column + LUcornerMap.x),
+                column * SegmentWidth, row * SegmentHeight,
+                SegmentWidth, SegmentHeight,
+                getBackground(), this);*/
+
+    }
+    
+    
 
     private void CorrectMap() {
         /* koryguje warto�� zmiennej LUcornerMap;
@@ -243,27 +264,44 @@ public class MapPanel extends JPanel implements MouseListener,
         zwraca kolumn� i wiersz segmentu kt�ry wskazywany jest
         przez kursor. Zwraca Point(-1,-1) je�eli kursor wyjdzie
         poza map�*/
-        int C = cur.x / SegmentWidth;
-        int R = cur.y / SegmentHeight;
+        int column = cur.x / SegmentWidth;
+        int row = cur.y / SegmentHeight;
         int maxCol = mapApi.getColumnsSize();
         int maxRow = mapApi.getRowsSize();
 
-        C += LUcornerMap.x;
-        if (C % 2 == 1) {
-            R = (int) ((cur.y - 0.5 * SegmentHeight) / SegmentHeight);
+        column += LUcornerMap.x;
+        if (column % 2 == 1) {
+        	
+        	if (mapApi.isLayoutHex()){
+        	row = (int) ((cur.y - SegmentHeight/2) / SegmentHeight);
+        	System.out.println("row: "+row);
+        	//row = (int) ((cur.y/SegmentHeight)-0.5);
+        	
+        	//row = (int) ()
+        	//row = cur.y / SegmentHeight - 0.5;
+        	//row =    (cur.y /SegmentHeight                  - SegmentHeight / 2)
+        	
+        	
+        	//int currentHeight = row * SegmentHeight + (SegmentHeight - SegmentHeight / divider);
+        	} else {
+        		
+        	}
         }
-        R += LUcornerMap.y;
+        row += LUcornerMap.y;
 
-        if ((C % 2 == 1) && (cur.y < SegmentHeight) && (LUcornerMap.y == 0)) {
-            return new Point(-1, -1);//nieparzysty rz�d, g�rny margines
-        }
-        if ((C >= maxCol) || (R >= maxRow)) {
+        if (mapApi.isLayoutHex()){
+        	if ((column % 2 == 1) && (cur.y < SegmentHeight/2) && (LUcornerMap.y == 0)) {
+        		return new Point(-1, -1);//odd row, top marigin
+        	}
+        } 
+        
+        if ((column >= maxCol) || (row >= maxRow) || (column < 0) || (row < 0)) {
             return new Point(-1, -1);
         }
-        if ((C < 0) || (R < 0)) {
-            return new Point(-1, -1);
-        }
-        return new Point(C, R);
+        
+        System.out.println("col: "+column+" row: "+row);
+        
+        return new Point(column, row);
 
     }
 }

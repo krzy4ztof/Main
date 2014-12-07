@@ -23,34 +23,25 @@ import org.xml.sax.SAXException;
  */
 public class ApplicationManager {
 
-    public ApplicationManager(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public ApplicationManager() throws ParserConfigurationException, IOException, SAXException {
 
     	Config config = new Config();
-        String language;
-        String country;
 
-        if (args.length != 2) {
-            language = new String("en");
-            country = new String("GB");
-        } else {
-            language = new String(args[0]);
-            country = new String(args[1]);
-        }
         Locale currentLocale;
-        currentLocale = new Locale(language, country);
+        currentLocale = new Locale(config.getLanguage());
         ResourceBundle messages = ResourceBundle.getBundle("mapeditor.messages.MessagesBundle", currentLocale);
         
         
-        ImagesListFileReader r_ImagesListFileReader = new ImagesListFileReader();
-        MapThemesList mapThemesList = r_ImagesListFileReader.ReadConfigurationFile("images", "configuration.xml");
-        GraphicsSystem p_GraphicsSystem = new GraphicsSystem(config, messages, mapThemesList);
+        ImagesListFileReader imagesListFileReader = new ImagesListFileReader();
+        MapThemesList mapThemesList = imagesListFileReader.ReadConfigurationFile("images", "configuration.xml");
+        GraphicsSystem graphicsSystem = new GraphicsSystem(config, messages, mapThemesList);
 
-        p_GraphicsSystem.activate();
+        graphicsSystem.activate();
 
     }
 
     public static void main(String[] args) throws ParserConfigurationException,
             IOException, SAXException {
-        new ApplicationManager(args);
+        new ApplicationManager();
     }
 }

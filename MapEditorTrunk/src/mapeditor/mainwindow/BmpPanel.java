@@ -187,7 +187,7 @@ public class BmpPanel extends JPanel implements ActionListener {
         }
 
         for (i = k; i < 8; i++) {
-            img = new ImageIcon("../Images/" + "NULL.jpg");
+            img = new ImageIcon("../Images/" + "null.jpg");
             img_sc = new ImageIcon(
                     img.getImage().getScaledInstance(
                     40, 40, Image.SCALE_DEFAULT));

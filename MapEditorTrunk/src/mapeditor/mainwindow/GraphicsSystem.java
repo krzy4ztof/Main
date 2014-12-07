@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import mapeditor.config.Config;
-import mapeditor.dialogs.MapResizePanel;
+import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapObject;
 import mapeditor.saveload.MapLoader;
@@ -31,7 +31,7 @@ import otherprods.ExampleFileFilter;
 
 public class GraphicsSystem implements ActionListener {
 
-    private KeyboardManager r_KeyboardManager;
+    private KeyboardManager keyboardManager;
     private MapPanel mapPanel;
     public BmpPanel bmpPanel;
     private JFrame jFrame;
@@ -39,16 +39,34 @@ public class GraphicsSystem implements ActionListener {
     private MapThemesList mapThemesList;
     private MapApi mapApi = null;
     private Config config;
-
+    
+    private final static String ACTION_ZOOM_IN="ACTION_ZOOM_IN";
+    private final static String ACTION_ZOOM_OUT="ACTION_ZOOM_OUT";
+    private final static String ACTION_ZOOM_DEFAULT="ACTION_ZOOM_DEFAULT";
+    
+    private final static String ACTION_ROLL_RIGHT="ACTION_ROLL_RIGHT";
+    private final static String ACTION_ROLL_LEFT="ACTION_ROLL_LEFT";
+    private final static String ACTION_ROLL_UP="ACTION_ROLL_UP";
+    private final static String ACTION_ROLL_DOWN="ACTION_ROLL_DOWN";
+    
+    private final static String ACTION_NEW="ACTION_NEW";
+    private final static String ACTION_OPEN="ACTION_OPEN";
+    private final static String ACTION_CLOSE="ACTION_CLOSE";
+    private final static String ACTION_SAVE="ACTION_SAVE";
+    
+    private final static String ACTION_MAP_ATTRIBUTES_PANEL="ACTION_MAP_ATTRIBUTES_PANEL";
+    
+    
+  
     public GraphicsSystem(Config configParam, ResourceBundle resourceBundle,
             MapThemesList mapThemesListParam) {
     	config = configParam;
         messages = resourceBundle;
         mapThemesList = mapThemesListParam;
-        r_KeyboardManager = new KeyboardManager(this);
-        System.out.println(r_KeyboardManager);
+        keyboardManager = new KeyboardManager(this);
+        System.out.println(keyboardManager);
         bmpPanel = new BmpPanel(mapThemesListParam, this);
-        System.out.println(this.r_KeyboardManager);
+        System.out.println(this.keyboardManager);
         mapApi = new MapApi(config);
 
         mapPanel = new MapPanel(this, mapApi);
@@ -62,30 +80,30 @@ public class GraphicsSystem implements ActionListener {
 
         JMenu File_menu = new JMenu(messages.getString("File"));
         Buf_menu = new JMenuItem(messages.getString("New"));
-        Buf_menu.setActionCommand("WM_new");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_NEW);
         Buf_menu.addActionListener(this);
         File_menu.add(Buf_menu);
 
         Buf_menu = new JMenuItem(messages.getString("Open"));
-        Buf_menu.setActionCommand("WM_open");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_OPEN);
         Buf_menu.addActionListener(this);
         File_menu.add(Buf_menu);
 
         Buf_menu = new JMenuItem(messages.getString("Close"));
-        Buf_menu.setActionCommand("WM_close");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_CLOSE);
         Buf_menu.addActionListener(this);
         File_menu.add(Buf_menu);
 
         Buf_menu = new JMenuItem(messages.getString("Save"));
-        Buf_menu.setActionCommand("WM_save");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_SAVE);
         Buf_menu.addActionListener(this);
         File_menu.add(Buf_menu);
         M_menu.add(File_menu);
         /* docelowo co� innego b�dzie nas�uchiwa�o menu plik*/
 
         JMenu Edit_menu = new JMenu(messages.getString("Edit"));
-        Buf_menu = new JMenuItem(messages.getString("Resize"));
-        Buf_menu.setActionCommand("WM_resize");
+        Buf_menu = new JMenuItem(messages.getString("Attributes"));
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL);
         Buf_menu.addActionListener(this);
         Edit_menu.add(Buf_menu);
         M_menu.add(Edit_menu);
@@ -93,17 +111,17 @@ public class GraphicsSystem implements ActionListener {
         JMenu Zoom_menu = new JMenu(messages.getString("Zoom"));
 
         Buf_menu = new JMenuItem(messages.getString("ZoomIn"));
-        Buf_menu.setActionCommand("WM_zoom_in");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_IN);
         Buf_menu.addActionListener(this);
         Zoom_menu.add(Buf_menu);
 
         Buf_menu = new JMenuItem(messages.getString("ZoomOut"));
-        Buf_menu.setActionCommand("WM_zoom_out");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_OUT);
         Buf_menu.addActionListener(this);
         Zoom_menu.add(Buf_menu);
 
         Buf_menu = new JMenuItem(messages.getString("DefaultZoom"));
-        Buf_menu.setActionCommand("WM_default");
+        Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_DEFAULT);
         Buf_menu.addActionListener(this);
         Zoom_menu.add(Buf_menu);
 
@@ -157,7 +175,7 @@ public class GraphicsSystem implements ActionListener {
 
         JButton Up_button = new JButton("^");
         Up_button.addActionListener(this);// zmieni si� na mapk�
-        Up_button.setActionCommand("WM_roll_up");
+        Up_button.setActionCommand(GraphicsSystem.ACTION_ROLL_UP);
         c.gridx = 1;
         c.gridy = 0;
         Up_button.setBackground(Color.YELLOW);
@@ -168,7 +186,7 @@ public class GraphicsSystem implements ActionListener {
 
         JButton Down_button = new JButton("v");
         Down_button.addActionListener(this);// zmieni si� na mapk�
-        Down_button.setActionCommand("WM_roll_down");
+        Down_button.setActionCommand(GraphicsSystem.ACTION_ROLL_DOWN);
         c.gridx = 1;
         c.gridy = 1;
         Down_button.setBackground(Color.YELLOW);
@@ -178,17 +196,17 @@ public class GraphicsSystem implements ActionListener {
 
         JButton Left_button = new JButton("<");
         Left_button.addActionListener(this);// zmieni si� na mapk�
-        Left_button.setActionCommand("WM_roll_left");
+        Left_button.setActionCommand(GraphicsSystem.ACTION_ROLL_LEFT);
         c.gridx = 0;
         c.gridy = 1;
         Left_button.setBackground(Color.MAGENTA);
         gridbag.setConstraints(Left_button, c);
         Left_button.setMargin(new Insets(0, 0, 0, 0));
         Buttons_p.add(Left_button);
-
+        
         JButton Right_button = new JButton(">");
         Right_button.addActionListener(this);// zmieni si� na mapk�
-        Right_button.setActionCommand("WM_roll_right");
+        Right_button.setActionCommand(GraphicsSystem.ACTION_ROLL_RIGHT);
         c.gridx = 2;
         c.gridy = 1;
         Right_button.setBackground(Color.RED);
@@ -200,8 +218,8 @@ public class GraphicsSystem implements ActionListener {
         this.jFrame.setSize(400, 400);
         this.jFrame.setVisible(true);
         jFrame.requestFocus();
-        this.jFrame.addFocusListener(this.r_KeyboardManager);
-        this.jFrame.addKeyListener(this.r_KeyboardManager);
+        this.jFrame.addFocusListener(this.keyboardManager);
+        this.jFrame.addKeyListener(this.keyboardManager);
     }
 
     private void buildObjectMenu(JMenu Obj_menu) {
@@ -254,32 +272,33 @@ public class GraphicsSystem implements ActionListener {
         - mo�e przenie�� to do graphics_systemu, otwieranie
         okien dialogowych do wyboru pliku
          */
+    	
         String str = e.getActionCommand();
         System.out.println("MapPanel: " + e.getActionCommand());
-        if (str.equals("WM_roll_right")) {
+        if (str.equals(GraphicsSystem.ACTION_ROLL_RIGHT)) {
             MoveMapAction(1, 0);
-        } else if (str.equals("WM_roll_left")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ROLL_LEFT)) {
             MoveMapAction(-1, 0);
-        } else if (str.equals("WM_roll_up")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ROLL_UP)) {
             MoveMapAction(0, -1);
-        } else if (str.equals("WM_roll_down")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ROLL_DOWN)) {
             MoveMapAction(0, 1);
-        } else if (str.equals("WM_zoom_in")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ZOOM_IN)) {
             ZoomMapInAction();
-        } else if (str.equals("WM_zoom_out")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ZOOM_OUT)) {
             ZoomMapOutAction();
-        } else if (str.equals("WM_default")) {
+        } else if (str.equals(GraphicsSystem.ACTION_ZOOM_DEFAULT)) {
             SetDefaultMapZoomAction();
-        } else if (str.equals("WM_new")) {
+        } else if (str.equals(GraphicsSystem.ACTION_NEW)) {
             newMapAction();
-        } else if (str.equals("WM_open")) {
+        } else if (str.equals(GraphicsSystem.ACTION_OPEN)) {
             loadMapAction();
-        } else if (str.equals("WM_close")) {
+        } else if (str.equals(GraphicsSystem.ACTION_CLOSE)) {
             closeApplicationAction();
-        } else if (str.equals("WM_save")) {
+        } else if (str.equals(GraphicsSystem.ACTION_SAVE)) {
             saveMapAction();
-        } else if (str.equals("WM_resize")) {
-            resizeMapAction();
+        } else if (str.equals(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL)) {
+            attributesMapAction();
         }
         mapPanel.repaint();
         getJFrame().requestFocus();
@@ -323,7 +342,7 @@ public class GraphicsSystem implements ActionListener {
         if (res == JOptionPane.YES_OPTION) {
             this.saveMapApi();
         }
-        MapResizePanel MRP = new MapResizePanel(config, messages, jFrame);
+        MapAttributesPanel MRP = new MapAttributesPanel(config, messages, jFrame);
 
         MRP.activate(mapApi.getRowsSize(), mapApi.getColumnsSize());
 
@@ -359,15 +378,15 @@ public class GraphicsSystem implements ActionListener {
     /**
      * Resizes map without removing current MapObjects
      */
-    private void resizeMapAction() {
+    private void attributesMapAction() {
         /*otwiera okno ustawie� wymiar�w nowej mapy*/
-        MapResizePanel MRP = new MapResizePanel(config, messages, jFrame);
+        MapAttributesPanel mapAttrinbutesPanel = new MapAttributesPanel(config, messages, jFrame);
 
-        MRP.activate(mapApi.getRowsSize(), mapApi.getColumnsSize());
+        mapAttrinbutesPanel.activate(mapApi.getRowsSize(), mapApi.getColumnsSize());
 
-        if (!MRP.getCanceled()) {
-            int row = MRP.getSelectedRow();
-            int col = MRP.getSelectedCol();
+        if (!mapAttrinbutesPanel.getCanceled()) {
+            int row = mapAttrinbutesPanel.getSelectedRow();
+            int col = mapAttrinbutesPanel.getSelectedCol();
 
             mapApi.changeSize(row, col);
         }

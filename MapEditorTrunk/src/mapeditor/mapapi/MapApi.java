@@ -19,6 +19,10 @@ public class MapApi {
 
     private Config config;
     
+    private MapLayout mapLayout;
+    
+    private enum MapLayout{HEX,SQR}; 
+    
     /**
      * Stores reference to file from which map was loaded or to which it was
      * saved
@@ -35,7 +39,13 @@ public class MapApi {
     
     public MapApi(Config configParam) {
     	config = configParam;
-    	resetMap(config.getMapApiDefaultColumnsNumber(), config.getMapApiDefaultRowsNumber());
+    	if (config.isMapApiLayoutHex()){
+    		mapLayout=MapLayout.HEX;
+    	} else {
+    		mapLayout=MapLayout.SQR;    		
+    	}
+    	
+    	resetMap(config.getMapApiColumnsNumber(), config.getMapApiRowsNumber());
     }
 
     /**
@@ -49,6 +59,20 @@ public class MapApi {
         this.resetMap(col, row);
     }
 
+    
+	public boolean isLayoutHex(){
+		if (mapLayout.equals(MapLayout.HEX)){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isLayoutSqr(){
+		if (mapLayout.equals(MapLayout.SQR)){
+			return true;
+		}
+		return false;
+	}
     /**
      * Set size of MapApi. THe method should be invoked after MapApi()
      * constructor
@@ -59,10 +83,10 @@ public class MapApi {
      */
     public void resetMap(int cols, int rows) {
         if (cols <= 0) {
-            cols = config.getMapApiDefaultColumnsNumber();
+            cols = config.getMapApiColumnsNumber();
         }
         if (rows <= 0) {
-            rows = config.getMapApiDefaultRowsNumber();
+            rows = config.getMapApiRowsNumber();
         }
 
         segments = new LinkedList<LinkedList<MapSegment>>();
