@@ -24,3 +24,23 @@ git co https://github.com/krzy4ztof/Main
 ***	Pobranie do repozytorium zmian z remote repozytorium	***
 ***************************************************************
 git pull
+
+***********************************************
+***	Wyslanie zmian do remote repozytorium	***
+***********************************************
+#Dodanie wszystkich plikow do commit
+git add *
+git commit *
+git push -u origin master
+
+***************************************
+***	Rozna wielkosc liter w Windows	***
+***************************************
+.git/config
+#ignorowanie wielkosci znakow - domyslnie dla Windows
+#ignorecase = true
+#uwzglednianei wielkosci znakow - Linux
+ignorecase = false
+
+
+
