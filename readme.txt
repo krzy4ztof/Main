@@ -30,8 +30,11 @@ git pull
 ***********************************************
 #Dodanie wszystkich plikow do commit
 git add *
-git commit *
-git push -u origin master
+git commit -m ''
+
+git push -u origin master 
+lub 
+git push
 
 ***************************************
 ***	Rozna wielkosc liter w Windows	***
