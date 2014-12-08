@@ -13,12 +13,9 @@ git co https://github.com/krzy4ztof/Main
 ***************************
 ***	Nowe repozytorium	***
 ***************************
-
 zalozyc nowy katalog NewRepo
 cd NewRepo
-git init
-git remote add origin https://github.com/krzy4ztof/Main.git
-git co https://github.com/krzy4ztof/Main
+git clone https://github.com/krzy4ztof/Main
 
 ***************************************************************
 ***	Pobranie do repozytorium zmian z remote repozytorium	***
