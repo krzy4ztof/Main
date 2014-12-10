@@ -2,15 +2,13 @@ package mapeditor.dialogs;
 
 import java.awt.Container;
 import java.awt.Dialog;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ResourceBundle;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -22,190 +20,262 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import mapeditor.config.Config;
-import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.MapAttributes;
+import mapeditor.mapapi.MapLayout;
+import mapeditor.messages.MapMessages;
 
-public class MapAttributesPanel extends JDialog implements ActionListener, ListSelectionListener {
+public class MapAttributesPanel extends JDialog implements ActionListener,
+		ListSelectionListener {
 
-    private int initialRow;
-    private int initialCol;
-    private int selectedRow;
-    private int selectedCol;
-    private JTextField colItem = null;
-    private JTextField rowItem = null;
-    private ResourceBundle messages;
-    private boolean canceled;
-    private Config config;
+	private MapAttributes initialMapAttributes;
+	private MapAttributes selectedMapAttributes;
 
-    private final static String ACTION_DEFAULT_SIZE="ACTION_DEFAULT_SIZE";
-    private final static String ACTION_PREVIOUS_SIZE="ACTION_PREVIOUS_SIZE";
-    private final static String ACTION_OK="ACTION_OK";
-    private final static String ACTION_CANCEL="ACTION_CANCEL";
-   
-    
-    public MapAttributesPanel(Config configParam, ResourceBundle resourceBundle,
-            JFrame jFrameParam){
-        super(jFrameParam, Dialog.ModalityType.APPLICATION_MODAL);
-        config = configParam;
-        messages = resourceBundle;
-        canceled = false;
-        addWindowListener(new WindowAdapter() {
+	// private int initialRow;
+	// private int initialCol;
+	// private int selectedRow;
+	// private int selectedCol;
+	private JTextField colItem = null;
+	private JTextField rowItem = null;
+	private MapMessages messages;
+	private boolean canceled;
+	private Config config;
 
-            @Override
-            public void windowClosing(WindowEvent e) {
-                canceled = true;
-            }
-        });
-    }
+	private final static String ACTION_DEFAULT_SIZE = "ACTION_DEFAULT_SIZE";
+	private final static String ACTION_PREVIOUS_SIZE = "ACTION_PREVIOUS_SIZE";
+	private final static String ACTION_OK = "ACTION_OK";
+	private final static String ACTION_CANCEL = "ACTION_CANCEL";
 
-    public int getSelectedCol() {
-        return selectedCol;
-    }
+	public MapAttributesPanel(Config configParam, MapMessages messages,
+			JFrame jFrameParam) {
+		super(jFrameParam, Dialog.ModalityType.APPLICATION_MODAL);
+		config = configParam;
+		this.messages = messages;
+		canceled = false;
+		addWindowListener(new WindowAdapter() {
 
-    public int getSelectedRow() {
-        return selectedRow;
-    }
+			@Override
+			public void windowClosing(WindowEvent e) {
+				canceled = true;
+			}
+		});
+	}
 
-    public boolean getCanceled() {
-        return canceled;
-    }
+	// public int getSelectedCol() {
+	// return selectedCol;
+	// }
 
-    public void activate(int no_rows, int no_cols) {
-        /*parametry - MapApi*/
-        this.initialRow = no_rows;
-        this.initialCol = no_cols;
-        colItem = new JTextField();
-        rowItem = new JTextField();
-        setTitle(messages.getString("MapAttributes"));
-        JButton btn;
-        Container p = this.getContentPane();
-        p.setLayout(new GridLayout(5, 2));
-        p.add(new JLabel(messages.getString("RowNumber")));
-        p.add(rowItem);
-        rowItem.setText(new Integer(no_rows).toString());
-        p.add(new JLabel(messages.getString("ColNumber")));
-        p.add(colItem);
-        colItem.setText(new Integer(no_cols).toString());
-        
-        p.add(new JLabel(messages.getString("Layout")));
-        
-        
-        p.add(activateListLayout());
-        
-        btn = new JButton(messages.getString("DefaultSize"));
-        btn.addActionListener(this);
-        btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
-        p.add(btn);
-        btn = new JButton(messages.getString("PreviousSize"));
-        btn.addActionListener(this);
-        btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
-        p.add(btn);
-        btn = new JButton(messages.getString("OK"));
-        btn.addActionListener(this);
-        btn.setActionCommand(MapAttributesPanel.ACTION_OK);
-        p.add(btn);
-        btn = new JButton(messages.getString("Cancel"));
-        btn.addActionListener(this);
-        btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
-        p.add(btn);
-        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        //this.setSize(290, 130);
-        this.setSize(290, 230);
-        
-        this.setResizable(true);
-        this.show();
-    }
-    
-    private JList<String> activateListLayout(){
-    	String[] data = new String[]{"HEX","SQR"};
-    	//DefaultListModel listModel = new DefaultListModel();
-    	
-    	JList<String> list = new JList<String>(data); //data has type Object[]
-    	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    	list.setLayoutOrientation(JList.VERTICAL);
-    	list.setVisibleRowCount(-1);
-    	list.addListSelectionListener(this);
-    	return list;
-    }
+	// public int getSelectedRow() {
+	// return selectedRow;
+	// }
 
-    public void actionPerformed(ActionEvent e) {
-        String action = e.getActionCommand();
-        if (action.equals(MapAttributesPanel.ACTION_OK)) {
-            this.on_ok();
-        } else if (action.equals(MapAttributesPanel.ACTION_DEFAULT_SIZE)) {
-            selectedCol = config.getMapApiColumnsNumber();
-            selectedRow = config.getMapApiRowsNumber();
+	public boolean getCanceled() {
+		return canceled;
+	}
 
-            colItem.setText((new Integer(selectedCol)).toString());
-            rowItem.setText(new Integer(selectedRow).toString());
-        } else if (action.equals(MapAttributesPanel.ACTION_PREVIOUS_SIZE)) {
-            selectedCol = initialCol;
-            selectedRow = initialRow;
-            colItem.setText(new Integer(selectedCol).toString());
-            rowItem.setText(new Integer(selectedRow).toString());
-        } else if (action.equals(MapAttributesPanel.ACTION_CANCEL)) {
-            canceled = true;
-            dispose();
-        }
+	public MapAttributes getSelectedMapAttributes() {
+		return selectedMapAttributes;
+	}
 
-    }
+	public void activate(MapAttributes mapAttributes) {
+		/* parametry - MapApi */
+		this.initialMapAttributes = mapAttributes;
+		try {
+			this.selectedMapAttributes = mapAttributes.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-    /**
-     * Checks if given values for rows and columns are valid. If not fields they
-     * are removed and the dialog window remains open.
-     */
-    private void on_ok() {
+		// this.initialRow = no_rows;
+		// this.initialCol = no_cols;
+		colItem = new JTextField();
+		rowItem = new JTextField();
+		setTitle(messages.getAttrTitle());
+		JButton btn;
 
-    	System.out.println("height");
-    	System.out.println(this.size().getHeight());
-    	System.out.println("width");
-    	System.out.println(this.size().getWidth());
-    	
-        boolean ok = true;
-        int value;
-        try {
-            value = Integer.valueOf(rowItem.getText()).intValue();
+		Container pane = this.getContentPane();
 
-            if (value > 0) {
-                selectedRow = value;
-            } else {
-                rowItem.setText("");
-                ok = false;
-            }
-        } catch (java.lang.NumberFormatException e) {
-            rowItem.setText("");
-            ok = false;
-        }
+		JButton button;
+		pane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 
-        try {
-            value = Integer.valueOf(colItem.getText()).intValue();
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1;
+		c.weighty = 1;
 
-            if (value > 0) {
-                selectedCol = value;
-            } else {
-                rowItem.setText("");
-                ok = false;
-            }
+		c.gridx = 0;
+		c.gridy = 0;
+		pane.add(new JLabel(messages.getAttrRowNumber()), c);
 
-        } catch (java.lang.NumberFormatException e) {
-            colItem.setText("");
-            ok = false;
-        }
+		c.gridx = 1;
+		c.gridy = 0;
+		pane.add(rowItem, c);
+		rowItem.setText(new Integer(initialMapAttributes.getRows()).toString());
 
-        if (ok) {
-            dispose();
-        }
-    }
+		c.gridx = 0;
+		c.gridy = 1;
+		pane.add(new JLabel(messages.getAttrColNumber()), c);
+
+		c.gridx = 1;
+		c.gridy = 1;
+		pane.add(colItem, c);
+		colItem.setText(new Integer(initialMapAttributes.getColumns())
+				.toString());
+
+		c.gridx = 0;
+		c.gridy = 2;
+		pane.add(new JLabel(messages.getAttrLayout()), c);
+
+		c.gridx = 0;
+		c.gridy = 3;
+		pane.add(new JLabel(), c);
+
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridheight = 2;
+		pane.add(activateListLayout(), c);
+
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridheight = 1;
+		btn = new JButton(messages.getAttrDefaultSize());
+		btn.addActionListener(this);
+		btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
+		pane.add(btn, c);
+
+		c.gridx = 1;
+		c.gridy = 4;
+		btn = new JButton(messages.getAttrPreviousSize());
+		btn.addActionListener(this);
+		btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
+		pane.add(btn, c);
+
+		c.gridx = 0;
+		c.gridy = 5;
+		btn = new JButton(messages.getOk());
+		btn.addActionListener(this);
+		btn.setActionCommand(MapAttributesPanel.ACTION_OK);
+		pane.add(btn, c);
+
+		c.gridx = 1;
+		c.gridy = 5;
+		btn = new JButton(messages.getCancel());
+		btn.addActionListener(this);
+		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
+		pane.add(btn, c);
+
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		// this.setSize(290, 180);
+		this.setSize(290, 165);
+
+		// this.setResizable(true);
+
+		this.show();
+	}
+
+	private JList<MapLayoutWrapper> activateListLayout() {
+
+		MapLayoutWrapper mlwHex = new MapLayoutWrapper(MapLayout.HEX, messages);
+		MapLayoutWrapper mlwSqr = new MapLayoutWrapper(MapLayout.SQR, messages);
+
+		MapLayoutWrapper[] data = new MapLayoutWrapper[] { mlwHex, mlwSqr };
+		// DefaultListModel listModel = new DefaultListModel();
+
+		JList<MapLayoutWrapper> list = new JList<MapLayoutWrapper>(data); // data
+																			// has
+																			// type
+																			// Object[]
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setLayoutOrientation(JList.VERTICAL);
+		list.setVisibleRowCount(-1);
+		list.addListSelectionListener(this);
+		list.setSelectedValue(mlwSqr, true);
+		return list;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String action = e.getActionCommand();
+		if (action.equals(MapAttributesPanel.ACTION_OK)) {
+			this.on_ok();
+		} else if (action.equals(MapAttributesPanel.ACTION_DEFAULT_SIZE)) {
+			selectedMapAttributes.setColumns(config.getMapApiColumnsNumber());
+			selectedMapAttributes.setRows(config.getMapApiRowsNumber());
+
+			colItem.setText((new Integer(selectedMapAttributes.getColumns()))
+					.toString());
+			rowItem.setText(new Integer(selectedMapAttributes.getRows())
+					.toString());
+		} else if (action.equals(MapAttributesPanel.ACTION_PREVIOUS_SIZE)) {
+			selectedMapAttributes.setColumns(initialMapAttributes.getColumns());
+			selectedMapAttributes.setRows(initialMapAttributes.getRows());
+			colItem.setText(new Integer(selectedMapAttributes.getColumns())
+					.toString());
+			rowItem.setText(new Integer(selectedMapAttributes.getRows())
+					.toString());
+		} else if (action.equals(MapAttributesPanel.ACTION_CANCEL)) {
+			canceled = true;
+			dispose();
+		}
+
+	}
+
+	/**
+	 * Checks if given values for rows and columns are valid. If not fields they
+	 * are removed and the dialog window remains open.
+	 */
+	private void on_ok() {
+
+		System.out.println("height");
+		System.out.println(this.size().getHeight());
+		System.out.println("width");
+		System.out.println(this.size().getWidth());
+
+		boolean ok = true;
+		int value;
+		try {
+			value = Integer.valueOf(rowItem.getText()).intValue();
+
+			if (value > 0) {
+				selectedMapAttributes.setRows(value);
+			} else {
+				rowItem.setText("");
+				ok = false;
+			}
+		} catch (java.lang.NumberFormatException e) {
+			rowItem.setText("");
+			ok = false;
+		}
+
+		try {
+			value = Integer.valueOf(colItem.getText()).intValue();
+
+			if (value > 0) {
+				selectedMapAttributes.setColumns(value);
+			} else {
+				rowItem.setText("");
+				ok = false;
+			}
+
+		} catch (java.lang.NumberFormatException e) {
+			colItem.setText("");
+			ok = false;
+		}
+
+		if (ok) {
+			dispose();
+		}
+	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		
-		JList<String> list = (JList<String>) e.getSource();		
-		System.out.println("VALUE: "+list.getSelectedValue());
-		System.out.println("INDEX: "+list.getSelectedIndex());
-		
-		
-		
-		if (true){
+
+		// e.getSource();
+		JList<MapLayoutWrapper> list = (JList<MapLayoutWrapper>) e.getSource();
+		System.out.println("VALUE: " + list.getSelectedValue());
+		System.out.println("INDEX: " + list.getSelectedIndex());
+
+		if (true) {
 			return;
 		}
 		ListSelectionModel lsm = (ListSelectionModel) e.getSource();
@@ -230,5 +300,3 @@ public class MapAttributesPanel extends JDialog implements ActionListener, ListS
 		}
 	}
 }
-
-

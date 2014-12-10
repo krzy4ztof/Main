@@ -7,210 +7,224 @@ import mapeditor.config.Config;
 
 public class MapApi {
 
-    //private int Columns,Rows;
-	/* ilosc kolumn i wierszy mapy*/
-//	private int Image_theme[10][10];//do zmiany na dynamiczne
-	/*numer tematu do kt�rego
-    nale�y obrazek na segmencie [x][y]*/
-//	private int Image_no[10][10]//do zmiany na dynamiczne
-	/*numer obrazeku na	segmencie [x][y]*/
-//	private ImagesList p_ImagesList;// tego tu nnie b�dzie
-    private LinkedList<LinkedList<MapSegment>> segments;
+	// private int Columns,Rows;
+	/* ilosc kolumn i wierszy mapy */
+	// private int Image_theme[10][10];//do zmiany na dynamiczne
+	/*
+	 * numer tematu do kt�rego nale�y obrazek na segmencie [x][y]
+	 */
+	// private int Image_no[10][10]//do zmiany na dynamiczne
+	/* numer obrazeku na segmencie [x][y] */
+	// private ImagesList p_ImagesList;// tego tu nnie b�dzie
+	private LinkedList<LinkedList<MapSegment>> segments;
 
-    private Config config;
-    
-    private MapLayout mapLayout;
-    
-    private enum MapLayout{HEX,SQR}; 
-    
-    /**
-     * Stores reference to file from which map was loaded or to which it was
-     * saved
-     */
-    private File file = null;
-    /**
-     * Constructor. No number of rows nor columns is given. The next method to
-     * invoke should be setSize(col, row) method.
-     *
-     */
-    public MapApi(){
-    	
-    }
-    
-    public MapApi(Config configParam) {
-    	config = configParam;
-    	if (config.isMapApiLayoutHex()){
-    		mapLayout=MapLayout.HEX;
-    	} else {
-    		mapLayout=MapLayout.SQR;    		
-    	}
-    	
-    	resetMap(config.getMapApiColumnsNumber(), config.getMapApiRowsNumber());
-    }
+	private Config config;
 
-    /**
-     * Constructor
-     * @param col Number of columns. When col <= 0 then default number of
-     * columns is set.
-     * @param row Number of rows. When row <= then default number of rows
-     * is set.
-     */
-    public MapApi(int col, int row) {
-        this.resetMap(col, row);
-    }
+	private MapLayout mapLayout;
 
-    
-	public boolean isLayoutHex(){
-		if (mapLayout.equals(MapLayout.HEX)){
+	/**
+	 * Stores reference to file from which map was loaded or to which it was
+	 * saved
+	 */
+	private File file = null;
+
+	/**
+	 * Constructor. No number of rows nor columns is given. The next method to
+	 * invoke should be setSize(col, row) method.
+	 *
+	 */
+	public MapApi() {
+
+	}
+
+	public MapApi(Config configParam) {
+		config = configParam;
+		if (config.isMapApiLayoutHex()) {
+			mapLayout = MapLayout.HEX;
+		} else {
+			mapLayout = MapLayout.SQR;
+		}
+
+		resetMap(config.getMapApiColumnsNumber(), config.getMapApiRowsNumber());
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param col
+	 *            Number of columns. When col <= 0 then default number of
+	 *            columns is set.
+	 * @param row
+	 *            Number of rows. When row <= then default number of rows is
+	 *            set.
+	 */
+	public MapApi(int col, int row) {
+		this.resetMap(col, row);
+	}
+
+	public boolean isLayoutHex() {
+		if (mapLayout.equals(MapLayout.HEX)) {
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean isLayoutSqr(){
-		if (mapLayout.equals(MapLayout.SQR)){
+
+	public boolean isLayoutSqr() {
+		if (mapLayout.equals(MapLayout.SQR)) {
 			return true;
 		}
 		return false;
 	}
-    /**
-     * Set size of MapApi. THe method should be invoked after MapApi()
-     * constructor
-     * @param col Number of columns. When col <= 0 then default number of
-     * columns is set.
-     * @param row Number of rows. When row <= then default number of rows
-     * is set.
-     */
-    public void resetMap(int cols, int rows) {
-        if (cols <= 0) {
-            cols = config.getMapApiColumnsNumber();
-        }
-        if (rows <= 0) {
-            rows = config.getMapApiRowsNumber();
-        }
 
-        segments = new LinkedList<LinkedList<MapSegment>>();
-        LinkedList<MapSegment> newRow;
-        MapSegment se;
-        for (int i = 0; i < rows; i++) {
-            newRow = new LinkedList<MapSegment>();
-            segments.add(newRow);
+	/**
+	 * Set size of MapApi. THe method should be invoked after MapApi()
+	 * constructor
+	 * 
+	 * @param col
+	 *            Number of columns. When col <= 0 then default number of
+	 *            columns is set.
+	 * @param row
+	 *            Number of rows. When row <= then default number of rows is
+	 *            set.
+	 */
+	public void resetMap(int cols, int rows) {
+		if (cols <= 0) {
+			cols = config.getMapApiColumnsNumber();
+		}
+		if (rows <= 0) {
+			rows = config.getMapApiRowsNumber();
+		}
 
-            for (int j = 0; j < cols; j++) {
-                se = new MapSegment();
-                newRow.add(se);
-            }
-        }
-        file = null;
-    }
+		segments = new LinkedList<LinkedList<MapSegment>>();
+		LinkedList<MapSegment> newRow;
+		MapSegment se;
+		for (int i = 0; i < rows; i++) {
+			newRow = new LinkedList<MapSegment>();
+			segments.add(newRow);
 
-    /**
-     * Increases or decreases map size without deleting already existing
-     * MapSegments
-     * @param rows
-     * @param cols
-     */
-    public void changeSize(int rows, int cols) {
-        if (rows > 0) {
-            changeRowsSize(rows);
-        }
+			for (int j = 0; j < cols; j++) {
+				se = new MapSegment();
+				newRow.add(se);
+			}
+		}
+		file = null;
+	}
 
-        if (cols > 0) {
-            changeColumnsSize(cols);
-        }
+	/**
+	 * Increases or decreases map size without deleting already existing
+	 * MapSegments
+	 * 
+	 * @param rows
+	 * @param cols
+	 */
+	public void changeSize(int rows, int cols) {
+		if (rows > 0) {
+			changeRowsSize(rows);
+		}
 
-    }
+		if (cols > 0) {
+			changeColumnsSize(cols);
+		}
 
-    /**
-     * Increases or decreases map rows size without deleting already existing
-     * MapSegments
-     * @param rows
-     */
-    private void changeRowsSize(int rows) {
-        int rowsSize = getRowsSize();
-        int colsSize = getColumnsSize();
-        LinkedList<MapSegment> newRow = null;
-        MapSegment segment = null;
+	}
 
-        if (rows > rowsSize) {
-            for (int i = rowsSize; i < rows; i++) {
-                newRow = new LinkedList<MapSegment>();
-                segments.add(newRow);
-                for (int j = 0; j < colsSize; j++) {
-                    segment = new MapSegment();
-                    newRow.add(segment);
-                }
-            }
-        } else if (rows < rowsSize) {
-            for (int i = rows; i < rowsSize; i++) {
-                segments.removeLast();
-            }
-        }
-    }
+	/**
+	 * Increases or decreases map rows size without deleting already existing
+	 * MapSegments
+	 * 
+	 * @param rows
+	 */
+	private void changeRowsSize(int rows) {
+		int rowsSize = getRowsSize();
+		int colsSize = getColumnsSize();
+		LinkedList<MapSegment> newRow = null;
+		MapSegment segment = null;
 
-    /**
-     * Increases or decreases map rows size without deleting already existing
-     * MapSegments
-     * @param cols
-     */
-    private void changeColumnsSize(int cols) {
-        int colsSize = getColumnsSize();
-        LinkedList<MapSegment> newRow = null;
-        MapSegment segment = null;
+		if (rows > rowsSize) {
+			for (int i = rowsSize; i < rows; i++) {
+				newRow = new LinkedList<MapSegment>();
+				segments.add(newRow);
+				for (int j = 0; j < colsSize; j++) {
+					segment = new MapSegment();
+					newRow.add(segment);
+				}
+			}
+		} else if (rows < rowsSize) {
+			for (int i = rows; i < rowsSize; i++) {
+				segments.removeLast();
+			}
+		}
+	}
 
-        if (cols > 0) {
-            if (cols > colsSize) {
-                for (LinkedList<MapSegment> row : segments) {
-                    for (int i = colsSize; i < cols; i++) {
-                        segment = new MapSegment();
-                        row.add(segment);
-                    }
-                }
-            } else if (cols < colsSize) {
-                for (LinkedList<MapSegment> row : segments) {
-                    for (int i = cols; i < colsSize; i++) {
-                        row.removeLast();
-                    }
-                }
-            }
-        }
-    }
+	/**
+	 * Increases or decreases map rows size without deleting already existing
+	 * MapSegments
+	 * 
+	 * @param cols
+	 */
+	private void changeColumnsSize(int cols) {
+		int colsSize = getColumnsSize();
+		LinkedList<MapSegment> newRow = null;
+		MapSegment segment = null;
 
-    public MapSegment getSegment(int row, int col) {
-        return segments.get(row).get(col);
-    }
+		if (cols > 0) {
+			if (cols > colsSize) {
+				for (LinkedList<MapSegment> row : segments) {
+					for (int i = colsSize; i < cols; i++) {
+						segment = new MapSegment();
+						row.add(segment);
+					}
+				}
+			} else if (cols < colsSize) {
+				for (LinkedList<MapSegment> row : segments) {
+					for (int i = cols; i < colsSize; i++) {
+						row.removeLast();
+					}
+				}
+			}
+		}
+	}
 
-    /**
-     *
-     * @return Number of map columns
-     */
-    public int getColumnsSize() {
-        return segments.get(0).size();
-    }
+	public MapSegment getSegment(int row, int col) {
+		return segments.get(row).get(col);
+	}
 
-    /**
-     *
-     * @return number of map rows
-     */
-    public int getRowsSize() {
-        return segments.size();
-    }
+	/**
+	 *
+	 * @return Number of map columns
+	 */
+	public int getColumnsSize() {
+		return segments.get(0).size();
+	}
 
-    /**
-     *
-     * @return File from which map was loaded or to which it was
-     * saved
-     */
-    public File getFile() {
-        return file;
-    }
+	/**
+	 *
+	 * @return number of map rows
+	 */
+	public int getRowsSize() {
+		return segments.size();
+	}
 
-    /**
-     *
-     * @param file File from which map was loaded or to which it was
-     * saved
-     */
-    public void setFile(File file) {
-        this.file = file;
-    }
+	/**
+	 *
+	 * @return File from which map was loaded or to which it was saved
+	 */
+	public File getFile() {
+		return file;
+	}
+
+	/**
+	 *
+	 * @param file
+	 *            File from which map was loaded or to which it was saved
+	 */
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+	public MapAttributes getMapAttributes() {
+		MapAttributes mapAttributes = new MapAttributes(getRowsSize(),
+				getColumnsSize(), mapLayout);
+		return mapAttributes;
+	}
 }
