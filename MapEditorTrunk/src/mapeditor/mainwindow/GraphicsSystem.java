@@ -1,37 +1,29 @@
 package mapeditor.mainwindow;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Iterator;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import mapeditor.config.Config;
-import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapObject;
 import mapeditor.messages.MapMessages;
-import mapeditor.saveload.MapLoader;
-import mapeditor.saveload.MapSaver;
 import mapeditor.themesapi.MapObjectsTheme;
 import mapeditor.themesapi.MapThemesList;
-import otherprods.ExampleFileFilter;
 
-public class GraphicsSystem implements ActionListener {
+public class GraphicsSystem {
 
-	private KeyboardManager keyboardManager;
+	private GraphicsSystemKeyListener gsKeyListener;
 	private MapPanel mapPanel;
 	public BmpPanel bmpPanel;
 	private JFrame jFrame;
@@ -40,183 +32,238 @@ public class GraphicsSystem implements ActionListener {
 	private MapApi mapApi = null;
 	private Config config;
 
-	private final static String ACTION_ZOOM_IN = "ACTION_ZOOM_IN";
-	private final static String ACTION_ZOOM_OUT = "ACTION_ZOOM_OUT";
-	private final static String ACTION_ZOOM_DEFAULT = "ACTION_ZOOM_DEFAULT";
+	public final static String ACTION_ZOOM_IN = "ACTION_ZOOM_IN";
+	public final static String ACTION_ZOOM_OUT = "ACTION_ZOOM_OUT";
+	public final static String ACTION_ZOOM_DEFAULT = "ACTION_ZOOM_DEFAULT";
 
-	private final static String ACTION_ROLL_RIGHT = "ACTION_ROLL_RIGHT";
-	private final static String ACTION_ROLL_LEFT = "ACTION_ROLL_LEFT";
-	private final static String ACTION_ROLL_UP = "ACTION_ROLL_UP";
-	private final static String ACTION_ROLL_DOWN = "ACTION_ROLL_DOWN";
+	public final static String ACTION_ROLL_RIGHT = "ACTION_ROLL_RIGHT";
+	public final static String ACTION_ROLL_LEFT = "ACTION_ROLL_LEFT";
+	public final static String ACTION_ROLL_UP = "ACTION_ROLL_UP";
+	public final static String ACTION_ROLL_DOWN = "ACTION_ROLL_DOWN";
 
-	private final static String ACTION_NEW = "ACTION_NEW";
-	private final static String ACTION_OPEN = "ACTION_OPEN";
-	private final static String ACTION_CLOSE = "ACTION_CLOSE";
-	private final static String ACTION_SAVE = "ACTION_SAVE";
+	public final static String ACTION_NEW = "ACTION_NEW";
+	public final static String ACTION_OPEN = "ACTION_OPEN";
+	public final static String ACTION_CLOSE = "ACTION_CLOSE";
+	public final static String ACTION_SAVE = "ACTION_SAVE";
 
-	private final static String ACTION_MAP_ATTRIBUTES_PANEL = "ACTION_MAP_ATTRIBUTES_PANEL";
+	public final static String ACTION_MAP_ATTRIBUTES_PANEL = "ACTION_MAP_ATTRIBUTES_PANEL";
+
+	private GraphicsSystemActionListener gsListener;
+	private BmpPanelActionListener bmpListener;
+	private GraphicsSystemFocusListener gsFocusListener;
 
 	public GraphicsSystem(Config configParam, MapMessages messages,
 			MapThemesList mapThemesListParam) {
 		config = configParam;
 		this.messages = messages;
 		mapThemesList = mapThemesListParam;
-		keyboardManager = new KeyboardManager(this);
-		System.out.println(keyboardManager);
+		System.out.println(gsKeyListener);
 		bmpPanel = new BmpPanel(mapThemesListParam, this);
-		System.out.println(this.keyboardManager);
+		System.out.println(this.gsKeyListener);
 		mapApi = new MapApi(config);
 
 		mapPanel = new MapPanel(this, mapApi);
+		gsKeyListener = new GraphicsSystemKeyListener(this, mapPanel);
+		gsFocusListener = new GraphicsSystemFocusListener();
+
+		gsListener = new GraphicsSystemActionListener(this, mapPanel, mapApi,
+				messages, mapThemesList, config);
+		bmpListener = new BmpPanelActionListener(bmpPanel, mapThemesList, this);
+
 	}
 
-	public void activate() {
+	private JMenu createFileMenu() {
+		JMenu menu = new JMenu(messages.getMenuFile());
+		JMenuItem menuItem = new JMenuItem(messages.getMenuNew());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_NEW);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		JMenuItem Buf_menu;
-		this.jFrame = new JFrame();
-		JMenuBar M_menu = new JMenuBar();
+		menuItem = new JMenuItem(messages.getMenuOpen());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_OPEN);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		JMenu File_menu = new JMenu(messages.getMenuFile());
-		Buf_menu = new JMenuItem(messages.getMenuNew());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_NEW);
-		Buf_menu.addActionListener(this);
-		File_menu.add(Buf_menu);
+		menuItem = new JMenuItem(messages.getMenuClose());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_CLOSE);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		Buf_menu = new JMenuItem(messages.getMenuOpen());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_OPEN);
-		Buf_menu.addActionListener(this);
-		File_menu.add(Buf_menu);
+		menuItem = new JMenuItem(messages.getMenuSave());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_SAVE);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		Buf_menu = new JMenuItem(messages.getMenuClose());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_CLOSE);
-		Buf_menu.addActionListener(this);
-		File_menu.add(Buf_menu);
+		/* docelowo cos innego bedzie nasluchwialo menu plik */
 
-		Buf_menu = new JMenuItem(messages.getMenuSave());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_SAVE);
-		Buf_menu.addActionListener(this);
-		File_menu.add(Buf_menu);
-		M_menu.add(File_menu);
-		/* docelowo co� innego b�dzie nas�uchiwa�o menu plik */
+		return menu;
+	}
 
-		JMenu Edit_menu = new JMenu(messages.getMenuEdit());
-		Buf_menu = new JMenuItem(messages.getMenuAttributes());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL);
-		Buf_menu.addActionListener(this);
-		Edit_menu.add(Buf_menu);
-		M_menu.add(Edit_menu);
+	private JMenu createEditMenu() {
+		JMenu menu = new JMenu(messages.getMenuEdit());
+		JMenuItem menuItem = new JMenuItem(messages.getMenuAttributes());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
+		return menu;
+	}
 
-		JMenu Zoom_menu = new JMenu(messages.getMenuZoom());
+	private JMenu createZoomMenu() {
+		JMenu menu = new JMenu(messages.getMenuZoom());
 
-		Buf_menu = new JMenuItem(messages.getMenuZoomIn());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_IN);
-		Buf_menu.addActionListener(this);
-		Zoom_menu.add(Buf_menu);
+		JMenuItem menuItem = new JMenuItem(messages.getMenuZoomIn());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_ZOOM_IN);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		Buf_menu = new JMenuItem(messages.getMenuZoomOut());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_OUT);
-		Buf_menu.addActionListener(this);
-		Zoom_menu.add(Buf_menu);
+		menuItem = new JMenuItem(messages.getMenuZoomOut());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_ZOOM_OUT);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		Buf_menu = new JMenuItem(messages.getMenuDefaultZoom());
-		Buf_menu.setActionCommand(GraphicsSystem.ACTION_ZOOM_DEFAULT);
-		Buf_menu.addActionListener(this);
-		Zoom_menu.add(Buf_menu);
+		menuItem = new JMenuItem(messages.getMenuDefaultZoom());
+		menuItem.setActionCommand(GraphicsSystem.ACTION_ZOOM_DEFAULT);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
 
-		M_menu.add(Zoom_menu);
+		return menu;
+	}
 
-		JMenu Obj_menu = new JMenu(messages.getMenuObjects());
-		this.buildObjectMenu(Obj_menu);
-		M_menu.add(Obj_menu);
-		this.jFrame.setJMenuBar(M_menu);
+	private JMenu createMenuObjects() {
+		JMenu menu = new JMenu(messages.getMenuObjects());
+		buildObjectMenu(menu);
+		return menu;
+	}
 
-		GridBagLayout gridbag = new GridBagLayout();
-		GridBagConstraints c = new GridBagConstraints();
-		this.jFrame.getContentPane().setLayout(gridbag);
+	private JMenuBar createMenuBar() {
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.add(createFileMenu());
+		menuBar.add(createEditMenu());
+		menuBar.add(createZoomMenu());
+		menuBar.add(createMenuObjects());
+		return menuBar;
+	}
 
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 10.0;// proporcje powi�kszania si�
-		c.weighty = 1.0;// proporcje powi�kszania si�
-		c.gridx = 0;
-		c.gridy = 0;
-		mapPanel.setBackground(Color.ORANGE);
-		gridbag.setConstraints(mapPanel, c);
-		this.jFrame.getContentPane().add(mapPanel);
-
-		JPanel R_panel = new JPanel();
-		c.weightx = 1.0;// proporcje powi�kszania si�
-		c.weighty = 1.0;// proporcje powi�kszania si�
-		c.gridx = 1;
-		c.gridy = 0;
-		gridbag.setConstraints(R_panel, c);
-		this.jFrame.getContentPane().add(R_panel);
-		R_panel.setLayout(gridbag);
-
-		c.weightx = 1.0;
-		c.weighty = 10.0;
-		c.gridx = 0;
-		c.gridy = 0;
-		bmpPanel.activate();
-		gridbag.setConstraints(bmpPanel, c);
-		R_panel.add(bmpPanel);
-
+	private JPanel createButtonsPanel() {
 		JPanel Buttons_p = new JPanel();
+		GridBagConstraints c = new GridBagConstraints();
+		Buttons_p.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+
 		c.weightx = 1.0;
 		c.weighty = 1.0;
-		c.gridx = 0;
-		c.gridy = 1;
-		Buttons_p.setBackground(Color.BLACK);
-		gridbag.setConstraints(Buttons_p, c);
-		Buttons_p.setLayout(gridbag);
-		R_panel.add(Buttons_p);
-
-		JButton Up_button = new JButton("^");
-		Up_button.addActionListener(this);// zmieni si� na mapk�
-		Up_button.setActionCommand(GraphicsSystem.ACTION_ROLL_UP);
 		c.gridx = 1;
 		c.gridy = 0;
-		Up_button.setBackground(Color.YELLOW);
-		gridbag.setConstraints(Up_button, c);
+		Buttons_p.setBackground(Color.BLACK);
+
+		// gridbag.setConstraints(Buttons_p, c);
+		// Buttons_p.setLayout(gridbag);
+
+		JButton Up_button = new JButton("^");
+		Up_button.addActionListener(gsListener);// zmieni si� na mapk�
+		Up_button.setActionCommand(GraphicsSystem.ACTION_ROLL_UP);
+		Buttons_p.add(Up_button, c);
+
+		// Up_button.setBackground(Color.YELLOW);
+		// gridbag.setConstraints(Up_button, c);
 
 		Up_button.setMargin(new Insets(0, 0, 0, 0));// zmniejsza marginesy
-		Buttons_p.add(Up_button);
+		// Buttons_p.add(Up_button);
 
 		JButton Down_button = new JButton("v");
-		Down_button.addActionListener(this);// zmieni si� na mapk�
+		Down_button.addActionListener(gsListener);// zmieni si� na mapk�
 		Down_button.setActionCommand(GraphicsSystem.ACTION_ROLL_DOWN);
 		c.gridx = 1;
 		c.gridy = 1;
 		Down_button.setBackground(Color.YELLOW);
-		gridbag.setConstraints(Down_button, c);
+
+		// gridbag.setConstraints(Down_button, c);
 		Down_button.setMargin(new Insets(0, 0, 0, 0));
-		Buttons_p.add(Down_button);
+		Buttons_p.add(Down_button, c);
 
 		JButton Left_button = new JButton("<");
-		Left_button.addActionListener(this);// zmieni si� na mapk�
+		Left_button.addActionListener(gsListener);// zmieni si� na mapk�
 		Left_button.setActionCommand(GraphicsSystem.ACTION_ROLL_LEFT);
 		c.gridx = 0;
 		c.gridy = 1;
 		Left_button.setBackground(Color.MAGENTA);
-		gridbag.setConstraints(Left_button, c);
+		// gridbag.setConstraints(Left_button, c);
 		Left_button.setMargin(new Insets(0, 0, 0, 0));
-		Buttons_p.add(Left_button);
+		Buttons_p.add(Left_button, c);
 
 		JButton Right_button = new JButton(">");
-		Right_button.addActionListener(this);// zmieni si� na mapk�
+		Right_button.addActionListener(gsListener);// zmieni si� na mapk�
 		Right_button.setActionCommand(GraphicsSystem.ACTION_ROLL_RIGHT);
 		c.gridx = 2;
 		c.gridy = 1;
 		Right_button.setBackground(Color.RED);
 		Right_button.setMargin(new Insets(0, 0, 0, 0));
-		gridbag.setConstraints(Right_button, c);
-		Buttons_p.add(Right_button);
 
-		this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.jFrame.setSize(400, 400);
-		this.jFrame.setVisible(true);
+		// gridbag.setConstraints(Right_button, c);
+		Buttons_p.add(Right_button, c);
+
+		return Buttons_p;
+	}
+
+	private JPanel createRightSidePanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.0;
+		c.weighty = 1.0;
+		c.gridx = 0;
+		c.gridy = 0;
+
+		bmpPanel.activate(bmpListener);
+		panel.add(bmpPanel, c);
+
+		c.weightx = 0.0;
+		c.weighty = 0.0;
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(createButtonsPanel(), c);
+
+		return panel;
+	}
+
+	private JPanel createMapPanel() {
+		mapPanel.setBackground(Color.ORANGE);
+
+		return mapPanel;
+	}
+
+	public void activate() {
+
+		this.jFrame = new JFrame();
+
+		JMenuBar menu = this.createMenuBar();
+		this.jFrame.setJMenuBar(menu);
+
+		Container contentPane = jFrame.getContentPane();
+		contentPane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1.0;
+		c.weighty = 1.0;
+		c.gridx = 0;
+		c.gridy = 0;
+		contentPane.add(createMapPanel(), c);
+
+		c.weightx = 0.0;
+		c.weighty = 1.0;
+		c.gridx = 1;
+		c.gridy = 0;
+		contentPane.add(createRightSidePanel(), c);
+
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jFrame.setSize(400, 400);
+		jFrame.setVisible(true);
 		jFrame.requestFocus();
-		this.jFrame.addFocusListener(this.keyboardManager);
-		this.jFrame.addKeyListener(this.keyboardManager);
+		jFrame.addFocusListener(this.gsFocusListener);
+		jFrame.addKeyListener(this.gsKeyListener);
 	}
 
 	private void buildObjectMenu(JMenu Obj_menu) {
@@ -235,7 +282,7 @@ public class GraphicsSystem implements ActionListener {
 			themeName = it.next().getName();
 			menuItem = new JMenuItem(messages.getThemeName(themeName));
 			menuItem.setActionCommand("MNU_" + themeName);
-			menuItem.addActionListener(bmpPanel);
+			menuItem.addActionListener(bmpListener);
 			Obj_menu.add(menuItem);
 
 		}
@@ -243,197 +290,6 @@ public class GraphicsSystem implements ActionListener {
 
 	public JFrame getJFrame() {
 		return this.jFrame;
-	}
-
-	public void MoveMapAction(int x, int y) {
-		mapPanel.MoveMap(x, y);
-	}
-
-	public void ZoomMapInAction() {
-		mapPanel.ZoomMapIn();
-	}
-
-	public void ZoomMapOutAction() {
-		mapPanel.ZoomMapOut();
-	}
-
-	public void SetDefaultMapZoomAction() {
-		mapPanel.SetDefaultMapZoom();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		/*
-		 * prowadzi nas�uch 1. przycisk�w przesuwaj�cych map� 2. ???
-		 * menu plik (otieranie/zamykanie nowych map - mo�e przenie�� to
-		 * do graphics_systemu, otwieranie okien dialogowych do wyboru pliku
-		 */
-
-		String str = e.getActionCommand();
-		System.out.println("MapPanel: " + e.getActionCommand());
-		if (str.equals(GraphicsSystem.ACTION_ROLL_RIGHT)) {
-			MoveMapAction(1, 0);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_LEFT)) {
-			MoveMapAction(-1, 0);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_UP)) {
-			MoveMapAction(0, -1);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_DOWN)) {
-			MoveMapAction(0, 1);
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_IN)) {
-			ZoomMapInAction();
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_OUT)) {
-			ZoomMapOutAction();
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_DEFAULT)) {
-			SetDefaultMapZoomAction();
-		} else if (str.equals(GraphicsSystem.ACTION_NEW)) {
-			newMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_OPEN)) {
-			loadMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_CLOSE)) {
-			closeApplicationAction();
-		} else if (str.equals(GraphicsSystem.ACTION_SAVE)) {
-			saveMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL)) {
-			attributesMapAction();
-		}
-		mapPanel.repaint();
-		getJFrame().requestFocus();
-	}
-
-	private void saveMapApi() {
-		/* zapisuje map� */
-		JFileChooser FC = new JFileChooser();
-		FC.setCurrentDirectory(new File("." + File.separator + "Maps"));
-
-		ExampleFileFilter rfilter = new ExampleFileFilter("xml", "XML Files");
-
-		FC.setFileFilter(rfilter);
-		FC.setSelectedFile(mapApi.getFile());
-
-		int res = FC.showSaveDialog(getJFrame());
-		if (res == JFileChooser.APPROVE_OPTION) {
-			File rFile = FC.getSelectedFile();
-			MapSaver p_MapSaver = new MapSaver(messages, mapThemesList);
-			MapApi p_MapApi = mapApi;
-
-			try {
-				p_MapSaver.SaveMapToFile(p_MapApi, rFile);
-			} catch (Exception e) {
-
-				String msg = messages.getMsgSavingFailed() + " "
-						+ e.getMessage();
-				JOptionPane.showMessageDialog(FC, msg);
-			}
-		}
-	}
-
-	/**
-	 * Creates new map. Saves current and clears it.
-	 */
-	private void newMapAction() {
-		JOptionPane dlg = new JOptionPane();
-		int res = JOptionPane.showConfirmDialog(this.jFrame,
-				messages.getMsgSaveChanges(), null, JOptionPane.YES_NO_OPTION);
-		if (res == JOptionPane.YES_OPTION) {
-			this.saveMapApi();
-		}
-		MapAttributesPanel MRP = new MapAttributesPanel(config, messages,
-				jFrame);
-
-		MRP.activate(mapApi.getMapAttributes());
-
-		if (!MRP.getCanceled()) {
-			int row = MRP.getSelectedMapAttributes().getRows();
-			int col = MRP.getSelectedMapAttributes().getColumns();
-
-			mapApi.resetMap(row, col);
-		}
-
-	}
-
-	/**
-	 * Loads new map from file.
-	 */
-	private void loadMapAction() {
-		int res = JOptionPane.showConfirmDialog(jFrame,
-				messages.getMsgSaveChanges());
-		if (res == JOptionPane.YES_OPTION) {
-			saveMapApi();
-			loadMapApi();
-		} else if (res == JOptionPane.NO_OPTION) {
-			loadMapApi();
-		}
-	}
-
-	/**
-	 * Saves map to file.
-	 */
-	private void saveMapAction() {
-		saveMapApi();
-	}
-
-	/**
-	 * Resizes map without removing current MapObjects
-	 * 
-	 * @throws CloneNotSupportedException
-	 */
-	private void attributesMapAction() {
-		/* otwiera okno ustawie� wymiar�w nowej mapy */
-		MapAttributesPanel mapAttributesPanel = new MapAttributesPanel(config,
-				messages, jFrame);
-
-		mapAttributesPanel.activate(mapApi.getMapAttributes());
-
-		if (!mapAttributesPanel.getCanceled()) {
-			int row = mapAttributesPanel.getSelectedMapAttributes().getRows();
-			int col = mapAttributesPanel.getSelectedMapAttributes()
-					.getColumns();
-
-			mapApi.changeSize(row, col);
-		}
-	}
-
-	/**
-	 * Quits application
-	 */
-	private void closeApplicationAction() {
-		int res = JOptionPane.showConfirmDialog(jFrame,
-				messages.getMsgSaveChanges());
-		if (res == JOptionPane.YES_OPTION) {
-			saveMapApi();
-		}
-		System.exit(0);
-	}
-
-	/**
-	 * Loads new map
-	 */
-	private void loadMapApi() {
-		JFileChooser FC = new JFileChooser();
-		FC.setCurrentDirectory(new File("." + File.separator + "Maps"));
-
-		ExampleFileFilter rfilter = new ExampleFileFilter("xml", "XML Files");
-
-		FC.setFileFilter(rfilter);
-		FC.setSelectedFile(mapApi.getFile());
-
-		int res = FC.showOpenDialog(getJFrame());
-		if (res == JFileChooser.APPROVE_OPTION) {
-			File rFile = FC.getSelectedFile();
-			MapLoader p_MapLoader = new MapLoader();
-
-			try {
-				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList);
-				mapPanel.setMapApi(mapApi);
-				getJFrame().repaint();
-			} catch (Exception e) {
-
-				String msg = messages.getMsgLoadingFailed()
-						+ e.getMessage();
-				JOptionPane.showMessageDialog(FC, msg);
-
-			}
-		}
 	}
 
 	public MapObject getSelectedMapObject() {

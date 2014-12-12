@@ -4,8 +4,6 @@ import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -16,34 +14,34 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import mapeditor.config.Config;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.MapLayout;
 import mapeditor.messages.MapMessages;
 
-public class MapAttributesPanel extends JDialog implements ActionListener,
-		ListSelectionListener {
+public class MapAttributesPanel extends JDialog {
 
-	private MapAttributes initialMapAttributes;
-	private MapAttributes selectedMapAttributes;
+	MapAttributes initialMapAttributes;
+	MapAttributes selectedMapAttributes;
 
 	// private int initialRow;
 	// private int initialCol;
 	// private int selectedRow;
 	// private int selectedCol;
-	private JTextField colItem = null;
-	private JTextField rowItem = null;
+	JTextField colItem = null;
+	JTextField rowItem = null;
 	private MapMessages messages;
-	private boolean canceled;
+	boolean canceled;
 	private Config config;
 
-	private final static String ACTION_DEFAULT_SIZE = "ACTION_DEFAULT_SIZE";
-	private final static String ACTION_PREVIOUS_SIZE = "ACTION_PREVIOUS_SIZE";
-	private final static String ACTION_OK = "ACTION_OK";
-	private final static String ACTION_CANCEL = "ACTION_CANCEL";
+	final static String ACTION_DEFAULT_SIZE = "ACTION_DEFAULT_SIZE";
+	final static String ACTION_PREVIOUS_SIZE = "ACTION_PREVIOUS_SIZE";
+	final static String ACTION_OK = "ACTION_OK";
+	final static String ACTION_CANCEL = "ACTION_CANCEL";
+
+	private MapAttributesPanelActionListener mapActionListener;
+	private MapAttributesPanelListSelectionListener mapListSelectionListener;
 
 	public MapAttributesPanel(Config configParam, MapMessages messages,
 			JFrame jFrameParam) {
@@ -51,6 +49,8 @@ public class MapAttributesPanel extends JDialog implements ActionListener,
 		config = configParam;
 		this.messages = messages;
 		canceled = false;
+		mapActionListener = new MapAttributesPanelActionListener(this, config);
+		mapListSelectionListener = new MapAttributesPanelListSelectionListener();
 		addWindowListener(new WindowAdapter() {
 
 			@Override
@@ -139,28 +139,28 @@ public class MapAttributesPanel extends JDialog implements ActionListener,
 		c.gridy = 4;
 		c.gridheight = 1;
 		btn = new JButton(messages.getAttrDefaultSize());
-		btn.addActionListener(this);
+		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 1;
 		c.gridy = 4;
 		btn = new JButton(messages.getAttrPreviousSize());
-		btn.addActionListener(this);
+		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 0;
 		c.gridy = 5;
 		btn = new JButton(messages.getOk());
-		btn.addActionListener(this);
+		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_OK);
 		pane.add(btn, c);
 
 		c.gridx = 1;
 		c.gridy = 5;
 		btn = new JButton(messages.getCancel());
-		btn.addActionListener(this);
+		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
 		pane.add(btn, c);
 
@@ -188,43 +188,16 @@ public class MapAttributesPanel extends JDialog implements ActionListener,
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(-1);
-		list.addListSelectionListener(this);
+		list.addListSelectionListener(mapListSelectionListener);
 		list.setSelectedValue(mlwSqr, true);
 		return list;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String action = e.getActionCommand();
-		if (action.equals(MapAttributesPanel.ACTION_OK)) {
-			this.on_ok();
-		} else if (action.equals(MapAttributesPanel.ACTION_DEFAULT_SIZE)) {
-			selectedMapAttributes.setColumns(config.getMapApiColumnsNumber());
-			selectedMapAttributes.setRows(config.getMapApiRowsNumber());
-
-			colItem.setText((new Integer(selectedMapAttributes.getColumns()))
-					.toString());
-			rowItem.setText(new Integer(selectedMapAttributes.getRows())
-					.toString());
-		} else if (action.equals(MapAttributesPanel.ACTION_PREVIOUS_SIZE)) {
-			selectedMapAttributes.setColumns(initialMapAttributes.getColumns());
-			selectedMapAttributes.setRows(initialMapAttributes.getRows());
-			colItem.setText(new Integer(selectedMapAttributes.getColumns())
-					.toString());
-			rowItem.setText(new Integer(selectedMapAttributes.getRows())
-					.toString());
-		} else if (action.equals(MapAttributesPanel.ACTION_CANCEL)) {
-			canceled = true;
-			dispose();
-		}
-
 	}
 
 	/**
 	 * Checks if given values for rows and columns are valid. If not fields they
 	 * are removed and the dialog window remains open.
 	 */
-	private void on_ok() {
+	void on_ok() {
 
 		System.out.println("height");
 		System.out.println(this.size().getHeight());
@@ -264,39 +237,6 @@ public class MapAttributesPanel extends JDialog implements ActionListener,
 
 		if (ok) {
 			dispose();
-		}
-	}
-
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-
-		// e.getSource();
-		JList<MapLayoutWrapper> list = (JList<MapLayoutWrapper>) e.getSource();
-		System.out.println("VALUE: " + list.getSelectedValue());
-		System.out.println("INDEX: " + list.getSelectedIndex());
-
-		if (true) {
-			return;
-		}
-		ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-		int firstIndex = e.getFirstIndex();
-		int lastIndex = e.getLastIndex();
-		boolean isAdjusting = e.getValueIsAdjusting();
-		System.out.println("Event for indexes " + firstIndex + " - "
-				+ lastIndex + "; isAdjusting is " + isAdjusting
-				+ "; selected indexes:");
-
-		if (lsm.isSelectionEmpty()) {
-			System.out.println(" <none>");
-		} else {
-			// Find out which indexes are selected.
-			int minIndex = lsm.getMinSelectionIndex();
-			int maxIndex = lsm.getMaxSelectionIndex();
-			for (int i = minIndex; i <= maxIndex; i++) {
-				if (lsm.isSelectedIndex(i)) {
-					System.out.println(" " + i);
-				}
-			}
 		}
 	}
 }
