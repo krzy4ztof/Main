@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.Iterator;
 
 import javax.swing.JButton;
@@ -16,63 +15,39 @@ import javax.swing.JPanel;
 
 import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.MapObject;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObjectsTheme;
 import mapeditor.themesapi.MapThemesList;
 
 public class GraphicsSystem {
 
-	private GraphicsSystemKeyListener gsKeyListener;
-	private MapPanel mapPanel;
-	public BmpPanel bmpPanel;
-	private JFrame jFrame;
-	private MapMessages messages;
-	private MapThemesList mapThemesList;
-	private MapApi mapApi = null;
-	private Config config;
+	final static String ACTION_ZOOM_IN = "ACTION_ZOOM_IN";
+	final static String ACTION_ZOOM_OUT = "ACTION_ZOOM_OUT";
+	final static String ACTION_ZOOM_DEFAULT = "ACTION_ZOOM_DEFAULT";
 
-	public final static String ACTION_ZOOM_IN = "ACTION_ZOOM_IN";
-	public final static String ACTION_ZOOM_OUT = "ACTION_ZOOM_OUT";
-	public final static String ACTION_ZOOM_DEFAULT = "ACTION_ZOOM_DEFAULT";
+	final static String ACTION_ROLL_RIGHT = "ACTION_ROLL_RIGHT";
+	final static String ACTION_ROLL_LEFT = "ACTION_ROLL_LEFT";
+	final static String ACTION_ROLL_UP = "ACTION_ROLL_UP";
+	final static String ACTION_ROLL_DOWN = "ACTION_ROLL_DOWN";
 
-	public final static String ACTION_ROLL_RIGHT = "ACTION_ROLL_RIGHT";
-	public final static String ACTION_ROLL_LEFT = "ACTION_ROLL_LEFT";
-	public final static String ACTION_ROLL_UP = "ACTION_ROLL_UP";
-	public final static String ACTION_ROLL_DOWN = "ACTION_ROLL_DOWN";
+	final static String ACTION_NEW = "ACTION_NEW";
+	final static String ACTION_OPEN = "ACTION_OPEN";
+	final static String ACTION_CLOSE = "ACTION_CLOSE";
+	final static String ACTION_SAVE = "ACTION_SAVE";
 
-	public final static String ACTION_NEW = "ACTION_NEW";
-	public final static String ACTION_OPEN = "ACTION_OPEN";
-	public final static String ACTION_CLOSE = "ACTION_CLOSE";
-	public final static String ACTION_SAVE = "ACTION_SAVE";
+	final static String ACTION_MAP_ATTRIBUTES_PANEL = "ACTION_MAP_ATTRIBUTES_PANEL";
 
-	public final static String ACTION_MAP_ATTRIBUTES_PANEL = "ACTION_MAP_ATTRIBUTES_PANEL";
+	final static String ACTION_THEMES_SELECTION = "ACTION_THEMES_SELECTION_";
 
-	private GraphicsSystemActionListener gsListener;
-	private BmpPanelActionListener bmpListener;
-	private GraphicsSystemFocusListener gsFocusListener;
+	JFrame jFrame;
 
-	public GraphicsSystem(Config configParam, MapMessages messages,
-			MapThemesList mapThemesListParam) {
-		config = configParam;
-		this.messages = messages;
-		mapThemesList = mapThemesListParam;
-		System.out.println(gsKeyListener);
-		bmpPanel = new BmpPanel(mapThemesListParam, this);
-		System.out.println(this.gsKeyListener);
-		mapApi = new MapApi(config);
-
-		mapPanel = new MapPanel(this, mapApi);
-		gsKeyListener = new GraphicsSystemKeyListener(this, mapPanel);
-		gsFocusListener = new GraphicsSystemFocusListener();
-
-		gsListener = new GraphicsSystemActionListener(this, mapPanel, mapApi,
-				messages, mapThemesList, config);
-		bmpListener = new BmpPanelActionListener(bmpPanel, mapThemesList, this);
-
+	public GraphicsSystem(Config config, MapMessages messages,
+			MapThemesList mapThemesList) {
+		activate(config, messages, mapThemesList);
 	}
 
-	private JMenu createFileMenu() {
+	private JMenu createFileMenu(MapMessages messages,
+			GraphicsSystemActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuFile());
 		JMenuItem menuItem = new JMenuItem(messages.getMenuNew());
 		menuItem.setActionCommand(GraphicsSystem.ACTION_NEW);
@@ -99,7 +74,8 @@ public class GraphicsSystem {
 		return menu;
 	}
 
-	private JMenu createEditMenu() {
+	private JMenu createEditMenu(MapMessages messages,
+			GraphicsSystemActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuEdit());
 		JMenuItem menuItem = new JMenuItem(messages.getMenuAttributes());
 		menuItem.setActionCommand(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL);
@@ -108,7 +84,8 @@ public class GraphicsSystem {
 		return menu;
 	}
 
-	private JMenu createZoomMenu() {
+	private JMenu createZoomMenu(MapMessages messages,
+			GraphicsSystemActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuZoom());
 
 		JMenuItem menuItem = new JMenuItem(messages.getMenuZoomIn());
@@ -129,83 +106,90 @@ public class GraphicsSystem {
 		return menu;
 	}
 
-	private JMenu createMenuObjects() {
+	private JMenu createMenuObjects(MapMessages messages,
+			MapThemesList mapThemesList, BmpPanelActionListener bmpListener) {
 		JMenu menu = new JMenu(messages.getMenuObjects());
-		buildObjectMenu(menu);
+		JMenuItem menuItem;
+		String themeName;
+		/*
+		 * Tworzy menu do wyboru grup tematycznych na podstawie obiektu
+		 * images_list. image_list[x][1] - nazwa tematu. Każdy JMenuItem
+		 * odpowiada jednemu tematowi. Wybranie tematu spowoduje wyswietlenie
+		 * bitmap nalezacych do tego tematu w BmpPanel.
+		 */
+		for (Iterator<MapObjectsTheme> it = mapThemesList.getThemesIterator(); it
+				.hasNext();) {
+			themeName = it.next().getName();
+			menuItem = new JMenuItem(messages.getThemeName(themeName));
+			menuItem.setActionCommand(GraphicsSystem.ACTION_THEMES_SELECTION
+					+ themeName);
+			menuItem.addActionListener(bmpListener);
+			menu.add(menuItem);
+		}
 		return menu;
 	}
 
-	private JMenuBar createMenuBar() {
+	private JMenuBar createMenuBar(MapMessages messages,
+			MapThemesList mapThemesList,
+			GraphicsSystemActionListener gsListener,
+			BmpPanelActionListener bmpListener) {
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.add(createFileMenu());
-		menuBar.add(createEditMenu());
-		menuBar.add(createZoomMenu());
-		menuBar.add(createMenuObjects());
+		menuBar.add(createFileMenu(messages, gsListener));
+		menuBar.add(createEditMenu(messages, gsListener));
+		menuBar.add(createZoomMenu(messages, gsListener));
+		menuBar.add(createMenuObjects(messages, mapThemesList, bmpListener));
 		return menuBar;
 	}
 
-	private JPanel createButtonsPanel() {
-		JPanel Buttons_p = new JPanel();
+	private JPanel createButtonsPanel(GraphicsSystemActionListener gsListener) {
+		JPanel panel = new JPanel();
 		GridBagConstraints c = new GridBagConstraints();
-		Buttons_p.setLayout(new GridBagLayout());
+		panel.setLayout(new GridBagLayout());
+		panel.setBackground(Color.BLACK);
+
 		c.fill = GridBagConstraints.BOTH;
 
 		c.weightx = 1.0;
 		c.weighty = 1.0;
 		c.gridx = 1;
 		c.gridy = 0;
-		Buttons_p.setBackground(Color.BLACK);
 
-		// gridbag.setConstraints(Buttons_p, c);
-		// Buttons_p.setLayout(gridbag);
+		JButton button = new JButton("^");
+		button.addActionListener(gsListener);
+		button.setActionCommand(GraphicsSystem.ACTION_ROLL_UP);
+		panel.add(button, c);
 
-		JButton Up_button = new JButton("^");
-		Up_button.addActionListener(gsListener);// zmieni si� na mapk�
-		Up_button.setActionCommand(GraphicsSystem.ACTION_ROLL_UP);
-		Buttons_p.add(Up_button, c);
-
-		// Up_button.setBackground(Color.YELLOW);
-		// gridbag.setConstraints(Up_button, c);
-
-		Up_button.setMargin(new Insets(0, 0, 0, 0));// zmniejsza marginesy
-		// Buttons_p.add(Up_button);
-
-		JButton Down_button = new JButton("v");
-		Down_button.addActionListener(gsListener);// zmieni si� na mapk�
-		Down_button.setActionCommand(GraphicsSystem.ACTION_ROLL_DOWN);
 		c.gridx = 1;
 		c.gridy = 1;
-		Down_button.setBackground(Color.YELLOW);
+		button = new JButton("v");
+		button.addActionListener(gsListener);
+		button.setActionCommand(GraphicsSystem.ACTION_ROLL_DOWN);
+		button.setBackground(Color.YELLOW);
+		panel.add(button, c);
 
-		// gridbag.setConstraints(Down_button, c);
-		Down_button.setMargin(new Insets(0, 0, 0, 0));
-		Buttons_p.add(Down_button, c);
-
-		JButton Left_button = new JButton("<");
-		Left_button.addActionListener(gsListener);// zmieni si� na mapk�
-		Left_button.setActionCommand(GraphicsSystem.ACTION_ROLL_LEFT);
 		c.gridx = 0;
 		c.gridy = 1;
-		Left_button.setBackground(Color.MAGENTA);
-		// gridbag.setConstraints(Left_button, c);
-		Left_button.setMargin(new Insets(0, 0, 0, 0));
-		Buttons_p.add(Left_button, c);
+		button = new JButton("<");
+		button.addActionListener(gsListener);
+		button.setActionCommand(GraphicsSystem.ACTION_ROLL_LEFT);
+		button.setBackground(Color.MAGENTA);
+		panel.add(button, c);
 
-		JButton Right_button = new JButton(">");
-		Right_button.addActionListener(gsListener);// zmieni si� na mapk�
-		Right_button.setActionCommand(GraphicsSystem.ACTION_ROLL_RIGHT);
 		c.gridx = 2;
 		c.gridy = 1;
-		Right_button.setBackground(Color.RED);
-		Right_button.setMargin(new Insets(0, 0, 0, 0));
+		button = new JButton(">");
+		button.addActionListener(gsListener);
+		button.setActionCommand(GraphicsSystem.ACTION_ROLL_RIGHT);
+		button.setBackground(Color.RED);
+		panel.add(button, c);
 
-		// gridbag.setConstraints(Right_button, c);
-		Buttons_p.add(Right_button, c);
-
-		return Buttons_p;
+		return panel;
 	}
 
-	private JPanel createRightSidePanel() {
+	private JPanel createRightSidePanel(BmpPanel bmpPanel,
+			BmpPanelActionListener bmpListener,
+			GraphicsSystemActionListener gsListener) {
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -223,23 +207,23 @@ public class GraphicsSystem {
 		c.weighty = 0.0;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(createButtonsPanel(), c);
+		panel.add(createButtonsPanel(gsListener), c);
 
 		return panel;
 	}
 
-	private JPanel createMapPanel() {
+	private MapPanel createMapPanel(Config config, MapMessages messages,
+			MapThemesList mapThemesList, MapApi mapApi) {
+		MapPanel mapPanel = new MapPanel(mapApi);
+
 		mapPanel.setBackground(Color.ORANGE);
 
 		return mapPanel;
 	}
 
-	public void activate() {
-
-		this.jFrame = new JFrame();
-
-		JMenuBar menu = this.createMenuBar();
-		this.jFrame.setJMenuBar(menu);
+	private void activate(Config config, MapMessages messages,
+			MapThemesList mapThemesList) {
+		jFrame = new JFrame();
 
 		Container contentPane = jFrame.getContentPane();
 		contentPane.setLayout(new GridBagLayout());
@@ -250,49 +234,50 @@ public class GraphicsSystem {
 		c.weighty = 1.0;
 		c.gridx = 0;
 		c.gridy = 0;
-		contentPane.add(createMapPanel(), c);
+
+		BmpPanel bmpPanel = new BmpPanel(mapThemesList);
+		BmpPanelActionListener bmpListener = new BmpPanelActionListener(
+				bmpPanel, this);
+
+		MapApi mapApi = new MapApi(config);
+		MapPanel mapPanel = createMapPanel(config, messages, mapThemesList,
+				mapApi);
+		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
+				mapPanel, bmpPanel, mapApi);
+		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
+				mapPanel, bmpPanel, mapApi);
+
+		mapPanel.addMouseListener(mpMouseListener);
+		mapPanel.addMouseMotionListener(mpMouseMotionListener);
+		contentPane.add(mapPanel, c);
+
+		GraphicsSystemKeyListener gsKeyListener = new GraphicsSystemKeyListener(
+				mapPanel);
+		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
+				messages, mapThemesList, config);
+		GraphicsSystemActionListener gsListener = new GraphicsSystemActionListener(
+				dialogsManager, mapPanel, this);
 
 		c.weightx = 0.0;
 		c.weighty = 1.0;
 		c.gridx = 1;
 		c.gridy = 0;
-		contentPane.add(createRightSidePanel(), c);
+		contentPane.add(
+				createRightSidePanel(bmpPanel, bmpListener, gsListener), c);
+
+		JMenuBar menu = createMenuBar(messages, mapThemesList, gsListener,
+				bmpListener);
+		jFrame.setJMenuBar(menu);
 
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setSize(400, 400);
 		jFrame.setVisible(true);
 		jFrame.requestFocus();
-		jFrame.addFocusListener(this.gsFocusListener);
-		jFrame.addKeyListener(this.gsKeyListener);
+		jFrame.addFocusListener(new GraphicsSystemFocusListener());
+		jFrame.addKeyListener(gsKeyListener);
 	}
 
-	private void buildObjectMenu(JMenu Obj_menu) {
-		/*
-		 * Tworzy menu do wyboru grup tematycznych na podstawie obiektu
-		 * images_list. image_list[x][1] - nazwa tematu. Ka�dy JMenuItem
-		 * odpowiada jednemu tematowi. Wybranie tematu spowoduje wy�wietlenie
-		 * bitmap nale��cych do tego tematu w BmpPanel.
-		 */
-
-		JMenuItem menuItem;
-		String themeName;
-
-		for (Iterator<MapObjectsTheme> it = mapThemesList.getThemesIterator(); it
-				.hasNext();) {
-			themeName = it.next().getName();
-			menuItem = new JMenuItem(messages.getThemeName(themeName));
-			menuItem.setActionCommand("MNU_" + themeName);
-			menuItem.addActionListener(bmpListener);
-			Obj_menu.add(menuItem);
-
-		}
-	}
-
-	public JFrame getJFrame() {
-		return this.jFrame;
-	}
-
-	public MapObject getSelectedMapObject() {
-		return bmpPanel.getSelectedMapObject();
+	public JFrame getFrame() {
+		return jFrame;
 	}
 }

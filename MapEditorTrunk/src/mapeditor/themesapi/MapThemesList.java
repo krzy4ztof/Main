@@ -6,77 +6,96 @@ package mapeditor.themesapi;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
 import mapeditor.mapapi.MapObject;
 
 /**
  *
  * @author krzysztof
  */
-public class MapThemesList{
+public class MapThemesList {
 
-    private LinkedList<MapObjectsTheme> themesList = null;
+	private LinkedList<MapObjectsTheme> themesList = null;
 
-    public MapThemesList() {
-        themesList = new LinkedList<MapObjectsTheme>();
-    }
+	private MapObjectsTheme currentTheme = null;
 
-    public Iterator<MapObjectsTheme> getThemesIterator(){
-        Iterator<MapObjectsTheme> it = this.themesList.iterator();
+	public MapThemesList() {
+		themesList = new LinkedList<MapObjectsTheme>();
+	}
 
-        return it;
-    }
+	public Iterator<MapObjectsTheme> getThemesIterator() {
+		Iterator<MapObjectsTheme> it = this.themesList.iterator();
 
-    public MapObjectsTheme getFirstTheme(){
+		return it;
+	}
 
-        return themesList.getFirst();
-    }
+	public MapObjectsTheme getFirstTheme() {
 
-    public boolean addTheme(MapObjectsTheme mapObjectsTheme){
+		return themesList.getFirst();
+	}
 
-        return themesList.add(mapObjectsTheme);
-    }
+	public boolean addTheme(MapObjectsTheme mapObjectsTheme) {
 
-    public void describeYourself() {
+		return themesList.add(mapObjectsTheme);
+	}
 
-        MapObjectsTheme curTheme = null;
-        for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it.hasNext();) {
-            curTheme = it.next();
-            curTheme.describeYourself();
-        }
-    }
+	public void describeYourself() {
 
-    public MapObjectsTheme getThemeByName(String themeName) {
-        MapObjectsTheme mapObjectsTheme = null;
+		MapObjectsTheme curTheme = null;
+		for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it
+				.hasNext();) {
+			curTheme = it.next();
+			curTheme.describeYourself();
+		}
+	}
 
-        for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it.hasNext();) {
-            mapObjectsTheme = it.next();
+	public MapObjectsTheme getThemeByName(String themeName) {
+		MapObjectsTheme mapObjectsTheme = null;
 
-            if (mapObjectsTheme.getName().contentEquals(themeName)) {
-                return mapObjectsTheme;
-            }
-        }
+		for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it
+				.hasNext();) {
+			mapObjectsTheme = it.next();
 
-        return null;
-    }
+			if (mapObjectsTheme.getName().contentEquals(themeName)) {
+				return mapObjectsTheme;
+			}
+		}
 
-    /**
-     * Searches within all MapObjectsThemes for MapObject with objectName equal
-     * to name parameter.
-     * @param name
-     * @return
-     */
-    public MapObject getMapObject(String name){
-        MapObjectsTheme curTheme = null;
-        MapObject mapObject = null;
-        for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it.hasNext();) {
-            curTheme = it.next();
-            mapObject = curTheme.getMapObject(name);
+		return null;
+	}
 
-            if (mapObject != null){
-                return mapObject;
-            }
-        }
+	/**
+	 * Searches within all MapObjectsThemes for MapObject with objectName equal
+	 * to name parameter.
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public MapObject getMapObject(String name) {
+		MapObjectsTheme curTheme = null;
+		MapObject mapObject = null;
+		for (Iterator<MapObjectsTheme> it = this.getThemesIterator(); it
+				.hasNext();) {
+			curTheme = it.next();
+			mapObject = curTheme.getMapObject(name);
 
-        return mapObject;
-    }
+			if (mapObject != null) {
+				return mapObject;
+			}
+		}
+
+		return mapObject;
+	}
+
+	public MapObjectsTheme getCurrentTheme() {
+		return currentTheme;
+	}
+
+	public void setCurrentTheme(MapObjectsTheme currentTheme) {
+		this.currentTheme = currentTheme;
+	}
+
+	public void setCurrentTheme(String name) {
+		currentTheme = getThemeByName(name);
+	}
 }

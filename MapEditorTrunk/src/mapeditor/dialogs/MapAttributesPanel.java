@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -21,6 +22,11 @@ import mapeditor.mapapi.MapLayout;
 import mapeditor.messages.MapMessages;
 
 public class MapAttributesPanel extends JDialog {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	MapAttributes initialMapAttributes;
 	MapAttributes selectedMapAttributes;
@@ -44,12 +50,12 @@ public class MapAttributesPanel extends JDialog {
 	private MapAttributesPanelListSelectionListener mapListSelectionListener;
 
 	public MapAttributesPanel(Config configParam, MapMessages messages,
-			JFrame jFrameParam) {
-		super(jFrameParam, Dialog.ModalityType.APPLICATION_MODAL);
+			Container container) {
+		super((Window) container, Dialog.ModalityType.APPLICATION_MODAL);
 		config = configParam;
 		this.messages = messages;
 		canceled = false;
-		mapActionListener = new MapAttributesPanelActionListener(this, config);
+		mapActionListener = new MapAttributesPanelActionListener(this);
 		mapListSelectionListener = new MapAttributesPanelListSelectionListener();
 		addWindowListener(new WindowAdapter() {
 
@@ -60,15 +66,7 @@ public class MapAttributesPanel extends JDialog {
 		});
 	}
 
-	// public int getSelectedCol() {
-	// return selectedCol;
-	// }
-
-	// public int getSelectedRow() {
-	// return selectedRow;
-	// }
-
-	public boolean getCanceled() {
+	public boolean isCanceled() {
 		return canceled;
 	}
 
@@ -164,13 +162,14 @@ public class MapAttributesPanel extends JDialog {
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
 		pane.add(btn, c);
 
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		// this.setSize(290, 180);
-		this.setSize(290, 165);
+		setSize(290, 165);
 
 		// this.setResizable(true);
 
-		this.show();
+		setLocationRelativeTo(getParent());
+		setVisible(true);
 	}
 
 	private JList<MapLayoutWrapper> activateListLayout() {
@@ -197,7 +196,7 @@ public class MapAttributesPanel extends JDialog {
 	 * Checks if given values for rows and columns are valid. If not fields they
 	 * are removed and the dialog window remains open.
 	 */
-	void on_ok() {
+	void onOkAction() {
 
 		System.out.println("height");
 		System.out.println(this.size().getHeight());
@@ -239,4 +238,27 @@ public class MapAttributesPanel extends JDialog {
 			dispose();
 		}
 	}
+
+	public void setDefaultSize() {
+		selectedMapAttributes.setColumns(config.getMapApiColumnsNumber());
+		selectedMapAttributes.setRows(config.getMapApiRowsNumber());
+
+		colItem.setText((new Integer(selectedMapAttributes.getColumns()))
+				.toString());
+		rowItem.setText(new Integer(selectedMapAttributes.getRows()).toString());
+	}
+
+	public void setPreviousSize() {
+		selectedMapAttributes.setColumns(initialMapAttributes.getColumns());
+		selectedMapAttributes.setRows(initialMapAttributes.getRows());
+		colItem.setText(new Integer(selectedMapAttributes.getColumns())
+				.toString());
+		rowItem.setText(new Integer(selectedMapAttributes.getRows()).toString());
+	}
+
+	public void onCancelAction() {
+		canceled = true;
+		dispose();
+	}
+
 }

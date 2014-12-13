@@ -164,7 +164,6 @@ public class MapApi {
 	 */
 	private void changeColumnsSize(int cols) {
 		int colsSize = getColumnsSize();
-		LinkedList<MapSegment> newRow = null;
 		MapSegment segment = null;
 
 		if (cols > 0) {

@@ -10,13 +10,13 @@ import mapeditor.mapapi.MapObject;
 public class MapPanelMouseMotionListener implements MouseMotionListener {
 
 	private MapPanel mapPanel;
-	private GraphicsSystem graphicsSystem;
+	private BmpPanel bmpPanel;
 	private MapApi mapApi;
 
-	MapPanelMouseMotionListener(MapPanel mapPanel,
-			GraphicsSystem graphicsSystem, MapApi mapApi) {
+	MapPanelMouseMotionListener(MapPanel mapPanel, BmpPanel bmpPanel,
+			MapApi mapApi) {
 		this.mapPanel = mapPanel;
-		this.graphicsSystem = graphicsSystem;
+		this.bmpPanel = bmpPanel;
 		this.mapApi = mapApi;
 	}
 
@@ -28,8 +28,7 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 		 */
 		Point seg = mapPanel.CursorAtSegment(e.getPoint());
 		if (seg.x != -1) {
-			BmpPanel p_BmpPanel = graphicsSystem.bmpPanel;
-			MapObject mapObject = p_BmpPanel.getSelectedMapObject();
+			MapObject mapObject = bmpPanel.getSelectedMapObject();
 			mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 
 			mapPanel.repaint();

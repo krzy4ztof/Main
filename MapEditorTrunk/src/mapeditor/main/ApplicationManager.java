@@ -34,7 +34,7 @@ public class ApplicationManager {
 		GraphicsSystem graphicsSystem = new GraphicsSystem(config, messages,
 				mapThemesList);
 
-		graphicsSystem.activate();
+		// graphicsSystem.activate();
 
 	}
 

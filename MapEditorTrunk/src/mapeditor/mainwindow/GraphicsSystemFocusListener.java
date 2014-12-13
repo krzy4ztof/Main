@@ -7,16 +7,12 @@ public class GraphicsSystemFocusListener implements FocusListener {
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("focus Gained" + arg0);
-
+		System.out.println("focus gained");
 	}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("focus Lost" + arg0);
-
+		System.out.println("focus lost");
 	}
 
 }

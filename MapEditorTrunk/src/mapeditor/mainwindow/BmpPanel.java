@@ -17,117 +17,102 @@ import mapeditor.themesapi.MapThemesList;
 
 public class BmpPanel extends JPanel {
 
-	// private BmpPanelActionListener bmpListener;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	Hashtable<String, JButton> Items = new Hashtable<String, JButton>();
 	/**
-	 * Items - wska�niki do przycisk�w z ikonami Symbole haszuj�ce:
-	 * "BMP_"+numer (1-8)
+	 * iconButtons - wskazniki do przyciskow z ikonami, symobole haszujace
+	 * BmpPanel.ACTION_ICON_BUTTON+numer(1-8)
 	 */
-	MapObjectsTheme curMapObjectsTheme = null;
+	private Hashtable<String, JButton> iconButtons = new Hashtable<String, JButton>();
+
 	/**
-	 * Numer Tematu, kt�rego ikony s� aktualnie wy�wietlane
+	 * ImageNumber - numer ikony znajdujacej sie na przycisku
+	 * iconButtons.get(BmpPanel.ACTION_ICON_BUTTON+"1")
 	 */
-	int ImageNumber = 0; // Do skasowania
-	/**
-	 * Numer Ikony znajduj�cej si� na przycisku Items.get("BMP_1")
-	 */
-	int SelectedImage = 0; // Do skasowania
+	private int ImageNumber = 0; // Do skasowania
+
+	private int SelectedImage = 0; // Do skasowania
+
 	private MapObject curMapObject = null; // W zamian za ImageNumber i
 											// SelectedImage
 
-	private GraphicsSystem graphicsSystem = null;
 	private MapThemesList mapThemesList = null;
 
 	/**
-	 * Numer w Ikony kt�r� aktualnie wybrano przyciskiem Items.get("BMP_x").
-	 * UWAGA!! Jest to numer Ikony a nie numer przycisku!!!
+	 * Numer w Ikony ktorej aktualnie wybrano przyciskiem
+	 * iconButtons.get(BmpPanel.ACTION_ICON_BUTTON+"x"). UWAGA!! Jest to numer
+	 * Ikony a nie numer przycisku!!!
 	 */
-	public BmpPanel(MapThemesList mapThemesListParam,
-			GraphicsSystem graphicsSystemParam) {
+
+	final static String ACTION_SCROLL_UP = "ACTION_SCROLL_ICONS_UP";
+	final static String ACTION_SCROLL_DOWN = "ACTION_SCROLL_ICONS_DOWN";
+	final static String ACTION_ICON_BUTTON = "ACTION_ICON_BUTTON_";
+
+	public BmpPanel(MapThemesList mapThemesListParam) {
 		super();
 		mapThemesList = mapThemesListParam;
-		graphicsSystem = graphicsSystemParam;
-
 	}
 
 	public void activate(BmpPanelActionListener bmpListener) {
-		/**
-         */
 		JButton Btn;
 
 		GridBagConstraints c = new GridBagConstraints();
-		this.setLayout(new GridBagLayout());
-		curMapObjectsTheme = mapThemesList.getFirstTheme();
+		setLayout(new GridBagLayout());
 
 		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 1.0;// proporcje powi�kszania si�
+		c.weightx = 1.0;
 		c.weighty = 1.0;
 
 		int k = 0, i = 0;
 		for (i = 0; i < 4; i++) {
 			for (int j = 0; j < 2; j++) {
 				Btn = new JButton();
-				Btn.addActionListener(bmpListener);// zmieni si� na mapk�
-				Btn.setActionCommand("BMP_" + Integer.toString(k));
+				Btn.addActionListener(bmpListener);// zmieni sie na mapke
+				Btn.setActionCommand(ACTION_ICON_BUTTON + Integer.toString(k));
 				c.gridy = i;
 				c.gridx = j;
-				// gridbag.setConstraints(Btn, c);
-				Items.put("BMP_" + Integer.toString(k), Btn);
+				iconButtons.put(ACTION_ICON_BUTTON + Integer.toString(k), Btn);
 				this.add(Btn, c);
 				k++;
 			}
 		}
 
-		Items.get("BMP_0").setBackground(Color.RED);
+		iconButtons.get(ACTION_ICON_BUTTON + "0").setBackground(Color.RED);
 		Btn = new JButton("^");
-		Btn.addActionListener(bmpListener);// zmieni si� na mapk�
-		Btn.setActionCommand("SCR_up");
-		c.weightx = 1.0;// proporcje powi�kszania si�
-		c.weighty = 0.0;// proporcje powi�kszania si�
+		Btn.addActionListener(bmpListener);// zmieni sie na mapke
+		Btn.setActionCommand(ACTION_SCROLL_UP);
+		c.weightx = 1.0;
+		c.weighty = 0.0;
 		c.gridx = 0;
 		c.gridy = i;
-		// gridbag.setConstraints(Btn, c);
 		this.add(Btn, c);
 
 		Btn = new JButton("V");
-		Btn.addActionListener(bmpListener);// zmieni si� na mapk�
-		Btn.setActionCommand("SCR_down");
+		Btn.addActionListener(bmpListener);// zmieni sie na mapke
+		Btn.setActionCommand(ACTION_SCROLL_DOWN);
 		c.gridx = 1;
 		c.gridy = i;
-		// gridbag.setConstraints(Btn, c);
 		this.add(Btn, c);
 
-		this.SetAvailableIcons();
-	}
-
-	void ChangeActualButton(Color def_color) {
-		int nr_int = this.getActualButtonNumber();
-		if ((nr_int >= 0) && (nr_int < 8)) {
-			Integer nr = new Integer(nr_int);
-			String Command = "BMP_" + nr.toString();
-			Items.get(Command).setBackground(def_color);
-		}
-	}
-
-	private int getActualButtonNumber() {
-		/* zwraca numer pod�wietlonego na czerwono przycisku */
-		return (this.SelectedImage - this.ImageNumber);
+		this.updateAvailableIcons();
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		/* Przechwytuje komunikat o zmianie wielko�ci okna */
 		super.paint(g);
 	}
 
-	void SetAvailableIcons() {
+	void updateAvailableIcons() {
 		/**
-		 * Aktualizuje zbi�r dost�pnych Ikon na przyciskach Items
+		 * Aktualizuje zbior dostepnych Ikon na przyciskach Items
 		 */
-		int ThSize = this.curMapObjectsTheme.getThemeSize();
+		MapObjectsTheme curMapObjectsTheme = mapThemesList.getCurrentTheme();
+		int ThSize = curMapObjectsTheme.getThemeSize();
 
-		int i = 0, j = 0, k = 0;
+		int i = 0, k = 0;
 		ImageIcon img, img_sc;
 		JButton btn;
 		for (i = this.ImageNumber; i < ThSize && k < 8; i++) {
@@ -136,7 +121,7 @@ public class BmpPanel extends JPanel {
 			img_sc = new ImageIcon(img.getImage().getScaledInstance(40, 40,
 					Image.SCALE_DEFAULT));
 
-			btn = Items.get("BMP_" + Integer.toString(k));
+			btn = iconButtons.get(ACTION_ICON_BUTTON + Integer.toString(k));
 			btn.setIcon(img_sc);
 			k++;
 		}
@@ -146,20 +131,82 @@ public class BmpPanel extends JPanel {
 			img_sc = new ImageIcon(img.getImage().getScaledInstance(40, 40,
 					Image.SCALE_DEFAULT));
 
-			btn = Items.get("BMP_" + Integer.toString(i));
+			btn = iconButtons.get(ACTION_ICON_BUTTON + Integer.toString(i));
 			btn.setIcon(img_sc);
 		}
 	}
 
-	public String getActualIconFilename() {
-		String result = null;
-		result = this.getSelectedMapObject().getImageName();
-		return result;
-	}
-
 	public MapObject getSelectedMapObject() {
 		MapObject mapObject = null;
-		mapObject = curMapObjectsTheme.getMapObject(this.SelectedImage);
+		mapObject = mapThemesList.getCurrentTheme().getMapObject(
+				this.SelectedImage);
 		return mapObject;
+	}
+
+	public void activateSelectedIconButton(String name, int selected) {
+		iconButtons.get(name).setBackground(Color.RED);
+		SelectedImage = selected;
+	}
+
+	public void deactivateSelectedIconButton(String name) {
+		iconButtons.get(name).setBackground(Color.LIGHT_GRAY);
+	}
+
+	void ChangeActualButton(Color color) {
+
+		// int nrInt = this.getActualButtonNumber();
+		int nrInt = this.SelectedImage - this.ImageNumber;
+
+		if ((nrInt >= 0) && (nrInt < 8)) {
+			Integer nr = new Integer(nrInt);
+			String command = ACTION_ICON_BUTTON + nr.toString();
+			iconButtons.get(command).setBackground(color);
+		}
+	}
+
+	public void moveIconsUp() {
+		moveIcons(-1);
+	}
+
+	public void moveIconsDown() {
+		moveIcons(+1);
+	}
+
+	private void moveIcons(int direction) {
+		ChangeActualButton(Color.LIGHT_GRAY);
+		ImageNumber = ImageNumber + direction;
+		int maxNumber = mapThemesList.getCurrentTheme().getThemeSize();
+		if (ImageNumber > maxNumber - 1) {
+			ImageNumber = maxNumber - 1;
+		}
+
+		if (ImageNumber < 0) {
+			ImageNumber = 0;
+		}
+		ChangeActualButton(Color.RED);
+		updateAvailableIcons();
+
+	}
+
+	public void changeCurrentTheme(String name) {
+		mapThemesList.setCurrentTheme(name);
+		updateAvailableIcons();
+	}
+
+	public void changeSelectedIconButton(String name) {
+		int length = BmpPanel.ACTION_ICON_BUTTON.length();
+
+		int btn_number = Integer.parseInt(name.substring(length));
+		// int maxNumber = bmpPanel.curMapObjectsTheme.getThemeSize();
+		int maxNumber = mapThemesList.getCurrentTheme().getThemeSize();
+		int sel = btn_number + ImageNumber;
+		if (sel < maxNumber) {
+			for (int i = 0; i < 8; i++) {
+
+				deactivateSelectedIconButton(BmpPanel.ACTION_ICON_BUTTON
+						+ Integer.toString(i));
+			}
+			activateSelectedIconButton(name, sel);
+		}
 	}
 }

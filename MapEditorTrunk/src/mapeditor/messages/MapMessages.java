@@ -57,9 +57,8 @@ public class MapMessages {
 			msg = resourceBundle.getString(string);
 		} catch (MissingResourceException e) {
 
-		} finally {
-			return msg;
 		}
+		return msg;
 	}
 
 	public String getMenuFile() {

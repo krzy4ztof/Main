@@ -84,7 +84,6 @@ public class MapSaver {
 		Element BufElem = null;
 		MatrixElement = rDocument
 				.createElement(MapFileDefinitions.MATRIX_ELEMENT);
-		String SegmentName = null;
 		String SegmentId = null;
 		String Segments = "";
 		MapObject mapObject = null;

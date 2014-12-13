@@ -15,6 +15,11 @@ import otherprods.ExampleFileFilter;
 
 public class MapPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	ExampleFileFilter fe;
 	private Point LUcornerMap = new Point(0, 0);
 	/*
@@ -32,23 +37,14 @@ public class MapPanel extends JPanel {
 	private ImageIcon blank = new ImageIcon("");
 	/* pusta ikona - dla niewype�nionych segment�w mapy */
 	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
-	private GraphicsSystem graphicsSystem;
 	private MapApi mapApi;
 
-	private MapPanelMouseListener mpMouseListener;
-	private MapPanelMouseMotionListener mpMouseMotionListener;
+	// private MapPanelMouseListener mpMouseListener;
+	// private MapPanelMouseMotionListener mpMouseMotionListener;
 
-	public MapPanel(GraphicsSystem graphicsSystemParam, MapApi mapApiParam) {
+	public MapPanel(MapApi mapApiParam) {
 		super();
-		graphicsSystem = graphicsSystemParam;
 		mapApi = mapApiParam;
-
-		mpMouseListener = new MapPanelMouseListener(this, graphicsSystem,
-				mapApi);
-		mpMouseMotionListener = new MapPanelMouseMotionListener(this,
-				graphicsSystem, mapApi);
-		addMouseListener(mpMouseListener);
-		addMouseMotionListener(mpMouseMotionListener);
 	}
 
 	public void setMapApi(MapApi mapApi) {

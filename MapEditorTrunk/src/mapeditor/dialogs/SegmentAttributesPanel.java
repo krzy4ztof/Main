@@ -9,6 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SegmentAttributesPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static ImageIcon img = new ImageIcon();
 
 	private JFrame M_Frame;
