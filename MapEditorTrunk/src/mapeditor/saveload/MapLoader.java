@@ -13,8 +13,8 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.MapObject;
-import mapeditor.themesapi.MapThemesList;
+import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapThemesManager;
 
 /**
  *
@@ -59,7 +59,7 @@ public class MapLoader {
 	 * @return
 	 * @throws Exception
 	 */
-	public MapApi loadMapFromFile(File rFile, MapThemesList mapThemesList)
+	public MapApi loadMapFromFile(File rFile, MapThemesManager mapThemesList)
 			throws Exception {
 
 		this.reinitalize();
@@ -100,7 +100,7 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void processEvent(XMLEvent xmlEvent, MapApi mapApi,
-			Hashtable<String, String> segmentsCode, MapThemesList mapThemesList)
+			Hashtable<String, String> segmentsCode, MapThemesManager mapThemesList)
 			throws InvalidXML {
 
 		if (xmlEvent.isStartElement()) {
@@ -384,7 +384,7 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void readRowElement(StartElement startElement, MapApi mapApi,
-			Hashtable<String, String> segmentsCode, MapThemesList mapThemesList)
+			Hashtable<String, String> segmentsCode, MapThemesManager mapThemesList)
 			throws InvalidXML {
 		if (this.processingMatrix != ProcessingElement.in) {
 			throw new InvalidXML();

@@ -5,18 +5,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.MapObject;
+import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapThemesManager;
 
 public class MapPanelMouseMotionListener implements MouseMotionListener {
 
 	private MapPanel mapPanel;
-	private BmpPanel bmpPanel;
+	private MapThemesManager mapThemesManager;
 	private MapApi mapApi;
 
-	MapPanelMouseMotionListener(MapPanel mapPanel, BmpPanel bmpPanel,
-			MapApi mapApi) {
+	MapPanelMouseMotionListener(MapPanel mapPanel,
+			MapThemesManager mapThemesManager, MapApi mapApi) {
 		this.mapPanel = mapPanel;
-		this.bmpPanel = bmpPanel;
+		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
 	}
 
@@ -28,7 +29,9 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 		 */
 		Point seg = mapPanel.CursorAtSegment(e.getPoint());
 		if (seg.x != -1) {
-			MapObject mapObject = bmpPanel.getSelectedMapObject();
+			// MapObject mapObject = bmpPanel.getSelectedMapObject();
+			MapObject mapObject = mapThemesManager.getSelectedTheme()
+					.getSelectedObject();
 			mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 
 			mapPanel.repaint();

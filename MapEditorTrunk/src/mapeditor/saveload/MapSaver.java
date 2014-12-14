@@ -15,20 +15,20 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.MapObject;
 import mapeditor.messages.MapMessages;
+import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectsTheme;
-import mapeditor.themesapi.MapThemesList;
+import mapeditor.themesapi.MapThemesManager;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class MapSaver {
 
-	private MapThemesList mapThemesList = null;
+	private MapThemesManager mapThemesList = null;
 	private MapMessages messages = null;
 
-	public MapSaver(MapMessages messages, MapThemesList mapThemesListParameter) {
+	public MapSaver(MapMessages messages, MapThemesManager mapThemesListParameter) {
 		this.messages = messages;
 		mapThemesList = mapThemesListParameter;
 	}
@@ -99,7 +99,7 @@ public class MapSaver {
 				if (mapObject != null) {
 					SegmentId = mapObject.getObjectIdString();
 				} else {
-					SegmentId = MapObject.defaultObjectIdString;
+					SegmentId = MapObject.DEFAULT_OBJECT_ID;
 				}
 
 				Segments = Segments + SegmentId + ';';
@@ -131,7 +131,7 @@ public class MapSaver {
 				objectIdString = mapObject.getObjectIdString();
 
 				if (!objectIdString
-						.contentEquals(MapObject.defaultObjectIdString)) {
+						.contentEquals(MapObject.DEFAULT_OBJECT_ID)) {
 					bufElem = rDocument
 							.createElement(MapFileDefinitions.CODE_ELEMENT);
 					bufElem.setAttribute(MapFileDefinitions.ID_ATTRIBUTE,

@@ -8,8 +8,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import mapeditor.mapapi.MapObject;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -18,7 +16,7 @@ public class ImagesListFileReader extends DefaultHandler {
 
 	private MapObjectsTheme curMapObjectsTheme;
 	private MapObject curMapObject;
-	private MapThemesList mapThemesList;
+	private MapThemesManager mapThemesList;
 	private String filePath;
 	private int imageId;
 
@@ -82,11 +80,11 @@ public class ImagesListFileReader extends DefaultHandler {
 		}
 	}
 
-	public MapThemesList ReadConfigurationFile(String path, String file)
+	public MapThemesManager ReadConfigurationFile(String path, String file)
 			throws ParserConfigurationException, SAXException, IOException {
 		this.curMapObjectsTheme = null;
 		this.curMapObject = null;
-		mapThemesList = new MapThemesList();
+		mapThemesList = new MapThemesManager();
 		imageId = 0;
 		this.filePath = path + File.separator;
 
@@ -95,7 +93,7 @@ public class ImagesListFileReader extends DefaultHandler {
 		SAXParser saxParser = factory.newSAXParser();
 		saxParser.parse(new File(this.filePath + file), this);
 
-		mapThemesList.setCurrentTheme(mapThemesList.getFirstTheme());
+		mapThemesList.setSelectedTheme(mapThemesList.getFirstTheme());
 		return mapThemesList;
 	}
 }

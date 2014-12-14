@@ -12,7 +12,7 @@ import mapeditor.config.Config;
 import mapeditor.mainwindow.GraphicsSystem;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.ImagesListFileReader;
-import mapeditor.themesapi.MapThemesList;
+import mapeditor.themesapi.MapThemesManager;
 
 import org.xml.sax.SAXException;
 
@@ -29,7 +29,7 @@ public class ApplicationManager {
 		MapMessages messages = new MapMessages(config);
 
 		ImagesListFileReader imagesListFileReader = new ImagesListFileReader();
-		MapThemesList mapThemesList = imagesListFileReader
+		MapThemesManager mapThemesList = imagesListFileReader
 				.ReadConfigurationFile("images", "configuration.xml");
 		GraphicsSystem graphicsSystem = new GraphicsSystem(config, messages,
 				mapThemesList);

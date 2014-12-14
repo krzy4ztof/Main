@@ -7,13 +7,11 @@ public class GraphicsSystemActionListener implements ActionListener {
 
 	MapPanel mapPanel;
 	DialogsManager dialogsManager;
-	GraphicsSystem graphicsSystem;
 
 	GraphicsSystemActionListener(DialogsManager dialogsManager,
-			MapPanel mapPanel, GraphicsSystem graphicsSystem) {
+			MapPanel mapPanel) {
 		this.mapPanel = mapPanel;
 		this.dialogsManager = dialogsManager;
-		this.graphicsSystem = graphicsSystem;
 	}
 
 	@Override
@@ -52,7 +50,9 @@ public class GraphicsSystemActionListener implements ActionListener {
 			dialogsManager.attributesMapAction();
 		}
 		mapPanel.repaint();
-		graphicsSystem.getFrame().requestFocus();
-	}
 
+		// return focus to top frame. Focus allows GraphicsSystemKeyListener to
+		// handle key events.
+		mapPanel.getTopLevelAncestor().requestFocus();
+	}
 }

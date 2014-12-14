@@ -6,79 +6,91 @@ package mapeditor.themesapi;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import mapeditor.mapapi.MapObject;
 
 /**
  *
  * @author krzysztof
  */
-public class MapObjectsTheme{
+public class MapObjectsTheme {
 
-    private String name;
-    private LinkedList<MapObject> objectsList = null;
+	private String name;
+	private LinkedList<MapObject> objectsList = null;
+	private MapObject selectedObject;
 
-    public MapObjectsTheme(String name) {
-        this.name = name;
-        objectsList = new LinkedList<MapObject>();
-    }
+	public void setSelectedObject(MapObject selectedObject) {
+		this.selectedObject = selectedObject;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public MapObject getSelectedObject() {
+		return selectedObject;
+	}
 
-    public LinkedList<MapObject> getObjectsList() {
-        return objectsList;
-    }
+	public MapObjectsTheme(String name) {
+		this.name = name;
+		objectsList = new LinkedList<MapObject>();
+	}
 
-    public Iterator<MapObject> getObjectsIterator(){
-        Iterator<MapObject> it = this.objectsList.iterator();
+	public String getName() {
+		return name;
+	}
 
-        return it;
-    }
+	public LinkedList<MapObject> getObjectsList() {
+		return objectsList;
+	}
 
-    public boolean addMapObject(MapObject mapObject){
+	public Iterator<MapObject> getObjectsIterator() {
+		Iterator<MapObject> it = this.objectsList.iterator();
 
-        return objectsList.add(mapObject);
-    }
+		return it;
+	}
 
-    public MapObject getMapObject(int index){
-        
-        if (objectsList.size() < index){
-            return null;
-        }
- 
-        return objectsList.get(index);
-    }
+	public boolean addMapObject(MapObject mapObject) {
 
-    /**
-     * Searches for MapObject which objectName equals name
-     * @param name
-     * @return
-     */
-    public MapObject getMapObject(String name){
-        
-        for (MapObject mapObject: objectsList){
-            if (mapObject.getObjectName().equals(name)){
-                return mapObject;
-            }
+		return objectsList.add(mapObject);
+	}
 
-        }
-        return null;
-    }
+	public MapObject getMapObject(int index) {
 
+		if (objectsList.size() < index) {
+			return null;
+		}
 
-    public int getThemeSize(){
+		return objectsList.get(index);
+	}
 
-        return objectsList.size();
-    }
+	/**
+	 * Searches for MapObject which objectName equals name
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public MapObject getMapObject(String name) {
 
-    public void describeYourself() {
+		for (MapObject mapObject : objectsList) {
+			if (mapObject.getObjectName().equals(name)) {
+				return mapObject;
+			}
 
-        System.out.println("Theme name: " + name);
-        MapObject curObject = null;
-        for (Iterator<MapObject> it = this.getObjectsIterator(); it.hasNext();) {
-            curObject = it.next();
-            curObject.describeYourself();
-        }
-    }
+		}
+		return null;
+	}
+
+	public int getThemeSize() {
+
+		return objectsList.size();
+	}
+
+	public void describeYourself() {
+
+		System.out.println("Theme name: " + name);
+		MapObject curObject = null;
+		for (Iterator<MapObject> it = this.getObjectsIterator(); it.hasNext();) {
+			curObject = it.next();
+			curObject.describeYourself();
+		}
+	}
+
+	public MapObject getNullObject() {
+		return getMapObject(0);
+	}
 }

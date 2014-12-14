@@ -17,7 +17,7 @@ import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObjectsTheme;
-import mapeditor.themesapi.MapThemesList;
+import mapeditor.themesapi.MapThemesManager;
 
 public class GraphicsSystem {
 
@@ -42,7 +42,7 @@ public class GraphicsSystem {
 	JFrame jFrame;
 
 	public GraphicsSystem(Config config, MapMessages messages,
-			MapThemesList mapThemesList) {
+			MapThemesManager mapThemesList) {
 		activate(config, messages, mapThemesList);
 	}
 
@@ -107,7 +107,7 @@ public class GraphicsSystem {
 	}
 
 	private JMenu createMenuObjects(MapMessages messages,
-			MapThemesList mapThemesList, BmpPanelActionListener bmpListener) {
+			MapThemesManager mapThemesList, BmpPanelActionListener bmpListener) {
 		JMenu menu = new JMenu(messages.getMenuObjects());
 		JMenuItem menuItem;
 		String themeName;
@@ -130,7 +130,7 @@ public class GraphicsSystem {
 	}
 
 	private JMenuBar createMenuBar(MapMessages messages,
-			MapThemesList mapThemesList,
+			MapThemesManager mapThemesList,
 			GraphicsSystemActionListener gsListener,
 			BmpPanelActionListener bmpListener) {
 		JMenuBar menuBar = new JMenuBar();
@@ -213,7 +213,7 @@ public class GraphicsSystem {
 	}
 
 	private MapPanel createMapPanel(Config config, MapMessages messages,
-			MapThemesList mapThemesList, MapApi mapApi) {
+			MapThemesManager mapThemesList, MapApi mapApi) {
 		MapPanel mapPanel = new MapPanel(mapApi);
 
 		mapPanel.setBackground(Color.ORANGE);
@@ -222,7 +222,7 @@ public class GraphicsSystem {
 	}
 
 	private void activate(Config config, MapMessages messages,
-			MapThemesList mapThemesList) {
+			MapThemesManager mapThemesList) {
 		jFrame = new JFrame();
 
 		Container contentPane = jFrame.getContentPane();
@@ -237,15 +237,15 @@ public class GraphicsSystem {
 
 		BmpPanel bmpPanel = new BmpPanel(mapThemesList);
 		BmpPanelActionListener bmpListener = new BmpPanelActionListener(
-				bmpPanel, this);
+				bmpPanel);
 
 		MapApi mapApi = new MapApi(config);
 		MapPanel mapPanel = createMapPanel(config, messages, mapThemesList,
 				mapApi);
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
-				mapPanel, bmpPanel, mapApi);
+				mapPanel, mapThemesList, mapApi);
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
-				mapPanel, bmpPanel, mapApi);
+				mapPanel, mapThemesList, mapApi);
 
 		mapPanel.addMouseListener(mpMouseListener);
 		mapPanel.addMouseMotionListener(mpMouseMotionListener);
@@ -256,7 +256,7 @@ public class GraphicsSystem {
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
 				messages, mapThemesList, config);
 		GraphicsSystemActionListener gsListener = new GraphicsSystemActionListener(
-				dialogsManager, mapPanel, this);
+				dialogsManager, mapPanel);
 
 		c.weightx = 0.0;
 		c.weighty = 1.0;

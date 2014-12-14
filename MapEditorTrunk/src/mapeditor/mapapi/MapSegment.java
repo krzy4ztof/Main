@@ -1,5 +1,7 @@
 package mapeditor.mapapi;
 
+import mapeditor.themesapi.MapObject;
+
 public class MapSegment {
 
     private MapObject mapObject = null;

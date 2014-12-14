@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.MapObject;
+import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
 
 public class MapPanel extends JPanel {
@@ -26,11 +26,11 @@ public class MapPanel extends JPanel {
 	 * Wsp�rz�dne punktu (segmentu) na mapie znajduj�cego si� w lewym
 	 * g�rnym punkcie (segmencie) MapPanelu
 	 */
-	final int defaultSegmentWidth = 40;
+	private static final int defaultSegmentWidth = 40;
 	/* sta�a - domy�lna szeroko�� segmentu */
 	private int SegmentWidth = defaultSegmentWidth;
 	/* szerokosc segmentu mapy */
-	final int defaultSegmentHeight = 40;
+	private static final int defaultSegmentHeight = 40;
 	/* sta�a - domy�lna wysoko�� segmentu */
 	private int SegmentHeight = defaultSegmentHeight;
 	/* wysoko�� segmentu mapy */

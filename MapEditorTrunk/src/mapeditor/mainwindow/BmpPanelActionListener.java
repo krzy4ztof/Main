@@ -6,11 +6,9 @@ import java.awt.event.ActionListener;
 public class BmpPanelActionListener implements ActionListener {
 
 	private BmpPanel bmpPanel;
-	private GraphicsSystem graphicsSystem;
 
-	BmpPanelActionListener(BmpPanel bmpPanel, GraphicsSystem graphicsSystem) {
+	BmpPanelActionListener(BmpPanel bmpPanel) {
 		this.bmpPanel = bmpPanel;
-		this.graphicsSystem = graphicsSystem;
 	}
 
 	@Override
@@ -35,6 +33,9 @@ public class BmpPanelActionListener implements ActionListener {
 			// nasluch przyciskow ustawiajacych ikone jako "pedzel"
 			bmpPanel.changeSelectedIconButton(command);
 		}
-		graphicsSystem.getFrame().requestFocus();
+
+		// return focus to top frame. Focus allows GraphicsSystemKeyListener to
+		// handle key events.
+		bmpPanel.getTopLevelAncestor().requestFocus();
 	}
 }

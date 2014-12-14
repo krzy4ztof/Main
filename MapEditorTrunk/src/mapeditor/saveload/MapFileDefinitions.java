@@ -11,19 +11,19 @@ package mapeditor.saveload;
  */
 public class MapFileDefinitions {
 
-    public static String MAP_XML_ELEMENT = "MapXml";
-    public static String GENERAL_PARAMETERS_ELEMENT = "GeneralParameters";
-    public static String SEGMENTS_CODE_ELEMENT = "SegmentsCode";
-    public static String MATRIX_ELEMENT = "Matrix";
-    public static String MAP_NAME_ATTRIBUTE = "MapName";
-    public static String SIZE_ELEMENT = "Size";
-    public static String COLUMNS_ATTRIBUTE = "columns";
-    public static String ROWS_ATTRIBUTE = "rows";
-    public static String CODE_ELEMENT = "Code";
-    public static String ID_ATTRIBUTE = "id";
-    public static String IMAGE_ATTRIBUTE = "image";
-    public static String ROW_ELEMENT = "Row";
-    public static String NUMBER_ATTRIBUTE = "number";
-    public static String SEGMENTS_ATTRIBUTE = "segments";
-    
+	public final static String MAP_XML_ELEMENT = "MapXml";
+	public final static String GENERAL_PARAMETERS_ELEMENT = "GeneralParameters";
+	public final static String SEGMENTS_CODE_ELEMENT = "SegmentsCode";
+	public final static String MATRIX_ELEMENT = "Matrix";
+	public final static String MAP_NAME_ATTRIBUTE = "MapName";
+	public final static String SIZE_ELEMENT = "Size";
+	public final static String COLUMNS_ATTRIBUTE = "columns";
+	public final static String ROWS_ATTRIBUTE = "rows";
+	public final static String CODE_ELEMENT = "Code";
+	public final static String ID_ATTRIBUTE = "id";
+	public final static String IMAGE_ATTRIBUTE = "image";
+	public final static String ROW_ELEMENT = "Row";
+	public final static String NUMBER_ATTRIBUTE = "number";
+	public final static String SEGMENTS_ATTRIBUTE = "segments";
+
 }

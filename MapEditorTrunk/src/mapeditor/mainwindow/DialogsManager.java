@@ -11,7 +11,7 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoader;
 import mapeditor.saveload.MapSaver;
-import mapeditor.themesapi.MapThemesList;
+import mapeditor.themesapi.MapThemesManager;
 import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
@@ -19,11 +19,11 @@ public class DialogsManager {
 	MapPanel mapPanel;
 	MapApi mapApi;
 	MapMessages messages;
-	MapThemesList mapThemesList;
+	MapThemesManager mapThemesList;
 	Config config;
 
 	DialogsManager(MapPanel mapPanel, MapApi mapApi, MapMessages messages,
-			MapThemesList mapThemesList, Config config) {
+			MapThemesManager mapThemesList, Config config) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;

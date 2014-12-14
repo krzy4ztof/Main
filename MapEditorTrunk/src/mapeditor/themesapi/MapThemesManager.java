@@ -7,19 +7,17 @@ package mapeditor.themesapi;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import mapeditor.mapapi.MapObject;
-
 /**
  *
  * @author krzysztof
  */
-public class MapThemesList {
+public class MapThemesManager {
 
 	private LinkedList<MapObjectsTheme> themesList = null;
 
-	private MapObjectsTheme currentTheme = null;
+	private MapObjectsTheme selectedTheme = null;
 
-	public MapThemesList() {
+	public MapThemesManager() {
 		themesList = new LinkedList<MapObjectsTheme>();
 	}
 
@@ -87,15 +85,15 @@ public class MapThemesList {
 		return mapObject;
 	}
 
-	public MapObjectsTheme getCurrentTheme() {
-		return currentTheme;
+	public MapObjectsTheme getSelectedTheme() {
+		return selectedTheme;
 	}
 
-	public void setCurrentTheme(MapObjectsTheme currentTheme) {
-		this.currentTheme = currentTheme;
+	public void setSelectedTheme(MapObjectsTheme selectedTheme) {
+		this.selectedTheme = selectedTheme;
 	}
 
-	public void setCurrentTheme(String name) {
-		currentTheme = getThemeByName(name);
+	public void setSelectedTheme(String name) {
+		selectedTheme = getThemeByName(name);
 	}
 }
