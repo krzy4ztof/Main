@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import mapeditor.config.Config;
-import mapeditor.mainwindow.GraphicsSystem;
+import mapeditor.mainwindow.MainWindow;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.ImagesListFileReader;
 import mapeditor.themesapi.MapThemesManager;
@@ -31,11 +31,7 @@ public class ApplicationManager {
 		ImagesListFileReader imagesListFileReader = new ImagesListFileReader();
 		MapThemesManager mapThemesList = imagesListFileReader
 				.ReadConfigurationFile("images", "configuration.xml");
-		GraphicsSystem graphicsSystem = new GraphicsSystem(config, messages,
-				mapThemesList);
-
-		// graphicsSystem.activate();
-
+		new MainWindow(config, messages, mapThemesList);
 	}
 
 	public static void main(String[] args) throws ParserConfigurationException,

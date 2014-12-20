@@ -8,24 +8,25 @@ import mapeditor.config.Config;
 
 public class MapMessages {
 
-	public static String MENU_FILE = "graphicssystem.file";
-	public static String MENU_NEW = "graphicssystem.new";
-	public static String MENU_OPEN = "graphicssystem.open";
-	public static String MENU_CLOSE = "graphicssystem.close";
-	public static String MENU_SAVE = "graphicssystem.save";
-	public static String MENU_EDIT = "graphicssystem.edit";
-	public static String MENU_ATTRIBUTES = "graphicssystem.attributes";
-	public static String MENU_ZOOM = "graphicssystem.zoom";
-	public static String MENU_ZOOM_IN = "graphicssystem.zoomin";
-	public static String MENU_ZOOM_OUT = "graphicssystem.zoomout";
-	public static String MENU_DEFAULT_ZOOM = "graphicssystem.defaultzoom";
-	public static String MENU_OBJECTS = "graphicssystem.objects";
+	public static String MENU_FILE = "mainwindow.file";
+	public static String MENU_NEW = "mainwindow.new";
+	public static String MENU_OPEN = "mainwindow.open";
+	public static String MENU_CLOSE = "mainwindow.close";
+	public static String MENU_SAVE = "mainwindow.save";
+	public static String MENU_EDIT = "mainwindow.edit";
+	public static String MENU_ATTRIBUTES = "mainwindow.attributes";
+	public static String MENU_NAVIGATION = "mainwindow.navigation";
+	public static String MENU_ZOOM_IN = "mainwindow.zoomin";
+	public static String MENU_ZOOM_OUT = "mainwindow.zoomout";
+	public static String MENU_DEFAULT_ZOOM = "mainwindow.defaultzoom";
+	public static String MENU_OBJECTS = "mainwindow.objects";
+	public static String MENU_CENTER_MAP = "mainwindow.centermap";
 
-	public static String THEMENAME = "graphicssystem.theme.";
+	public static String THEMENAME = "mainwindow.theme.";
 
-	public static String MSG_SAVING_FAILED = "graphicssystem.savingfailed";
-	public static String MSG_SAVE_CHANGES = "graphicssystem.savechanges?";
-	public static String MSG_LOADING_FAILED = "graphicssystem.loadingfailed";
+	public static String MSG_SAVING_FAILED = "mainwindow.savingfailed";
+	public static String MSG_SAVE_CHANGES = "mainwindow.savechanges?";
+	public static String MSG_LOADING_FAILED = "mainwindow.loadingfailed";
 
 	public static String MAPSAVER_MAP_NAME = "mapsaver.mapname";
 
@@ -89,8 +90,8 @@ public class MapMessages {
 		return getString(MENU_ATTRIBUTES);
 	}
 
-	public String getMenuZoom() {
-		return getString(MENU_ZOOM);
+	public String getMenuNavigation() {
+		return getString(MENU_NAVIGATION);
 	}
 
 	public String getMenuZoomIn() {
@@ -103,6 +104,10 @@ public class MapMessages {
 
 	public String getMenuDefaultZoom() {
 		return getString(MENU_DEFAULT_ZOOM);
+	}
+
+	public String getMenuCenterMap() {
+		return getString(MENU_CENTER_MAP);
 	}
 
 	public String getMenuObjects() {

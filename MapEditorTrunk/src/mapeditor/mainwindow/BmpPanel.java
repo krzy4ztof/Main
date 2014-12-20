@@ -177,8 +177,8 @@ public class BmpPanel extends JPanel {
 	}
 
 	public void deactivateSelectedIconButton(int number) {
-		buttonsManager.getIconButton(number).getButton()
-				.setBackground(Color.LIGHT_GRAY);
+		buttonsManager.getIconButton(number).getButton().setBackground(null);
+		// .setBackground(Color.LIGHT_GRAY);
 
 		// iconButtons.get(name).setBackground(Color.LIGHT_GRAY);
 	}

@@ -20,8 +20,8 @@ public class BmpPanelActionListener implements ActionListener {
 		 */
 
 		String command = event.getActionCommand();
-		if (command.startsWith(GraphicsSystem.ACTION_THEMES_SELECTION)) {
-			int length = GraphicsSystem.ACTION_THEMES_SELECTION.length();
+		if (command.startsWith(MainWindow.ACTION_THEMES_SELECTION)) {
+			int length = MainWindow.ACTION_THEMES_SELECTION.length();
 			String name = command.substring(length);
 			bmpPanel.changeCurrentTheme(name);
 		} else if (command.equals(BmpPanel.ACTION_SCROLL_UP)) {

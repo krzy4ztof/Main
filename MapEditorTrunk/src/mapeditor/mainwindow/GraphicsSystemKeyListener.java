@@ -18,18 +18,14 @@ public class GraphicsSystemKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent event) {
 		int code = event.getKeyCode();
-		if (code == KeyEvent.VK_DOWN)
-			mapPanel.MoveMap(0, 1);
-		else if (code == KeyEvent.VK_RIGHT)
-			mapPanel.MoveMap(1, 0);
-		else if (code == KeyEvent.VK_LEFT)
-			mapPanel.MoveMap(-1, 0);
-		else if (code == KeyEvent.VK_UP)
-			mapPanel.MoveMap(0, -1);
-		else if (code == KeyEvent.VK_ADD)
-			mapPanel.ZoomMapIn();
-		else if (code == KeyEvent.VK_SUBTRACT)
-			mapPanel.ZoomMapOut();
+
+		if (code == KeyEvent.VK_ADD) {
+			mapPanel.zoomMapIn();
+		} else if (code == KeyEvent.VK_SUBTRACT) {
+			mapPanel.zoomMapOut();
+		} else if (code == KeyEvent.VK_MULTIPLY) {
+			mapPanel.centerMap();
+		}
 	}
 
 	@Override

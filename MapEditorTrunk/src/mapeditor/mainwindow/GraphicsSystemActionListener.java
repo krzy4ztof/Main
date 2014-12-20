@@ -24,29 +24,23 @@ public class GraphicsSystemActionListener implements ActionListener {
 
 		String str = e.getActionCommand();
 		System.out.println("MapPanel: " + e.getActionCommand());
-		if (str.equals(GraphicsSystem.ACTION_ROLL_RIGHT)) {
-			mapPanel.MoveMap(1, 0);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_LEFT)) {
-			mapPanel.MoveMap(-1, 0);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_UP)) {
-			mapPanel.MoveMap(0, -1);
-		} else if (str.equals(GraphicsSystem.ACTION_ROLL_DOWN)) {
-			mapPanel.MoveMap(0, 1);
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_IN)) {
-			mapPanel.ZoomMapIn();
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_OUT)) {
-			mapPanel.ZoomMapOut();
-		} else if (str.equals(GraphicsSystem.ACTION_ZOOM_DEFAULT)) {
-			mapPanel.SetDefaultMapZoom();
-		} else if (str.equals(GraphicsSystem.ACTION_NEW)) {
+		if (str.equals(MainWindow.ACTION_ZOOM_IN)) {
+			mapPanel.zoomMapIn();
+		} else if (str.equals(MainWindow.ACTION_ZOOM_OUT)) {
+			mapPanel.zoomMapOut();
+		} else if (str.equals(MainWindow.ACTION_ZOOM_DEFAULT)) {
+			mapPanel.setDefaultMapZoom();
+		} else if (str.equals(MainWindow.ACTION_CENTER_MAP)) {
+			mapPanel.centerMap();
+		} else if (str.equals(MainWindow.ACTION_NEW)) {
 			dialogsManager.newMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_OPEN)) {
+		} else if (str.equals(MainWindow.ACTION_OPEN)) {
 			dialogsManager.loadMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_CLOSE)) {
+		} else if (str.equals(MainWindow.ACTION_CLOSE)) {
 			dialogsManager.closeApplicationAction();
-		} else if (str.equals(GraphicsSystem.ACTION_SAVE)) {
+		} else if (str.equals(MainWindow.ACTION_SAVE)) {
 			dialogsManager.saveMapAction();
-		} else if (str.equals(GraphicsSystem.ACTION_MAP_ATTRIBUTES_PANEL)) {
+		} else if (str.equals(MainWindow.ACTION_MAP_ATTRIBUTES_PANEL)) {
 			dialogsManager.attributesMapAction();
 		}
 		mapPanel.repaint();
