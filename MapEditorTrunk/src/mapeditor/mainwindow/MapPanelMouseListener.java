@@ -37,24 +37,27 @@ public class MapPanelMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		/*
-		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje
-		 * ikon�), 3 - dla prawego przycisku (menu atrybut�w)
+		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje ikone),
+		 * 3 - dla prawego przycisku (menu atrybutow)
 		 */
-		Point seg = mapPanel.CursorAtSegment(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
 
 		if (seg.x != -1) {
-			if (e.getButton() == 1) {
+			if (e.getButton() == MouseEvent.BUTTON1) {
 				// MapObject mapObject = graphicsSystem.getSelectedMapObject();
 				// MapObject mapObject = bmpPanel.getSelectedMapObject();
 				MapObject mapObject = mapThemesManager.getSelectedTheme()
 						.getSelectedObject();
 				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 
-				mapPanel.repaint();
+				mapPanel.refresh();
+				// mapPanel.getPanel().repaint();
+				// mapPanel.paint();
+
 			} else {
 
 				mapPanel.r_SegmentAttributesPanel.setVisible(true);
-				System.out.println("menu atrybut�w");
+				System.out.println("menu atrybutow");
 			}
 		}
 	}

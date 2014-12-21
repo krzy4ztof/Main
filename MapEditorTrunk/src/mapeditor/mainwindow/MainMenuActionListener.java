@@ -3,15 +3,17 @@ package mapeditor.mainwindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GraphicsSystemActionListener implements ActionListener {
+public class MainMenuActionListener implements ActionListener {
 
 	MapPanel mapPanel;
 	DialogsManager dialogsManager;
+	ThemePanel themePanel;
 
-	GraphicsSystemActionListener(DialogsManager dialogsManager,
-			MapPanel mapPanel) {
+	MainMenuActionListener(DialogsManager dialogsManager,
+			MapPanel mapPanel, ThemePanel themePanel) {
 		this.mapPanel = mapPanel;
 		this.dialogsManager = dialogsManager;
+		this.themePanel = themePanel;
 	}
 
 	@Override
@@ -42,11 +44,15 @@ public class GraphicsSystemActionListener implements ActionListener {
 			dialogsManager.saveMapAction();
 		} else if (str.equals(MainWindow.ACTION_MAP_ATTRIBUTES_PANEL)) {
 			dialogsManager.attributesMapAction();
+		} else if (str.equals(MainWindow.ACTION_REFRESH)) {
+			themePanel.refresh();
 		}
-		mapPanel.repaint();
+
+		// mapPanel.getPanel().repaint();
+		mapPanel.refresh();
 
 		// return focus to top frame. Focus allows GraphicsSystemKeyListener to
 		// handle key events.
-		mapPanel.getTopLevelAncestor().requestFocus();
+		mapPanel.getPanel().getTopLevelAncestor().requestFocus();
 	}
 }

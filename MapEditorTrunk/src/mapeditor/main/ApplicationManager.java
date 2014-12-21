@@ -30,7 +30,7 @@ public class ApplicationManager {
 
 		ImagesListFileReader imagesListFileReader = new ImagesListFileReader();
 		MapThemesManager mapThemesList = imagesListFileReader
-				.ReadConfigurationFile("images", "configuration.xml");
+				.ReadConfigurationFile(config, "images", "configuration.xml");
 		new MainWindow(config, messages, mapThemesList);
 	}
 

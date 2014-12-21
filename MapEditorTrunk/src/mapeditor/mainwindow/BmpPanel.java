@@ -24,7 +24,7 @@ public class BmpPanel extends JPanel {
 	final static String ACTION_SCROLL_DOWN = "ACTION_SCROLL_ICONS_DOWN";
 	final static String ACTION_ICON_BUTTON = "ACTION_ICON_BUTTON_";
 
-	private static final int COLUMNS = 2;
+	private static final int COLUMNS = 3;
 	private static final int ROWS = 3;
 
 	private BmpPanelIconButtonsManager buttonsManager = new BmpPanelIconButtonsManager();

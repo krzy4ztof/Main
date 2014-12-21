@@ -15,10 +15,13 @@ public class MapThemesManager {
 
 	private LinkedList<MapObjectsTheme> themesList = null;
 
+	private LinkedList<ThemeApi> themeApiList = null;
+
 	private MapObjectsTheme selectedTheme = null;
 
 	public MapThemesManager() {
 		themesList = new LinkedList<MapObjectsTheme>();
+		themeApiList = new LinkedList<ThemeApi>();
 	}
 
 	public Iterator<MapObjectsTheme> getThemesIterator() {
@@ -33,8 +36,11 @@ public class MapThemesManager {
 	}
 
 	public boolean addTheme(MapObjectsTheme mapObjectsTheme) {
-
 		return themesList.add(mapObjectsTheme);
+	}
+
+	public boolean addThemeApi(ThemeApi themeApi) {
+		return themeApiList.add(themeApi);
 	}
 
 	public void describeYourself() {

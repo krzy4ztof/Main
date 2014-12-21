@@ -1,6 +1,5 @@
 package mapeditor.mainwindow;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +10,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
@@ -32,6 +30,7 @@ public class MainWindow {
 	final static String ACTION_SAVE = "ACTION_SAVE";
 
 	final static String ACTION_MAP_ATTRIBUTES_PANEL = "ACTION_MAP_ATTRIBUTES_PANEL";
+	final static String ACTION_REFRESH = "ACTION_REFRESH";
 
 	final static String ACTION_THEMES_SELECTION = "ACTION_THEMES_SELECTION_";
 
@@ -41,7 +40,7 @@ public class MainWindow {
 	}
 
 	private JMenu createFileMenu(MapMessages messages,
-			GraphicsSystemActionListener gsListener) {
+			MainMenuActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuFile());
 		JMenuItem menuItem = new JMenuItem(messages.getMenuNew());
 		menuItem.setActionCommand(MainWindow.ACTION_NEW);
@@ -69,17 +68,23 @@ public class MainWindow {
 	}
 
 	private JMenu createEditMenu(MapMessages messages,
-			GraphicsSystemActionListener gsListener) {
+			MainMenuActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuEdit());
 		JMenuItem menuItem = new JMenuItem(messages.getMenuAttributes());
 		menuItem.setActionCommand(MainWindow.ACTION_MAP_ATTRIBUTES_PANEL);
 		menuItem.addActionListener(gsListener);
 		menu.add(menuItem);
+
+		menuItem = new JMenuItem(messages.getMenuRefresh());
+		menuItem.setActionCommand(MainWindow.ACTION_REFRESH);
+		menuItem.addActionListener(gsListener);
+		menu.add(menuItem);
+
 		return menu;
 	}
 
 	private JMenu createNavigationMenu(MapMessages messages,
-			GraphicsSystemActionListener gsListener) {
+			MainMenuActionListener gsListener) {
 		JMenu menu = new JMenu(messages.getMenuNavigation());
 
 		JMenuItem menuItem = new JMenuItem(messages.getMenuZoomIn());
@@ -129,8 +134,7 @@ public class MainWindow {
 	}
 
 	private JMenuBar createMenuBar(MapMessages messages,
-			MapThemesManager mapThemesList,
-			GraphicsSystemActionListener gsListener,
+			MapThemesManager mapThemesList, MainMenuActionListener gsListener,
 			BmpPanelActionListener bmpListener) {
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(createFileMenu(messages, gsListener));
@@ -140,9 +144,9 @@ public class MainWindow {
 		return menuBar;
 	}
 
-	private JPanel createRightSidePanel(BmpPanel bmpPanel,
-			BmpPanelActionListener bmpListener,
-			GraphicsSystemActionListener gsListener) {
+	private JPanel createRightSidePanel(ThemePanel themePanel,
+			BmpPanel bmpPanel, BmpPanelActionListener bmpListener,
+			MainMenuActionListener gsListener) {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -153,6 +157,11 @@ public class MainWindow {
 		c.weighty = 1.0;
 		c.gridx = 0;
 		c.gridy = 0;
+		panel.add(themePanel.getScrollPane(), c);
+
+		c.weighty = 0.0;
+		c.gridx = 0;
+		c.gridy = 1;
 
 		bmpPanel.activate(bmpListener);
 		panel.add(bmpPanel, c);
@@ -162,10 +171,6 @@ public class MainWindow {
 	private MapPanel createMapPanel(Config config, MapMessages messages,
 			MapThemesManager mapThemesList, MapApi mapApi) {
 		MapPanel mapPanel = new MapPanel(mapApi);
-
-		// mapPanel.setBackground(new Color(238, 238, 238));
-		// mapPanel.setBackground(new Color(221, 232, 243));
-		mapPanel.setBackground(new Color(248, 250, 253));
 
 		return mapPanel;
 	}
@@ -196,25 +201,30 @@ public class MainWindow {
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
 				mapPanel, mapThemesList, mapApi);
 
-		mapPanel.addMouseListener(mpMouseListener);
-		mapPanel.addMouseMotionListener(mpMouseMotionListener);
+		mapPanel.getPanel().addMouseListener(mpMouseListener);
+		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
 
-		JScrollPane scroller = new JScrollPane(mapPanel);
-		contentPane.add(scroller, c);
+		contentPane.add(mapPanel.getScrollPane(), c);
 
-		GraphicsSystemKeyListener gsKeyListener = new GraphicsSystemKeyListener(
-				mapPanel);
+		ThemePanel themePanel = new ThemePanel(mapThemesList);
+		ThemePanelMouseListener tpMouseListener = new ThemePanelMouseListener(
+				themePanel);
+		themePanel.getPanel().addMouseListener(tpMouseListener);
+
+		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
+				mapPanel, themePanel);
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
 				messages, mapThemesList, config);
-		GraphicsSystemActionListener gsListener = new GraphicsSystemActionListener(
-				dialogsManager, mapPanel);
+		MainMenuActionListener gsListener = new MainMenuActionListener(
+				dialogsManager, mapPanel, themePanel);
 
 		c.weightx = 0.0;
 		c.weighty = 1.0;
 		c.gridx = 1;
 		c.gridy = 0;
 		contentPane.add(
-				createRightSidePanel(bmpPanel, bmpListener, gsListener), c);
+				createRightSidePanel(themePanel, bmpPanel, bmpListener,
+						gsListener), c);
 
 		JMenuBar menu = createMenuBar(messages, mapThemesList, gsListener,
 				bmpListener);
@@ -224,7 +234,7 @@ public class MainWindow {
 		frame.setSize(400, 400);
 		frame.setVisible(true);
 		frame.requestFocus();
-		frame.addFocusListener(new GraphicsSystemFocusListener());
+		frame.addFocusListener(new MainWindowFocusListener());
 		frame.addKeyListener(gsKeyListener);
 	}
 }

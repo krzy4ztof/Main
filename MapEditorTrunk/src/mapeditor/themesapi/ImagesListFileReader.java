@@ -8,6 +8,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import mapeditor.config.Config;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -15,10 +17,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class ImagesListFileReader extends DefaultHandler {
 
 	private MapObjectsTheme curMapObjectsTheme;
+	private ThemeApi themeApi;
 	private MapObject curMapObject;
 	private MapThemesManager mapThemesList;
 	private String filePath;
 	private int imageId;
+	private Config config;
 
 	@Override
 	public void startDocument() throws SAXException {
@@ -40,9 +44,12 @@ public class ImagesListFileReader extends DefaultHandler {
 
 				if (qName.equals("Theme")) {
 					if (aName.equals("name")) {
-						this.curMapObjectsTheme = new MapObjectsTheme(aValue);
+						this.curMapObjectsTheme = new MapObjectsTheme(aValue);// OK
+						themeApi = new ThemeApi(aValue, config);
 						this.curMapObject = null;
-						this.mapThemesList.addTheme(curMapObjectsTheme);
+						this.mapThemesList.addTheme(curMapObjectsTheme);// OK
+						mapThemesList.addThemeApi(themeApi);
+						mapThemesList.addThemeApi(themeApi);
 					}
 				} else if (qName.equals("Image")) {
 					if (aName.equals("name")) {
@@ -66,7 +73,8 @@ public class ImagesListFileReader extends DefaultHandler {
 			this.curMapObject.setImageIcon(imageFile);
 			// This is blank image so id=0
 			this.curMapObject.setObjectId(0);
-			this.curMapObjectsTheme.addMapObject(curMapObject);
+			this.curMapObjectsTheme.addMapObject(curMapObject);// OK
+			themeApi.addMapObject(curMapObject);
 		} else if (curString.equals("") == false) {
 			this.curMapObject.setImageName(curString);
 			ImageIcon imageFile = new ImageIcon(filePath + curString);
@@ -76,14 +84,18 @@ public class ImagesListFileReader extends DefaultHandler {
 			this.curMapObject.setImageIcon(imageFile);
 			this.imageId++;
 			this.curMapObject.setObjectId(this.imageId);
-			this.curMapObjectsTheme.addMapObject(curMapObject);
+			this.curMapObjectsTheme.addMapObject(curMapObject);// OK
+			themeApi.addMapObject(curMapObject);
 		}
 	}
 
-	public MapThemesManager ReadConfigurationFile(String path, String file)
-			throws ParserConfigurationException, SAXException, IOException {
-		this.curMapObjectsTheme = null;
+	public MapThemesManager ReadConfigurationFile(Config config, String path,
+			String file) throws ParserConfigurationException, SAXException,
+			IOException {
+		this.curMapObjectsTheme = null;// OK
+		themeApi = null;
 		this.curMapObject = null;
+		this.config = config;
 		mapThemesList = new MapThemesManager();
 		imageId = 0;
 		this.filePath = path + File.separator;

@@ -27,14 +27,14 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 		 * przesuwanie myszy ze wcisni�tym przyciskiem e.getButton() - zawsze
 		 * daje 0
 		 */
-		Point seg = mapPanel.CursorAtSegment(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
 		if (seg.x != -1) {
 			// MapObject mapObject = bmpPanel.getSelectedMapObject();
 			MapObject mapObject = mapThemesManager.getSelectedTheme()
 					.getSelectedObject();
 			mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 
-			mapPanel.repaint();
+			mapPanel.getPanel().repaint();
 		}
 	}
 

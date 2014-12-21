@@ -3,12 +3,14 @@ package mapeditor.mainwindow;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GraphicsSystemKeyListener implements KeyListener {
+public class MainWindowKeyListener implements KeyListener {
 
 	private MapPanel mapPanel;
+	private ThemePanel themePanel;
 
-	public GraphicsSystemKeyListener(MapPanel mapPanel) {
+	public MainWindowKeyListener(MapPanel mapPanel, ThemePanel themePanel) {
 		this.mapPanel = mapPanel;
+		this.themePanel = themePanel;
 	}
 
 	@Override
@@ -25,6 +27,9 @@ public class GraphicsSystemKeyListener implements KeyListener {
 			mapPanel.zoomMapOut();
 		} else if (code == KeyEvent.VK_MULTIPLY) {
 			mapPanel.centerMap();
+		} else if (code == KeyEvent.VK_F5) {
+			mapPanel.refresh();
+			themePanel.refresh();
 		}
 	}
 

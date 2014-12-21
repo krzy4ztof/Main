@@ -35,13 +35,14 @@ public class DialogsManager {
 	 * Creates new map. Saves current and clears it.
 	 */
 	void newMapAction() {
-		int res = JOptionPane.showConfirmDialog(mapPanel.getTopLevelAncestor(),
-				messages.getMsgSaveChanges(), null, JOptionPane.YES_NO_OPTION);
+		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
+				.getTopLevelAncestor(), messages.getMsgSaveChanges(), null,
+				JOptionPane.YES_NO_OPTION);
 		if (res == JOptionPane.YES_OPTION) {
 			this.saveMapApi();
 		}
 		MapAttributesPanel MRP = new MapAttributesPanel(config, messages,
-				mapPanel.getTopLevelAncestor());
+				mapPanel.getPanel().getTopLevelAncestor());
 
 		MRP.activate(mapApi.getMapAttributes());
 
@@ -58,8 +59,8 @@ public class DialogsManager {
 	 * Loads new map from file.
 	 */
 	void loadMapAction() {
-		int res = JOptionPane.showConfirmDialog(mapPanel.getTopLevelAncestor(),
-				messages.getMsgSaveChanges());
+		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
+				.getTopLevelAncestor(), messages.getMsgSaveChanges());
 
 		if (res == JOptionPane.YES_OPTION) {
 			saveMapApi();
@@ -88,7 +89,7 @@ public class DialogsManager {
 		// messages, mapPanel.getTopParent());
 
 		MapAttributesPanel mapAttributesPanel = new MapAttributesPanel(config,
-				messages, mapPanel.getTopLevelAncestor());
+				messages, mapPanel.getPanel().getTopLevelAncestor());
 
 		mapAttributesPanel.activate(mapApi.getMapAttributes());
 
@@ -111,7 +112,7 @@ public class DialogsManager {
 		FC.setFileFilter(rfilter);
 		FC.setSelectedFile(mapApi.getFile());
 
-		int res = FC.showSaveDialog(mapPanel.getTopLevelAncestor());
+		int res = FC.showSaveDialog(mapPanel.getPanel().getTopLevelAncestor());
 		if (res == JFileChooser.APPROVE_OPTION) {
 			File rFile = FC.getSelectedFile();
 			MapSaver p_MapSaver = new MapSaver(messages, mapThemesList);
@@ -140,7 +141,7 @@ public class DialogsManager {
 		FC.setFileFilter(rfilter);
 		FC.setSelectedFile(mapApi.getFile());
 
-		int res = FC.showOpenDialog(mapPanel.getTopLevelAncestor());
+		int res = FC.showOpenDialog(mapPanel.getPanel().getTopLevelAncestor());
 		if (res == JFileChooser.APPROVE_OPTION) {
 			File rFile = FC.getSelectedFile();
 			MapLoader p_MapLoader = new MapLoader();
@@ -148,7 +149,7 @@ public class DialogsManager {
 			try {
 				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList);
 				mapPanel.setMapApi(mapApi);
-				mapPanel.repaint();
+				mapPanel.getPanel().repaint();
 				// gs.getJFrame().repaint();
 			} catch (Exception e) {
 
@@ -163,8 +164,8 @@ public class DialogsManager {
 	 * Quits application
 	 */
 	void closeApplicationAction() {
-		int res = JOptionPane.showConfirmDialog(mapPanel.getTopLevelAncestor(),
-				messages.getMsgSaveChanges());
+		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
+				.getTopLevelAncestor(), messages.getMsgSaveChanges());
 		if (res == JOptionPane.YES_OPTION) {
 			saveMapApi();
 		}

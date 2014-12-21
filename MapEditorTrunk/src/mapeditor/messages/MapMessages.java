@@ -15,6 +15,7 @@ public class MapMessages {
 	public static String MENU_SAVE = "mainwindow.save";
 	public static String MENU_EDIT = "mainwindow.edit";
 	public static String MENU_ATTRIBUTES = "mainwindow.attributes";
+	public static String MENU_REFRESH = "mainwindow.refresh";
 	public static String MENU_NAVIGATION = "mainwindow.navigation";
 	public static String MENU_ZOOM_IN = "mainwindow.zoomin";
 	public static String MENU_ZOOM_OUT = "mainwindow.zoomout";
@@ -88,6 +89,10 @@ public class MapMessages {
 
 	public String getMenuAttributes() {
 		return getString(MENU_ATTRIBUTES);
+	}
+
+	public String getMenuRefresh() {
+		return getString(MENU_REFRESH);
 	}
 
 	public String getMenuNavigation() {
