@@ -6,11 +6,11 @@ import java.awt.event.KeyListener;
 public class MainWindowKeyListener implements KeyListener {
 
 	private MapPanel mapPanel;
-	private ThemePanel themePanel;
+	private ThemesTabbedPane themesPane;
 
-	public MainWindowKeyListener(MapPanel mapPanel, ThemePanel themePanel) {
+	public MainWindowKeyListener(MapPanel mapPanel, ThemesTabbedPane themesPane) {
 		this.mapPanel = mapPanel;
-		this.themePanel = themePanel;
+		this.themesPane = themesPane;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class MainWindowKeyListener implements KeyListener {
 			mapPanel.centerMap();
 		} else if (code == KeyEvent.VK_F5) {
 			mapPanel.refresh();
-			themePanel.refresh();
+			themesPane.getActiveThemePanel().refresh();
 		}
 	}
 

@@ -32,7 +32,7 @@ public abstract class GridPanel {
 
 	protected JScrollPane scrollPane;
 
-	protected ImageIcon blank = new ImageIcon("");
+	private Image blankImage;
 
 	public GridPanel() {
 		super();
@@ -53,6 +53,8 @@ public abstract class GridPanel {
 		panel.setBackground(new Color(248, 250, 253));
 
 		scrollPane = new JScrollPane(panel);
+
+		blankImage = new ImageIcon("").getImage();
 	}
 
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
@@ -149,7 +151,7 @@ public abstract class GridPanel {
 		Rectangle rectangle = panel.getVisibleRect();
 		int x = rectangle.x + rectangle.width;
 		int column = getColumnNumberAt(x);
-		column = Math.min(column, getGridApiColumnsSize());
+		column = Math.min(column, getGridApiColumnsSize() - 1);
 		return column;
 	}
 
@@ -157,7 +159,7 @@ public abstract class GridPanel {
 		Rectangle rectangle = panel.getVisibleRect();
 		int y = rectangle.y + rectangle.height;
 		int row = getRowNumberAt(y, true);
-		row = Math.min(row, getGridApiRowsSize());
+		row = Math.min(row, getGridApiRowsSize() - 1);
 		return row;
 	}
 
@@ -237,12 +239,13 @@ public abstract class GridPanel {
 		}
 
 		int firstColumn = getFirstVisibleColumnNumber();// + 1;
-		int lastColumn = getLastVisibleColumnNumber() - 1;
+		int lastColumn = getLastVisibleColumnNumber();// - 1;
 		int firstRow = getFirstVisibleRowNumber();// + 1;
-		int lastRow = getLastVisibleRowNumber() - 1;
+		int lastRow = getLastVisibleRowNumber();// - 1;
 
-		System.out.println("FR: " + firstRow + " FC: " + firstColumn + " LR: "
-				+ lastRow + 1 + " LC: " + lastColumn + 1);
+		// System.out.println("FR: " + firstRow + " FC: " + firstColumn +
+		// " LR: "
+		// + lastRow + " LC: " + lastColumn);
 
 		for (int column = firstColumn; column <= lastColumn; column++) {
 			for (int row = firstRow; row <= lastRow; row++) {
@@ -271,4 +274,9 @@ public abstract class GridPanel {
 	public void refresh() {
 		panel.repaint();
 	}
+
+	protected Image getBlankImage() {
+		return blankImage;
+	}
+
 }

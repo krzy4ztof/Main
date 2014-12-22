@@ -2,7 +2,8 @@ package mapeditor.mainwindow;
 
 import java.awt.Image;
 
-import mapeditor.themesapi.MapThemesManager;
+import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.ThemeApi;
 
 public class ThemePanel extends GridPanel {
 
@@ -11,26 +12,33 @@ public class ThemePanel extends GridPanel {
 	private static int TOP_MARIGIN = 10;
 	private static int BOTTOM_MARIGIN = 10;
 
-	private MapThemesManager mapThemesManager;
+	private ThemeApi themeApi;
 
-	public ThemePanel(MapThemesManager mapThemesManager) {
+	public ThemePanel(ThemeApi themeApi) {
 		super();
-		this.mapThemesManager = mapThemesManager;
+		this.themeApi = themeApi;
 	}
 
 	@Override
 	protected int getGridApiColumnsSize() {
-		return 10;
+		return themeApi.getColumnsSize();
 	};
 
 	@Override
 	protected int getGridApiRowsSize() {
-		return 10;
+		return themeApi.getRowsSize();
 	};
 
 	@Override
 	protected Image getImage(int row, int col) {
-		return this.blank.getImage();
+
+		MapObject mapObject = themeApi.getMapObject(row, col);
+
+		if (mapObject != null) {
+			return mapObject.getImageIcon().getImage();
+		} else {
+			return getBlankImage();
+		}
 	}
 
 	@Override

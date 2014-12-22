@@ -140,7 +140,7 @@ public class MapPanel extends GridPanel {
 		if (mapObject != null) {
 			return mapObject.getImageIcon().getImage();
 		} else {
-			return this.blank.getImage();
+			return getBlankImage();
 		}
 	}
 }

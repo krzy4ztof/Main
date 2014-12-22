@@ -6,10 +6,10 @@ import java.awt.event.MouseListener;
 
 public class ThemePanelMouseListener implements MouseListener {
 
-	private ThemePanel themePanel;
+	private ThemesTabbedPane themesPane;
 
-	ThemePanelMouseListener(ThemePanel themePanel) {
-		this.themePanel = themePanel;
+	ThemePanelMouseListener(ThemesTabbedPane themesPane) {
+		this.themesPane = themesPane;
 	}
 
 	@Override
@@ -18,16 +18,17 @@ public class ThemePanelMouseListener implements MouseListener {
 		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje ikone),
 		 * 3 - dla prawego przycisku (menu atrybutow)
 		 */
-		Point seg = themePanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = themesPane.getActiveThemePanel().getSegmentPointAtCursor(
+				e.getPoint());
 
 		if (seg.x != -1) {
 			if (e.getButton() == MouseEvent.BUTTON1) {
-
+				System.out.println("TP Mouse Listener");
 				// MapObject mapObject = mapThemesManager.getSelectedTheme()
 				// .getSelectedObject();
 				// mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 
-				themePanel.refresh();
+				themesPane.getActiveThemePanel().refresh();
 
 			} else {
 

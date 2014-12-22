@@ -1,6 +1,7 @@
 package mapeditor.mainwindow;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
@@ -144,7 +146,7 @@ public class MainWindow {
 		return menuBar;
 	}
 
-	private JPanel createRightSidePanel(ThemePanel themePanel,
+	private JPanel createRightSidePanel(ThemesTabbedPane themesPane,
 			BmpPanel bmpPanel, BmpPanelActionListener bmpListener,
 			MainMenuActionListener gsListener) {
 
@@ -153,18 +155,41 @@ public class MainWindow {
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 0.0;
+		// c.weightx = 0.0;
+		c.weightx = 1.0;
+
 		c.weighty = 1.0;
 		c.gridx = 0;
 		c.gridy = 0;
-		panel.add(themePanel.getScrollPane(), c);
+		// panel.add(themePanel.getScrollPane(), c);
 
-		c.weighty = 0.0;
-		c.gridx = 0;
-		c.gridy = 1;
+		/*
+		 * c.weighty = 0.0; c.gridx = 0; c.gridy = 1;
+		 */
 
 		bmpPanel.activate(bmpListener);
-		panel.add(bmpPanel, c);
+
+		// /
+
+		// /
+		// JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+		// themePanel.getScrollPane(), bmpPanel);
+		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				themesPane.getPane(), bmpPanel);
+
+		splitPane.setOneTouchExpandable(true);
+		// splitPane.setDividerLocation(200);
+
+		splitPane.setResizeWeight(1);
+		// Provide minimum sizes for the two components in the split pane
+		Dimension minimumSize = new Dimension(0, 100);
+		// themePanel.getScrollPane().setMinimumSize(minimumSize);
+		themesPane.getPane().setMinimumSize(minimumSize);
+
+		bmpPanel.setMinimumSize(minimumSize);
+		// /
+		panel.add(splitPane, c);
+		// panel.add(bmpPanel, c);
 		return panel;
 	}
 
@@ -204,27 +229,44 @@ public class MainWindow {
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
 
-		contentPane.add(mapPanel.getScrollPane(), c);
+		// contentPane.add(mapPanel.getScrollPane(), c);
 
-		ThemePanel themePanel = new ThemePanel(mapThemesList);
-		ThemePanelMouseListener tpMouseListener = new ThemePanelMouseListener(
-				themePanel);
-		themePanel.getPanel().addMouseListener(tpMouseListener);
+		// ThemePanel themePanel = new ThemePanel(mapThemesList);
+		ThemesTabbedPane themesPane = new ThemesTabbedPane(mapThemesList);
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
-				mapPanel, themePanel);
+				mapPanel, themesPane);
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
 				messages, mapThemesList, config);
 		MainMenuActionListener gsListener = new MainMenuActionListener(
-				dialogsManager, mapPanel, themePanel);
+				dialogsManager, mapPanel, themesPane);
+		/*
+		 * c.weightx = 0.0; c.weighty = 1.0; c.gridx = 1; c.gridy = 0;
+		 */
 
-		c.weightx = 0.0;
-		c.weighty = 1.0;
-		c.gridx = 1;
-		c.gridy = 0;
-		contentPane.add(
-				createRightSidePanel(themePanel, bmpPanel, bmpListener,
-						gsListener), c);
+		JPanel rightSidePanel = createRightSidePanel(themesPane, bmpPanel,
+				bmpListener, gsListener);
+
+		// contentPane.add(
+		// createRightSidePanel(themePanel, bmpPanel, bmpListener,
+		// gsListener), c);
+
+		// /
+		// Create a split pane with the two scroll panes in it.
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+				mapPanel.getScrollPane(), rightSidePanel);
+		splitPane.setOneTouchExpandable(true);
+		// splitPane.setDividerLocation(200);
+
+		splitPane.setResizeWeight(1);
+		// Provide minimum sizes for the two components in the split pane
+		Dimension minimumSize = new Dimension(100, 0);
+		mapPanel.getScrollPane().setMinimumSize(minimumSize);
+		rightSidePanel.setMinimumSize(minimumSize);
+
+		contentPane.add(splitPane, c);
+
+		// /
 
 		JMenuBar menu = createMenuBar(messages, mapThemesList, gsListener,
 				bmpListener);

@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 
 public class MainMenuActionListener implements ActionListener {
 
-	MapPanel mapPanel;
-	DialogsManager dialogsManager;
-	ThemePanel themePanel;
+	private MapPanel mapPanel;
+	private DialogsManager dialogsManager;
+	private ThemesTabbedPane themesPane;
 
-	MainMenuActionListener(DialogsManager dialogsManager,
-			MapPanel mapPanel, ThemePanel themePanel) {
+	MainMenuActionListener(DialogsManager dialogsManager, MapPanel mapPanel,
+			ThemesTabbedPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.dialogsManager = dialogsManager;
-		this.themePanel = themePanel;
+		this.themesPane = themesPane;
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class MainMenuActionListener implements ActionListener {
 		} else if (str.equals(MainWindow.ACTION_MAP_ATTRIBUTES_PANEL)) {
 			dialogsManager.attributesMapAction();
 		} else if (str.equals(MainWindow.ACTION_REFRESH)) {
-			themePanel.refresh();
+			themesPane.getActiveThemePanel().refresh();
 		}
 
 		// mapPanel.getPanel().repaint();

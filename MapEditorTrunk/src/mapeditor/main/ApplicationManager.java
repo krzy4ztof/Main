@@ -32,6 +32,8 @@ public class ApplicationManager {
 		MapThemesManager mapThemesList = imagesListFileReader
 				.ReadConfigurationFile(config, "images", "configuration.xml");
 		new MainWindow(config, messages, mapThemesList);
+
+		mapThemesList.describeYourselfThemeApi();
 	}
 
 	public static void main(String[] args) throws ParserConfigurationException,

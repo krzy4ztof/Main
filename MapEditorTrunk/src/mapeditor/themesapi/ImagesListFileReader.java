@@ -49,7 +49,6 @@ public class ImagesListFileReader extends DefaultHandler {
 						this.curMapObject = null;
 						this.mapThemesList.addTheme(curMapObjectsTheme);// OK
 						mapThemesList.addThemeApi(themeApi);
-						mapThemesList.addThemeApi(themeApi);
 					}
 				} else if (qName.equals("Image")) {
 					if (aName.equals("name")) {

@@ -19,6 +19,8 @@ public class MapThemesManager {
 
 	private MapObjectsTheme selectedTheme = null;
 
+	private ThemeApi selectedThemeApi = null;
+
 	public MapThemesManager() {
 		themesList = new LinkedList<MapObjectsTheme>();
 		themeApiList = new LinkedList<ThemeApi>();
@@ -50,6 +52,13 @@ public class MapThemesManager {
 				.hasNext();) {
 			curTheme = it.next();
 			curTheme.describeYourself();
+		}
+	}
+
+	public void describeYourselfThemeApi() {
+
+		for (ThemeApi themeApi : themeApiList) {
+			themeApi.describeYourself();
 		}
 	}
 
@@ -93,6 +102,14 @@ public class MapThemesManager {
 
 	public MapObjectsTheme getSelectedTheme() {
 		return selectedTheme;
+	}
+
+	public ThemeApi getSelectedThemeApi() {
+		if (selectedThemeApi == null && !themeApiList.isEmpty()) {
+			selectedThemeApi = themeApiList.getFirst();
+		}
+
+		return selectedThemeApi;
 	}
 
 	public void setSelectedTheme(MapObjectsTheme selectedTheme) {
