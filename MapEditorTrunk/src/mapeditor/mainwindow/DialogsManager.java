@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoader;
 import mapeditor.saveload.MapSaver;
@@ -16,19 +17,21 @@ import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
 
-	MapPanel mapPanel;
-	MapApi mapApi;
-	MapMessages messages;
-	ThemesManager mapThemesList;
-	Config config;
+	private MapPanel mapPanel;
+	private MapApi mapApi;
+	private MapMessages messages;
+	private ThemesManager mapThemesList;
+	private Config config;
+	private Tools tools;
 
 	DialogsManager(MapPanel mapPanel, MapApi mapApi, MapMessages messages,
-			ThemesManager mapThemesList, Config config) {
+			ThemesManager mapThemesList, Config config, Tools tools) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
 		this.mapThemesList = mapThemesList;
 		this.config = config;
+		this.tools = tools;
 	}
 
 	/**
@@ -51,7 +54,7 @@ public class DialogsManager {
 			int row = MRP.getSelectedMapAttributes().getRows();
 			int col = MRP.getSelectedMapAttributes().getColumns();
 
-			mapApi.resetMap(row, col);
+			mapApi.resetMap(row, col, tools.getBlankMapObject());
 		}
 
 	}
@@ -100,7 +103,7 @@ public class DialogsManager {
 			int col = mapAttributesPanel.getSelectedMapAttributes()
 					.getColumns();
 
-			mapApi.changeSize(row, col);
+			mapApi.changeSize(row, col, tools.getBlankMapObject());
 		}
 	}
 
@@ -149,7 +152,8 @@ public class DialogsManager {
 			MapLoader p_MapLoader = new MapLoader();
 
 			try {
-				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList);
+				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList,
+						tools);
 				mapPanel.setMapApi(mapApi);
 				mapPanel.getPanel().repaint();
 				// gs.getJFrame().repaint();

@@ -48,9 +48,9 @@ public abstract class GridPanel {
 			}
 		};
 
-		// mapPanel.setBackground(new Color(238, 238, 238));
-		// mapPanel.setBackground(new Color(221, 232, 243));
-		panel.setBackground(new Color(248, 250, 253));
+		// panel.setBackground(Color.RED);
+		// panel.setBackground(new Color(248, 250, 253));
+		panel.setBackground(new Color(238, 238, 238));
 
 		scrollPane = new JScrollPane(panel);
 
@@ -63,6 +63,7 @@ public abstract class GridPanel {
 				+ (segmentHeight - segmentHeight / divider);
 
 		graphics.setColor(Color.LIGHT_GRAY);
+
 		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
 		graphics.drawImage(getImage(row, column), column * segmentWidth

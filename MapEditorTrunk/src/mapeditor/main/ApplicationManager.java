@@ -25,8 +25,10 @@ import org.xml.sax.SAXException;
  */
 public class ApplicationManager {
 
-	public final static String THEMES_CONFIG_FILE_PATH = "resources"
-			+ File.separator + "themes" + File.separator + "configuration.xml";
+	public final static String THEMES_PATH = "resources" + File.separator
+			+ "themes" + File.separator;
+	public final static String THEMES_CONFIG_FILE_PATH = THEMES_PATH
+			+ "configuration.xml";
 	public final static String THEMES_IMAGES_PATH = "images" + File.separator;
 
 	public ApplicationManager() throws ParserConfigurationException,

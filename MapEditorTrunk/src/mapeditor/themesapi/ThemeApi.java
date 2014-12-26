@@ -19,7 +19,7 @@ public class ThemeApi {
 
 	public ThemeApi(String name, Config config) {
 		this.name = name;
-		maxColumn = config.getMapApiColumnsNumber();
+		maxColumn = config.getThemeApiColumnsNumber();
 		mapObjects = new LinkedList<LinkedList<MapObject>>();
 	}
 

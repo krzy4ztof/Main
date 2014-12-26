@@ -7,7 +7,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -24,7 +23,6 @@ import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
-import mapeditor.themesapi.MapObjectsTheme;
 import mapeditor.themesapi.ThemesManager;
 
 public class MainWindow {
@@ -64,6 +62,8 @@ public class MainWindow {
 	final static String ICON_BUCKET_32 = "construction_bucket_32.png";
 	final static String ICON_PICKER_32 = "color_picker_32.png";
 	final static String ICON_SELECTION_32 = "selection_32.png";
+
+	public final static String ICON_NULL = "null.png";
 
 	public MainWindow(Config config, MapMessages messages,
 			ThemesManager mapThemesList) {
@@ -143,30 +143,6 @@ public class MainWindow {
 		menuItem.addActionListener(gsListener);
 		menu.add(menuItem);
 
-		return menu;
-	}
-
-	private JMenu createMenuObjects(MapMessages messages,
-			ThemesManager mapThemesList, BmpPanelActionListener bmpListener) {
-		JMenu menu = new JMenu(messages.getString(MapMessages.MENU_OBJECTS));
-		JMenuItem menuItem;
-		String themeName;
-		/*
-		 * Tworzy menu do wyboru grup tematycznych na podstawie obiektu
-		 * images_list. image_list[x][1] - nazwa tematu. Każdy JMenuItem
-		 * odpowiada jednemu tematowi. Wybranie tematu spowoduje wyswietlenie
-		 * bitmap nalezacych do tego tematu w BmpPanel.
-		 */
-		for (Iterator<MapObjectsTheme> it = mapThemesList.getThemesIterator(); it
-				.hasNext();) {
-			themeName = it.next().getName();
-			menuItem = new JMenuItem(messages.getString(MapMessages.THEMENAME
-					+ themeName));
-			menuItem.setActionCommand(MainWindow.ACTION_THEMES_SELECTION
-					+ themeName);
-			menuItem.addActionListener(bmpListener);
-			menu.add(menuItem);
-		}
 		return menu;
 	}
 
@@ -258,13 +234,16 @@ public class MainWindow {
 		// BmpPanelActionListener bmpListener = new BmpPanelActionListener(
 		// bmpPanel);
 
-		MapApi mapApi = new MapApi(config);
+		MapApi mapApi = new MapApi(config, tools);
 		MapPanel mapPanel = createMapPanel(config, messages, mapThemesList,
 				mapApi);
+
+		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
+
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
-				mapPanel, mapThemesList, mapApi);
+				mapPanel, mapThemesList, mapApi, tools, themesPane);
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
-				mapPanel, mapThemesList, mapApi);
+				mapPanel, mapThemesList, mapApi, tools);
 
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
@@ -272,12 +251,11 @@ public class MainWindow {
 		// contentPane.add(mapPanel.getScrollPane(), c);
 
 		// ThemePanel themePanel = new ThemePanel(mapThemesList);
-		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
 				mapPanel, themesPane);
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
-				messages, mapThemesList, config);
+				messages, mapThemesList, config, tools);
 		MainMenuActionListener gsListener = new MainMenuActionListener(
 				dialogsManager, mapPanel, themesPane);
 		/*

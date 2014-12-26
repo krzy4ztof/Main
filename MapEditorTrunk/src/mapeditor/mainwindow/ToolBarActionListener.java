@@ -1,6 +1,7 @@
 package mapeditor.mainwindow;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
@@ -45,6 +46,11 @@ public class ToolBarActionListener implements ActionListener {
 
 				button.setSelected(true);
 				button.setBackground(new Color(255, 211, 136));
+			}
+
+			Container container = button.getTopLevelAncestor();
+			if (container != null) {
+				container.requestFocus();
 			}
 		}
 

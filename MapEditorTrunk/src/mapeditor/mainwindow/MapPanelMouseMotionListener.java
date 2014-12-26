@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemesManager;
 
@@ -13,12 +14,14 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 	private MapPanel mapPanel;
 	private ThemesManager mapThemesManager;
 	private MapApi mapApi;
+	private Tools tools;
 
 	MapPanelMouseMotionListener(MapPanel mapPanel,
-			ThemesManager mapThemesManager, MapApi mapApi) {
+			ThemesManager mapThemesManager, MapApi mapApi, Tools tools) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
+		this.tools = tools;
 	}
 
 	@Override
@@ -29,14 +32,20 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 		 */
 		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
 		if (seg.x != -1) {
-			// MapObject mapObject = bmpPanel.getSelectedMapObject();
-			// MapObject mapObject = mapThemesManager.getSelectedTheme()
-			// .getSelectedObject();
+			switch (tools.getActiveTool()) {
+			case BRUSH:
+				MapObject mapObject = mapThemesManager.getSelectedMapObject();
+				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+				mapPanel.refresh();
+				break;
+			case ERASER:
+				mapObject = tools.getBlankMapObject();
+				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+				mapPanel.refresh();
+				break;
+			default:
 
-			MapObject mapObject = mapThemesManager.getSelectedMapObject();
-			mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
-
-			mapPanel.getPanel().repaint();
+			}
 		}
 	}
 

@@ -13,6 +13,7 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemesManager;
 
@@ -59,8 +60,8 @@ public class MapLoader {
 	 * @return
 	 * @throws Exception
 	 */
-	public MapApi loadMapFromFile(File rFile, ThemesManager mapThemesList)
-			throws Exception {
+	public MapApi loadMapFromFile(File rFile, ThemesManager mapThemesList,
+			Tools tools) throws Exception {
 
 		this.reinitalize();
 		XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -79,7 +80,8 @@ public class MapLoader {
 			while (reader.hasNext()) {
 				XMLEvent event = reader.nextEvent();
 
-				this.processEvent(event, mapApi, segmentsCode, mapThemesList);
+				this.processEvent(event, mapApi, segmentsCode, mapThemesList,
+						tools);
 			}
 			mapApi.setFile(rFile);
 
@@ -100,8 +102,8 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void processEvent(XMLEvent xmlEvent, MapApi mapApi,
-			Hashtable<String, String> segmentsCode, ThemesManager mapThemesList)
-			throws InvalidXML {
+			Hashtable<String, String> segmentsCode,
+			ThemesManager mapThemesList, Tools tools) throws InvalidXML {
 
 		if (xmlEvent.isStartElement()) {
 			StartElement startElement = xmlEvent.asStartElement();
@@ -114,7 +116,7 @@ public class MapLoader {
 				this.startGeneralParametersElement();
 			} else if (elementName.equals(MapFileDefinitions.SIZE_ELEMENT)) {
 				// mapApi =
-				this.readSizeElement(startElement, mapApi);
+				this.readSizeElement(startElement, mapApi, tools);
 				System.out.println("DD");
 			} else if (elementName
 					.equals(MapFileDefinitions.SEGMENTS_CODE_ELEMENT)) {
@@ -211,8 +213,8 @@ public class MapLoader {
 	 * @param mapApi
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
-	private void readSizeElement(StartElement startElement, MapApi mapApi)
-			throws InvalidXML {
+	private void readSizeElement(StartElement startElement, MapApi mapApi,
+			Tools tools) throws InvalidXML {
 
 		if (this.processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
@@ -247,7 +249,7 @@ public class MapLoader {
 		int cols = Integer.decode(atrCols.getValue());
 		int rows = Integer.decode(atrRows.getValue());
 
-		mapApi.resetMap(cols, rows);
+		mapApi.resetMap(cols, rows, tools.getBlankMapObject());
 	}
 
 	/**

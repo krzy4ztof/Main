@@ -1,11 +1,8 @@
 package mapeditor.mainwindow;
 
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import javax.swing.ImageIcon;
 
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemesManager;
@@ -15,8 +12,7 @@ public class ThemePanelMouseListener implements MouseListener {
 	private ThemesPane themesPane;
 	private ThemesManager themesManager;
 
-	ThemePanelMouseListener(ThemesManager themesManager,
-			ThemesPane themesPane) {
+	ThemePanelMouseListener(ThemesManager themesManager, ThemesPane themesPane) {
 		this.themesPane = themesPane;
 		this.themesManager = themesManager;
 	}
@@ -45,9 +41,7 @@ public class ThemePanelMouseListener implements MouseListener {
 				MapObject mapObject = themePane.getTheme().getMapObject(seg.y,
 						seg.x);
 
-				Image image = mapObject.getImageIcon().getImage()
-						.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-				themesPane.getButton().setIcon(new ImageIcon(image));
+				themesPane.setSelectedMapObject(mapObject);
 				themesManager.setSelectedMapObject(mapObject);
 
 				// MapObject mapObject = mapThemesManager.getSelectedTheme()

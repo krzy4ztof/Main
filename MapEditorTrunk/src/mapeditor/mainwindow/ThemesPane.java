@@ -3,6 +3,9 @@ package mapeditor.mainwindow;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -14,9 +17,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import mapeditor.main.ApplicationManager;
 import mapeditor.messages.MapMessages;
-import mapeditor.themesapi.ThemesManager;
+import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
+import mapeditor.themesapi.ThemesManager;
 
 public class ThemesPane {
 	// private MapThemesManager mapThemesManager;
@@ -69,13 +74,26 @@ public class ThemesPane {
 		JPanel selectionPane = new JPanel();
 
 		button = new JButton();
-		// button.addActionListener();
+		button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				// TODO Auto-generated method stub
+				((JButton) event.getSource()).getTopLevelAncestor()
+						.requestFocus();
+			}
+
+		});
+
 		// button.setActionCommand(actionCommand);
 		// button.setToolTipText(toolTipText);
-		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER
-				+ MainWindow.ICON_SELECTION_32;
+		String imgLocation = ApplicationManager.THEMES_PATH
+				+ MainWindow.ICON_NULL;
 
-		button.setIcon(new ImageIcon(imgLocation, ""));
+		Image image = new ImageIcon(imgLocation).getImage().getScaledInstance(
+				40, 40, Image.SCALE_DEFAULT);
+
+		button.setIcon(new ImageIcon(image));
 
 		selectionPane.add(button);
 		return selectionPane;
@@ -138,6 +156,8 @@ public class ThemesPane {
 
 				themePanel = themePanes.get(name);
 
+				sourceTabbedPane.getTopLevelAncestor().requestFocus();
+
 				// System.out.println(changeEvent);
 			}
 		});
@@ -145,7 +165,9 @@ public class ThemesPane {
 		return tabbedPane;
 	}
 
-	public JButton getButton() {
-		return button;
+	public void setSelectedMapObject(MapObject mapObject) {
+		Image image = mapObject.getImageIcon().getImage()
+				.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+		button.setIcon(new ImageIcon(image));
 	}
 }

@@ -1,5 +1,6 @@
 package mapeditor.mainwindow;
 
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Rectangle;
 
@@ -19,6 +20,8 @@ public class MapPanel extends GridPanel {
 	public MapPanel(MapApi mapApi) {
 		super();
 		this.mapApi = mapApi;
+		// TODO: cursor!
+		this.panel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 	}
 
 	@Override
@@ -137,6 +140,7 @@ public class MapPanel extends GridPanel {
 		MapObject mapObject = null;
 
 		mapObject = mapApi.getSegment(row, col).getMapObject();
+		// System.out.println("r: " + row + " c: " + col + " MO: " + mapObject);
 		if (mapObject != null) {
 			return mapObject.getImageIcon().getImage();
 		} else {
