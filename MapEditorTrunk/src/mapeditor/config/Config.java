@@ -14,6 +14,8 @@ public class Config {
 
 	private final String themeApiColumnsNumber = "themeapi.columns.number";
 
+	private final String toolBarIconsSize = "toolbar.icons.size";
+
 	private ResourceBundle resourceBundle;
 
 	public Config() {
@@ -58,4 +60,11 @@ public class Config {
 		Integer integer = new Integer(string);
 		return integer;
 	}
+
+	public Integer getToolBarIconsSize() {
+		String string = resourceBundle.getString(toolBarIconsSize);
+		Integer integer = new Integer(string);
+		return integer;
+	}
+
 }

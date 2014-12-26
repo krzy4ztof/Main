@@ -11,7 +11,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
 public abstract class GridPanel {
@@ -28,7 +28,7 @@ public abstract class GridPanel {
 	protected int segmentWidth = DEFAULT_SEGMENT_WIDTH;
 	protected int segmentHeight = DEFAULT_SEGMENT_HEIGHT;
 
-	protected JPanel panel;
+	protected JLayeredPane panel;
 
 	protected JScrollPane scrollPane;
 
@@ -37,7 +37,7 @@ public abstract class GridPanel {
 	public GridPanel() {
 		super();
 		// this.mapApi = mapApi;
-		panel = new JPanel() {
+		panel = new JLayeredPane() {
 
 			private static final long serialVersionUID = 1L;
 
@@ -167,7 +167,7 @@ public abstract class GridPanel {
 		return LEFT_MARIGIN;
 	}
 
-	public JPanel getPanel() {
+	public JLayeredPane getPanel() {
 		return panel;
 	}
 

@@ -5,7 +5,7 @@ import java.awt.Image;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
 
-public class ThemePanel extends GridPanel {
+public class SingleThemePane extends GridPanel {
 
 	private static int LEFT_MARIGIN = 10;
 	private static int RIGHT_MARIGIN = 10;
@@ -14,7 +14,7 @@ public class ThemePanel extends GridPanel {
 
 	private ThemeApi themeApi;
 
-	public ThemePanel(ThemeApi themeApi) {
+	public SingleThemePane(ThemeApi themeApi) {
 		super();
 		this.themeApi = themeApi;
 	}
@@ -59,6 +59,10 @@ public class ThemePanel extends GridPanel {
 	@Override
 	protected int getBottomMarigin() {
 		return BOTTOM_MARIGIN;
+	}
+
+	public ThemeApi getTheme() {
+		return themeApi;
 	}
 
 }

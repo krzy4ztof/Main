@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectsTheme;
-import mapeditor.themesapi.MapThemesManager;
+import mapeditor.themesapi.ThemesManager;
 
 public class BmpPanel extends JPanel {
 
@@ -41,7 +41,7 @@ public class BmpPanel extends JPanel {
 	private MapObject curMapObject = null; // W zamian za ImageNumber i
 											// SelectedImage
 
-	private MapThemesManager mapThemesManager = null;
+	private ThemesManager mapThemesManager = null;
 
 	/**
 	 * Numer w Ikony ktorej aktualnie wybrano przyciskiem
@@ -49,7 +49,7 @@ public class BmpPanel extends JPanel {
 	 * Ikony a nie numer przycisku!!!
 	 */
 
-	public BmpPanel(MapThemesManager mapThemesListParam) {
+	public BmpPanel(ThemesManager mapThemesListParam) {
 		super();
 		mapThemesManager = mapThemesListParam;
 	}

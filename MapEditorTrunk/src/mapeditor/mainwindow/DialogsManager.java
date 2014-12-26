@@ -11,7 +11,7 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoader;
 import mapeditor.saveload.MapSaver;
-import mapeditor.themesapi.MapThemesManager;
+import mapeditor.themesapi.ThemesManager;
 import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
@@ -19,11 +19,11 @@ public class DialogsManager {
 	MapPanel mapPanel;
 	MapApi mapApi;
 	MapMessages messages;
-	MapThemesManager mapThemesList;
+	ThemesManager mapThemesList;
 	Config config;
 
 	DialogsManager(MapPanel mapPanel, MapApi mapApi, MapMessages messages,
-			MapThemesManager mapThemesList, Config config) {
+			ThemesManager mapThemesList, Config config) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
@@ -36,7 +36,8 @@ public class DialogsManager {
 	 */
 	void newMapAction() {
 		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
-				.getTopLevelAncestor(), messages.getMsgSaveChanges(), null,
+				.getTopLevelAncestor(), messages
+				.getString(MapMessages.MSG_SAVE_CHANGES), null,
 				JOptionPane.YES_NO_OPTION);
 		if (res == JOptionPane.YES_OPTION) {
 			this.saveMapApi();
@@ -60,7 +61,8 @@ public class DialogsManager {
 	 */
 	void loadMapAction() {
 		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
-				.getTopLevelAncestor(), messages.getMsgSaveChanges());
+				.getTopLevelAncestor(), messages
+				.getString(MapMessages.MSG_SAVE_CHANGES));
 
 		if (res == JOptionPane.YES_OPTION) {
 			saveMapApi();
@@ -122,8 +124,8 @@ public class DialogsManager {
 				p_MapSaver.SaveMapToFile(p_MapApi, rFile);
 			} catch (Exception e) {
 
-				String msg = messages.getMsgSavingFailed() + " "
-						+ e.getMessage();
+				String msg = messages.getString(MapMessages.MSG_SAVING_FAILED)
+						+ " " + e.getMessage();
 				JOptionPane.showMessageDialog(FC, msg);
 			}
 		}
@@ -153,7 +155,8 @@ public class DialogsManager {
 				// gs.getJFrame().repaint();
 			} catch (Exception e) {
 
-				String msg = messages.getMsgLoadingFailed() + e.getMessage();
+				String msg = messages.getString(MapMessages.MSG_LOADING_FAILED)
+						+ e.getMessage();
 				JOptionPane.showMessageDialog(FC, msg);
 
 			}
@@ -165,7 +168,8 @@ public class DialogsManager {
 	 */
 	void closeApplicationAction() {
 		int res = JOptionPane.showConfirmDialog(mapPanel.getPanel()
-				.getTopLevelAncestor(), messages.getMsgSaveChanges());
+				.getTopLevelAncestor(), messages
+				.getString(MapMessages.MSG_SAVE_CHANGES));
 		if (res == JOptionPane.YES_OPTION) {
 			saveMapApi();
 		}

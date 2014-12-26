@@ -10,11 +10,11 @@ public class MapLayoutWrapper {
 	MapLayoutWrapper(MapLayout mapLayout, MapMessages messages) {
 		switch (mapLayout) {
 		case HEX:
-			name = messages.getLayoutHex();
+			name = messages.getString(MapMessages.LAY_HEX);
 
 			break;
 		case SQR:
-			name = messages.getLayoutSqr();
+			name = messages.getString(MapMessages.LAY_SQR);
 
 			break;
 		default:

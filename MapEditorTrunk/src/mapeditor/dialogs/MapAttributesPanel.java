@@ -88,7 +88,7 @@ public class MapAttributesPanel extends JDialog {
 		// this.initialCol = no_cols;
 		colItem = new JTextField();
 		rowItem = new JTextField();
-		setTitle(messages.getAttrTitle());
+		setTitle(messages.getString(MapMessages.ATTR_TITLE));
 		JButton btn;
 
 		Container pane = this.getContentPane();
@@ -103,7 +103,7 @@ public class MapAttributesPanel extends JDialog {
 
 		c.gridx = 0;
 		c.gridy = 0;
-		pane.add(new JLabel(messages.getAttrRowNumber()), c);
+		pane.add(new JLabel(messages.getString(MapMessages.ATTR_ROW_NUMBER)), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -112,7 +112,7 @@ public class MapAttributesPanel extends JDialog {
 
 		c.gridx = 0;
 		c.gridy = 1;
-		pane.add(new JLabel(messages.getAttrColNumber()), c);
+		pane.add(new JLabel(messages.getString(MapMessages.ATTR_COL_NUMBER)), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -122,7 +122,7 @@ public class MapAttributesPanel extends JDialog {
 
 		c.gridx = 0;
 		c.gridy = 2;
-		pane.add(new JLabel(messages.getAttrLayout()), c);
+		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
 
 		c.gridx = 0;
 		c.gridy = 3;
@@ -136,28 +136,28 @@ public class MapAttributesPanel extends JDialog {
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridheight = 1;
-		btn = new JButton(messages.getAttrDefaultSize());
+		btn = new JButton(messages.getString(MapMessages.ATTR_DEFAULT_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 1;
 		c.gridy = 4;
-		btn = new JButton(messages.getAttrPreviousSize());
+		btn = new JButton(messages.getString(MapMessages.ATTR_PREVIOUS_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 0;
 		c.gridy = 5;
-		btn = new JButton(messages.getOk());
+		btn = new JButton(messages.getString(MapMessages.ATTR_OK));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_OK);
 		pane.add(btn, c);
 
 		c.gridx = 1;
 		c.gridy = 5;
-		btn = new JButton(messages.getCancel());
+		btn = new JButton(messages.getString(MapMessages.ATTR_CANCEL));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
 		pane.add(btn, c);

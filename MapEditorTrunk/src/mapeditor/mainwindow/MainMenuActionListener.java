@@ -7,10 +7,10 @@ public class MainMenuActionListener implements ActionListener {
 
 	private MapPanel mapPanel;
 	private DialogsManager dialogsManager;
-	private ThemesTabbedPane themesPane;
+	private ThemesPane themesPane;
 
 	MainMenuActionListener(DialogsManager dialogsManager, MapPanel mapPanel,
-			ThemesTabbedPane themesPane) {
+			ThemesPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.dialogsManager = dialogsManager;
 		this.themesPane = themesPane;

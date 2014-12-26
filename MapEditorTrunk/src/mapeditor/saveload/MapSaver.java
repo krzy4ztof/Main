@@ -18,17 +18,18 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectsTheme;
-import mapeditor.themesapi.MapThemesManager;
+import mapeditor.themesapi.ThemesManager;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class MapSaver {
 
-	private MapThemesManager mapThemesList = null;
+	private ThemesManager mapThemesList = null;
 	private MapMessages messages = null;
 
-	public MapSaver(MapMessages messages, MapThemesManager mapThemesListParameter) {
+	public MapSaver(MapMessages messages,
+			ThemesManager mapThemesListParameter) {
 		this.messages = messages;
 		mapThemesList = mapThemesListParameter;
 	}
@@ -130,8 +131,7 @@ public class MapSaver {
 				mapObject = itObject.next();
 				objectIdString = mapObject.getObjectIdString();
 
-				if (!objectIdString
-						.contentEquals(MapObject.DEFAULT_OBJECT_ID)) {
+				if (!objectIdString.contentEquals(MapObject.DEFAULT_OBJECT_ID)) {
 					bufElem = rDocument
 							.createElement(MapFileDefinitions.CODE_ELEMENT);
 					bufElem.setAttribute(MapFileDefinitions.ID_ATTRIBUTE,
@@ -174,7 +174,7 @@ public class MapSaver {
 		Element root = rDocument
 				.createElement(MapFileDefinitions.MAP_XML_ELEMENT);
 		root.setAttribute(MapFileDefinitions.MAP_NAME_ATTRIBUTE,
-				messages.getMapName());
+				messages.getString(MapMessages.MAPSAVER_MAP_NAME));
 		rDocument.appendChild(root);
 
 		root.appendChild(this.CreateGeneralPametersTag(rMapApi, rDocument));

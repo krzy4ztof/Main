@@ -11,7 +11,7 @@ import java.util.LinkedList;
  *
  * @author krzysztof
  */
-public class MapThemesManager {
+public class ThemesManager {
 
 	private LinkedList<MapObjectsTheme> themesList = null;
 
@@ -21,7 +21,9 @@ public class MapThemesManager {
 
 	private ThemeApi selectedThemeApi = null;
 
-	public MapThemesManager() {
+	private MapObject selectedMapObject = null;
+
+	public ThemesManager() {
 		themesList = new LinkedList<MapObjectsTheme>();
 		themeApiList = new LinkedList<ThemeApi>();
 	}
@@ -30,6 +32,10 @@ public class MapThemesManager {
 		Iterator<MapObjectsTheme> it = this.themesList.iterator();
 
 		return it;
+	}
+
+	public LinkedList<ThemeApi> getThemesApis() {
+		return themeApiList;
 	}
 
 	public MapObjectsTheme getFirstTheme() {
@@ -118,5 +124,13 @@ public class MapThemesManager {
 
 	public void setSelectedTheme(String name) {
 		selectedTheme = getThemeByName(name);
+	}
+
+	public MapObject getSelectedMapObject() {
+		return selectedMapObject;
+	}
+
+	public void setSelectedMapObject(MapObject selectedMapObject) {
+		this.selectedMapObject = selectedMapObject;
 	}
 }

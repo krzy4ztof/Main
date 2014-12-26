@@ -1,0 +1,151 @@
+package mapeditor.mainwindow;
+
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import mapeditor.messages.MapMessages;
+import mapeditor.themesapi.ThemesManager;
+import mapeditor.themesapi.ThemeApi;
+
+public class ThemesPane {
+	// private MapThemesManager mapThemesManager;
+
+	private JLayeredPane pane;
+
+	private JTabbedPane tabbedPane;
+
+	private SingleThemePane themePanel;
+
+	private HashMap<String, SingleThemePane> themePanes;
+
+	private JButton button;
+
+	public ThemesPane(MapMessages messages, ThemesManager mapThemesManager) {
+		super();
+		// this.mapThemesManager = mapThemesManager;
+		themePanes = new HashMap<String, SingleThemePane>();
+
+		pane = new JLayeredPane();
+		pane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1.0;
+		c.weighty = 1.0;
+		c.gridx = 0;
+		c.gridy = 0;
+
+		tabbedPane = createTabbedPane(messages, mapThemesManager);
+		pane.add(tabbedPane, c);
+
+		c.weightx = 1.0;
+		c.weighty = 0.0;
+		c.gridx = 0;
+		c.gridy = 1;
+
+		JPanel selectionPane = createSelectionPanel();
+		pane.add(selectionPane, c);
+	}
+
+	public JComponent getPane() {
+		return pane;
+	}
+
+	public SingleThemePane getActiveThemePanel() {
+		return themePanel;
+	}
+
+	private JPanel createSelectionPanel() {
+		JPanel selectionPane = new JPanel();
+
+		button = new JButton();
+		// button.addActionListener();
+		// button.setActionCommand(actionCommand);
+		// button.setToolTipText(toolTipText);
+		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER
+				+ MainWindow.ICON_SELECTION_32;
+
+		button.setIcon(new ImageIcon(imgLocation, ""));
+
+		selectionPane.add(button);
+		return selectionPane;
+	}
+
+	private JTabbedPane createTabbedPane(MapMessages messages,
+			ThemesManager mapThemesManager) {
+		JTabbedPane tabbedPane = new JTabbedPane();
+
+		ThemePanelMouseListener tpMouseListener = new ThemePanelMouseListener(
+				mapThemesManager, this);
+
+		for (ThemeApi themeApi : mapThemesManager.getThemesApis()) {
+			SingleThemePane themePanel = new SingleThemePane(themeApi);
+			themePanel.getPanel().addMouseListener(tpMouseListener);
+
+			if (themeApi == mapThemesManager.getSelectedThemeApi()) {
+				this.themePanel = themePanel;
+			}
+
+			String name = messages.getString(MapMessages.THEMENAME
+					+ themeApi.getName());
+
+			themePanes.put(name, themePanel);
+			tabbedPane.addTab(name, themePanel.getScrollPane());
+
+		}
+
+		// ImageIcon icon = createImageIcon("images/middle.gif");
+
+		// JComponent panel1 = makeTextPanel("Panel #1");
+		/*
+		 * tabbedPane.addTab("Tab1", themePanel.getScrollPane());
+		 * tabbedPane.setMnemonicAt(0, KeyEvent.VK_1); tabbedPane.addTab("Tab2",
+		 * new JPanel()); tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+		 * tabbedPane.addTab("Tab3", new JPanel()); tabbedPane.setMnemonicAt(2,
+		 * KeyEvent.VK_3); tabbedPane.addTab("Tab4", new JPanel());
+		 * tabbedPane.setMnemonicAt(3, KeyEvent.VK_4); tabbedPane.addTab("Tab5",
+		 * new JPanel()); tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
+		 * tabbedPane.addTab("Tab6", new JPanel()); tabbedPane.setMnemonicAt(5,
+		 * KeyEvent.VK_6);
+		 */
+		// tabbedPane.addTab("Tab 1", icon, panel1, "Does nothing");
+		// tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+		//
+
+		tabbedPane.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent changeEvent) {
+				// TODO Auto-generated method stub
+				JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent
+						.getSource();
+				int index = sourceTabbedPane.getSelectedIndex();
+				Component component = sourceTabbedPane.getSelectedComponent();
+				System.out.println("Tab changed to: " + component);
+				String name = sourceTabbedPane.getTitleAt(index);
+
+				System.out.println("Tab changed to: " + name);
+
+				themePanel = themePanes.get(name);
+
+				// System.out.println(changeEvent);
+			}
+		});
+
+		return tabbedPane;
+	}
+
+	public JButton getButton() {
+		return button;
+	}
+}

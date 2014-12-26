@@ -98,4 +98,8 @@ public class ThemeApi {
 	public int getRowsSize() {
 		return mapObjects.size();
 	}
+
+	public String getName() {
+		return name;
+	}
 }

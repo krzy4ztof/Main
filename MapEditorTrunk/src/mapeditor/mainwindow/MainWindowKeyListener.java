@@ -6,9 +6,9 @@ import java.awt.event.KeyListener;
 public class MainWindowKeyListener implements KeyListener {
 
 	private MapPanel mapPanel;
-	private ThemesTabbedPane themesPane;
+	private ThemesPane themesPane;
 
-	public MainWindowKeyListener(MapPanel mapPanel, ThemesTabbedPane themesPane) {
+	public MainWindowKeyListener(MapPanel mapPanel, ThemesPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.themesPane = themesPane;
 	}

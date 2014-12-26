@@ -43,6 +43,13 @@ public class MapMessages {
 	public static String LAY_HEX = "maplayout.hex";
 	public static String LAY_SQR = "maplayout.sqr";
 
+	public static String TOOLBAR_TITLE = "toolbar.title";
+	public static String TOOLBAR_ERASER = "toolbar.eraser";
+	public static String TOOLBAR_BRUSH = "toolbar.brush";
+	public static String TOOLBAR_BUCKET = "toolbar.bucket";
+	public static String TOOLBAR_PICKER = "toolbar.picker";
+	public static String TOOLBAR_SELECTION = "toolbar.selection";
+
 	ResourceBundle resourceBundle;
 
 	public MapMessages(Config config) {
@@ -52,7 +59,7 @@ public class MapMessages {
 				"mapeditor.messages.MessagesBundle", currentLocale);
 	}
 
-	private String getString(String string) {
+	public String getString(String string) {
 		String msg = string;
 
 		try {
@@ -61,122 +68,6 @@ public class MapMessages {
 
 		}
 		return msg;
-	}
-
-	public String getMenuFile() {
-		return getString(MENU_FILE);
-	}
-
-	public String getMenuNew() {
-		return getString(MENU_NEW);
-	}
-
-	public String getMenuOpen() {
-		return getString(MENU_OPEN);
-	}
-
-	public String getMenuClose() {
-		return getString(MENU_CLOSE);
-	}
-
-	public String getMenuSave() {
-		return getString(MENU_SAVE);
-	}
-
-	public String getMenuEdit() {
-		return getString(MENU_EDIT);
-	}
-
-	public String getMenuAttributes() {
-		return getString(MENU_ATTRIBUTES);
-	}
-
-	public String getMenuRefresh() {
-		return getString(MENU_REFRESH);
-	}
-
-	public String getMenuNavigation() {
-		return getString(MENU_NAVIGATION);
-	}
-
-	public String getMenuZoomIn() {
-		return getString(MENU_ZOOM_IN);
-	}
-
-	public String getMenuZoomOut() {
-		return getString(MENU_ZOOM_OUT);
-	}
-
-	public String getMenuDefaultZoom() {
-		return getString(MENU_DEFAULT_ZOOM);
-	}
-
-	public String getMenuCenterMap() {
-		return getString(MENU_CENTER_MAP);
-	}
-
-	public String getMenuObjects() {
-		return getString(MENU_OBJECTS);
-	}
-
-	public String getThemeName(String name) {
-		return getString(THEMENAME + name);
-	}
-
-	public String getMsgSavingFailed() {
-		return getString(MSG_SAVING_FAILED);
-	}
-
-	public String getMsgSaveChanges() {
-		return getString(MSG_SAVE_CHANGES);
-	}
-
-	public String getMsgLoadingFailed() {
-		return getString(MSG_LOADING_FAILED);
-	}
-
-	public String getMapName() {
-		return getString(MAPSAVER_MAP_NAME);
-	}
-
-	public String getAttrTitle() {
-		return getString(ATTR_TITLE);
-	}
-
-	public String getAttrRowNumber() {
-		return getString(ATTR_ROW_NUMBER);
-	}
-
-	public String getAttrColNumber() {
-		return getString(ATTR_COL_NUMBER);
-	}
-
-	public String getAttrLayout() {
-		return getString(ATTR_LAYOUT);
-	}
-
-	public String getAttrDefaultSize() {
-		return getString(ATTR_DEFAULT_SIZE);
-	}
-
-	public String getAttrPreviousSize() {
-		return getString(ATTR_PREVIOUS_SIZE);
-	}
-
-	public String getOk() {
-		return getString(ATTR_OK);
-	}
-
-	public String getCancel() {
-		return getString(ATTR_CANCEL);
-	}
-
-	public String getLayoutHex() {
-		return getString(LAY_HEX);
-	}
-
-	public String getLayoutSqr() {
-		return getString(LAY_SQR);
 	}
 
 }
