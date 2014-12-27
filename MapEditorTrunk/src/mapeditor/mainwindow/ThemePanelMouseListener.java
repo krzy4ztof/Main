@@ -26,7 +26,7 @@ public class ThemePanelMouseListener implements MouseListener {
 		Object component = event.getComponent();
 		System.out.println("SEL !" + component.getClass().getName());
 
-		if (component instanceof GridPanel) {
+		if (component instanceof GridPane) {
 			System.out.println("SEL !!!!" + component);
 		}
 
@@ -41,8 +41,10 @@ public class ThemePanelMouseListener implements MouseListener {
 				MapObject mapObject = themePane.getTheme().getMapObject(seg.y,
 						seg.x);
 
-				themesPane.setSelectedMapObject(mapObject);
-				themesManager.setSelectedMapObject(mapObject);
+				if (mapObject != null) {
+					themesPane.setSelectedMapObject(mapObject);
+					themesManager.setSelectedMapObject(mapObject);
+				}
 
 				// MapObject mapObject = mapThemesManager.getSelectedTheme()
 				// .getSelectedObject();

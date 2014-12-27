@@ -5,10 +5,10 @@ import java.awt.event.KeyListener;
 
 public class MainWindowKeyListener implements KeyListener {
 
-	private MapPanel mapPanel;
+	private MapPane mapPanel;
 	private ThemesPane themesPane;
 
-	public MainWindowKeyListener(MapPanel mapPanel, ThemesPane themesPane) {
+	public MainWindowKeyListener(MapPane mapPanel, ThemesPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.themesPane = themesPane;
 	}

@@ -11,14 +11,14 @@ import mapeditor.themesapi.ThemesManager;
 
 public class MapPanelMouseListener implements MouseListener {
 
-	private MapPanel mapPanel;
+	private MapPane mapPanel;
 	// private GraphicsSystem graphicsSystem;
 	private MapApi mapApi;
 	private ThemesManager mapThemesManager;
 	private Tools tools;
 	private ThemesPane themesPane;
 
-	MapPanelMouseListener(MapPanel mapPanel, ThemesManager mapThemesManager,
+	MapPanelMouseListener(MapPane mapPanel, ThemesManager mapThemesManager,
 			MapApi mapApi, Tools tools, ThemesPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;

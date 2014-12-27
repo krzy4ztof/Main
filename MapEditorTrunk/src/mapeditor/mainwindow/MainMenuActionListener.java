@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 
 public class MainMenuActionListener implements ActionListener {
 
-	private MapPanel mapPanel;
+	private MapPane mapPanel;
 	private DialogsManager dialogsManager;
 	private ThemesPane themesPane;
 
-	MainMenuActionListener(DialogsManager dialogsManager, MapPanel mapPanel,
+	MainMenuActionListener(DialogsManager dialogsManager, MapPane mapPanel,
 			ThemesPane themesPane) {
 		this.mapPanel = mapPanel;
 		this.dialogsManager = dialogsManager;

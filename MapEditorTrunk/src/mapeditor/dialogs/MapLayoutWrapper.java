@@ -5,7 +5,8 @@ import mapeditor.messages.MapMessages;
 
 public class MapLayoutWrapper {
 
-	String name;
+	private String name;
+	private MapLayout mapLayout;
 
 	MapLayoutWrapper(MapLayout mapLayout, MapMessages messages) {
 		switch (mapLayout) {
@@ -21,10 +22,16 @@ public class MapLayoutWrapper {
 			name = "";
 		}
 
+		this.mapLayout = mapLayout;
+
 	}
 
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	public MapLayout getMapLayout() {
+		return mapLayout;
 	}
 }

@@ -2,6 +2,7 @@ package mapeditor.mainwindow;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
@@ -18,9 +19,14 @@ import mapeditor.mapapi.Tools.ToolsEnum;
 public class ToolBarActionListener implements ActionListener {
 
 	private Tools tools;
+	private MapPane mapPanel;
+	private CursorFactory cursorFactory;
 
-	public ToolBarActionListener(Tools tools) {
+	public ToolBarActionListener(Tools tools, CursorFactory cursorFactory,
+			MapPane mapPanel) {
 		this.tools = tools;
+		this.cursorFactory = cursorFactory;
+		this.mapPanel = mapPanel;
 	}
 
 	@Override
@@ -59,14 +65,27 @@ public class ToolBarActionListener implements ActionListener {
 
 		if (str.equals(MainWindow.ACTION_TOOLBAR_ERASER)) {
 			tools.setActiveTool(ToolsEnum.ERASER);
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(CursorFactory.CURSOR_ERASER));
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BRUSH)) {
 			tools.setActiveTool(ToolsEnum.BRUSH);
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(CursorFactory.CURSOR_BRUSH));
+
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BUCKET)) {
 			tools.setActiveTool(ToolsEnum.BUCKET);
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(CursorFactory.CURSOR_BUCKET));
+
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_PICKER)) {
 			tools.setActiveTool(ToolsEnum.PICKER);
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(CursorFactory.CURSOR_PICKER));
+
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_SELECTION)) {
 			tools.setActiveTool(ToolsEnum.SELECTION);
+			mapPanel.getPanel().setCursor(
+					Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 		}
 
 		System.out.println("Co wybrano: " + tools.getActiveTool());

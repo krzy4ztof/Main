@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.MapAttributes;
+import mapeditor.mapapi.MapLayout;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoader;
@@ -17,14 +19,14 @@ import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
 
-	private MapPanel mapPanel;
+	private MapPane mapPanel;
 	private MapApi mapApi;
 	private MapMessages messages;
 	private ThemesManager mapThemesList;
 	private Config config;
 	private Tools tools;
 
-	DialogsManager(MapPanel mapPanel, MapApi mapApi, MapMessages messages,
+	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
 			ThemesManager mapThemesList, Config config, Tools tools) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
@@ -51,8 +53,11 @@ public class DialogsManager {
 		MRP.activate(mapApi.getMapAttributes());
 
 		if (!MRP.isCanceled()) {
-			int row = MRP.getSelectedMapAttributes().getRows();
-			int col = MRP.getSelectedMapAttributes().getColumns();
+			MapAttributes mapAttributes = MRP.getSelectedMapAttributes();
+
+			int row = mapAttributes.getRows();
+			int col = mapAttributes.getColumns();
+			MapLayout mapLayout = mapAttributes.getMapLayout();
 
 			mapApi.resetMap(row, col, tools.getBlankMapObject());
 		}

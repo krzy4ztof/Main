@@ -1,7 +1,5 @@
 package mapeditor.mainwindow;
 
-import java.awt.Cursor;
-import java.awt.Image;
 import java.awt.Rectangle;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
@@ -9,7 +7,7 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
 
-public class MapPanel extends GridPanel {
+public class MapPane extends GridPane {
 
 	ExampleFileFilter fe;
 
@@ -17,11 +15,9 @@ public class MapPanel extends GridPanel {
 	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
 	private MapApi mapApi;
 
-	public MapPanel(MapApi mapApi) {
+	public MapPane(MapApi mapApi) {
 		super();
 		this.mapApi = mapApi;
-		// TODO: cursor!
-		this.panel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 	}
 
 	@Override
@@ -131,20 +127,19 @@ public class MapPanel extends GridPanel {
 	}
 
 	@Override
-	protected Image getImage(int row, int col) {
+	protected MapObject getMapObject(int row, int col) {
 		/*
 		 * zwraca ImageIcon danego segmentu mapy. Parametry: col - kolumna, row
 		 * - rzad
 		 */
 
-		MapObject mapObject = null;
+		MapObject mapObject = mapApi.getSegment(row, col).getMapObject();
+		return mapObject;
 
-		mapObject = mapApi.getSegment(row, col).getMapObject();
 		// System.out.println("r: " + row + " c: " + col + " MO: " + mapObject);
-		if (mapObject != null) {
-			return mapObject.getImageIcon().getImage();
-		} else {
-			return getBlankImage();
-		}
+		/*
+		 * if (mapObject != null) { return mapObject.getImageIcon().getImage();
+		 * } else { // return getBlankImage(); return null; }
+		 */
 	}
 }

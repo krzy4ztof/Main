@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -162,9 +163,20 @@ public class MapAttributesPanel extends JDialog {
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
 		pane.add(btn, c);
 
+		// ////
+
+		c.gridx = 0;
+		c.gridy = 6;
+		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
+
+		c.gridx = 1;
+		c.gridy = 6;
+		c.gridheight = 2;
+		pane.add(activateComboBox(), c);
+
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		// this.setSize(290, 180);
-		setSize(290, 165);
+		// setSize(290, 165);
+		setSize(290, 265);
 
 		// this.setResizable(true);
 
@@ -190,6 +202,19 @@ public class MapAttributesPanel extends JDialog {
 		list.addListSelectionListener(mapListSelectionListener);
 		list.setSelectedValue(mlwSqr, true);
 		return list;
+	}
+
+	private JComboBox<MapLayoutWrapper> activateComboBox() {
+		MapLayoutWrapper mlwHex = new MapLayoutWrapper(MapLayout.HEX, messages);
+		MapLayoutWrapper mlwSqr = new MapLayoutWrapper(MapLayout.SQR, messages);
+
+		MapLayoutWrapper[] data = new MapLayoutWrapper[] { mlwHex, mlwSqr };
+		JComboBox<MapLayoutWrapper> comboBox = new JComboBox<MapLayoutWrapper>(
+				data);
+		comboBox.addActionListener(new LayoutActionListener(
+				this.selectedMapAttributes));
+
+		return comboBox;
 	}
 
 	/**

@@ -157,8 +157,7 @@ public class MainWindow {
 	}
 
 	private JPanel createRightSidePanel(ThemesPane themesPane,
-
-	MainMenuActionListener gsListener) {
+			MainMenuActionListener gsListener) {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -199,13 +198,16 @@ public class MainWindow {
 		// bmpPanel.setMinimumSize(minimumSize);
 		// /
 		panel.add(splitPane, c);
+		// panel.setSize(400, 400);
+		// panel.setMinimumSize(new Dimension(300, 300));
 		// panel.add(bmpPanel, c);
+
 		return panel;
 	}
 
-	private MapPanel createMapPanel(Config config, MapMessages messages,
+	private MapPane createMapPanel(Config config, MapMessages messages,
 			ThemesManager mapThemesList, MapApi mapApi) {
-		MapPanel mapPanel = new MapPanel(mapApi);
+		MapPane mapPanel = new MapPane(mapApi);
 
 		return mapPanel;
 	}
@@ -224,9 +226,9 @@ public class MainWindow {
 		 * c.fill = GridBagConstraints.BOTH; c.weightx = 1.0; c.weighty = 0.0;
 		 * c.gridx = 0; c.gridy = 0;
 		 */
+
+		CursorFactory cursorFactory = new CursorFactory();
 		Tools tools = new Tools();
-		JToolBar toolBar = createToolBar(config, messages, tools);
-		frame.add(toolBar, BorderLayout.PAGE_START);
 		/*
 		 * c.weightx = 1.0; c.weighty = 1.0; c.gridx = 0; c.gridy = 1;
 		 */
@@ -235,7 +237,7 @@ public class MainWindow {
 		// bmpPanel);
 
 		MapApi mapApi = new MapApi(config, tools);
-		MapPanel mapPanel = createMapPanel(config, messages, mapThemesList,
+		MapPane mapPanel = createMapPanel(config, messages, mapThemesList,
 				mapApi);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
@@ -247,6 +249,10 @@ public class MainWindow {
 
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
+
+		JToolBar toolBar = createToolBar(config, messages, tools,
+				cursorFactory, mapPanel);
+		frame.add(toolBar, BorderLayout.PAGE_START);
 
 		// contentPane.add(mapPanel.getScrollPane(), c);
 
@@ -277,9 +283,16 @@ public class MainWindow {
 
 		splitPane.setResizeWeight(1);
 		// Provide minimum sizes for the two components in the split pane
-		Dimension minimumSize = new Dimension(100, 0);
-		mapPanel.getScrollPane().setMinimumSize(minimumSize);
-		rightSidePanel.setMinimumSize(minimumSize);
+		Dimension minimumSize = new Dimension(200, 0);
+		// mapPanel.getScrollPane().setMinimumSize(minimumSize);
+		mapPanel.getScrollPane().setPreferredSize(minimumSize);
+
+		int minWidth = SingleThemePane.DEFAULT_SEGMENT_WIDTH
+				* config.getThemeApiColumnsNumber()
+				+ SingleThemePane.LEFT_MARIGIN + SingleThemePane.RIGHT_MARIGIN
+				+ 10;
+		minimumSize = new Dimension(minWidth, 0);
+		rightSidePanel.setPreferredSize(minimumSize);
 
 		// contentPane.add(splitPane, c);
 		contentPane.add(splitPane, BorderLayout.CENTER);
@@ -290,7 +303,7 @@ public class MainWindow {
 		frame.setJMenuBar(menu);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400, 400);
+		frame.setSize(500, 400);
 		frame.setVisible(true);
 		frame.requestFocus();
 		frame.addFocusListener(new MainWindowFocusListener());
@@ -298,10 +311,11 @@ public class MainWindow {
 	}
 
 	private JToolBar createToolBar(Config config, MapMessages messages,
-			Tools tools) {
+			Tools tools, CursorFactory cursorFactory, MapPane mapPanel) {
 		JToolBar toolBar = new JToolBar(
 				messages.getString(MapMessages.TOOLBAR_TITLE));
-		ToolBarActionListener actionListener = new ToolBarActionListener(tools);
+		ToolBarActionListener actionListener = new ToolBarActionListener(tools,
+				cursorFactory, mapPanel);
 
 		String iconEraser = ICON_ERASER_16;
 		String iconBrush = ICON_BRUSH_16;

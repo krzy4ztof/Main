@@ -1,14 +1,12 @@
 package mapeditor.mainwindow;
 
-import java.awt.Image;
-
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
 
-public class SingleThemePane extends GridPanel {
+public class SingleThemePane extends GridPane {
 
-	private static int LEFT_MARIGIN = 10;
-	private static int RIGHT_MARIGIN = 10;
+	public static int LEFT_MARIGIN = 10;
+	public static int RIGHT_MARIGIN = 10;
 	private static int TOP_MARIGIN = 10;
 	private static int BOTTOM_MARIGIN = 10;
 
@@ -30,15 +28,16 @@ public class SingleThemePane extends GridPanel {
 	};
 
 	@Override
-	protected Image getImage(int row, int col) {
+	protected MapObject getMapObject(int row, int col) {
 
 		MapObject mapObject = themeApi.getMapObject(row, col);
 
-		if (mapObject != null) {
-			return mapObject.getImageIcon().getImage();
-		} else {
-			return getBlankImage();
-		}
+		return mapObject;
+
+		/*
+		 * if (mapObject != null) { return mapObject.getImageIcon().getImage();
+		 * } else { // return getBlankImage(); return null; }
+		 */
 	}
 
 	@Override

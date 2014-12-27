@@ -60,6 +60,13 @@ public class ThemesPane {
 
 		JPanel selectionPane = createSelectionPanel();
 		pane.add(selectionPane, c);
+
+		/*
+		 * int minWidth = SingleThemePane.DEFAULT_SEGMENT_WIDTH
+		 * config.getThemeApiColumnsNumber() + 30; minimumSize = new
+		 * Dimension(minWidth, 0); panel.setPreferredSize(minimumSize);
+		 */
+		// pane.setPrefferedSize(new Dimension(300, 200));
 	}
 
 	public JComponent getPane() {
@@ -155,6 +162,8 @@ public class ThemesPane {
 				System.out.println("Tab changed to: " + name);
 
 				themePanel = themePanes.get(name);
+				System.out.println("H: " + themePanel.getPanel().getHeight()
+						+ "W: " + themePanel.getPanel().getWidth());
 
 				sourceTabbedPane.getTopLevelAncestor().requestFocus();
 

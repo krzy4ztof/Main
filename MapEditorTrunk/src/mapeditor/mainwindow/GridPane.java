@@ -14,7 +14,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
-public abstract class GridPanel {
+import mapeditor.themesapi.MapObject;
+
+public abstract class GridPane {
 
 	private static int LEFT_MARIGIN = 70;
 	private static int RIGHT_MARIGIN = 30;
@@ -34,7 +36,7 @@ public abstract class GridPanel {
 
 	private Image blankImage;
 
-	public GridPanel() {
+	public GridPane() {
 		super();
 		// this.mapApi = mapApi;
 		panel = new JLayeredPane() {
@@ -44,7 +46,7 @@ public abstract class GridPanel {
 			@Override
 			public void paint(Graphics g) {
 				super.paint(g);
-				GridPanel.this.paint(g);
+				GridPane.this.paint(g);
 			}
 		};
 
@@ -59,6 +61,15 @@ public abstract class GridPanel {
 
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
 
+		MapObject mapObject = getMapObject(row, column);
+		if (mapObject == null) {
+			System.out.println(this.getClass() + " " + row + "  " + column);
+
+			return;
+		}
+
+		Image image = mapObject.getImageIcon().getImage();
+
 		int currentHeight = row * segmentHeight
 				+ (segmentHeight - segmentHeight / divider);
 
@@ -66,9 +77,9 @@ public abstract class GridPanel {
 
 		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
-		graphics.drawImage(getImage(row, column), column * segmentWidth
-				+ getLeftMarigin(), currentHeight + getTopMarigin(),
-				segmentWidth, segmentHeight, panel.getBackground(), panel);
+		graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
+				currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
+				panel.getBackground(), panel);
 
 		if (graphics instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D) graphics;
@@ -146,7 +157,7 @@ public abstract class GridPanel {
 		return width;
 	}
 
-	protected abstract Image getImage(int row, int col);
+	protected abstract MapObject getMapObject(int row, int col);
 
 	private int getLastVisibleColumnNumber() {
 		Rectangle rectangle = panel.getVisibleRect();
@@ -276,8 +287,8 @@ public abstract class GridPanel {
 		panel.repaint();
 	}
 
-	protected Image getBlankImage() {
-		return blankImage;
-	}
+	// protected Image getBlankImage() {
+	// return blankImage;
+	// }
 
 }
