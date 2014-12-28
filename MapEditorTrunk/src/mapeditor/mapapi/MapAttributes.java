@@ -5,7 +5,13 @@ public class MapAttributes implements Cloneable {
 	private int columns;
 	private MapLayout mapLayout;
 
-	MapAttributes(int rows, int columns, MapLayout mapLayout) {
+	/**
+	 * 
+	 * @param rows
+	 * @param columns
+	 * @param mapLayout
+	 */
+	public MapAttributes(int rows, int columns, MapLayout mapLayout) {
 		this.setRows(rows);
 		this.setColumns(columns);
 		this.setMapLayout(mapLayout);

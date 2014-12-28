@@ -21,11 +21,15 @@ public class ThemesManager {
 
 	private ThemeApi selectedThemeApi = null;
 
-	private MapObject selectedMapObject = null;
+	private MapObject selectedMapObject;
 
-	public ThemesManager() {
+	private MapObjectFactory mapObjectFactory;
+
+	public ThemesManager(MapObjectFactory mapObjectFactory) {
+		this.mapObjectFactory = mapObjectFactory;
 		themesList = new LinkedList<MapObjectsTheme>();
 		themeApiList = new LinkedList<ThemeApi>();
+		selectedMapObject = mapObjectFactory.getBlankMapObject();
 	}
 
 	public Iterator<MapObjectsTheme> getThemesIterator() {
@@ -103,6 +107,9 @@ public class ThemesManager {
 			}
 		}
 
+		if (mapObject == null) {
+			mapObject = mapObjectFactory.getBlankMapObject();
+		}
 		return mapObject;
 	}
 

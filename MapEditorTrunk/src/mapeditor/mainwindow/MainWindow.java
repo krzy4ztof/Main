@@ -23,6 +23,7 @@ import mapeditor.config.Config;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 public class MainWindow {
@@ -66,8 +67,8 @@ public class MainWindow {
 	public final static String ICON_NULL = "null.png";
 
 	public MainWindow(Config config, MapMessages messages,
-			ThemesManager mapThemesList) {
-		activate(config, messages, mapThemesList);
+			ThemesManager mapThemesList, MapObjectFactory mapObjectFactory) {
+		activate(config, messages, mapThemesList, mapObjectFactory);
 	}
 
 	private JMenu createFileMenu(MapMessages messages,
@@ -152,7 +153,6 @@ public class MainWindow {
 		menuBar.add(createFileMenu(messages, gsListener));
 		menuBar.add(createEditMenu(messages, gsListener));
 		menuBar.add(createNavigationMenu(messages, gsListener));
-		// menuBar.add(createMenuObjects(messages, mapThemesList, bmpListener));
 		return menuBar;
 	}
 
@@ -164,25 +164,11 @@ public class MainWindow {
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.fill = GridBagConstraints.BOTH;
-		// c.weightx = 0.0;
 		c.weightx = 1.0;
-
 		c.weighty = 1.0;
 		c.gridx = 0;
 		c.gridy = 0;
-		// panel.add(themePanel.getScrollPane(), c);
 
-		/*
-		 * c.weighty = 0.0; c.gridx = 0; c.gridy = 1;
-		 */
-
-		// bmpPanel.activate(bmpListener);
-
-		// /
-
-		// /
-		// JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-		// themePanel.getScrollPane(), bmpPanel);
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 				themesPane.getPane(), new JPanel());
 
@@ -190,17 +176,9 @@ public class MainWindow {
 		// splitPane.setDividerLocation(200);
 
 		splitPane.setResizeWeight(1);
-		// Provide minimum sizes for the two components in the split pane
 		Dimension minimumSize = new Dimension(0, 100);
-		// themePanel.getScrollPane().setMinimumSize(minimumSize);
 		themesPane.getPane().setMinimumSize(minimumSize);
-
-		// bmpPanel.setMinimumSize(minimumSize);
-		// /
 		panel.add(splitPane, c);
-		// panel.setSize(400, 400);
-		// panel.setMinimumSize(new Dimension(300, 300));
-		// panel.add(bmpPanel, c);
 
 		return panel;
 	}
@@ -213,39 +191,26 @@ public class MainWindow {
 	}
 
 	private void activate(Config config, MapMessages messages,
-			ThemesManager mapThemesList) {
+			ThemesManager mapThemesList, MapObjectFactory mapObjectFactory) {
 		JFrame frame = new JFrame();
 
 		Container contentPane = frame.getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
-		// contentPane.setLayout(new GridBagLayout());
-		/*
-		 * GridBagConstraints c = new GridBagConstraints();
-		 * 
-		 * c.fill = GridBagConstraints.BOTH; c.weightx = 1.0; c.weighty = 0.0;
-		 * c.gridx = 0; c.gridy = 0;
-		 */
-
 		CursorFactory cursorFactory = new CursorFactory();
 		Tools tools = new Tools();
-		/*
-		 * c.weightx = 1.0; c.weighty = 1.0; c.gridx = 0; c.gridy = 1;
-		 */
-		// BmpPanel bmpPanel = new BmpPanel(mapThemesList);
-		// BmpPanelActionListener bmpListener = new BmpPanelActionListener(
-		// bmpPanel);
 
-		MapApi mapApi = new MapApi(config, tools);
+		MapApi mapApi = new MapApi(config, mapObjectFactory);
 		MapPane mapPanel = createMapPanel(config, messages, mapThemesList,
 				mapApi);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
-				mapPanel, mapThemesList, mapApi, tools, themesPane);
+				mapPanel, mapThemesList, mapApi, tools, themesPane,
+				mapObjectFactory);
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
-				mapPanel, mapThemesList, mapApi, tools);
+				mapPanel, mapThemesList, mapApi, tools, mapObjectFactory);
 
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
@@ -254,37 +219,21 @@ public class MainWindow {
 				cursorFactory, mapPanel);
 		frame.add(toolBar, BorderLayout.PAGE_START);
 
-		// contentPane.add(mapPanel.getScrollPane(), c);
-
-		// ThemePanel themePanel = new ThemePanel(mapThemesList);
-
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
 				mapPanel, themesPane);
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
-				messages, mapThemesList, config, tools);
+				messages, mapThemesList, config, tools, mapObjectFactory);
 		MainMenuActionListener gsListener = new MainMenuActionListener(
 				dialogsManager, mapPanel, themesPane);
-		/*
-		 * c.weightx = 0.0; c.weighty = 1.0; c.gridx = 1; c.gridy = 0;
-		 */
 
 		JPanel rightSidePanel = createRightSidePanel(themesPane, gsListener);
 
-		// contentPane.add(
-		// createRightSidePanel(themePanel, bmpPanel, bmpListener,
-		// gsListener), c);
-
-		// /
-		// Create a split pane with the two scroll panes in it.
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 				mapPanel.getScrollPane(), rightSidePanel);
 		splitPane.setOneTouchExpandable(true);
-		// splitPane.setDividerLocation(200);
 
 		splitPane.setResizeWeight(1);
-		// Provide minimum sizes for the two components in the split pane
 		Dimension minimumSize = new Dimension(200, 0);
-		// mapPanel.getScrollPane().setMinimumSize(minimumSize);
 		mapPanel.getScrollPane().setPreferredSize(minimumSize);
 
 		int minWidth = SingleThemePane.DEFAULT_SEGMENT_WIDTH
@@ -296,8 +245,6 @@ public class MainWindow {
 
 		// contentPane.add(splitPane, c);
 		contentPane.add(splitPane, BorderLayout.CENTER);
-
-		// /
 
 		JMenuBar menu = createMenuBar(messages, mapThemesList, gsListener);
 		frame.setJMenuBar(menu);

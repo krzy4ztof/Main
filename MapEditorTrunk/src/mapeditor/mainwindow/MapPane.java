@@ -11,7 +11,6 @@ public class MapPane extends GridPane {
 
 	ExampleFileFilter fe;
 
-	/* pusta ikona - dla niewypelnionych segmentow mapy */
 	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
 	private MapApi mapApi;
 
@@ -135,11 +134,5 @@ public class MapPane extends GridPane {
 
 		MapObject mapObject = mapApi.getSegment(row, col).getMapObject();
 		return mapObject;
-
-		// System.out.println("r: " + row + " c: " + col + " MO: " + mapObject);
-		/*
-		 * if (mapObject != null) { return mapObject.getImageIcon().getImage();
-		 * } else { // return getBlankImage(); return null; }
-		 */
 	}
 }

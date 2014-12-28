@@ -13,9 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 
 import mapeditor.config.Config;
 import mapeditor.mapapi.MapAttributes;
@@ -48,7 +46,6 @@ public class MapAttributesPanel extends JDialog {
 	final static String ACTION_CANCEL = "ACTION_CANCEL";
 
 	private MapAttributesPanelActionListener mapActionListener;
-	private MapAttributesPanelListSelectionListener mapListSelectionListener;
 
 	public MapAttributesPanel(Config configParam, MapMessages messages,
 			Container container) {
@@ -57,7 +54,6 @@ public class MapAttributesPanel extends JDialog {
 		this.messages = messages;
 		canceled = false;
 		mapActionListener = new MapAttributesPanelActionListener(this);
-		mapListSelectionListener = new MapAttributesPanelListSelectionListener();
 		addWindowListener(new WindowAdapter() {
 
 			@Override
@@ -125,83 +121,46 @@ public class MapAttributesPanel extends JDialog {
 		c.gridy = 2;
 		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
 
-		c.gridx = 0;
-		c.gridy = 3;
-		pane.add(new JLabel(), c);
-
 		c.gridx = 1;
 		c.gridy = 2;
-		c.gridheight = 2;
-		pane.add(activateListLayout(), c);
+		pane.add(activateComboBox(), c);
 
 		c.gridx = 0;
-		c.gridy = 4;
-		c.gridheight = 1;
+		c.gridy = 3;
 		btn = new JButton(messages.getString(MapMessages.ATTR_DEFAULT_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 1;
-		c.gridy = 4;
+		c.gridy = 3;
 		btn = new JButton(messages.getString(MapMessages.ATTR_PREVIOUS_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 4;
 		btn = new JButton(messages.getString(MapMessages.ATTR_OK));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_OK);
 		pane.add(btn, c);
 
 		c.gridx = 1;
-		c.gridy = 5;
+		c.gridy = 4;
 		btn = new JButton(messages.getString(MapMessages.ATTR_CANCEL));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
 		pane.add(btn, c);
 
-		// ////
-
-		c.gridx = 0;
-		c.gridy = 6;
-		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
-
-		c.gridx = 1;
-		c.gridy = 6;
-		c.gridheight = 2;
-		pane.add(activateComboBox(), c);
-
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		// setSize(290, 165);
-		setSize(290, 265);
+		setSize(290, 165);
+		// setSize(290, 265);
 
 		// this.setResizable(true);
 
 		setLocationRelativeTo(getParent());
 		setVisible(true);
-	}
-
-	private JList<MapLayoutWrapper> activateListLayout() {
-
-		MapLayoutWrapper mlwHex = new MapLayoutWrapper(MapLayout.HEX, messages);
-		MapLayoutWrapper mlwSqr = new MapLayoutWrapper(MapLayout.SQR, messages);
-
-		MapLayoutWrapper[] data = new MapLayoutWrapper[] { mlwHex, mlwSqr };
-		// DefaultListModel listModel = new DefaultListModel();
-
-		JList<MapLayoutWrapper> list = new JList<MapLayoutWrapper>(data); // data
-																			// has
-																			// type
-																			// Object[]
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setLayoutOrientation(JList.VERTICAL);
-		list.setVisibleRowCount(-1);
-		list.addListSelectionListener(mapListSelectionListener);
-		list.setSelectedValue(mlwSqr, true);
-		return list;
 	}
 
 	private JComboBox<MapLayoutWrapper> activateComboBox() {
@@ -211,8 +170,16 @@ public class MapAttributesPanel extends JDialog {
 		MapLayoutWrapper[] data = new MapLayoutWrapper[] { mlwHex, mlwSqr };
 		JComboBox<MapLayoutWrapper> comboBox = new JComboBox<MapLayoutWrapper>(
 				data);
+
+		MapLayout mapLayout = selectedMapAttributes.getMapLayout();
+		if (mapLayout.equals(mapLayout.HEX)) {
+			comboBox.setSelectedItem(mlwHex);
+		} else {
+			comboBox.setSelectedItem(mlwSqr);
+		}
+
 		comboBox.addActionListener(new LayoutActionListener(
-				this.selectedMapAttributes));
+				selectedMapAttributes));
 
 		return comboBox;
 	}

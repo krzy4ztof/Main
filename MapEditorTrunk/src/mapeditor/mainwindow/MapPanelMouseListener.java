@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 public class MapPanelMouseListener implements MouseListener {
@@ -17,13 +18,16 @@ public class MapPanelMouseListener implements MouseListener {
 	private ThemesManager mapThemesManager;
 	private Tools tools;
 	private ThemesPane themesPane;
+	private MapObjectFactory mapObjectFactory;
 
 	MapPanelMouseListener(MapPane mapPanel, ThemesManager mapThemesManager,
-			MapApi mapApi, Tools tools, ThemesPane themesPane) {
+			MapApi mapApi, Tools tools, ThemesPane themesPane,
+			MapObjectFactory mapObjectFactory) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
 		this.tools = tools;
+		this.mapObjectFactory = mapObjectFactory;
 		this.themesPane = themesPane;
 	}
 
@@ -58,7 +62,7 @@ public class MapPanelMouseListener implements MouseListener {
 					mapPanel.refresh();
 					break;
 				case ERASER:
-					mapObject = tools.getBlankMapObject();
+					mapObject = mapObjectFactory.getBlankMapObject();
 					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 					mapPanel.refresh();
 					break;
@@ -68,7 +72,6 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
-					// themesPane.getButton().setIcon(mapObject.getImageIcon());
 
 				default:
 

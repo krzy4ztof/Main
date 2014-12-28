@@ -152,7 +152,7 @@ public class MapSaver {
 
 		GenParamElement = rDocument
 				.createElement(MapFileDefinitions.GENERAL_PARAMETERS_ELEMENT);
-		BufElem = rDocument.createElement(MapFileDefinitions.SIZE_ELEMENT);
+		BufElem = rDocument.createElement(MapFileDefinitions.PROPERTIES_ELEMENT);
 		String rows_no = ((Integer) rMapApi.getRowsSize()).toString();
 		BufElem.setAttribute(MapFileDefinitions.ROWS_ATTRIBUTE, rows_no);
 		String cols_no = ((Integer) rMapApi.getColumnsSize()).toString();

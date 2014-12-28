@@ -20,6 +20,7 @@ import javax.swing.event.ChangeListener;
 import mapeditor.main.ApplicationManager;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemeApi;
 import mapeditor.themesapi.ThemesManager;
 
@@ -98,7 +99,8 @@ public class ThemesPane {
 				+ MainWindow.ICON_NULL;
 
 		Image image = new ImageIcon(imgLocation).getImage().getScaledInstance(
-				40, 40, Image.SCALE_DEFAULT);
+				MapObjectFactory.DEFAULT_SEGMENT_WIDTH,
+				MapObjectFactory.DEFAULT_SEGMENT_HEIGHT, Image.SCALE_DEFAULT);
 
 		button.setIcon(new ImageIcon(image));
 
@@ -175,8 +177,12 @@ public class ThemesPane {
 	}
 
 	public void setSelectedMapObject(MapObject mapObject) {
-		Image image = mapObject.getImageIcon().getImage()
-				.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+		Image image = mapObject
+				.getImageIcon()
+				.getImage()
+				.getScaledInstance(MapObjectFactory.DEFAULT_SEGMENT_WIDTH,
+						MapObjectFactory.DEFAULT_SEGMENT_HEIGHT,
+						Image.SCALE_DEFAULT);
 		button.setIcon(new ImageIcon(image));
 	}
 }

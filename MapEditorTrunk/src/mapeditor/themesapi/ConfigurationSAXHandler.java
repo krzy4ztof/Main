@@ -69,14 +69,7 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 		String curString = new String(ch, start, length).trim();
-		/*
-		 * if (curString.equals("*")) { this.curMapObject.setImageName("");
-		 * ImageIcon imageFile = new ImageIcon(imagesPath + "");
-		 * this.curMapObject.setImageIcon(imageFile);
-		 * this.curMapObject.setObjectId(0);
-		 * this.curMapObjectsTheme.addMapObject(curMapObject);// OK
-		 * themeApi.addMapObject(curMapObject); } else
-		 */
+
 		if (!curString.trim().equals("")) {
 			curMapObject.setImageName(curString);
 			ImageIcon imageFile = new ImageIcon(imagesPath + curString);

@@ -10,7 +10,6 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
@@ -24,7 +23,6 @@ public abstract class GridPane {
 	private static int BOTTOM_MARIGIN = 60;
 
 	protected static final int DEFAULT_SEGMENT_WIDTH = 40;
-
 	protected static final int DEFAULT_SEGMENT_HEIGHT = 40;
 
 	protected int segmentWidth = DEFAULT_SEGMENT_WIDTH;
@@ -34,11 +32,8 @@ public abstract class GridPane {
 
 	protected JScrollPane scrollPane;
 
-	private Image blankImage;
-
 	public GridPane() {
 		super();
-		// this.mapApi = mapApi;
 		panel = new JLayeredPane() {
 
 			private static final long serialVersionUID = 1L;
@@ -55,8 +50,6 @@ public abstract class GridPane {
 		panel.setBackground(new Color(238, 238, 238));
 
 		scrollPane = new JScrollPane(panel);
-
-		blankImage = new ImageIcon("").getImage();
 	}
 
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
@@ -255,10 +248,6 @@ public abstract class GridPane {
 		int firstRow = getFirstVisibleRowNumber();// + 1;
 		int lastRow = getLastVisibleRowNumber();// - 1;
 
-		// System.out.println("FR: " + firstRow + " FC: " + firstColumn +
-		// " LR: "
-		// + lastRow + " LC: " + lastColumn);
-
 		for (int column = firstColumn; column <= lastColumn; column++) {
 			for (int row = firstRow; row <= lastRow; row++) {
 				if (((column) % 2) == 0) {
@@ -277,18 +266,7 @@ public abstract class GridPane {
 
 	}
 
-	/*
-	 * private static int LEFT_MARIGIN = 70; private static int RIGHT_MARIGIN =
-	 * 30; private static int TOP_MARIGIN = 80; private static int
-	 * BOTTOM_MARIGIN = 60;
-	 */
-
 	public void refresh() {
 		panel.repaint();
 	}
-
-	// protected Image getBlankImage() {
-	// return blankImage;
-	// }
-
 }

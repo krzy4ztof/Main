@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import mapeditor.config.Config;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectFactory;
 
 public class MapApi {
 
@@ -38,16 +39,20 @@ public class MapApi {
 
 	}
 
-	public MapApi(Config configParam, Tools tools) {
-		config = configParam;
+	public MapApi(Config config, MapObjectFactory mapObjectFactory) {
+		this.config = config;
+		MapLayout mapLayout;
 		if (config.isMapApiLayoutHex()) {
 			mapLayout = MapLayout.HEX;
 		} else {
 			mapLayout = MapLayout.SQR;
 		}
 
-		resetMap(config.getMapApiColumnsNumber(), config.getMapApiRowsNumber(),
-				tools.getBlankMapObject());
+		MapAttributes mapAttributes = new MapAttributes(
+				config.getMapApiRowsNumber(), config.getMapApiColumnsNumber(),
+				mapLayout);
+
+		resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 	}
 
 	/**
@@ -60,8 +65,8 @@ public class MapApi {
 	 *            Number of rows. When row <= then default number of rows is
 	 *            set.
 	 */
-	public MapApi(int col, int row, MapObject blankMapObject) {
-		this.resetMap(col, row, blankMapObject);
+	public MapApi(MapAttributes mapAttributes, MapObject blankMapObject) {
+		this.resetMap(mapAttributes, blankMapObject);
 	}
 
 	public boolean isLayoutHex() {
@@ -89,7 +94,11 @@ public class MapApi {
 	 *            Number of rows. When row <= then default number of rows is
 	 *            set.
 	 */
-	public void resetMap(int cols, int rows, MapObject blankMapObject) {
+	public void resetMap(MapAttributes mapAttributes, MapObject blankMapObject) {
+		int cols = mapAttributes.getColumns();
+		int rows = mapAttributes.getRows();
+		mapLayout = mapAttributes.getMapLayout();
+
 		if (cols <= 0) {
 			cols = config.getMapApiColumnsNumber();
 		}
@@ -119,7 +128,13 @@ public class MapApi {
 	 * @param rows
 	 * @param cols
 	 */
-	public void changeSize(int rows, int cols, MapObject blankMapObject) {
+	public void changeAttributes(MapAttributes mapAttributes,
+			MapObject blankMapObject) {
+
+		int rows = mapAttributes.getRows();
+		int cols = mapAttributes.getColumns();
+		mapLayout = mapAttributes.getMapLayout();
+
 		if (rows > 0) {
 			changeRowsSize(rows, blankMapObject);
 		}

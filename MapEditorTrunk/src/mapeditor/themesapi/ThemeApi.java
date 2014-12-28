@@ -24,16 +24,12 @@ public class ThemeApi {
 	}
 
 	public void addMapObject(MapObject mapObject) {
-		// System.out.println("LAST ROW: " + getRowsSize());
-		// System.out.println("LAST COL: " + getLastColumnNumber());
-
 		LinkedList<MapObject> row = null;
 		if (mapObjects.isEmpty()) {
 			row = new LinkedList<MapObject>();
 			mapObjects.add(row);
 		} else {
 			row = mapObjects.getLast();
-			// row = mapObjects.get(mapObjects.size() - 1);
 		}
 
 		if (row.size() >= maxColumn) {
@@ -43,13 +39,6 @@ public class ThemeApi {
 
 		row.add(mapObject);
 	}
-
-	/*
-	 * private int getRowsSize() { return mapObjects.size(); }
-	 * 
-	 * private int getLastColumnNumber() { int rowNo = getRowsSize(); return
-	 * mapObjects.get(rowNo).size(); }
-	 */
 
 	public void describeYourself() {
 
@@ -70,19 +59,13 @@ public class ThemeApi {
 			return null;
 		}
 
-		// System.out.println("ROW: " + row + " COL: " + col);
-		// System.out.println("SIZE: " + mapObjects.size());
-
 		LinkedList<MapObject> objectsRow = mapObjects.get(row);
 
 		if (col >= objectsRow.size()) {
 			return null;
 		}
-		// System.out.println("SIZE2: " + objectsRow.size());
 
 		MapObject mapObject = objectsRow.get(col);
-
-		// System.out.println("!!!");
 		return mapObject;
 	}
 

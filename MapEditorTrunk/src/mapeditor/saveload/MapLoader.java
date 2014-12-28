@@ -13,8 +13,10 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 import mapeditor.mapapi.MapApi;
-import mapeditor.mapapi.Tools;
+import mapeditor.mapapi.MapAttributes;
+import mapeditor.mapapi.MapLayout;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 /**
@@ -61,19 +63,19 @@ public class MapLoader {
 	 * @throws Exception
 	 */
 	public MapApi loadMapFromFile(File rFile, ThemesManager mapThemesList,
-			Tools tools) throws Exception {
+			MapObjectFactory mapObjectFactory) throws Exception {
 
-		this.reinitalize();
+		reinitalize();
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 
-		FileInputStream FIS = null;
+		FileInputStream fileInputStream = null;
 
-		// MapApi mapApi = null;
 		MapApi mapApi = new MapApi();
 
 		try {
-			FIS = new FileInputStream(rFile);
-			XMLEventReader reader = factory.createXMLEventReader(FIS);
+			fileInputStream = new FileInputStream(rFile);
+			XMLEventReader reader = factory
+					.createXMLEventReader(fileInputStream);
 
 			Hashtable<String, String> segmentsCode = new Hashtable<String, String>();
 
@@ -81,13 +83,13 @@ public class MapLoader {
 				XMLEvent event = reader.nextEvent();
 
 				this.processEvent(event, mapApi, segmentsCode, mapThemesList,
-						tools);
+						mapObjectFactory);
 			}
 			mapApi.setFile(rFile);
 
 		} finally {
-			if (FIS != null) {
-				FIS.close();
+			if (fileInputStream != null) {
+				fileInputStream.close();
 			}
 		}
 		return mapApi;
@@ -103,30 +105,31 @@ public class MapLoader {
 	 */
 	private void processEvent(XMLEvent xmlEvent, MapApi mapApi,
 			Hashtable<String, String> segmentsCode,
-			ThemesManager mapThemesList, Tools tools) throws InvalidXML {
+			ThemesManager mapThemesList, MapObjectFactory mapObjectFactory)
+			throws InvalidXML {
 
 		if (xmlEvent.isStartElement()) {
 			StartElement startElement = xmlEvent.asStartElement();
 			String elementName = startElement.getName().toString();
 
 			if (elementName.equals(MapFileDefinitions.MAP_XML_ELEMENT)) {
-				this.startMapXmlElement();
+				startMapXmlElement();
 			} else if (elementName
 					.equals(MapFileDefinitions.GENERAL_PARAMETERS_ELEMENT)) {
-				this.startGeneralParametersElement();
-			} else if (elementName.equals(MapFileDefinitions.SIZE_ELEMENT)) {
-				// mapApi =
-				this.readSizeElement(startElement, mapApi, tools);
+				startGeneralParametersElement();
+			} else if (elementName
+					.equals(MapFileDefinitions.PROPERTIES_ELEMENT)) {
+				readSizeElement(startElement, mapApi, mapObjectFactory);
 				System.out.println("DD");
 			} else if (elementName
 					.equals(MapFileDefinitions.SEGMENTS_CODE_ELEMENT)) {
-				this.startSegmentsCodeElement();
+				startSegmentsCodeElement();
 			} else if (elementName.equals(MapFileDefinitions.CODE_ELEMENT)) {
-				this.readCodeElement(startElement, segmentsCode);
+				readCodeElement(startElement, segmentsCode);
 			} else if (elementName.equals(MapFileDefinitions.MATRIX_ELEMENT)) {
-				this.startMatrixElement();
+				startMatrixElement();
 			} else if (elementName.equals(MapFileDefinitions.ROW_ELEMENT)) {
-				this.readRowElement(startElement, mapApi, segmentsCode,
+				readRowElement(startElement, mapApi, segmentsCode,
 						mapThemesList);
 			}
 		} else if (xmlEvent.isEndElement()) {
@@ -134,19 +137,20 @@ public class MapLoader {
 			String elementName = endElement.getName().toString();
 
 			if (elementName.equals(MapFileDefinitions.MAP_XML_ELEMENT)) {
-				this.endMapXmlElement();
+				endMapXmlElement();
 			} else if (elementName
 					.equals(MapFileDefinitions.GENERAL_PARAMETERS_ELEMENT)) {
-				this.endGeneralParametersElement();
-			} else if (elementName.equals(MapFileDefinitions.SIZE_ELEMENT)) {
+				endGeneralParametersElement();
+			} else if (elementName
+					.equals(MapFileDefinitions.PROPERTIES_ELEMENT)) {
 				// DO NOTHING
 			} else if (elementName
 					.equals(MapFileDefinitions.SEGMENTS_CODE_ELEMENT)) {
-				this.endSegmentsCodeElement();
+				endSegmentsCodeElement();
 			} else if (elementName.equals(MapFileDefinitions.CODE_ELEMENT)) {
 				// DO NOTHING
 			} else if (elementName.equals(MapFileDefinitions.MATRIX_ELEMENT)) {
-				this.endMatrixElement();
+				endMatrixElement();
 			} else if (elementName.equals(MapFileDefinitions.ROW_ELEMENT)) {
 			}
 
@@ -158,7 +162,7 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void startMapXmlElement() throws InvalidXML {
-		if (this.processingMapXML != ProcessingElement.pre) {
+		if (processingMapXML != ProcessingElement.pre) {
 			throw new InvalidXML();
 		}
 		this.processingMapXML = ProcessingElement.in;
@@ -169,10 +173,10 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void endMapXmlElement() throws InvalidXML {
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
-		this.processingMapXML = ProcessingElement.post;
+		processingMapXML = ProcessingElement.post;
 	}
 
 	/**
@@ -180,7 +184,7 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void startGeneralParametersElement() throws InvalidXML {
-		if (this.processingGeneralParameters != ProcessingElement.pre) {
+		if (processingGeneralParameters != ProcessingElement.pre) {
 			throw new InvalidXML();
 		}
 
@@ -188,7 +192,7 @@ public class MapLoader {
 			throw new InvalidXML();
 		}
 
-		this.processingGeneralParameters = ProcessingElement.in;
+		processingGeneralParameters = ProcessingElement.in;
 	}
 
 	/**
@@ -196,15 +200,15 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void endGeneralParametersElement() throws InvalidXML {
-		if (this.processingGeneralParameters != ProcessingElement.in) {
+		if (processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		this.processingGeneralParameters = ProcessingElement.post;
+		processingGeneralParameters = ProcessingElement.post;
 	}
 
 	/**
@@ -214,20 +218,17 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void readSizeElement(StartElement startElement, MapApi mapApi,
-			Tools tools) throws InvalidXML {
+			MapObjectFactory mapObjectFactory) throws InvalidXML {
 
-		if (this.processingGeneralParameters != ProcessingElement.in) {
+		if (processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		Attribute atrCols = null;
-		Attribute atrRows = null;
-
-		atrCols = startElement.getAttributeByName(new QName(
+		Attribute atrCols = startElement.getAttributeByName(new QName(
 				MapFileDefinitions.COLUMNS_ATTRIBUTE));
 
 		if (atrCols == null) {
@@ -237,7 +238,7 @@ public class MapLoader {
 
 		}
 
-		atrRows = startElement.getAttributeByName(new QName(
+		Attribute atrRows = startElement.getAttributeByName(new QName(
 				MapFileDefinitions.ROWS_ATTRIBUTE));
 
 		if (atrRows == null) {
@@ -246,10 +247,27 @@ public class MapLoader {
 			System.out.println(atrRows);
 		}
 
+		Attribute layout = startElement.getAttributeByName(new QName(
+				MapFileDefinitions.LAYOUT_ATTRIBUTE));
+
+		if (layout == null) {
+			throw new InvalidXML();
+		} else {
+			System.out.println(layout);
+		}
+
 		int cols = Integer.decode(atrCols.getValue());
 		int rows = Integer.decode(atrRows.getValue());
 
-		mapApi.resetMap(cols, rows, tools.getBlankMapObject());
+		MapLayout mapLayout = MapLayout.SQR;
+
+		if (layout.getValue().equals(MapLayout.HEX.toString())) {
+			mapLayout = MapLayout.HEX;
+		}
+
+		MapAttributes mapAttributes = new MapAttributes(rows, cols, mapLayout);
+
+		mapApi.resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 	}
 
 	/**
@@ -258,19 +276,19 @@ public class MapLoader {
 	 */
 	private void startSegmentsCodeElement() throws InvalidXML {
 
-		if (this.processingSegmentsCode != ProcessingElement.pre) {
+		if (processingSegmentsCode != ProcessingElement.pre) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingGeneralParameters != ProcessingElement.in) {
+		if (processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		this.processingSegmentsCode = ProcessingElement.in;
+		processingSegmentsCode = ProcessingElement.in;
 
 	}
 
@@ -279,19 +297,19 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void endSegmentsCodeElement() throws InvalidXML {
-		if (this.processingSegmentsCode != ProcessingElement.in) {
+		if (processingSegmentsCode != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingGeneralParameters != ProcessingElement.in) {
+		if (processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		this.processingSegmentsCode = ProcessingElement.post;
+		processingSegmentsCode = ProcessingElement.post;
 	}
 
 	/**
@@ -302,22 +320,19 @@ public class MapLoader {
 	 */
 	private void readCodeElement(StartElement startElement,
 			Hashtable<String, String> segmentsCode) throws InvalidXML {
-		if (this.processingSegmentsCode != ProcessingElement.in) {
+		if (processingSegmentsCode != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingGeneralParameters != ProcessingElement.in) {
+		if (processingGeneralParameters != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		Attribute atrId = null;
-		Attribute atrImage = null;
-
-		atrId = startElement.getAttributeByName(new QName(
+		Attribute atrId = startElement.getAttributeByName(new QName(
 				MapFileDefinitions.ID_ATTRIBUTE));
 
 		if (atrId == null) {
@@ -326,7 +341,7 @@ public class MapLoader {
 			System.out.println(atrId);
 		}
 
-		atrImage = startElement.getAttributeByName(new QName(
+		Attribute atrImage = startElement.getAttributeByName(new QName(
 				MapFileDefinitions.IMAGE_ATTRIBUTE));
 
 		if (atrImage == null) {
@@ -348,15 +363,15 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void startMatrixElement() throws InvalidXML {
-		if (this.processingMatrix != ProcessingElement.pre) {
+		if (processingMatrix != ProcessingElement.pre) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		this.processingMatrix = ProcessingElement.in;
+		processingMatrix = ProcessingElement.in;
 
 	}
 
@@ -365,15 +380,15 @@ public class MapLoader {
 	 * @throws mapEditor.MapLoader.InvalidXML
 	 */
 	private void endMatrixElement() throws InvalidXML {
-		if (this.processingMatrix != ProcessingElement.in) {
+		if (processingMatrix != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		this.processingMatrix = ProcessingElement.post;
+		processingMatrix = ProcessingElement.post;
 
 	}
 
@@ -388,18 +403,16 @@ public class MapLoader {
 	private void readRowElement(StartElement startElement, MapApi mapApi,
 			Hashtable<String, String> segmentsCode, ThemesManager mapThemesList)
 			throws InvalidXML {
-		if (this.processingMatrix != ProcessingElement.in) {
+		if (processingMatrix != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
 
-		if (this.processingMapXML != ProcessingElement.in) {
+		if (processingMapXML != ProcessingElement.in) {
 			throw new InvalidXML();
 		}
-
-		Attribute atr = null;
 
 		int rowNumber = -1;
-		atr = startElement.getAttributeByName(new QName(
+		Attribute atr = startElement.getAttributeByName(new QName(
 				MapFileDefinitions.NUMBER_ATTRIBUTE));
 
 		if (atr == null) {

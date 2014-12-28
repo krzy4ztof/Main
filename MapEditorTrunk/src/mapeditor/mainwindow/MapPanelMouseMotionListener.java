@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 public class MapPanelMouseMotionListener implements MouseMotionListener {
@@ -14,14 +15,17 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 	private MapPane mapPanel;
 	private ThemesManager mapThemesManager;
 	private MapApi mapApi;
+	private MapObjectFactory mapObjectFactory;
 	private Tools tools;
 
 	MapPanelMouseMotionListener(MapPane mapPanel,
-			ThemesManager mapThemesManager, MapApi mapApi, Tools tools) {
+			ThemesManager mapThemesManager, MapApi mapApi, Tools tools,
+			MapObjectFactory mapObjectFactory) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
 		this.tools = tools;
+		this.mapObjectFactory = mapObjectFactory;
 	}
 
 	@Override
@@ -39,7 +43,7 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 				mapPanel.refresh();
 				break;
 			case ERASER:
-				mapObject = tools.getBlankMapObject();
+				mapObject = mapObjectFactory.getBlankMapObject();
 				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 				mapPanel.refresh();
 				break;

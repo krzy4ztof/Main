@@ -9,11 +9,11 @@ import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
-import mapeditor.mapapi.MapLayout;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoader;
 import mapeditor.saveload.MapSaver;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 import otherprods.ExampleFileFilter;
 
@@ -25,15 +25,18 @@ public class DialogsManager {
 	private ThemesManager mapThemesList;
 	private Config config;
 	private Tools tools;
+	private MapObjectFactory mapObjectFactory;
 
 	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
-			ThemesManager mapThemesList, Config config, Tools tools) {
+			ThemesManager mapThemesList, Config config, Tools tools,
+			MapObjectFactory mapObjectFactory) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
 		this.mapThemesList = mapThemesList;
 		this.config = config;
 		this.tools = tools;
+		this.mapObjectFactory = mapObjectFactory;
 	}
 
 	/**
@@ -47,19 +50,16 @@ public class DialogsManager {
 		if (res == JOptionPane.YES_OPTION) {
 			this.saveMapApi();
 		}
-		MapAttributesPanel MRP = new MapAttributesPanel(config, messages,
-				mapPanel.getPanel().getTopLevelAncestor());
+		MapAttributesPanel mapAttributesPanel = new MapAttributesPanel(config,
+				messages, mapPanel.getPanel().getTopLevelAncestor());
 
-		MRP.activate(mapApi.getMapAttributes());
+		mapAttributesPanel.activate(mapApi.getMapAttributes());
 
-		if (!MRP.isCanceled()) {
-			MapAttributes mapAttributes = MRP.getSelectedMapAttributes();
+		if (!mapAttributesPanel.isCanceled()) {
+			MapAttributes mapAttributes = mapAttributesPanel
+					.getSelectedMapAttributes();
 
-			int row = mapAttributes.getRows();
-			int col = mapAttributes.getColumns();
-			MapLayout mapLayout = mapAttributes.getMapLayout();
-
-			mapApi.resetMap(row, col, tools.getBlankMapObject());
+			mapApi.resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 		}
 
 	}
@@ -104,11 +104,11 @@ public class DialogsManager {
 		mapAttributesPanel.activate(mapApi.getMapAttributes());
 
 		if (!mapAttributesPanel.isCanceled()) {
-			int row = mapAttributesPanel.getSelectedMapAttributes().getRows();
-			int col = mapAttributesPanel.getSelectedMapAttributes()
-					.getColumns();
+			MapAttributes mapAttributes = mapAttributesPanel
+					.getSelectedMapAttributes();
 
-			mapApi.changeSize(row, col, tools.getBlankMapObject());
+			mapApi.changeAttributes(mapAttributes,
+					mapObjectFactory.getBlankMapObject());
 		}
 	}
 
@@ -158,7 +158,7 @@ public class DialogsManager {
 
 			try {
 				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList,
-						tools);
+						mapObjectFactory);
 				mapPanel.setMapApi(mapApi);
 				mapPanel.getPanel().repaint();
 				// gs.getJFrame().repaint();

@@ -16,9 +16,10 @@ public class MapFileDefinitions {
 	public final static String SEGMENTS_CODE_ELEMENT = "SegmentsCode";
 	public final static String MATRIX_ELEMENT = "Matrix";
 	public final static String MAP_NAME_ATTRIBUTE = "MapName";
-	public final static String SIZE_ELEMENT = "Size";
+	public final static String PROPERTIES_ELEMENT = "Properties";
 	public final static String COLUMNS_ATTRIBUTE = "columns";
 	public final static String ROWS_ATTRIBUTE = "rows";
+	public final static String LAYOUT_ATTRIBUTE = "layout";
 	public final static String CODE_ELEMENT = "Code";
 	public final static String ID_ATTRIBUTE = "id";
 	public final static String IMAGE_ATTRIBUTE = "image";

@@ -11,7 +11,7 @@ public class LayoutActionListener implements ActionListener {
 
 	private MapAttributes mapAttributes;
 
-	public LayoutActionListener(MapAttributes selectedMapAttributes) {
+	public LayoutActionListener(MapAttributes mapAttributes) {
 		// TODO Auto-generated constructor stub
 		this.mapAttributes = mapAttributes;
 	}
@@ -29,6 +29,7 @@ public class LayoutActionListener implements ActionListener {
 			// MapLayoutWrapper mapLayout = combo.getSelectedItem();
 			MapLayoutWrapper mapLayout = (MapLayoutWrapper) combo
 					.getSelectedItem();
+			System.out.println("LYO:" + mapLayout.getMapLayout());
 			mapAttributes.setMapLayout(mapLayout.getMapLayout());
 
 		}

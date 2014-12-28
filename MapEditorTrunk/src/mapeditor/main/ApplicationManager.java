@@ -15,6 +15,7 @@ import mapeditor.config.Config;
 import mapeditor.mainwindow.MainWindow;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.ConfigurationSAXHandler;
+import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 import org.xml.sax.SAXException;
@@ -36,8 +37,10 @@ public class ApplicationManager {
 
 		Config config = new Config();
 		MapMessages messages = new MapMessages(config);
-		ThemesManager mapThemesList = readConfigurationFile(config);
-		new MainWindow(config, messages, mapThemesList);
+		MapObjectFactory mapObjectFactory = new MapObjectFactory();
+		ThemesManager mapThemesList = readConfigurationFile(config,
+				mapObjectFactory);
+		new MainWindow(config, messages, mapThemesList, mapObjectFactory);
 
 		mapThemesList.describeYourselfThemeApi();
 	}
@@ -47,7 +50,8 @@ public class ApplicationManager {
 		new ApplicationManager();
 	}
 
-	private ThemesManager readConfigurationFile(Config config)
+	private ThemesManager readConfigurationFile(Config config,
+			MapObjectFactory mapObjectFactory)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		// ImagesListFileReader imagesListFileReader = new
@@ -60,7 +64,7 @@ public class ApplicationManager {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();
 
-		ThemesManager mapThemesManager = new ThemesManager();
+		ThemesManager mapThemesManager = new ThemesManager(mapObjectFactory);
 
 		ConfigurationSAXHandler handler = new ConfigurationSAXHandler(config,
 				mapThemesManager, THEMES_IMAGES_PATH);
