@@ -56,8 +56,6 @@ public abstract class GridPane {
 
 		MapObject mapObject = getMapObject(row, column);
 		if (mapObject == null) {
-			System.out.println(this.getClass() + " " + row + "  " + column);
-
 			return;
 		}
 
@@ -222,8 +220,6 @@ public abstract class GridPane {
 				|| (row >= getGridApiRowsSize()) || (column < 0) || (row < 0)) {
 			return new Point(-1, -1);
 		}
-
-		System.out.println("col: " + column + " row: " + row);
 
 		return new Point(column, row);
 	}

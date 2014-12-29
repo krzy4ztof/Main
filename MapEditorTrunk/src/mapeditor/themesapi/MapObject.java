@@ -15,8 +15,27 @@ public class MapObject {
 	private String objectName;
 	private String imageName;
 	private ImageIcon imageIcon;
-	private Integer objectId;
+	private int objectId;
 	public final static String DEFAULT_OBJECT_ID = "000";
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof MapObject) {
+			MapObject mapObject = (MapObject) object;
+
+			if (objectName.equals(mapObject.objectName)
+					&& imageName.equals(mapObject.imageName)
+					&& objectId == mapObject.objectId) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return objectName.hashCode() + imageName.hashCode() + objectId;
+	}
 
 	public ImageIcon getImageIcon() {
 		return imageIcon;
@@ -48,6 +67,8 @@ public class MapObject {
 
 	public MapObject(String objectName) {
 		this.objectName = objectName;
+		imageName = "";
+		objectId = 0;
 	}
 
 	public void describeYourself() {
@@ -57,14 +78,14 @@ public class MapObject {
 	}
 
 	public String getObjectIdString() {
+		describeYourself();
 
 		if ((objectId >= 0) && (objectId < 10)) {
 			return "00" + objectId;
-
 		} else if (objectId < 100) {
 			return "0" + objectId;
 		} else if (objectId < 1000) {
-			return objectId.toString();
+			return "" + objectId;
 		} else {
 			return MapObject.DEFAULT_OBJECT_ID;
 		}

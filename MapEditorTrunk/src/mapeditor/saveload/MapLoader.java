@@ -62,15 +62,14 @@ public class MapLoader {
 	 * @return
 	 * @throws Exception
 	 */
-	public MapApi loadMapFromFile(File rFile, ThemesManager mapThemesList,
-			MapObjectFactory mapObjectFactory) throws Exception {
+	public MapApi loadMapFromFile(MapApi mapApi, File rFile,
+			ThemesManager mapThemesList, MapObjectFactory mapObjectFactory)
+			throws Exception {
 
 		reinitalize();
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 
 		FileInputStream fileInputStream = null;
-
-		MapApi mapApi = new MapApi();
 
 		try {
 			fileInputStream = new FileInputStream(rFile);
@@ -82,7 +81,7 @@ public class MapLoader {
 			while (reader.hasNext()) {
 				XMLEvent event = reader.nextEvent();
 
-				this.processEvent(event, mapApi, segmentsCode, mapThemesList,
+				processEvent(event, mapApi, segmentsCode, mapThemesList,
 						mapObjectFactory);
 			}
 			mapApi.setFile(rFile);
@@ -120,7 +119,6 @@ public class MapLoader {
 			} else if (elementName
 					.equals(MapFileDefinitions.PROPERTIES_ELEMENT)) {
 				readSizeElement(startElement, mapApi, mapObjectFactory);
-				System.out.println("DD");
 			} else if (elementName
 					.equals(MapFileDefinitions.SEGMENTS_CODE_ELEMENT)) {
 				startSegmentsCodeElement();
@@ -233,9 +231,6 @@ public class MapLoader {
 
 		if (atrCols == null) {
 			throw new InvalidXML();
-		} else {
-			System.out.println(atrCols);
-
 		}
 
 		Attribute atrRows = startElement.getAttributeByName(new QName(
@@ -243,8 +238,6 @@ public class MapLoader {
 
 		if (atrRows == null) {
 			throw new InvalidXML();
-		} else {
-			System.out.println(atrRows);
 		}
 
 		Attribute layout = startElement.getAttributeByName(new QName(
@@ -252,8 +245,6 @@ public class MapLoader {
 
 		if (layout == null) {
 			throw new InvalidXML();
-		} else {
-			System.out.println(layout);
 		}
 
 		int cols = Integer.decode(atrCols.getValue());
@@ -337,8 +328,6 @@ public class MapLoader {
 
 		if (atrId == null) {
 			throw new InvalidXML();
-		} else {
-			System.out.println(atrId);
 		}
 
 		Attribute atrImage = startElement.getAttributeByName(new QName(
@@ -346,8 +335,6 @@ public class MapLoader {
 
 		if (atrImage == null) {
 			throw new InvalidXML();
-		} else {
-			System.out.println(atrImage);
 		}
 
 		String id = atrId.getValue();
@@ -419,8 +406,6 @@ public class MapLoader {
 			throw new InvalidXML();
 		} else {
 			rowNumber = new Integer(atr.getValue());
-
-			System.out.println(atr);
 		}
 
 		atr = startElement.getAttributeByName(new QName(

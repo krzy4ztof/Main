@@ -28,95 +28,88 @@ public class MapSaver {
 	private ThemesManager mapThemesList = null;
 	private MapMessages messages = null;
 
-	public MapSaver(MapMessages messages,
-			ThemesManager mapThemesListParameter) {
+	public MapSaver(MapMessages messages, ThemesManager mapThemesListParameter) {
 		this.messages = messages;
 		mapThemesList = mapThemesListParameter;
 	}
 
-	public String VerifyMapFileName(String pFilename) {
-		System.out.println("ORIG: " + pFilename);
-		int length = pFilename.length();
+	public String verifyMapFileName(String filename) {
+		int length = filename.length();
 
 		if (length < 4) {
-			if (pFilename.charAt(length - 1) == '.') {
-				return pFilename + "xml";
+			if (filename.charAt(length - 1) == '.') {
+				return filename + "xml";
 			} else {
-				return pFilename + ".xml";
+				return filename + ".xml";
 			}
 		} else {
-			if (pFilename.substring(length - 4, length).equals(".xml")) {
-				return pFilename;
-			} else if (pFilename.charAt(length - 1) == '.') {
-				return pFilename + "xml";
+			if (filename.substring(length - 4, length).equals(".xml")) {
+				return filename;
+			} else if (filename.charAt(length - 1) == '.') {
+				return filename + "xml";
 			} else {
-				return pFilename + ".xml";
+				return filename + ".xml";
 			}
 		}
 	}
 
-	public boolean SaveMapToFile(MapApi rMapApi, File rFile) throws Exception {
-		String CorrectName = VerifyMapFileName(rFile.getName());
-		File rFileXml = new File(rFile.getParentFile() + File.separator
-				+ CorrectName);
-		Document rDocument = this.BuildDomFromMap(rMapApi);
-		rMapApi.setFile(rFileXml);
+	public boolean saveMapToFile(MapApi mapApi, File file) throws Exception {
+		String name = verifyMapFileName(file.getName());
+		File fileXml = new File(file.getParentFile() + File.separator + name);
+		Document document = buildDomFromMap(mapApi);
+		mapApi.setFile(fileXml);
 
-		FileOutputStream FOP = null;
-		TransformerFactory tFactory = TransformerFactory.newInstance();
+		FileOutputStream fileInputStream = null;
+		TransformerFactory factory = TransformerFactory.newInstance();
 		try {
-			Transformer rTransformer = tFactory.newTransformer();
-			rTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource source = new DOMSource(rDocument);
-			FOP = new FileOutputStream(rFileXml);
-			PrintStream PS = new PrintStream(FOP);
-			StreamResult result = new StreamResult(PS);
-			rTransformer.transform(source, result);
+			Transformer transformer = factory.newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			DOMSource source = new DOMSource(document);
+			fileInputStream = new FileOutputStream(fileXml);
+			PrintStream printStream = new PrintStream(fileInputStream);
+			StreamResult result = new StreamResult(printStream);
+			transformer.transform(source, result);
 		} finally {
-			if (FOP != null) {
-				FOP.close();
+			if (fileInputStream != null) {
+				fileInputStream.close();
 			}
 		}
 		return true;
 	}
 
-	private Element CreateMatrixTag(MapApi rMapApi, Document rDocument) {
-		Element MatrixElement = null;
-		Element BufElem = null;
-		MatrixElement = rDocument
+	private Element createMatrixTag(MapApi mapApi, Document document) {
+		Element matrixElement = document
 				.createElement(MapFileDefinitions.MATRIX_ELEMENT);
-		String SegmentId = null;
-		String Segments = "";
+
 		MapObject mapObject = null;
 
-		for (Integer i_row = 0; i_row < rMapApi.getRowsSize(); i_row++) {
-			Segments = "";
-			BufElem = rDocument.createElement(MapFileDefinitions.ROW_ELEMENT);
-			BufElem.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
-					i_row.toString());
-			for (int i_col = 0; i_col < rMapApi.getColumnsSize(); i_col++) {
-
-				mapObject = rMapApi.getSegment(i_row, i_col).getMapObject();
+		for (int row = 0; row < mapApi.getRowsSize(); row++) {
+			String segments = "";
+			Element rowElem = document
+					.createElement(MapFileDefinitions.ROW_ELEMENT);
+			rowElem.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
+					Integer.toString(row));
+			for (int col = 0; col < mapApi.getColumnsSize(); col++) {
+				mapObject = mapApi.getSegment(row, col).getMapObject();
+				String segmentId = null;
 				if (mapObject != null) {
-					SegmentId = mapObject.getObjectIdString();
+					segmentId = mapObject.getObjectIdString();
 				} else {
-					SegmentId = MapObject.DEFAULT_OBJECT_ID;
+					segmentId = MapObject.DEFAULT_OBJECT_ID;
 				}
 
-				Segments = Segments + SegmentId + ';';
+				segments = segments + segmentId + ';';
 			}
-			System.out.println(Segments);
-			BufElem.setAttribute(MapFileDefinitions.SEGMENTS_ATTRIBUTE,
-					Segments);
-			MatrixElement.appendChild(BufElem);
+			rowElem.setAttribute(MapFileDefinitions.SEGMENTS_ATTRIBUTE,
+					segments);
+			matrixElement.appendChild(rowElem);
 		}
-		return MatrixElement;
+		return matrixElement;
 	}
 
-	private Element CreateSegmentsCodesTag(MapApi rMapApi, Document rDocument) {
+	private Element createSegmentsCodesTag(MapApi mapApi, Document document) {
 		Element segmCodeElement = null;
-		Element bufElem = null;
-		segmCodeElement = rDocument
+		segmCodeElement = document
 				.createElement(MapFileDefinitions.SEGMENTS_CODE_ELEMENT);
 		String objectIdString = null;
 
@@ -132,13 +125,13 @@ public class MapSaver {
 				objectIdString = mapObject.getObjectIdString();
 
 				if (!objectIdString.contentEquals(MapObject.DEFAULT_OBJECT_ID)) {
-					bufElem = rDocument
+					Element codeElem = document
 							.createElement(MapFileDefinitions.CODE_ELEMENT);
-					bufElem.setAttribute(MapFileDefinitions.ID_ATTRIBUTE,
+					codeElem.setAttribute(MapFileDefinitions.ID_ATTRIBUTE,
 							objectIdString);
-					bufElem.setAttribute(MapFileDefinitions.IMAGE_ATTRIBUTE,
+					codeElem.setAttribute(MapFileDefinitions.IMAGE_ATTRIBUTE,
 							mapObject.getObjectName());
-					segmCodeElement.appendChild(bufElem);
+					segmCodeElement.appendChild(codeElem);
 				}
 			}
 		}
@@ -146,39 +139,41 @@ public class MapSaver {
 		return segmCodeElement;
 	}
 
-	private Element CreateGeneralPametersTag(MapApi rMapApi, Document rDocument) {
-		Element GenParamElement = null;
-		Element BufElem = null;
+	private Element createGeneralPametersTag(MapApi mapApi, Document document) {
 
-		GenParamElement = rDocument
+		Element genParamElement = document
 				.createElement(MapFileDefinitions.GENERAL_PARAMETERS_ELEMENT);
-		BufElem = rDocument.createElement(MapFileDefinitions.PROPERTIES_ELEMENT);
-		String rows_no = ((Integer) rMapApi.getRowsSize()).toString();
-		BufElem.setAttribute(MapFileDefinitions.ROWS_ATTRIBUTE, rows_no);
-		String cols_no = ((Integer) rMapApi.getColumnsSize()).toString();
-		BufElem.setAttribute(MapFileDefinitions.COLUMNS_ATTRIBUTE, cols_no);
-		GenParamElement.appendChild(BufElem);
-		BufElem = this.CreateSegmentsCodesTag(rMapApi, rDocument);
-		GenParamElement.appendChild(BufElem);
+		Element propElem = document
+				.createElement(MapFileDefinitions.PROPERTIES_ELEMENT);
+		String rows = Integer.toString(mapApi.getRowsSize());
+		propElem.setAttribute(MapFileDefinitions.ROWS_ATTRIBUTE, rows);
+		String cols = Integer.toString(mapApi.getColumnsSize());
+		propElem.setAttribute(MapFileDefinitions.COLUMNS_ATTRIBUTE, cols);
+		String layout = mapApi.getMapLayout().toString();
+		propElem.setAttribute(MapFileDefinitions.LAYOUT_ATTRIBUTE, layout);
 
-		return GenParamElement;
+		genParamElement.appendChild(propElem);
+		propElem = createSegmentsCodesTag(mapApi, document);
+		genParamElement.appendChild(propElem);
+
+		return genParamElement;
 	}
 
-	private Document BuildDomFromMap(MapApi rMapApi)
+	private Document buildDomFromMap(MapApi mapApi)
 			throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		Document rDocument = null;
+		Document document = null;
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		rDocument = builder.newDocument();
+		document = builder.newDocument();
 		// Create from whole cloth
-		Element root = rDocument
+		Element root = document
 				.createElement(MapFileDefinitions.MAP_XML_ELEMENT);
 		root.setAttribute(MapFileDefinitions.MAP_NAME_ATTRIBUTE,
 				messages.getString(MapMessages.MAPSAVER_MAP_NAME));
-		rDocument.appendChild(root);
+		document.appendChild(root);
 
-		root.appendChild(this.CreateGeneralPametersTag(rMapApi, rDocument));
-		root.appendChild(this.CreateMatrixTag(rMapApi, rDocument));
-		return rDocument;
+		root.appendChild(createGeneralPametersTag(mapApi, document));
+		root.appendChild(createMatrixTag(mapApi, document));
+		return document;
 	}
 }

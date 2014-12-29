@@ -20,15 +20,14 @@ public class SegmentAttributesPanel extends JPanel {
 	private SegmentAttributesWindowListener saWindowListener;
 
 	public SegmentAttributesPanel() {
-		// System.out.println(img);
 		M_Frame = new JFrame();
 
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		M_Frame.getContentPane().setLayout(gridbag);
 		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 1.0;// proporcje powi�kszania si�
-		c.weighty = 1.0;// proporcje powi�kszania si�
+		c.weightx = 1.0;// proporcje powiekszania
+		c.weighty = 1.0;// proporcje powiekszania
 		c.gridx = 0;
 		c.gridy = 0;
 		gridbag.setConstraints(this, c);
@@ -45,7 +44,6 @@ public class SegmentAttributesPanel extends JPanel {
 
 	@Override
 	public void setVisible(boolean p_vis) {
-		// System.out.println("wid "+this.M_Frame);
 		this.M_Frame.setVisible(true);
 	}
 

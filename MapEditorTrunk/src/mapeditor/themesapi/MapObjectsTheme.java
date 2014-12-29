@@ -90,7 +90,4 @@ public class MapObjectsTheme {
 		}
 	}
 
-	public MapObject getNullObject() {
-		return getMapObject(0);
-	}
 }

@@ -129,12 +129,13 @@ public class DialogsManager {
 			MapApi p_MapApi = mapApi;
 
 			try {
-				p_MapSaver.SaveMapToFile(p_MapApi, rFile);
+				p_MapSaver.saveMapToFile(p_MapApi, rFile);
 			} catch (Exception e) {
 
 				String msg = messages.getString(MapMessages.MSG_SAVING_FAILED)
 						+ " " + e.getMessage();
 				JOptionPane.showMessageDialog(FC, msg);
+				e.printStackTrace();
 			}
 		}
 	}
@@ -157,7 +158,7 @@ public class DialogsManager {
 			MapLoader p_MapLoader = new MapLoader();
 
 			try {
-				mapApi = p_MapLoader.loadMapFromFile(rFile, mapThemesList,
+				p_MapLoader.loadMapFromFile(mapApi, rFile, mapThemesList,
 						mapObjectFactory);
 				mapPanel.setMapApi(mapApi);
 				mapPanel.getPanel().repaint();

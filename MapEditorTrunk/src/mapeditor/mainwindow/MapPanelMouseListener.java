@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import mapeditor.mapapi.Bucket;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
@@ -72,6 +73,18 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
+
+				case BUCKET:
+					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject();
+
+					MapObject newObject = mapThemesManager
+							.getSelectedMapObject();
+					Bucket bucket = new Bucket(mapApi);
+					bucket.fill(mapObject, seg);
+					bucket.paint(newObject);
+					mapPanel.refresh();
+
+					// System.out.println(":::" + mapObject);
 
 				default:
 

@@ -90,7 +90,6 @@ public class MapAttributesPanel extends JDialog {
 
 		Container pane = this.getContentPane();
 
-		JButton button;
 		pane.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -172,7 +171,7 @@ public class MapAttributesPanel extends JDialog {
 				data);
 
 		MapLayout mapLayout = selectedMapAttributes.getMapLayout();
-		if (mapLayout.equals(mapLayout.HEX)) {
+		if (mapLayout.equals(MapLayout.HEX)) {
 			comboBox.setSelectedItem(mlwHex);
 		} else {
 			comboBox.setSelectedItem(mlwSqr);
@@ -191,9 +190,9 @@ public class MapAttributesPanel extends JDialog {
 	void onOkAction() {
 
 		System.out.println("height");
-		System.out.println(this.size().getHeight());
+		System.out.println(getHeight());
 		System.out.println("width");
-		System.out.println(this.size().getWidth());
+		System.out.println(getWidth());
 
 		boolean ok = true;
 		int value;

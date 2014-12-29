@@ -9,18 +9,7 @@ import mapeditor.themesapi.MapObjectFactory;
 
 public class MapApi {
 
-	// private int Columns,Rows;
-	/* ilosc kolumn i wierszy mapy */
-	// private int Image_theme[10][10];//do zmiany na dynamiczne
-	/*
-	 * numer tematu do kt�rego nale�y obrazek na segmencie [x][y]
-	 */
-	// private int Image_no[10][10]//do zmiany na dynamiczne
-	/* numer obrazeku na segmencie [x][y] */
-	// private ImagesList p_ImagesList;// tego tu nnie b�dzie
 	private LinkedList<LinkedList<MapSegment>> segments;
-
-	private Config config;
 
 	private MapLayout mapLayout;
 
@@ -30,17 +19,7 @@ public class MapApi {
 	 */
 	private File file = null;
 
-	/**
-	 * Constructor. No number of rows nor columns is given. The next method to
-	 * invoke should be setSize(col, row) method.
-	 *
-	 */
-	public MapApi() {
-
-	}
-
 	public MapApi(Config config, MapObjectFactory mapObjectFactory) {
-		this.config = config;
 		MapLayout mapLayout;
 		if (config.isMapApiLayoutHex()) {
 			mapLayout = MapLayout.HEX;
@@ -55,20 +34,6 @@ public class MapApi {
 		resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 	}
 
-	/**
-	 * Constructor
-	 * 
-	 * @param col
-	 *            Number of columns. When col <= 0 then default number of
-	 *            columns is set.
-	 * @param row
-	 *            Number of rows. When row <= then default number of rows is
-	 *            set.
-	 */
-	public MapApi(MapAttributes mapAttributes, MapObject blankMapObject) {
-		this.resetMap(mapAttributes, blankMapObject);
-	}
-
 	public boolean isLayoutHex() {
 		if (mapLayout.equals(MapLayout.HEX)) {
 			return true;
@@ -81,6 +46,10 @@ public class MapApi {
 			return true;
 		}
 		return false;
+	}
+
+	public MapLayout getMapLayout() {
+		return mapLayout;
 	}
 
 	/**
@@ -98,13 +67,6 @@ public class MapApi {
 		int cols = mapAttributes.getColumns();
 		int rows = mapAttributes.getRows();
 		mapLayout = mapAttributes.getMapLayout();
-
-		if (cols <= 0) {
-			cols = config.getMapApiColumnsNumber();
-		}
-		if (rows <= 0) {
-			rows = config.getMapApiRowsNumber();
-		}
 
 		segments = new LinkedList<LinkedList<MapSegment>>();
 		LinkedList<MapSegment> newRow;
