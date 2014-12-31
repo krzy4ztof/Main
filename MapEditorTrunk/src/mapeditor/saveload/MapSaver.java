@@ -3,7 +3,6 @@ package mapeditor.saveload;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,7 +16,7 @@ import javax.xml.transform.stream.StreamResult;
 import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObject;
-import mapeditor.themesapi.MapObjectsTheme;
+import mapeditor.themesapi.ThemeApi;
 import mapeditor.themesapi.ThemesManager;
 
 import org.w3c.dom.Document;
@@ -113,15 +112,8 @@ public class MapSaver {
 				.createElement(MapFileDefinitions.SEGMENTS_CODE_ELEMENT);
 		String objectIdString = null;
 
-		MapObjectsTheme mapObjectsTheme = null;
-		MapObject mapObject = null;
-
-		for (Iterator<MapObjectsTheme> itTheme = mapThemesList
-				.getThemesIterator(); itTheme.hasNext();) {
-			mapObjectsTheme = itTheme.next();
-			for (Iterator<MapObject> itObject = mapObjectsTheme
-					.getObjectsIterator(); itObject.hasNext();) {
-				mapObject = itObject.next();
+		for (ThemeApi themeApi : mapThemesList.getThemesApis()) {
+			for (MapObject mapObject : themeApi.getAllMapObjects()) {
 				objectIdString = mapObject.getObjectIdString();
 
 				if (!objectIdString.contentEquals(MapObject.DEFAULT_OBJECT_ID)) {
@@ -165,7 +157,6 @@ public class MapSaver {
 		Document document = null;
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		document = builder.newDocument();
-		// Create from whole cloth
 		Element root = document
 				.createElement(MapFileDefinitions.MAP_XML_ELEMENT);
 		root.setAttribute(MapFileDefinitions.MAP_NAME_ATTRIBUTE,

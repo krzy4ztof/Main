@@ -54,13 +54,6 @@ public class ApplicationManager {
 			MapObjectFactory mapObjectFactory)
 			throws ParserConfigurationException, SAXException, IOException {
 
-		// ImagesListFileReader imagesListFileReader = new
-		// ImagesListFileReader();
-		// MapThemesManager mapThemesList = imagesListFileReader
-		// .ReadConfigurationFile(config, THEMES_CONFIG_FILE_PATH,
-		// THEMES_IMAGES_PATH);
-
-		// Use the default (non-validating) parser
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();
 
@@ -70,7 +63,6 @@ public class ApplicationManager {
 				mapThemesManager, THEMES_IMAGES_PATH);
 		saxParser.parse(new File(THEMES_CONFIG_FILE_PATH), handler);
 
-		mapThemesManager.setSelectedTheme(mapThemesManager.getFirstTheme());
 		return mapThemesManager;
 
 	}

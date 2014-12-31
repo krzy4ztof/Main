@@ -14,7 +14,6 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	public final static String TAG_IMAGE = "Image";
 	public final static String ATTR_NAME = "name";
 
-	private MapObjectsTheme curMapObjectsTheme;
 	private ThemeApi themeApi;
 	private MapObject curMapObject;
 	private ThemesManager mapThemesList;
@@ -50,10 +49,8 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 
 				if (qName.equals(TAG_THEME)) {
 					if (aName.equals(ATTR_NAME)) {
-						curMapObjectsTheme = new MapObjectsTheme(aValue);// OK
 						themeApi = new ThemeApi(aValue, config);
 						curMapObject = null;
-						mapThemesList.addTheme(curMapObjectsTheme);// OK
 						mapThemesList.addThemeApi(themeApi);
 					}
 				} else if (qName.equals(TAG_IMAGE)) {
@@ -76,7 +73,6 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 			curMapObject.setImageIcon(imageFile);
 			imageId++;
 			curMapObject.setObjectId(imageId);
-			curMapObjectsTheme.addMapObject(curMapObject);// OK
 			themeApi.addMapObject(curMapObject);
 		}
 	}

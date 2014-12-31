@@ -1,8 +1,10 @@
 package mapeditor.mainwindow;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
+import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.MapApi;
 import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
@@ -13,10 +15,12 @@ public class MapPane extends GridPane {
 
 	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
 	private MapApi mapApi;
+	private CopyPaste copyPaste;
 
-	public MapPane(MapApi mapApi) {
+	public MapPane(MapApi mapApi, CopyPaste copyPaste) {
 		super();
 		this.mapApi = mapApi;
+		this.copyPaste = copyPaste;
 	}
 
 	@Override
@@ -134,5 +138,11 @@ public class MapPane extends GridPane {
 
 		MapObject mapObject = mapApi.getSegment(row, col).getMapObject();
 		return mapObject;
+	}
+
+	@Override
+	public void paint(Graphics graphics) {
+		super.paint(graphics);
+		copyPaste.paint(graphics);
 	}
 }

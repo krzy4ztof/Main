@@ -419,7 +419,8 @@ public class MapLoader {
 			int col = 0;
 			for (String segment : segments) {
 				String name = segmentsCode.get(segment);
-				MapObject mapObject = mapThemesList.getMapObject(name);
+				MapObject mapObject = mapThemesList.getMapObjectApi(name);
+
 				mapApi.getSegment(rowNumber, col).setMapObject(mapObject);
 				col++;
 			}

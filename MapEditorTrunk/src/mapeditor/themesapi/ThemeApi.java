@@ -23,6 +23,24 @@ public class ThemeApi {
 		mapObjects = new LinkedList<LinkedList<MapObject>>();
 	}
 
+	public List<MapObject> getAllMapObjects() {
+		List<MapObject> list = new LinkedList<MapObject>();
+
+		for (LinkedList<MapObject> row : mapObjects) {
+			list.addAll(row);
+		}
+		return list;
+	}
+
+	public MapObject getMapObject(String name) {
+		for (MapObject mapObject : getAllMapObjects()) {
+			if (mapObject.getObjectName().equals(name)) {
+				return mapObject;
+			}
+		}
+		return null;
+	}
+
 	public void addMapObject(MapObject mapObject) {
 		LinkedList<MapObject> row = null;
 		if (mapObjects.isEmpty()) {

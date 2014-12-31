@@ -20,6 +20,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import mapeditor.config.Config;
+import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
@@ -184,8 +185,8 @@ public class MainWindow {
 	}
 
 	private MapPane createMapPanel(Config config, MapMessages messages,
-			ThemesManager mapThemesList, MapApi mapApi) {
-		MapPane mapPanel = new MapPane(mapApi);
+			ThemesManager mapThemesList, MapApi mapApi, CopyPaste copyPaste) {
+		MapPane mapPanel = new MapPane(mapApi, copyPaste);
 
 		return mapPanel;
 	}
@@ -201,16 +202,19 @@ public class MainWindow {
 		Tools tools = new Tools();
 
 		MapApi mapApi = new MapApi(config, mapObjectFactory);
+		CopyPaste copyPaste = new CopyPaste(mapApi);
+
 		MapPane mapPanel = createMapPanel(config, messages, mapThemesList,
-				mapApi);
+				mapApi, copyPaste);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
 				mapPanel, mapThemesList, mapApi, tools, themesPane,
-				mapObjectFactory);
+				mapObjectFactory, copyPaste);
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
-				mapPanel, mapThemesList, mapApi, tools, mapObjectFactory);
+				mapPanel, mapThemesList, mapApi, tools, mapObjectFactory,
+				copyPaste);
 
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);

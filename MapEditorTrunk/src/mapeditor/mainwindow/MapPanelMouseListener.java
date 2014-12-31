@@ -5,8 +5,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import mapeditor.mapapi.Bucket;
+import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
+import mapeditor.mapapi.Tools.ToolsEnum;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
@@ -20,16 +22,18 @@ public class MapPanelMouseListener implements MouseListener {
 	private Tools tools;
 	private ThemesPane themesPane;
 	private MapObjectFactory mapObjectFactory;
+	private CopyPaste copyPaste;
 
 	MapPanelMouseListener(MapPane mapPanel, ThemesManager mapThemesManager,
 			MapApi mapApi, Tools tools, ThemesPane themesPane,
-			MapObjectFactory mapObjectFactory) {
+			MapObjectFactory mapObjectFactory, CopyPaste copyPaste) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
 		this.tools = tools;
 		this.mapObjectFactory = mapObjectFactory;
 		this.themesPane = themesPane;
+		this.copyPaste = copyPaste;
 	}
 
 	@Override
@@ -54,29 +58,25 @@ public class MapPanelMouseListener implements MouseListener {
 
 		if (seg.x != -1) {
 			if (e.getButton() == MouseEvent.BUTTON1) {
+				ToolsEnum activeTool = tools.getActiveTool();
+				MapObject mapObject = null;
 
-				switch (tools.getActiveTool()) {
-				case BRUSH:
-					MapObject mapObject = mapThemesManager
-							.getSelectedMapObject();
+				if (activeTool == ToolsEnum.BRUSH) {
+					mapObject = mapThemesManager.getSelectedMapObject();
 					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 					mapPanel.refresh();
-					break;
-				case ERASER:
+				} else if (activeTool == ToolsEnum.ERASER) {
 					mapObject = mapObjectFactory.getBlankMapObject();
 					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 					mapPanel.refresh();
-					break;
-				case PICKER:
+				} else if (activeTool == ToolsEnum.PICKER) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject();
 					System.out.println(":::" + mapObject);
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
-
-				case BUCKET:
+				} else if (activeTool == ToolsEnum.BUCKET) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject();
-
 					MapObject newObject = mapThemesManager
 							.getSelectedMapObject();
 					Bucket bucket = new Bucket(mapApi);
@@ -85,8 +85,10 @@ public class MapPanelMouseListener implements MouseListener {
 					mapPanel.refresh();
 
 					// System.out.println(":::" + mapObject);
+				} else if (activeTool == ToolsEnum.SELECTION) {
+					copyPaste.onLeftButtonClick(e.getPoint());
 
-				default:
+					mapPanel.refresh();
 
 				}
 

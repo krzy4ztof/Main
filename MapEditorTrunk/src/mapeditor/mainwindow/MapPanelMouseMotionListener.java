@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.MapObject;
@@ -17,15 +18,17 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 	private MapApi mapApi;
 	private MapObjectFactory mapObjectFactory;
 	private Tools tools;
+	private CopyPaste copyPaste;
 
 	MapPanelMouseMotionListener(MapPane mapPanel,
 			ThemesManager mapThemesManager, MapApi mapApi, Tools tools,
-			MapObjectFactory mapObjectFactory) {
+			MapObjectFactory mapObjectFactory, CopyPaste copyPaste) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
 		this.tools = tools;
 		this.mapObjectFactory = mapObjectFactory;
+		this.copyPaste = copyPaste;
 	}
 
 	@Override
