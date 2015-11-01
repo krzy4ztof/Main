@@ -54,5 +54,9 @@ ignorecase = false
 ***	GitHub Desktop							***
 ***	Wyslanie zmian do remote repozytorium	***
 ***********************************************
+Panel -> Changes
+
+Commit to master.
+Title, Description
 
 
