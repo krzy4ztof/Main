@@ -22,6 +22,14 @@ git clone https://github.com/krzy4ztof/Main
 ***************************************************************
 git pull
 
+****************************************************************
+***	Założenie nowego repozytorium oraz						****
+***	Pobranie do repozytorium zmian z remote repozytorium	****
+****************************************************************
+git init
+git pull https://github.com/swarmsim/swarm.git
+git remote add origin https://github.com/swarmsim/swarm.git
+
 ***********************************************
 ***	Wyslanie zmian do remote repozytorium	***
 ***********************************************
@@ -42,5 +50,9 @@ git push
 #uwzglednianei wielkosci znakow - Linux
 ignorecase = false
 
+***********************************************
+***	GitHub Desktop							***
+***	Wyslanie zmian do remote repozytorium	***
+***********************************************
 
 
