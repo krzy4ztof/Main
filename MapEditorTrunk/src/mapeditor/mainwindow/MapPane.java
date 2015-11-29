@@ -1,11 +1,19 @@
 package mapeditor.mainwindow;
 
 import java.awt.Graphics;
+import java.awt.Paint;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Stroke;
+import java.util.Iterator;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
 import mapeditor.mapapi.CopyPaste;
+import mapeditor.mapapi.CopyPasteSegment;
+import mapeditor.mapapi.DraggedSegments;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.MapSegment;
+import mapeditor.mapapi.SelectedSegments;
 import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
 
@@ -24,7 +32,7 @@ public class MapPane extends GridPane {
 	}
 
 	@Override
-	boolean isLayoutHex() {
+	protected boolean isLayoutHex() {
 		return mapApi.isLayoutHex();
 	}
 
@@ -131,18 +139,95 @@ public class MapPane extends GridPane {
 
 	@Override
 	protected MapObject getMapObject(int row, int col) {
-		/*
-		 * zwraca ImageIcon danego segmentu mapy. Parametry: col - kolumna, row
-		 * - rzad
-		 */
-
-		MapObject mapObject = mapApi.getSegment(row, col).getMapObject();
+		MapObject mapObject = null;
+		MapSegment mapSegment = mapApi.getSegment(row, col);
+		if (mapSegment != null) {
+			mapObject = mapApi.getSegment(row, col).getMapObject();
+		}
 		return mapObject;
 	}
 
 	@Override
 	public void paint(Graphics graphics) {
 		super.paint(graphics);
+
+		int divider = 1;
+		if (isLayoutHex()) {
+			divider = 2;
+		}
+
+		SelectedSegments selectedSegments = copyPaste.getSelectedSegments();
+		if (selectedSegments != null) {
+			Paint paint = selectedSegments.getPaint();
+			Stroke stroke = selectedSegments.getStroke();
+
+			Iterator<CopyPasteSegment> iterator = selectedSegments
+					.iteratorForDrawing();
+
+			while (iterator.hasNext()) {
+				CopyPasteSegment segment = iterator.next();
+
+				if (((segment.getPoint().x) % 2) == 0) {
+					drawSegment(graphics, segment.getPoint().x,
+							segment.getPoint().y, 1, segment.getImage(), paint,
+							stroke);
+				} else {
+					drawSegment(graphics, segment.getPoint().x,
+							segment.getPoint().y, divider, segment.getImage(),
+							paint, stroke);
+				}
+
+			}
+		}
+
+		copyPaste.prePaint();
+
+		DraggedSegments draggedSegments = copyPaste.getDraggedSegments();
+
+		if (draggedSegments != null) {
+			Paint paint = draggedSegments.getPaint();
+			Stroke stroke = draggedSegments.getStroke();
+
+			Iterator<CopyPasteSegment> iterator = draggedSegments.iterator();
+
+			while (iterator.hasNext()) {
+				CopyPasteSegment segment = iterator.next();
+
+				int firstColumn = getFirstVisibleColumnNumber();// + 1;
+				int lastColumn = getLastVisibleColumnNumber();// - 1;
+				int firstRow = getFirstVisibleRowNumber();// + 1;
+				int lastRow = getLastVisibleRowNumber();// - 1;
+
+				Point point = segment.getPoint();
+				if (point.x >= firstColumn && point.x <= lastColumn
+						&& point.y >= firstRow && point.y <= lastRow) {
+
+					if (((segment.getPoint().x) % 2) == 0) {
+						drawSegment(graphics, segment.getPoint().x,
+								segment.getPoint().y, 1, segment.getImage(),
+								paint, stroke);
+					} else {
+						drawSegment(graphics, segment.getPoint().x,
+								segment.getPoint().y, divider,
+								segment.getImage(), paint, stroke);
+					}
+				}
+			}
+		}
+
 		copyPaste.paint(graphics);
 	}
+
+	void onCutEvent() {
+		copyPaste.onCutEvent();
+	}
+
+	void onCopyEvent() {
+		copyPaste.onCopyEvent();
+	}
+
+	void onPasteEvent() {
+		copyPaste.onPasteEvent();
+	}
+
 }

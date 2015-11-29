@@ -10,13 +10,26 @@ import javax.swing.ImageIcon;
  *
  * @author krzysztof
  */
-public class MapObject {
+public class MapObject implements Cloneable {
 
 	private String objectName;
 	private String imageName;
 	private ImageIcon imageIcon;
 	private int objectId;
 	public final static String DEFAULT_OBJECT_ID = "000";
+
+	@Override
+	public MapObject clone() {
+		MapObject clone = null;
+
+		try {
+			clone = (MapObject) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+
+		return clone;
+	}
 
 	@Override
 	public boolean equals(Object object) {

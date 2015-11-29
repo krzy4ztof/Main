@@ -32,6 +32,7 @@ public class MapApi {
 				mapLayout);
 
 		resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
+
 	}
 
 	public boolean isLayoutHex() {
@@ -164,7 +165,23 @@ public class MapApi {
 	}
 
 	public MapSegment getSegment(int row, int col) {
-		return segments.get(row).get(col);
+		MapSegment segment = null;
+
+		if (row < 0 || col < 0 || row >= segments.size()) {
+			return null;
+		}
+
+		LinkedList<MapSegment> segmentRow = segments.get(row);
+		if (segmentRow != null) {
+			if (col >= segmentRow.size()) {
+				return null;
+			} else {
+				segment = segmentRow.get(col);
+			}
+
+		}
+
+		return segment;
 	}
 
 	/**

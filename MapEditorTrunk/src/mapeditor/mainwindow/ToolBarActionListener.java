@@ -13,6 +13,7 @@ import javax.swing.ButtonModel;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JButton;
 
+import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.Tools;
 import mapeditor.mapapi.Tools.ToolsEnum;
 
@@ -21,12 +22,14 @@ public class ToolBarActionListener implements ActionListener {
 	private Tools tools;
 	private MapPane mapPanel;
 	private CursorFactory cursorFactory;
+	private CopyPaste copyPaste;
 
 	public ToolBarActionListener(Tools tools, CursorFactory cursorFactory,
-			MapPane mapPanel) {
+			MapPane mapPanel, CopyPaste copyPaste) {
 		this.tools = tools;
 		this.cursorFactory = cursorFactory;
 		this.mapPanel = mapPanel;
+		this.copyPaste = copyPaste;
 	}
 
 	@Override
@@ -38,7 +41,6 @@ public class ToolBarActionListener implements ActionListener {
 			JButton button = (JButton) sourceObject;
 
 			ButtonModel buttonModel = button.getModel();
-			System.out.println("Button Model:" + buttonModel);
 			if (buttonModel instanceof DefaultButtonModel) {
 				ButtonGroup buttonGroup = ((DefaultButtonModel) buttonModel)
 						.getGroup();
@@ -60,34 +62,31 @@ public class ToolBarActionListener implements ActionListener {
 			}
 		}
 
-		System.out.println("Toolbar: " + event.getActionCommand());
-		System.out.println("Source: " + event.getSource());
-
 		if (str.equals(MainWindow.ACTION_TOOLBAR_ERASER)) {
 			tools.setActiveTool(ToolsEnum.ERASER);
 			mapPanel.getPanel().setCursor(
 					cursorFactory.getCursor(CursorFactory.CURSOR_ERASER));
+			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BRUSH)) {
 			tools.setActiveTool(ToolsEnum.BRUSH);
 			mapPanel.getPanel().setCursor(
 					cursorFactory.getCursor(CursorFactory.CURSOR_BRUSH));
-
+			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BUCKET)) {
 			tools.setActiveTool(ToolsEnum.BUCKET);
 			mapPanel.getPanel().setCursor(
 					cursorFactory.getCursor(CursorFactory.CURSOR_BUCKET));
-
+			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_PICKER)) {
 			tools.setActiveTool(ToolsEnum.PICKER);
 			mapPanel.getPanel().setCursor(
 					cursorFactory.getCursor(CursorFactory.CURSOR_PICKER));
-
+			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_SELECTION)) {
 			tools.setActiveTool(ToolsEnum.SELECTION);
 			mapPanel.getPanel().setCursor(
 					Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+			copyPaste.onActionPerformed();
 		}
-
-		System.out.println("Co wybrano: " + tools.getActiveTool());
 	}
 }

@@ -16,7 +16,6 @@ import mapeditor.themesapi.ThemesManager;
 public class MapPanelMouseListener implements MouseListener {
 
 	private MapPane mapPanel;
-	// private GraphicsSystem graphicsSystem;
 	private MapApi mapApi;
 	private ThemesManager mapThemesManager;
 	private Tools tools;
@@ -46,6 +45,17 @@ public class MapPanelMouseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+
+		if (seg.x != -1) {
+			ToolsEnum activeTool = tools.getActiveTool();
+
+			if (activeTool == ToolsEnum.SELECTION) {
+				copyPaste.onMouseReleased(e.getPoint());
+
+				mapPanel.refresh();
+			}
+		}
 	}
 
 	@Override
@@ -83,13 +93,14 @@ public class MapPanelMouseListener implements MouseListener {
 					bucket.fill(mapObject, seg);
 					bucket.paint(newObject);
 					mapPanel.refresh();
-
-					// System.out.println(":::" + mapObject);
 				} else if (activeTool == ToolsEnum.SELECTION) {
-					copyPaste.onLeftButtonClick(e.getPoint());
 
+					if (e.getClickCount() == 2) {
+						copyPaste.onLeftButtonDoubleClick(e.getPoint());
+					} else {
+						copyPaste.onLeftButtonClick(e.getPoint());
+					}
 					mapPanel.refresh();
-
 				}
 
 			} else {
@@ -102,6 +113,18 @@ public class MapPanelMouseListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+
+		if (seg.x != -1) {
+			ToolsEnum activeTool = tools.getActiveTool();
+
+			if (activeTool == ToolsEnum.SELECTION) {
+				copyPaste.onMousePressed(e.getPoint());
+
+				mapPanel.refresh();
+
+			}
+		}
 	}
 
 }

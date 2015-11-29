@@ -31,6 +31,16 @@ public class MainWindowKeyListener implements KeyListener {
 			mapPanel.refresh();
 			themesPane.getActiveThemePanel().refresh();
 		}
+
+		if (event.isControlDown()) {
+			if (code == KeyEvent.VK_X) {
+				mapPanel.onCutEvent();
+			} else if (code == KeyEvent.VK_C) {
+				mapPanel.onCopyEvent();
+			} else if (code == KeyEvent.VK_V) {
+				mapPanel.onPasteEvent();
+			}
+		}
 	}
 
 	@Override

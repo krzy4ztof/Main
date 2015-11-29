@@ -1,12 +1,15 @@
 package mapeditor.mainwindow;
 
+import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import mapeditor.mapapi.CopyPaste;
+import mapeditor.mapapi.CopyPaste.CopyPasteCursor;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
+import mapeditor.mapapi.Tools.ToolsEnum;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
@@ -34,8 +37,7 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		/*
-		 * przesuwanie myszy ze wcisni�tym przyciskiem e.getButton() - zawsze
-		 * daje 0
+		 * Moving mouse with pressed button. e.getButton() - is always 0
 		 */
 		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
 		if (seg.x != -1) {
@@ -50,6 +52,14 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
 				mapPanel.refresh();
 				break;
+			case SELECTION:
+				ToolsEnum activeTool = tools.getActiveTool();
+				if (activeTool == ToolsEnum.SELECTION) {
+					copyPaste.onMouseDragged(e.getPoint());
+
+					mapPanel.refresh();
+				}
+				break;
 			default:
 
 			}
@@ -58,6 +68,29 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-	}
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		if (seg.x != -1) {
+			switch (tools.getActiveTool()) {
+			case SELECTION:
+				copyPaste.onMouseMoved(e.getPoint());
 
+				CopyPasteCursor cursor = copyPaste.getCopyPasteCursor();
+				int cursorType = mapPanel.getPanel().getCursor().getType();
+				if (cursor == CopyPasteCursor.CROSS
+						&& cursorType != Cursor.CROSSHAIR_CURSOR) {
+					mapPanel.getPanel()
+							.setCursor(
+									Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+				} else if (cursor == CopyPasteCursor.HAND
+						&& cursorType != Cursor.HAND_CURSOR) {
+					mapPanel.getPanel().setCursor(
+							Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				}
+				mapPanel.refresh();
+				break;
+			default:
+
+			}
+		}
+	}
 }

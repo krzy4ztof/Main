@@ -202,10 +202,12 @@ public class MainWindow {
 		Tools tools = new Tools();
 
 		MapApi mapApi = new MapApi(config, mapObjectFactory);
-		CopyPaste copyPaste = new CopyPaste(mapApi);
+		CopyPaste copyPaste = new CopyPaste(mapApi, mapObjectFactory);
 
 		MapPane mapPanel = createMapPanel(config, messages, mapThemesList,
 				mapApi, copyPaste);
+
+		copyPaste.addGridPane(mapPanel);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
@@ -220,7 +222,7 @@ public class MainWindow {
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
 
 		JToolBar toolBar = createToolBar(config, messages, tools,
-				cursorFactory, mapPanel);
+				cursorFactory, mapPanel, copyPaste);
 		frame.add(toolBar, BorderLayout.PAGE_START);
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
@@ -262,11 +264,12 @@ public class MainWindow {
 	}
 
 	private JToolBar createToolBar(Config config, MapMessages messages,
-			Tools tools, CursorFactory cursorFactory, MapPane mapPanel) {
+			Tools tools, CursorFactory cursorFactory, MapPane mapPanel,
+			CopyPaste copyPaste) {
 		JToolBar toolBar = new JToolBar(
 				messages.getString(MapMessages.TOOLBAR_TITLE));
 		ToolBarActionListener actionListener = new ToolBarActionListener(tools,
-				cursorFactory, mapPanel);
+				cursorFactory, mapPanel, copyPaste);
 
 		String iconEraser = ICON_ERASER_16;
 		String iconBrush = ICON_BRUSH_16;

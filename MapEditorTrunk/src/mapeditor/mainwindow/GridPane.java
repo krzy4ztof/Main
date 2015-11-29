@@ -3,16 +3,19 @@ package mapeditor.mainwindow;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Stroke;
+import java.util.LinkedList;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
+import mapeditor.mapapi.CopyPasteSegment;
 import mapeditor.themesapi.MapObject;
 
 public abstract class GridPane {
@@ -32,8 +35,12 @@ public abstract class GridPane {
 
 	protected JScrollPane scrollPane;
 
+	private Paint paint;
+	private Stroke stroke;
+
 	public GridPane() {
 		super();
+
 		panel = new JLayeredPane() {
 
 			private static final long serialVersionUID = 1L;
@@ -45,21 +52,40 @@ public abstract class GridPane {
 			}
 		};
 
-		// panel.setBackground(Color.RED);
-		// panel.setBackground(new Color(248, 250, 253));
 		panel.setBackground(new Color(238, 238, 238));
-
 		scrollPane = new JScrollPane(panel);
+		paint = Color.GRAY;
+		stroke = new BasicStroke(1.0f);
+	}
+
+	protected Image getImage(int column, int row) {
+		MapObject mapObject = getMapObject(row, column);
+		if (mapObject == null) {
+			return null;
+		}
+
+		Image image = mapObject.getImageIcon().getImage();
+		return image;
 	}
 
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
-
 		MapObject mapObject = getMapObject(row, column);
 		if (mapObject == null) {
 			return;
 		}
 
 		Image image = mapObject.getImageIcon().getImage();
+
+		drawSegment(graphics, column, row, divider, image, paint, stroke);
+	}
+
+	protected void drawSegment(Graphics graphics, int column, int row,
+			int divider, Image image) {
+		drawSegment(graphics, column, row, divider, image, paint, stroke);
+	}
+
+	protected void drawSegment(Graphics graphics, int column, int row,
+			int divider, Image image, Paint paint, Stroke stroke) {
 
 		int currentHeight = row * segmentHeight
 				+ (segmentHeight - segmentHeight / divider);
@@ -74,22 +100,13 @@ public abstract class GridPane {
 
 		if (graphics instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D) graphics;
-			int firstX = column * segmentWidth + getLeftMarigin() + 2;
-			int firstY = currentHeight + getTopMarigin() + 2;
-			int secondX = firstX + segmentWidth - 4;
-			int secondY = firstY + segmentHeight - 4;
 
-			g2.setPaint(new GradientPaint(firstX, firstY, Color.BLUE, secondX,
-					secondY, Color.YELLOW));
-
-			g2.setStroke(new BasicStroke(3.0f));
-			g2.drawRect(column * segmentWidth + getLeftMarigin() + 2,
-					currentHeight + getTopMarigin() + 2, segmentWidth - 4,
-					segmentHeight - 4);
-
+			g2.setPaint(paint);
+			g2.setStroke(stroke);
+			g2.drawRect(column * segmentWidth + getLeftMarigin(), currentHeight
+					+ getTopMarigin(), segmentWidth, segmentHeight);
 		} else {
 			graphics.setColor(Color.YELLOW);
-
 			for (int i = 0; i < 3; i++) {
 				graphics.drawOval(column * segmentWidth + getLeftMarigin() + i,
 						currentHeight + getTopMarigin() + i, segmentWidth - 2
@@ -113,14 +130,14 @@ public abstract class GridPane {
 		return column;
 	}
 
-	private int getFirstVisibleColumnNumber() {
+	protected int getFirstVisibleColumnNumber() {
 		int x = panel.getVisibleRect().x;
 		int column = getColumnNumberAt(x);
 		column = Math.max(column, 0);
 		return column;
 	}
 
-	private int getFirstVisibleRowNumber() {
+	protected int getFirstVisibleRowNumber() {
 		int y = panel.getVisibleRect().y;
 		int row = getRowNumberAt(y, false);
 		row = Math.max(row, 0);
@@ -150,7 +167,7 @@ public abstract class GridPane {
 
 	protected abstract MapObject getMapObject(int row, int col);
 
-	private int getLastVisibleColumnNumber() {
+	protected int getLastVisibleColumnNumber() {
 		Rectangle rectangle = panel.getVisibleRect();
 		int x = rectangle.x + rectangle.width;
 		int column = getColumnNumberAt(x);
@@ -158,7 +175,7 @@ public abstract class GridPane {
 		return column;
 	}
 
-	private int getLastVisibleRowNumber() {
+	protected int getLastVisibleRowNumber() {
 		Rectangle rectangle = panel.getVisibleRect();
 		int y = rectangle.y + rectangle.height;
 		int row = getRowNumberAt(y, true);
@@ -224,11 +241,106 @@ public abstract class GridPane {
 		return new Point(column, row);
 	}
 
+	private LinkedList<Point> getVerticalLineSegments(Point leftPoint,
+			Point rightPoint) {
+		LinkedList<Point> result = new LinkedList<Point>();
+
+		if (leftPoint.y != rightPoint.y) {
+			return result;
+		}
+
+		if (leftPoint.x > rightPoint.x) {
+			return result;
+		}
+
+		int curX = leftPoint.x;
+
+		while (curX <= rightPoint.x) {
+
+			System.out.println(curX);
+
+			Point curPoint = new Point(curX, leftPoint.y);
+
+			Point segPoint = this.getSegmentPointAtCursor(curPoint);
+
+			result.add(segPoint);
+
+			curX += segmentWidth;
+		}
+
+		Point segPoint = this.getSegmentPointAtCursor(rightPoint);
+		if (!result.contains(segPoint)) {
+			result.add(segPoint);
+		}
+		return result;
+
+	}
+
+	public LinkedList<LinkedList<CopyPasteSegment>> getSegmentPoints(
+			Point firstPoint, Point lastPoint) {
+
+		Point minPoint = getMinPoint(firstPoint, lastPoint);
+		Point maxPoint = getMaxPoint(firstPoint, lastPoint);
+
+		Point leftUpperCorner = new Point(minPoint.x, minPoint.y);
+		Point rightUpperCorner = new Point(maxPoint.x, minPoint.y);
+
+		LinkedList<Point> upperLine = getVerticalLineSegments(leftUpperCorner,
+				rightUpperCorner);
+		Point leftBottomCorner = new Point(minPoint.x, maxPoint.y);
+		Point rightBottomCorner = new Point(maxPoint.x, maxPoint.y);
+		LinkedList<Point> bottomLine = getVerticalLineSegments(
+				leftBottomCorner, rightBottomCorner);
+		LinkedList<LinkedList<CopyPasteSegment>> segments = new LinkedList<LinkedList<CopyPasteSegment>>();
+
+		LinkedList<CopyPasteSegment> newColumn;
+
+		int nrColumns = upperLine.size();
+		Point firstSegmentPoint = upperLine.getFirst();
+
+		for (int col = 0; col < nrColumns; col++) {
+
+			Point upperPoint = upperLine.get(col);
+
+			Point bottomPoint = bottomLine.get(col);
+
+			newColumn = new LinkedList<CopyPasteSegment>();
+
+			for (int row = upperPoint.y; row <= bottomPoint.y; row++) {
+
+				MapObject mapObject = getMapObject(row, col
+						+ firstSegmentPoint.x);
+				if (mapObject != null) {
+					mapObject = mapObject.clone();
+					Point point = new Point(col + firstSegmentPoint.x, row);
+
+					newColumn.add(new CopyPasteSegment(mapObject, point));
+				}
+			}
+
+			segments.add(newColumn);
+
+		}
+		return segments;
+	}
+
+	private Point getMinPoint(Point first, Point last) {
+		Point point = new Point(Math.min(first.x, last.x), Math.min(first.y,
+				last.y));
+		return point;
+	}
+
+	private Point getMaxPoint(Point first, Point last) {
+		Point point = new Point(Math.max(first.x, last.x), Math.max(first.y,
+				last.y));
+		return point;
+	}
+
 	protected int getTopMarigin() {
 		return TOP_MARIGIN;
 	}
 
-	boolean isLayoutHex() {
+	protected boolean isLayoutHex() {
 		return false;
 	}
 
