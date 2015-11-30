@@ -1,18 +1,14 @@
 package mapeditor.mapapi;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Point;
-import java.awt.Stroke;
 import java.util.Iterator;
 
 import mapeditor.mainwindow.MapPane;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 
+//TODO: review
 public class CopyPaste {
 	enum State {
 		/*
@@ -20,53 +16,48 @@ public class CopyPaste {
 		 */
 		/*
 		 * 
-		 * SELECTING - user is drawing selection rectangle;firstPointToCut,
-		 * lastPointToCut - corners of selected rectangle; firstDragPoint,
-		 * lastDragPoint are set to null; minDraggedPoint, maxDraggedPoint are
-		 * set to null
+		 * SELECTING - user is drawing selection
+		 * rectangle;selectedSegments.firstPointToCut,
+		 * selectedSegments.lastPointToCut - corners of selected rectangle;
+		 * draggedSegments.isActive() = false
 		 */
 		/*
 		 * SELECTED - user finished drawing selection rectangle;
 		 * firstPointToCut, lastPointToCut - corners of selected rectangle;
-		 * minPointToCut, maxPointToCut - min, max corners of selected map;
-		 * initialized from firstPointToCut, lastPointToCut; selectedSegments -
-		 * initialized to refer segments selected on map;
+		 * selectedSegments.getMinPoint(), selectedSegments.getMaxPoint() - min,
+		 * max corners of selected map; initialized from
+		 * selectedSegments.firstPointToCut, selectedSegments.lastPointToCut;
+		 * selectedSegments - initialized to refer segments selected on map;
 		 */
 		/*
-		 * DRAGGING - user is dragging selection rectangle; firstDragPoint,
-		 * lastDragPoint are initialized; (lastDragPoint-firstDragPoint) -
+		 * DRAGGING - user is dragging selection rectangle;
+		 * draggedSegments.firstDragPoint, draggedSegments.lastDragPoint are
+		 * initialized;
+		 * (draggedSegments.lastDragPoint-draggedSegments.firstDragPoint) -
 		 * vector of drag movement
 		 */
 		/*
 		 * DRAGGED - user is not dragging selection rectangle, but can continue
 		 * to drag it. Mouse cursor is somewhere else on the map;
-		 * (lastDragPoint-firstDragPoint) - vector of drag movement
+		 * (draggedSegments.lastDragPoint-draggedSegments.firstDragPoint) -
+		 * vector of drag movement
 		 */
 		/*
 		 * DROP - user pasted selection rectangle somewhere;
-		 * (lastDragPoint-firstDragPoint) - vector of drag movement
+		 * (draggedSegments.lastDragPoint-draggedSegments.firstDragPoint) -
+		 * vector of drag movement
 		 */
 		/*
-		 * minDraggedPoint, maxDraggedPoint - are initialized during prePaint()
-		 * when firstDragPoint and lastDragPoint are not null; minDraggedPoint,
-		 * maxDraggedPoint - corners of dragged rectangle;
+		 * draggedSegments.minDraggedPoint, draggedSegments.maxDraggedPoint -
+		 * are initialized during draggedSegments.tryToActivate() when
+		 * draggedSegments.firstDragPoint and draggedSegments.lastDragPoint are
+		 * not null; draggedSegments.minDraggedPoint,
+		 * draggedSegments.maxDraggedPoint - corners of dragged rectangle;
 		 */
 		/*
 		 * draggedSegments - refer to segments on map under dragged rectangle.
-		 * Initialized during paint() when minDraggedPoin and maxDraggedPoint is
-		 * not null;
-		 */
-		/*
-		 * REFACTORING !!!!!!!!!!!! minPointToCut, maxPointToCut - now
-		 * selectedSegments.getMinPoint(), selectedSegments.getMaxPoint();
-		 * minDraggedPoint, maxDraggedPoint - now draggedSegments.getMinPoint(),
-		 * draggedSegments.getMaxPoint()
 		 */
 		NEW, SELECTING, SELECTED, DRAGGING, DRAGGED, DROP
-	}
-
-	enum CutCopyState {
-		CUT, COPY
 	}
 
 	public enum CopyPasteCursor {
@@ -79,26 +70,9 @@ public class CopyPaste {
 
 	private State state = State.NEW;
 
-	private CutCopyState cutCopyState = CutCopyState.CUT;
-
 	private CopyPasteCursor copyPasteCursor = CopyPasteCursor.CROSS;
 
 	private MapApi mapApi;
-
-	// If not null -> segments are being selected -> minPoinToCut is null,
-	// firstDragPoint is null
-	// If null segments are selected -> minPointToCut is not null
-	private Point firstPointToCut;
-
-	// If not null -> segments are being selected
-	private Point lastPointToCut;
-
-	// If not null -> segments are being dragged -> firstPointToCut is null,
-	// minPointToCut is not null
-	private Point firstDragPoint;
-
-	// If not null -> segments are being dragged
-	private Point lastDragPoint;
 
 	private MapPane mapPane;
 
@@ -108,17 +82,12 @@ public class CopyPaste {
 
 	private MapObjectFactory mapObjectFactory;
 
-	private Paint paint;
-	private Stroke stroke;
-
 	public CopyPaste(MapApi mapApi, MapObjectFactory mapObjectFactory) {
 		this.mapApi = mapApi;
 		this.mapObjectFactory = mapObjectFactory;
 
-		paint = Color.BLACK;
-		float dash[] = { 5.0f };
-		stroke = new BasicStroke(2.0f, BasicStroke.CAP_ROUND,
-				BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
+		selectedSegments = new SelectedSegments(mapObjectFactory);
+		draggedSegments = new DraggedSegments();
 	}
 
 	public CopyPasteCursor getCopyPasteCursor() {
@@ -154,97 +123,69 @@ public class CopyPaste {
 	private void beginNewState() {
 		state = State.NEW;
 		copyPasteCursor = CopyPasteCursor.CROSS;
-		cutCopyState = CutCopyState.CUT;
 
-		selectedSegments = null;
-		draggedSegments = null;
-
-		firstPointToCut = null;
-		lastPointToCut = null;
-
-		firstDragPoint = null;
-		lastDragPoint = null;
+		selectedSegments.deactivate();
+		draggedSegments.deactivate();
 	}
 
 	private void beginSelectingState(Point point) {
 		state = State.SELECTING;
 
-		firstPointToCut = point;
-		lastPointToCut = point;
+		selectedSegments.deactivate();
+		selectedSegments.setFirstPointToCut(point);
+		selectedSegments.setLastPointToCut(point);
 
-		selectedSegments = null;
-		draggedSegments = null;
-
-		firstDragPoint = null;
-		lastDragPoint = null;
+		draggedSegments.deactivate();
 	}
 
 	private void beginDraggingState(Point point) {
 		state = State.DRAGGING;
 
-		firstDragPoint = point;
-		lastDragPoint = point;
+		draggedSegments.setFirstDragPoint(point);
+		draggedSegments.setLastDragPoint(point);
 	}
 
 	private void beginDraggingStateFromPaste() {
-
-		if (selectedSegments != null) {
+		if (selectedSegments.isActive()) {
 			state = State.DRAGGING;
 
-			// firstDragPoint and lastDragPoint must be the same
-			firstDragPoint = selectedSegments.getMinPoint();
-			lastDragPoint = selectedSegments.getMinPoint();
+			draggedSegments.setFirstDragPoint(selectedSegments.getMinPoint());
+			draggedSegments.setLastDragPoint(selectedSegments.getMinPoint());
 		}
 	}
 
 	private void continueDraggingState(Point point) {
 		state = State.DRAGGING;
-
-		lastDragPoint = point;
+		draggedSegments.setLastDragPoint(point);
 	}
 
 	private void beginSelectedState(Point point) {
 		state = State.SELECTED;
 
-		selectedSegments = new SelectedSegments(mapPane, firstPointToCut,
-				lastPointToCut, mapObjectFactory);
-
-		firstPointToCut = null;
-		lastPointToCut = null;
-
+		selectedSegments.activate(mapPane);
 	}
 
 	private void beginDraggedState() {
-		state = state.DRAGGED;
+		state = State.DRAGGED;
 
 		copyPasteCursor = CopyPasteCursor.CROSS;
 	}
 
 	private void continueAfterDrop() {
-		if (selectedSegments != null) {
-			if (selectedSegments.isCutState()) {
-				beginNewState();
-			} else {
-				// selectedSegments is in copy state
-				state = State.SELECTED;
-
-				firstDragPoint = null;
-				lastDragPoint = null;
-				draggedSegments = null;
-			}
+		if (selectedSegments.isCutState()) {
+			beginNewState();
+		} else {
+			state = State.SELECTED;
+			draggedSegments.deactivate();
 		}
 		mapPane.refresh();
 	}
 
 	private void beginDropState() {
-		state = state.DROP;
+		state = State.DROP;
 
-		System.out.println("CUT ");
-
-		System.out.println("PASTE HERE SELECTED SEGMENTS");
-
-		if (draggedSegments != null) {
-			if (selectedSegments != null && selectedSegments.isCutState()) {
+		if (draggedSegments.isActive()) {
+			if (selectedSegments.isActive() && selectedSegments.isCutState()) {
 
 				Iterator<CopyPasteSegment> selectedIterator = selectedSegments
 						.iterator();
@@ -291,68 +232,21 @@ public class CopyPaste {
 		onEvent(EventCopyPaste.MOVE, point);
 	}
 
-	public void prePaint() {
-
-		if (firstDragPoint != null && lastDragPoint != null) {
-			draggedSegments = new DraggedSegments(mapPane, selectedSegments,
-					firstDragPoint, lastDragPoint);
-
-		}
-
-	}
-
 	public void paint(Graphics graphics) {
-
-		if (graphics instanceof Graphics2D) {
-			Graphics2D g2 = (Graphics2D) graphics;
-			g2.setStroke(stroke);
-			g2.setPaint(paint);
-		}
-
-		if (firstPointToCut != null && lastPointToCut != null) {
-			drawRectangle(graphics, firstPointToCut, lastPointToCut);
-
-		}
-
-		if (selectedSegments != null) {
-			drawRectangle(graphics, selectedSegments.getMinPoint(),
-					selectedSegments.getMaxPoint());
-		}
-
-		if (draggedSegments != null) {
-			drawRectangle(graphics, draggedSegments.getMinPoint(),
-					draggedSegments.getMaxPoint());
-		}
-
-	}
-
-	private void drawRectangle(Graphics graphics, Point first, Point last) {
-		int minX = Math.min(first.x, last.x);
-		int minY = Math.min(first.y, last.y);
-		int maxX = Math.max(first.x, last.x);
-		int maxY = Math.max(first.y, last.y);
-		int width = maxX - minX;
-		int height = maxY - minY;
-
-		graphics.drawRect(minX, minY, width, height);
+		selectedSegments.paint(graphics);
+		draggedSegments.paint(graphics);
 
 	}
 
 	public void onCutEvent() {
 		onEvent(EventCopyPaste.VK_CUT, null);
-		cutCopyState = CutCopyState.CUT;
-		if (selectedSegments != null) {
-			selectedSegments.setCutState();
-		}
+		selectedSegments.setCutState();
 		mapPane.refresh();
 	}
 
 	public void onCopyEvent() {
-		cutCopyState = CutCopyState.COPY;
 		onEvent(EventCopyPaste.VK_COPY, null);
-		if (selectedSegments != null) {
-			selectedSegments.setCopyState();
-		}
+		selectedSegments.setCopyState();
 		mapPane.refresh();
 	}
 
@@ -363,14 +257,22 @@ public class CopyPaste {
 		mapPane.refresh();
 	}
 
+	public void onZoomMapInEvent() {
+		beginNewState();
+		mapPane.refresh();
+	}
+
+	public void onZoomMapOutEvent() {
+		beginNewState();
+		mapPane.refresh();
+	}
+
+	public void onCenterMapEvent() {
+		beginNewState();
+		mapPane.refresh();
+	}
+
 	private void onEvent(EventCopyPaste event, Point point) {
-		System.out.println("Event: " + event + " during state: " + state);
-
-		if (point != null) {
-			System.out
-					.println(" point x: " + point.x + "; point y: " + point.y);
-		}
-
 		switch (state) {
 		case NEW:
 			onEventInStateNew(event, point);
@@ -393,9 +295,6 @@ public class CopyPaste {
 		default:
 			break;
 		}
-
-		System.out.println("Event: " + event + " switched to state: " + state);
-
 	}
 
 	private void onEventInStateNew(EventCopyPaste event, Point point) {
@@ -431,7 +330,6 @@ public class CopyPaste {
 	private void onEventInStateSelecting(EventCopyPaste event, Point point) {
 		switch (event) {
 		case MOVE:
-			// changeCursor(CopyPasteCursor.CROSS);
 			copyPasteCursor = CopyPasteCursor.CROSS;
 			break;
 		case LEFT_CLICK:
@@ -439,14 +337,10 @@ public class CopyPaste {
 		case LEFT_PRESS:
 			break;
 		case DRAG:
-			lastPointToCut = point;
+			selectedSegments.setLastPointToCut(point);
 			break;
 		case LEFT_RELEASE:
-			if (firstPointToCut.equals(lastPointToCut)) {
-				beginNewState();
-			} else {
-				beginSelectedState(point);
-			}
+			beginSelectedState(point);
 			break;
 		case DOUBLE_CLICK:
 			break;
@@ -466,29 +360,18 @@ public class CopyPaste {
 	private void onEventInStateSelected(EventCopyPaste event, Point point) {
 		switch (event) {
 		case MOVE:
-			if (selectedSegments != null && selectedSegments.contains(point)) {
-				System.out.println("CURSOR SELECTED");
+			if (selectedSegments.isActive() && selectedSegments.contains(point)) {
 				copyPasteCursor = CopyPasteCursor.HAND;
 			} else {
-				System.out.println("CURSOR NORM");
 				copyPasteCursor = CopyPasteCursor.CROSS;
 			}
 			break;
 		case LEFT_CLICK:
 			break;
 		case LEFT_PRESS:
-			if (selectedSegments != null && selectedSegments.contains(point)) {
+			if (selectedSegments.isActive() && selectedSegments.contains(point)) {
 				beginDraggingState(point);
-				// it is possible to select CUT COPY sate before selecting all
-				// elements
-				if (cutCopyState == CutCopyState.COPY) {
-					selectedSegments.setCopyState();
-				} else {
-					selectedSegments.setCutState();
-				}
-
 			} else {
-
 				beginSelectingState(point);
 			}
 			break;
@@ -515,13 +398,9 @@ public class CopyPaste {
 	private void onEventInStateDragging(EventCopyPaste event, Point point) {
 		switch (event) {
 		case MOVE:
-			if (selectedSegments != null && selectedSegments.contains(point)) {
-				System.out.println("CURSOR SELECTED DRAGGsING");
-
+			if (selectedSegments.isActive() && selectedSegments.contains(point)) {
 				copyPasteCursor = CopyPasteCursor.HAND;
 			} else {
-
-				System.out.println("CURSOR NORM DRAGGING");
 				copyPasteCursor = CopyPasteCursor.CROSS;
 			}
 			break;
@@ -530,7 +409,7 @@ public class CopyPaste {
 		case LEFT_PRESS:
 			break;
 		case DRAG:
-			lastDragPoint = point;
+			draggedSegments.setLastDragPoint(point);
 			break;
 		case LEFT_RELEASE:
 			beginDraggedState();
@@ -555,24 +434,20 @@ public class CopyPaste {
 	private void onEventInStateDragged(EventCopyPaste event, Point point) {
 		switch (event) {
 		case MOVE:
-			if (draggedSegments != null && draggedSegments.contains(point)) {
-
-				System.out.println("CURSOR DRAGGED");
+			if (draggedSegments.isActive() && draggedSegments.contains(point)) {
 				copyPasteCursor = CopyPasteCursor.HAND;
 			} else {
-				System.out.println("CURSOR NORM");
 				copyPasteCursor = CopyPasteCursor.CROSS;
 			}
 			break;
 		case LEFT_CLICK:
 			break;
 		case LEFT_PRESS:
-			if (draggedSegments != null && draggedSegments.contains(point)) {
+			if (draggedSegments.isActive() && draggedSegments.contains(point)) {
 				continueDraggingState(point);
 			} else {
 				beginDropState();
 				continueAfterDrop();
-				// beginSelectingState(point);
 			}
 			break;
 		case DRAG:
@@ -600,7 +475,6 @@ public class CopyPaste {
 	private void onEventInStateDrop(EventCopyPaste event) {
 		switch (event) {
 		case MOVE:
-			// changeCursor(CopyPasteCursor.CROSS);
 			copyPasteCursor = CopyPasteCursor.CROSS;
 			break;
 		case LEFT_CLICK:

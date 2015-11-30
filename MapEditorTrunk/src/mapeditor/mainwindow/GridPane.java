@@ -256,13 +256,8 @@ public abstract class GridPane {
 		int curX = leftPoint.x;
 
 		while (curX <= rightPoint.x) {
-
-			System.out.println(curX);
-
 			Point curPoint = new Point(curX, leftPoint.y);
-
 			Point segPoint = this.getSegmentPointAtCursor(curPoint);
-
 			result.add(segPoint);
 
 			curX += segmentWidth;

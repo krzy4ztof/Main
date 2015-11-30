@@ -51,6 +51,7 @@ public class MapPane extends GridPane {
 	}
 
 	public void centerMap() {
+
 		Rectangle r = panel.getVisibleRect();
 
 		int centerX = this.getGridWidth() / 2;
@@ -58,6 +59,8 @@ public class MapPane extends GridPane {
 
 		int newX = centerX - r.width / 2;
 		int newY = centerY - r.height / 2;
+
+		copyPaste.onCenterMapEvent();
 
 		Rectangle newRectangle = new Rectangle(newX, newY, r.width, r.height);
 
@@ -74,6 +77,7 @@ public class MapPane extends GridPane {
 		segmentHeight += 5;
 		segmentWidth += 5;
 
+		copyPaste.onZoomMapInEvent();
 		scrollMapToNewView(rectangle, oldMapWidth, oldMapHeight);
 	}
 
@@ -90,6 +94,8 @@ public class MapPane extends GridPane {
 		if (segmentWidth < 5) {
 			segmentWidth = 5;
 		}
+
+		copyPaste.onZoomMapOutEvent();
 		scrollMapToNewView(rectangle, oldMapWidth, oldMapHeight);
 	}
 
@@ -157,7 +163,8 @@ public class MapPane extends GridPane {
 		}
 
 		SelectedSegments selectedSegments = copyPaste.getSelectedSegments();
-		if (selectedSegments != null) {
+		if (selectedSegments.isActive()) {
+
 			Paint paint = selectedSegments.getPaint();
 			Stroke stroke = selectedSegments.getStroke();
 
@@ -180,11 +187,11 @@ public class MapPane extends GridPane {
 			}
 		}
 
-		copyPaste.prePaint();
-
 		DraggedSegments draggedSegments = copyPaste.getDraggedSegments();
+		draggedSegments.tryToActivate(this, selectedSegments);
 
-		if (draggedSegments != null) {
+		if (draggedSegments.isActive()) {
+
 			Paint paint = draggedSegments.getPaint();
 			Stroke stroke = draggedSegments.getStroke();
 

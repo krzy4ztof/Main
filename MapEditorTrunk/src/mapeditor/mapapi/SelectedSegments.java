@@ -1,6 +1,6 @@
 package mapeditor.mapapi;
 
-import java.awt.BasicStroke;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,22 +16,52 @@ public class SelectedSegments extends CopyPasteSegments {
 		CUT, COPY
 	}
 
-	CutCopyState cutCopyState = CutCopyState.COPY;
+	CutCopyState cutCopyState = CutCopyState.CUT;
 
 	private MapObjectFactory mapObjectFactory;
 
 	private LinkedList<CopyPasteSegment> blankSegments;
 
-	SelectedSegments(MapPane mapPane, Point firstPoint, Point lastPoint,
-			MapObjectFactory mapObjectFactory) {
-		super(mapPane, firstPoint, lastPoint);
-		this.mapObjectFactory = mapObjectFactory;
-		cutCopyState = CutCopyState.COPY;
+	// First point of selected region
+	private Point firstPointToCut;
 
+	// Last point of selected region
+	private Point lastPointToCut;
+
+	public void setFirstPointToCut(Point point) {
+		firstPointToCut = point;
+	}
+
+	public void setLastPointToCut(Point point) {
+		lastPointToCut = point;
+	}
+
+	public Point getFirstPointToCut() {
+		return firstPointToCut;
+	}
+
+	public Point getLastPointToCut() {
+		return lastPointToCut;
+	}
+
+	SelectedSegments(MapObjectFactory mapObjectFactory) {
+		this.mapObjectFactory = mapObjectFactory;
+		cutCopyState = CutCopyState.CUT;
+		firstPointToCut = null;
+		lastPointToCut = null;
 		paint = new ColorUIResource(0, 128, 32);
-		float dash[] = { 5.0f };
-		stroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
-				BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
+	}
+
+	public void activate(MapPane mapPane) {
+		super.activate(mapPane, firstPointToCut, lastPointToCut);
+	}
+
+	@Override
+	public void deactivate() {
+		super.deactivate();
+		firstPointToCut = null;
+		lastPointToCut = null;
+		blankSegments = null;
 	}
 
 	public void setCutState() {
@@ -51,18 +81,12 @@ public class SelectedSegments extends CopyPasteSegments {
 	}
 
 	public Iterator<CopyPasteSegment> iteratorForDrawing() {
-		System.out.println("Itertor FOR Drawing START");
 		if (cutCopyState == CutCopyState.COPY) {
-			System.out.println("Itertor FOR Drawing COPY");
-
 			return super.iterator();
 		}
 
 		if (blankSegments == null) {
-			System.out.println("Iterator FOR Drawing BLANK");
-
 			blankSegments = new LinkedList<CopyPasteSegment>();
-
 			for (LinkedList<CopyPasteSegment> column : segments) {
 				for (CopyPasteSegment segment : column) {
 
@@ -76,5 +100,14 @@ public class SelectedSegments extends CopyPasteSegments {
 		}
 
 		return blankSegments.iterator();
+	}
+
+	@Override
+	public void paint(Graphics graphics) {
+		super.paint(graphics);
+		if (firstPointToCut != null && lastPointToCut != null) {
+			drawRectangle(graphics, firstPointToCut, lastPointToCut);
+
+		}
 	}
 }

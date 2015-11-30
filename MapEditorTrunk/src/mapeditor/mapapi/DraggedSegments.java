@@ -1,6 +1,5 @@
 package mapeditor.mapapi;
 
-import java.awt.BasicStroke;
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,45 +12,65 @@ public class DraggedSegments extends CopyPasteSegments {
 
 	private boolean theSame;
 
-	private static Point findMinDraggedPoint(
-			CopyPasteSegments selectedSegments, Point firstDragPoint,
-			Point lastDragPoint) {
+	private Point firstDragPoint;
+
+	private Point lastDragPoint;
+
+	public Point getFirstDragPoint() {
+		return firstDragPoint;
+	}
+
+	public void setFirstDragPoint(Point point) {
+		firstDragPoint = point;
+	}
+
+	public Point getLastDragPoint() {
+		return lastDragPoint;
+	}
+
+	public void setLastDragPoint(Point point) {
+		lastDragPoint = point;
+	}
+
+	public DraggedSegments() {
+		paint = new ColorUIResource(224, 0, 32);
+		firstDragPoint = null;
+		lastDragPoint = null;
+	}
+
+	@Override
+	public void deactivate() {
+		super.deactivate();
+		firstDragPoint = null;
+		lastDragPoint = null;
+	}
+
+	public void tryToActivate(MapPane mapPane,
+			CopyPasteSegments selectedSegments) {
+		if (firstDragPoint != null && lastDragPoint != null) {
+			activate(mapPane, selectedSegments, firstDragPoint, lastDragPoint);
+		}
+
+	}
+
+	public void activate(MapPane mapPane, CopyPasteSegments selectedSegments,
+			Point firstDragPoint, Point lastDragPoint) {
 		int vectorX = lastDragPoint.x - firstDragPoint.x;
 		int vectorY = lastDragPoint.y - firstDragPoint.y;
 
 		Point minDraggedPoint = new Point(selectedSegments.getMinPoint().x
 				+ vectorX, selectedSegments.getMinPoint().y + vectorY);
-
-		return minDraggedPoint;
-	}
-
-	private static Point findMaxDraggedPoint(
-			CopyPasteSegments selectedSegments, Point firstDragPoint,
-			Point lastDragPoint) {
-		int vectorX = lastDragPoint.x - firstDragPoint.x;
-		int vectorY = lastDragPoint.y - firstDragPoint.y;
-
 		Point maxDraggedPoint = new Point(selectedSegments.getMaxPoint().x
 				+ vectorX, selectedSegments.getMaxPoint().y + vectorY);
 
-		return maxDraggedPoint;
-	}
-
-	public DraggedSegments(MapPane mapPane, CopyPasteSegments selectedSegments,
-			Point firstDragPoint, Point lastDragPoint) {
-		super(mapPane, findMinDraggedPoint(selectedSegments, firstDragPoint,
-				lastDragPoint), findMaxDraggedPoint(selectedSegments,
-				firstDragPoint, lastDragPoint));
-
+		super.activate(mapPane, minDraggedPoint, maxDraggedPoint);
 		theSame = areSegmentsSame(selectedSegments.getSegments(), segments);
 
 		if (theSame) {
 			copySegments(selectedSegments.getSegments());
-			paint = new ColorUIResource(224, 0, 32);
-			float dash[] = { 5.0f };
-			stroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
-					BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
 		}
+
+		active = true;
 	}
 
 	private boolean areSegmentsSame(
@@ -62,7 +81,6 @@ public class DraggedSegments extends CopyPasteSegments {
 		int dragColNo = draggedSegments.size();
 
 		if (selColNo != dragColNo) {
-
 			return false;
 		}
 
@@ -74,9 +92,7 @@ public class DraggedSegments extends CopyPasteSegments {
 
 				return false;
 			}
-
 		}
-
 		return true;
 	}
 
@@ -86,12 +102,10 @@ public class DraggedSegments extends CopyPasteSegments {
 		int dragColNo = selectedSegments.size();
 
 		for (int x = 0; x < dragColNo; x++) {
-
 			LinkedList<CopyPasteSegment> dragRow = segments.get(x);
 			LinkedList<CopyPasteSegment> selRow = selectedSegments.get(x);
 
 			int rowNo = dragRow.size();
-
 			for (int y = 0; y < rowNo; y++) {
 				CopyPasteSegment dragSegment = dragRow.get(y);
 				CopyPasteSegment selSegment = selRow.get(y);
@@ -99,9 +113,7 @@ public class DraggedSegments extends CopyPasteSegments {
 				dragSegment.setMapObject(selSegment.getMapObject().clone());
 
 			}
-
 		}
-
 	}
 
 	@Override
@@ -114,6 +126,5 @@ public class DraggedSegments extends CopyPasteSegments {
 			LinkedList<CopyPasteSegment> list = new LinkedList<CopyPasteSegment>();
 			return list.iterator();
 		}
-
 	}
 }
