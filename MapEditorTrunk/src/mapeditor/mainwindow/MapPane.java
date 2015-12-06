@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
 import mapeditor.mapapi.CopyPaste;
@@ -88,6 +89,8 @@ public class MapPane extends GridPane {
 
 		segmentHeight += 5;
 		segmentWidth += 5;
+		layerOffset.x += 1;
+		layerOffset.y += 1;
 
 		copyPaste.onZoomMapInEvent();
 		scrollMapToNewView(rectangle, oldMapWidth, oldMapHeight);
@@ -100,6 +103,17 @@ public class MapPane extends GridPane {
 
 		segmentHeight -= 5;
 		segmentWidth -= 5;
+		layerOffset.x -= 1;
+		layerOffset.y -= 1;
+
+		if (layerOffset.x < 1) {
+			layerOffset.x = 1;
+		}
+
+		if (layerOffset.y < 1) {
+			layerOffset.y = 1;
+		}
+
 		if (segmentHeight < 5) {
 			segmentHeight = 5;
 		}
@@ -155,26 +169,26 @@ public class MapPane extends GridPane {
 		scrollMapToNewView(rectangle, oldMapWidth, oldMapHeight);
 	}
 
-	@Override
-	protected MapObject getCustomMapObject(int row, int col) {
+	protected MapObject getCustomMapObject(int row, int col, int layerIndex) {
 		MapObject mapObject = null;
 		MapSegment mapSegment = mapApi.getSegment(row, col);
 		if (mapSegment != null) {
-			mapObject = mapApi.getSegment(row, col).getCustomMapObject();
+			mapObject = mapApi.getSegment(row, col).getCustomMapObject(
+					layerIndex);
 		}
 		return mapObject;
 	}
 
-	@Override
-	protected MapObject getMapObject(int row, int col) {
+	protected MapObject getMapObject(int row, int col, int layerIndex) {
 		MapObject mapObject = null;
 		MapSegment mapSegment = mapApi.getSegment(row, col);
 		if (mapSegment != null) {
-			mapObject = mapApi.getSegment(row, col).getMapObject();
+			mapObject = mapApi.getSegment(row, col).getMapObject(layerIndex);
 		}
 		return mapObject;
 	}
 
+	// @Override
 	@Override
 	public void paint(Graphics graphics) {
 		// for (int i = 0; i < mapApi.getLayerAttributesSize(); i++) {
@@ -368,7 +382,8 @@ public class MapPane extends GridPane {
 		}
 
 		if (layerAttributes.isBackgroundVisible()) {
-			MapObject mapObject = getMapObject(row, column);
+			MapObject mapObject = getMapObject(row, column,
+					layerAttributes.getIndex());
 			if (mapObject != null) {
 				Image image = mapObject.getImageIcon().getImage();
 				drawSegment(graphics, column, row, divider, image, paint,
@@ -377,7 +392,8 @@ public class MapPane extends GridPane {
 		}
 
 		if (layerAttributes.isObjectsVisible()) {
-			MapObject customMapObject = getCustomMapObject(row, column);
+			MapObject customMapObject = getCustomMapObject(row, column,
+					layerAttributes.getIndex());
 			if (customMapObject != null) {
 				Image image = customMapObject.getImageIcon().getImage();
 				// System.out.println(image.);
@@ -394,7 +410,7 @@ public class MapPane extends GridPane {
 	}
 
 	public void paint_old(Graphics graphics, LayerAttributes layerAttributes) {
-		super.paint(graphics);
+		// super.paint(graphics);
 
 		int divider = 1;
 		if (isLayoutHex()) {
@@ -548,4 +564,61 @@ public class MapPane extends GridPane {
 		copyPaste.onPasteEvent();
 	}
 
+	/*
+	 * @Override protected MapObject getMapObject(int row, int col) { // TODO:
+	 * REMOVE return getMapObject(row, col, 0); }
+	 */
+
+	/*
+	 * @Override protected MapObject getCustomMapObject(int row, int col) { //
+	 * TODO: remove return getCustomMapObject(row, col, 0); }
+	 */
+
+	public LinkedList<LinkedList<CopyPasteSegment>> getSegmentPoints(
+			Point firstPoint, Point lastPoint, int layerIndex) {
+
+		Point minPoint = getMinPoint(firstPoint, lastPoint);
+		Point maxPoint = getMaxPoint(firstPoint, lastPoint);
+
+		Point leftUpperCorner = new Point(minPoint.x, minPoint.y);
+		Point rightUpperCorner = new Point(maxPoint.x, minPoint.y);
+
+		LinkedList<Point> upperLine = getVerticalLineSegments(leftUpperCorner,
+				rightUpperCorner);
+		Point leftBottomCorner = new Point(minPoint.x, maxPoint.y);
+		Point rightBottomCorner = new Point(maxPoint.x, maxPoint.y);
+		LinkedList<Point> bottomLine = getVerticalLineSegments(
+				leftBottomCorner, rightBottomCorner);
+		LinkedList<LinkedList<CopyPasteSegment>> segments = new LinkedList<LinkedList<CopyPasteSegment>>();
+
+		LinkedList<CopyPasteSegment> newColumn;
+
+		int nrColumns = upperLine.size();
+		Point firstSegmentPoint = upperLine.getFirst();
+
+		for (int col = 0; col < nrColumns; col++) {
+
+			Point upperPoint = upperLine.get(col);
+
+			Point bottomPoint = bottomLine.get(col);
+
+			newColumn = new LinkedList<CopyPasteSegment>();
+
+			for (int row = upperPoint.y; row <= bottomPoint.y; row++) {
+
+				MapObject mapObject = getMapObject(row, col
+						+ firstSegmentPoint.x, layerIndex);
+				if (mapObject != null) {
+					mapObject = mapObject.clone();
+					Point point = new Point(col + firstSegmentPoint.x, row);
+
+					newColumn.add(new CopyPasteSegment(mapObject, point));
+				}
+			}
+
+			segments.add(newColumn);
+
+		}
+		return segments;
+	}
 }

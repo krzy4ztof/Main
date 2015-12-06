@@ -44,12 +44,14 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 			switch (tools.getActiveTool()) {
 			case BRUSH:
 				MapObject mapObject = mapThemesManager.getSelectedMapObject();
-				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
+						mapApi.getActiveLayerIndex());
 				mapPanel.refresh();
 				break;
 			case ERASER:
 				mapObject = mapObjectFactory.getBlankMapObject();
-				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+				mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
+						mapApi.getActiveLayerIndex());
 				mapPanel.refresh();
 				break;
 			case SELECTION:

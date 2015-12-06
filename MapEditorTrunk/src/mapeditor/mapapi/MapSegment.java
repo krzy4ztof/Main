@@ -24,24 +24,26 @@ public class MapSegment {
 		// this.mapObject = mapObject;
 	}
 
-	public MapObject getMapObject() {
-		return mapObjects.get(0);
+	public MapObject getMapObject(int layerIndex) {
+		return mapObjects.get(layerIndex);
 		// return mapObject;
 	}
 
-	public MapObject getCustomMapObject() {
+	public MapObject getCustomMapObject(int layerIndex) {
 		// return customMapObject
-		return customMapObjects.get(0);
+		return customMapObjects.get(layerIndex);
 	}
 
-	public void setMapObject(MapObject mapObject) {
+	public void setMapObject(MapObject mapObject, int layerIndex) {
 		System.out.println("Dodanie map object!");
 		if (mapObject instanceof CustomMapObject) {
 			System.out.println("Dodanie custom!");
-			customMapObjects.set(0, (CustomMapObject) mapObject);
+			// customMapObjects.set(0, (CustomMapObject) mapObject);
+			customMapObjects.set(layerIndex, (CustomMapObject) mapObject);
 			// customMapObject = (CustomMapObject) mapObject;
 		} else {
-			mapObjects.set(0, mapObject);
+			// mapObjects.set(0, mapObject);
+			mapObjects.set(layerIndex, mapObject);
 			// this.mapObject = mapObject;
 		}
 	}

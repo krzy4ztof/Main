@@ -196,7 +196,8 @@ public class CopyPaste {
 					int col = segment.getPoint().x;
 
 					mapApi.getSegment(row, col).setMapObject(
-							mapObjectFactory.getBlankMapObject());
+							mapObjectFactory.getBlankMapObject(),
+							mapApi.getActiveLayerIndex());
 				}
 			}
 
@@ -209,7 +210,8 @@ public class CopyPaste {
 				int col = segment.getPoint().x;
 				MapObject mapObject = segment.getMapObject();
 
-				mapApi.getSegment(row, col).setMapObject(mapObject);
+				mapApi.getSegment(row, col).setMapObject(mapObject,
+						mapApi.getActiveLayerIndex());
 			}
 		}
 

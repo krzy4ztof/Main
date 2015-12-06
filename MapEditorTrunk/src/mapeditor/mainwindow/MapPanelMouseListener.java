@@ -73,24 +73,28 @@ public class MapPanelMouseListener implements MouseListener {
 
 				if (activeTool == ToolsEnum.BRUSH) {
 					mapObject = mapThemesManager.getSelectedMapObject();
-					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
+							mapApi.getActiveLayerIndex());
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.ERASER) {
 					mapObject = mapObjectFactory.getBlankMapObject();
-					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
+					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
+							mapApi.getActiveLayerIndex());
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.PICKER) {
-					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject();
+					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
+							mapApi.getActiveLayerIndex());
 					System.out.println(":::" + mapObject);
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
 				} else if (activeTool == ToolsEnum.BUCKET) {
-					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject();
+					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
+							mapApi.getActiveLayerIndex());
 					MapObject newObject = mapThemesManager
 							.getSelectedMapObject();
 					Bucket bucket = new Bucket(mapApi);
-					bucket.fill(mapObject, seg);
+					bucket.fill(mapObject, seg, mapApi.getActiveLayerIndex());
 					bucket.paint(newObject);
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.SELECTION) {

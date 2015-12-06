@@ -1,5 +1,9 @@
 package mapeditor.mainwindow;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
 
@@ -27,7 +31,6 @@ public class SingleThemePane extends GridPane {
 		return themeApi.getRowsSize();
 	};
 
-	@Override
 	protected MapObject getMapObject(int row, int col) {
 
 		MapObject mapObject = themeApi.getMapObject(row, col);
@@ -64,11 +67,57 @@ public class SingleThemePane extends GridPane {
 		return themeApi;
 	}
 
+	/*
+	 * @Override protected MapObject getCustomMapObject(int row, int col) { //
+	 * Co z tym zrobic? return null; }
+	 */
+
+	private void drawSegment(Graphics graphics, int column, int row, int divider) {
+		MapObject mapObject = getMapObject(row, column);
+		if (mapObject != null) {
+			Image image = mapObject.getImageIcon().getImage();
+			drawSegment(graphics, column, row, divider, image, getPaint(),
+					getStroke());
+		}
+
+		/*
+		 * MapObject customMapObject = getCustomMapObject(row, column); if
+		 * (customMapObject != null) { Image image =
+		 * customMapObject.getImageIcon().getImage(); drawSegment(graphics,
+		 * column, row, divider, image, paint, stroke); }
+		 */
+	}
+
+	// @Override
 	@Override
-	protected MapObject getCustomMapObject(int row, int col) {
-		// TODO Auto-generated method stub
-		// Co z tym zrobic?
-		return null;
+	public void paint(Graphics graphics) {
+
+		int divider = 1;
+		if (isLayoutHex()) {
+			divider = 2;
+		}
+
+		int firstColumn = getFirstVisibleColumnNumber();// + 1;
+		int lastColumn = getLastVisibleColumnNumber();// - 1;
+		int firstRow = getFirstVisibleRowNumber();// + 1;
+		int lastRow = getLastVisibleRowNumber();// - 1;
+
+		for (int column = firstColumn; column <= lastColumn; column++) {
+			for (int row = firstRow; row <= lastRow; row++) {
+				if (((column) % 2) == 0) {
+					drawSegment(graphics, column, row, 1);
+				} else {
+					drawSegment(graphics, column, row, divider);
+				}
+			}
+		}
+
+		int mapWidth = getGridWidth();
+		int mapHeight = getGridHeight();
+
+		panel.setPreferredSize(new Dimension(mapWidth, mapHeight));
+		panel.revalidate();
+
 	}
 
 }

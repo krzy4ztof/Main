@@ -15,7 +15,7 @@ public class Bucket {
 		segments = new HashMap<Point, Boolean>();
 	}
 
-	public void fill(MapObject mapObject, Point point) {
+	public void fill(MapObject mapObject, Point point, int layerIndex) {
 
 		if (point.x < 0 || point.x >= mapApi.getColumnsSize()) {
 			return;
@@ -26,7 +26,7 @@ public class Bucket {
 		}
 
 		MapObject curMapObject = mapApi.getSegment(point.y, point.x)
-				.getMapObject();
+				.getMapObject(layerIndex);
 
 		if (segments.containsKey(point)) {
 			return;
@@ -39,20 +39,20 @@ public class Bucket {
 			return;
 		}
 
-		fill(mapObject, new Point(point.x, point.y + 1));
-		fill(mapObject, new Point(point.x, point.y - 1));
+		fill(mapObject, new Point(point.x, point.y + 1), layerIndex);
+		fill(mapObject, new Point(point.x, point.y - 1), layerIndex);
 
-		fill(mapObject, new Point(point.x + 1, point.y));
-		fill(mapObject, new Point(point.x - 1, point.y));
+		fill(mapObject, new Point(point.x + 1, point.y), layerIndex);
+		fill(mapObject, new Point(point.x - 1, point.y), layerIndex);
 
 		if (mapApi.isLayoutHex()) {
 
 			if (point.x % 2 == 0) {
-				fill(mapObject, new Point(point.x - 1, point.y - 1));
-				fill(mapObject, new Point(point.x + 1, point.y - 1));
+				fill(mapObject, new Point(point.x - 1, point.y - 1), layerIndex);
+				fill(mapObject, new Point(point.x + 1, point.y - 1), layerIndex);
 			} else {
-				fill(mapObject, new Point(point.x - 1, point.y + 1));
-				fill(mapObject, new Point(point.x + 1, point.y + 1));
+				fill(mapObject, new Point(point.x - 1, point.y + 1), layerIndex);
+				fill(mapObject, new Point(point.x + 1, point.y + 1), layerIndex);
 			}
 		}
 	}
@@ -62,7 +62,8 @@ public class Bucket {
 
 			Boolean value = segments.get(point);
 			if (value) {
-				mapApi.getSegment(point.y, point.x).setMapObject(mapObject);
+				mapApi.getSegment(point.y, point.x).setMapObject(mapObject,
+						mapApi.getActiveLayerIndex());
 			}
 		}
 	}

@@ -424,7 +424,9 @@ public class MapLoader {
 				String name = segmentsCode.get(segment);
 				MapObject mapObject = mapThemesList.getMapObjectApi(name);
 
-				mapApi.getSegment(rowNumber, col).setMapObject(mapObject);
+				int activeLayerIndex = 0;// TODO: zmienic
+				mapApi.getSegment(rowNumber, col).setMapObject(mapObject,
+						activeLayerIndex);
 				col++;
 			}
 		}

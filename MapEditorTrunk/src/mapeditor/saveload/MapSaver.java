@@ -89,7 +89,10 @@ public class MapSaver {
 			rowElem.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
 					Integer.toString(row));
 			for (int col = 0; col < mapApi.getColumnsSize(); col++) {
-				mapObject = mapApi.getSegment(row, col).getMapObject();
+
+				int layerIndex = 0; // TODO: zmienic
+				mapObject = mapApi.getSegment(row, col)
+						.getMapObject(layerIndex);
 				String segmentId = null;
 				if (mapObject != null) {
 					segmentId = mapObject.getObjectIdString();

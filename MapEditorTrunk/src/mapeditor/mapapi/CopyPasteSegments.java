@@ -41,7 +41,8 @@ public class CopyPasteSegments {
 		minPoint = findMinPoint(firstPoint, lastPoint);
 		maxPoint = findMaxPoint(firstPoint, lastPoint);
 
-		segments = mapPane.getSegmentPoints(minPoint, maxPoint);
+		int layerIndex = 0; // TODO zmienic
+		segments = mapPane.getSegmentPoints(minPoint, maxPoint, layerIndex);
 		active = true;
 	}
 
