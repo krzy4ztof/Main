@@ -64,4 +64,11 @@ public class SingleThemePane extends GridPane {
 		return themeApi;
 	}
 
+	@Override
+	protected MapObject getCustomMapObject(int row, int col) {
+		// TODO Auto-generated method stub
+		// Co z tym zrobic?
+		return null;
+	}
+
 }

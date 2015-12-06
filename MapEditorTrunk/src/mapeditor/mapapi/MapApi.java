@@ -11,7 +11,13 @@ public class MapApi {
 
 	private LinkedList<LinkedList<MapSegment>> segments;
 
+	private LinkedList<LayerAttributes> layersAttributes;
+
+	// private int activeLayerIndex = 0;
+
 	private MapLayout mapLayout;
+
+	// private int layers;
 
 	/**
 	 * Stores reference to file from which map was loaded or to which it was
@@ -27,12 +33,43 @@ public class MapApi {
 			mapLayout = MapLayout.SQR;
 		}
 
+		// layers = config.getMapApiLayersNumber();
+
 		MapAttributes mapAttributes = new MapAttributes(
 				config.getMapApiRowsNumber(), config.getMapApiColumnsNumber(),
-				mapLayout);
+				config.getMapApiLayersNumber(), mapLayout);
 
 		resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 
+	}
+
+	public LinkedList<LayerAttributes> getLayersAttributes() {
+		return layersAttributes;
+	}
+
+	public int getActiveLayerIndex() {
+
+		for (LayerAttributes layerAttributes : layersAttributes) {
+			if (layerAttributes.isActive()) {
+				return layerAttributes.getIndex();
+			}
+		}
+
+		return LayerAttributes.NO_ACTIVE_LAYER;
+	}
+
+	public void setActiveLayerIndex(int activeLayerIndex) {
+
+		for (LayerAttributes layerAttributes : layersAttributes) {
+			if (layerAttributes.getIndex() == activeLayerIndex) {
+				layerAttributes.setActive(true);
+			} else {
+				layerAttributes.setActive(false);
+			}
+
+		}
+
+		// this.activeLayerIndex = activeLayerIndex;
 	}
 
 	public boolean isLayoutHex() {
@@ -67,7 +104,23 @@ public class MapApi {
 	public void resetMap(MapAttributes mapAttributes, MapObject blankMapObject) {
 		int cols = mapAttributes.getColumns();
 		int rows = mapAttributes.getRows();
+		int layersNumber = mapAttributes.getLayers();
 		mapLayout = mapAttributes.getMapLayout();
+
+		layersAttributes = new LinkedList<LayerAttributes>();
+
+		for (int i = 0; i < layersNumber; i++) {
+			LayerAttributes layerAttributes = new LayerAttributes(i);
+
+			// if (i == 0) {
+			// layerAttributes.setActive(true);
+			// }
+
+			layersAttributes.add(layerAttributes);
+
+		}
+
+		setActiveLayerIndex(0);
 
 		segments = new LinkedList<LinkedList<MapSegment>>();
 		LinkedList<MapSegment> newRow;
@@ -77,7 +130,7 @@ public class MapApi {
 			segments.add(newRow);
 
 			for (int j = 0; j < cols; j++) {
-				se = new MapSegment(blankMapObject);
+				se = new MapSegment(blankMapObject, layersNumber);
 				newRow.add(se);
 			}
 		}
@@ -125,7 +178,8 @@ public class MapApi {
 				newRow = new LinkedList<MapSegment>();
 				segments.add(newRow);
 				for (int j = 0; j < colsSize; j++) {
-					segment = new MapSegment(blankMapObject);
+					segment = new MapSegment(blankMapObject,
+							getLayerAttributesSize());
 					newRow.add(segment);
 				}
 			}
@@ -150,7 +204,8 @@ public class MapApi {
 			if (cols > colsSize) {
 				for (LinkedList<MapSegment> row : segments) {
 					for (int i = colsSize; i < cols; i++) {
-						segment = new MapSegment(blankMapObject);
+						segment = new MapSegment(blankMapObject,
+								getLayerAttributesSize());
 						row.add(segment);
 					}
 				}
@@ -202,10 +257,22 @@ public class MapApi {
 
 	/**
 	 *
+	 * @return number of map rows
+	 */
+	public int getLayerAttributesSize() {
+		return layersAttributes.size();
+	}
+
+	/**
+	 *
 	 * @return File from which map was loaded or to which it was saved
 	 */
 	public File getFile() {
 		return file;
+	}
+
+	public LayerAttributes getLayerAttributes(int index) {
+		return layersAttributes.get(index);
 	}
 
 	/**
@@ -219,7 +286,7 @@ public class MapApi {
 
 	public MapAttributes getMapAttributes() {
 		MapAttributes mapAttributes = new MapAttributes(getRowsSize(),
-				getColumnsSize(), mapLayout);
+				getColumnsSize(), getLayerAttributesSize(), mapLayout);
 		return mapAttributes;
 	}
 }

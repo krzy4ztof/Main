@@ -8,6 +8,8 @@ public class Config {
 
 	private final String mapApiRowsNumber = "mapapi.rows.number";
 
+	private final String mapApiLayersNumber = "mapapi.layers.number";
+
 	private final String mapApiLayout = "mapapi.layout";
 
 	private final String guiLanguage = "gui.language";
@@ -30,6 +32,12 @@ public class Config {
 
 	public Integer getMapApiRowsNumber() {
 		String string = resourceBundle.getString(mapApiRowsNumber);
+		Integer integer = new Integer(string);
+		return integer;
+	}
+
+	public Integer getMapApiLayersNumber() {
+		String string = resourceBundle.getString(mapApiLayersNumber);
 		Integer integer = new Integer(string);
 		return integer;
 	}

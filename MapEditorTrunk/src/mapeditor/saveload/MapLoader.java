@@ -256,7 +256,10 @@ public class MapLoader {
 			mapLayout = MapLayout.HEX;
 		}
 
-		MapAttributes mapAttributes = new MapAttributes(rows, cols, mapLayout);
+		int layers = 3;// TODO change number of layers
+
+		MapAttributes mapAttributes = new MapAttributes(rows, cols, layers,
+				mapLayout);
 
 		mapApi.resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
 	}

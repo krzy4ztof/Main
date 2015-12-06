@@ -52,10 +52,21 @@ public abstract class GridPane {
 			}
 		};
 
-		panel.setBackground(new Color(238, 238, 238));
+		// panel.setBackground(new Color(238, 238, 238));
+		// TODO: skasowac kolor
+		panel.setBackground(Color.PINK);
+
 		scrollPane = new JScrollPane(panel);
 		paint = Color.GRAY;
 		stroke = new BasicStroke(1.0f);
+	}
+
+	protected Paint getPaint() {
+		return paint;
+	}
+
+	protected Stroke getStroke() {
+		return stroke;
 	}
 
 	protected Image getImage(int column, int row) {
@@ -70,13 +81,17 @@ public abstract class GridPane {
 
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
 		MapObject mapObject = getMapObject(row, column);
-		if (mapObject == null) {
-			return;
+		if (mapObject != null) {
+			Image image = mapObject.getImageIcon().getImage();
+			drawSegment(graphics, column, row, divider, image, paint, stroke);
 		}
 
-		Image image = mapObject.getImageIcon().getImage();
-
-		drawSegment(graphics, column, row, divider, image, paint, stroke);
+		MapObject customMapObject = getCustomMapObject(row, column);
+		if (customMapObject != null) {
+			Image image = customMapObject.getImageIcon().getImage();
+			// System.out.println(image.);
+			drawSegment(graphics, column, row, divider, image, paint, stroke);
+		}
 	}
 
 	protected void drawSegment(Graphics graphics, int column, int row,
@@ -90,13 +105,20 @@ public abstract class GridPane {
 		int currentHeight = row * segmentHeight
 				+ (segmentHeight - segmentHeight / divider);
 
-		graphics.setColor(Color.LIGHT_GRAY);
+		// graphics.setColor(Color.LIGHT_GRAY);
+		// TODO: skasowac PINK
+		graphics.setColor(Color.PINK);
 
 		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
+		// graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
+		// currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
+		// panel.getBackground(), panel);
+
+		// customMapObject bedzie rysowany na mapObject
 		graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
-				panel.getBackground(), panel);
+				panel);
 
 		if (graphics instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D) graphics;
@@ -166,6 +188,8 @@ public abstract class GridPane {
 	}
 
 	protected abstract MapObject getMapObject(int row, int col);
+
+	protected abstract MapObject getCustomMapObject(int row, int col);
 
 	protected int getLastVisibleColumnNumber() {
 		Rectangle rectangle = panel.getVisibleRect();

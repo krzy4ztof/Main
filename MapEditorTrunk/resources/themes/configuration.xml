@@ -1,4 +1,31 @@
-<Images_List>
+<Configuration>
+	<ThemeGroup name="AllTheme">
+		<MapObject name="png1" image="frontwheelar.png">
+			<ObjectProperty name="CustomIntValue" type="Integer" default="7"/>
+		</MapObject>
+		<MapTheme name="Trojkaty" image="trojkaty.jpg"/>
+		<MapTheme name="Psi_zab" image="psi_zab.jpg"/>  
+		<MapTheme name="Prazek" image="prazek.jpg"/>  
+		<MapTheme name="Nity" image="nity.jpg"/> 
+		<MapTheme name="Niebieski" image="niebieski.jpg"/>  
+		<MapTheme name="Mata" image="mata.jpg"/>
+		<MapTheme name="Kolka" image="kolka.jpg"/>  
+		<MapTheme name="Kafelki" image="kafelki.jpg"/>  
+		<MapTheme name="Fale" image="fale.jpg"/>  
+		<MapTheme name="Egipt" image="egipt.jpg"/>  
+		<MapTheme name="Bloki" image="bloki.jpg"/>  
+		<MapTheme name="Babelki" image="babelki.jpg"/>  
+	</ThemeGroup> 
+	<ThemeGroup name="OtherTheme">
+		<MapTheme name="Malpa1" image="rys.jpg"/>  
+		<MapTheme name="Malpa2" image="rys2.jpg"/> 
+	</ThemeGroup>
+	<ThemeGroup name="PngTheme">  
+		<MapTheme name="png2" image="bodyar.png"/>  
+		<MapTheme name="png3" image="rearwheelar.png"/>  
+	</ThemeGroup>
+	
+	<!-- 
 	<Theme name="AllTheme">
 		<Image name="Trojkaty"> trojkaty.jpg </Image>
 		<Image name="Psi_zab"> psi_zab.jpg </Image>
@@ -22,4 +49,5 @@
 		<Image name="png2"> frontwheelar.png </Image>
 		<Image name="png3"> rearwheelar.png </Image>
 	</Theme>
-</Images_List>
+	 -->
+</Configuration>

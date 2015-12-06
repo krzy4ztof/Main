@@ -34,6 +34,7 @@ public class DraggedSegments extends CopyPasteSegments {
 
 	public DraggedSegments() {
 		paint = new ColorUIResource(224, 0, 32);
+		// paint = Color.BLUE;
 		firstDragPoint = null;
 		lastDragPoint = null;
 	}

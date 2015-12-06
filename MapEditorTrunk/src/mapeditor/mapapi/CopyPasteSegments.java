@@ -123,13 +123,13 @@ public class CopyPasteSegments {
 
 	public void paint(Graphics graphics) {
 
-		if (graphics instanceof Graphics2D) {
-			Graphics2D g2 = (Graphics2D) graphics;
-			g2.setStroke(stroke);
-			g2.setPaint(paintRectangle);
-		}
-
 		if (isActive()) {
+
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.setStroke(stroke);
+				g2.setPaint(paintRectangle);
+			}
 			drawRectangle(graphics, minPoint, maxPoint);
 		}
 	}

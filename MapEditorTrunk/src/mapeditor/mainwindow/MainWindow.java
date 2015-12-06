@@ -157,8 +157,8 @@ public class MainWindow {
 		return menuBar;
 	}
 
-	private JPanel createRightSidePanel(ThemesPane themesPane,
-			MainMenuActionListener gsListener) {
+	private JPanel createRightSidePanel(LayersPane layersPane,
+			ThemesPane themesPane, MainMenuActionListener gsListener) {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -170,16 +170,20 @@ public class MainWindow {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-				themesPane.getPane(), new JPanel());
+		JSplitPane splitPaneFirst = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				layersPane.getScrollPane(), themesPane.getPane());
+		splitPaneFirst.setOneTouchExpandable(true);
+		splitPaneFirst.setResizeWeight(0);
 
-		splitPane.setOneTouchExpandable(true);
+		JSplitPane splitPaneSec = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				splitPaneFirst, new JPanel());
+		splitPaneSec.setOneTouchExpandable(true);
 		// splitPane.setDividerLocation(200);
+		splitPaneSec.setResizeWeight(1);
 
-		splitPane.setResizeWeight(1);
 		Dimension minimumSize = new Dimension(0, 100);
 		themesPane.getPane().setMinimumSize(minimumSize);
-		panel.add(splitPane, c);
+		panel.add(splitPaneSec, c);
 
 		return panel;
 	}
@@ -232,7 +236,12 @@ public class MainWindow {
 		MainMenuActionListener gsListener = new MainMenuActionListener(
 				dialogsManager, mapPanel, themesPane);
 
-		JPanel rightSidePanel = createRightSidePanel(themesPane, gsListener);
+		LayersPaneActionListener layersPaneActionListener = new LayersPaneActionListener(
+				mapApi, mapPanel);
+		LayersPane layersPane = new LayersPane(config, layersPaneActionListener);
+
+		JPanel rightSidePanel = createRightSidePanel(layersPane, themesPane,
+				gsListener);
 
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 				mapPanel.getScrollPane(), rightSidePanel);
