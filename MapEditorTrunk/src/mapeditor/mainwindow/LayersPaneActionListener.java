@@ -35,10 +35,10 @@ public class LayersPaneActionListener implements ActionListener {
 
 			System.out.println("Command: " + command);
 
-			if (command.startsWith(LayersPane.ACTION_LAYERS_OBJECTS)) {
+			if (command.startsWith(LayersControlPane.ACTION_LAYERS_OBJECTS)) {
 
 				int number = getLayerNumber(command,
-						LayersPane.ACTION_LAYERS_OBJECTS);
+						LayersControlPane.ACTION_LAYERS_OBJECTS);
 
 				LayerAttributes layerAttributes = mapApi
 						.getLayerAttributes(number);
@@ -55,9 +55,9 @@ public class LayersPaneActionListener implements ActionListener {
 				}
 				layerAttributes.setObjectsVisible(state);
 
-			} else if (command.startsWith(LayersPane.ACTION_LAYERS_BACKGROUND)) {
+			} else if (command.startsWith(LayersControlPane.ACTION_LAYERS_BACKGROUND)) {
 				int number = getLayerNumber(command,
-						LayersPane.ACTION_LAYERS_BACKGROUND);
+						LayersControlPane.ACTION_LAYERS_BACKGROUND);
 
 				LayerAttributes layerAttributes = mapApi
 						.getLayerAttributes(number);
@@ -71,9 +71,9 @@ public class LayersPaneActionListener implements ActionListener {
 				}
 				layerAttributes.setBackgroundVisible(state);
 
-			} else if (command.startsWith(LayersPane.ACTION_LAYERS_ACTIVATION)) {
+			} else if (command.startsWith(LayersControlPane.ACTION_LAYERS_ACTIVATION)) {
 				int number = getLayerNumber(command,
-						LayersPane.ACTION_LAYERS_ACTIVATION);
+						LayersControlPane.ACTION_LAYERS_ACTIVATION);
 
 				if (state == true) {
 					System.out.println("RADIO layer: " + number

@@ -39,7 +39,8 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 		/*
 		 * Moving mouse with pressed button. e.getButton() - is always 0
 		 */
-		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
+				mapApi.getActiveLayerIndex());
 		if (seg.x != -1) {
 			switch (tools.getActiveTool()) {
 			case BRUSH:
@@ -70,7 +71,8 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
+				mapApi.getActiveLayerIndex());
 		if (seg.x != -1) {
 			switch (tools.getActiveTool()) {
 			case SELECTION:

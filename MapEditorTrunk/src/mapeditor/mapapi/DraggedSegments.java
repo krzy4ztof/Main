@@ -47,15 +47,16 @@ public class DraggedSegments extends CopyPasteSegments {
 	}
 
 	public void tryToActivate(MapPane mapPane,
-			CopyPasteSegments selectedSegments) {
+			CopyPasteSegments selectedSegments, int layerIndex) {
 		if (firstDragPoint != null && lastDragPoint != null) {
-			activate(mapPane, selectedSegments, firstDragPoint, lastDragPoint);
+			activate(mapPane, selectedSegments, firstDragPoint, lastDragPoint,
+					layerIndex);
 		}
 
 	}
 
 	public void activate(MapPane mapPane, CopyPasteSegments selectedSegments,
-			Point firstDragPoint, Point lastDragPoint) {
+			Point firstDragPoint, Point lastDragPoint, int layerIndex) {
 		int vectorX = lastDragPoint.x - firstDragPoint.x;
 		int vectorY = lastDragPoint.y - firstDragPoint.y;
 
@@ -64,7 +65,7 @@ public class DraggedSegments extends CopyPasteSegments {
 		Point maxDraggedPoint = new Point(selectedSegments.getMaxPoint().x
 				+ vectorX, selectedSegments.getMaxPoint().y + vectorY);
 
-		super.activate(mapPane, minDraggedPoint, maxDraggedPoint);
+		super.activate(mapPane, minDraggedPoint, maxDraggedPoint, layerIndex);
 		theSame = areSegmentsSame(selectedSegments.getSegments(), segments);
 
 		if (theSame) {

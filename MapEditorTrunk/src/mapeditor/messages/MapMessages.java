@@ -34,6 +34,7 @@ public class MapMessages {
 	public static String ATTR_TITLE = "mapattributes.tile";
 	public static String ATTR_ROW_NUMBER = "mapattributes.rownumber";
 	public static String ATTR_COL_NUMBER = "mapattributes.colnumber";
+	public static String ATTR_LAYERS_NUMBER = "mapattributes.layersnumber";
 	public static String ATTR_LAYOUT = "mapattributes.layout";
 	public static String ATTR_DEFAULT_SIZE = "mapattributes.defaultsize";
 	public static String ATTR_PREVIOUS_SIZE = "mapattributes.previoussize";

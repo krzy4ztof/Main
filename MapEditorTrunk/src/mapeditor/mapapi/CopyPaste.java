@@ -159,10 +159,10 @@ public class CopyPaste {
 		draggedSegments.setLastDragPoint(point);
 	}
 
-	private void beginSelectedState(Point point) {
+	private void beginSelectedState(Point point, int layerIndex) {
 		state = State.SELECTED;
 
-		selectedSegments.activate(mapPane);
+		selectedSegments.activate(mapPane, layerIndex);
 	}
 
 	private void beginDraggedState() {
@@ -209,6 +209,9 @@ public class CopyPaste {
 				int row = segment.getPoint().y;
 				int col = segment.getPoint().x;
 				MapObject mapObject = segment.getMapObject();
+
+				System.out.println("wklejam");
+				mapObject.describeYourself();
 
 				mapApi.getSegment(row, col).setMapObject(mapObject,
 						mapApi.getActiveLayerIndex());
@@ -265,6 +268,11 @@ public class CopyPaste {
 	}
 
 	public void onZoomMapOutEvent() {
+		beginNewState();
+		mapPane.refresh();
+	}
+
+	public void onZoomMapDefaultEvent() {
 		beginNewState();
 		mapPane.refresh();
 	}
@@ -342,7 +350,7 @@ public class CopyPaste {
 			selectedSegments.setLastPointToCut(point);
 			break;
 		case LEFT_RELEASE:
-			beginSelectedState(point);
+			beginSelectedState(point, mapApi.getActiveLayerIndex());
 			break;
 		case DOUBLE_CLICK:
 			break;

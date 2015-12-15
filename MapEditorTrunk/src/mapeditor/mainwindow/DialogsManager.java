@@ -26,10 +26,11 @@ public class DialogsManager {
 	private Config config;
 	private Tools tools;
 	private MapObjectFactory mapObjectFactory;
+	private LayersControlPane layersPane;
 
 	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
 			ThemesManager mapThemesList, Config config, Tools tools,
-			MapObjectFactory mapObjectFactory) {
+			MapObjectFactory mapObjectFactory, LayersControlPane layersPane) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
@@ -37,6 +38,7 @@ public class DialogsManager {
 		this.config = config;
 		this.tools = tools;
 		this.mapObjectFactory = mapObjectFactory;
+		this.layersPane = layersPane;
 	}
 
 	/**
@@ -109,6 +111,9 @@ public class DialogsManager {
 
 			mapApi.changeAttributes(mapAttributes,
 					mapObjectFactory.getBlankMapObject());
+
+			layersPane.update(mapApi);
+
 		}
 	}
 

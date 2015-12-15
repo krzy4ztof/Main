@@ -9,7 +9,6 @@ import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
-import java.util.LinkedList;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
@@ -65,27 +64,6 @@ public abstract class GridPane {
 		return stroke;
 	}
 
-	/*
-	 * protected Image getImage(int column, int row) { MapObject mapObject =
-	 * getMapObject(row, column); if (mapObject == null) { return null; }
-	 * 
-	 * Image image = mapObject.getImageIcon().getImage(); return image; }
-	 */
-
-	/*
-	 * private void drawSegment(Graphics graphics, int column, int row, int
-	 * divider) { MapObject mapObject = getMapObject(row, column); if (mapObject
-	 * != null) { Image image = mapObject.getImageIcon().getImage();
-	 * drawSegment(graphics, column, row, divider, image, paint, stroke); }
-	 */
-	/*
-	 * MapObject customMapObject = getCustomMapObject(row, column); if
-	 * (customMapObject != null) { Image image =
-	 * customMapObject.getImageIcon().getImage(); drawSegment(graphics, column,
-	 * row, divider, image, paint, stroke); }
-	 */
-	// }
-
 	protected void drawSegment(Graphics graphics, int column, int row,
 			int divider, Image image) {
 		drawSegment(graphics, column, row, divider, image, paint, stroke);
@@ -103,11 +81,7 @@ public abstract class GridPane {
 
 		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
-		// graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
-		// currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
-		// panel.getBackground(), panel);
 
-		// customMapObject bedzie rysowany na mapObject
 		graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
 				currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
 				panel);
@@ -133,7 +107,7 @@ public abstract class GridPane {
 		return BOTTOM_MARIGIN;
 	}
 
-	private int getColumnNumberAt(int x) {
+	protected int getColumnNumberAt(int x) {
 		int column = x - getLeftMarigin();
 		if (column < 0) {
 			column = -1;
@@ -179,10 +153,6 @@ public abstract class GridPane {
 		return width;
 	}
 
-	// protected abstract MapObject getMapObject(int row, int col);
-
-	// protected abstract MapObject getCustomMapObject(int row, int col);
-
 	protected int getLastVisibleColumnNumber() {
 		Rectangle rectangle = panel.getVisibleRect();
 		int x = rectangle.x + rectangle.width;
@@ -211,7 +181,7 @@ public abstract class GridPane {
 		return RIGHT_MARIGIN;
 	}
 
-	private int getRowNumberAt(int y, boolean evenColumn) {
+	protected int getRowNumberAt(int y, boolean evenColumn) {
 		// even - parzysty - shifted down
 		if (evenColumn && isLayoutHex()) {
 			y = y - segmentHeight / 2;
@@ -231,104 +201,6 @@ public abstract class GridPane {
 		return scrollPane;
 	}
 
-	public Point getSegmentPointAtCursor(Point cur) {
-		/*
-		 * parametr cur - wspolrzedne kursora myszy na MapPanelu; zwraca kolumne
-		 * i wiersz segmentu ktory wskazywany jest przez kursor. Zwraca
-		 * Point(-1,-1) jezeli kursor wyjdzie poza mape
-		 */
-
-		int column = getColumnNumberAt(cur.x);
-		int row = 0;
-
-		if (isLayoutHex() && column % 2 == 1) {
-			// first column is 0!!
-			// So column nr 1 is even column (parzysta)
-			row = getRowNumberAt(cur.y, true); // even - parzysty
-		} else {
-			row = getRowNumberAt(cur.y, false); // odd - nieparzysty
-		}
-
-		if ((column >= getGridApiColumnsSize())
-				|| (row >= getGridApiRowsSize()) || (column < 0) || (row < 0)) {
-			return new Point(-1, -1);
-		}
-
-		return new Point(column, row);
-	}
-
-	protected LinkedList<Point> getVerticalLineSegments(Point leftPoint,
-			Point rightPoint) {
-		LinkedList<Point> result = new LinkedList<Point>();
-
-		if (leftPoint.y != rightPoint.y) {
-			return result;
-		}
-
-		if (leftPoint.x > rightPoint.x) {
-			return result;
-		}
-
-		int curX = leftPoint.x;
-
-		while (curX <= rightPoint.x) {
-			Point curPoint = new Point(curX, leftPoint.y);
-			Point segPoint = this.getSegmentPointAtCursor(curPoint);
-			result.add(segPoint);
-
-			curX += segmentWidth;
-		}
-
-		Point segPoint = this.getSegmentPointAtCursor(rightPoint);
-		if (!result.contains(segPoint)) {
-			result.add(segPoint);
-		}
-		return result;
-
-	}
-
-	/*
-	 * public LinkedList<LinkedList<CopyPasteSegment>> getSegmentPoints( Point
-	 * firstPoint, Point lastPoint, int layerIndex) {
-	 * 
-	 * Point minPoint = getMinPoint(firstPoint, lastPoint); Point maxPoint =
-	 * getMaxPoint(firstPoint, lastPoint);
-	 * 
-	 * Point leftUpperCorner = new Point(minPoint.x, minPoint.y); Point
-	 * rightUpperCorner = new Point(maxPoint.x, minPoint.y);
-	 * 
-	 * LinkedList<Point> upperLine = getVerticalLineSegments(leftUpperCorner,
-	 * rightUpperCorner); Point leftBottomCorner = new Point(minPoint.x,
-	 * maxPoint.y); Point rightBottomCorner = new Point(maxPoint.x, maxPoint.y);
-	 * LinkedList<Point> bottomLine = getVerticalLineSegments( leftBottomCorner,
-	 * rightBottomCorner); LinkedList<LinkedList<CopyPasteSegment>> segments =
-	 * new LinkedList<LinkedList<CopyPasteSegment>>();
-	 * 
-	 * LinkedList<CopyPasteSegment> newColumn;
-	 * 
-	 * int nrColumns = upperLine.size(); Point firstSegmentPoint =
-	 * upperLine.getFirst();
-	 * 
-	 * for (int col = 0; col < nrColumns; col++) {
-	 * 
-	 * Point upperPoint = upperLine.get(col);
-	 * 
-	 * Point bottomPoint = bottomLine.get(col);
-	 * 
-	 * newColumn = new LinkedList<CopyPasteSegment>();
-	 * 
-	 * for (int row = upperPoint.y; row <= bottomPoint.y; row++) {
-	 * 
-	 * MapObject mapObject = getMapObject(row, col + firstSegmentPoint.x,
-	 * layerIndex); if (mapObject != null) { mapObject = mapObject.clone();
-	 * Point point = new Point(col + firstSegmentPoint.x, row);
-	 * 
-	 * newColumn.add(new CopyPasteSegment(mapObject, point)); } }
-	 * 
-	 * segments.add(newColumn);
-	 * 
-	 * } return segments; }
-	 */
 	protected Point getMinPoint(Point first, Point last) {
 		Point point = new Point(Math.min(first.x, last.x), Math.min(first.y,
 				last.y));
@@ -350,29 +222,6 @@ public abstract class GridPane {
 	}
 
 	public abstract void paint(Graphics graphics);
-
-	/*
-	 * public void paint(Graphics graphics) {
-	 * 
-	 * int divider = 1; if (isLayoutHex()) { divider = 2; }
-	 * 
-	 * int firstColumn = getFirstVisibleColumnNumber();// + 1; int lastColumn =
-	 * getLastVisibleColumnNumber();// - 1; int firstRow =
-	 * getFirstVisibleRowNumber();// + 1; int lastRow =
-	 * getLastVisibleRowNumber();// - 1;
-	 * 
-	 * for (int column = firstColumn; column <= lastColumn; column++) { for (int
-	 * row = firstRow; row <= lastRow; row++) { if (((column) % 2) == 0) {
-	 * drawSegment(graphics, column, row, 1); } else { drawSegment(graphics,
-	 * column, row, divider); } } }
-	 * 
-	 * int mapWidth = getGridWidth(); int mapHeight = getGridHeight();
-	 * 
-	 * panel.setPreferredSize(new Dimension(mapWidth, mapHeight));
-	 * panel.revalidate();
-	 * 
-	 * }
-	 */
 
 	public void refresh() {
 		panel.repaint();

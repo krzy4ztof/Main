@@ -52,8 +52,8 @@ public class SelectedSegments extends CopyPasteSegments {
 		paint = new ColorUIResource(0, 128, 32);
 	}
 
-	public void activate(MapPane mapPane) {
-		super.activate(mapPane, firstPointToCut, lastPointToCut);
+	public void activate(MapPane mapPane, int layerIndex) {
+		super.activate(mapPane, firstPointToCut, lastPointToCut, layerIndex);
 	}
 
 	@Override

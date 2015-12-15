@@ -3,6 +3,7 @@ package mapeditor.mainwindow;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
@@ -36,11 +37,6 @@ public class SingleThemePane extends GridPane {
 		MapObject mapObject = themeApi.getMapObject(row, col);
 
 		return mapObject;
-
-		/*
-		 * if (mapObject != null) { return mapObject.getImageIcon().getImage();
-		 * } else { // return getBlankImage(); return null; }
-		 */
 	}
 
 	@Override
@@ -67,11 +63,6 @@ public class SingleThemePane extends GridPane {
 		return themeApi;
 	}
 
-	/*
-	 * @Override protected MapObject getCustomMapObject(int row, int col) { //
-	 * Co z tym zrobic? return null; }
-	 */
-
 	private void drawSegment(Graphics graphics, int column, int row, int divider) {
 		MapObject mapObject = getMapObject(row, column);
 		if (mapObject != null) {
@@ -79,16 +70,8 @@ public class SingleThemePane extends GridPane {
 			drawSegment(graphics, column, row, divider, image, getPaint(),
 					getStroke());
 		}
-
-		/*
-		 * MapObject customMapObject = getCustomMapObject(row, column); if
-		 * (customMapObject != null) { Image image =
-		 * customMapObject.getImageIcon().getImage(); drawSegment(graphics,
-		 * column, row, divider, image, paint, stroke); }
-		 */
 	}
 
-	// @Override
 	@Override
 	public void paint(Graphics graphics) {
 
@@ -118,6 +101,32 @@ public class SingleThemePane extends GridPane {
 		panel.setPreferredSize(new Dimension(mapWidth, mapHeight));
 		panel.revalidate();
 
+	}
+
+	public Point getSegmentPointAtCursor(Point cur) {
+		/*
+		 * cur - mouse cursor MapPanel coordinates. Returns number of segment
+		 * column and row that cursor points. Returns Point(-1,-1) when cursor
+		 * is out of map boundaries
+		 */
+
+		int column = getColumnNumberAt(cur.x);
+		int row = 0;
+
+		if (isLayoutHex() && column % 2 == 1) {
+			// first column is 0!!
+			// So column nr 1 is even column (parzysta)
+			row = getRowNumberAt(cur.y, true); // even - parzysty
+		} else {
+			row = getRowNumberAt(cur.y, false); // odd - nieparzysty
+		}
+
+		if ((column >= getGridApiColumnsSize())
+				|| (row >= getGridApiRowsSize()) || (column < 0) || (row < 0)) {
+			return new Point(-1, -1);
+		}
+
+		return new Point(column, row);
 	}
 
 }

@@ -45,4 +45,10 @@ public class LayerAttributes {
 		this.index = index;
 	}
 
+	public void describeYourself() {
+		System.out.println("    Layer index: " + index + "; active: " + active
+				+ "; objectsVisible: " + objectsVisible + "; backgroundVisible"
+				+ backgroundVisible);
+	}
+
 }

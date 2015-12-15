@@ -45,7 +45,8 @@ public class MapPanelMouseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
+				mapApi.getActiveLayerIndex());
 
 		if (seg.x != -1) {
 			ToolsEnum activeTool = tools.getActiveTool();
@@ -64,7 +65,8 @@ public class MapPanelMouseListener implements MouseListener {
 		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje ikone),
 		 * 3 - dla prawego przycisku (menu atrybutow)
 		 */
-		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
+				mapApi.getActiveLayerIndex());
 
 		if (seg.x != -1) {
 			if (e.getButton() == MouseEvent.BUTTON1) {
@@ -117,7 +119,8 @@ public class MapPanelMouseListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint());
+		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
+				mapApi.getActiveLayerIndex());
 
 		if (seg.x != -1) {
 			ToolsEnum activeTool = tools.getActiveTool();

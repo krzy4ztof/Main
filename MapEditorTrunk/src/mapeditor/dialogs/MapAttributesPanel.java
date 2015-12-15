@@ -30,12 +30,10 @@ public class MapAttributesPanel extends JDialog {
 	MapAttributes initialMapAttributes;
 	MapAttributes selectedMapAttributes;
 
-	// private int initialRow;
-	// private int initialCol;
-	// private int selectedRow;
-	// private int selectedCol;
 	JTextField colItem = null;
 	JTextField rowItem = null;
+	JTextField layerItem = null;
+
 	private MapMessages messages;
 	boolean canceled;
 	private Config config;
@@ -85,6 +83,7 @@ public class MapAttributesPanel extends JDialog {
 		// this.initialCol = no_cols;
 		colItem = new JTextField();
 		rowItem = new JTextField();
+		layerItem = new JTextField();
 		setTitle(messages.getString(MapMessages.ATTR_TITLE));
 		JButton btn;
 
@@ -118,35 +117,47 @@ public class MapAttributesPanel extends JDialog {
 
 		c.gridx = 0;
 		c.gridy = 2;
-		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
+		pane.add(
+				new JLabel(messages.getString(MapMessages.ATTR_LAYERS_NUMBER)),
+				c);
 
 		c.gridx = 1;
 		c.gridy = 2;
-		pane.add(activateComboBox(), c);
+		pane.add(layerItem, c);
+		layerItem.setText(new Integer(initialMapAttributes.getLayers())
+				.toString());
 
 		c.gridx = 0;
 		c.gridy = 3;
+		pane.add(new JLabel(messages.getString(MapMessages.ATTR_LAYOUT)), c);
+
+		c.gridx = 1;
+		c.gridy = 3;
+		pane.add(activateComboBox(), c);
+
+		c.gridx = 0;
+		c.gridy = 4;
 		btn = new JButton(messages.getString(MapMessages.ATTR_DEFAULT_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_DEFAULT_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 1;
-		c.gridy = 3;
+		c.gridy = 4;
 		btn = new JButton(messages.getString(MapMessages.ATTR_PREVIOUS_SIZE));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_PREVIOUS_SIZE);
 		pane.add(btn, c);
 
 		c.gridx = 0;
-		c.gridy = 4;
+		c.gridy = 5;
 		btn = new JButton(messages.getString(MapMessages.ATTR_OK));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_OK);
 		pane.add(btn, c);
 
 		c.gridx = 1;
-		c.gridy = 4;
+		c.gridy = 5;
 		btn = new JButton(messages.getString(MapMessages.ATTR_CANCEL));
 		btn.addActionListener(mapActionListener);
 		btn.setActionCommand(MapAttributesPanel.ACTION_CANCEL);
@@ -222,6 +233,21 @@ public class MapAttributesPanel extends JDialog {
 
 		} catch (java.lang.NumberFormatException e) {
 			colItem.setText("");
+			ok = false;
+		}
+
+		try {
+			value = Integer.valueOf(layerItem.getText()).intValue();
+
+			if (value > 0) {
+				selectedMapAttributes.setLayers(value);
+			} else {
+				layerItem.setText("");
+				ok = false;
+			}
+
+		} catch (java.lang.NumberFormatException e) {
+			layerItem.setText("");
 			ok = false;
 		}
 

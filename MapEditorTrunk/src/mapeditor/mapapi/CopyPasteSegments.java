@@ -37,11 +37,12 @@ public class CopyPasteSegments {
 				BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
 	}
 
-	protected void activate(MapPane mapPane, Point firstPoint, Point lastPoint) {
+	protected void activate(MapPane mapPane, Point firstPoint, Point lastPoint,
+			int layerIndex) {
 		minPoint = findMinPoint(firstPoint, lastPoint);
 		maxPoint = findMaxPoint(firstPoint, lastPoint);
 
-		int layerIndex = 0; // TODO zmienic
+		// int layerIndex = 0; // TODO zmienic
 		segments = mapPane.getSegmentPoints(minPoint, maxPoint, layerIndex);
 		active = true;
 	}
@@ -124,13 +125,13 @@ public class CopyPasteSegments {
 
 	public void paint(Graphics graphics) {
 
+		if (graphics instanceof Graphics2D) {
+			Graphics2D g2 = (Graphics2D) graphics;
+			g2.setStroke(stroke);
+			g2.setPaint(paintRectangle);
+		}
 		if (isActive()) {
 
-			if (graphics instanceof Graphics2D) {
-				Graphics2D g2 = (Graphics2D) graphics;
-				g2.setStroke(stroke);
-				g2.setPaint(paintRectangle);
-			}
 			drawRectangle(graphics, minPoint, maxPoint);
 		}
 	}

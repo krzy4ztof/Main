@@ -149,7 +149,12 @@ public class MapApi {
 
 		int rows = mapAttributes.getRows();
 		int cols = mapAttributes.getColumns();
+		int layers = mapAttributes.getLayers();
 		mapLayout = mapAttributes.getMapLayout();
+
+		if (layers > 0) {
+			changeLayersSize(layers, blankMapObject);
+		}
 
 		if (rows > 0) {
 			changeRowsSize(rows, blankMapObject);
@@ -158,7 +163,74 @@ public class MapApi {
 		if (cols > 0) {
 			changeColumnsSize(cols, blankMapObject);
 		}
+	}
 
+	/**
+	 * Increases or decreases map layers number without deleting already
+	 * existing layers
+	 * 
+	 * @param rows
+	 */
+	private void changeLayersSize(int layers, MapObject blankMapObject) {
+		int rowsSize = getRowsSize();
+		int colsSize = getColumnsSize();
+		int layersSize = getLayerAttributesSize();
+		LinkedList<MapSegment> newRow = null;
+		// MapSegment segment = null;
+
+		System.out.println("change layers size from: " + layersSize + " to "
+				+ layers);
+
+		if (layers > layersSize) {
+			int addLayers = layers - layersSize;
+
+			System.out.println("add layers " + addLayers);
+
+			// for (int layerIndex = layersSize - 1; layerIndex < layers;
+			// layerIndex++) {
+			for (int layerIndex = layersSize; layerIndex < layers; layerIndex++) {
+				layersAttributes.add(new LayerAttributes(layerIndex));
+			}
+
+			System.out.println("after add layers " + layersAttributes.size());
+
+			setActiveLayerIndex(0);
+
+			for (LayerAttributes layerAttributes : layersAttributes) {
+				layerAttributes.describeYourself();
+			}
+
+			for (LinkedList<MapSegment> row : segments) {
+				for (MapSegment segment : row) {
+					segment.addLayers(addLayers, blankMapObject);
+				}
+			}
+		} else if (layers < layersSize) {
+
+			int removeLayers = layersSize - layers;
+
+			System.out.println("remove layers " + removeLayers);
+
+			for (int i = 0; i < removeLayers; i++) {
+				layersAttributes.removeLast();
+			}
+
+			System.out
+					.println("after remove layers " + layersAttributes.size());
+
+			setActiveLayerIndex(0);
+			for (LayerAttributes layerAttributes : layersAttributes) {
+				layerAttributes.describeYourself();
+			}
+
+			for (LinkedList<MapSegment> row : segments) {
+				for (MapSegment segment : row) {
+
+					segment.removeLayers(removeLayers);
+
+				}
+			}
+		}
 	}
 
 	/**

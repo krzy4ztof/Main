@@ -157,7 +157,7 @@ public class MainWindow {
 		return menuBar;
 	}
 
-	private JPanel createRightSidePanel(LayersPane layersPane,
+	private JPanel createRightSidePanel(LayersControlPane layersPane,
 			ThemesPane themesPane, MainMenuActionListener gsListener) {
 
 		JPanel panel = new JPanel();
@@ -231,14 +231,16 @@ public class MainWindow {
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
 				mapPanel, themesPane);
-		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
-				messages, mapThemesList, config, tools, mapObjectFactory);
-		MainMenuActionListener gsListener = new MainMenuActionListener(
-				dialogsManager, mapPanel, themesPane);
 
 		LayersPaneActionListener layersPaneActionListener = new LayersPaneActionListener(
 				mapApi, mapPanel);
-		LayersPane layersPane = new LayersPane(config, layersPaneActionListener);
+		LayersControlPane layersPane = new LayersControlPane(mapApi, layersPaneActionListener);
+
+		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
+				messages, mapThemesList, config, tools, mapObjectFactory,
+				layersPane);
+		MainMenuActionListener gsListener = new MainMenuActionListener(
+				dialogsManager, mapPanel, themesPane);
 
 		JPanel rightSidePanel = createRightSidePanel(layersPane, themesPane,
 				gsListener);
