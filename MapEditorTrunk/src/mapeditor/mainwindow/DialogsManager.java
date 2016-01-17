@@ -4,6 +4,14 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.xml.XMLConstants;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
@@ -11,10 +19,13 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
-import mapeditor.saveload.MapLoader;
+import mapeditor.saveload.MapLoaderSAXHandler;
 import mapeditor.saveload.MapSaver;
 import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
+
+import org.xml.sax.SAXException;
+
 import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
@@ -145,35 +156,61 @@ public class DialogsManager {
 		}
 	}
 
+	final static String XSD_FOLDER = "resources" + File.separator + "xsd"
+			+ File.separator;
+
 	/**
 	 * Loads new map
 	 */
 	private void loadMapApi() {
-		JFileChooser FC = new JFileChooser();
-		FC.setCurrentDirectory(new File("." + File.separator + "Maps"));
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser
+				.setCurrentDirectory(new File("." + File.separator + "Maps"));
 
 		ExampleFileFilter rfilter = new ExampleFileFilter("xml", "XML Files");
 
-		FC.setFileFilter(rfilter);
-		FC.setSelectedFile(mapApi.getFile());
+		fileChooser.setFileFilter(rfilter);
+		fileChooser.setSelectedFile(mapApi.getFile());
 
-		int res = FC.showOpenDialog(mapPanel.getPanel().getTopLevelAncestor());
+		int res = fileChooser.showOpenDialog(mapPanel.getPanel()
+				.getTopLevelAncestor());
 		if (res == JFileChooser.APPROVE_OPTION) {
-			File rFile = FC.getSelectedFile();
-			MapLoader p_MapLoader = new MapLoader();
+			File file = fileChooser.getSelectedFile();
+
+			SAXParserFactory factory = SAXParserFactory.newInstance();
 
 			try {
-				p_MapLoader.loadMapFromFile(mapApi, rFile, mapThemesList,
-						mapObjectFactory);
+				SAXParser saxParser = factory.newSAXParser();
+
+				Source schemaFile = new StreamSource(new File(XSD_FOLDER,
+						"map.xsd"));
+				SchemaFactory schemaFactory = SchemaFactory
+						.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+				Schema schema = schemaFactory.newSchema(schemaFile);
+
+				Source xmlFile = new StreamSource(file);
+				Validator validator = schema.newValidator();
+				try {
+					validator.validate(xmlFile);
+					System.out.println(xmlFile.getSystemId() + " is valid");
+				} catch (SAXException e) {
+					System.out.println(xmlFile.getSystemId() + " is NOT valid");
+					System.out.println("Reason: " + e.getLocalizedMessage());
+				}
+
+				MapLoaderSAXHandler handler = new MapLoaderSAXHandler(mapApi,
+						mapThemesList, mapObjectFactory);
+				saxParser.parse(file, handler);
+
 				mapPanel.setMapApi(mapApi);
 				mapPanel.getPanel().repaint();
-				// gs.getJFrame().repaint();
 			} catch (Exception e) {
 
 				String msg = messages.getString(MapMessages.MSG_LOADING_FAILED)
 						+ e.getMessage();
-				JOptionPane.showMessageDialog(FC, msg);
+				JOptionPane.showMessageDialog(fileChooser, msg);
 
+				e.printStackTrace();
 			}
 		}
 	}

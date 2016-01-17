@@ -259,18 +259,26 @@ public class MapAttributesPanel extends JDialog {
 	public void setDefaultSize() {
 		selectedMapAttributes.setColumns(config.getMapApiColumnsNumber());
 		selectedMapAttributes.setRows(config.getMapApiRowsNumber());
+		selectedMapAttributes.setLayers(config.getMapApiLayersNumber());
 
 		colItem.setText((new Integer(selectedMapAttributes.getColumns()))
 				.toString());
 		rowItem.setText(new Integer(selectedMapAttributes.getRows()).toString());
+		layerItem.setText(new Integer(selectedMapAttributes.getLayers())
+				.toString());
+
 	}
 
 	public void setPreviousSize() {
 		selectedMapAttributes.setColumns(initialMapAttributes.getColumns());
 		selectedMapAttributes.setRows(initialMapAttributes.getRows());
+		selectedMapAttributes.setLayers(initialMapAttributes.getLayers());
+
 		colItem.setText(new Integer(selectedMapAttributes.getColumns())
 				.toString());
 		rowItem.setText(new Integer(selectedMapAttributes.getRows()).toString());
+		layerItem.setText(new Integer(selectedMapAttributes.getLayers())
+				.toString());
 	}
 
 	public void onCancelAction() {

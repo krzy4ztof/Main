@@ -1,0 +1,60 @@
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="mapXmlType">
+		<xs:sequence>
+			<xs:element name="generalParameters" type="generalParametersType" />
+			<xs:element name="matrix" type="matrixType" />
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="mapName" />
+	</xs:complexType>
+
+	<xs:complexType name="matrixType">
+		<xs:sequence>
+			<xs:element name="layer" type="layerType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="layerType">
+		<xs:sequence>
+			<xs:element name="row" type="rowType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute type="xs:byte" name="index" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="rowType">
+		<xs:attribute type="xs:byte" name="number" use="required" />
+		<xs:attribute type="xs:string" name="segments" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="generalParametersType">
+		<xs:sequence>
+			<xs:element name="properties" type="propertiesType" />
+			<xs:element name="segmentsCode" type="segmentsCodeType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="segmentsCodeType">
+		<xs:sequence>
+			<xs:element name="code" type="codeType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="codeType">
+		<xs:attribute type="xs:byte" name="id" use="required" />
+		<xs:attribute type="xs:string" name="image" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="propertiesType">
+		<xs:attribute type="xs:byte" name="columns" use="required" />
+		<xs:attribute type="xs:string" name="layout" use="required" />
+		<xs:attribute type="xs:byte" name="rows" use="required" />
+		<xs:attribute type="xs:byte" name="layers" use="required" />
+	</xs:complexType>
+
+	<xs:element name="mapXml" type="mapXmlType" />
+
+</xs:schema>

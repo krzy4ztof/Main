@@ -37,7 +37,7 @@ public class LayerAttributes {
 		this.backgroundVisible = backgroundVisible;
 	}
 
-	public int getIndex() {
+	public Integer getIndex() {
 		return index;
 	}
 
