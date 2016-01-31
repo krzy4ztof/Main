@@ -22,7 +22,8 @@
 	</ThemeGroup>
 	<ThemeGroup name="PngTheme">  
 		<MapTheme name="png2" image="bodyar.png"/>  
-		<MapTheme name="png3" image="rearwheelar.png"/>  
+		<MapTheme name="png3" image="rearwheelar.png"/>
+		<MapTheme name="sam" image="samochod_maly.png"/>
 	</ThemeGroup>
 	
 	<!-- 

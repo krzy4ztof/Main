@@ -50,6 +50,7 @@ public class MapMessages {
 	public static String TOOLBAR_BUCKET = "toolbar.bucket";
 	public static String TOOLBAR_PICKER = "toolbar.picker";
 	public static String TOOLBAR_SELECTION = "toolbar.selection";
+	public static String TOOLBAR_HAMMER = "toolbar.hammer";
 
 	ResourceBundle resourceBundle;
 

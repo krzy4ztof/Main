@@ -1,12 +1,11 @@
 package mapeditor.mapapi;
 
-
 public class Tools {
 
 	private ToolsEnum activeTool;
 
 	public enum ToolsEnum {
-		ERASER, BRUSH, BUCKET, PICKER, SELECTION
+		ERASER, BRUSH, BUCKET, PICKER, SELECTION, HAMMER
 	}
 
 	public Tools() {

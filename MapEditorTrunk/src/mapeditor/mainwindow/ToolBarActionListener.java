@@ -87,6 +87,11 @@ public class ToolBarActionListener implements ActionListener {
 			mapPanel.getPanel().setCursor(
 					Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 			copyPaste.onActionPerformed();
+		} else if (str.equals(MainWindow.ACTION_TOOLBAR_HAMMER)) {
+			tools.setActiveTool(ToolsEnum.HAMMER);
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(CursorFactory.CURSOR_HAMMER));
+			// copyPaste.onActionPerformed();
 		}
 	}
 }

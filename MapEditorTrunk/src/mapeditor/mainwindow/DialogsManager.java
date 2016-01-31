@@ -15,6 +15,7 @@ import javax.xml.validation.Validator;
 
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
+import mapeditor.main.ApplicationManager;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.Tools;
@@ -156,9 +157,6 @@ public class DialogsManager {
 		}
 	}
 
-	final static String XSD_FOLDER = "resources" + File.separator + "xsd"
-			+ File.separator;
-
 	/**
 	 * Loads new map
 	 */
@@ -182,8 +180,8 @@ public class DialogsManager {
 			try {
 				SAXParser saxParser = factory.newSAXParser();
 
-				Source schemaFile = new StreamSource(new File(XSD_FOLDER,
-						"map.xsd"));
+				Source schemaFile = new StreamSource(new File(
+						ApplicationManager.XSD_FOLDER, "map.xsd"));
 				SchemaFactory schemaFactory = SchemaFactory
 						.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 				Schema schema = schemaFactory.newSchema(schemaFile);

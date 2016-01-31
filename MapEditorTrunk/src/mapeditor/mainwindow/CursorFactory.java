@@ -16,6 +16,7 @@ public class CursorFactory {
 	public static final String CURSOR_BRUSH = "brush_32.png";
 	public static final String CURSOR_PICKER = "colour_picker_48.png";
 	public static final String CURSOR_ERASER = "package_purge_32.png";
+	public static final String CURSOR_HAMMER = "technical_hammer_40.png";
 
 	private HashMap<String, Cursor> cursors = null;
 
@@ -29,7 +30,7 @@ public class CursorFactory {
 		createCursor(CURSOR_BUCKET, new Point(0, 31));
 		createCursor(CURSOR_PICKER, new Point(0, 31));
 		createCursor(CURSOR_ERASER, new Point(0, 31));
-
+		createCursor(CURSOR_HAMMER, new Point(0, 31));
 	}
 
 	private void createCursor(String iconName, Point point) {

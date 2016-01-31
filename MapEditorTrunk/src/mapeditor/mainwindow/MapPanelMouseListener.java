@@ -107,6 +107,9 @@ public class MapPanelMouseListener implements MouseListener {
 						copyPaste.onLeftButtonClick(e.getPoint());
 					}
 					mapPanel.refresh();
+				} else if (activeTool == ToolsEnum.HAMMER) {
+					mapPanel.r_SegmentAttributesPanel.setVisible(true);
+					System.out.println("menu atrybutow");
 				}
 
 			} else {

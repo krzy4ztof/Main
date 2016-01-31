@@ -49,6 +49,7 @@ public class MainWindow {
 	final static String ACTION_TOOLBAR_BUCKET = "ACTION_TOOLBAR_BUCKET";
 	final static String ACTION_TOOLBAR_PICKER = "ACTION_TOOLBAR_PICKER";
 	final static String ACTION_TOOLBAR_SELECTION = "ACTION_TOOLBAR_SELECTION";
+	final static String ACTION_TOOLBAR_HAMMER = "ACTION_TOOLBAR_HAMMER";
 
 	final static String TOOLBAR_ICONS_FOLDER = "resources" + File.separator
 			+ "toolbar" + File.separator;
@@ -58,12 +59,14 @@ public class MainWindow {
 	final static String ICON_BUCKET_16 = "construction_bucket_16.png";
 	final static String ICON_PICKER_16 = "color_picker_16.png";
 	final static String ICON_SELECTION_16 = "selection_16.png";
+	final static String ICON_HAMMER_16 = "hammer_16.png";
 
 	final static String ICON_ERASER_32 = "package_purge_32.png";
 	final static String ICON_BRUSH_32 = "brush_32.png";
 	final static String ICON_BUCKET_32 = "construction_bucket_32.png";
 	final static String ICON_PICKER_32 = "color_picker_32.png";
 	final static String ICON_SELECTION_32 = "selection_32.png";
+	final static String ICON_HAMMER_32 = "hammer_32.png";
 
 	public final static String ICON_NULL = "null.png";
 
@@ -158,7 +161,8 @@ public class MainWindow {
 	}
 
 	private JPanel createRightSidePanel(LayersControlPane layersPane,
-			ThemesPane themesPane, MainMenuActionListener gsListener) {
+			ThemesPane themesPane, CustomObjectPane customObjectPane,
+			MainMenuActionListener gsListener) {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -176,7 +180,9 @@ public class MainWindow {
 		splitPaneFirst.setResizeWeight(0);
 
 		JSplitPane splitPaneSec = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-				splitPaneFirst, new JPanel());
+				splitPaneFirst, customObjectPane.getPane());
+		// splitPaneFirst, new JPanel());
+
 		splitPaneSec.setOneTouchExpandable(true);
 		// splitPane.setDividerLocation(200);
 		splitPaneSec.setResizeWeight(1);
@@ -213,6 +219,8 @@ public class MainWindow {
 
 		copyPaste.addGridPane(mapPanel);
 
+		CustomObjectPane customObjectPane = new CustomObjectPane(mapApi);
+
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
@@ -234,7 +242,8 @@ public class MainWindow {
 
 		LayersPaneActionListener layersPaneActionListener = new LayersPaneActionListener(
 				mapApi, mapPanel);
-		LayersControlPane layersPane = new LayersControlPane(mapApi, layersPaneActionListener);
+		LayersControlPane layersPane = new LayersControlPane(mapApi,
+				layersPaneActionListener);
 
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
 				messages, mapThemesList, config, tools, mapObjectFactory,
@@ -243,7 +252,7 @@ public class MainWindow {
 				dialogsManager, mapPanel, themesPane);
 
 		JPanel rightSidePanel = createRightSidePanel(layersPane, themesPane,
-				gsListener);
+				customObjectPane, gsListener);
 
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 				mapPanel.getScrollPane(), rightSidePanel);
@@ -287,6 +296,7 @@ public class MainWindow {
 		String iconBucket = ICON_BUCKET_16;
 		String iconPicker = ICON_PICKER_16;
 		String iconSelection = ICON_SELECTION_16;
+		String iconHammer = ICON_HAMMER_16;
 
 		if (config.getToolBarIconsSize() == 32) {
 			iconEraser = ICON_ERASER_32;
@@ -294,6 +304,7 @@ public class MainWindow {
 			iconBucket = ICON_BUCKET_32;
 			iconPicker = ICON_PICKER_32;
 			iconSelection = ICON_SELECTION_32;
+			iconHammer = ICON_HAMMER_32;
 		}
 
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -316,6 +327,9 @@ public class MainWindow {
 				ACTION_TOOLBAR_SELECTION,
 				messages.getString(MapMessages.TOOLBAR_SELECTION),
 				actionListener, buttonGroup));
+		toolBar.add(createToolBarButton(iconHammer, ACTION_TOOLBAR_HAMMER,
+				messages.getString(MapMessages.TOOLBAR_HAMMER), actionListener,
+				buttonGroup));
 
 		brushButton.doClick();
 		return toolBar;
