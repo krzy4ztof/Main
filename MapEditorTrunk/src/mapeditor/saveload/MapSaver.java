@@ -129,39 +129,6 @@ public class MapSaver {
 		return matrixElement;
 	}
 
-	private Element createMatrixTag_222(MapApi mapApi, Document document) {
-		Element matrixElement = document
-				.createElement(MapFileDefinitions.MATRIX_ELEMENT);
-
-		MapObject mapObject = null;
-
-		for (int row = 0; row < mapApi.getRowsSize(); row++) {
-			String segments = "";
-			Element rowElem = document
-					.createElement(MapFileDefinitions.ROW_ELEMENT);
-			rowElem.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
-					Integer.toString(row));
-			for (int col = 0; col < mapApi.getColumnsSize(); col++) {
-
-				int layerIndex = 0; // TODO: zmienic
-				mapObject = mapApi.getSegment(row, col)
-						.getMapObject(layerIndex);
-				String segmentId = null;
-				if (mapObject != null) {
-					segmentId = mapObject.getObjectIdString();
-				} else {
-					segmentId = MapObject.DEFAULT_OBJECT_ID;
-				}
-
-				segments = segments + segmentId + ';';
-			}
-			rowElem.setAttribute(MapFileDefinitions.SEGMENTS_ATTRIBUTE,
-					segments);
-			matrixElement.appendChild(rowElem);
-		}
-		return matrixElement;
-	}
-
 	private Element createSegmentsCodesTag(MapApi mapApi, Document document) {
 		Element segmCodeElement = null;
 		segmCodeElement = document

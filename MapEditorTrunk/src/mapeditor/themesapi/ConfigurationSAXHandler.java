@@ -1,5 +1,7 @@
 package mapeditor.themesapi;
 
+import java.io.File;
+
 import javax.swing.ImageIcon;
 
 import mapeditor.config.Config;
@@ -16,6 +18,7 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	public final static String OBJECT_PROPERTY_TAG = "ObjectProperty";
 	public final static String NAME_ATTR = "name";
 	public final static String IMAGE_NAME_ATTR = "image";
+	public final static String IMAGE_FOLDER_ATTR = "folder";
 	public final static String TYPE_ATTR = "type";
 	public final static String DEFAULT_ATTR = "default";
 
@@ -51,7 +54,17 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	private void startMapThemeElement(Attributes attrs) {
 		String name = attrs.getValue(NAME_ATTR);
 		String imageName = attrs.getValue(IMAGE_NAME_ATTR);
-		ImageIcon imageFile = new ImageIcon(imagesPath + imageName);
+		String imageFolder = attrs.getValue(IMAGE_FOLDER_ATTR);
+
+		ImageIcon imageFile = null;
+		if (imageFolder != null) {
+			imageFile = new ImageIcon(imagesPath + imageFolder + File.separator
+					+ imageName);
+
+			name = imageFolder + File.separator + name;
+		} else {
+			imageFile = new ImageIcon(imagesPath + imageName);
+		}
 
 		curMapObject = new MapObject(name);
 		curMapObject.setImageName(imageName);

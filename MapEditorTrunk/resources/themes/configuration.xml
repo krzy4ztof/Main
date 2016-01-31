@@ -1,54 +1,64 @@
 <Configuration>
-	<ThemeGroup name="AllTheme">
+	<ThemeGroup name="winTheme">
+		<MapTheme name="babelki" folder="windows" image="babelki.jpg"/>  
+		<MapTheme name="bloki" folder="windows" image="bloki.jpg"/>  
+		<MapTheme name="egipt" folder="windows" image="egipt.jpg"/> 
+		<MapTheme name="fale" folder="windows" image="fale.jpg"/> 
+		<MapTheme name="kafelki" folder="windows" image="kafelki.jpg"/>
+		<MapTheme name="kolka" folder="windows" image="kolka.jpg"/>  
+		<MapTheme name="mata" folder="windows" image="mata.jpg"/>
+		<MapTheme name="niebieski" folder="windows" image="niebieski.jpg"/>  
+		<MapTheme name="nity" folder="windows" image="nity.jpg"/> 
+		<MapTheme name="prazek" folder="windows" image="prazek.jpg"/>
+		<MapTheme name="psi_zab" folder="windows" image="psi_zab.jpg"/>  
+		<MapTheme name="trojkaty" folder="windows" image="trojkaty.jpg"/>
+	</ThemeGroup> 
+	<ThemeGroup name="medievalTheme">
+		<MapTheme name="door" folder="medieval" image="door.png"/>
+		<MapTheme name="gold" folder="medieval" image="gold.png"/>
+		<MapTheme name="grass" folder="medieval" image="grass.png"/>
+		<MapTheme name="ground" folder="medieval" image="ground.png"/>
+		<MapTheme name="lava" folder="medieval" image="lava.png"/>
+		<MapTheme name="pine" folder="medieval" image="pine.png"/>
+		<MapTheme name="stone_floor" folder="medieval" image="stone_floor.png"/>
+		<MapTheme name="tree" folder="medieval" image="tree.png"/>
+		<MapTheme name="wall" folder="medieval" image="wall.png"/>
+		<MapTheme name="water" folder="medieval" image="water.png"/>  
+	</ThemeGroup> 
+	<ThemeGroup name="platformWallsTheme">
+		<MapTheme name="sandstone" folder="walls" image="sandstone.png"/>  
+		<MapTheme name="sandstone_plain" folder="walls" image="sandstone_plain.png"/>  
+		<MapTheme name="steel_plain" folder="walls" image="steel_plain.png"/>  
+		<MapTheme name="steel" folder="walls" image="steel.png"/>  
+		<MapTheme name="stone_plain" folder="walls" image="stone_plain.png"/>  
+		<MapTheme name="stone" folder="walls" image="stone.png"/>  
+	</ThemeGroup> 
+	<ThemeGroup name="fantasyTheme">
+		<MapTheme name="apple" folder="fantasy" image="apple.png"/>  
+		<MapTheme name="axe" folder="fantasy" image="axe.png"/>
+		<MapTheme name="book" folder="fantasy" image="book.png"/>
+		<MapTheme name="bottle" folder="fantasy" image="bottle.png"/>
+		<MapTheme name="candle" folder="fantasy" image="candle.png"/>
+		<MapTheme name="chest" folder="fantasy" image="chest.png"/>
+		<MapTheme name="cup" folder="fantasy" image="cup.png"/>
+		<MapTheme name="dagger" folder="fantasy" image="dagger.png"/>
+		<MapTheme name="gold" folder="fantasy" image="gold.png"/>
+		<MapTheme name="health" folder="fantasy" image="health.png"/>
+		<MapTheme name="key" folder="fantasy" image="key.png"/>
+		<MapTheme name="pergamin" folder="fantasy" image="pergamin.png"/>
+		<MapTheme name="ring" folder="fantasy" image="ring.png"/>
+		<MapTheme name="skull" folder="fantasy" image="skull.png"/>
+		<MapTheme name="sword" folder="fantasy" image="sword.png"/>
+		<MapTheme name="vase" folder="fantasy" image="vase.png"/>
+	</ThemeGroup>
+	<ThemeGroup name="otherTheme">
 		<MapObject name="png1" image="frontwheelar.png">
 			<ObjectProperty name="CustomIntValue" type="Integer" default="7"/>
-		</MapObject>
-		<MapTheme name="Trojkaty" image="trojkaty.jpg"/>
-		<MapTheme name="Psi_zab" image="psi_zab.jpg"/>  
-		<MapTheme name="Prazek" image="prazek.jpg"/>  
-		<MapTheme name="Nity" image="nity.jpg"/> 
-		<MapTheme name="Niebieski" image="niebieski.jpg"/>  
-		<MapTheme name="Mata" image="mata.jpg"/>
-		<MapTheme name="Kolka" image="kolka.jpg"/>  
-		<MapTheme name="Kafelki" image="kafelki.jpg"/>  
-		<MapTheme name="Fale" image="fale.jpg"/>  
-		<MapTheme name="Egipt" image="egipt.jpg"/>  
-		<MapTheme name="Bloki" image="bloki.jpg"/>  
-		<MapTheme name="Babelki" image="babelki.jpg"/>  
-	</ThemeGroup> 
-	<ThemeGroup name="OtherTheme">
+		</MapObject> 
 		<MapTheme name="Malpa1" image="rys.jpg"/>  
-		<MapTheme name="Malpa2" image="rys2.jpg"/> 
-	</ThemeGroup>
-	<ThemeGroup name="PngTheme">  
 		<MapTheme name="png2" image="bodyar.png"/>  
 		<MapTheme name="png3" image="rearwheelar.png"/>
 		<MapTheme name="sam" image="samochod_maly.png"/>
+		<MapTheme name="Malpa2" image="rys2.jpg"/>
 	</ThemeGroup>
-	
-	<!-- 
-	<Theme name="AllTheme">
-		<Image name="Trojkaty"> trojkaty.jpg </Image>
-		<Image name="Psi_zab"> psi_zab.jpg </Image>
-		<Image name="Prazek"> prazek.jpg </Image>
-		<Image name="Nity"> nity.jpg </Image>
-		<Image name="Niebieski"> niebieski.jpg </Image>
-		<Image name="Mata"> mata.jpg </Image>
-		<Image name="Kolka"> kolka.jpg </Image>
-		<Image name="Kafelki"> kafelki.jpg </Image>
-		<Image name="Fale"> fale.jpg </Image>
-		<Image name="Egipt"> egipt.jpg </Image>
-		<Image name="Bloki"> bloki.jpg </Image>
-		<Image name="Babelki"> babelki.jpg </Image>
-	</Theme> 
-	<Theme name="OtherTheme">
-		<Image name="Malpa1"> rys.jpg </Image>
-		<Image name="Malpa2"> rys2.jpg </Image>
-	</Theme>
-	<Theme name="PngTheme">
-		<Image name="png1"> bodyar.png </Image>
-		<Image name="png2"> frontwheelar.png </Image>
-		<Image name="png3"> rearwheelar.png </Image>
-	</Theme>
-	 -->
 </Configuration>
