@@ -1,4 +1,4 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.themes;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -18,6 +18,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import mapeditor.main.ApplicationManager;
+import mapeditor.mainwindow.MainWindow;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;

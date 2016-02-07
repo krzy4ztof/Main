@@ -3,6 +3,9 @@ package mapeditor.mainwindow;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mainwindow.themes.ThemesPane;
+
 public class MainWindowKeyListener implements KeyListener {
 
 	private MapPane mapPanel;

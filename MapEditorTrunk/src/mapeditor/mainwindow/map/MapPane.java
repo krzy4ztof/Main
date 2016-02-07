@@ -1,4 +1,4 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.map;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,8 +13,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import mapeditor.dialogs.SegmentAttributesPanel;
+import mapeditor.mainwindow.GridPane;
 import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.CopyPasteSegment;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.DraggedSegments;
 import mapeditor.mapapi.LayerAttributes;
 import mapeditor.mapapi.MapApi;
@@ -36,12 +38,15 @@ public class MapPane extends GridPane {
 	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
 	private MapApi mapApi;
 	private CopyPaste copyPaste;
+	private CustomObjectEdit customObjectEdit;
 
-	public MapPane(MapApi mapApi, CopyPaste copyPaste) {
+	public MapPane(MapApi mapApi, CopyPaste copyPaste,
+			CustomObjectEdit customObjectEdit) {
 		super();
 		this.mapApi = mapApi;
 		this.copyPaste = copyPaste;
 		inactiveLayerPaint = Color.LIGHT_GRAY;
+		this.customObjectEdit = customObjectEdit;
 	}
 
 	@Override
@@ -209,6 +214,8 @@ public class MapPane extends GridPane {
 
 				paintCopyPaste(graphics, layerAttributes);
 
+				paintCustomObjectEdit(graphics, layerAttributes);
+
 				if (graphics instanceof Graphics2D) {
 					Graphics2D g2 = (Graphics2D) graphics;
 
@@ -223,6 +230,35 @@ public class MapPane extends GridPane {
 			}
 
 		}
+	}
+
+	private void paintCustomObjectEdit(Graphics graphics,
+			LayerAttributes layerAttributes) {
+		// TODO Auto-generated method stub
+		// customObjectEdit.paint(graphics);
+
+		if (!customObjectEdit.isActive()) {
+			return;
+		}
+
+		int divider = 1;
+		if (isLayoutHex()) {
+			divider = 2;
+		}
+
+		Point point = customObjectEdit.getPoint();
+		Paint paint = customObjectEdit.getPaint();
+		Stroke stroke = customObjectEdit.getStroke();
+
+		if (((point.x) % 2) == 0) {
+			drawSegmentGrid(graphics, point.x, point.y, 1, paint, stroke,
+					layerAttributes);
+
+		} else {
+			drawSegmentGrid(graphics, point.x, point.y, divider, paint, stroke,
+					layerAttributes);
+		}
+
 	}
 
 	public void paint(Graphics graphics, LayerAttributes layerAttributes) {
@@ -441,15 +477,15 @@ public class MapPane extends GridPane {
 				layerAttributes);
 	}
 
-	void onCutEvent() {
+	public void onCutEvent() {
 		copyPaste.onCutEvent();
 	}
 
-	void onCopyEvent() {
+	public void onCopyEvent() {
 		copyPaste.onCopyEvent();
 	}
 
-	void onPasteEvent() {
+	public void onPasteEvent() {
 		copyPaste.onPasteEvent();
 	}
 

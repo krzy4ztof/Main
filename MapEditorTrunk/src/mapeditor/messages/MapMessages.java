@@ -1,7 +1,8 @@
 package mapeditor.messages;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import mapeditor.config.Config;
@@ -52,22 +53,27 @@ public class MapMessages {
 	public static String TOOLBAR_SELECTION = "toolbar.selection";
 	public static String TOOLBAR_HAMMER = "toolbar.hammer";
 
-	ResourceBundle resourceBundle;
+	List<ResourceBundle> resourceBundleList;
 
 	public MapMessages(Config config) {
 		Locale currentLocale;
 		currentLocale = new Locale(config.getLanguage());
-		resourceBundle = ResourceBundle.getBundle(
-				"mapeditor.messages.MessagesBundle", currentLocale);
+		resourceBundleList = new ArrayList<ResourceBundle>();
+
+		resourceBundleList.add(ResourceBundle.getBundle(
+				"mapeditor.messages.MessagesBundle", currentLocale));
+		resourceBundleList.add(ResourceBundle.getBundle(
+				"mapeditor.messages.ThemesBundle", currentLocale));
 	}
 
 	public String getString(String string) {
 		String msg = string;
 
-		try {
-			msg = resourceBundle.getString(string);
-		} catch (MissingResourceException e) {
-
+		for (ResourceBundle resourceBundle : resourceBundleList) {
+			if (resourceBundle.containsKey(msg)) {
+				msg = resourceBundle.getString(string);
+				return msg;
+			}
 		}
 		return msg;
 	}

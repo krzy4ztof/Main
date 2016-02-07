@@ -1,9 +1,10 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.themes;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import mapeditor.mainwindow.GridPane;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemesManager;
 

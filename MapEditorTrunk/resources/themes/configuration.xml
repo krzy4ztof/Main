@@ -1,64 +1,120 @@
-<Configuration>
-	<ThemeGroup name="winTheme">
-		<MapTheme name="babelki" folder="windows" image="babelki.jpg"/>  
-		<MapTheme name="bloki" folder="windows" image="bloki.jpg"/>  
-		<MapTheme name="egipt" folder="windows" image="egipt.jpg"/> 
-		<MapTheme name="fale" folder="windows" image="fale.jpg"/> 
-		<MapTheme name="kafelki" folder="windows" image="kafelki.jpg"/>
-		<MapTheme name="kolka" folder="windows" image="kolka.jpg"/>  
-		<MapTheme name="mata" folder="windows" image="mata.jpg"/>
-		<MapTheme name="niebieski" folder="windows" image="niebieski.jpg"/>  
-		<MapTheme name="nity" folder="windows" image="nity.jpg"/> 
-		<MapTheme name="prazek" folder="windows" image="prazek.jpg"/>
-		<MapTheme name="psi_zab" folder="windows" image="psi_zab.jpg"/>  
-		<MapTheme name="trojkaty" folder="windows" image="trojkaty.jpg"/>
-	</ThemeGroup> 
-	<ThemeGroup name="medievalTheme">
-		<MapTheme name="door" folder="medieval" image="door.png"/>
-		<MapTheme name="gold" folder="medieval" image="gold.png"/>
-		<MapTheme name="grass" folder="medieval" image="grass.png"/>
-		<MapTheme name="ground" folder="medieval" image="ground.png"/>
-		<MapTheme name="lava" folder="medieval" image="lava.png"/>
-		<MapTheme name="pine" folder="medieval" image="pine.png"/>
-		<MapTheme name="stone_floor" folder="medieval" image="stone_floor.png"/>
-		<MapTheme name="tree" folder="medieval" image="tree.png"/>
-		<MapTheme name="wall" folder="medieval" image="wall.png"/>
-		<MapTheme name="water" folder="medieval" image="water.png"/>  
-	</ThemeGroup> 
-	<ThemeGroup name="platformWallsTheme">
-		<MapTheme name="sandstone" folder="walls" image="sandstone.png"/>  
-		<MapTheme name="sandstone_plain" folder="walls" image="sandstone_plain.png"/>  
-		<MapTheme name="steel_plain" folder="walls" image="steel_plain.png"/>  
-		<MapTheme name="steel" folder="walls" image="steel.png"/>  
-		<MapTheme name="stone_plain" folder="walls" image="stone_plain.png"/>  
-		<MapTheme name="stone" folder="walls" image="stone.png"/>  
-	</ThemeGroup> 
-	<ThemeGroup name="fantasyTheme">
-		<MapTheme name="apple" folder="fantasy" image="apple.png"/>  
-		<MapTheme name="axe" folder="fantasy" image="axe.png"/>
-		<MapTheme name="book" folder="fantasy" image="book.png"/>
-		<MapTheme name="bottle" folder="fantasy" image="bottle.png"/>
-		<MapTheme name="candle" folder="fantasy" image="candle.png"/>
-		<MapTheme name="chest" folder="fantasy" image="chest.png"/>
-		<MapTheme name="cup" folder="fantasy" image="cup.png"/>
-		<MapTheme name="dagger" folder="fantasy" image="dagger.png"/>
-		<MapTheme name="gold" folder="fantasy" image="gold.png"/>
-		<MapTheme name="health" folder="fantasy" image="health.png"/>
-		<MapTheme name="key" folder="fantasy" image="key.png"/>
-		<MapTheme name="pergamin" folder="fantasy" image="pergamin.png"/>
-		<MapTheme name="ring" folder="fantasy" image="ring.png"/>
-		<MapTheme name="skull" folder="fantasy" image="skull.png"/>
-		<MapTheme name="sword" folder="fantasy" image="sword.png"/>
-		<MapTheme name="vase" folder="fantasy" image="vase.png"/>
-	</ThemeGroup>
-	<ThemeGroup name="otherTheme">
-		<MapObject name="png1" image="frontwheelar.png">
-			<ObjectProperty name="CustomIntValue" type="Integer" default="7"/>
-		</MapObject> 
-		<MapTheme name="Malpa1" image="rys.jpg"/>  
-		<MapTheme name="png2" image="bodyar.png"/>  
-		<MapTheme name="png3" image="rearwheelar.png"/>
-		<MapTheme name="sam" image="samochod_maly.png"/>
-		<MapTheme name="Malpa2" image="rys2.jpg"/>
-	</ThemeGroup>
-</Configuration>
+<configuration>
+	<themeGroup name="winTheme">
+		<mapTheme name="babelki" folder="windows" image="babelki.jpg"/>  
+		<mapTheme name="bloki" folder="windows" image="bloki.jpg"/>  
+		<mapTheme name="egipt" folder="windows" image="egipt.jpg"/> 
+		<mapTheme name="fale" folder="windows" image="fale.jpg"/> 
+		<mapTheme name="kafelki" folder="windows" image="kafelki.jpg"/>
+		<mapTheme name="kolka" folder="windows" image="kolka.jpg"/>  
+		<mapTheme name="mata" folder="windows" image="mata.jpg"/>
+		<mapTheme name="niebieski" folder="windows" image="niebieski.jpg"/>  
+		<mapTheme name="nity" folder="windows" image="nity.jpg"/> 
+		<mapTheme name="prazek" folder="windows" image="prazek.jpg"/>
+		<mapTheme name="psi_zab" folder="windows" image="psi_zab.jpg"/>  
+		<mapTheme name="trojkaty" folder="windows" image="trojkaty.jpg"/>
+	</themeGroup> 
+	<themeGroup name="medievalTheme">
+		<mapObject name="door" folder="medieval" image="door.png">
+			<objectProperty name="doorConnection" type="Point" default="0,0"/>
+		</mapObject>
+		<mapTheme name="gold" folder="medieval" image="gold.png"/>
+		<mapTheme name="grass" folder="medieval" image="grass.png"/>
+		<mapTheme name="ground" folder="medieval" image="ground.png"/>
+		<mapTheme name="lava" folder="medieval" image="lava.png"/>
+		<mapTheme name="pine" folder="medieval" image="pine.png"/>
+		<mapTheme name="stone_floor" folder="medieval" image="stone_floor.png"/>
+		<mapTheme name="tree" folder="medieval" image="tree.png"/>
+		<mapTheme name="wall" folder="medieval" image="wall.png"/>
+		<mapTheme name="water" folder="medieval" image="water.png"/>  
+	</themeGroup> 
+	<themeGroup name="platformWallsTheme">
+		<mapTheme name="sandstone" folder="walls" image="sandstone.png"/>  
+		<mapTheme name="sandstone_plain" folder="walls" image="sandstone_plain.png"/>  
+		<mapTheme name="steel_plain" folder="walls" image="steel_plain.png"/>  
+		<mapTheme name="steel" folder="walls" image="steel.png"/>  
+		<mapTheme name="stone_plain" folder="walls" image="stone_plain.png"/>  
+		<mapTheme name="stone" folder="walls" image="stone.png"/>  
+	</themeGroup> 
+	<themeGroup name="fantasyTheme">
+		<mapObject name="apple" folder="fantasy" image="apple.png">
+			<objectProperty name="appleHealth" type="Integer" default="71"/>
+		</mapObject>  
+		<mapObject name="axe" folder="fantasy" image="axe.png">
+			<objectProperty name="axeDexterity" type="Integer" default="72"/>
+			<objectProperty name="axeRequiredStrength" type="Integer" default="73"/>
+			<objectProperty name="axeName" type="String" default="axeDefaultName"/>
+			<objectProperty name="axeType" type="Enum" default="axeDefaultType">
+				<enumValue name="warAxe"/>
+				<enumValue name="lumberAxe"/>
+			</objectProperty>
+		</mapObject>
+		<mapObject name="book" folder="fantasy" image="book.png">
+			<objectProperty name="bookTitle" type="String" default="bookDefaultTitle"/>
+			<objectProperty name="bookText" type="Text" default="axeDefaultText"/>		
+		</mapObject>
+		<mapObject name="bottle" folder="fantasy" image="bottle.png">
+			<objectProperty name="bottlePoints" type="Integer" default="71"/>
+			<objectProperty name="bottleEffect" type="Enum" default="bottleDefaultEffect">
+				<enumValue name="bottleMana"/>
+				<enumValue name="bottleStrength"/>
+			</objectProperty>
+		</mapObject>
+		<mapObject name="candle" folder="fantasy" image="candle.png">
+			<objectProperty name="candleLightStrength" type="Integer" default="74"/>
+		</mapObject>
+		<mapObject name="chest" folder="fantasy" image="chest.png">
+			<objectProperty name="chestGold" type="Integer" default="74"/>
+		</mapObject>
+		<mapObject name="cup" folder="fantasy" image="cup.png">
+			<objectProperty name="cupValue" type="Integer" default="74"/>
+			<objectProperty name="cupName" type="String" default="cupDefaultName"/>
+		</mapObject>
+		<mapObject name="dagger" folder="fantasy" image="dagger.png">
+			<objectProperty name="daggerDexterity" type="Integer" default="72"/>
+			<objectProperty name="daggerRequiredStrength" type="Integer" default="73"/>
+			<objectProperty name="daggerName" type="String" default="axeDefaultName"/>
+			<objectProperty name="daggerType" type="Enum" default="axeDefaultType">
+				<enumValue name="daggerLong"/>
+				<enumValue name="daggerShort"/>
+			</objectProperty>
+		</mapObject>
+		<mapObject name="gold" folder="fantasy" image="gold.png">
+			<objectProperty name="goldValue" type="Integer" default="74"/>
+		</mapObject>
+		<mapObject name="health" folder="fantasy" image="health.png">
+			<objectProperty name="health" type="Integer" default="7"/>
+		</mapObject>
+		<mapObject name="key" folder="fantasy" image="key.png">
+		</mapObject>
+		<mapObject name="pergamin" folder="fantasy" image="pergamin.png">
+		</mapObject>
+		<mapObject name="ring" folder="fantasy" image="ring.png">
+			<objectProperty name="ringRequiredMana" type="Integer" default="74"/>
+			<objectProperty name="ringEffect" type="Enum" default="ringDefaultEffect">
+				<enumValue name="ringMana"/>
+				<enumValue name="ringStrength"/>
+			</objectProperty>
+		</mapObject>
+		<mapObject name="skull" folder="fantasy" image="skull.png">
+		</mapObject>
+		<mapObject name="sword" folder="fantasy" image="sword.png">
+			<objectProperty name="swordDexterity" type="Integer" default="72"/>
+			<objectProperty name="swordRequiredStrength" type="Integer" default="73"/>
+			<objectProperty name="swordName" type="String" default="axeDefaultName"/>
+			<objectProperty name="swordType" type="String" default="axeDefaultType"/>
+		</mapObject>
+		<mapObject name="vase" folder="fantasy" image="vase.png">
+			<objectProperty name="vaseValue" type="Integer" default="74"/>
+		</mapObject>
+	</themeGroup>
+	<themeGroup name="otherTheme">
+		<mapObject name="png1" image="frontwheelar.png">
+			<objectProperty name="CustomIntValue" type="Integer" default="7"/>
+		</mapObject> 
+		<mapTheme name="Malpa1" image="rys.jpg"/>  
+		<mapTheme name="png2" image="bodyar.png"/>  
+		<mapTheme name="png3" image="rearwheelar.png"/>
+		<mapTheme name="sam" image="samochod_maly.png"/>
+		<mapTheme name="Malpa2" image="rys2.jpg"/>
+	</themeGroup>
+</configuration>

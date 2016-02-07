@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import javax.swing.plaf.ColorUIResource;
 
-import mapeditor.mainwindow.MapPane;
+import mapeditor.mainwindow.map.MapPane;
 
 public class DraggedSegments extends CopyPasteSegments {
 

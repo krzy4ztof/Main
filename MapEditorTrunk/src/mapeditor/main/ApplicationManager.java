@@ -7,9 +7,15 @@ package mapeditor.main;
 import java.io.File;
 import java.io.IOException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import mapeditor.config.Config;
 import mapeditor.mainwindow.MainWindow;
@@ -67,10 +73,27 @@ public class ApplicationManager {
 		SAXParser saxParser = factory.newSAXParser();
 
 		ThemesManager mapThemesManager = new ThemesManager(mapObjectFactory);
+		File file = new File(THEMES_CONFIG_FILE_PATH);
 
-		ConfigurationSAXHandler handler = new ConfigurationSAXHandler(config,
-				mapThemesManager, THEMES_IMAGES_PATH);
-		saxParser.parse(new File(THEMES_CONFIG_FILE_PATH), handler);
+		Source schemaFile = new StreamSource(new File(
+				ApplicationManager.XSD_FOLDER, "themes.xsd"));
+		SchemaFactory schemaFactory = SchemaFactory
+				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema = schemaFactory.newSchema(schemaFile);
+
+		Source xmlFile = new StreamSource(file);
+		Validator validator = schema.newValidator();
+		try {
+			validator.validate(xmlFile);
+			System.out.println(xmlFile.getSystemId() + " is valid");
+			ConfigurationSAXHandler handler = new ConfigurationSAXHandler(
+					config, mapThemesManager, THEMES_IMAGES_PATH);
+			saxParser.parse(file, handler);
+		} catch (SAXException e) {
+			System.out.println(xmlFile.getSystemId() + " is NOT valid");
+			System.out.println("Reason: " + e.getLocalizedMessage());
+			throw e;
+		}
 
 		return mapThemesManager;
 

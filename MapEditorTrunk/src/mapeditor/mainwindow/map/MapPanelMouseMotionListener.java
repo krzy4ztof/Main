@@ -1,4 +1,4 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.map;
 
 import java.awt.Cursor;
 import java.awt.Point;
@@ -23,7 +23,7 @@ public class MapPanelMouseMotionListener implements MouseMotionListener {
 	private Tools tools;
 	private CopyPaste copyPaste;
 
-	MapPanelMouseMotionListener(MapPane mapPanel,
+	public MapPanelMouseMotionListener(MapPane mapPanel,
 			ThemesManager mapThemesManager, MapApi mapApi, Tools tools,
 			MapObjectFactory mapObjectFactory, CopyPaste copyPaste) {
 		this.mapPanel = mapPanel;

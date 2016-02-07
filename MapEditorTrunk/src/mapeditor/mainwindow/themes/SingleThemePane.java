@@ -1,10 +1,11 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.themes;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 
+import mapeditor.mainwindow.GridPane;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemeApi;
 

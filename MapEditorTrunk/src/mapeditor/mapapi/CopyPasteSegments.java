@@ -10,7 +10,7 @@ import java.awt.Stroke;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import mapeditor.mainwindow.MapPane;
+import mapeditor.mainwindow.map.MapPane;
 
 public class CopyPasteSegments {
 

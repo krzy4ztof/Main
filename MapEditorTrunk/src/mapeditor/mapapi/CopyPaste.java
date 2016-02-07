@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Iterator;
 
-import mapeditor.mainwindow.MapPane;
+import mapeditor.mainwindow.map.MapPane;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 

@@ -12,10 +12,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class ConfigurationSAXHandler extends DefaultHandler {
 
-	public final static String THEME_GROUP_TAG = "ThemeGroup";
-	public final static String MAP_THEME_TAG = "MapTheme";
-	public final static String MAP_OBJECT_TAG = "MapObject";
-	public final static String OBJECT_PROPERTY_TAG = "ObjectProperty";
+	public final static String THEME_GROUP_TAG = "themeGroup";
+	public final static String MAP_THEME_TAG = "mapTheme";
+	public final static String MAP_OBJECT_TAG = "mapObject";
+	public final static String OBJECT_PROPERTY_TAG = "objectProperty";
 	public final static String NAME_ATTR = "name";
 	public final static String IMAGE_NAME_ATTR = "image";
 	public final static String IMAGE_FOLDER_ATTR = "folder";
@@ -78,7 +78,17 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	private void startMapObjectElement(Attributes attrs) {
 		String name = attrs.getValue(NAME_ATTR);
 		String imageName = attrs.getValue(IMAGE_NAME_ATTR);
-		ImageIcon imageFile = new ImageIcon(imagesPath + imageName);
+		String imageFolder = attrs.getValue(IMAGE_FOLDER_ATTR);
+
+		ImageIcon imageFile = null;
+		if (imageFolder != null) {
+			imageFile = new ImageIcon(imagesPath + imageFolder + File.separator
+					+ imageName);
+
+			name = imageFolder + File.separator + name;
+		} else {
+			imageFile = new ImageIcon(imagesPath + imageName);
+		}
 
 		curCustomMapObject = new CustomMapObject(name);
 		curCustomMapObject.setImageName(imageName);
@@ -97,7 +107,16 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 		MapObjectProperty property = null;
 		if (type.equals(MapObjectProperty.Type.Integer.toString())) {
 			property = new IntegerProperty(name, defaultValue);
+		} else if (type.equals(MapObjectProperty.Type.String.toString())) {
+			property = new StringProperty(name, defaultValue);
+		} else if (type.equals(MapObjectProperty.Type.Text.toString())) {
+			property = new TextProperty(name, defaultValue);
+		} else if (type.equals(MapObjectProperty.Type.Enum.toString())) {
+			property = new EnumProperty(name, defaultValue);
+		} else if (type.equals(MapObjectProperty.Type.Point.toString())) {
+			property = new PointProperty(name, defaultValue);
 		}
+
 		if (property != null) {
 			curCustomMapObject.addProperty(property);
 		}

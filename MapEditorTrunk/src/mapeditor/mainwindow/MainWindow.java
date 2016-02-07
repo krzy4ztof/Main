@@ -20,7 +20,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import mapeditor.config.Config;
+import mapeditor.mainwindow.customobject.CustomObjectPane;
+import mapeditor.mainwindow.layers.LayersControlPane;
+import mapeditor.mainwindow.layers.LayersPaneActionListener;
+import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mainwindow.map.MapPanelMouseListener;
+import mapeditor.mainwindow.map.MapPanelMouseMotionListener;
+import mapeditor.mainwindow.themes.SingleThemePane;
+import mapeditor.mainwindow.themes.ThemesPane;
 import mapeditor.mapapi.CopyPaste;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
@@ -51,8 +60,8 @@ public class MainWindow {
 	final static String ACTION_TOOLBAR_SELECTION = "ACTION_TOOLBAR_SELECTION";
 	final static String ACTION_TOOLBAR_HAMMER = "ACTION_TOOLBAR_HAMMER";
 
-	final static String TOOLBAR_ICONS_FOLDER = "resources" + File.separator
-			+ "toolbar" + File.separator;
+	public final static String TOOLBAR_ICONS_FOLDER = "resources"
+			+ File.separator + "toolbar" + File.separator;
 
 	final static String ICON_ERASER_16 = "package_purge_16.png";
 	final static String ICON_BRUSH_16 = "brush_16.png";
@@ -195,8 +204,9 @@ public class MainWindow {
 	}
 
 	private MapPane createMapPanel(Config config, MapMessages messages,
-			ThemesManager mapThemesList, MapApi mapApi, CopyPaste copyPaste) {
-		MapPane mapPanel = new MapPane(mapApi, copyPaste);
+			ThemesManager mapThemesList, MapApi mapApi, CopyPaste copyPaste,
+			CustomObjectEdit customObjectEdit) {
+		MapPane mapPanel = new MapPane(mapApi, copyPaste, customObjectEdit);
 
 		return mapPanel;
 	}
@@ -214,8 +224,10 @@ public class MainWindow {
 		MapApi mapApi = new MapApi(config, mapObjectFactory);
 		CopyPaste copyPaste = new CopyPaste(mapApi, mapObjectFactory);
 
+		CustomObjectEdit customObjectEdit = new CustomObjectEdit();
+
 		MapPane mapPanel = createMapPanel(config, messages, mapThemesList,
-				mapApi, copyPaste);
+				mapApi, copyPaste, customObjectEdit);
 
 		copyPaste.addGridPane(mapPanel);
 
@@ -225,7 +237,7 @@ public class MainWindow {
 
 		MapPanelMouseListener mpMouseListener = new MapPanelMouseListener(
 				mapPanel, mapThemesList, mapApi, tools, themesPane,
-				mapObjectFactory, copyPaste);
+				mapObjectFactory, copyPaste, customObjectPane, customObjectEdit);
 		MapPanelMouseMotionListener mpMouseMotionListener = new MapPanelMouseMotionListener(
 				mapPanel, mapThemesList, mapApi, tools, mapObjectFactory,
 				copyPaste);

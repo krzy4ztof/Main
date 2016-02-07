@@ -1,14 +1,18 @@
-package mapeditor.mainwindow;
+package mapeditor.mainwindow.map;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import mapeditor.mainwindow.customobject.CustomObjectPane;
+import mapeditor.mainwindow.themes.ThemesPane;
 import mapeditor.mapapi.Bucket;
 import mapeditor.mapapi.CopyPaste;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Tools;
 import mapeditor.mapapi.Tools.ToolsEnum;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
@@ -22,10 +26,14 @@ public class MapPanelMouseListener implements MouseListener {
 	private ThemesPane themesPane;
 	private MapObjectFactory mapObjectFactory;
 	private CopyPaste copyPaste;
+	private CustomObjectPane customObjectPane;
+	private CustomObjectEdit customObjectEdit;
 
-	MapPanelMouseListener(MapPane mapPanel, ThemesManager mapThemesManager,
-			MapApi mapApi, Tools tools, ThemesPane themesPane,
-			MapObjectFactory mapObjectFactory, CopyPaste copyPaste) {
+	public MapPanelMouseListener(MapPane mapPanel,
+			ThemesManager mapThemesManager, MapApi mapApi, Tools tools,
+			ThemesPane themesPane, MapObjectFactory mapObjectFactory,
+			CopyPaste copyPaste, CustomObjectPane customObjectPane,
+			CustomObjectEdit customObjectEdit) {
 		this.mapPanel = mapPanel;
 		this.mapThemesManager = mapThemesManager;
 		this.mapApi = mapApi;
@@ -33,6 +41,9 @@ public class MapPanelMouseListener implements MouseListener {
 		this.mapObjectFactory = mapObjectFactory;
 		this.themesPane = themesPane;
 		this.copyPaste = copyPaste;
+		this.customObjectPane = customObjectPane;
+		this.customObjectEdit = customObjectEdit;
+
 	}
 
 	@Override
@@ -72,6 +83,7 @@ public class MapPanelMouseListener implements MouseListener {
 			if (e.getButton() == MouseEvent.BUTTON1) {
 				ToolsEnum activeTool = tools.getActiveTool();
 				MapObject mapObject = null;
+				CustomMapObject customMapObject = null;
 
 				if (activeTool == ToolsEnum.BRUSH) {
 					mapObject = mapThemesManager.getSelectedMapObject();
@@ -90,6 +102,7 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
+					// TODO: kopiowanie CustomMapObject
 				} else if (activeTool == ToolsEnum.BUCKET) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
 							mapApi.getActiveLayerIndex());
@@ -108,8 +121,16 @@ public class MapPanelMouseListener implements MouseListener {
 					}
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.HAMMER) {
-					mapPanel.r_SegmentAttributesPanel.setVisible(true);
-					System.out.println("menu atrybutow");
+					System.out.println("klikniety mlotek");
+
+					customMapObject = mapApi.getSegment(seg.y, seg.x)
+							.getCustomMapObject(mapApi.getActiveLayerIndex());
+					System.out.println("CU:::" + customMapObject);
+					customObjectPane.update(customMapObject);
+					customObjectEdit.setCustomObject(customMapObject,
+							mapApi.getSegment(seg.y, seg.x),
+							mapApi.getActiveLayerIndex(), seg);
+					mapPanel.refresh();
 				}
 
 			} else {

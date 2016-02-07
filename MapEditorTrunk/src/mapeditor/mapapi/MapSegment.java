@@ -48,7 +48,7 @@ public class MapSegment {
 		// return mapObject;
 	}
 
-	public MapObject getCustomMapObject(int layerIndex) {
+	public CustomMapObject getCustomMapObject(int layerIndex) {
 		// return customMapObject
 		return customMapObjects.get(layerIndex);
 	}

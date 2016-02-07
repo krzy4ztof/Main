@@ -16,6 +16,8 @@ import javax.xml.validation.Validator;
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.main.ApplicationManager;
+import mapeditor.mainwindow.layers.LayersControlPane;
+import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.Tools;
@@ -191,25 +193,24 @@ public class DialogsManager {
 				try {
 					validator.validate(xmlFile);
 					System.out.println(xmlFile.getSystemId() + " is valid");
+
+					MapLoaderSAXHandler handler = new MapLoaderSAXHandler(
+							mapApi, mapThemesList, mapObjectFactory);
+					saxParser.parse(file, handler);
+
+					mapPanel.setMapApi(mapApi);
+					mapPanel.getPanel().repaint();
 				} catch (SAXException e) {
 					System.out.println(xmlFile.getSystemId() + " is NOT valid");
 					System.out.println("Reason: " + e.getLocalizedMessage());
 				}
-
-				MapLoaderSAXHandler handler = new MapLoaderSAXHandler(mapApi,
-						mapThemesList, mapObjectFactory);
-				saxParser.parse(file, handler);
-
-				mapPanel.setMapApi(mapApi);
-				mapPanel.getPanel().repaint();
 			} catch (Exception e) {
-
 				String msg = messages.getString(MapMessages.MSG_LOADING_FAILED)
 						+ e.getMessage();
 				JOptionPane.showMessageDialog(fileChooser, msg);
-
 				e.printStackTrace();
 			}
+
 		}
 	}
 

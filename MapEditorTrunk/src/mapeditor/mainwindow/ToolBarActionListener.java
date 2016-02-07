@@ -13,6 +13,7 @@ import javax.swing.ButtonModel;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JButton;
 
+import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.Tools;
 import mapeditor.mapapi.Tools.ToolsEnum;
@@ -91,7 +92,7 @@ public class ToolBarActionListener implements ActionListener {
 			tools.setActiveTool(ToolsEnum.HAMMER);
 			mapPanel.getPanel().setCursor(
 					cursorFactory.getCursor(CursorFactory.CURSOR_HAMMER));
-			// copyPaste.onActionPerformed();
+			copyPaste.onActionPerformed();
 		}
 	}
 }

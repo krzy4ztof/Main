@@ -1,6 +1,7 @@
 package mapeditor.themesapi;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class CustomMapObject extends MapObject {
 
@@ -13,6 +14,10 @@ public class CustomMapObject extends MapObject {
 
 	public void addProperty(MapObjectProperty mapObjectProperty) {
 		mapObjectProperties.add(mapObjectProperty);
+	}
+
+	public List<MapObjectProperty> getMapObjectProperties() {
+		return mapObjectProperties;
 	}
 
 	@Override

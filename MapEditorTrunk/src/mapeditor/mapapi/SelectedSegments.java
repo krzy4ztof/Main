@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 import javax.swing.plaf.ColorUIResource;
 
-import mapeditor.mainwindow.MapPane;
+import mapeditor.mainwindow.map.MapPane;
 import mapeditor.themesapi.MapObjectFactory;
 
 public class SelectedSegments extends CopyPasteSegments {

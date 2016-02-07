@@ -3,6 +3,9 @@ package mapeditor.mainwindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mainwindow.themes.ThemesPane;
+
 public class MainMenuActionListener implements ActionListener {
 
 	private MapPane mapPanel;
