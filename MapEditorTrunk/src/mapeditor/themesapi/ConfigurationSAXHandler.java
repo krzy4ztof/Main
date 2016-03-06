@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.ImageIcon;
 
 import mapeditor.config.Config;
+import mapeditor.messages.MapMessages;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -29,13 +30,16 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	private String imagesPath;
 	private int imageId;
 	private Config config;
+	private MapMessages mapMessages;
 
 	public ConfigurationSAXHandler(Config config,
-			ThemesManager mapThemesManager, String imagesPath) {
+			ThemesManager mapThemesManager, MapMessages mapMessages,
+			String imagesPath) {
 		this.config = config;
 		mapThemesList = mapThemesManager;
 		imageId = 0;
 		this.imagesPath = imagesPath;
+		this.mapMessages = mapMessages;
 	}
 
 	@Override
@@ -79,6 +83,8 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 		String name = attrs.getValue(NAME_ATTR);
 		String imageName = attrs.getValue(IMAGE_NAME_ATTR);
 		String imageFolder = attrs.getValue(IMAGE_FOLDER_ATTR);
+		String externalName = mapMessages.getString(MapMessages.THEMENAME
+				+ name);
 
 		ImageIcon imageFile = null;
 		if (imageFolder != null) {
@@ -90,7 +96,7 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 			imageFile = new ImageIcon(imagesPath + imageName);
 		}
 
-		curCustomMapObject = new CustomMapObject(name);
+		curCustomMapObject = new CustomMapObject(name, externalName);
 		curCustomMapObject.setImageName(imageName);
 		curCustomMapObject.setImageIcon(imageFile);
 		imageId++;
@@ -100,13 +106,16 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	}
 
 	private void startObjectPropertyElement(Attributes attrs) {
-		String name = attrs.getValue(NAME_ATTR);
+
+		String name = mapMessages.getString(MapMessages.THEMENAME
+				+ attrs.getValue(NAME_ATTR));
+
 		String type = attrs.getValue(TYPE_ATTR);
 		String defaultValue = attrs.getValue(DEFAULT_ATTR);
 
 		MapObjectProperty property = null;
-		if (type.equals(MapObjectProperty.Type.Integer.toString())) {
-			property = new IntegerProperty(name, defaultValue);
+		if (type.equals(MapObjectProperty.Type.Long.toString())) {
+			property = new LongProperty(name, defaultValue);
 		} else if (type.equals(MapObjectProperty.Type.String.toString())) {
 			property = new StringProperty(name, defaultValue);
 		} else if (type.equals(MapObjectProperty.Type.Text.toString())) {

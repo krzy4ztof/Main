@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeditor.main;
 
 import java.io.File;
@@ -38,8 +34,6 @@ public class ApplicationManager {
 			+ File.separator;
 	public final static String THEMES_CONFIG_FILE_PATH = THEMES_PATH
 			+ "configuration.xml";
-	// public final static String THEMES_IMAGES_PATH = "images" +
-	// File.separator;
 
 	public final static String THEMES_IMAGES_PATH = RESOURCES_PATH
 			+ "mapObjects" + File.separator;
@@ -54,7 +48,7 @@ public class ApplicationManager {
 		MapMessages messages = new MapMessages(config);
 		MapObjectFactory mapObjectFactory = new MapObjectFactory();
 		ThemesManager mapThemesList = readConfigurationFile(config,
-				mapObjectFactory);
+				mapObjectFactory, messages);
 		new MainWindow(config, messages, mapThemesList, mapObjectFactory);
 
 		mapThemesList.describeYourselfThemeApi();
@@ -66,7 +60,7 @@ public class ApplicationManager {
 	}
 
 	private ThemesManager readConfigurationFile(Config config,
-			MapObjectFactory mapObjectFactory)
+			MapObjectFactory mapObjectFactory, MapMessages messages)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -87,7 +81,7 @@ public class ApplicationManager {
 			validator.validate(xmlFile);
 			System.out.println(xmlFile.getSystemId() + " is valid");
 			ConfigurationSAXHandler handler = new ConfigurationSAXHandler(
-					config, mapThemesManager, THEMES_IMAGES_PATH);
+					config, mapThemesManager, messages, THEMES_IMAGES_PATH);
 			saxParser.parse(file, handler);
 		} catch (SAXException e) {
 			System.out.println(xmlFile.getSystemId() + " is NOT valid");

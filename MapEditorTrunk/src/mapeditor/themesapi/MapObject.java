@@ -103,4 +103,5 @@ public class MapObject implements Cloneable {
 			return MapObject.DEFAULT_OBJECT_ID;
 		}
 	}
+
 }

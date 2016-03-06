@@ -7,9 +7,29 @@ public class CustomMapObject extends MapObject {
 
 	private LinkedList<MapObjectProperty> mapObjectProperties = null;
 
-	public CustomMapObject(String objectName) {
+	private String externalName;
+
+	public CustomMapObject(String objectName, String externalName) {
 		super(objectName);
+		this.externalName = externalName;
 		mapObjectProperties = new LinkedList<MapObjectProperty>();
+	}
+
+	@Override
+	public CustomMapObject clone() {
+		CustomMapObject clone = (CustomMapObject) super.clone();
+
+		clone.mapObjectProperties = new LinkedList<MapObjectProperty>();
+
+		for (MapObjectProperty property : mapObjectProperties) {
+			clone.addProperty(property.clone());
+		}
+
+		return clone;
+	}
+
+	public String getExternalName() {
+		return externalName;
 	}
 
 	public void addProperty(MapObjectProperty mapObjectProperty) {

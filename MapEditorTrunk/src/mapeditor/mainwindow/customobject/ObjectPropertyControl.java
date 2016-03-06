@@ -1,32 +1,46 @@
 package mapeditor.mainwindow.customobject;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
 
-public class ObjectPropertyControl {
+import mapeditor.themesapi.EnumProperty;
+import mapeditor.themesapi.LongProperty;
+import mapeditor.themesapi.MapObjectProperty;
+import mapeditor.themesapi.PointProperty;
+import mapeditor.themesapi.StringProperty;
+import mapeditor.themesapi.TextProperty;
 
-	private JLabel label;
+public abstract class ObjectPropertyControl {
 
-	private JLayeredPane pane;
+	protected JLabel label;
 
-	public ObjectPropertyControl(String objectName) {
+	protected JLayeredPane pane;
 
-		pane = new JLayeredPane();
-		pane.setLayout(new GridBagLayout());
+	protected JSeparator separator;
 
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 0.0;
-		c.weighty = 0.0;
-		c.gridx = 0;
-		c.gridy = 0;
+	public static ObjectPropertyControl getControlInstance(
+			MapObjectProperty property, CustomObjectPane customObjectPane) {
 
-		label = new JLabel(objectName);
+		if (property instanceof EnumProperty) {
 
-		pane.add(label, c);
+		} else if (property instanceof LongProperty) {
+			return new LongPropertyControl((LongProperty) property,
+					customObjectPane);
+
+		} else if (property instanceof PointProperty) {
+
+		} else if (property instanceof StringProperty) {
+			return new StringPropertyControl((StringProperty) property,
+					customObjectPane);
+		} else if (property instanceof TextProperty) {
+
+		} else {
+		}
+
+		return null;
+
 	}
 
 	public JLabel getLabel() {
@@ -36,5 +50,15 @@ public class ObjectPropertyControl {
 	public JLayeredPane getPane() {
 		return pane;
 	}
+
+	public JSeparator getSeparator() {
+		return separator;
+	}
+
+	public abstract void onOkAction();
+
+	public abstract void onCancelAction();
+
+	public abstract JTextField getTextField();
 
 }

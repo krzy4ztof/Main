@@ -108,8 +108,6 @@ public class MainWindow {
 		menuItem.addActionListener(gsListener);
 		menu.add(menuItem);
 
-		/* docelowo cos innego bedzie nasluchwialo menu plik */
-
 		return menu;
 	}
 
@@ -186,15 +184,12 @@ public class MainWindow {
 		JSplitPane splitPaneFirst = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 				layersPane.getScrollPane(), themesPane.getPane());
 		splitPaneFirst.setOneTouchExpandable(true);
-		splitPaneFirst.setResizeWeight(0);
+		splitPaneFirst.setResizeWeight(0.33);
 
 		JSplitPane splitPaneSec = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 				splitPaneFirst, customObjectPane.getPane());
-		// splitPaneFirst, new JPanel());
-
 		splitPaneSec.setOneTouchExpandable(true);
-		// splitPane.setDividerLocation(200);
-		splitPaneSec.setResizeWeight(1);
+		splitPaneSec.setResizeWeight(0.66);
 
 		Dimension minimumSize = new Dimension(0, 100);
 		themesPane.getPane().setMinimumSize(minimumSize);
@@ -231,7 +226,8 @@ public class MainWindow {
 
 		copyPaste.addGridPane(mapPanel);
 
-		CustomObjectPane customObjectPane = new CustomObjectPane(mapApi);
+		CustomObjectPane customObjectPane = new CustomObjectPane(mapApi,
+				messages);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 
@@ -281,7 +277,6 @@ public class MainWindow {
 		minimumSize = new Dimension(minWidth, 0);
 		rightSidePanel.setPreferredSize(minimumSize);
 
-		// contentPane.add(splitPane, c);
 		contentPane.add(splitPane, BorderLayout.CENTER);
 
 		JMenuBar menu = createMenuBar(messages, mapThemesList, gsListener);
