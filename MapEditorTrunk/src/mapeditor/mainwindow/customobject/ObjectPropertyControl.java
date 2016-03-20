@@ -1,9 +1,9 @@
 package mapeditor.mainwindow.customobject;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
 
 import mapeditor.themesapi.EnumProperty;
 import mapeditor.themesapi.LongProperty;
@@ -24,7 +24,8 @@ public abstract class ObjectPropertyControl {
 			MapObjectProperty property, CustomObjectPane customObjectPane) {
 
 		if (property instanceof EnumProperty) {
-
+			return new EnumPropertyControl((EnumProperty) property,
+					customObjectPane);
 		} else if (property instanceof LongProperty) {
 			return new LongPropertyControl((LongProperty) property,
 					customObjectPane);
@@ -35,7 +36,8 @@ public abstract class ObjectPropertyControl {
 			return new StringPropertyControl((StringProperty) property,
 					customObjectPane);
 		} else if (property instanceof TextProperty) {
-
+			return new TextPropertyControl((TextProperty) property,
+					customObjectPane);
 		} else {
 		}
 
@@ -59,6 +61,6 @@ public abstract class ObjectPropertyControl {
 
 	public abstract void onCancelAction();
 
-	public abstract JTextField getTextField();
+	public abstract JComponent getComponent();
 
 }

@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
 
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -38,7 +39,6 @@ public class LongPropertyControl extends ObjectPropertyControl {
 		c.gridy = 0;
 
 		label = new JLabel(longProperty.getName());
-		// pane.add(label, c);
 
 		c.gridx = 1;
 
@@ -49,7 +49,6 @@ public class LongPropertyControl extends ObjectPropertyControl {
 				customObjectPane, this);
 		formattedTextField.addPropertyChangeListener(listener);
 		formattedTextField.setHorizontalAlignment(JTextField.RIGHT);
-		// pane.add(formattedTextField, c);
 
 		separator = new JSeparator(SwingConstants.HORIZONTAL);
 
@@ -71,8 +70,7 @@ public class LongPropertyControl extends ObjectPropertyControl {
 	}
 
 	@Override
-	public JTextField getTextField() {
-		// TODO Auto-generated method stub
+	public JComponent getComponent() {
 		return formattedTextField;
 	}
 

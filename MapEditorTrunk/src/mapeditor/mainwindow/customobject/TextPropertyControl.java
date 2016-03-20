@@ -3,27 +3,33 @@ package mapeditor.mainwindow.customobject;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.JTextComponent;
 
-import mapeditor.themesapi.StringProperty;
+import mapeditor.themesapi.TextProperty;
 
-public class StringPropertyControl extends ObjectPropertyControl {
+public class TextPropertyControl extends ObjectPropertyControl {
 
 	private String newStringValue;
 
-	private StringProperty stringProperty;
+	private TextProperty stringProperty;
 
-	private JTextField textField;
+	private JTextArea textArea;
 
-	protected StringPropertyControl(StringProperty stringProperty,
+	private JScrollPane scrollPane;
+
+	private int rowsNumber;
+
+	protected TextPropertyControl(TextProperty stringProperty,
 			CustomObjectPane customObjectPane) {
 		this.stringProperty = stringProperty;
+
 		newStringValue = stringProperty.getValue();
 
 		pane = new JLayeredPane();
@@ -39,12 +45,15 @@ public class StringPropertyControl extends ObjectPropertyControl {
 		label = new JLabel(stringProperty.getName());
 
 		c.gridx = 1;
-		textField = new JTextField(stringProperty.getValue());
 
-		DocumentListener documentListener = new StringPropertyDocumentListener(
+		rowsNumber = 5;
+		textArea = new JTextArea(stringProperty.getValue(), rowsNumber, 0);
+
+		scrollPane = new JScrollPane(textArea);
+
+		DocumentListener documentListener = new TextPropertyDocumentListener(
 				customObjectPane, this);
-		textField.getDocument().addDocumentListener(documentListener);
-		textField.setHorizontalAlignment(JTextField.RIGHT);
+		textArea.getDocument().addDocumentListener(documentListener);
 
 		separator = new JSeparator(SwingConstants.HORIZONTAL);
 	}
@@ -61,12 +70,20 @@ public class StringPropertyControl extends ObjectPropertyControl {
 	@Override
 	public void onCancelAction() {
 		newStringValue = stringProperty.getValue();
-		textField.setText(stringProperty.getValue());
+		textArea.setText(stringProperty.getValue());
 	}
 
 	@Override
-	public JTextComponent getComponent() {
-		return textField;
+	public JComponent getComponent() {
+		return scrollPane;
+	}
+
+	public String getText() {
+		return textArea.getText();
+	}
+
+	public int getRowsNumber() {
+		return rowsNumber;
 	}
 
 }

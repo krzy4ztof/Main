@@ -17,6 +17,7 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	public final static String MAP_THEME_TAG = "mapTheme";
 	public final static String MAP_OBJECT_TAG = "mapObject";
 	public final static String OBJECT_PROPERTY_TAG = "objectProperty";
+	public final static String ENUM_VALUE_TAG = "enumValue";
 	public final static String NAME_ATTR = "name";
 	public final static String IMAGE_NAME_ATTR = "image";
 	public final static String IMAGE_FOLDER_ATTR = "folder";
@@ -26,6 +27,7 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 	private ThemeApi themeApi;
 	private MapObject curMapObject;
 	private CustomMapObject curCustomMapObject;
+	private EnumProperty curEnumProperty;
 	private ThemesManager mapThemesList;
 	private String imagesPath;
 	private int imageId;
@@ -121,7 +123,13 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 		} else if (type.equals(MapObjectProperty.Type.Text.toString())) {
 			property = new TextProperty(name, defaultValue);
 		} else if (type.equals(MapObjectProperty.Type.Enum.toString())) {
-			property = new EnumProperty(name, defaultValue);
+
+			String defaultValueExternal = mapMessages
+					.getString(MapMessages.THEMENAME + defaultValue);
+
+			curEnumProperty = new EnumProperty(name, defaultValue,
+					defaultValueExternal);
+			property = curEnumProperty;
 		} else if (type.equals(MapObjectProperty.Type.Point.toString())) {
 			property = new PointProperty(name, defaultValue);
 		}
@@ -129,6 +137,16 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 		if (property != null) {
 			curCustomMapObject.addProperty(property);
 		}
+	}
+
+	private void startEnumValueElement(Attributes attrs) {
+
+		String value = attrs.getValue(NAME_ATTR);
+		String valueExternal = mapMessages.getString(MapMessages.THEMENAME
+				+ value);
+
+		curEnumProperty.addChoiceValue(value, valueExternal);
+
 	}
 
 	@Override
@@ -143,6 +161,8 @@ public class ConfigurationSAXHandler extends DefaultHandler {
 				startMapObjectElement(attrs);
 			} else if (qName.equals(OBJECT_PROPERTY_TAG)) {
 				startObjectPropertyElement(attrs);
+			} else if (qName.equals(ENUM_VALUE_TAG)) {
+				startEnumValueElement(attrs);
 			}
 		}
 	}

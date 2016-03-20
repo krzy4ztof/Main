@@ -29,8 +29,6 @@ public class CustomObjectPane {
 
 	private JLayeredPane buttonsPane;
 
-	// private JLayeredPane titlePane;
-
 	private JButton okButton;
 
 	private JButton cancelButton;
@@ -55,40 +53,9 @@ public class CustomObjectPane {
 		super();
 
 		propertyControlList = new LinkedList<ObjectPropertyControl>();
-		// createPanes(actionListener);
 
 		pane = new JLayeredPane();
-
-		/*
-		 * pane = new JLayeredPane() { private static final long
-		 * serialVersionUID = 6917006496243295424L;
-		 * 
-		 * @Override public void paint(Graphics g) {
-		 * 
-		 * GraphicsEnvironment env = GraphicsEnvironment
-		 * .getLocalGraphicsEnvironment();
-		 * 
-		 * for (Font font : env.getAllFonts()) {
-		 * System.out.println(font.getFontName());
-		 * System.out.println(font.getStyle());
-		 * 
-		 * System.out.println(font.getSize());
-		 * 
-		 * System.out.println("-----------"); }
-		 * 
-		 * Font font = g.getFont();
-		 * 
-		 * System.out.println(font.getFontName());
-		 * System.out.println(font.getStyle());
-		 * 
-		 * System.out.println(font.getSize());
-		 * 
-		 * } };
-		 */
 		pane.setLayout(new GridBagLayout());
-
-		// /////////////////////////
-		// activateLayers(mapApi);
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
@@ -96,21 +63,7 @@ public class CustomObjectPane {
 		c.weighty = 0.0;
 		c.gridx = 0;
 
-		// titlePane = createTitlePane();
 		titleLabel = new JLabel("", JLabel.CENTER);
-
-		/*
-		 * GraphicsEnvironment env = GraphicsEnvironment
-		 * .getLocalGraphicsEnvironment();
-		 * 
-		 * for (Font font : env.getAllFonts()) {
-		 * System.out.println(font.getFontName());
-		 * System.out.println(font.getStyle());
-		 * 
-		 * System.out.println(font.getSize());
-		 * 
-		 * System.out.println("-----------"); }
-		 */
 
 		// 12 - default size
 		titleLabel.setFont(new Font(null, Font.BOLD | Font.ITALIC, 16));
@@ -125,9 +78,7 @@ public class CustomObjectPane {
 		c.gridy = 0;
 		pane.add(lastLabel, c);
 
-		// /////////////////////
 		scrollPane = new JScrollPane(pane);
-
 	}
 
 	public JComponent getPane() {
@@ -154,23 +105,8 @@ public class CustomObjectPane {
 	}
 
 	private void removeAll() {
-
-		// if (titleLabel != null) {
 		pane.remove(titleLabel);
 		pane.remove(titleSeparator);
-
-		// }
-
-		// pane.remove(titlePane);
-
-		/*
-		 * for (ObjectPropertyControl propertyControl : propertyControlList) {
-		 * pane.remove(propertyControl.getPane());
-		 * pane.remove(propertyControl.getSeparator());
-		 * 
-		 * gridPane.remove(propertyControl.getLabel());
-		 * gridPane.remove(propertyControl.getTextField()); }
-		 */
 
 		propertyControlList.clear();
 
@@ -185,13 +121,28 @@ public class CustomObjectPane {
 
 	}
 
-	private JLayeredPane createPropertiesGrid() {
+	private void createTextPropertyGrid(
+			TextPropertyControl textPropertyControl, GridBagConstraints c) {
+		c.gridy++;
 
+		c.gridx = 1;
+		c.gridheight = textPropertyControl.getRowsNumber();
+		gridPane.add(textPropertyControl.getComponent(), c);
+
+		// left side
+		c.gridx = 0;
+		c.gridheight = 1;
+		gridPane.add(textPropertyControl.getLabel(), c);
+
+		for (int i = 0; i < textPropertyControl.getRowsNumber() - 1; i++) {
+			c.gridy++;
+			gridPane.add(new JLabel(), c);
+		}
+	}
+
+	private JLayeredPane createPropertiesGrid() {
 		gridPane = new JLayeredPane();
 		gridPane.setLayout(new GridBagLayout());
-
-		// /////////////////////////
-		// activateLayers(mapApi);
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
@@ -202,30 +153,25 @@ public class CustomObjectPane {
 
 		for (MapObjectProperty property : customMapObject
 				.getMapObjectProperties()) {
-
-			// ObjectPropertyControl propertyControl = new
-			// ObjectPropertyControl(
-			// property);
-
 			ObjectPropertyControl propertyControl = ObjectPropertyControl
 					.getControlInstance(property, this);
 
 			if (propertyControl != null) {
 
 				propertyControlList.add(propertyControl);
-				c.gridy++;
-				c.gridx = 0;
 
-				// gridPane.add(propertyControl.getPane(), c);
+				if (propertyControl instanceof TextPropertyControl) {
+					createTextPropertyGrid(
+							(TextPropertyControl) propertyControl, c);
+				} else {
+					c.gridy++;
+					c.gridx = 0;
 
-				gridPane.add(propertyControl.getLabel(), c);
+					gridPane.add(propertyControl.getLabel(), c);
 
-				c.gridx = 1;
-				// c.gridx
-				gridPane.add(propertyControl.getTextField(), c);
-
-				// c.gridy++;
-				// pane.add(propertyControl.getSeparator(), c);
+					c.gridx = 1;
+					gridPane.add(propertyControl.getComponent(), c);
+				}
 			}
 
 		}
@@ -242,17 +188,11 @@ public class CustomObjectPane {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		// titleLabel = new JLabel(customMapObject.getExternalName(),
-		// JLabel.CENTER);
-
 		titleLabel.setText(customMapObject.getExternalName());
-
 		pane.add(titleLabel, c);
 
 		c.gridy++;
-
 		pane.add(createPropertiesGrid(), c);
-		// c.gridy++;
 
 		c.gridy++;
 		pane.add(buttonsPane, c);
@@ -277,17 +217,9 @@ public class CustomObjectPane {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		/*
-		 * c.weightx = 0.33; pane.add(new JLabel("|"), c);
-		 * 
-		 * c.weightx = 0.34; c.gridx++;
-		 */
 		JLabel titleLabel = new JLabel("Title of", JLabel.CENTER);
-
 		pane.add(titleLabel, c);
-		/*
-		 * c.weightx = 0.33; c.gridx++; pane.add(new JLabel("|"), c);
-		 */
+
 		return pane;
 	}
 
@@ -303,11 +235,6 @@ public class CustomObjectPane {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		// pane.add(new JLabel(), c);
-
-		// c.weightx = 0.0;
-		// c.gridx++;
-
 		CustomPaneActionListener actionListener = new CustomPaneActionListener(
 				this);
 
@@ -316,11 +243,6 @@ public class CustomObjectPane {
 		Icon icon = new ImageIcon(imgLocation,
 				messages.getString(MapMessages.ATTR_OK));
 
-		// JButton button = new JButton();
-		// button.setToolTipText(toolTipText);
-		// button.setIcon(new ImageIcon(imgLocation, toolTipText));
-		// buttonGroup.add(button);
-
 		okButton = new JButton(icon);
 		okButton.addActionListener(actionListener);
 		okButton.setActionCommand(ACTION_CUSTOM_OK);
@@ -328,8 +250,6 @@ public class CustomObjectPane {
 		pane.add(okButton, c);
 
 		c.gridx++;
-		// JFormattedTextField formattedTextField = new JFormattedTextField(
-		// DateFormat.getDateInstance());
 
 		String imgLocationReject = MainWindow.TOOLBAR_ICONS_FOLDER
 				+ CANCEL_BUTTON_16;

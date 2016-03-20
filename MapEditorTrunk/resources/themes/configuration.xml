@@ -43,18 +43,21 @@
 			<objectProperty name="damage" type="Long" default="72"/>
 			<objectProperty name="requiredStrength" type="Long" default="73"/>
 			<objectProperty name="name" type="String" default="axeDefaultName"/>
-			<objectProperty name="type" type="Enum" default="axeDefaultType">
+			<objectProperty name="type" type="Enum" default="warAxe">
 				<enumValue name="warAxe"/>
 				<enumValue name="lumberAxe"/>
 			</objectProperty>
 		</mapObject>
 		<mapObject name="book" folder="fantasy" image="book.png">
 			<objectProperty name="bookTitle" type="String" default="bookDefaultTitle"/>
-			<objectProperty name="bookText" type="Text" default="axeDefaultText"/>		
+			<objectProperty name="bookText" type="Text" default="axeDefaultText"/>
+			<objectProperty name="bookMessage" type="String" default="bookDefaultMessage"/>
+			
+					
 		</mapObject>
 		<mapObject name="bottle" folder="fantasy" image="bottle.png">
 			<objectProperty name="bottlePoints" type="Long" default="71"/>
-			<objectProperty name="effect" type="Enum" default="bottleDefaultEffect">
+			<objectProperty name="effect" type="Enum" default="mana">
 				<enumValue name="mana"/>
 				<enumValue name="strength"/>
 			</objectProperty>
@@ -73,7 +76,7 @@
 			<objectProperty name="damage" type="Long" default="72"/>
 			<objectProperty name="requiredStrength" type="Long" default="73"/>
 			<objectProperty name="name" type="String" default="axeDefaultName"/>
-			<objectProperty name="type" type="Enum" default="axeDefaultType">
+			<objectProperty name="type" type="Enum" default="daggerShort">
 				<enumValue name="daggerLong"/>
 				<enumValue name="daggerShort"/>
 			</objectProperty>
@@ -90,7 +93,7 @@
 		</mapObject>
 		<mapObject name="ring" folder="fantasy" image="ring.png">
 			<objectProperty name="requiredMana" type="Long" default="74"/>
-			<objectProperty name="effect" type="Enum" default="ringDefaultEffect">
+			<objectProperty name="effect" type="Enum" default="mana">
 				<enumValue name="mana"/>
 				<enumValue name="strength"/>
 			</objectProperty>
