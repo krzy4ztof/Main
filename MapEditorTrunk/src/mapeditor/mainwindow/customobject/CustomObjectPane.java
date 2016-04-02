@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +16,13 @@ import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 
+import mapeditor.mainwindow.CursorFactory;
 import mapeditor.mainwindow.MainWindow;
+import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Point3D;
+import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObjectProperty;
@@ -24,33 +30,39 @@ import mapeditor.themesapi.MapObjectProperty;
 public class CustomObjectPane {
 
 	private JLayeredPane pane;
-
 	private JLayeredPane gridPane;
-
 	private JLayeredPane buttonsPane;
-
 	private JButton okButton;
-
 	private JButton cancelButton;
-
 	private JScrollPane scrollPane;
-
 	private JLabel lastLabel;
-
 	private JLabel titleLabel;
 	private JSeparator titleSeparator;
+	private ButtonGroup buttonGroup;
 
 	private List<ObjectPropertyControl> propertyControlList;
 
 	private CustomMapObject customMapObject;
+	private MapApi mapApi;
+	private Tools tools;
+	private CursorFactory cursorFactory;
+	private MapPane mapPanel;
+	private CustomObjectEdit customObjectEdit;
 
 	final static String CONFIRM_BUTTON_16 = "confirm_button_16.png";
 	final static String CANCEL_BUTTON_16 = "cancel_button_16.png";
 	final static String ACTION_CUSTOM_OK = "ACTION_CUSTOM_OK";
 	final static String ACTION_CUSTOM_CANCEL = "ACTION_CUSTOM_CANCEL";
 
-	public CustomObjectPane(MapApi mapApi, MapMessages messages) {
+	public CustomObjectPane(MapApi mapApi, MapMessages messages, Tools tools,
+			CursorFactory cursorFactory, MapPane mapPanel,
+			CustomObjectEdit customObjectEdit) {
 		super();
+		this.mapApi = mapApi;
+		this.tools = tools;
+		this.cursorFactory = cursorFactory;
+		this.mapPanel = mapPanel;
+		this.customObjectEdit = customObjectEdit;
 
 		propertyControlList = new LinkedList<ObjectPropertyControl>();
 
@@ -81,6 +93,14 @@ public class CustomObjectPane {
 		scrollPane = new JScrollPane(pane);
 	}
 
+	public List<ObjectPropertyControl> getPropertyControlList() {
+		return propertyControlList;
+	}
+
+	public ButtonGroup getButtonGroup() {
+		return buttonGroup;
+	}
+
 	public JComponent getPane() {
 		return pane;
 	}
@@ -89,14 +109,43 @@ public class CustomObjectPane {
 		return scrollPane;
 	}
 
+	public void deactivate() {
+		removeAll();
+
+		createEmptyPane();
+
+		pane.revalidate();
+	}
+
+	private void createEmptyPane() {
+		this.customMapObject = null;
+
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1.0;
+		// c.weighty = 1.0;
+
+		c.weighty = 0.0;
+		c.gridx = 0;
+		c.gridy = 0;
+
+		lastLabel = new JLabel();
+
+		c.weighty = 1.0;
+		pane.add(lastLabel, c);
+
+	}
+
 	public void update(CustomMapObject customMapObject) {
 
-		if (customMapObject == null) {
-			return;
-		}
+		// if (customMapObject == null) {
+		// return;
+		// }
 
 		if (customMapObject != this.customMapObject) {
 			removeAll();
+			// pane.revalidate();
+
 			activateProperties(customMapObject);
 
 			pane.revalidate();
@@ -105,6 +154,7 @@ public class CustomObjectPane {
 	}
 
 	private void removeAll() {
+
 		pane.remove(titleLabel);
 		pane.remove(titleSeparator);
 
@@ -113,6 +163,8 @@ public class CustomObjectPane {
 		if (gridPane != null) {
 			pane.remove(gridPane);
 		}
+
+		// gridPane = new JLayeredPane();
 
 		okButton.setEnabled(false);
 		cancelButton.setEnabled(false);
@@ -144,6 +196,8 @@ public class CustomObjectPane {
 		gridPane = new JLayeredPane();
 		gridPane.setLayout(new GridBagLayout());
 
+		buttonGroup = new ButtonGroup();
+
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
@@ -154,7 +208,8 @@ public class CustomObjectPane {
 		for (MapObjectProperty property : customMapObject
 				.getMapObjectProperties()) {
 			ObjectPropertyControl propertyControl = ObjectPropertyControl
-					.getControlInstance(property, this);
+					.getControlInstance(property, this, mapApi, tools,
+							cursorFactory, mapPanel, customObjectEdit);
 
 			if (propertyControl != null) {
 
@@ -184,6 +239,8 @@ public class CustomObjectPane {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
+		// c.weighty = 1.0;
+
 		c.weighty = 0.0;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -281,15 +338,46 @@ public class CustomObjectPane {
 	public void onOkAction() {
 		for (ObjectPropertyControl propertyControl : propertyControlList) {
 			propertyControl.onOkAction();
+			updateCustomObjectEdit(propertyControl);
 		}
 		disableButtons();
+		mapPanel.refresh();
+	}
+
+	public void updateCustomObjectEdit(ObjectPropertyControl propertyControl) {
+		if (propertyControl instanceof PointPropertyControl) {
+			PointPropertyControl pointPropertyControl = (PointPropertyControl) propertyControl;
+
+			if (pointPropertyControl.isButtonActive()) {
+				customObjectEdit.setPointPropertyLocation(pointPropertyControl
+						.getPointProperty().getValue());
+			}
+
+		}
 	}
 
 	public void onCancelAction() {
 		for (ObjectPropertyControl propertyControl : propertyControlList) {
 			propertyControl.onCancelAction();
+			updateCustomObjectEdit(propertyControl);
 		}
 		disableButtons();
+		mapPanel.refresh();
+	}
+
+	public void updatePointPropertyControl(Point3D point) {
+
+		for (ObjectPropertyControl propertyControl : propertyControlList) {
+			if (propertyControl instanceof PointPropertyControl) {
+				PointPropertyControl pointPropertyControl = (PointPropertyControl) propertyControl;
+
+				if (pointPropertyControl.isButtonActive()) {
+					pointPropertyControl.updateTextField(point);
+				}
+			}
+		}
+
+		enableButtons();
 	}
 
 }

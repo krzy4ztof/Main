@@ -10,6 +10,7 @@ import mapeditor.mapapi.Bucket;
 import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Point3D;
 import mapeditor.mapapi.Tools;
 import mapeditor.mapapi.Tools.ToolsEnum;
 import mapeditor.themesapi.CustomMapObject;
@@ -126,17 +127,32 @@ public class MapPanelMouseListener implements MouseListener {
 					customMapObject = mapApi.getSegment(seg.y, seg.x)
 							.getCustomMapObject(mapApi.getActiveLayerIndex());
 					System.out.println("CU:::" + customMapObject);
-					customObjectPane.update(customMapObject);
-					customObjectEdit.setCustomObject(customMapObject,
-							mapApi.getSegment(seg.y, seg.x),
-							mapApi.getActiveLayerIndex(), seg);
+
+					if (customMapObject == null) {
+						customObjectPane.deactivate();
+						customObjectEdit.deactivate();
+					} else {
+
+						customObjectPane.update(customMapObject);
+						customObjectEdit.setCustomObject(customMapObject,
+								mapApi.getSegment(seg.y, seg.x),
+								mapApi.getActiveLayerIndex(), seg);
+					}
+					mapPanel.refresh();
+				} else if (activeTool == ToolsEnum.POINT_PROPERTY) {
+					System.out.println("klikniety point property");
+					Point3D point = new Point3D(seg.x, seg.y,
+							mapApi.getActiveLayerIndex());
+
+					customObjectPane.updatePointPropertyControl(point);
+					customObjectEdit.setPointPropertyLocation(point);
 					mapPanel.refresh();
 				}
 
 			} else {
 
-				mapPanel.r_SegmentAttributesPanel.setVisible(true);
-				System.out.println("menu atrybutow");
+				// mapPanel.r_SegmentAttributesPanel.setVisible(true);
+				// System.out.println("menu atrybutow");
 			}
 		}
 	}

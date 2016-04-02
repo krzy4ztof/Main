@@ -15,7 +15,10 @@
 	</themeGroup> 
 	<themeGroup name="medievalTheme">
 		<mapObject name="door" folder="medieval" image="door.png">
-			<objectProperty name="doorConnection" type="Point" default="0,0"/>
+			<objectProperty name="name" type="String" default="doorDefaultName"/>
+			<objectProperty name="doorConnectionSecond" type="Point" default="(2,3,1)"/>
+			<objectProperty name="doorConnectionThird" type="Point" default="(5,6,2)"/>
+			<objectProperty name="doorConnectionFourth" type="Point" default="(7,8,3)"/>
 		</mapObject>
 		<mapTheme name="gold" folder="medieval" image="gold.png"/>
 		<mapTheme name="grass" folder="medieval" image="grass.png"/>
@@ -52,8 +55,6 @@
 			<objectProperty name="bookTitle" type="String" default="bookDefaultTitle"/>
 			<objectProperty name="bookText" type="Text" default="axeDefaultText"/>
 			<objectProperty name="bookMessage" type="String" default="bookDefaultMessage"/>
-			
-					
 		</mapObject>
 		<mapObject name="bottle" folder="fantasy" image="bottle.png">
 			<objectProperty name="bottlePoints" type="Long" default="71"/>

@@ -227,7 +227,7 @@ public class MainWindow {
 		copyPaste.addGridPane(mapPanel);
 
 		CustomObjectPane customObjectPane = new CustomObjectPane(mapApi,
-				messages);
+				messages, tools, cursorFactory, mapPanel, customObjectEdit);
 
 		ThemesPane themesPane = new ThemesPane(messages, mapThemesList);
 

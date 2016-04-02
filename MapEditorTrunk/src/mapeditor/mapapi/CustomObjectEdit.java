@@ -14,42 +14,71 @@ public class CustomObjectEdit {
 
 	private CustomMapObject customMapObject;
 	private MapSegment mapSegment;
-	private int layer;
-	private Point point;
+	// private int layer;
+	// private Point point;
+	private Point3D objectLocation;
+	private Paint objectLocationPaint;
+	private Stroke objectLocationStroke;
 
-	private Paint paint;
-	private Stroke stroke;
+	private Paint pointPropertyPaint;
+	private Stroke pointPropertyStroke;
+	private Point3D pointPropertyLocation;
+
 	private boolean active;
 
 	public CustomObjectEdit() {
 		active = false;
 
-		paint = Color.ORANGE;
+		objectLocationPaint = Color.ORANGE;
+		pointPropertyPaint = Color.YELLOW;
+
+		// paint = Color.ORANGE;
 		float dash[] = { 5.0f };
-		stroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
+		objectLocationStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
+				BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
+		pointPropertyStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND, 5.0f, dash, 0.0f);
 	}
 
-	public Paint getPaint() {
-		return paint;
+	public Paint getPointPropertyPaint() {
+		return pointPropertyPaint;
 	}
 
-	public Stroke getStroke() {
-		return stroke;
+	public Stroke getPointPropertyStroke() {
+		return pointPropertyStroke;
+	}
+
+	public Paint getObjectLocationPaint() {
+		return objectLocationPaint;
+	}
+
+	public Stroke getObjectLocationStroke() {
+		return objectLocationStroke;
 	}
 
 	public void setCustomObject(CustomMapObject customMapObject,
 			MapSegment mapSegment, int layer, Point point) {
 		this.customMapObject = customMapObject;
 		this.mapSegment = mapSegment;
-		this.layer = layer;
-		this.point = point;
+		this.objectLocation = new Point3D(point.x, point.y, layer);
 		active = true;
 
 	}
 
-	public Point getPoint() {
-		return point;
+	public Point3D getObjectLocation() {
+		return objectLocation;
+	}
+
+	public Point3D getPointPropertyLocation() {
+
+		// TODO: change
+		return pointPropertyLocation;
+	}
+
+	public void setPointPropertyLocation(Point3D pointPropertyLocation) {
+
+		// TODO: change
+		this.pointPropertyLocation = pointPropertyLocation;
 	}
 
 	public MapSegment getMapSegment() {
@@ -65,6 +94,10 @@ public class CustomObjectEdit {
 		// maxPoint = null;
 		// segments = null;
 
+		this.customMapObject = null;
+		this.mapSegment = null;
+		this.objectLocation = null;
+
 		active = false;
 	}
 
@@ -73,8 +106,8 @@ public class CustomObjectEdit {
 		// draggedSegments.paint(graphics);
 		if (graphics instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D) graphics;
-			g2.setStroke(stroke);
-			g2.setPaint(paint);
+			g2.setStroke(objectLocationStroke);
+			g2.setPaint(objectLocationPaint);
 		}
 		if (isActive()) {
 

@@ -5,6 +5,11 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JSeparator;
 
+import mapeditor.mainwindow.CursorFactory;
+import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mapapi.CustomObjectEdit;
+import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.Tools;
 import mapeditor.themesapi.EnumProperty;
 import mapeditor.themesapi.LongProperty;
 import mapeditor.themesapi.MapObjectProperty;
@@ -21,7 +26,9 @@ public abstract class ObjectPropertyControl {
 	protected JSeparator separator;
 
 	public static ObjectPropertyControl getControlInstance(
-			MapObjectProperty property, CustomObjectPane customObjectPane) {
+			MapObjectProperty property, CustomObjectPane customObjectPane,
+			MapApi mapApi, Tools tools, CursorFactory cursorFactory,
+			MapPane mapPanel, CustomObjectEdit customObjectEdit) {
 
 		if (property instanceof EnumProperty) {
 			return new EnumPropertyControl((EnumProperty) property,
@@ -31,7 +38,9 @@ public abstract class ObjectPropertyControl {
 					customObjectPane);
 
 		} else if (property instanceof PointProperty) {
-
+			return new PointPropertyControl((PointProperty) property,
+					customObjectPane, mapApi, tools, cursorFactory, mapPanel,
+					customObjectEdit);
 		} else if (property instanceof StringProperty) {
 			return new StringPropertyControl((StringProperty) property,
 					customObjectPane);
@@ -39,9 +48,8 @@ public abstract class ObjectPropertyControl {
 			return new TextPropertyControl((TextProperty) property,
 					customObjectPane);
 		} else {
+			return null;
 		}
-
-		return null;
 
 	}
 

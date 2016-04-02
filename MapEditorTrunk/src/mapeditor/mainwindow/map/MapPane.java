@@ -12,7 +12,6 @@ import java.awt.Stroke;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import mapeditor.dialogs.SegmentAttributesPanel;
 import mapeditor.mainwindow.GridPane;
 import mapeditor.mapapi.CopyPaste;
 import mapeditor.mapapi.CopyPasteSegment;
@@ -21,6 +20,7 @@ import mapeditor.mapapi.DraggedSegments;
 import mapeditor.mapapi.LayerAttributes;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapSegment;
+import mapeditor.mapapi.Point3D;
 import mapeditor.mapapi.SelectedSegments;
 import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
@@ -35,7 +35,8 @@ public class MapPane extends GridPane {
 
 	ExampleFileFilter fe;
 
-	SegmentAttributesPanel r_SegmentAttributesPanel = new SegmentAttributesPanel();
+	// SegmentAttributesPanel r_SegmentAttributesPanel = new
+	// SegmentAttributesPanel();
 	private MapApi mapApi;
 	private CopyPaste copyPaste;
 	private CustomObjectEdit customObjectEdit;
@@ -202,6 +203,29 @@ public class MapPane extends GridPane {
 		for (LayerAttributes layerAttributes : mapApi.getLayersAttributes()) {
 			paint(graphics, layerAttributes);
 
+			Paint tempPaint1 = null;
+			Stroke tempStroke1 = null;
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+
+				tempPaint1 = g2.getPaint();
+				tempStroke1 = g2.getStroke();
+			}
+
+			paintCustomObjectEdit(graphics, layerAttributes);
+
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+
+				if (tempPaint1 != null) {
+					g2.setPaint(tempPaint1);
+				}
+				if (tempStroke1 != null) {
+
+					g2.setStroke(tempStroke1);
+				}
+			}
+
 			if (layerAttributes.isActive()) {
 				Paint tempPaint = null;
 				Stroke tempStroke = null;
@@ -214,7 +238,7 @@ public class MapPane extends GridPane {
 
 				paintCopyPaste(graphics, layerAttributes);
 
-				paintCustomObjectEdit(graphics, layerAttributes);
+				// paintCustomObjectEdit(graphics, layerAttributes);
 
 				if (graphics instanceof Graphics2D) {
 					Graphics2D g2 = (Graphics2D) graphics;
@@ -246,17 +270,44 @@ public class MapPane extends GridPane {
 			divider = 2;
 		}
 
-		Point point = customObjectEdit.getPoint();
-		Paint paint = customObjectEdit.getPaint();
-		Stroke stroke = customObjectEdit.getStroke();
+		Point3D pointObjectLocation = customObjectEdit.getObjectLocation();
 
-		if (((point.x) % 2) == 0) {
-			drawSegmentGrid(graphics, point.x, point.y, 1, paint, stroke,
-					layerAttributes);
+		if (pointObjectLocation.z == layerAttributes.getIndex()) {
 
-		} else {
-			drawSegmentGrid(graphics, point.x, point.y, divider, paint, stroke,
-					layerAttributes);
+			Paint paint = customObjectEdit.getObjectLocationPaint();
+			Stroke stroke = customObjectEdit.getObjectLocationStroke();
+
+			if (((pointObjectLocation.x) % 2) == 0) {
+				drawSegmentGrid(graphics, pointObjectLocation.x,
+						pointObjectLocation.y, 1, paint, stroke,
+						layerAttributes);
+
+			} else {
+				drawSegmentGrid(graphics, pointObjectLocation.x,
+						pointObjectLocation.y, divider, paint, stroke,
+						layerAttributes);
+			}
+		}
+
+		Point3D pointPropertyLocation = customObjectEdit
+				.getPointPropertyLocation();
+
+		if (pointPropertyLocation != null
+				&& pointPropertyLocation.z == layerAttributes.getIndex()) {
+
+			Paint paint = customObjectEdit.getPointPropertyPaint();
+			Stroke stroke = customObjectEdit.getPointPropertyStroke();
+
+			if (((pointPropertyLocation.x) % 2) == 0) {
+				drawSegmentGrid(graphics, pointPropertyLocation.x,
+						pointPropertyLocation.y, 1, paint, stroke,
+						layerAttributes);
+
+			} else {
+				drawSegmentGrid(graphics, pointPropertyLocation.x,
+						pointPropertyLocation.y, divider, paint, stroke,
+						layerAttributes);
+			}
 		}
 
 	}
