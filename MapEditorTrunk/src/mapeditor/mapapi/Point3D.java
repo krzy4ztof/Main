@@ -54,6 +54,10 @@ public class Point3D {
 		}
 	}
 
+	public String asString() {
+		String string = "(" + x + "," + y + "," + z + ")";
+		return string;
+	}
 	/*
 	 * @Override public String toString() { String string = "(" + x + "," + y +
 	 * "," + z + ")"; return string; }

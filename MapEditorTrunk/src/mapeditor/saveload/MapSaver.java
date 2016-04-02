@@ -16,7 +16,9 @@ import javax.xml.transform.stream.StreamResult;
 import mapeditor.mapapi.LayerAttributes;
 import mapeditor.mapapi.MapApi;
 import mapeditor.messages.MapMessages;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
+import mapeditor.themesapi.MapObjectProperty;
 import mapeditor.themesapi.ThemeApi;
 import mapeditor.themesapi.ThemesManager;
 
@@ -84,42 +86,128 @@ public class MapSaver {
 		layerElement.setAttribute(MapFileDefinitions.INDEX_ATTRIBUTE,
 				layerAttributes.getIndex().toString());
 
-		MapObject mapObject = null;
+		Element rowsElement = createRowsTag(mapApi, document, layerAttributes);
+		layerElement.appendChild(rowsElement);
 
-		for (int row = 0; row < mapApi.getRowsSize(); row++) {
-			String segments = "";
-			Element rowElem = document
-					.createElement(MapFileDefinitions.ROW_ELEMENT);
-			rowElem.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
-					Integer.toString(row));
-			for (int col = 0; col < mapApi.getColumnsSize(); col++) {
-
-				// int layerIndex = 0; // TODO: zmienic
-				mapObject = mapApi.getSegment(row, col).getMapObject(
-						layerAttributes.getIndex());
-				String segmentId = null;
-				if (mapObject != null) {
-					segmentId = mapObject.getObjectIdString();
-				} else {
-					segmentId = MapObject.DEFAULT_OBJECT_ID;
-				}
-
-				segments = segments + segmentId + ';';
-			}
-			rowElem.setAttribute(MapFileDefinitions.SEGMENTS_ATTRIBUTE,
-					segments);
-			layerElement.appendChild(rowElem);
-		}
+		Element customObjectsElement = createCustomObjectsTag(mapApi, document,
+				layerAttributes);
+		layerElement.appendChild(customObjectsElement);
 
 		return layerElement;
+	}
+
+	private Element createCustomObjectsTag(MapApi mapApi, Document document,
+			LayerAttributes layerAttributes) {
+		Element customObjectsElement = document
+				.createElement(MapFileDefinitions.CUSTOM_OBJECTS_ELEMENT);
+
+		for (int row = 0; row < mapApi.getRowsSize(); row++) {
+			for (int col = 0; col < mapApi.getColumnsSize(); col++) {
+
+				CustomMapObject customMapObject = mapApi.getSegment(row, col)
+						.getCustomMapObject(layerAttributes.getIndex());
+
+				if (customMapObject != null) {
+					Element customObjectElement = createCustomObjectTag(
+							customMapObject, row, col, mapApi, document,
+							layerAttributes);
+					customObjectsElement.appendChild(customObjectElement);
+				}
+
+			}
+		}
+
+		return customObjectsElement;
+	}
+
+	private Element createCustomObjectTag(CustomMapObject customMapObject,
+			int row, int col, MapApi mapApi, Document document,
+			LayerAttributes layerAttributes) {
+		Element customObjectElement = document
+				.createElement(MapFileDefinitions.CUSTOM_OBJECT_ELEMENT);
+
+		customObjectElement.setAttribute(MapFileDefinitions.ID_ATTRIBUTE,
+				customMapObject.getObjectIdString());
+
+		customObjectElement.setAttribute(MapFileDefinitions.ROW_ATTRIBUTE,
+				Integer.toString(row));
+
+		customObjectElement.setAttribute(MapFileDefinitions.COL_ATTRIBUTE,
+				Integer.toString(col));
+
+		for (MapObjectProperty property : customMapObject
+				.getMapObjectProperties()) {
+			Element objectPropertyElement = createObjectPropertyTag(property,
+					document);
+			customObjectElement.appendChild(objectPropertyElement);
+		}
+
+		return customObjectElement;
+	}
+
+	private Element createObjectPropertyTag(MapObjectProperty property,
+			Document document) {
+		Element objectPropertyElement = document
+				.createElement(MapFileDefinitions.OBJECT_PROPERTY_ELEMENT);
+
+		objectPropertyElement.setAttribute(
+				MapFileDefinitions.PROPERTY_NAME_ATTRIBUTE, property.getName());
+		objectPropertyElement.setAttribute(
+				MapFileDefinitions.PROPERTY_TYPE_ATTRIBUTE, property.getType()
+						.toString());
+		objectPropertyElement.setAttribute(
+				MapFileDefinitions.PROPERTY_VALUE_ATTRIBUTE,
+				property.getValueAsString());
+
+		return objectPropertyElement;
+	}
+
+	private Element createRowsTag(MapApi mapApi, Document document,
+			LayerAttributes layerAttributes) {
+		Element rowsElement = document
+				.createElement(MapFileDefinitions.ROWS_ELEMENT);
+
+		for (int row = 0; row < mapApi.getRowsSize(); row++) {
+			Element rowElement = createRowTag(row, mapApi, document,
+					layerAttributes);
+			rowsElement.appendChild(rowElement);
+		}
+
+		return rowsElement;
+	}
+
+	private Element createRowTag(int row, MapApi mapApi, Document document,
+			LayerAttributes layerAttributes) {
+
+		Element rowElement = document
+				.createElement(MapFileDefinitions.ROW_ELEMENT);
+		rowElement.setAttribute(MapFileDefinitions.NUMBER_ATTRIBUTE,
+				Integer.toString(row));
+
+		String segments = "";
+		MapObject mapObject = null;
+
+		for (int col = 0; col < mapApi.getColumnsSize(); col++) {
+			mapObject = mapApi.getSegment(row, col).getMapObject(
+					layerAttributes.getIndex());
+			String segmentId = null;
+			if (mapObject != null) {
+				segmentId = mapObject.getObjectIdString();
+			} else {
+				segmentId = MapObject.DEFAULT_OBJECT_ID;
+			}
+
+			segments = segments + segmentId + ';';
+		}
+		rowElement
+				.setAttribute(MapFileDefinitions.SEGMENTS_ATTRIBUTE, segments);
+
+		return rowElement;
 	}
 
 	private Element createMatrixTag(MapApi mapApi, Document document) {
 		Element matrixElement = document
 				.createElement(MapFileDefinitions.MATRIX_ELEMENT);
-
-		// int layerIndex = 0;
-
 		for (LayerAttributes layerAttributes : mapApi.getLayersAttributes()) {
 			Element layerElement = createLayerTag(mapApi, document,
 					layerAttributes);

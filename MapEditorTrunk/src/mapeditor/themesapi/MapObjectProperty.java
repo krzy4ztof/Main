@@ -2,7 +2,7 @@ package mapeditor.themesapi;
 
 public abstract class MapObjectProperty implements Cloneable {
 
-	enum Type {
+	public enum Type {
 		Long, String, Text, Enum, Point
 	}
 
@@ -32,4 +32,11 @@ public abstract class MapObjectProperty implements Cloneable {
 	public void describeYourself() {
 		System.out.println("Property name: " + name);
 	}
+
+	public abstract Type getType();
+
+	public abstract String getValueAsString();
+
+	public abstract void setValue(String value);
+
 }

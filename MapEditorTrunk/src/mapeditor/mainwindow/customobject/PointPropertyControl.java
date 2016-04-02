@@ -69,62 +69,23 @@ public class PointPropertyControl extends ObjectPropertyControl {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		/*
-		 * pointer JLabel label = new JLabel();
-		 * label.setText(pointProperty.getValue().toString());
-		 * rightPane.add(label, c);
-		 * 
-		 * c.gridx++;
-		 */
-
-		// MaskFormatter maskFormatter = null;
-		// try {
-		// maskFormatter = new PointPropertyMaskFormatter("(###,###,###)");
 		MaskFormatter maskFormatter = new PointPropertyMaskFormatter(mapApi);
-
-		// } catch (ParseException e) {
-		// TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-
 		formattedTextField = new JFormattedTextField(maskFormatter);
-		// maskFormatter.setPlaceholder("(XXX,XXX,XXX)");
-
-		// maskFormatter.setPlaceholderCharacter('1');
-
-		// maskFormatter.install(formattedTextField);
 		formattedTextField.setValue(pointProperty.getValue());
-		// formattedTextField.setValue("123");
-		// formattedTextField.setText("123");
-		// formattedTextField.setText("123456");// -. (123,456, )
 		maskFormatter.install(formattedTextField);
 		PropertyChangeListener listener = new PointPropertyChangeListener(
 				customObjectPane, this);
 		formattedTextField.addPropertyChangeListener(listener);
-		// formattedTextField.setText("(123,456, )");
 		rightPane.add(formattedTextField, c);
 
 		c.gridx++;
 		button = new JButton();
 		isButtonActive = false;
 
-		// String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER
-		// + "crosshair_8.png";
 		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER + ICON_ARROW_16;
-
-		// imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER + "arrow_sw_16.png";
-		//
-		// imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER
-		// + "arrow_medium_lower_left.png";
-
-		// button.addActionListener(actionListener);
-		// button.setActionCommand(actionCommand);
-		// button.setToolTipText(toolTipText);
-
 		String toolTipText = "XXX"; // messages.getString(MapMessages.TOOLBAR_HAMMER);
 
 		button.setIcon(new ImageIcon(imgLocation, toolTipText));
-		// buttonGroup.add(button);
 
 		ActionListener buttonListener = new PointPropertyButtonActionListener(
 				this, customObjectPane, tools, cursorFactory, mapPanel);
@@ -134,12 +95,7 @@ public class PointPropertyControl extends ObjectPropertyControl {
 
 		customObjectPane.getButtonGroup().add(button);
 
-		// PropertyChangeListener listener = new LongPropertyChangeListener(
-		// customObjectPane, this);
-		// formattedTextField.addPropertyChangeListener(listener);
-
 		separator = new JSeparator(SwingConstants.HORIZONTAL);
-
 	}
 
 	public boolean isButtonActive() {
@@ -176,7 +132,6 @@ public class PointPropertyControl extends ObjectPropertyControl {
 	public void onCancelAction() {
 		newPointValue = pointProperty.getValue();
 		formattedTextField.setValue(newPointValue);
-		// formattedTextField.setText(pointProperty.getValue().toString());
 	}
 
 	@Override

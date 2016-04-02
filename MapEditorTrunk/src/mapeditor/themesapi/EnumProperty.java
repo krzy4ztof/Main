@@ -50,4 +50,20 @@ public class EnumProperty extends MapObjectProperty {
 	public String[] getKeys() {
 		return choices.keySet().toArray(new String[1]);
 	}
+
+	@Override
+	public Type getType() {
+		return Type.Enum;
+	}
+
+	@Override
+	public String getValueAsString() {
+		return key;
+	}
+
+	@Override
+	public void setValue(String value) {
+		setKey(value);
+	}
+
 }

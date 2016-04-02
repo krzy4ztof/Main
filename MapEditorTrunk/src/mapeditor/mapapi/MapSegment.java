@@ -44,9 +44,7 @@ public class MapSegment {
 	}
 
 	public void setMapObject(MapObject mapObject, int layerIndex) {
-		System.out.println("Dodanie map object!");
 		if (mapObject instanceof CustomMapObject) {
-			System.out.println("Dodanie custom!");
 			CustomMapObject custom = (CustomMapObject) mapObject;
 			customMapObjects.set(layerIndex, custom.clone());
 		} else {

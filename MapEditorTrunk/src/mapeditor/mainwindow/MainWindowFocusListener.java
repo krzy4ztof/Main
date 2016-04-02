@@ -7,12 +7,10 @@ public class MainWindowFocusListener implements FocusListener {
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
-		System.out.println("focus gained");
 	}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
-		System.out.println("focus lost");
 	}
 
 }

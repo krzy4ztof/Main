@@ -28,4 +28,14 @@ public class TextProperty extends MapObjectProperty {
 		return value;
 	}
 
+	@Override
+	public Type getType() {
+		return Type.Text;
+	}
+
+	@Override
+	public String getValueAsString() {
+		return value;
+	}
+
 }

@@ -49,4 +49,24 @@ public class CustomMapObject extends MapObject {
 		}
 		System.out.println("End");
 	}
+
+	public void setProperty(String name, String type, String value) {
+		MapObjectProperty mapObjectProperty = getProperty(name, type);
+
+		if (mapObjectProperty != null) {
+			mapObjectProperty.setValue(value);
+		}
+
+	}
+
+	private MapObjectProperty getProperty(String name, String type) {
+		for (MapObjectProperty property : mapObjectProperties) {
+			if (property.name.equals(name)) {
+				if (property.getType().toString().equals(type)) {
+					return property;
+				}
+			}
+		}
+		return null;
+	}
 }

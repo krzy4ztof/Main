@@ -27,4 +27,14 @@ public class StringProperty extends MapObjectProperty {
 	public String getValue() {
 		return value;
 	}
+
+	@Override
+	public Type getType() {
+		return Type.String;
+	}
+
+	@Override
+	public String getValueAsString() {
+		return value;
+	}
 }

@@ -24,7 +24,16 @@ public class MapFileDefinitions {
 	public final static String CODE_ELEMENT = "code";
 	public final static String ID_ATTRIBUTE = "id";
 	public final static String IMAGE_ATTRIBUTE = "image";
+	public final static String ROWS_ELEMENT = "rows";
 	public final static String ROW_ELEMENT = "row";
+	public final static String CUSTOM_OBJECTS_ELEMENT = "customObjects";
+	public final static String CUSTOM_OBJECT_ELEMENT = "customObject";
+	public final static String ROW_ATTRIBUTE = "row";
+	public final static String COL_ATTRIBUTE = "col";
+	public final static String OBJECT_PROPERTY_ELEMENT = "objectProperty";
+	public final static String PROPERTY_NAME_ATTRIBUTE = "name";
+	public final static String PROPERTY_TYPE_ATTRIBUTE = "type";
+	public final static String PROPERTY_VALUE_ATTRIBUTE = "value";
 	public final static String NUMBER_ATTRIBUTE = "number";
 	public final static String INDEX_ATTRIBUTE = "index";
 	public final static String SEGMENTS_ATTRIBUTE = "segments";

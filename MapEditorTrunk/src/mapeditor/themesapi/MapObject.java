@@ -91,8 +91,6 @@ public class MapObject implements Cloneable {
 	}
 
 	public String getObjectIdString() {
-		describeYourself();
-
 		if ((objectId >= 0) && (objectId < 10)) {
 			return "00" + objectId;
 		} else if (objectId < 100) {

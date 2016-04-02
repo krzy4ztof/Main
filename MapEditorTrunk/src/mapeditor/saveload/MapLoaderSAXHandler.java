@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.MapLayout;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
@@ -15,11 +16,14 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class MapLoaderSAXHandler extends DefaultHandler {
 
-	MapApi mapApi;
-	ThemesManager mapThemesList;
-	MapObjectFactory mapObjectFactory;
-	Hashtable<String, String> segmentsCode;
-	int activeLayerIndex;
+	private MapApi mapApi;
+	private ThemesManager mapThemesList;
+	private MapObjectFactory mapObjectFactory;
+	private Hashtable<String, String> segmentsCode;
+	private int activeLayerIndex;
+	private CustomMapObject customMapObject;
+	private int customMapObjectRow;
+	private int customMapObjectCol;
 
 	public MapLoaderSAXHandler(MapApi mapApi, ThemesManager mapThemesList,
 			MapObjectFactory mapObjectFactory) {
@@ -49,6 +53,20 @@ public class MapLoaderSAXHandler extends DefaultHandler {
 			startLayerElement(attrs);
 		} else if (qName.equals(MapFileDefinitions.ROW_ELEMENT)) {
 			startRowElement(attrs);
+		} else if (qName.equals(MapFileDefinitions.CUSTOM_OBJECT_ELEMENT)) {
+			startCustomObjectElement(attrs);
+		} else if (qName.equals(MapFileDefinitions.OBJECT_PROPERTY_ELEMENT)) {
+			startObjectPropertyElement(attrs);
+		}
+
+	}
+
+	@Override
+	public void endElement(String uri, String localName, String qName)
+			throws SAXException {
+
+		if (qName.equals(MapFileDefinitions.OBJECT_PROPERTY_ELEMENT)) {
+			endObjectPropertyElement();
 		}
 
 	}
@@ -97,6 +115,44 @@ public class MapLoaderSAXHandler extends DefaultHandler {
 		String index = attrs.getValue(MapFileDefinitions.INDEX_ATTRIBUTE);
 		System.out.println("Index: " + index);
 		activeLayerIndex = Integer.parseInt(index);
+	}
+
+	private void startObjectPropertyElement(Attributes attrs) {
+		String nameAttr = attrs
+				.getValue(MapFileDefinitions.PROPERTY_NAME_ATTRIBUTE);
+		String typeAttr = attrs
+				.getValue(MapFileDefinitions.PROPERTY_TYPE_ATTRIBUTE);
+		String valueAttr = attrs
+				.getValue(MapFileDefinitions.PROPERTY_VALUE_ATTRIBUTE);
+
+		customMapObject.setProperty(nameAttr, typeAttr, valueAttr);
+
+	}
+
+	private void startCustomObjectElement(Attributes attrs) {
+		String idAttr = attrs.getValue(MapFileDefinitions.ID_ATTRIBUTE);
+		String colAttr = attrs.getValue(MapFileDefinitions.COL_ATTRIBUTE);
+		String rowAttr = attrs.getValue(MapFileDefinitions.ROW_ATTRIBUTE);
+
+		String name = segmentsCode.get(idAttr);
+		MapObject mapObject = mapThemesList.getMapObjectApi(name);
+
+		if (mapObject instanceof CustomMapObject) {
+			customMapObject = ((CustomMapObject) mapObject).clone();
+		}
+
+		customMapObjectRow = Integer.parseInt(rowAttr);
+		customMapObjectCol = Integer.parseInt(colAttr);
+
+		// mapApi.getSegment(row, col).setMapObject(mapObject,
+		// activeLayerIndex);
+	}
+
+	private void endObjectPropertyElement() {
+		// TODO Auto-generated method stub
+		mapApi.getSegment(customMapObjectRow, customMapObjectCol).setMapObject(
+				customMapObject, activeLayerIndex);
+
 	}
 
 	private void startRowElement(Attributes attrs) {

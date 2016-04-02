@@ -18,11 +18,43 @@
 
 	<xs:complexType name="layerType">
 		<xs:sequence>
-			<xs:element name="row" type="rowType" maxOccurs="unbounded"
+			<xs:element name="rows" type="rowsType" maxOccurs="unbounded"
 				minOccurs="0" />
+			<xs:element name="customObjects" type="customObjectsType" maxOccurs="unbounded"
+				minOccurs="0" />				
 		</xs:sequence>
 		<xs:attribute type="xs:byte" name="index" use="required" />
 	</xs:complexType>
+
+	<xs:complexType name="customObjectsType">
+		<xs:sequence>
+			<xs:element name="customObject" type="customObjectType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="customObjectType">
+	    <xs:sequence>
+        	<xs:element name="objectProperty" type="objectPropertyType" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="id" use="required"/>
+        <xs:attribute type="xs:string" name="col" use="required"/>
+    	<xs:attribute type="xs:string" name="row" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="objectPropertyType">
+        <xs:attribute type="xs:string" name="name" use="required"/>
+        <xs:attribute type="xs:string" name="type" use="required"/>
+        <xs:attribute type="xs:string" name="value" use="optional"/>
+    </xs:complexType>
+
+	<xs:complexType name="rowsType">
+		<xs:sequence>
+			<xs:element name="row" type="rowType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
 
 	<xs:complexType name="rowType">
 		<xs:attribute type="xs:byte" name="number" use="required" />
