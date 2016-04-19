@@ -90,11 +90,13 @@ public class MapPanelMouseListener implements MouseListener {
 					mapObject = mapThemesManager.getSelectedMapObject();
 					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
 							mapApi.getActiveLayerIndex());
+
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.ERASER) {
 					mapObject = mapObjectFactory.getBlankMapObject();
 					mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject,
 							mapApi.getActiveLayerIndex());
+
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.PICKER) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
@@ -103,6 +105,7 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
+
 					// TODO: kopiowanie CustomMapObject
 				} else if (activeTool == ToolsEnum.BUCKET) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
@@ -112,6 +115,7 @@ public class MapPanelMouseListener implements MouseListener {
 					Bucket bucket = new Bucket(mapApi);
 					bucket.fill(mapObject, seg, mapApi.getActiveLayerIndex());
 					bucket.paint(newObject);
+
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.SELECTION) {
 
@@ -120,6 +124,7 @@ public class MapPanelMouseListener implements MouseListener {
 					} else {
 						copyPaste.onLeftButtonClick(e.getPoint());
 					}
+
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.HAMMER) {
 					System.out.println("klikniety mlotek");
@@ -146,6 +151,7 @@ public class MapPanelMouseListener implements MouseListener {
 
 					customObjectPane.updatePointPropertyControl(point);
 					customObjectEdit.setPointPropertyLocation(point);
+
 					mapPanel.refresh();
 				}
 

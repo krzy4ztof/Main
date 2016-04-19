@@ -1,5 +1,7 @@
 package mapeditor.mapapi;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -112,7 +114,9 @@ public class DraggedSegments extends CopyPasteSegments {
 				CopyPasteSegment dragSegment = dragRow.get(y);
 				CopyPasteSegment selSegment = selRow.get(y);
 
-				dragSegment.setMapObject(selSegment.getMapObject().clone());
+				// dragSegment.setMapObject(selSegment.getMapObject().clone());
+				dragSegment.setMapObject(selSegment.getMapObject());
+				dragSegment.setCustomMapObject(selSegment.getCustomMapObject());
 
 			}
 		}
@@ -127,6 +131,17 @@ public class DraggedSegments extends CopyPasteSegments {
 
 			LinkedList<CopyPasteSegment> list = new LinkedList<CopyPasteSegment>();
 			return list.iterator();
+		}
+	}
+
+	protected void paintRectangle(Graphics graphics) {
+		if (isActive()) {
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.setStroke(stroke);
+				g2.setPaint(paintRectangle);
+			}
+			drawRectangle(graphics, minPoint, maxPoint);
 		}
 	}
 }

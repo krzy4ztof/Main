@@ -12,8 +12,10 @@ import javax.swing.ButtonModel;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JButton;
 
+import mapeditor.mainwindow.customobject.CustomObjectPane;
 import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mapapi.CopyPaste;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.Tools;
 import mapeditor.mapapi.Tools.ToolsEnum;
 
@@ -23,13 +25,18 @@ public class ToolBarActionListener implements ActionListener {
 	private MapPane mapPanel;
 	private CursorFactory cursorFactory;
 	private CopyPaste copyPaste;
+	private CustomObjectPane customObjectPane;
+	private CustomObjectEdit customObjectEdit;
 
 	public ToolBarActionListener(Tools tools, CursorFactory cursorFactory,
-			MapPane mapPanel, CopyPaste copyPaste) {
+			MapPane mapPanel, CopyPaste copyPaste,
+			CustomObjectPane customObjectPane, CustomObjectEdit customObjectEdit) {
 		this.tools = tools;
 		this.cursorFactory = cursorFactory;
 		this.mapPanel = mapPanel;
 		this.copyPaste = copyPaste;
+		this.customObjectPane = customObjectPane;
+		this.customObjectEdit = customObjectEdit;
 	}
 
 	@Override
@@ -71,41 +78,52 @@ public class ToolBarActionListener implements ActionListener {
 		if (str.equals(MainWindow.ACTION_TOOLBAR_ERASER)) {
 			tools.setActiveTool(ToolsEnum.ERASER);
 			mapPanel.getPanel().setCursor(
-			// cursorFactory.getCursor(CursorFactory.CURSOR_ERASER));
 					cursorFactory.getCursor(ToolsEnum.ERASER));
+
+			customObjectPane.deactivate();
+			customObjectEdit.deactivate();
+
 			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BRUSH)) {
 			tools.setActiveTool(ToolsEnum.BRUSH);
 			mapPanel.getPanel().setCursor(
-			// cursorFactory.getCursor(CursorFactory.CURSOR_BRUSH));
 					cursorFactory.getCursor(ToolsEnum.BRUSH));
+
+			customObjectPane.deactivate();
+			customObjectEdit.deactivate();
 
 			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_BUCKET)) {
 			tools.setActiveTool(ToolsEnum.BUCKET);
 			mapPanel.getPanel().setCursor(
-			// cursorFactory.getCursor(CursorFactory.CURSOR_BUCKET));
 					cursorFactory.getCursor(ToolsEnum.BUCKET));
+
+			customObjectPane.deactivate();
+			customObjectEdit.deactivate();
+
 			copyPaste.onActionPerformed();
 
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_PICKER)) {
 			tools.setActiveTool(ToolsEnum.PICKER);
 			mapPanel.getPanel().setCursor(
-			// cursorFactory.getCursor(CursorFactory.CURSOR_PICKER));
 					cursorFactory.getCursor(ToolsEnum.PICKER));
+
+			customObjectPane.deactivate();
+			customObjectEdit.deactivate();
 
 			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_SELECTION)) {
 			tools.setActiveTool(ToolsEnum.SELECTION);
 			mapPanel.getPanel().setCursor(
-			// Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 					cursorFactory.getCursor(ToolsEnum.SELECTION));
+
+			customObjectPane.deactivate();
+			customObjectEdit.deactivate();
 
 			copyPaste.onActionPerformed();
 		} else if (str.equals(MainWindow.ACTION_TOOLBAR_HAMMER)) {
 			tools.setActiveTool(ToolsEnum.HAMMER);
 			mapPanel.getPanel().setCursor(
-			// cursorFactory.getCursor(CursorFactory.CURSOR_HAMMER));
 					cursorFactory.getCursor(ToolsEnum.HAMMER));
 			copyPaste.onActionPerformed();
 		}

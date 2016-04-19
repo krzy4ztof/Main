@@ -242,7 +242,8 @@ public class MainWindow {
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
 
 		JToolBar toolBar = createToolBar(config, messages, tools,
-				cursorFactory, mapPanel, copyPaste);
+				cursorFactory, mapPanel, copyPaste, customObjectPane,
+				customObjectEdit);
 		frame.add(toolBar, BorderLayout.PAGE_START);
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
@@ -292,11 +293,13 @@ public class MainWindow {
 
 	private JToolBar createToolBar(Config config, MapMessages messages,
 			Tools tools, CursorFactory cursorFactory, MapPane mapPanel,
-			CopyPaste copyPaste) {
+			CopyPaste copyPaste, CustomObjectPane customObjectPane,
+			CustomObjectEdit customObjectEdit) {
 		JToolBar toolBar = new JToolBar(
 				messages.getString(MapMessages.TOOLBAR_TITLE));
 		ToolBarActionListener actionListener = new ToolBarActionListener(tools,
-				cursorFactory, mapPanel, copyPaste);
+				cursorFactory, mapPanel, copyPaste, customObjectPane,
+				customObjectEdit);
 
 		String iconEraser = ICON_ERASER_16;
 		String iconBrush = ICON_BRUSH_16;

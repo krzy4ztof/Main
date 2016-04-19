@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.Iterator;
 
 import mapeditor.mainwindow.map.MapPane;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 
@@ -198,6 +199,9 @@ public class CopyPaste {
 					mapApi.getSegment(row, col).setMapObject(
 							mapObjectFactory.getBlankMapObject(),
 							mapApi.getActiveLayerIndex());
+
+					mapApi.getSegment(row, col).setCustomMapObject(null,
+							mapApi.getActiveLayerIndex());
 				}
 			}
 
@@ -213,8 +217,34 @@ public class CopyPaste {
 				System.out.println("wklejam");
 				mapObject.describeYourself();
 
-				mapApi.getSegment(row, col).setMapObject(mapObject,
+				MapSegment mapSegment = mapApi.getSegment(row, col);
+				mapSegment
+						.setMapObject(mapObject, mapApi.getActiveLayerIndex());
+
+				System.out.println("wklejony:");
+
+				MapObject insertedMapObject = mapSegment.getMapObject(mapApi
+						.getActiveLayerIndex());
+				insertedMapObject.describeYourself();
+
+				CustomMapObject customMapObject = segment.getCustomMapObject();
+				mapSegment.setCustomMapObject(customMapObject,
 						mapApi.getActiveLayerIndex());
+
+				if (customMapObject != null) {
+					System.out.println("wklejam Custom");
+					customMapObject.describeYourself();
+				} else {
+					System.out.println("wklejam Custom null");
+
+				}
+
+				MapSegment mapSegment2 = mapApi.getSegment(row, col);
+				mapSegment2.setMapObject(mapObject,
+						mapApi.getActiveLayerIndex());
+
+				System.out.println("wklejony2:");
+
 			}
 		}
 
@@ -237,10 +267,12 @@ public class CopyPaste {
 		onEvent(EventCopyPaste.MOVE, point);
 	}
 
-	public void paint(Graphics graphics) {
-		selectedSegments.paint(graphics);
-		draggedSegments.paint(graphics);
+	public void paintSelectedRectangle(Graphics graphics) {
+		selectedSegments.paintRectangle(graphics);
+	}
 
+	public void paintDraggedRectangle(Graphics graphics) {
+		draggedSegments.paintRectangle(graphics);
 	}
 
 	public void onCutEvent() {

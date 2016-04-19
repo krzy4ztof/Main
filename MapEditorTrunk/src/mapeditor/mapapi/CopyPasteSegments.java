@@ -3,7 +3,6 @@ package mapeditor.mapapi;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Stroke;
@@ -24,6 +23,8 @@ public class CopyPasteSegments {
 
 	protected Point maxPoint;
 
+	protected int layerIndex;
+
 	protected boolean active;
 
 	protected LinkedList<LinkedList<CopyPasteSegment>> segments;
@@ -43,6 +44,7 @@ public class CopyPasteSegments {
 		maxPoint = findMaxPoint(firstPoint, lastPoint);
 
 		// int layerIndex = 0; // TODO zmienic
+		this.layerIndex = layerIndex;
 		segments = mapPane.getSegmentPoints(minPoint, maxPoint, layerIndex);
 		active = true;
 	}
@@ -51,12 +53,25 @@ public class CopyPasteSegments {
 		return active;
 	}
 
+	public boolean isActiveForLayer(int layerIndex) {
+
+		if (active && getLayerIndex() == layerIndex) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public void deactivate() {
 		minPoint = null;
 		maxPoint = null;
 		segments = null;
 
 		active = false;
+	}
+
+	public int getLayerIndex() {
+		return layerIndex;
 	}
 
 	public Paint getPaint() {
@@ -121,18 +136,5 @@ public class CopyPasteSegments {
 
 		graphics.drawRect(minX, minY, width, height);
 
-	}
-
-	public void paint(Graphics graphics) {
-
-		if (graphics instanceof Graphics2D) {
-			Graphics2D g2 = (Graphics2D) graphics;
-			g2.setStroke(stroke);
-			g2.setPaint(paintRectangle);
-		}
-		if (isActive()) {
-
-			drawRectangle(graphics, minPoint, maxPoint);
-		}
 	}
 }

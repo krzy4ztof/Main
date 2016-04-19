@@ -31,18 +31,13 @@ public class Bucket {
 		if (segments.containsKey(point)) {
 			return;
 		}
-		/*
-		 * if (curMapObject == null) { if (mapObject == null) {
-		 * segments.put(point, true); } else { segments.put(point, false);
-		 * return; } } else {
-		 */
+
 		if (curMapObject.equals(mapObject)) {
 			segments.put(point, true);
 		} else {
 			segments.put(point, false);
 			return;
 		}
-		// }
 
 		fill(mapObject, new Point(point.x, point.y + 1), layerIndex);
 		fill(mapObject, new Point(point.x, point.y - 1), layerIndex);
@@ -69,6 +64,7 @@ public class Bucket {
 			if (value) {
 				mapApi.getSegment(point.y, point.x).setMapObject(mapObject,
 						mapApi.getActiveLayerIndex());
+
 			}
 		}
 	}

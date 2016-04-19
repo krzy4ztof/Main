@@ -1,9 +1,13 @@
 package mapeditor.mainwindow.themes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Paint;
 import java.awt.Point;
+import java.awt.Stroke;
 
 import mapeditor.mainwindow.GridPane;
 import mapeditor.themesapi.MapObject;
@@ -68,9 +72,39 @@ public class SingleThemePane extends GridPane {
 		MapObject mapObject = getMapObject(row, column);
 		if (mapObject != null) {
 			Image image = mapObject.getImageIcon().getImage();
-			drawSegment(graphics, column, row, divider, image, getPaint(),
-					getStroke());
+			drawSegment(graphics, column, row, divider, image);
+
+			int currentHeight = row * segmentHeight
+					+ (segmentHeight - segmentHeight / divider);
+
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.drawRect(column * segmentWidth + getLeftMarigin(),
+						currentHeight + getTopMarigin(), segmentWidth,
+						segmentHeight);
+			} else {
+				for (int i = 0; i < 3; i++) {
+					graphics.drawOval(column * segmentWidth + getLeftMarigin()
+							+ i, currentHeight + getTopMarigin() + i,
+							segmentWidth - 2 * i, segmentHeight - 2 * i);
+				}
+			}
+
 		}
+	}
+
+	protected void drawSegment(Graphics graphics, int column, int row,
+			int divider, Image image) {
+
+		int currentHeight = row * segmentHeight
+				+ (segmentHeight - segmentHeight / divider);
+
+		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
+				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
+
+		graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
+				currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
+				panel);
 	}
 
 	@Override
@@ -85,6 +119,17 @@ public class SingleThemePane extends GridPane {
 		int lastColumn = getLastVisibleColumnNumber();// - 1;
 		int firstRow = getFirstVisibleRowNumber();// + 1;
 		int lastRow = getLastVisibleRowNumber();// - 1;
+
+		Paint paint = getPaint();
+		Stroke stroke = getStroke();
+
+		if (graphics instanceof Graphics2D) {
+			Graphics2D g2 = (Graphics2D) graphics;
+			g2.setPaint(paint);
+			g2.setStroke(stroke);
+		} else {
+			graphics.setColor(Color.YELLOW);
+		}
 
 		for (int column = firstColumn; column <= lastColumn; column++) {
 			for (int row = firstRow; row <= lastRow; row++) {

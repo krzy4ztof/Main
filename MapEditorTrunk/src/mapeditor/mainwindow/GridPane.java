@@ -3,8 +3,6 @@ package mapeditor.mainwindow;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -47,10 +45,6 @@ public abstract class GridPane {
 			}
 		};
 
-		// panel.setBackground(new Color(238, 238, 238));
-		// TODO: skasowac kolor
-		panel.setBackground(Color.PINK);
-
 		scrollPane = new JScrollPane(panel);
 		paint = Color.GRAY;
 		stroke = new BasicStroke(1.0f);
@@ -62,45 +56,6 @@ public abstract class GridPane {
 
 	protected Stroke getStroke() {
 		return stroke;
-	}
-
-	protected void drawSegment(Graphics graphics, int column, int row,
-			int divider, Image image) {
-		drawSegment(graphics, column, row, divider, image, paint, stroke);
-	}
-
-	protected void drawSegment(Graphics graphics, int column, int row,
-			int divider, Image image, Paint paint, Stroke stroke) {
-
-		int currentHeight = row * segmentHeight
-				+ (segmentHeight - segmentHeight / divider);
-
-		// graphics.setColor(Color.LIGHT_GRAY);
-		// TODO: skasowac PINK
-		graphics.setColor(Color.PINK);
-
-		graphics.drawRect(column * segmentWidth + getLeftMarigin(),
-				currentHeight + getTopMarigin(), segmentWidth, segmentHeight);
-
-		graphics.drawImage(image, column * segmentWidth + getLeftMarigin(),
-				currentHeight + getTopMarigin(), segmentWidth, segmentHeight,
-				panel);
-
-		if (graphics instanceof Graphics2D) {
-			Graphics2D g2 = (Graphics2D) graphics;
-
-			g2.setPaint(paint);
-			g2.setStroke(stroke);
-			g2.drawRect(column * segmentWidth + getLeftMarigin(), currentHeight
-					+ getTopMarigin(), segmentWidth, segmentHeight);
-		} else {
-			graphics.setColor(Color.YELLOW);
-			for (int i = 0; i < 3; i++) {
-				graphics.drawOval(column * segmentWidth + getLeftMarigin() + i,
-						currentHeight + getTopMarigin() + i, segmentWidth - 2
-								* i, segmentHeight - 2 * i);
-			}
-		}
 	}
 
 	protected int getBottomMarigin() {

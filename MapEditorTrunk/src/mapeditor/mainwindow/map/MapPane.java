@@ -22,6 +22,7 @@ import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapSegment;
 import mapeditor.mapapi.Point3D;
 import mapeditor.mapapi.SelectedSegments;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import otherprods.ExampleFileFilter;
 
@@ -178,8 +179,9 @@ public class MapPane extends GridPane {
 		scrollMapToNewView(rectangle, oldMapWidth, oldMapHeight);
 	}
 
-	protected MapObject getCustomMapObject(int row, int col, int layerIndex) {
-		MapObject mapObject = null;
+	protected CustomMapObject getCustomMapObject(int row, int col,
+			int layerIndex) {
+		CustomMapObject mapObject = null;
 		MapSegment mapSegment = mapApi.getSegment(row, col);
 		if (mapSegment != null) {
 			mapObject = mapApi.getSegment(row, col).getCustomMapObject(
@@ -200,76 +202,32 @@ public class MapPane extends GridPane {
 	@Override
 	public void paint(Graphics graphics) {
 
-		for (LayerAttributes layerAttributes : mapApi.getLayersAttributes()) {
-			paint(graphics, layerAttributes);
-
-			Paint tempPaint1 = null;
-			Stroke tempStroke1 = null;
-			if (graphics instanceof Graphics2D) {
-				Graphics2D g2 = (Graphics2D) graphics;
-
-				tempPaint1 = g2.getPaint();
-				tempStroke1 = g2.getStroke();
-			}
-
-			paintCustomObjectEdit(graphics, layerAttributes);
-
-			if (graphics instanceof Graphics2D) {
-				Graphics2D g2 = (Graphics2D) graphics;
-
-				if (tempPaint1 != null) {
-					g2.setPaint(tempPaint1);
-				}
-				if (tempStroke1 != null) {
-
-					g2.setStroke(tempStroke1);
-				}
-			}
-
-			if (layerAttributes.isActive()) {
-				Paint tempPaint = null;
-				Stroke tempStroke = null;
-				if (graphics instanceof Graphics2D) {
-					Graphics2D g2 = (Graphics2D) graphics;
-
-					tempPaint = g2.getPaint();
-					tempStroke = g2.getStroke();
-				}
-
-				paintCopyPaste(graphics, layerAttributes);
-
-				// paintCustomObjectEdit(graphics, layerAttributes);
-
-				if (graphics instanceof Graphics2D) {
-					Graphics2D g2 = (Graphics2D) graphics;
-
-					if (tempPaint != null) {
-						g2.setPaint(tempPaint);
-					}
-					if (tempStroke != null) {
-
-						g2.setStroke(tempStroke);
-					}
-				}
-			}
-
-		}
-	}
-
-	private void paintCustomObjectEdit(Graphics graphics,
-			LayerAttributes layerAttributes) {
-		// TODO Auto-generated method stub
-		// customObjectEdit.paint(graphics);
-
-		if (!customObjectEdit.isActive()) {
-			return;
-		}
-
 		int divider = 1;
 		if (isLayoutHex()) {
 			divider = 2;
 		}
 
+		for (LayerAttributes layerAttributes : mapApi.getLayersAttributes()) {
+
+			drawLayer(graphics, layerAttributes, divider);
+
+			if (customObjectEdit.isActive()) {
+				paintCustomObjectEdit(graphics, layerAttributes, divider);
+			}
+
+			paintSelectedSegments(graphics, layerAttributes, divider);
+			paintDraggedSegments(graphics, layerAttributes, divider);
+		}
+
+		int mapWidth = getGridWidth();
+		int mapHeight = getGridHeight();
+
+		panel.setPreferredSize(new Dimension(mapWidth, mapHeight));
+		panel.revalidate();
+	}
+
+	private void paintCustomObjectEdit(Graphics graphics,
+			LayerAttributes layerAttributes, int divider) {
 		Point3D pointObjectLocation = customObjectEdit.getObjectLocation();
 
 		if (pointObjectLocation.z == layerAttributes.getIndex()) {
@@ -277,15 +235,21 @@ public class MapPane extends GridPane {
 			Paint paint = customObjectEdit.getObjectLocationPaint();
 			Stroke stroke = customObjectEdit.getObjectLocationStroke();
 
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.setPaint(paint);
+				g2.setStroke(stroke);
+			} else {
+				graphics.setColor(Color.YELLOW);
+			}
+
 			if (((pointObjectLocation.x) % 2) == 0) {
 				drawSegmentGrid(graphics, pointObjectLocation.x,
-						pointObjectLocation.y, 1, paint, stroke,
-						layerAttributes);
+						pointObjectLocation.y, 1, layerAttributes);
 
 			} else {
 				drawSegmentGrid(graphics, pointObjectLocation.x,
-						pointObjectLocation.y, divider, paint, stroke,
-						layerAttributes);
+						pointObjectLocation.y, divider, layerAttributes);
 			}
 		}
 
@@ -298,31 +262,49 @@ public class MapPane extends GridPane {
 			Paint paint = customObjectEdit.getPointPropertyPaint();
 			Stroke stroke = customObjectEdit.getPointPropertyStroke();
 
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.setPaint(paint);
+				g2.setStroke(stroke);
+			} else {
+				graphics.setColor(Color.YELLOW);
+			}
+
 			if (((pointPropertyLocation.x) % 2) == 0) {
 				drawSegmentGrid(graphics, pointPropertyLocation.x,
-						pointPropertyLocation.y, 1, paint, stroke,
-						layerAttributes);
+						pointPropertyLocation.y, 1, layerAttributes);
 
 			} else {
 				drawSegmentGrid(graphics, pointPropertyLocation.x,
-						pointPropertyLocation.y, divider, paint, stroke,
-						layerAttributes);
+						pointPropertyLocation.y, divider, layerAttributes);
 			}
 		}
 
 	}
 
-	public void paint(Graphics graphics, LayerAttributes layerAttributes) {
-
-		int divider = 1;
-		if (isLayoutHex()) {
-			divider = 2;
-		}
+	public void drawLayer(Graphics graphics, LayerAttributes layerAttributes,
+			int divider) {
 
 		int firstColumn = getFirstVisibleColumnNumber();// + 1;
 		int lastColumn = getLastVisibleColumnNumber();// - 1;
 		int firstRow = getFirstVisibleRowNumber();// + 1;
 		int lastRow = getLastVisibleRowNumber();// - 1;
+
+		Paint paint;
+		if (layerAttributes.isActive()) {
+			paint = getPaint();
+		} else {
+			paint = inactiveLayerPaint;
+		}
+		Stroke stroke = getStroke();
+
+		if (graphics instanceof Graphics2D) {
+			Graphics2D g2 = (Graphics2D) graphics;
+			g2.setPaint(paint);
+			g2.setStroke(stroke);
+		} else {
+			graphics.setColor(Color.YELLOW);
+		}
 
 		for (int column = firstColumn; column <= lastColumn; column++) {
 			for (int row = firstRow; row <= lastRow; row++) {
@@ -333,26 +315,16 @@ public class MapPane extends GridPane {
 				}
 			}
 		}
-
-		int mapWidth = getGridWidth();
-		int mapHeight = getGridHeight();
-
-		panel.setPreferredSize(new Dimension(mapWidth, mapHeight));
-		panel.revalidate();
-
 	}
 
 	private Point getOffsetForLayer(int layerIndex) {
-
 		int size = mapApi.getLayerAttributesSize();
-
 		int multiplier = size - 1 - layerIndex;
 
 		Point point = new Point(layerOffset.x * multiplier, layerOffset.y
 				* multiplier);
 
 		return point;
-
 	}
 
 	private Point getOffsetForLayer(LayerAttributes layerAttributes) {
@@ -361,16 +333,12 @@ public class MapPane extends GridPane {
 	}
 
 	protected void drawSegmentImage(Graphics graphics, int column, int row,
-			int divider, Image image, Paint paint, Stroke stroke,
-			LayerAttributes layerAttributes) {
+			int divider, Image image, LayerAttributes layerAttributes) {
 
 		Point offset = getOffsetForLayer(layerAttributes);
 
 		int currentHeight = row * segmentHeight
 				+ (segmentHeight - segmentHeight / divider);
-
-		// TODO: skasowac PINK
-		graphics.setColor(Color.CYAN);// BACKGROUND
 
 		graphics.drawImage(image, column * segmentWidth + getLeftMarigin()
 				+ offset.x, currentHeight + getTopMarigin() + offset.y,
@@ -378,8 +346,7 @@ public class MapPane extends GridPane {
 	}
 
 	protected void drawSegmentGrid(Graphics graphics, int column, int row,
-			int divider, Paint paint, Stroke stroke,
-			LayerAttributes layerAttributes) {
+			int divider, LayerAttributes layerAttributes) {
 
 		Point offset = getOffsetForLayer(layerAttributes);
 
@@ -388,14 +355,10 @@ public class MapPane extends GridPane {
 
 		if (graphics instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D) graphics;
-
-			g2.setPaint(paint);
-			g2.setStroke(stroke);
 			g2.drawRect(column * segmentWidth + getLeftMarigin() + offset.x,
 					currentHeight + getTopMarigin() + offset.y, segmentWidth,
 					segmentHeight);
 		} else {
-			graphics.setColor(Color.YELLOW);
 			for (int i = 0; i < 3; i++) {
 				graphics.drawOval(column * segmentWidth + getLeftMarigin() + i
 						+ offset.x, currentHeight + getTopMarigin() + i
@@ -407,20 +370,13 @@ public class MapPane extends GridPane {
 	private void drawSegment(Graphics graphics, int column, int row,
 			int divider, LayerAttributes layerAttributes) {
 
-		Paint paint;
-		if (layerAttributes.isActive()) {
-			paint = getPaint();
-		} else {
-			paint = inactiveLayerPaint;
-		}
-
 		if (layerAttributes.isBackgroundVisible()) {
 			MapObject mapObject = getMapObject(row, column,
 					layerAttributes.getIndex());
 			if (mapObject != null) {
 				Image image = mapObject.getImageIcon().getImage();
-				drawSegmentImage(graphics, column, row, divider, image, paint,
-						getStroke(), layerAttributes);
+				drawSegmentImage(graphics, column, row, divider, image,
+						layerAttributes);
 			}
 		}
 
@@ -429,103 +385,121 @@ public class MapPane extends GridPane {
 					layerAttributes.getIndex());
 			if (customMapObject != null) {
 				Image image = customMapObject.getImageIcon().getImage();
-				drawSegmentImage(graphics, column, row, divider, image, paint,
-						getStroke(), layerAttributes);
+				drawSegmentImage(graphics, column, row, divider, image,
+						layerAttributes);
 			}
 		}
 
 		if (layerAttributes.isBackgroundVisible()
 				|| layerAttributes.isObjectsVisible()) {
-			drawSegmentGrid(graphics, column, row, divider, paint, getStroke(),
-					layerAttributes);
+			drawSegmentGrid(graphics, column, row, divider, layerAttributes);
 		}
 	}
 
-	public void paintCopyPaste(Graphics graphics,
-			LayerAttributes layerAttributes) {
-
-		int divider = 1;
-		if (isLayoutHex()) {
-			divider = 2;
-		}
-
+	protected void paintSelectedSegments(Graphics graphics,
+			LayerAttributes layerAttributes, int divider) {
 		SelectedSegments selectedSegments = copyPaste.getSelectedSegments();
-		if (selectedSegments.isActive()) {
+		int layerIndex = layerAttributes.getIndex();
+
+		if (selectedSegments.isActiveForLayer(layerIndex)) {
 
 			Paint paint = selectedSegments.getPaint();
 			Stroke stroke = selectedSegments.getStroke();
+			if (graphics instanceof Graphics2D) {
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.setPaint(paint);
+				g2.setStroke(stroke);
+			} else {
+				graphics.setColor(Color.YELLOW);
+			}
 
 			Iterator<CopyPasteSegment> iterator = selectedSegments
 					.iteratorForDrawing();
 
 			while (iterator.hasNext()) {
 				CopyPasteSegment segment = iterator.next();
-				System.out.println("Segment: " + segment.getPoint().x + " / "
-						+ segment.getPoint().y);
 
 				if (((segment.getPoint().x) % 2) == 0) {
 					drawSegmentCopyPaste(graphics, segment.getPoint().x,
-							segment.getPoint().y, 1, segment.getImage(), paint,
-							stroke, layerAttributes);
+							segment.getPoint().y, 1, segment.getImage(),
+							layerAttributes);
 
 				} else {
 					drawSegmentCopyPaste(graphics, segment.getPoint().x,
 							segment.getPoint().y, divider, segment.getImage(),
-							paint, stroke, layerAttributes);
+							layerAttributes);
 				}
 
 			}
 		}
 
+		copyPaste.paintSelectedRectangle(graphics);
+
+	}
+
+	public void paintDraggedSegments(Graphics graphics,
+			LayerAttributes layerAttributes, int divider) {
+
+		SelectedSegments selectedSegments = copyPaste.getSelectedSegments();
 		int layerIndex = layerAttributes.getIndex();
-		DraggedSegments draggedSegments = copyPaste.getDraggedSegments();
-		draggedSegments.tryToActivate(this, selectedSegments, layerIndex);
 
-		if (draggedSegments.isActive()) {
+		if (layerAttributes.isActive()) {
 
-			Paint paint = draggedSegments.getPaint();
-			Stroke stroke = draggedSegments.getStroke();
+			DraggedSegments draggedSegments = copyPaste.getDraggedSegments();
+			draggedSegments.tryToActivate(this, selectedSegments, layerIndex);
 
-			Iterator<CopyPasteSegment> iterator = draggedSegments.iterator();
+			if (draggedSegments.isActiveForLayer(layerIndex)) {
 
-			while (iterator.hasNext()) {
-				CopyPasteSegment segment = iterator.next();
+				Paint paint = draggedSegments.getPaint();
+				Stroke stroke = draggedSegments.getStroke();
+				if (graphics instanceof Graphics2D) {
+					Graphics2D g2 = (Graphics2D) graphics;
+					g2.setPaint(paint);
+					g2.setStroke(stroke);
+				} else {
+					graphics.setColor(Color.YELLOW);
+				}
 
-				int firstColumn = getFirstVisibleColumnNumber();// + 1;
-				int lastColumn = getLastVisibleColumnNumber();// - 1;
-				int firstRow = getFirstVisibleRowNumber();// + 1;
-				int lastRow = getLastVisibleRowNumber();// - 1;
+				Iterator<CopyPasteSegment> iterator = draggedSegments
+						.iterator();
 
-				Point point = segment.getPoint();
-				if (point.x >= firstColumn && point.x <= lastColumn
-						&& point.y >= firstRow && point.y <= lastRow) {
+				while (iterator.hasNext()) {
+					CopyPasteSegment segment = iterator.next();
 
-					if (((segment.getPoint().x) % 2) == 0) {
-						drawSegmentCopyPaste(graphics, segment.getPoint().x,
-								segment.getPoint().y, 1, segment.getImage(),
-								paint, stroke, layerAttributes);
-					} else {
-						drawSegmentCopyPaste(graphics, segment.getPoint().x,
-								segment.getPoint().y, divider,
-								segment.getImage(), paint, stroke,
-								layerAttributes);
+					int firstColumn = getFirstVisibleColumnNumber();// + 1;
+					int lastColumn = getLastVisibleColumnNumber();// - 1;
+					int firstRow = getFirstVisibleRowNumber();// + 1;
+					int lastRow = getLastVisibleRowNumber();// - 1;
+
+					Point point = segment.getPoint();
+					if (point.x >= firstColumn && point.x <= lastColumn
+							&& point.y >= firstRow && point.y <= lastRow) {
+
+						if (((segment.getPoint().x) % 2) == 0) {
+							drawSegmentCopyPaste(graphics,
+									segment.getPoint().x, segment.getPoint().y,
+									1, segment.getImage(), layerAttributes);
+						} else {
+							drawSegmentCopyPaste(graphics,
+									segment.getPoint().x, segment.getPoint().y,
+									divider, segment.getImage(),
+									layerAttributes);
+						}
 					}
 				}
 			}
 		}
 
-		copyPaste.paint(graphics);
+		copyPaste.paintDraggedRectangle(graphics);
 	}
 
 	protected void drawSegmentCopyPaste(Graphics graphics, int column, int row,
-			int divider, Image image, Paint paint, Stroke stroke,
-			LayerAttributes layerAttributes) {
+			int divider, Image image, LayerAttributes layerAttributes) {
 
-		this.drawSegmentImage(graphics, column, row, divider, image, paint,
-				stroke, layerAttributes);
-
-		this.drawSegmentGrid(graphics, column, row, divider, paint, stroke,
+		this.drawSegmentImage(graphics, column, row, divider, image,
 				layerAttributes);
+
+		this.drawSegmentGrid(graphics, column, row, divider, layerAttributes);
 	}
 
 	public void onCutEvent() {
@@ -574,14 +548,15 @@ public class MapPane extends GridPane {
 
 				MapObject mapObject = getMapObject(row, col
 						+ firstSegmentPoint.x, layerIndex);
-				if (mapObject != null) {
-					mapObject = mapObject.clone();
-					Point point = new Point(col + firstSegmentPoint.x, row);
 
-					newColumn.add(new CopyPasteSegment(mapObject, point));
-				} else {
-					System.out.println("null " + row + "/" + col);
-				}
+				CustomMapObject customMapObject = getCustomMapObject(row, col
+						+ firstSegmentPoint.x, layerIndex);
+
+				Point point = new Point(col + firstSegmentPoint.x, row);
+				CopyPasteSegment copyPasteSegment = new CopyPasteSegment(
+						mapObject, customMapObject, point);
+				newColumn.add(copyPasteSegment);
+
 			}
 
 			segments.add(newColumn);

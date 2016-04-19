@@ -1,6 +1,7 @@
 package mapeditor.mapapi;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -53,7 +54,8 @@ public class SelectedSegments extends CopyPasteSegments {
 	}
 
 	public void activate(MapPane mapPane, int layerIndex) {
-		super.activate(mapPane, firstPointToCut, lastPointToCut, layerIndex);
+		super.activate(mapPane, firstPointToCut, lastPointToCut,
+				this.layerIndex);
 	}
 
 	@Override
@@ -91,7 +93,7 @@ public class SelectedSegments extends CopyPasteSegments {
 				for (CopyPasteSegment segment : column) {
 
 					CopyPasteSegment newSegment = new CopyPasteSegment(
-							mapObjectFactory.getBlankMapObject(),
+							mapObjectFactory.getBlankMapObject(), null,
 							segment.getPoint());
 
 					blankSegments.add(newSegment);
@@ -102,12 +104,34 @@ public class SelectedSegments extends CopyPasteSegments {
 		return blankSegments.iterator();
 	}
 
-	@Override
-	public void paint(Graphics graphics) {
-		super.paint(graphics);
+	protected void paintRectangle(Graphics graphics) {
+
+		boolean graphicsChanged = false;
+
+		if (isActive()) {
+
+			changeGraphics(graphics);
+			graphicsChanged = true;
+
+			drawRectangle(graphics, minPoint, maxPoint);
+		}
+
 		if (firstPointToCut != null && lastPointToCut != null) {
+			if (!graphicsChanged) {
+				changeGraphics(graphics);
+			}
+
 			drawRectangle(graphics, firstPointToCut, lastPointToCut);
 
 		}
 	}
+
+	protected void changeGraphics(Graphics graphics) {
+		if (graphics instanceof Graphics2D) {
+			Graphics2D g2 = (Graphics2D) graphics;
+			g2.setStroke(stroke);
+			g2.setPaint(paintRectangle);
+		}
+	}
+
 }

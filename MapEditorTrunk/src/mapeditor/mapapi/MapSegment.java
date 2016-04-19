@@ -51,4 +51,14 @@ public class MapSegment {
 			mapObjects.set(layerIndex, mapObject);
 		}
 	}
+
+	public void setCustomMapObject(CustomMapObject customMapObject,
+			int layerIndex) {
+		if (customMapObject != null) {
+			customMapObject = customMapObject.clone();
+		}
+		customMapObjects.set(layerIndex, customMapObject);
+
+	}
+
 }
