@@ -14,21 +14,11 @@ public class Tools {
 	}
 
 	public void setActiveTool(ToolsEnum toolsEnum) {
-
-		System.out.println("1. AC " + activeTool + " PRE " + previousTool);
-
 		if (toolsEnum != activeTool) {
 			previousTool = activeTool;
 		}
 
-		/*
-		 * if (activeTool != null && activeTool != previousTool) { previousTool
-		 * = activeTool; }
-		 */
-
 		activeTool = toolsEnum;
-		System.out.println("2. AC " + activeTool + " PRE " + previousTool);
-
 	}
 
 	public ToolsEnum getActiveTool() {
@@ -36,8 +26,6 @@ public class Tools {
 	}
 
 	public void restorePreviousTool() {
-
-		System.out.println("RESTORE AC " + activeTool + " PRE " + previousTool);
 		if (previousTool != null) {
 			activeTool = previousTool;
 		}

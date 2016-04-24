@@ -4,13 +4,17 @@
  */
 package mapeditor.themesapi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author krzysztof
- */
+import mapeditor.logger.MapLogger;
+
 public class MapObject implements Cloneable {
+
+	private static final Logger logger = Logger.getLogger(MapObject.class
+			.getName());
 
 	private String objectName;
 	private String imageName;
@@ -25,7 +29,7 @@ public class MapObject implements Cloneable {
 		try {
 			clone = (MapObject) super.clone();
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, MapLogger.ERROR, e);
 		}
 
 		return clone;
@@ -85,9 +89,8 @@ public class MapObject implements Cloneable {
 	}
 
 	public void describeYourself() {
-
-		System.out.println("    Object name: " + objectName + "; Image name: "
-				+ imageName + "; Object id: " + objectId);
+		logger.log(Level.FINE, MapLogger.DESCRIBE_MAP_OBJECT, new String[] {
+				objectName, imageName, Integer.toString(objectId) });
 	}
 
 	public String getObjectIdString() {

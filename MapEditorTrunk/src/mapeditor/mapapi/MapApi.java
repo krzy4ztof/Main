@@ -172,33 +172,16 @@ public class MapApi {
 	 * @param rows
 	 */
 	private void changeLayersSize(int layers, MapObject blankMapObject) {
-		int rowsSize = getRowsSize();
-		int colsSize = getColumnsSize();
 		int layersSize = getLayerAttributesSize();
-		LinkedList<MapSegment> newRow = null;
-		// MapSegment segment = null;
-
-		System.out.println("change layers size from: " + layersSize + " to "
-				+ layers);
 
 		if (layers > layersSize) {
 			int addLayers = layers - layersSize;
 
-			System.out.println("add layers " + addLayers);
-
-			// for (int layerIndex = layersSize - 1; layerIndex < layers;
-			// layerIndex++) {
 			for (int layerIndex = layersSize; layerIndex < layers; layerIndex++) {
 				layersAttributes.add(new LayerAttributes(layerIndex));
 			}
 
-			System.out.println("after add layers " + layersAttributes.size());
-
 			setActiveLayerIndex(0);
-
-			for (LayerAttributes layerAttributes : layersAttributes) {
-				layerAttributes.describeYourself();
-			}
 
 			for (LinkedList<MapSegment> row : segments) {
 				for (MapSegment segment : row) {
@@ -209,19 +192,11 @@ public class MapApi {
 
 			int removeLayers = layersSize - layers;
 
-			System.out.println("remove layers " + removeLayers);
-
 			for (int i = 0; i < removeLayers; i++) {
 				layersAttributes.removeLast();
 			}
 
-			System.out
-					.println("after remove layers " + layersAttributes.size());
-
 			setActiveLayerIndex(0);
-			for (LayerAttributes layerAttributes : layersAttributes) {
-				layerAttributes.describeYourself();
-			}
 
 			for (LinkedList<MapSegment> row : segments) {
 				for (MapSegment segment : row) {

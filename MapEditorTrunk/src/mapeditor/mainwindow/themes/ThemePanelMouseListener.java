@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import mapeditor.mainwindow.GridPane;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.ThemesManager;
 
@@ -21,24 +20,14 @@ public class ThemePanelMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent event) {
 		/*
-		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje ikone),
-		 * 3 - dla prawego przycisku (menu atrybutow)
+		 * single click. e.getButton(): 1 - left button, 3 - right button
 		 */
-		Object component = event.getComponent();
-		System.out.println("SEL !" + component.getClass().getName());
-
-		if (component instanceof GridPane) {
-			System.out.println("SEL !!!!" + component);
-		}
-
 		SingleThemePane themePane = themesPane.getActiveThemePanel();
 
 		Point seg = themePane.getSegmentPointAtCursor(event.getPoint());
 
 		if (seg.x != -1) {
 			if (event.getButton() == MouseEvent.BUTTON1) {
-				System.out.println("TP Mouse Listener");
-				System.out.println(seg);
 				MapObject mapObject = themePane.getTheme().getMapObject(seg.y,
 						seg.x);
 
@@ -46,43 +35,24 @@ public class ThemePanelMouseListener implements MouseListener {
 					themesPane.setSelectedMapObject(mapObject);
 					themesManager.setSelectedMapObject(mapObject);
 				}
-
-				// MapObject mapObject = mapThemesManager.getSelectedTheme()
-				// .getSelectedObject();
-				// mapApi.getSegment(seg.y, seg.x).setMapObject(mapObject);
-
-				// themesPane.getActiveThemePanel().refresh();
-
-			} else {
-
-				// mapPanel.r_SegmentAttributesPanel.setVisible(true);
-				System.out.println("menu atrybutow");
 			}
 		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

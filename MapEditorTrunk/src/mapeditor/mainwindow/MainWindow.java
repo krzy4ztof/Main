@@ -255,8 +255,7 @@ public class MainWindow {
 				layersPaneActionListener);
 
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
-				messages, mapThemesList, config, tools, mapObjectFactory,
-				layersPane);
+				messages, mapThemesList, config, mapObjectFactory, layersPane);
 		MainMenuActionListener gsListener = new MainMenuActionListener(
 				dialogsManager, mapPanel, themesPane);
 

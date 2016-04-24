@@ -1,6 +1,14 @@
 package mapeditor.themesapi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import mapeditor.logger.MapLogger;
+
 public class LongProperty extends MapObjectProperty {
+
+	private static final Logger logger = Logger.getLogger(LongProperty.class
+			.getName());
 
 	private Long value;
 
@@ -11,8 +19,11 @@ public class LongProperty extends MapObjectProperty {
 
 	@Override
 	public void describeYourself() {
-		System.out
-				.println("LongProperty name: " + name + "; default: " + value);
+		logger.log(
+				Level.FINE,
+				MapLogger.DESCRIBE_DEFAULT_MAP_OBJECT_PROPERTY,
+				new String[] { getClass().getSimpleName(), name,
+						value.toString() });
 	}
 
 	public void setValue(long value) {

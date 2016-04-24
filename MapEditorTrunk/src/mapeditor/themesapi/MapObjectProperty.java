@@ -1,6 +1,14 @@
 package mapeditor.themesapi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import mapeditor.logger.MapLogger;
+
 public abstract class MapObjectProperty implements Cloneable {
+
+	private static final Logger logger = Logger
+			.getLogger(MapObjectProperty.class.getName());
 
 	public enum Type {
 		Long, String, Text, Enum, Point
@@ -19,7 +27,7 @@ public abstract class MapObjectProperty implements Cloneable {
 		try {
 			clone = (MapObjectProperty) super.clone();
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, MapLogger.ERROR, e);
 		}
 
 		return clone;
@@ -30,7 +38,8 @@ public abstract class MapObjectProperty implements Cloneable {
 	}
 
 	public void describeYourself() {
-		System.out.println("Property name: " + name);
+		logger.log(Level.FINE, MapLogger.DESCRIBE_MAP_OBJECT_PROPERTY,
+				new String[] { getClass().getSimpleName(), name });
 	}
 
 	public abstract Type getType();

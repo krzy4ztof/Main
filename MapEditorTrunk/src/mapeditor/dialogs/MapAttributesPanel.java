@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,15 +18,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import mapeditor.config.Config;
+import mapeditor.logger.MapLogger;
 import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.MapLayout;
 import mapeditor.messages.MapMessages;
 
 public class MapAttributesPanel extends JDialog {
 
-	/**
-	 * 
-	 */
+	private static final Logger logger = Logger
+			.getLogger(MapAttributesPanel.class.getName());
+
 	private static final long serialVersionUID = 1L;
 
 	MapAttributes initialMapAttributes;
@@ -70,17 +73,13 @@ public class MapAttributesPanel extends JDialog {
 	}
 
 	public void activate(MapAttributes mapAttributes) {
-		/* parametry - MapApi */
 		this.initialMapAttributes = mapAttributes;
 		try {
 			this.selectedMapAttributes = mapAttributes.clone();
 		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE, MapLogger.ERROR, e);
 		}
 
-		// this.initialRow = no_rows;
-		// this.initialCol = no_cols;
 		colItem = new JTextField();
 		rowItem = new JTextField();
 		layerItem = new JTextField();
@@ -165,9 +164,6 @@ public class MapAttributesPanel extends JDialog {
 
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setSize(290, 165);
-		// setSize(290, 265);
-
-		// this.setResizable(true);
 
 		setLocationRelativeTo(getParent());
 		setVisible(true);
@@ -199,11 +195,6 @@ public class MapAttributesPanel extends JDialog {
 	 * are removed and the dialog window remains open.
 	 */
 	void onOkAction() {
-
-		System.out.println("height");
-		System.out.println(getHeight());
-		System.out.println("width");
-		System.out.println(getWidth());
 
 		boolean ok = true;
 		int value;

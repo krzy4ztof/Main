@@ -2,8 +2,15 @@ package mapeditor.themesapi;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import mapeditor.logger.MapLogger;
 
 public class CustomMapObject extends MapObject {
+
+	private static final Logger logger = Logger.getLogger(CustomMapObject.class
+			.getName());
 
 	private LinkedList<MapObjectProperty> mapObjectProperties = null;
 
@@ -43,11 +50,11 @@ public class CustomMapObject extends MapObject {
 	@Override
 	public void describeYourself() {
 		super.describeYourself();
-		System.out.println("Properties are: ");
+		logger.log(Level.FINE, MapLogger.DESCRIBE_CUSTOM_OBJECT_START);
 		for (MapObjectProperty property : mapObjectProperties) {
 			property.describeYourself();
 		}
-		System.out.println("End");
+		logger.log(Level.FINE, MapLogger.DESCRIBE_CUSTOM_OBJECT_END);
 	}
 
 	public void setProperty(String name, String type, String value) {

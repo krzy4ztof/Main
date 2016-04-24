@@ -9,7 +9,6 @@ import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
 
-//TODO: review
 public class CopyPaste {
 	enum State {
 		/*
@@ -198,10 +197,11 @@ public class CopyPaste {
 
 					mapApi.getSegment(row, col).setMapObject(
 							mapObjectFactory.getBlankMapObject(),
-							mapApi.getActiveLayerIndex());
+							selectedSegments.getLayerIndex());
 
 					mapApi.getSegment(row, col).setCustomMapObject(null,
-							mapApi.getActiveLayerIndex());
+							selectedSegments.getLayerIndex());
+
 				}
 			}
 
@@ -214,36 +214,17 @@ public class CopyPaste {
 				int col = segment.getPoint().x;
 				MapObject mapObject = segment.getMapObject();
 
-				System.out.println("wklejam");
-				mapObject.describeYourself();
-
 				MapSegment mapSegment = mapApi.getSegment(row, col);
 				mapSegment
 						.setMapObject(mapObject, mapApi.getActiveLayerIndex());
-
-				System.out.println("wklejony:");
-
-				MapObject insertedMapObject = mapSegment.getMapObject(mapApi
-						.getActiveLayerIndex());
-				insertedMapObject.describeYourself();
 
 				CustomMapObject customMapObject = segment.getCustomMapObject();
 				mapSegment.setCustomMapObject(customMapObject,
 						mapApi.getActiveLayerIndex());
 
-				if (customMapObject != null) {
-					System.out.println("wklejam Custom");
-					customMapObject.describeYourself();
-				} else {
-					System.out.println("wklejam Custom null");
-
-				}
-
 				MapSegment mapSegment2 = mapApi.getSegment(row, col);
 				mapSegment2.setMapObject(mapObject,
 						mapApi.getActiveLayerIndex());
-
-				System.out.println("wklejony2:");
 
 			}
 		}

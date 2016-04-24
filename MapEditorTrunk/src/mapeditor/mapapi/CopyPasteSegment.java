@@ -45,4 +45,12 @@ public class CopyPasteSegment {
 		return mapObject.getImageIcon().getImage();
 	}
 
+	public Image getCustomObjectImage() {
+		if (customMapObject != null) {
+			return customMapObject.getImageIcon().getImage();
+		} else {
+			return null;
+		}
+	}
+
 }

@@ -2,11 +2,17 @@ package mapeditor.mainwindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import mapeditor.logger.MapLogger;
 import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mainwindow.themes.ThemesPane;
 
 public class MainMenuActionListener implements ActionListener {
+
+	private static final Logger logger = Logger
+			.getLogger(MainMenuActionListener.class.getName());
 
 	private MapPane mapPanel;
 	private DialogsManager dialogsManager;
@@ -22,13 +28,12 @@ public class MainMenuActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		/*
-		 * prowadzi nasluch 1. przyciskow przesuwajacych mape 2. ??? menu plik
-		 * (otwieranie/zamykanie nowych map - moze przeniesc to do
-		 * graphics_systemu, otwieranie okien dialogowych do wyboru pliku
+		 * Listens to buttons that move, zoom in/out map
 		 */
 
 		String str = e.getActionCommand();
-		System.out.println("MapPanel: " + e.getActionCommand());
+		logger.log(Level.INFO, MapLogger.ACTION_COMMAND, str);
+
 		if (str.equals(MainWindow.ACTION_ZOOM_IN)) {
 			mapPanel.zoomMapIn();
 		} else if (str.equals(MainWindow.ACTION_ZOOM_OUT)) {
@@ -51,11 +56,8 @@ public class MainMenuActionListener implements ActionListener {
 			themesPane.getActiveThemePanel().refresh();
 		}
 
-		// mapPanel.getPanel().repaint();
 		mapPanel.refresh();
 
-		// return focus to top frame. Focus allows GraphicsSystemKeyListener to
-		// handle key events.
 		mapPanel.getPanel().getTopLevelAncestor().requestFocus();
 	}
 }

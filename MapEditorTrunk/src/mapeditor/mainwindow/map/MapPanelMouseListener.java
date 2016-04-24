@@ -3,7 +3,10 @@ package mapeditor.mainwindow.map;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import mapeditor.logger.MapLogger;
 import mapeditor.mainwindow.customobject.CustomObjectPane;
 import mapeditor.mainwindow.themes.ThemesPane;
 import mapeditor.mapapi.Bucket;
@@ -19,6 +22,9 @@ import mapeditor.themesapi.MapObjectFactory;
 import mapeditor.themesapi.ThemesManager;
 
 public class MapPanelMouseListener implements MouseListener {
+
+	private static final Logger logger = Logger
+			.getLogger(MapPanelMouseListener.class.getName());
 
 	private MapPane mapPanel;
 	private MapApi mapApi;
@@ -74,8 +80,8 @@ public class MapPanelMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		/*
-		 * pojedyncze klikniecie. e.getButton(): 1 - dla lewego (rysuje ikone),
-		 * 3 - dla prawego przycisku (menu atrybutow)
+		 * single click e.getButton(): 1 - left button click (rysuje ikone), 3 -
+		 * right button click dla prawego przycisku (menu atrybutow)
 		 */
 		Point seg = mapPanel.getSegmentPointAtCursor(e.getPoint(),
 				mapApi.getActiveLayerIndex());
@@ -85,6 +91,7 @@ public class MapPanelMouseListener implements MouseListener {
 				ToolsEnum activeTool = tools.getActiveTool();
 				MapObject mapObject = null;
 				CustomMapObject customMapObject = null;
+				logger.log(Level.INFO, MapLogger.MOUSE_CLICKED, activeTool);
 
 				if (activeTool == ToolsEnum.BRUSH) {
 					mapObject = mapThemesManager.getSelectedMapObject();
@@ -101,7 +108,6 @@ public class MapPanelMouseListener implements MouseListener {
 				} else if (activeTool == ToolsEnum.PICKER) {
 					mapObject = mapApi.getSegment(seg.y, seg.x).getMapObject(
 							mapApi.getActiveLayerIndex());
-					System.out.println(":::" + mapObject);
 
 					mapThemesManager.setSelectedMapObject(mapObject);
 					themesPane.setSelectedMapObject(mapObject);
@@ -127,11 +133,9 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.HAMMER) {
-					System.out.println("klikniety mlotek");
 
 					customMapObject = mapApi.getSegment(seg.y, seg.x)
 							.getCustomMapObject(mapApi.getActiveLayerIndex());
-					System.out.println("CU:::" + customMapObject);
 
 					if (customMapObject == null) {
 						customObjectPane.deactivate();
@@ -145,7 +149,6 @@ public class MapPanelMouseListener implements MouseListener {
 					}
 					mapPanel.refresh();
 				} else if (activeTool == ToolsEnum.POINT_PROPERTY) {
-					System.out.println("klikniety point property");
 					Point3D point = new Point3D(seg.x, seg.y,
 							mapApi.getActiveLayerIndex());
 
@@ -154,11 +157,6 @@ public class MapPanelMouseListener implements MouseListener {
 
 					mapPanel.refresh();
 				}
-
-			} else {
-
-				// mapPanel.r_SegmentAttributesPanel.setVisible(true);
-				// System.out.println("menu atrybutow");
 			}
 		}
 	}

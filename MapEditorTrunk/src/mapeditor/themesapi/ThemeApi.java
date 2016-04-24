@@ -2,10 +2,16 @@ package mapeditor.themesapi;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import mapeditor.config.Config;
+import mapeditor.logger.MapLogger;
 
 public class ThemeApi {
+
+	private static final Logger logger = Logger.getLogger(ThemeApi.class
+			.getName());
 
 	private String name;
 
@@ -60,10 +66,11 @@ public class ThemeApi {
 
 	public void describeYourself() {
 
-		System.out.println("***\tTheme name: " + name + "\t***");
+		logger.log(Level.FINE, MapLogger.DESCRIBE_THEME, name);
 
 		for (LinkedList<MapObject> row : mapObjects) {
-			System.out.println("Row: ");
+			logger.log(Level.FINE, MapLogger.DESCRIBE_THEME_ROW);
+
 			for (MapObject mapObject : row) {
 				mapObject.describeYourself();
 			}

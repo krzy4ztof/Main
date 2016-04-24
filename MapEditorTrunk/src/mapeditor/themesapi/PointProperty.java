@@ -1,22 +1,31 @@
 package mapeditor.themesapi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import mapeditor.logger.MapLogger;
 import mapeditor.mapapi.Point3D;
 
 public class PointProperty extends MapObjectProperty {
+
+	private static final Logger logger = Logger.getLogger(PointProperty.class
+			.getName());
 
 	private Point3D value;
 
 	public PointProperty(String name, String value) {
 		super(name);
 
-		// this.value = new Point3D(value);
 		setValue(value);
 	}
 
 	@Override
 	public void describeYourself() {
-		System.out.println("PointProperty name: " + name + "; default: "
-				+ value);
+		logger.log(
+				Level.FINE,
+				MapLogger.DESCRIBE_DEFAULT_MAP_OBJECT_PROPERTY,
+				new String[] { getClass().getSimpleName(), name,
+						value.asString() });
 	}
 
 	public void setValue(Point3D value) {

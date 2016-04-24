@@ -1,6 +1,8 @@
 package mapeditor.mainwindow;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -15,12 +17,12 @@ import javax.xml.validation.Validator;
 
 import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
+import mapeditor.logger.MapLogger;
 import mapeditor.main.ApplicationManager;
 import mapeditor.mainwindow.layers.LayersControlPane;
 import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
-import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoaderSAXHandler;
 import mapeditor.saveload.MapSaver;
@@ -33,24 +35,25 @@ import otherprods.ExampleFileFilter;
 
 public class DialogsManager {
 
+	private static final Logger logger = Logger.getLogger(DialogsManager.class
+			.getName());
+
 	private MapPane mapPanel;
 	private MapApi mapApi;
 	private MapMessages messages;
 	private ThemesManager mapThemesList;
 	private Config config;
-	private Tools tools;
 	private MapObjectFactory mapObjectFactory;
 	private LayersControlPane layersPane;
 
 	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
-			ThemesManager mapThemesList, Config config, Tools tools,
+			ThemesManager mapThemesList, Config config,
 			MapObjectFactory mapObjectFactory, LayersControlPane layersPane) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
 		this.mapThemesList = mapThemesList;
 		this.config = config;
-		this.tools = tools;
 		this.mapObjectFactory = mapObjectFactory;
 		this.layersPane = layersPane;
 	}
@@ -132,29 +135,29 @@ public class DialogsManager {
 	}
 
 	private void saveMapApi() {
-		/* zapisuje mape */
-		JFileChooser FC = new JFileChooser();
-		FC.setCurrentDirectory(new File("." + File.separator + "Maps"));
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser
+				.setCurrentDirectory(new File("." + File.separator + "Maps"));
 
-		ExampleFileFilter rfilter = new ExampleFileFilter("xml", "XML Files");
+		ExampleFileFilter filter = new ExampleFileFilter("xml", "XML Files");
 
-		FC.setFileFilter(rfilter);
-		FC.setSelectedFile(mapApi.getFile());
+		fileChooser.setFileFilter(filter);
+		fileChooser.setSelectedFile(mapApi.getFile());
 
-		int res = FC.showSaveDialog(mapPanel.getPanel().getTopLevelAncestor());
+		int res = fileChooser.showSaveDialog(mapPanel.getPanel()
+				.getTopLevelAncestor());
 		if (res == JFileChooser.APPROVE_OPTION) {
-			File rFile = FC.getSelectedFile();
-			MapSaver p_MapSaver = new MapSaver(messages, mapThemesList);
-			MapApi p_MapApi = mapApi;
+			File rFile = fileChooser.getSelectedFile();
+			MapSaver mapSaver = new MapSaver(messages, mapThemesList);
+			MapApi mapApi = this.mapApi;
 
 			try {
-				p_MapSaver.saveMapToFile(p_MapApi, rFile);
+				mapSaver.saveMapToFile(mapApi, rFile);
 			} catch (Exception e) {
-
 				String msg = messages.getString(MapMessages.MSG_SAVING_FAILED)
 						+ " " + e.getMessage();
-				JOptionPane.showMessageDialog(FC, msg);
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(fileChooser, msg);
+				logger.log(Level.SEVERE, MapLogger.ERROR, e);
 			}
 		}
 	}
@@ -167,9 +170,9 @@ public class DialogsManager {
 		fileChooser
 				.setCurrentDirectory(new File("." + File.separator + "Maps"));
 
-		ExampleFileFilter rfilter = new ExampleFileFilter("xml", "XML Files");
+		ExampleFileFilter filter = new ExampleFileFilter("xml", "XML Files");
 
-		fileChooser.setFileFilter(rfilter);
+		fileChooser.setFileFilter(filter);
 		fileChooser.setSelectedFile(mapApi.getFile());
 
 		int res = fileChooser.showOpenDialog(mapPanel.getPanel()
@@ -192,7 +195,8 @@ public class DialogsManager {
 				Validator validator = schema.newValidator();
 				try {
 					validator.validate(xmlFile);
-					System.out.println(xmlFile.getSystemId() + " is valid");
+					logger.log(Level.INFO, MapLogger.FILE_VALID,
+							xmlFile.getSystemId());
 
 					MapLoaderSAXHandler handler = new MapLoaderSAXHandler(
 							mapApi, mapThemesList, mapObjectFactory);
@@ -201,14 +205,15 @@ public class DialogsManager {
 					mapPanel.setMapApi(mapApi);
 					mapPanel.getPanel().repaint();
 				} catch (SAXException e) {
-					System.out.println(xmlFile.getSystemId() + " is NOT valid");
-					System.out.println("Reason: " + e.getLocalizedMessage());
+					logger.log(Level.SEVERE, MapLogger.FILE_NOT_VALID,
+							xmlFile.getSystemId());
+					logger.log(Level.SEVERE, MapLogger.REASON, e);
 				}
 			} catch (Exception e) {
 				String msg = messages.getString(MapMessages.MSG_LOADING_FAILED)
 						+ e.getMessage();
 				JOptionPane.showMessageDialog(fileChooser, msg);
-				e.printStackTrace();
+				logger.log(Level.SEVERE, MapLogger.ERROR, e);
 			}
 
 		}

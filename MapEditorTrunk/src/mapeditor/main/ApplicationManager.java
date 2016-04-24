@@ -2,6 +2,8 @@ package mapeditor.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,6 +16,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import mapeditor.config.Config;
+import mapeditor.logger.MapLogger;
 import mapeditor.mainwindow.MainWindow;
 import mapeditor.messages.MapMessages;
 import mapeditor.themesapi.ConfigurationSAXHandler;
@@ -22,11 +25,10 @@ import mapeditor.themesapi.ThemesManager;
 
 import org.xml.sax.SAXException;
 
-/**
- *
- * @author krzysztof
- */
 public class ApplicationManager {
+
+	private static final Logger logger = Logger
+			.getLogger(ApplicationManager.class.getName());
 
 	private final static String RESOURCES_PATH = "resources" + File.separator;
 
@@ -41,14 +43,24 @@ public class ApplicationManager {
 	public final static String XSD_FOLDER = RESOURCES_PATH + "xsd"
 			+ File.separator;
 
+	private final static String CONFIG_PATH = RESOURCES_PATH + "config"
+			+ File.separator;
+
+	private final static String LOGGER_CONFIG_FILE_PATH = CONFIG_PATH
+			+ "mapLogging.properties";
+
 	public ApplicationManager() throws ParserConfigurationException,
 			IOException, SAXException {
 
-		Config config = new Config();
+		MapLogger mapLogger = new MapLogger(LOGGER_CONFIG_FILE_PATH);
+
+		logger.log(Level.INFO, MapLogger.APPLICATION_STARTUP);
+
+		Config config = new Config(RESOURCES_PATH);
 		MapMessages messages = new MapMessages(config);
 		MapObjectFactory mapObjectFactory = new MapObjectFactory();
 		ThemesManager mapThemesList = readConfigurationFile(config,
-				mapObjectFactory, messages);
+				mapObjectFactory, messages, mapLogger);
 		new MainWindow(config, messages, mapThemesList, mapObjectFactory);
 
 		mapThemesList.describeYourselfThemeApi();
@@ -60,8 +72,9 @@ public class ApplicationManager {
 	}
 
 	private ThemesManager readConfigurationFile(Config config,
-			MapObjectFactory mapObjectFactory, MapMessages messages)
-			throws ParserConfigurationException, SAXException, IOException {
+			MapObjectFactory mapObjectFactory, MapMessages messages,
+			MapLogger mapLogger) throws ParserConfigurationException,
+			SAXException, IOException {
 
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();
@@ -79,13 +92,14 @@ public class ApplicationManager {
 		Validator validator = schema.newValidator();
 		try {
 			validator.validate(xmlFile);
-			System.out.println(xmlFile.getSystemId() + " is valid");
+			logger.log(Level.INFO, MapLogger.FILE_VALID, xmlFile.getSystemId());
 			ConfigurationSAXHandler handler = new ConfigurationSAXHandler(
 					config, mapThemesManager, messages, THEMES_IMAGES_PATH);
 			saxParser.parse(file, handler);
 		} catch (SAXException e) {
-			System.out.println(xmlFile.getSystemId() + " is NOT valid");
-			System.out.println("Reason: " + e.getLocalizedMessage());
+			logger.log(Level.SEVERE, MapLogger.FILE_NOT_VALID,
+					xmlFile.getSystemId());
+			logger.log(Level.SEVERE, MapLogger.REASON, e);
 			throw e;
 		}
 

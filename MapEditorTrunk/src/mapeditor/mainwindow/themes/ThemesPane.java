@@ -1,6 +1,5 @@
 package mapeditor.mainwindow.themes;
 
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -26,7 +25,6 @@ import mapeditor.themesapi.ThemeApi;
 import mapeditor.themesapi.ThemesManager;
 
 public class ThemesPane {
-	// private MapThemesManager mapThemesManager;
 
 	private JLayeredPane pane;
 
@@ -40,7 +38,6 @@ public class ThemesPane {
 
 	public ThemesPane(MapMessages messages, ThemesManager mapThemesManager) {
 		super();
-		// this.mapThemesManager = mapThemesManager;
 		themePanes = new HashMap<String, SingleThemePane>();
 
 		pane = new JLayeredPane();
@@ -63,12 +60,6 @@ public class ThemesPane {
 		JPanel selectionPane = createSelectionPanel();
 		pane.add(selectionPane, c);
 
-		/*
-		 * int minWidth = SingleThemePane.DEFAULT_SEGMENT_WIDTH
-		 * config.getThemeApiColumnsNumber() + 30; minimumSize = new
-		 * Dimension(minWidth, 0); panel.setPreferredSize(minimumSize);
-		 */
-		// pane.setPrefferedSize(new Dimension(300, 200));
 	}
 
 	public JComponent getPane() {
@@ -87,15 +78,12 @@ public class ThemesPane {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				// TODO Auto-generated method stub
 				((JButton) event.getSource()).getTopLevelAncestor()
 						.requestFocus();
 			}
 
 		});
 
-		// button.setActionCommand(actionCommand);
-		// button.setToolTipText(toolTipText);
 		String imgLocation = ApplicationManager.THEMES_PATH
 				+ MainWindow.ICON_NULL;
 
@@ -132,45 +120,16 @@ public class ThemesPane {
 
 		}
 
-		// ImageIcon icon = createImageIcon("images/middle.gif");
-
-		// JComponent panel1 = makeTextPanel("Panel #1");
-		/*
-		 * tabbedPane.addTab("Tab1", themePanel.getScrollPane());
-		 * tabbedPane.setMnemonicAt(0, KeyEvent.VK_1); tabbedPane.addTab("Tab2",
-		 * new JPanel()); tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-		 * tabbedPane.addTab("Tab3", new JPanel()); tabbedPane.setMnemonicAt(2,
-		 * KeyEvent.VK_3); tabbedPane.addTab("Tab4", new JPanel());
-		 * tabbedPane.setMnemonicAt(3, KeyEvent.VK_4); tabbedPane.addTab("Tab5",
-		 * new JPanel()); tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
-		 * tabbedPane.addTab("Tab6", new JPanel()); tabbedPane.setMnemonicAt(5,
-		 * KeyEvent.VK_6);
-		 */
-		// tabbedPane.addTab("Tab 1", icon, panel1, "Does nothing");
-		// tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-		//
-
 		tabbedPane.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent changeEvent) {
-				// TODO Auto-generated method stub
 				JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent
 						.getSource();
 				int index = sourceTabbedPane.getSelectedIndex();
-				Component component = sourceTabbedPane.getSelectedComponent();
-				System.out.println("Tab changed to: " + component);
 				String name = sourceTabbedPane.getTitleAt(index);
-
-				System.out.println("Tab changed to: " + name);
-
 				themePanel = themePanes.get(name);
-				System.out.println("H: " + themePanel.getPanel().getHeight()
-						+ "W: " + themePanel.getPanel().getWidth());
-
 				sourceTabbedPane.getTopLevelAncestor().requestFocus();
-
-				// System.out.println(changeEvent);
 			}
 		});
 

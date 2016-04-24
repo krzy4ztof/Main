@@ -1,16 +1,13 @@
 package mapeditor.mainwindow.layers;
 
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 import java.util.LinkedList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import mapeditor.mapapi.LayerAttributes;
@@ -75,28 +72,18 @@ public class LayersControlPane {
 			LayerAttributes layerAttributes = mapApi
 					.getLayerAttributes(layerIndex);
 
-			System.out.println(layerControl);
 			layerControl.setBackgroundVisible(layerAttributes
 					.isBackgroundVisible());
 			layerControl.setObjectsVisible(layerAttributes.isObjectsVisible());
 			layerControl.setActivation(layerAttributes.isActive());
 
 			c.gridy = (activeLayersNumber - 1 - layerIndex) * 2;
-			System.out.println("Layer no: " + layerIndex + " name "
-					+ layerControl.getName() + " y: " + c.gridy);
-
 			pane.add(layerControl.getPane(), c);
 
 			c.gridy = (activeLayersNumber - 1 - layerIndex) * 2 + 1;
-
 			pane.add(layerControl.getSeparator(), c);
-
-			System.out.println("grid y " + c.gridy + " layer " + layerIndex
-					+ " / " + activeLayersNumber);
-
 		}
 
-		System.out.println("KONIEC");
 		lastLabel = new JLabel();
 
 		c.weighty = 1.0;
@@ -124,45 +111,7 @@ public class LayersControlPane {
 			pane.remove(layerControl.getSeparator());
 
 		}
-		/*
-		 * for (JLayeredPane layeredPane : layersPaneList) {
-		 * pane.remove(layeredPane); }
-		 * 
-		 * for (JSeparator separator : separatorsList) { pane.remove(separator);
-		 * }
-		 */
 		pane.remove(lastLabel);
-
-	}
-
-	private void paneInfo(JLayeredPane layeredPane) {
-		LayoutManager layout = layeredPane.getLayout();
-
-		System.out.println("layeredPane layout: " + layout.getClass());
-		if (layout instanceof GridBagLayout) {
-			GridBagLayout gbLayout = (GridBagLayout) layout;
-
-			for (Component component : layeredPane.getComponents()) {
-				System.out.println(component);
-
-				GridBagConstraints gbConstraints = gbLayout
-						.getConstraints(component);
-
-				System.out.println(gbConstraints + " x: " + gbConstraints.gridx
-						+ " y: " + gbConstraints.gridy + " wx: "
-						+ gbConstraints.weightx + " wy: "
-						+ gbConstraints.weighty);
-
-				if (component instanceof JRadioButton) {
-					JRadioButton radioButton = (JRadioButton) component;
-					String text = radioButton.getText();
-					System.out.println("radio " + radioButton.getText());
-					radioButton.setText("Next " + text);
-				}
-			}
-
-			System.out.println("----	++++	----");
-		}
 
 	}
 

@@ -36,8 +36,6 @@ public class MapPane extends GridPane {
 
 	ExampleFileFilter fe;
 
-	// SegmentAttributesPanel r_SegmentAttributesPanel = new
-	// SegmentAttributesPanel();
 	private MapApi mapApi;
 	private CopyPaste copyPaste;
 	private CustomObjectEdit customObjectEdit;
@@ -420,14 +418,21 @@ public class MapPane extends GridPane {
 				CopyPasteSegment segment = iterator.next();
 
 				if (((segment.getPoint().x) % 2) == 0) {
-					drawSegmentCopyPaste(graphics, segment.getPoint().x,
-							segment.getPoint().y, 1, segment.getImage(),
-							layerAttributes);
+					// drawSegmentCopyPaste(graphics, segment.getPoint().x,
+					// segment.getPoint().y, 1, segment.getImage(),
+					// layerAttributes);
+
+					drawSegmentGrid(graphics, segment.getPoint().x,
+							segment.getPoint().y, 1, layerAttributes);
 
 				} else {
-					drawSegmentCopyPaste(graphics, segment.getPoint().x,
-							segment.getPoint().y, divider, segment.getImage(),
-							layerAttributes);
+					// drawSegmentCopyPaste(graphics, segment.getPoint().x,
+					// segment.getPoint().y, divider, segment.getImage(),
+					// layerAttributes);
+
+					drawSegmentGrid(graphics, segment.getPoint().x,
+							segment.getPoint().y, divider, layerAttributes);
+
 				}
 
 			}
@@ -478,11 +483,14 @@ public class MapPane extends GridPane {
 						if (((segment.getPoint().x) % 2) == 0) {
 							drawSegmentCopyPaste(graphics,
 									segment.getPoint().x, segment.getPoint().y,
-									1, segment.getImage(), layerAttributes);
+									1, segment.getImage(),
+									segment.getCustomObjectImage(),
+									layerAttributes);
 						} else {
 							drawSegmentCopyPaste(graphics,
 									segment.getPoint().x, segment.getPoint().y,
 									divider, segment.getImage(),
+									segment.getCustomObjectImage(),
 									layerAttributes);
 						}
 					}
@@ -494,12 +502,14 @@ public class MapPane extends GridPane {
 	}
 
 	protected void drawSegmentCopyPaste(Graphics graphics, int column, int row,
-			int divider, Image image, LayerAttributes layerAttributes) {
-
-		this.drawSegmentImage(graphics, column, row, divider, image,
-				layerAttributes);
-
-		this.drawSegmentGrid(graphics, column, row, divider, layerAttributes);
+			int divider, Image image, Image customImage,
+			LayerAttributes layerAttributes) {
+		drawSegmentImage(graphics, column, row, divider, image, layerAttributes);
+		if (customImage != null) {
+			drawSegmentImage(graphics, column, row, divider, customImage,
+					layerAttributes);
+		}
+		drawSegmentGrid(graphics, column, row, divider, layerAttributes);
 	}
 
 	public void onCutEvent() {

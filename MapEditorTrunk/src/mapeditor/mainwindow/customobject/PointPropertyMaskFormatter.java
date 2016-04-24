@@ -2,17 +2,20 @@ package mapeditor.mainwindow.customobject;
 
 import java.awt.Point;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.text.MaskFormatter;
 
+import mapeditor.logger.MapLogger;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.Point3D;
 
 public class PointPropertyMaskFormatter extends MaskFormatter {
 
-	/**
-	 * 
-	 */
+	private static final Logger logger = Logger
+			.getLogger(PointPropertyMaskFormatter.class.getName());
+
 	private static final long serialVersionUID = 1L;
 
 	private MapApi mapApi;
@@ -30,7 +33,7 @@ public class PointPropertyMaskFormatter extends MaskFormatter {
 		try {
 			this.setMask(mask);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, MapLogger.ERROR, e);
 		}
 	}
 
@@ -65,23 +68,12 @@ public class PointPropertyMaskFormatter extends MaskFormatter {
 
 	@Override
 	public Object stringToValue(String value) throws ParseException {
-
-		System.out.println("Str-to-val In: " + value);
 		Point3D point = new Point3D(value);
-
-		System.out.println("Str-to-val Out: " + point + " X: " + point.x
-				+ " Y: " + point.y + " Z: " + point.z);
-
 		return point;
 	}
 
 	@Override
 	public String valueToString(Object value) throws ParseException {
-
-		System.out.println("Val-to-str In:  " + value);
-
-		// String string = super.valueToString(value);
-
 		String string;
 		if (value != null && value instanceof Point3D) {
 			Point3D point = (Point3D) value;
@@ -89,40 +81,22 @@ public class PointPropertyMaskFormatter extends MaskFormatter {
 			string = "(" + toString(point.x, mapApi.getColumnsSize()) + ","
 					+ toString(point.y, mapApi.getRowsSize()) + ","
 					+ toString(point.z, mapApi.getLayerAttributesSize()) + ")";
-
-			System.out.println("TOSTR: " + string);
-
-			System.out.println("TOSTR: " + point.toString());
 		} else {
 			string = "(" + toString(0, mapApi.getColumnsSize()) + ","
 					+ toString(0, mapApi.getRowsSize()) + ","
 					+ toString(0, mapApi.getLayerAttributesSize()) + ")";
 		}
-
-		System.out.println("Val-to-str Out: " + string);
-
 		return string;
 	}
 
 	public String valueToString_33(Object value) throws ParseException {
-
-		System.out.println("Val-to-str In:  " + value);
-
-		// String string = super.valueToString(value);
-
 		String string;
 		if (value != null && value instanceof Point) {
 			Point point = (Point) value;
 			string = "(" + point.x + "  ," + point.y + "  ," + "   )";
-
-			// string = "(" + point.x + "," + point.y + "," + ")";
-
 		} else {
 			string = "(   ,   ,   )";
 		}
-
-		System.out.println("Val-to-str Out: " + string);
-
 		return string;
 	}
 

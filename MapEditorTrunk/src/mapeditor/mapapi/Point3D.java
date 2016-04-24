@@ -22,9 +22,7 @@ public class Point3D {
 	}
 
 	public void setCoordinates(String value) {
-		System.out.println("VAL1: " + value);
 		value = value.replaceAll(" ", "");
-		System.out.println("VAL2: " + value);
 
 		if (value.matches("\\(\\d+,\\d+,\\d+\\)")) {
 			value = value.substring(1, value.length() - 1);
@@ -58,8 +56,4 @@ public class Point3D {
 		String string = "(" + x + "," + y + "," + z + ")";
 		return string;
 	}
-	/*
-	 * @Override public String toString() { String string = "(" + x + "," + y +
-	 * "," + z + ")"; return string; }
-	 */
 }

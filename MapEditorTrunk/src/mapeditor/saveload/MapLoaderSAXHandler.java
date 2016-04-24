@@ -44,7 +44,7 @@ public class MapLoaderSAXHandler extends DefaultHandler {
 			Attributes attrs) throws SAXException {
 
 		if (qName.equals(MapFileDefinitions.MAP_XML_ELEMENT)) {
-			startMapXmlElement(attrs);
+			// Do nothing
 		} else if (qName.equals(MapFileDefinitions.PROPERTIES_ELEMENT)) {
 			startPropertiesElement(attrs);
 		} else if (qName.equals(MapFileDefinitions.CODE_ELEMENT)) {
@@ -69,11 +69,6 @@ public class MapLoaderSAXHandler extends DefaultHandler {
 			endObjectPropertyElement();
 		}
 
-	}
-
-	private void startMapXmlElement(Attributes attrs) {
-		String name = attrs.getValue(MapFileDefinitions.MAP_NAME_ATTRIBUTE);
-		System.out.println("MapName: " + name);
 	}
 
 	private void startPropertiesElement(Attributes attrs) {
@@ -113,7 +108,6 @@ public class MapLoaderSAXHandler extends DefaultHandler {
 
 	private void startLayerElement(Attributes attrs) {
 		String index = attrs.getValue(MapFileDefinitions.INDEX_ATTRIBUTE);
-		System.out.println("Index: " + index);
 		activeLayerIndex = Integer.parseInt(index);
 	}
 

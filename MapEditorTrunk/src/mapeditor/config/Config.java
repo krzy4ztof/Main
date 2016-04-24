@@ -1,6 +1,13 @@
 package mapeditor.config;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Locale;
 import java.util.ResourceBundle;
+
+import mapeditor.mapapi.MapLayout;
 
 public class Config {
 
@@ -20,8 +27,14 @@ public class Config {
 
 	private ResourceBundle resourceBundle;
 
-	public Config() {
-		resourceBundle = ResourceBundle.getBundle("mapeditor.config.config");
+	public Config(String resourcesPath) throws MalformedURLException {
+		File file = new File(resourcesPath);
+		URL[] urls = new URL[] { file.toURI().toURL() };
+		ClassLoader loader = new URLClassLoader(urls);
+
+		resourceBundle = ResourceBundle.getBundle("config.config",
+				Locale.getDefault(), loader);
+
 	}
 
 	public Integer getMapApiColumnsNumber() {
@@ -44,7 +57,7 @@ public class Config {
 
 	public boolean isMapApiLayoutHex() {
 		String string = resourceBundle.getString(mapApiLayout);
-		if (string.equalsIgnoreCase("HEX")) {
+		if (string.equalsIgnoreCase(MapLayout.HEX.toString())) {
 			return true;
 		}
 		return false;
@@ -52,7 +65,7 @@ public class Config {
 
 	public boolean isMapApiLayoutSqr() {
 		String string = resourceBundle.getString(mapApiLayout);
-		if (string.equalsIgnoreCase("SQR")) {
+		if (string.equalsIgnoreCase(MapLayout.SQR.toString())) {
 			return true;
 		}
 		return false;

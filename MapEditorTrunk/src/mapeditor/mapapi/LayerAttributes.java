@@ -1,6 +1,14 @@
 package mapeditor.mapapi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import mapeditor.logger.MapLogger;
+
 public class LayerAttributes {
+
+	private static final Logger logger = Logger.getLogger(LayerAttributes.class
+			.getName());
 
 	public final static int NO_ACTIVE_LAYER = -1;
 
@@ -46,9 +54,12 @@ public class LayerAttributes {
 	}
 
 	public void describeYourself() {
-		System.out.println("    Layer index: " + index + "; active: " + active
-				+ "; objectsVisible: " + objectsVisible + "; backgroundVisible"
-				+ backgroundVisible);
+		logger.log(
+				Level.FINE,
+				MapLogger.DESCRIBE_LAYER_ATTRIBUTES,
+				new String[] { Integer.toString(index),
+						Boolean.toString(active),
+						Boolean.toString(objectsVisible),
+						Boolean.toString(backgroundVisible) });
 	}
-
 }
