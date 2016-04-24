@@ -83,9 +83,7 @@ public class PointPropertyControl extends ObjectPropertyControl {
 		isButtonActive = false;
 
 		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER + ICON_ARROW_16;
-		String toolTipText = "XXX"; // messages.getString(MapMessages.TOOLBAR_HAMMER);
-
-		button.setIcon(new ImageIcon(imgLocation, toolTipText));
+		button.setIcon(new ImageIcon(imgLocation));
 
 		ActionListener buttonListener = new PointPropertyButtonActionListener(
 				this, customObjectPane, tools, cursorFactory, mapPanel);
@@ -155,5 +153,11 @@ public class PointPropertyControl extends ObjectPropertyControl {
 
 	public void updateTextField(Point3D point) {
 		formattedTextField.setValue(point);
+	}
+
+	@Override
+	public void refresh() {
+		setNewValue(pointProperty.getValue());
+		formattedTextField.setValue(pointProperty.getValue());
 	}
 }

@@ -138,19 +138,21 @@ public class CustomObjectPane {
 
 	public void update(CustomMapObject customMapObject) {
 
-		// if (customMapObject == null) {
-		// return;
-		// }
-
 		if (customMapObject != this.customMapObject) {
 			removeAll();
-			// pane.revalidate();
 
 			activateProperties(customMapObject);
 
 			pane.revalidate();
 		}
 
+	}
+
+	public void refresh() {
+		for (ObjectPropertyControl propertyControl : propertyControlList) {
+			propertyControl.refresh();
+		}
+		pane.revalidate();
 	}
 
 	private void removeAll() {
@@ -163,8 +165,6 @@ public class CustomObjectPane {
 		if (gridPane != null) {
 			pane.remove(gridPane);
 		}
-
-		// gridPane = new JLayeredPane();
 
 		okButton.setEnabled(false);
 		cancelButton.setEnabled(false);
@@ -376,7 +376,6 @@ public class CustomObjectPane {
 				}
 			}
 		}
-
 		enableButtons();
 	}
 

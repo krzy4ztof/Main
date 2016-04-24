@@ -54,6 +54,8 @@ public class PointProperty extends MapObjectProperty {
 
 	public void validate(MapAttributes mapAttributes) {
 
+		value = new Point3D(value);
+
 		// One column:
 		// point.x = 0 -> column index
 		// getColumns() = 1 -> size

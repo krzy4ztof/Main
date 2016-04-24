@@ -71,4 +71,6 @@ public abstract class ObjectPropertyControl {
 
 	public abstract JComponent getComponent();
 
+	public void refresh() {
+	};
 }

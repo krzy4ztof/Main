@@ -20,6 +20,7 @@ import mapeditor.config.Config;
 import mapeditor.dialogs.MapAttributesPanel;
 import mapeditor.logger.MapLogger;
 import mapeditor.main.ApplicationManager;
+import mapeditor.mainwindow.customobject.CustomObjectPane;
 import mapeditor.mainwindow.layers.LayersControlPane;
 import mapeditor.mainwindow.map.MapPane;
 import mapeditor.mapapi.CustomObjectEdit;
@@ -50,13 +51,14 @@ public class DialogsManager {
 	private MapObjectFactory mapObjectFactory;
 	private LayersControlPane layersPane;
 	private CustomObjectEdit customObjectEdit;
+	private CustomObjectPane customObjectPane;
 	private Tools tools;
 	private JButton brushButton;
 
 	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
 			ThemesManager mapThemesList, Config config,
 			MapObjectFactory mapObjectFactory, LayersControlPane layersPane,
-
+			CustomObjectPane customObjectPane,
 			CustomObjectEdit customObjectEdit, Tools tools, JButton brushButton) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
@@ -65,6 +67,7 @@ public class DialogsManager {
 		this.config = config;
 		this.mapObjectFactory = mapObjectFactory;
 		this.layersPane = layersPane;
+		this.customObjectPane = customObjectPane;
 		this.customObjectEdit = customObjectEdit;
 		this.tools = tools;
 		this.brushButton = brushButton;
@@ -182,6 +185,8 @@ public class DialogsManager {
 			if (shouldDeactivate) {
 				// switch to brush tool
 				brushButton.doClick();
+			} else {
+				customObjectPane.refresh();
 			}
 
 		}
