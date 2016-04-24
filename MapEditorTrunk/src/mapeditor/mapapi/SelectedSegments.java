@@ -54,8 +54,7 @@ public class SelectedSegments extends CopyPasteSegments {
 	}
 
 	public void activate(MapPane mapPane, int layerIndex) {
-		super.activate(mapPane, firstPointToCut, lastPointToCut,
-				this.layerIndex);
+		super.activate(mapPane, firstPointToCut, lastPointToCut, layerIndex);
 	}
 
 	@Override

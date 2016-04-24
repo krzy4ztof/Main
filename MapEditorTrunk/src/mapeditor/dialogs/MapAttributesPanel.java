@@ -230,7 +230,7 @@ public class MapAttributesPanel extends JDialog {
 		try {
 			value = Integer.valueOf(layerItem.getText()).intValue();
 
-			if (value > 0) {
+			if (value > 0 && value <= MapAttributes.MAX_LAYERS_NUMBER) {
 				selectedMapAttributes.setLayers(value);
 			} else {
 				layerItem.setText("");

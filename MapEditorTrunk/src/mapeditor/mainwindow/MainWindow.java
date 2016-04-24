@@ -241,9 +241,11 @@ public class MainWindow {
 		mapPanel.getPanel().addMouseListener(mpMouseListener);
 		mapPanel.getPanel().addMouseMotionListener(mpMouseMotionListener);
 
+		JButton brushButton = new JButton();
+
 		JToolBar toolBar = createToolBar(config, messages, tools,
 				cursorFactory, mapPanel, copyPaste, customObjectPane,
-				customObjectEdit);
+				customObjectEdit, brushButton);
 		frame.add(toolBar, BorderLayout.PAGE_START);
 
 		MainWindowKeyListener gsKeyListener = new MainWindowKeyListener(
@@ -255,7 +257,8 @@ public class MainWindow {
 				layersPaneActionListener);
 
 		DialogsManager dialogsManager = new DialogsManager(mapPanel, mapApi,
-				messages, mapThemesList, config, mapObjectFactory, layersPane);
+				messages, mapThemesList, config, mapObjectFactory, layersPane,
+				customObjectEdit, tools, brushButton);
 		MainMenuActionListener gsListener = new MainMenuActionListener(
 				dialogsManager, mapPanel, themesPane);
 
@@ -293,7 +296,7 @@ public class MainWindow {
 	private JToolBar createToolBar(Config config, MapMessages messages,
 			Tools tools, CursorFactory cursorFactory, MapPane mapPanel,
 			CopyPaste copyPaste, CustomObjectPane customObjectPane,
-			CustomObjectEdit customObjectEdit) {
+			CustomObjectEdit customObjectEdit, JButton brushButton) {
 		JToolBar toolBar = new JToolBar(
 				messages.getString(MapMessages.TOOLBAR_TITLE));
 		ToolBarActionListener actionListener = new ToolBarActionListener(tools,
@@ -318,8 +321,7 @@ public class MainWindow {
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 
-		JButton brushButton = createToolBarButton(iconBrush,
-				ACTION_TOOLBAR_BRUSH,
+		activateToolBarButton(brushButton, iconBrush, ACTION_TOOLBAR_BRUSH,
 				messages.getString(MapMessages.TOOLBAR_BRUSH), actionListener,
 				buttonGroup);
 		toolBar.add(brushButton);
@@ -347,14 +349,20 @@ public class MainWindow {
 	private JButton createToolBarButton(String imageName, String actionCommand,
 			String toolTipText, ActionListener actionListener,
 			ButtonGroup buttonGroup) {
-		String imgLocation = TOOLBAR_ICONS_FOLDER + imageName;
 		JButton button = new JButton();
+		activateToolBarButton(button, imageName, actionCommand, toolTipText,
+				actionListener, buttonGroup);
+		return button;
+	}
+
+	private void activateToolBarButton(JButton button, String imageName,
+			String actionCommand, String toolTipText,
+			ActionListener actionListener, ButtonGroup buttonGroup) {
+		String imgLocation = TOOLBAR_ICONS_FOLDER + imageName;
 		button.addActionListener(actionListener);
 		button.setActionCommand(actionCommand);
 		button.setToolTipText(toolTipText);
 		button.setIcon(new ImageIcon(imgLocation, toolTipText));
 		buttonGroup.add(button);
-
-		return button;
 	}
 }

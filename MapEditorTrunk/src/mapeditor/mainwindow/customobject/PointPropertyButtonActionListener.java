@@ -1,15 +1,7 @@
 package mapeditor.mainwindow.customobject;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.DefaultButtonModel;
-import javax.swing.JButton;
 
 import mapeditor.mainwindow.CursorFactory;
 import mapeditor.mainwindow.map.MapPane;
@@ -21,7 +13,6 @@ public class PointPropertyButtonActionListener implements ActionListener {
 	private Tools tools;
 	private MapPane mapPanel;
 	private CursorFactory cursorFactory;
-	private boolean active = false;
 	private PointPropertyControl pointPropertyControl;
 	private CustomObjectPane customObjectPane;
 
@@ -53,10 +44,8 @@ public class PointPropertyButtonActionListener implements ActionListener {
 			pointPropertyControl.activateButton();
 
 			tools.setActiveTool(ToolsEnum.POINT_PROPERTY);
-			mapPanel.getPanel().setCursor(cursorFactory
-			// .getCursor(CursorFactory.CURSOR_POINT_PROPERTY));
-
-					.getCursor(ToolsEnum.POINT_PROPERTY));
+			mapPanel.getPanel().setCursor(
+					cursorFactory.getCursor(ToolsEnum.POINT_PROPERTY));
 		} else {
 			pointPropertyControl.deactivateButton();
 
@@ -68,70 +57,5 @@ public class PointPropertyButtonActionListener implements ActionListener {
 
 		mapPanel.refresh();
 
-	}
-
-	public void actionPerformed_222(ActionEvent event) {
-		String str = event.getActionCommand();
-		Object sourceObject = event.getSource();
-
-		if (sourceObject instanceof JButton) {
-			JButton button = (JButton) sourceObject;
-
-			ButtonModel buttonModel = button.getModel();
-			if (buttonModel instanceof DefaultButtonModel) {
-				ButtonGroup buttonGroup = ((DefaultButtonModel) buttonModel)
-						.getGroup();
-				buttonGroup.clearSelection();
-				Enumeration<AbstractButton> enumButtons = buttonGroup
-						.getElements();
-
-				while (enumButtons.hasMoreElements()) {
-					enumButtons.nextElement().setBackground(null);
-				}
-
-				// button.setBackground(new Color(255, 211, 136));
-			}
-
-			// button.setSelected(true);
-
-			if (!active) {
-				active = true;
-
-				button.setBackground(new Color(255, 211, 136));
-				button.setSelected(true);
-
-				tools.setActiveTool(ToolsEnum.POINT_PROPERTY);
-				mapPanel.getPanel().setCursor(cursorFactory
-				// .getCursor(CursorFactory.CURSOR_POINT_PROPERTY));
-
-						.getCursor(ToolsEnum.POINT_PROPERTY));
-			} else {
-				active = false;
-				tools.restorePreviousTool();
-				mapPanel.getPanel().setCursor(
-						cursorFactory.getCursor(tools.getActiveTool()));
-
-				button.setBackground(null);
-			}
-
-			// mapPanel.getPanel().setCursor(
-			// Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-
-			/*
-			 * if (buttonModel instanceof DefaultButtonModel) { ButtonGroup
-			 * buttonGroup = ((DefaultButtonModel) buttonModel) .getGroup();
-			 * buttonGroup.clearSelection(); Enumeration<AbstractButton>
-			 * enumButtons = buttonGroup .getElements();
-			 * 
-			 * while (enumButtons.hasMoreElements()) {
-			 * enumButtons.nextElement().setBackground(null); }
-			 * 
-			 * button.setSelected(true); button.setBackground(new Color(255,
-			 * 211, 136)); }
-			 * 
-			 * Container container = button.getTopLevelAncestor(); if (container
-			 * != null) { container.requestFocus(); }
-			 */
-		}
 	}
 }

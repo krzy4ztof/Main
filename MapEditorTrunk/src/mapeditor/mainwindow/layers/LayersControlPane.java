@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 
 import mapeditor.mapapi.LayerAttributes;
 import mapeditor.mapapi.MapApi;
+import mapeditor.mapapi.MapAttributes;
 
 public class LayersControlPane {
 
@@ -48,7 +49,7 @@ public class LayersControlPane {
 		ButtonGroup buttonGroup = new ButtonGroup();
 
 		layerControlList = new LinkedList<LayerControl>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < MapAttributes.MAX_LAYERS_NUMBER; i++) {
 			LayerControl layerControl = new LayerControl(i, buttonGroup,
 					actionListener);
 			layerControlList.add(layerControl);

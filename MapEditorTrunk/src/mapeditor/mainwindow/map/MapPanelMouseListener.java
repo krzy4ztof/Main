@@ -143,7 +143,7 @@ public class MapPanelMouseListener implements MouseListener {
 					} else {
 
 						customObjectPane.update(customMapObject);
-						customObjectEdit.setCustomObject(customMapObject,
+						customObjectEdit.setMapSegment(
 								mapApi.getSegment(seg.y, seg.x),
 								mapApi.getActiveLayerIndex(), seg);
 					}

@@ -22,6 +22,8 @@ public class EnumPropertyItemListener implements ItemListener {
 			Object item = event.getItem();
 
 			if (item != null && item instanceof Entry<?, ?>) {
+
+				@SuppressWarnings("unchecked")
 				Entry<String, String> entry = (Entry<String, String>) item;
 				enumPropertyControl.setNewValue(entry.getKey());
 				customObjectPane.enableButtons();

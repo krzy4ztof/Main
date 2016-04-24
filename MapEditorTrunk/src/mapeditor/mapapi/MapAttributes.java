@@ -1,6 +1,9 @@
 package mapeditor.mapapi;
 
 public class MapAttributes implements Cloneable {
+
+	public static final int MAX_LAYERS_NUMBER = 10;
+
 	private int rows;
 	private int columns;
 	private MapLayout mapLayout;

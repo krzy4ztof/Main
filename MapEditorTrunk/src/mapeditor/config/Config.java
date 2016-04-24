@@ -7,6 +7,7 @@ import java.net.URLClassLoader;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.MapLayout;
 
 public class Config {
@@ -52,7 +53,12 @@ public class Config {
 	public Integer getMapApiLayersNumber() {
 		String string = resourceBundle.getString(mapApiLayersNumber);
 		Integer integer = new Integer(string);
-		return integer;
+
+		if (integer > MapAttributes.MAX_LAYERS_NUMBER) {
+			return MapAttributes.MAX_LAYERS_NUMBER;
+		} else {
+			return integer;
+		}
 	}
 
 	public boolean isMapApiLayoutHex() {

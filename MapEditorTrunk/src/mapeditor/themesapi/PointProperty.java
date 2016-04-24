@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import mapeditor.logger.MapLogger;
+import mapeditor.mapapi.MapAttributes;
 import mapeditor.mapapi.Point3D;
 
 public class PointProperty extends MapObjectProperty {
@@ -51,4 +52,28 @@ public class PointProperty extends MapObjectProperty {
 		this.value = new Point3D(value);
 	}
 
+	public void validate(MapAttributes mapAttributes) {
+
+		// One column:
+		// point.x = 0 -> column index
+		// getColumns() = 1 -> size
+		if (value.x > mapAttributes.getColumns() - 1) {
+
+			value.x = mapAttributes.getColumns() - 1;
+		}
+
+		// One row:
+		// point.y = 0 -> row index
+		// getRows() = 1 -> size
+		if (value.y > mapAttributes.getRows() - 1) {
+			value.y = mapAttributes.getRows() - 1;
+		}
+
+		// One layer:
+		// point.z = 0 -> layer index
+		// getLayers() = 1 -> size
+		if (value.z > mapAttributes.getLayers() - 1) {
+			value.z = mapAttributes.getLayers() - 1;
+		}
+	}
 }

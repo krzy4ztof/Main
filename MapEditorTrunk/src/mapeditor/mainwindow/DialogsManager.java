@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.xml.XMLConstants;
@@ -21,8 +22,11 @@ import mapeditor.logger.MapLogger;
 import mapeditor.main.ApplicationManager;
 import mapeditor.mainwindow.layers.LayersControlPane;
 import mapeditor.mainwindow.map.MapPane;
+import mapeditor.mapapi.CustomObjectEdit;
 import mapeditor.mapapi.MapApi;
 import mapeditor.mapapi.MapAttributes;
+import mapeditor.mapapi.Point3D;
+import mapeditor.mapapi.Tools;
 import mapeditor.messages.MapMessages;
 import mapeditor.saveload.MapLoaderSAXHandler;
 import mapeditor.saveload.MapSaver;
@@ -45,10 +49,15 @@ public class DialogsManager {
 	private Config config;
 	private MapObjectFactory mapObjectFactory;
 	private LayersControlPane layersPane;
+	private CustomObjectEdit customObjectEdit;
+	private Tools tools;
+	private JButton brushButton;
 
 	DialogsManager(MapPane mapPanel, MapApi mapApi, MapMessages messages,
 			ThemesManager mapThemesList, Config config,
-			MapObjectFactory mapObjectFactory, LayersControlPane layersPane) {
+			MapObjectFactory mapObjectFactory, LayersControlPane layersPane,
+
+			CustomObjectEdit customObjectEdit, Tools tools, JButton brushButton) {
 		this.mapPanel = mapPanel;
 		this.mapApi = mapApi;
 		this.messages = messages;
@@ -56,6 +65,9 @@ public class DialogsManager {
 		this.config = config;
 		this.mapObjectFactory = mapObjectFactory;
 		this.layersPane = layersPane;
+		this.customObjectEdit = customObjectEdit;
+		this.tools = tools;
+		this.brushButton = brushButton;
 	}
 
 	/**
@@ -111,11 +123,10 @@ public class DialogsManager {
 	 * 
 	 * @throws CloneNotSupportedException
 	 */
-	void attributesMapAction() {
-		/* otwiera okno ustawien wymiarow nowej mapy */
-		// MapAttributesPanel mapAttributesPanel = new
-		// MapAttributesPanel(config,
-		// messages, mapPanel.getTopParent());
+	public void attributesMapAction() {
+		/*
+		 * Opens map attributes dialog window
+		 */
 
 		MapAttributesPanel mapAttributesPanel = new MapAttributesPanel(config,
 				messages, mapPanel.getPanel().getTopLevelAncestor());
@@ -130,6 +141,48 @@ public class DialogsManager {
 					mapObjectFactory.getBlankMapObject());
 
 			layersPane.update(mapApi);
+			validateCustomObjectPane(mapAttributes);
+			resetSelection();
+		}
+	}
+
+	private void resetSelection() {
+		if (tools.getActiveTool() == Tools.ToolsEnum.SELECTION) {
+			// switch to brush tool
+			brushButton.doClick();
+		}
+	}
+
+	private void validateCustomObjectPane(MapAttributes mapAttributes) {
+		Point3D point = customObjectEdit.getObjectLocation();
+		boolean shouldDeactivate = false;
+
+		if (point != null) {
+			// One column:
+			// point.x = 0 -> column index
+			// getColumns() = 1 -> size
+			if (point.x > mapAttributes.getColumns() - 1) {
+				shouldDeactivate = true;
+			}
+
+			// One row:
+			// point.y = 0 -> row index
+			// getRows() = 1 -> size
+			if (point.y > mapAttributes.getRows() - 1) {
+				shouldDeactivate = true;
+			}
+
+			// One layer:
+			// point.z = 0 -> layer index
+			// getLayers() = 1 -> size
+			if (point.z > mapAttributes.getLayers() - 1) {
+				shouldDeactivate = true;
+			}
+
+			if (shouldDeactivate) {
+				// switch to brush tool
+				brushButton.doClick();
+			}
 
 		}
 	}

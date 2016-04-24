@@ -221,11 +221,6 @@ public class CopyPaste {
 				CustomMapObject customMapObject = segment.getCustomMapObject();
 				mapSegment.setCustomMapObject(customMapObject,
 						mapApi.getActiveLayerIndex());
-
-				MapSegment mapSegment2 = mapApi.getSegment(row, col);
-				mapSegment2.setMapObject(mapObject,
-						mapApi.getActiveLayerIndex());
-
 			}
 		}
 

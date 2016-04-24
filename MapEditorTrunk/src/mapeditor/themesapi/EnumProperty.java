@@ -32,6 +32,8 @@ public class EnumProperty extends MapObjectProperty {
 
 	public Entry<String, String>[] getKeysEntrySet() {
 		Set<Entry<String, String>> set = choices.entrySet();
+
+		@SuppressWarnings("unchecked")
 		Entry<String, String>[] array = set.toArray(new Entry[1]);
 
 		return array;

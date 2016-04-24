@@ -2,10 +2,14 @@ package mapeditor.mapapi;
 
 import java.io.File;
 import java.util.LinkedList;
+import java.util.List;
 
 import mapeditor.config.Config;
+import mapeditor.themesapi.CustomMapObject;
 import mapeditor.themesapi.MapObject;
 import mapeditor.themesapi.MapObjectFactory;
+import mapeditor.themesapi.MapObjectProperty;
+import mapeditor.themesapi.PointProperty;
 
 public class MapApi {
 
@@ -13,11 +17,7 @@ public class MapApi {
 
 	private LinkedList<LayerAttributes> layersAttributes;
 
-	// private int activeLayerIndex = 0;
-
 	private MapLayout mapLayout;
-
-	// private int layers;
 
 	/**
 	 * Stores reference to file from which map was loaded or to which it was
@@ -33,14 +33,11 @@ public class MapApi {
 			mapLayout = MapLayout.SQR;
 		}
 
-		// layers = config.getMapApiLayersNumber();
-
 		MapAttributes mapAttributes = new MapAttributes(
 				config.getMapApiRowsNumber(), config.getMapApiColumnsNumber(),
 				config.getMapApiLayersNumber(), mapLayout);
 
 		resetMap(mapAttributes, mapObjectFactory.getBlankMapObject());
-
 	}
 
 	public LinkedList<LayerAttributes> getLayersAttributes() {
@@ -68,8 +65,6 @@ public class MapApi {
 			}
 
 		}
-
-		// this.activeLayerIndex = activeLayerIndex;
 	}
 
 	public boolean isLayoutHex() {
@@ -112,12 +107,7 @@ public class MapApi {
 		for (int i = 0; i < layersNumber; i++) {
 			LayerAttributes layerAttributes = new LayerAttributes(i);
 
-			// if (i == 0) {
-			// layerAttributes.setActive(true);
-			// }
-
 			layersAttributes.add(layerAttributes);
-
 		}
 
 		setActiveLayerIndex(0);
@@ -162,6 +152,31 @@ public class MapApi {
 
 		if (cols > 0) {
 			changeColumnsSize(cols, blankMapObject);
+		}
+
+		validateCustomObjects(mapAttributes);
+	}
+
+	private void validateCustomObjects(MapAttributes mapAttributes) {
+
+		for (List<MapSegment> row : segments) {
+			for (MapSegment segment : row) {
+				for (int layer = 0; layer < getLayerAttributesSize(); layer++) {
+
+					CustomMapObject customMapObject = segment
+							.getCustomMapObject(layer);
+					if (customMapObject != null) {
+
+						for (MapObjectProperty property : customMapObject
+								.getMapObjectProperties()) {
+							if (property instanceof PointProperty) {
+								PointProperty pointProperty = (PointProperty) property;
+								pointProperty.validate(mapAttributes);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
