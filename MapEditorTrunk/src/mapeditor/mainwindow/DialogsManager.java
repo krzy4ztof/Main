@@ -1,6 +1,7 @@
 package mapeditor.mainwindow;
 
 import java.io.File;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -243,8 +244,11 @@ public class DialogsManager {
 			try {
 				SAXParser saxParser = factory.newSAXParser();
 
-				Source schemaFile = new StreamSource(new File(
-						ApplicationManager.XSD_FOLDER, "map.xsd"));
+				URL url = ClassLoader
+						.getSystemResource(ApplicationManager.XSD_FOLDER_URL
+								+ "map.xsd");
+
+				Source schemaFile = new StreamSource(url.toString());
 				SchemaFactory schemaFactory = SchemaFactory
 						.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 				Schema schema = schemaFactory.newSchema(schemaFile);

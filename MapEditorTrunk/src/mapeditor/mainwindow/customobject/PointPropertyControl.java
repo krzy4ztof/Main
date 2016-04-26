@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -82,8 +83,10 @@ public class PointPropertyControl extends ObjectPropertyControl {
 		button = new JButton();
 		isButtonActive = false;
 
-		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER + ICON_ARROW_16;
-		button.setIcon(new ImageIcon(imgLocation));
+		URL url = ClassLoader
+				.getSystemResource(MainWindow.TOOLBAR_ICONS_FOLDER_URL
+						+ ICON_ARROW_16);
+		button.setIcon(new ImageIcon(url));
 
 		ActionListener buttonListener = new PointPropertyButtonActionListener(
 				this, customObjectPane, tools, cursorFactory, mapPanel);

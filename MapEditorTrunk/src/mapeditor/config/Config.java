@@ -35,7 +35,6 @@ public class Config {
 
 		resourceBundle = ResourceBundle.getBundle("config.config",
 				Locale.getDefault(), loader);
-
 	}
 
 	public Integer getMapApiColumnsNumber() {

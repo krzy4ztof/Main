@@ -2,6 +2,7 @@ package mapeditor.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,8 +41,7 @@ public class ApplicationManager {
 	public final static String THEMES_IMAGES_PATH = RESOURCES_PATH
 			+ "mapObjects" + File.separator;
 
-	public final static String XSD_FOLDER = RESOURCES_PATH + "xsd"
-			+ File.separator;
+	public final static String XSD_FOLDER_URL = "resources/xsd/";
 
 	private final static String CONFIG_PATH = RESOURCES_PATH + "config"
 			+ File.separator;
@@ -57,7 +57,7 @@ public class ApplicationManager {
 		logger.log(Level.INFO, MapLogger.APPLICATION_STARTUP);
 
 		Config config = new Config(RESOURCES_PATH);
-		MapMessages messages = new MapMessages(config);
+		MapMessages messages = new MapMessages(config, RESOURCES_PATH);
 		MapObjectFactory mapObjectFactory = new MapObjectFactory();
 		ThemesManager mapThemesList = readConfigurationFile(config,
 				mapObjectFactory, messages, mapLogger);
@@ -82,8 +82,11 @@ public class ApplicationManager {
 		ThemesManager mapThemesManager = new ThemesManager(mapObjectFactory);
 		File file = new File(THEMES_CONFIG_FILE_PATH);
 
-		Source schemaFile = new StreamSource(new File(
-				ApplicationManager.XSD_FOLDER, "themes.xsd"));
+		URL url = ClassLoader
+				.getSystemResource(ApplicationManager.XSD_FOLDER_URL
+						+ "themes.xsd");
+
+		Source schemaFile = new StreamSource(url.toString());
 		SchemaFactory schemaFactory = SchemaFactory
 				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema schema = schemaFactory.newSchema(schemaFile);

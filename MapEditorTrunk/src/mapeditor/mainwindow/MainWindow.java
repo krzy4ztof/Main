@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.net.URL;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -60,8 +60,7 @@ public class MainWindow {
 	final static String ACTION_TOOLBAR_SELECTION = "ACTION_TOOLBAR_SELECTION";
 	final static String ACTION_TOOLBAR_HAMMER = "ACTION_TOOLBAR_HAMMER";
 
-	public final static String TOOLBAR_ICONS_FOLDER = "resources"
-			+ File.separator + "toolbar" + File.separator;
+	public final static String TOOLBAR_ICONS_FOLDER_URL = "resources/toolbar/";
 
 	final static String ICON_ERASER_16 = "package_purge_16.png";
 	final static String ICON_BRUSH_16 = "brush_16.png";
@@ -358,11 +357,14 @@ public class MainWindow {
 	private void activateToolBarButton(JButton button, String imageName,
 			String actionCommand, String toolTipText,
 			ActionListener actionListener, ButtonGroup buttonGroup) {
-		String imgLocation = TOOLBAR_ICONS_FOLDER + imageName;
+
+		URL url = ClassLoader.getSystemResource(TOOLBAR_ICONS_FOLDER_URL
+				+ imageName);
 		button.addActionListener(actionListener);
 		button.setActionCommand(actionCommand);
 		button.setToolTipText(toolTipText);
-		button.setIcon(new ImageIcon(imgLocation, toolTipText));
+		button.setIcon(new ImageIcon(url, toolTipText));
+
 		buttonGroup.add(button);
 	}
 }

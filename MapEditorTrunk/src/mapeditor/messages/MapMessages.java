@@ -1,5 +1,9 @@
 package mapeditor.messages;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -55,15 +59,21 @@ public class MapMessages {
 
 	List<ResourceBundle> resourceBundleList;
 
-	public MapMessages(Config config) {
+	public MapMessages(Config config, String resourcesPath)
+			throws MalformedURLException {
 		Locale currentLocale;
 		currentLocale = new Locale(config.getLanguage());
 		resourceBundleList = new ArrayList<ResourceBundle>();
 
 		resourceBundleList.add(ResourceBundle.getBundle(
 				"mapeditor.messages.MessagesBundle", currentLocale));
+
+		File file = new File(resourcesPath);
+		URL[] urls = new URL[] { file.toURI().toURL() };
+		ClassLoader loader = new URLClassLoader(urls);
+
 		resourceBundleList.add(ResourceBundle.getBundle(
-				"mapeditor.messages.ThemesBundle", currentLocale));
+				"themes.messages.ThemesBundle", currentLocale, loader));
 	}
 
 	public String getString(String string) {

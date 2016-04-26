@@ -1,3 +1,1 @@
-cd ..
-java -cp target\MapEditor.jar mapeditor.main.ApplicationManager
-cd scripts
+java -cp MapEditor.jar mapeditor.main.ApplicationManager

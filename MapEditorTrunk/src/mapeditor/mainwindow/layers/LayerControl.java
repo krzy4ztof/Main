@@ -2,6 +2,7 @@ package mapeditor.mainwindow.layers;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.net.URL;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -52,11 +53,14 @@ public class LayerControl {
 
 	public LayerControl(int index, ButtonGroup buttonGroup,
 			LayersPaneActionListener actionListener) {
+		URL url = ClassLoader
+				.getSystemResource(MainWindow.TOOLBAR_ICONS_FOLDER_URL
+						+ ICON_GRID_16);
+		ImageIcon gridIcon = new ImageIcon(url);
 
-		ImageIcon gridIcon = new ImageIcon(MainWindow.TOOLBAR_ICONS_FOLDER
-				+ ICON_GRID_16);
-		ImageIcon objectsIcon = new ImageIcon(MainWindow.TOOLBAR_ICONS_FOLDER
+		url = ClassLoader.getSystemResource(MainWindow.TOOLBAR_ICONS_FOLDER_URL
 				+ ICON_OBJECT_16);
+		ImageIcon objectsIcon = new ImageIcon(url);
 
 		pane = new JLayeredPane();
 		pane.setLayout(new GridBagLayout());

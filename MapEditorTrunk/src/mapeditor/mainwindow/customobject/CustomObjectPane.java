@@ -3,6 +3,7 @@ package mapeditor.mainwindow.customobject;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -295,10 +296,10 @@ public class CustomObjectPane {
 		CustomPaneActionListener actionListener = new CustomPaneActionListener(
 				this);
 
-		String imgLocation = MainWindow.TOOLBAR_ICONS_FOLDER
-				+ CONFIRM_BUTTON_16;
-		Icon icon = new ImageIcon(imgLocation,
-				messages.getString(MapMessages.ATTR_OK));
+		URL url = ClassLoader
+				.getSystemResource(MainWindow.TOOLBAR_ICONS_FOLDER_URL
+						+ CONFIRM_BUTTON_16);
+		Icon icon = new ImageIcon(url, messages.getString(MapMessages.ATTR_OK));
 
 		okButton = new JButton(icon);
 		okButton.addActionListener(actionListener);
@@ -308,12 +309,11 @@ public class CustomObjectPane {
 
 		c.gridx++;
 
-		String imgLocationReject = MainWindow.TOOLBAR_ICONS_FOLDER
-				+ CANCEL_BUTTON_16;
-		Icon iconReject = new ImageIcon(imgLocationReject,
-				messages.getString(MapMessages.ATTR_CANCEL));
+		url = ClassLoader.getSystemResource(MainWindow.TOOLBAR_ICONS_FOLDER_URL
+				+ CANCEL_BUTTON_16);
+		icon = new ImageIcon(url, messages.getString(MapMessages.ATTR_CANCEL));
 
-		cancelButton = new JButton(iconReject);
+		cancelButton = new JButton(icon);
 		cancelButton.addActionListener(actionListener);
 		cancelButton.setActionCommand(ACTION_CUSTOM_CANCEL);
 
