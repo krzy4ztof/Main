@@ -3,3 +3,40 @@
 bin
 .svn
 .settings
+/WaterMill/build/
+/WaterMill/dist/
+/MapEditorTrunk/target/log.txt
+/MapEditorTrunk/target/MapEditor.jar
+/MapEditorTrunk/target/run.cmd
+/MapEditorTrunk/target/resources/
+
+###	CPP	###
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
