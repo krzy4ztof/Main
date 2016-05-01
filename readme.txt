@@ -59,6 +59,6 @@ Panel -> Changes
 Commit to master.
 Title, Description
 
-Pull to the remote.
+Push to the remote.
 Icon -> Sync icon - "Pull changes from and push local changes on master to the remote"
 
