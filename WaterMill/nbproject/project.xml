@@ -6,7 +6,7 @@
             <name>WaterMill</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions>hpp</header-extensions>
+            <header-extensions>h,hpp</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList/>
@@ -25,6 +25,10 @@
                 </confElem>
                 <confElem>
                     <name>Debug_CygWin</name>
+                    <type>1</type>
+                </confElem>
+                <confElem>
+                    <name>Debug_MinGW64</name>
                     <type>1</type>
                 </confElem>
             </confList>

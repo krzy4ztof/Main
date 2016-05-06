@@ -13,19 +13,22 @@
 
 #ifndef ERRORCODE_HPP
 #define ERRORCODE_HPP
+#include <string>
 
-class ErrorCode {
-public:
-    ErrorCode();
-    ErrorCode(char[], int);
-    ErrorCode(const ErrorCode& orig);
-    virtual ~ErrorCode();
-    void informUser(void);
-private:
-    char message[256];
-    int number;
+namespace watermill {
 
-};
+    class ErrorCode {
+    public:
+        ErrorCode();
+        ErrorCode(const std::string&, int);
+        ErrorCode(const ErrorCode& orig);
+        virtual ~ErrorCode();
+        void informUser(void);
+    private:
+        std::string message;
+        int number;
 
+    };
+}
 #endif /* ERRORCODE_HPP */
 

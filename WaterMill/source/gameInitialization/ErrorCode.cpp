@@ -13,33 +13,36 @@
 
 #include<stdio.h>
 // printf
-
 #include<string.h>
 // strcpy
-
 #include<iostream>
 // cout
-
 #include "ErrorCode.hpp"
 
-ErrorCode::ErrorCode() {
+using namespace std;
+// std::string
+
+namespace watermill {
+
+    ErrorCode::ErrorCode() {
+    }
+
+    //ErrorCode::ErrorCode(char error_message[], int error_number) {
+
+    ErrorCode::ErrorCode(const string& error_message, int error_number) {
+        number = error_number;
+        message = error_message;
+        //strcpy(message, error_message);
+    }
+
+    ErrorCode::ErrorCode(const ErrorCode& orig) {
+    }
+
+    ErrorCode::~ErrorCode() {
+    }
+
+    void ErrorCode::informUser() {
+        std::cout << "Error Code: " << message << "; number: " << number << std::endl;
+    }
 }
-
-//ErrorCode::ErrorCode(char error_message[], int error_number) {
-
-ErrorCode::ErrorCode(char* error_message, int error_number) {
-    number = error_number;
-    strcpy(message, error_message);
-}
-
-ErrorCode::ErrorCode(const ErrorCode& orig) {
-}
-
-ErrorCode::~ErrorCode() {
-}
-
-void ErrorCode::informUser() {
-    std::cout << "Error Code: " << message << "; number: " << number << std::endl;
-}
-
 

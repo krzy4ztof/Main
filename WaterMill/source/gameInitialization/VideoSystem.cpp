@@ -14,18 +14,20 @@
 #include "VideoSystem.hpp"
 #include "ErrorCode.hpp"
 
-VideoSystem::VideoSystem() {
-    // Initialization
-    bool somethingWentWrong = false;
+namespace watermill {
 
-    if (somethingWentWrong) {
-        throw ErrorCode("EC_VIDEOSYSTEM_PROBLEM", 789);
+    VideoSystem::VideoSystem() {
+        // Initialization
+        bool somethingWentWrong = false;
+
+        if (somethingWentWrong) {
+            throw ErrorCode("EC_VIDEOSYSTEM_PROBLEM", 789);
+        }
+    }
+
+    VideoSystem::VideoSystem(const VideoSystem& orig) {
+    }
+
+    VideoSystem::~VideoSystem() {
     }
 }
-
-VideoSystem::VideoSystem(const VideoSystem& orig) {
-}
-
-VideoSystem::~VideoSystem() {
-}
-

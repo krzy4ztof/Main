@@ -7,3 +7,4 @@
 # Release configuration
 # Debug_MinGW configuration
 # Debug_CygWin configuration
+# Debug_MinGW64 configuration

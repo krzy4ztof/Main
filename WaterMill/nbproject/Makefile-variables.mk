@@ -38,6 +38,14 @@ CND_ARTIFACT_PATH_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/watermill
 CND_PACKAGE_DIR_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug_CygWin=watermill.tar
 CND_PACKAGE_PATH_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/package/watermill.tar
+# Debug_MinGW64 configuration
+CND_PLATFORM_Debug_MinGW64=MinGW64-Windows
+CND_ARTIFACT_DIR_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows
+CND_ARTIFACT_NAME_Debug_MinGW64=watermill
+CND_ARTIFACT_PATH_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/watermill
+CND_PACKAGE_DIR_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/package
+CND_PACKAGE_NAME_Debug_MinGW64=watermill.tar
+CND_PACKAGE_PATH_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/package/watermill.tar
 #
 # include compiler specific variables
 #

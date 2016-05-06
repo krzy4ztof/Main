@@ -21,9 +21,9 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
+CND_PLATFORM=MinGW64-Windows
 CND_DLIB_EXT=dll
-CND_CONF=Debug_MinGW
+CND_CONF=Debug_MinGW64
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -62,7 +62,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../libraries/freeglut/lib -lfreeglut -lopengl32 -Wl,--subsystem,windows -lpsapi
+LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--subsystem,windows -lpsapi
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

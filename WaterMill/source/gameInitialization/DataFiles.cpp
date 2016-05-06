@@ -14,18 +14,21 @@
 #include "DataFiles.hpp"
 #include "ErrorCode.hpp"
 
-DataFiles::DataFiles() {
-    // Initialization
-    bool somethingWentWrong = false;
+namespace watermill {
 
-    if (somethingWentWrong) {
-        throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
+    DataFiles::DataFiles() {
+        // Initialization
+        bool somethingWentWrong = false;
+
+        if (somethingWentWrong) {
+            throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
+        }
     }
-}
 
-DataFiles::DataFiles(const DataFiles& orig) {
-}
+    DataFiles::DataFiles(const DataFiles& orig) {
+    }
 
-DataFiles::~DataFiles() {
-}
+    DataFiles::~DataFiles() {
+    }
 
+}

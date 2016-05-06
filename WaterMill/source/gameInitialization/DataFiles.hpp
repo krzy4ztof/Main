@@ -14,14 +14,16 @@
 #ifndef DATAFILES_HPP
 #define DATAFILES_HPP
 
-class DataFiles {
-public:
-    DataFiles();
-    DataFiles(const DataFiles& orig);
-    virtual ~DataFiles();
-private:
+namespace watermill {
 
-};
+    class DataFiles {
+    public:
+        DataFiles();
+        DataFiles(const DataFiles& orig);
+        virtual ~DataFiles();
+    private:
 
+    };
+}
 #endif /* DATAFILES_HPP */
 

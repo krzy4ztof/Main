@@ -29,6 +29,8 @@
 
 using namespace std;
 
+using namespace watermill;
+
 /*
  *
  */
@@ -63,14 +65,20 @@ void display() {
 int mainOpenGl(int argc, char** argv) {
 
     glutInit(&argc, argv); // Initialize GLUT
-    glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
+    glutCreateWindow(GAME_TITLE); // Create a window with the given title
     glutInitWindowSize(320, 320); // Set the window's initial width & height
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutDisplayFunc(display); // Register display callback handler for window re-paint
 
     GameCodeApp * gameCodeApp;
     gameCodeApp = new GameCodeApp;
-    bool resInit = gameCodeApp->InitInstance();
+    bool resInit = gameCodeApp->initInstance();
+
+    int checkCpp11{457};
+    //  auto anotherCpp11check = checkCpp11;
+
+    cout << "CheckCpp11: " << checkCpp11 << endl;
+    //  cout << " AnotherCheckCpp11: " << anotherCpp11check << endl;
 
     if (!resInit) {
         cout << "gameCodeApp init failed" << endl;

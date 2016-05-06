@@ -40,6 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/gameInitialization/ErrorCode.o \
 	${OBJECTDIR}/source/gameInitialization/GameCodeApp.o \
 	${OBJECTDIR}/source/gameInitialization/VideoSystem.o \
+	${OBJECTDIR}/source/gameInitialization/linux/LinuxCalls.o \
+	${OBJECTDIR}/source/gameInitialization/windows/Cygwin64Calls.o \
+	${OBJECTDIR}/source/gameInitialization/windows/Windows32Calls.o \
+	${OBJECTDIR}/source/gameInitialization/windows/Windows64Calls.o \
 	${OBJECTDIR}/source/main/Main.o \
 	${OBJECTDIR}/source/testClasses/TestClass.o
 
@@ -58,7 +62,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--subsystem,windows
+LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--subsystem,windows -lpsapi
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -92,6 +96,26 @@ ${OBJECTDIR}/source/gameInitialization/VideoSystem.o: source/gameInitialization/
 	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/gameInitialization/VideoSystem.o source/gameInitialization/VideoSystem.cpp
+
+${OBJECTDIR}/source/gameInitialization/linux/LinuxCalls.o: source/gameInitialization/linux/LinuxCalls.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization/linux
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/gameInitialization/linux/LinuxCalls.o source/gameInitialization/linux/LinuxCalls.cpp
+
+${OBJECTDIR}/source/gameInitialization/windows/Cygwin64Calls.o: source/gameInitialization/windows/Cygwin64Calls.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization/windows
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/gameInitialization/windows/Cygwin64Calls.o source/gameInitialization/windows/Cygwin64Calls.cpp
+
+${OBJECTDIR}/source/gameInitialization/windows/Windows32Calls.o: source/gameInitialization/windows/Windows32Calls.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization/windows
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/gameInitialization/windows/Windows32Calls.o source/gameInitialization/windows/Windows32Calls.cpp
+
+${OBJECTDIR}/source/gameInitialization/windows/Windows64Calls.o: source/gameInitialization/windows/Windows64Calls.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization/windows
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/gameInitialization/windows/Windows64Calls.o source/gameInitialization/windows/Windows64Calls.cpp
 
 ${OBJECTDIR}/source/main/Main.o: source/main/Main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source/main

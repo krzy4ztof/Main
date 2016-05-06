@@ -18,18 +18,21 @@
 #include "AudioSystem.hpp"
 #include "VideoSystem.hpp"
 
-class GameCodeApp {
-public:
-    GameCodeApp();
-    GameCodeApp(const GameCodeApp& orig);
-    virtual ~GameCodeApp();
-    bool InitInstance();
-private:
-    DataFiles *dataFiles;
-    AudioSystem *audioSystem;
-    VideoSystem *videoSystem;
+namespace watermill {
 
-};
+    class GameCodeApp {
+    public:
+        GameCodeApp();
+        GameCodeApp(const GameCodeApp& orig);
+        virtual ~GameCodeApp();
+        bool initInstance();
+    private:
+        DataFiles *dataFiles;
+        AudioSystem *audioSystem;
+        VideoSystem *videoSystem;
+        static const int MEGABYTE = 1024 * 1024;
 
+    };
+}
 #endif /* GAMECODEAPP_HPP */
 

@@ -14,18 +14,21 @@
 #include "AudioSystem.hpp"
 #include "ErrorCode.hpp"
 
-AudioSystem::AudioSystem() {
+namespace watermill {
 
-    // Initialization
-    bool somethingWentWrong = false;
+    AudioSystem::AudioSystem() {
 
-    if (somethingWentWrong) {
-        throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
+        // Initialization
+        bool somethingWentWrong = false;
+
+        if (somethingWentWrong) {
+            throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
+        }
     }
-}
 
-AudioSystem::AudioSystem(const AudioSystem& orig) {
-}
+    AudioSystem::AudioSystem(const AudioSystem& orig) {
+    }
 
-AudioSystem::~AudioSystem() {
+    AudioSystem::~AudioSystem() {
+    }
 }

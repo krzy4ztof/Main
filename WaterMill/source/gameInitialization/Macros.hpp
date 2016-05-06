@@ -15,6 +15,8 @@
 #define LMACROS_HPP
 
 #define SAFE_DELETE(p) { if (p) { delete (p); (p)=NULL; } }
+#define GAME_TITLE  "WaterMill Game"
+#define GAME_PROCESS_NAME  "watermill.exe"
 
 #endif /* LMACROS_HPP */
 

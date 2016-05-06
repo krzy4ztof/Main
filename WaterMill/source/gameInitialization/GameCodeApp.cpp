@@ -21,42 +21,85 @@
 #include "VideoSystem.hpp"
 #include "ErrorCode.hpp"
 
-GameCodeApp::GameCodeApp() {
-    //    *dataFiles = NULL;
-    //   *audioSystem = NULL;
-    //  *videoSystem = NULL;
-}
+#include "SystemCalls.hpp"
 
-GameCodeApp::GameCodeApp(const GameCodeApp& orig) {
-}
+using namespace std;
 
-GameCodeApp::~GameCodeApp() {
-}
+namespace watermill {
 
-bool GameCodeApp::InitInstance() {
-    bool returnCode = true;
+    GameCodeApp::GameCodeApp() {
+        //    *dataFiles = NULL;
+        //   *audioSystem = NULL;
+        //  *videoSystem = NULL;
+    }
 
-    try {
-        dataFiles = new DataFiles;
-        audioSystem = new AudioSystem;
-        videoSystem = new VideoSystem;
+    GameCodeApp::GameCodeApp(const GameCodeApp& orig) {
+    }
 
+    GameCodeApp::~GameCodeApp() {
+    }
 
-        bool done = true;
+    bool GameCodeApp::initInstance() {
+        bool returnCode = true;
+        SystemCalls systemCalls;
 
-        std::cout << "Main loop" << std::endl;
-        while (!done) {
-            // Main loop
+#ifndef _DEBUG
+        if (!systemCalls.isOnlyInstance(GAME_PROCESS_NAME)) {
+
+            //if (!systemCalls.IsOnlyInstance(GAME_TITLE)) {
+            cout << "There is another process running" << endl;
+            return false;
+        }
+#endif
+
+        // Check for adequate machine resources.
+        bool resourceCheck = false;
+        while (!resourceCheck) {
+            const DWORDLONG physicalRAM = 512 * MEGABYTE;
+            const DWORDLONG virtualRAM = 1024 * MEGABYTE;
+            const DWORDLONG diskSpace = 10 * MEGABYTE;
+            if (!systemCalls.checkHardDisk(diskSpace))
+                return false;
+
+            /*
+            const DWORD minCpuSpeed = 1300; // 1.3Ghz
+            DWORD thisCPU = systemCalls.readCPUSpeed();
+            if (thisCPU < minCpuSpeed) {
+                cout << "GetCPUSpeed reports CPU is too slow for this game." << endl;
+                return false;
+            }
+             */
+
+            resourceCheck = true;
         }
 
-    } catch (ErrorCode& error) {
-        error.informUser();
 
-        returnCode = false;
+
+        try {
+            dataFiles = new DataFiles;
+            audioSystem = new AudioSystem;
+            videoSystem = new VideoSystem;
+
+
+            bool done = true;
+
+            std::cout << "Main loop" << std::endl;
+            while (!done) {
+                // Main loop
+            }
+
+        } catch (ErrorCode& error) {
+            error.informUser();
+
+            returnCode = false;
+        }
+        SAFE_DELETE(videoSystem);
+        SAFE_DELETE(audioSystem);
+        SAFE_DELETE(dataFiles);
+
+        return (returnCode);
     }
-    SAFE_DELETE(videoSystem);
-    SAFE_DELETE(audioSystem);
-    SAFE_DELETE(dataFiles);
 
-    return (returnCode);
+
 }
+

@@ -14,14 +14,16 @@
 #ifndef VIDEOSYSTEM_HPP
 #define VIDEOSYSTEM_HPP
 
-class VideoSystem {
-public:
-    VideoSystem();
-    VideoSystem(const VideoSystem& orig);
-    virtual ~VideoSystem();
-private:
+namespace watermill {
 
-};
+    class VideoSystem {
+    public:
+        VideoSystem();
+        VideoSystem(const VideoSystem& orig);
+        virtual ~VideoSystem();
+    private:
 
+    };
+}
 #endif /* VIDEOSYSTEM_HPP */
 

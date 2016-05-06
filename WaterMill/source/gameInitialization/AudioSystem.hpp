@@ -14,14 +14,16 @@
 #ifndef AUDIOSYSTEM_HPP
 #define AUDIOSYSTEM_HPP
 
-class AudioSystem {
-public:
-    AudioSystem();
-    AudioSystem(const AudioSystem& orig);
-    virtual ~AudioSystem();
-private:
+namespace watermill {
 
-};
+    class AudioSystem {
+    public:
+        AudioSystem();
+        AudioSystem(const AudioSystem& orig);
+        virtual ~AudioSystem();
+    private:
 
+    };
+}
 #endif /* AUDIOSYSTEM_HPP */
 
