@@ -19,6 +19,7 @@
 //#ifdef __LINUX__
 #include <windows.h>
 #include "Cygwin64Calls.hpp"
+#include <string>
 
 namespace watermill {
 
@@ -27,12 +28,15 @@ namespace watermill {
         Cygwin64Calls();
         Cygwin64Calls(const Cygwin64Calls& orig);
         virtual ~Cygwin64Calls();
-        bool isOnlyInstance(TCHAR *);
+        //bool isOnlyInstance(TCHAR *);
+        bool isOnlyInstance(const std::string&);
+
         bool checkHardDisk(const int);
         DWORD readCPUSpeed();
+        bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
     private:
-        bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
-
+        //bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
+        bool isAGameProcess(DWORD processID, const std::string& gameTitle);
     };
 }
 #endif /* __CYGWIN__ */

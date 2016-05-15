@@ -18,6 +18,7 @@
 //#ifdef __LINUX__
 #include <windows.h>
 #include <tchar.h>
+#include <string>
 
 namespace watermill {
 
@@ -26,11 +27,12 @@ namespace watermill {
         Windows32Calls();
         Windows32Calls(const Windows32Calls& orig);
         virtual ~Windows32Calls();
-        bool isOnlyInstance(TCHAR *);
+        bool isOnlyInstance(const std::string&);
         bool checkHardDisk(const int);
         DWORD readCPUSpeed();
+        bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
     private:
-        bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
+        bool isAGameProcess(DWORD processID, const std::string& gameTitle);
     };
 }
 #endif /* __WIN32 */

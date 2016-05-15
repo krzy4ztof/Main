@@ -7,11 +7,37 @@
 #ifdef __MINGW__
 #endif
 
-***************
-***	Cygwin	***
-***************
-To install additional cygwin compoments - run
-C:\home\normalFiles\cygwin_package\setup-x86_64.exe
+***********************
+***	Memory status	***
+***********************
+
+bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded)
+GlobalMemoryStatusEx(&status);
+
+MinGW: OK
+C:\MinGW\include\winbase.h
+physical RAM needed: 536870912 [byte], 512 [MB]
+physical RAM available: 42949675154 [byte], 40960 [MB]
+virtual RAM needed: 1073741824 [byte], 1024 [MB]
+virtual RAM available: 8055546931308985848 [byte], 7.68237e+012 [MB]
+
+Cygwin:
+C:\cygwin64\usr\include\w32api\sysinfoapi.h
+physical RAM needed: 536870912 [byte], 512 [MB]
+physical RAM available: 6444102916 [byte], 6145 [MB]
+virtual RAM needed: 1073741824 [byte], 1024 [MB]
+virtual RAM available: 17086600864 [byte], 1.63e+04 [MB]
+
+
+Mingw64:
+C:\msys64\mingw64\x86_64-w64-mingw32\include\sysinfoapi.h
+physical RAM needed: 536870912 [byte], 512 [MB]
+physical RAM available: 102 [byte], 0 [MB]
+CheckMemory Failure: Not enough physical memory.
+virtual RAM needed: 1073741824 [byte], 1024 [MB]
+virtual RAM available: 1875937024 [byte], 1789 [MB]
+
+
 
 
 ***********************
@@ -61,147 +87,6 @@ C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source\TeapotWar
 
 int APIENTRY _tWinMain
 
-***************************
-***	OpenGL - freeglut	***
-***************************
-
------------------------
----	OpenGL - MinGW	---
------------------------
-C:\MinGW\lib
-
-libglaux.a
-libglu32.a
-libopengl32.a
-
--------------------
----	NetBeans	---
--------------------
-
-Project -> Properties -> Build 
-Configuration:
-	Debug_MinGW
-
-
-http://www.transmissionzero.co.uk/software/freeglut-devel/
-
-Install freeglut in:
-	C:\home\myImportantFiles\projects\git\libraries\freeglut
-
-Project -> Properties -> Build -> C++ Compiler -> Include Directories
-	../../libraries/freeglut/include
-	
-Project -> Properties -> Build -> Linker -> Additional Library Directories
-	../../libraries/freeglut/lib
-
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option	
-	-lfreeglut -lopengl32 -Wl,--subsystem,windows
-
-
-Copy
-	C:\home\normalFiles\libraries\freeglut\bin\freeglut.dll
-into
-	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_MinGW\MinGW-Windows
-	
-***************************
-***	OpenGL - MinGW64	***
-***************************
-
-----------------------------
----	OpenGL - MinGW64	---
----------------------------
-C:\msys64\mingw64\x86_64-w64-mingw32\lib
-	
--------------------
----	NetBeans	---
--------------------
-Project -> Properties -> Build 
-Configuration:
-	Debug_MinGW
-		
-NetBeans > Tools > Options > C/C++ > Code Assistance
-Tool Collection: MinGW64
-	
-
-Install freeglut in:
-	C:\home\myImportantFiles\projects\git\libraries\freeglut\x64
-
-Project -> Properties -> Build -> C++ Compiler -> Include Directories
-	../../libraries/freeglut/include
-	
-Project -> Properties -> Build -> Linker -> Additional Library Directories
-	../../libraries/freeglut/lib/x64
-
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option	
-	-lfreeglut -lopengl32 -Wl,--subsystem,windows
-	
-Copy
-	C:\home\normalFiles\libraries\freeglut\bin\x64\freeglut.dll
-into
-	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_CygWin\Cygwin-Windows
-	
-	
-	
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option			
-	-lfreeglut -lopengl32 -Wl,--subsystem,windows
-	
-***********************
-***	OpenGL - Cygwin	***
-***********************
-
------------------------
----	OpenGL - Cygwin	---
------------------------
-C:\cygwin64\lib\w32api\
-	libopengl32.a
-	libglu32.additional
-
-C:\cygwin64\usr\include\w32api
-	windows.h
-	
-C:\cygwin64\usr\include\w32api\GL
-	gl.h
-	glu.h
-	glaux.h
-	
--------------------
----	NetBeans	---
--------------------
-Project -> Properties -> Build 
-Configuration:
-	Debug_MinGW
-		
-NetBeans > Tools > Options > C/C++ > Code Assistance
-Tool Collection: Cygwin
-	
-
-Install freeglut in:
-	C:\home\myImportantFiles\projects\git\libraries\freeglut
-
-Project -> Properties -> Build -> C++ Compiler -> Include Directories
-	../../libraries/freeglut/include
-	
-Project -> Properties -> Build -> Linker -> Additional Library Directories
-	../../libraries/freeglut/lib/x64
-
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option	
-	-lfreeglut -lopengl32 -Wl,--subsystem,windows
-	
-Copy
-	C:\home\normalFiles\libraries\freeglut\bin\x64\freeglut.dll
-into
-	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_CygWin\Cygwin-Windows
-	
-	
-	
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option			
-	-lfreeglut -lopengl32 -Wl,--subsystem,windows
-	
 ***********	
 ***	Git	***
 ***********
@@ -210,24 +95,7 @@ Popup Menu -> Git -> Commit
 	
 Popup Menu -> Git -> Remote -> Push to Upstream
 	
-***********************
-***	MinGW libraries	***
-***********************
-#include <psapi.h>
 
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option		
-	-lpsapi
-	
-***************************
-***	Cygwin libraries	***
-***************************
-#include <psapi.h>
-
-Project -> Properties -> Build -> Linker -> Libraries
-Add Option -> Other Option		
-	-lpsapi	
-	
 ***************	
 ***	C++11	***
 ***************
@@ -235,72 +103,45 @@ Add Option -> Other Option
 warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
 
 
-***************************
-***	MinGW-W64 Nieudane	***
-***************************
-
-http://mingw-w64.org/doku.php/download/mingw-builds
-Mingw-builds
-	
-Version: 5.3.0
-Architecture: x86_64
-Threads: posix
-Exception: dwarf
-Build revision: 0	
-
-http://mingw-w64.org/doku.php/download/win-builds
-WinBuils
-
-Select the system to install for:
-Native Windows
-
-Select the architecture to install for:
-x86_64
 
 
 *******************
-***	MinGW-W64	***
+***	Disk space	***
 *******************
-http://wiki.netbeans.org/HowToSetup64-BitQt5WithNetBeans8.0OnWindows
+diskFree: 14010726
+diskNeeded: 2560
 
-https://msys2.github.io/
-msys2
+10 MB = 10*1024*1024 /4096 = 2560 clusters
 
-after installing msys2
-run msys2 shell
+2560 * 4096 / 1024 / 1024 = 10 MB
 
-Basic installation in msys2 shell:
-pacman -Sy pacman
-close and restart MSYS2 Shell if needed
-pacman -Syu
-pacman -Su
-pacman -S git
+1 MB = 1024 kB = 1024 * 1024 byte
 
-MinGW installation in msys2 shell:
-	pacman -S base-devel
-Build minGW 64 packages:
-	pacman -S mingw-w64-x86_64-toolchain
-Build minGW 32 packages:
-	pacman -S mingw-w64-i686-toolchain
+4096 kB = 1 cluster 
 
-Qt5 packages installation in msys2 shell:
-MinGW 64:
-	pacman -S mingw-w64-x86_64-qt5
-	pacman -S mingw-w64-x86_64-qt-creator
-MinGW 32 (optional):	
-	pacman -S mingw-w64-i686-qt5 
-	pacman -S mingw-w64-i686-qt-creator
+14010726 * 4096 / 1024 / 1024 = 54729 MB 
+14010726 * 4096 / 1024 / 1024 / 1024 = 53.44 GB
 
-	
+***************
+***	TODO	***
+***************
 
-Msys packages:
-https://sourceforge.net/p/msys2/wiki/Packages/
+constexpr static string = "watermill.exe";
 
-freeglut
-pacman -S mingw-w64-freeglut
+vector<T>;
+push_back(t);
 
 
-update-core
+page 117
+void error(string s){
+
+page 117
+throw runtime_error(s);
+}
 
 
-http://mingw-w64.org/doku.php/download/msys2
+try{
+
+} catch (exception& e){
+cerr << "error: " << e.what() << endl;
+}

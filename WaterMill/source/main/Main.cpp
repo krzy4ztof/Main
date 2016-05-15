@@ -29,8 +29,6 @@
 
 using namespace std;
 
-using namespace watermill;
-
 /*
  *
  */
@@ -38,7 +36,7 @@ using namespace watermill;
 
 
 void testMain() {
-    TestClass testClass;
+    watermill::TestClass testClass;
     testClass.SimpleRun();
     testClass.Run();
 }
@@ -70,8 +68,8 @@ int mainOpenGl(int argc, char** argv) {
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutDisplayFunc(display); // Register display callback handler for window re-paint
 
-    GameCodeApp * gameCodeApp;
-    gameCodeApp = new GameCodeApp;
+    watermill::GameCodeApp * gameCodeApp;
+    gameCodeApp = new watermill::GameCodeApp;
     bool resInit = gameCodeApp->initInstance();
 
     int checkCpp11{457};

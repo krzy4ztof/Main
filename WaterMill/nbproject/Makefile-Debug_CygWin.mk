@@ -62,7 +62,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--subsystem,windows -lpsapi
+LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--subsystem,windows -lpsapi -lboost_system -lboost_filesystem
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -70,7 +70,7 @@ LDLIBSOPTIONS=-L../../libraries/freeglut/lib/x64 -lfreeglut -lopengl32 -Wl,--sub
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/watermill.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/watermill ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/watermill ${OBJECTFILES} ${LDLIBSOPTIONS} -s
 
 ${OBJECTDIR}/source/gameInitialization/AudioSystem.o: source/gameInitialization/AudioSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source/gameInitialization

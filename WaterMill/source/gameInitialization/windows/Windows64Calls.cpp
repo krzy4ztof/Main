@@ -21,6 +21,8 @@
 #include <stdio.h>
 #include <psapi.h>
 
+#include "../Macros.hpp"
+
 #define SW_SHOWNORMAL 1
 
 using namespace std;
@@ -39,11 +41,21 @@ namespace watermill {
     // IsOnlyInstance							- Chapter 5, page 137
     //
 
-    bool Windows64Calls::isAGameProcess(DWORD processID, TCHAR * gameTitle) {
+    bool Windows64Calls::isAGameProcess(DWORD processID, const std::string& gameTitle) {
+        //  bool Windows64Calls::isAGameProcess(DWORD processID, TCHAR * gameTitle) {
         bool result = false;
 
         TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
         TCHAR szGameProcessName[MAX_PATH];
+
+        TCHAR *gameTitleTchar = new TCHAR[gameTitle.size() + 1];
+        gameTitleTchar[gameTitle.size()] = 0;
+        //As much as we'd love to, we can't use memcpy() because
+        //sizeof(TCHAR)==sizeof(char) may not be true:
+        std::copy(gameTitle.begin(), gameTitle.end(), gameTitleTchar);
+
+        cout << "gameTitleTchar: " << gameTitleTchar << endl;
+
         //  USES_CONVERSION;
         //_tcscpy(szGameProcessName, gameTitle);
 
@@ -73,7 +85,9 @@ namespace watermill {
         // Print the process name and identifier.
 
         //int cmpRes = _tcscmp(szProcessName, szGameProcessName);
-        int cmpRes = strcmp(szProcessName, gameTitle);
+        //int cmpRes = strcmp(szProcessName, gameTitle);
+        int cmpRes = strcmp(szProcessName, gameTitleTchar);
+
 
 
         if (cmpRes == 0) {
@@ -91,7 +105,9 @@ namespace watermill {
         return result;
     }
 
-    bool Windows64Calls::isOnlyInstance(TCHAR * gameTitle) {
+    bool Windows64Calls::isOnlyInstance(const std::string& gameTitle) {
+
+        //    bool Windows64Calls::isOnlyInstance(TCHAR * gameTitle) {
         /* EnumProcesses lists 64 and 32 bit processes. If you run windmill.exe using MinGW 32 bit first,
          * then MinGW process will be discovered by EnumProcesses. Cygwin process will not launch
          * because MinGW process is already running.
@@ -147,6 +163,81 @@ namespace watermill {
         }
 
     }
+
+
+    //
+    // ReadCPUSpeed							- Chapter 5, page 140
+    //
+
+    DWORD Windows64Calls::readCPUSpeed() {
+        DWORD BufSize = sizeof (DWORD);
+        DWORD dwMHz = 0;
+        DWORD type = REG_DWORD;
+        HKEY hKey;
+
+
+        // open the key where the proc speed is hidden:
+        long lError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
+                L"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
+                0, KEY_READ, &hKey);
+
+        if (lError == ERROR_SUCCESS) {
+            // query the key:
+            RegQueryValueExW(hKey, L"~MHz", NULL, &type, (LPBYTE) & dwMHz, &BufSize);
+        }
+
+        return dwMHz;
+    }
+
+
+    //
+    // CheckMemory							- Chapter 5, page 139
+    //
+
+    bool Windows64Calls::checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded) {
+        MEMORYSTATUSEX status;
+        GlobalMemoryStatusEx(&status);
+
+        double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
+        double ramAvailMB = status.ullTotalPhys / 1024 / 1024;
+
+        cout << "physical RAM needed: " << physicalRAMNeeded << " [byte], " << ramNeededMB << " [MB]" << endl;
+        cout << "physical RAM available: " << status.ullTotalPhys << " [byte], " << ramAvailMB << " [MB]" << endl;
+
+        if (status.ullTotalPhys < physicalRAMNeeded) {
+            // you don’t have enough physical memory. Tell the player to go get a real
+            // computer and give this one to his mother.
+            cout << "CheckMemory Failure: Not enough physical memory." << endl;
+            return false;
+        }
+
+
+        double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
+        double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
+        cout << "virtual RAM needed: " << virtualRAMNeeded << " [byte], " << virtualRamNeededMB << " [MB]" << endl;
+        cout << "virtual RAM available: " << status.ullAvailVirtual << " [byte], " << virtualRamAvailMB << " [MB]" << endl;
+
+        // Check for enough free memory.
+        if (status.ullAvailVirtual < virtualRAMNeeded) {
+            // you don’t have enough virtual memory available.
+            // Tell the player to shut down the copy of Visual Studio running in the
+            // background, or whatever seems to be sucking the memory dry.
+            cout << "CheckMemory Failure: Not enough virtual memory." << endl;
+            return false;
+        }
+
+        char *buff = GCC_NEW char[(unsigned int) virtualRAMNeeded];
+        if (buff)
+            delete[] buff;
+        else {
+            // even though there is enough memory, it isn't available in one
+            // block, which can be critical for games that manage their own memory
+            cout << "CheckMemory Failure: Not enough contiguous available memory." << endl;
+            return false;
+        }
+        return true;
+    }
+
 }
 
 #endif /* __WIN64 */

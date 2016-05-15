@@ -18,6 +18,8 @@
 #include "AudioSystem.hpp"
 #include "VideoSystem.hpp"
 
+#include <string>
+
 namespace watermill {
 
     class GameCodeApp {
@@ -26,6 +28,7 @@ namespace watermill {
         GameCodeApp(const GameCodeApp& orig);
         virtual ~GameCodeApp();
         bool initInstance();
+        const static std::string GAME_PROCESS_NAME;
     private:
         DataFiles *dataFiles;
         AudioSystem *audioSystem;

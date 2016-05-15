@@ -15,21 +15,24 @@
 
 using namespace std;
 
-void TestClass::SimpleRun() {
-    cout << "Water Mill Simple" << endl;
-}
+namespace watermill {
 
-void TestClass::Run() {
-    cout << "Water Mill" << endl;
+    void TestClass::SimpleRun() {
+        cout << "Water Mill Simple" << endl;
+    }
 
-    cout << "Type 1 2 3 + Enter " << endl;
+    void TestClass::Run() {
+        cout << "Water Mill" << endl;
 
-    cout << "Press Z + Enter to end " << endl;
+        cout << "Type 1 2 3 + Enter " << endl;
+
+        cout << "Press Z + Enter to end " << endl;
 
 
-    using namespace boost::lambda;
-    typedef std::istream_iterator<int> in;
+        using namespace boost::lambda;
+        typedef std::istream_iterator<int> in;
 
-    std::for_each(
-            in(std::cin), in(), std::cout << (_1 * 3) << " ");
+        std::for_each(
+                in(std::cin), in(), std::cout << (_1 * 3) << " ");
+    }
 }

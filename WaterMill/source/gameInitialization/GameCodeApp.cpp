@@ -27,6 +27,8 @@ using namespace std;
 
 namespace watermill {
 
+    const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
+
     GameCodeApp::GameCodeApp() {
         //    *dataFiles = NULL;
         //   *audioSystem = NULL;
@@ -44,7 +46,7 @@ namespace watermill {
         SystemCalls systemCalls;
 
 #ifndef _DEBUG
-        if (!systemCalls.isOnlyInstance(GAME_PROCESS_NAME)) {
+        if (!systemCalls.isOnlyInstance(GameCodeApp::GAME_PROCESS_NAME)) {
 
             //if (!systemCalls.IsOnlyInstance(GAME_TITLE)) {
             cout << "There is another process running" << endl;
@@ -58,32 +60,33 @@ namespace watermill {
             const DWORDLONG physicalRAM = 512 * MEGABYTE;
             const DWORDLONG virtualRAM = 1024 * MEGABYTE;
             const DWORDLONG diskSpace = 10 * MEGABYTE;
-            if (!systemCalls.checkHardDisk(diskSpace))
+            if (!systemCalls.checkHardDisk(diskSpace)) {
                 return false;
+            }
 
-            /*
             const DWORD minCpuSpeed = 1300; // 1.3Ghz
             DWORD thisCPU = systemCalls.readCPUSpeed();
+
+            cout << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]" << endl;
             if (thisCPU < minCpuSpeed) {
                 cout << "GetCPUSpeed reports CPU is too slow for this game." << endl;
                 return false;
             }
-             */
 
+            if (!systemCalls.checkMemory(physicalRAM, virtualRAM)) {
+                return false;
+            }
             resourceCheck = true;
         }
-
-
 
         try {
             dataFiles = new DataFiles;
             audioSystem = new AudioSystem;
             videoSystem = new VideoSystem;
 
-
             bool done = true;
 
-            std::cout << "Main loop" << std::endl;
+            cout << "Main loop" << endl;
             while (!done) {
                 // Main loop
             }
@@ -99,7 +102,5 @@ namespace watermill {
 
         return (returnCode);
     }
-
-
 }
 

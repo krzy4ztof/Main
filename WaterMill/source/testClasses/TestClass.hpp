@@ -20,13 +20,15 @@
 #include <iterator>
 #include <algorithm>
 
-class TestClass {
-public:
-    void Run();
-    void SimpleRun();
-private:
+namespace watermill {
 
-};
+    class TestClass {
+    public:
+        void Run();
+        void SimpleRun();
+    private:
 
+    };
+}
 #endif /* TESTCLASS_HPP */
 

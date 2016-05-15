@@ -49,6 +49,9 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>docs/cygwin_readme.txt</itemPath>
+    <itemPath>docs/mingw64_readme.txt</itemPath>
+    <itemPath>docs/mingw_readme.txt</itemPath>
     <itemPath>docs/readme.txt</itemPath>
     <itemPath>docs/readme_backup.txt</itemPath>
   </logicalFolder>
@@ -83,6 +86,12 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="docs/cygwin_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw64_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="docs/readme.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="docs/readme_backup.txt" ex="false" tool="3" flavor2="0">
@@ -224,6 +233,12 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="docs/cygwin_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw64_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="docs/readme.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="docs/readme_backup.txt" ex="false" tool="3" flavor2="0">
@@ -374,6 +389,12 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="docs/cygwin_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw64_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="docs/readme.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="docs/readme_backup.txt" ex="false" tool="3" flavor2="0">
@@ -518,12 +539,21 @@
           <linkerAddLib>
             <pElem>../../libraries/freeglut/lib/x64</pElem>
           </linkerAddLib>
+          <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerOptionItem>-lfreeglut -lopengl32 -Wl,--subsystem,windows</linkerOptionItem>
             <linkerOptionItem>-lpsapi</linkerOptionItem>
+            <linkerOptionItem>-lboost_system</linkerOptionItem>
+            <linkerOptionItem>-lboost_filesystem</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="docs/cygwin_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw64_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="docs/readme.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="docs/readme_backup.txt" ex="false" tool="3" flavor2="0">
@@ -674,6 +704,12 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="docs/cygwin_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw64_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="docs/mingw_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="docs/readme.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="docs/readme_backup.txt" ex="false" tool="3" flavor2="0">
