@@ -1,3 +1,22 @@
+*******************
+***	cmd output	***
+*******************
+When run
+...\WaterMill\source\scripts\runCygwin.cmd
+no output is visible on the screen.
+
+If you copy 
+...\WaterMill\dist\Debug_CygWin\Cygwin-Windows\watermill.exe
+...\WaterMill\dist\Debug_CygWin\Cygwin-Windows\freeglut.dll
+
+to 
+C:\cygwin64\home\Krzysztof
+
+And in cygwin console run
+watermill.exe
+
+Then output is visible
+
 ***************
 ***	C++11	***
 ***************

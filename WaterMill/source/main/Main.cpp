@@ -23,7 +23,7 @@
 #include "../gameInitialization/GameCodeApp.hpp"
 
 
-#include <windows.h>  // For MS Windows
+//#include <windows.h>  // For MS Windows
 #include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 
 

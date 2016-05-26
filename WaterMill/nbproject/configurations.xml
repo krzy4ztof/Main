@@ -534,6 +534,7 @@
             <pElem>../../libraries/boost_1_60_0</pElem>
             <pElem>../../libraries/freeglut/include</pElem>
           </incDir>
+          <commandLine>-std=c++11</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>

@@ -20,6 +20,7 @@
 #include <windows.h>
 #include "Cygwin64Calls.hpp"
 #include <string>
+#include <vector>
 
 namespace watermill {
 
@@ -33,10 +34,17 @@ namespace watermill {
 
         bool checkHardDisk(const int);
         DWORD readCPUSpeed();
+        double readCPUSpeedCygwin();
         bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
     private:
         //bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
         bool isAGameProcess(DWORD processID, const std::string& gameTitle);
+        void split(std::vector<std::string>& internal, const std::string& str, char delimiter);
+        bool toDoubleStod(double& speed, const std::string& str);
+        bool toDoubleStream(double& speed, const std::string& str);
+        std::vector<double>* findSpeedPtr(std::vector <std::string>& internal);
+        std::vector<double>& findSpeedRefError(std::vector <std::string>& internal);
+        std::vector<double> findSpeedMove(std::vector <std::string>& internal);
     };
 }
 #endif /* __CYGWIN__ */
