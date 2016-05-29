@@ -38,7 +38,7 @@ Add Option -> Other Option
 
 
 Copy
-	C:\home\normalFiles\libraries\freeglut\bin\freeglut.dll
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\freeglut.dll
 into
 	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_MinGW\MinGW-Windows
 	

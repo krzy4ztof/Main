@@ -1,0 +1,67 @@
+***************
+***	Eclipse	***
+***************
+
+---	2	---
+
+No output on console in Cygwin
+cout << "Hello" << endl;
+shows nothing
+
+Solution:
+Add
+C:\Cygwin64\bin
+to windows user path variable
+
+***********************
+***	Eclipse Cygwin	***
+***********************
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_Cygwin
+
+Project -> Properties -> C/C++ Build -> Tool Chain Editor 
+Current toolchain: Cygwin GCC
+
+C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Compiler -> Dialect -> Other dialect flags
+-std=c++11
+
+C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Compiler
+All options
+
+C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+C:\home\myImportantFiles\projects\git\libraries\freeglut\include
+C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
+freeglut
+psapi
+opengl32
+
+C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Linker -> Libraries -> Libraries (-l)
+freeglut
+opengl32
+psapi
+boost_system
+boost_filesystem (link to C:\cygwin64\lib\libboost_system.dll.a)	
+
+C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Linker -> Libraries -> Library search patch (-L)
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
+
+
+??? C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker -> Miscellaneous -> Other objects
+??? -Wl,--subsystem,windows
+
+Exclude (scripts) from build
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Source Location
+Source folders on build path:
+/source/scripts
+	Filter (source/scripts/)
+	
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+into
+	Debug_Cygwin\freeglut.dll
+

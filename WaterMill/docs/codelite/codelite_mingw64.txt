@@ -1,0 +1,53 @@
+
+*******************
+***	CodeLite	***
+*******************
+-----------
+---	1	---
+-----------
+cygboost_filesystem-1_58.dll is missing from your computer
+Solution: add c:/cygwin64/bin to the windows system Path
+
+***************************
+***	MinGW64 compiler	***
+***************************
+
+Settings -> Build Settings -> Compilers
+MinGW64 
+
+
+Settings -> Build Settings -> Compilers -> MinGW64 -> Tools
+Make
+C:/cygwin64/bin/make.exe
+(delete previous option: 'C:/cygwin64/bin/make.exe  SHELL=cmd.exe')
+
+
+
+***********************************
+***	Project settings MinGW64	***
+***********************************
+Project Settings -> General -> Intermediate Folder 
+./Debug_MinGW64
+
+Project Settings -> General -> Compiler
+Cygwin64 (gcc(GCC) 5.3.0)
+
+Project Settings -> Compiler -> Include Paths
+.
+C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
+C:\home\myImportantFiles\projects\git\libraries\freeglut\include
+
+Project Settings -> Compiler -> Libraries Search Paths
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
+
+Project Settings -> Compiler -> Libraries
+freeglut
+psapi
+opengl32
+
+Project -> Remove Virtual Folder
+source/scripts
+
+Project Settings -> Pre /Post Build Commands -> Post Build
+copy C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll Debug_MinGW64	
+

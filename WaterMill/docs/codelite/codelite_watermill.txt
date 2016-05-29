@@ -1,0 +1,8 @@
+***********
+***	Git	***
+***********
+
+http://codelite.org/LiteEditor/GitPlugin
+
+MSYSGit
+https://git-for-windows.github.io/

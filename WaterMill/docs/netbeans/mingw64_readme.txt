@@ -32,7 +32,7 @@ Add Option -> Other Option
 	-lfreeglut -lopengl32 -Wl,--subsystem,windows
 	
 Copy
-	C:\home\normalFiles\libraries\freeglut\bin\x64\freeglut.dll
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_CygWin\Cygwin-Windows
 	

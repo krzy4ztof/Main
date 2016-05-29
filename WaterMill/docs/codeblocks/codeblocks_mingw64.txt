@@ -1,0 +1,75 @@
+*******************************
+***	MinGW64 compiler setup	***
+*******************************
+
+Global Compiler Settings -> Selected Compiler -> Copy
+MinGW64
+
+Global Compiler Settings -> Selected Compiler -> Toolchain executables -> Compiler's installation directory
+C:\msys64\mingw64
+
+Global Compiler Settings -> Selected Compiler -> Toolchain executables -> Program Files
+C compiler: gcc.exe
+C++ compiler: g++.exe
+Linker for dynamic libs: g++.exe
+Linker for static libs: ar.exe
+Debugger: There isn't one for MinGW 64-bit yet, clear this and leave it blank
+Resource compiler: windres.exe
+Make program: make.exe
+
+***********************************
+***	Project settings MinGW64	***
+***********************************
+Project -> Properties -> Build Targets -> Duplicate
+Debug_MinGW64
+
+Project -> Properties -> Build Targets -> Selected build target options -> Type:
+Console aplication
+
+Project -> Properties -> Build Targets -> Selected build target options -> 
+Pause when execution ends: true
+
+Project -> Properties -> Build Targets -> Selected build target options -> Output filename:
+bin\Debug_MinGW64\Watermill.exe
+
+Project -> Properties -> Build Targets -> Selected build target options -> Objects output dir:
+obj\Debug_MinGW64\
+
+Project -> Properties -> Build Targets -> Selected build target options -> Build target files:
+All/? on
+
+Project -> Buld options
+Project build options -> Selected compiler
+MinGW64
+
+Project -> Buld options
+Project build options ->  Compiler settings -> Compiler Flags
+Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
+
+Project -> Buld options
+Project build options -> Search Directories -> Compiler -> Append target options to project options
+..\..\git\libraries\boost
+..\..\git\libraries\freeglut\include
+
+
+Project -> Buld options
+Project build options -> Search Directories -> Linker -> Append target options to project options
+..\..\git\libraries\freeglut\lib\x64
+
+
+Project -> Buld options
+Project build options -> Linker Settings -> Link Libraries -> Add
+freeglut
+psapi
+opengl32
+boost_system
+(link to C:\cygwin64\lib\libboost_system.dll.a)	
+boost_filesystem
+
+Project -> Remove files
+source/scripts/test.cpp
+
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+into
+	bin\Debug_MinGW64\freeglut.dll

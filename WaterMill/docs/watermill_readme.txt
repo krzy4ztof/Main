@@ -145,3 +145,31 @@ try{
 } catch (exception& e){
 cerr << "error: " << e.what() << endl;
 }
+
+***********
+***	Git	***
+***********
+
+
+create folder:
+settings/netbeans
+root
+
+>>ls
+
+--- Move files / rename files
+git mv Makefile settings/netbeans
+git mv .dep.inc settings/netbeans
+git mv nbproject settings/netbeans
+git mv source root
+git mv docs root
+
+---	Undo changes
+--- Unstage file - undo mark as to commit
+git reset HEAD netbeans
+git reset HEAD root
+
+
+
+
+

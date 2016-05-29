@@ -1,0 +1,74 @@
+***************
+***	Eclipse	***
+***************
+
+---	1	---
+
+No output on console in MinGW
+cout << "Hello" << endl;
+shows nothing
+
+Solution:
+Add
+C:\MinGW\bin
+to windows user path variable
+
+***********************
+***	Eclipse Mingw	***
+***********************
+File -> Import -> File system 
+From directory:
+C:\home\myImportantFiles\projects\git\Main\WaterMill
+docs
+media
+source
+
+
+Advanced:
+Create links in workspace: true
+Create virtual folders: true
+Create link locations relative to: PROJECT_LOC
+
+
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW
+
+Project -> Properties -> C/C++ Build -> Tool Chain Editor 
+Current toolchain: MinGW GCC
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+All options
+
+C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+C:\home\myImportantFiles\projects\git\libraries\freeglut\include
+C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
+freeglut
+psapi
+opengl32
+
+C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Compiler
+
+C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker -> Libraries -> Libraries (-l)
+freeglut
+opengl32
+psapi
+
+??? C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker -> Miscellaneous -> Linker flags -> Other objects
+??? -Wl,--subsystem,windows
+
+Exclude (scripts) from build
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Source Location
+Source folders on build path:
+/source/scripts
+	Filter (source/scripts/)
+	
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\freeglut.dll
+into
+	Debug_MinGW\freeglut.dll

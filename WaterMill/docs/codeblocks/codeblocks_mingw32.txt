@@ -1,0 +1,69 @@
+
+*******************
+***	CodeBlocks	***
+*******************
+-----------
+---	1	---
+-----------
+libgmp-10.dll is missing
+Solution: add c:/MinGW/bin to the windows system Path
+
+
+C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\ProgramData\Oracle\Java\javapath;C:\Python34\;C:\Python34\Scripts;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\PC Connectivity Solution\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\EgisTec MyWinLocker\x86;C:\Program Files (x86)\EgisTec MyWinLocker\x64;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\VisualSVN Server\bin;C:\Program Files (x86)\Skype\Phone\;C:\MinGW\bin
+
+-----------
+---	2	---
+-----------
+Cannot open file: ../mingwrt-4.0.3-1-mingw32-src/src/libcrt/crt/crt1.c
+
+
+
+
+
+"HelloCodeBlock - Debug": The compiler's setup (Cygwin GCC) is invalid, so Code::Blocks cannot find/run the compiler.
+Probably the toolchain path within the compiler options is not setup correctly?! (Do you have a compiler installed?)
+
+Goto "Settings->Compiler...->Global compiler settings->Cygwin GCC->Toolchain executables" and fix the compiler's setup.
+Compiler's installation directory
+C:\cygwin64
+
+
+User Settings:
+C:\Users\Krzysztof\AppData\Roaming\CodeBlocks\default.conf
+
+***********************************
+***	Project settings general	***
+***********************************
+Management -> Projects -> Add Files Recursively
+source
+docs
+
+Management -> Files -> Make root
+C:\home\myImportantFiles\projects\git\Main\WaterMill\
+
+*******************************
+***	Project settings MinGW	***
+*******************************
+
+Project -> Buld options
+Project build options -> Search Directories -> Linker -> Append target options to project options
+..\..\git\libraries\freeglut\lib\
+
+Project -> Buld options
+Project build options -> Search Directories -> Compiler -> Append target options to project options
+..\..\git\libraries\boost
+..\..\git\libraries\freeglut\include
+
+Project -> Buld options
+Project build options -> Linker Settings -> Link Libraries -> Add
+freeglut
+psapi
+opengl32
+
+Project -> Remove files
+source/scripts/test.cpp
+
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\freeglut.dll
+into
+	bin\Debug_MinGW32\freeglut.dll

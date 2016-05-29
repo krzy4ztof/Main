@@ -16,47 +16,38 @@
 
 using namespace watermill;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifdef __WIN32
-    // __WIN32 Both 32 bit and 64 bit
-    // MinGW MinGW64
+// __WIN32 Both 32 bit and 64 bit
+// MinGW MinGW64
 #ifdef __WIN64
-    // __WIN64 Only 64 bit
-    // MinGW64
+// __WIN64 Only 64 bit
+// MinGW64
 #include "windows/Windows64Calls.hpp"
-    //using SystemCalls = WindowsCalls;
-    typedef Windows64Calls SystemCalls;
+//using SystemCalls = WindowsCalls;
+typedef Windows64Calls SystemCalls;
 #else
-    // MinGW
+// MinGW
 #include "windows/Windows32Calls.hpp"
-    //using SystemCalls = WindowsCalls;
-    typedef Windows32Calls SystemCalls;
+//using SystemCalls = WindowsCalls;
+typedef Windows32Calls SystemCalls;
 #endif /* __WIN64 */
 #else
 
 #ifdef __CYGWIN__
 #include "windows/Cygwin64Calls.hpp"
-    //using SystemCalls = WindowsCalls;
-    typedef Cygwin64Calls SystemCalls;
+//using SystemCalls = WindowsCalls;
+typedef Cygwin64Calls SystemCalls;
 
 #endif /* __CYGWIN__ */
 
 #ifdef __LINUX__
-    //#ifdef __WIN32__
+//#ifdef __WIN32__
 #include "linux/LinuxCalls.hpp"
-    //using SystemCalls = LinuxCalls;
-    typedef LinuxCalls SystemCalls;
+//using SystemCalls = LinuxCalls;
+typedef LinuxCalls SystemCalls;
 #endif /* __LINUX__ */
 
 #endif /* __WIN32*/
-
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif /* SYSTEMCALLS_HPP */
 

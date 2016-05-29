@@ -1,0 +1,49 @@
+
+*******************
+***	CodeLite	***
+*******************
+-----------
+---	1	---
+-----------
+libgcc_c_s_dw2-1.dll is missing
+Solution: add c:/MinGW/bin to the windows system Path
+
+
+C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\ProgramData\Oracle\Java\javapath;C:\Python34\;C:\Python34\Scripts;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\PC Connectivity Solution\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\EgisTec MyWinLocker\x86;C:\Program Files (x86)\EgisTec MyWinLocker\x64;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\VisualSVN Server\bin;C:\Program Files (x86)\Skype\Phone\;C:\MinGW\bin
+
+
+***********************************
+***	Project settings general	***
+***********************************
+New Project Wizard -> Template
+Simple executable (g++)
+
+Workspace -> Project
+Import Files From Directory...
+C:\home\myImportantFiles\projects\git\Main\WaterMill\
+
+*******************************
+***	Project settings MinGW	***
+*******************************
+Project Settings -> General -> Intermediate Folder 
+./Debug_MinGW32
+
+Project Settings -> Compiler -> Include Paths
+.
+C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
+C:\home\myImportantFiles\projects\git\libraries\freeglut\include
+
+Project Settings -> Compiler -> Libraries Search Paths
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\
+
+Project Settings -> Compiler -> Libraries
+freeglut
+psapi
+opengl32
+
+Project -> Remove Virtual Folder
+source/scripts
+
+Project Settings -> Pre /Post Build Commands -> Post Build
+copy C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\freeglut.dll Debug_MinGW32		
+

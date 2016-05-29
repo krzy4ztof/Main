@@ -100,7 +100,7 @@ Add Option -> Other Option
 	-lfreeglut -lopengl32 -Wl,--subsystem,windows
 	
 Copy
-	C:\home\normalFiles\libraries\freeglut\bin\x64\freeglut.dll
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_CygWin\Cygwin-Windows
 	
@@ -149,4 +149,49 @@ C:\cygwin64\etc\setup\libboost_....lst.gz
 C:\cygwin64\lib\libboost_...dll.a
 C:\cygwin64\usr\share\doc\boost
 
+***************************************
+***	error: template with C linkage	***
+***************************************
 
+During build following error appeared:
+
+mkdir -p build/Debug_CygWin/Cygwin-Windows/_ext/53f81259
+rm -f "build/Debug_CygWin/Cygwin-Windows/_ext/53f81259/GameCodeApp.o.d"
+g++ -std=c++11   -c -g -I../../libraries/boost_1_60_0 -I../../libraries/freeglut/include -MMD -MP -MF "build/Debug_CygWin/Cygwin-Windows/_ext/53f81259/GameCodeApp.o.d" -o build/Debug_CygWin/Cygwin-Windows/_ext/53f81259/GameCodeApp.o ../../root/source/gameInitialization/GameCodeApp.cpp
+
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.3.0/include/c++/vector:62:0,
+                 from ../../root/source/gameInitialization/windows/Cygwin64Calls.hpp:23,
+                 from ../../root/source/gameInitialization/SystemCalls.hpp:41,
+                 from ../../root/source/gameInitialization/GameCodeApp.cpp:24:
+/usr/lib/gcc/x86_64-pc-cygwin/5.3.0/include/c++/bits/stl_construct.h:72:3: error: template with C linkage
+   template<typename _T1, typename... _Args>
+   ^
+
+
+The source of the error were following lines from 
+...\Main\WaterMill\source\gameInitialization\SystemCalls.hpp
+   
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+....
+
+
+#ifdef __cplusplus
+}
+#endif
+
+After removing themm, the error disappeared.
+
+
+   
+Path=   
+C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Python34\;C:\Python34\Scripts;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\PC Connectivity Solution\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;C:\Program Files (x86)\EgisTec MyWinLocker\x86;C:\Program Files (x86)\EgisTec MyWinLocker\x64;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\VisualSVN Server\bin;C:\Program Files (x86)\Skype\Phone\;C:\MinGW\bin;C:\cygwin64\bin;%systemroot%\System32\WindowsPowerShell\v1.0\
+
+
+
+ifdef __cplusplus
+extern "C" {
+#endif
