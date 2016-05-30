@@ -150,12 +150,8 @@ cerr << "error: " << e.what() << endl;
 ***	Git	***
 ***********
 
-
-create folder:
-settings/netbeans
-root
-
->>ls
+--- List files ---
+ls
 
 --- Move files / rename files
 git mv Makefile settings/netbeans
@@ -169,6 +165,10 @@ git mv docs root
 git reset HEAD netbeans
 git reset HEAD root
 
+--- Remove file
+git rm .settings
+git rm -r nbproject (-r recursice)
+git rm -r -f nbproject (-f force removal)
 
 
 

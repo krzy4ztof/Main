@@ -6,8 +6,8 @@ When run
 no output is visible on the screen.
 
 If you copy 
-...\WaterMill\dist\Debug_CygWin\Cygwin-Windows\watermill.exe
-...\WaterMill\dist\Debug_CygWin\Cygwin-Windows\freeglut.dll
+...\WaterMill\dist\Debug_CygWin64\Cygwin-Windows\watermill.exe
+...\WaterMill\dist\Debug_CygWin64\Cygwin-Windows\freeglut.dll
 
 to 
 C:\cygwin64\home\Krzysztof
@@ -80,7 +80,7 @@ C:\cygwin64\usr\include\w32api\GL
 -------------------
 Project -> Properties -> Build 
 Configuration:
-	Debug_MinGW
+	Debug_Cygwin64
 		
 NetBeans > Tools > Options > C/C++ > Code Assistance
 Tool Collection: Cygwin
@@ -89,11 +89,14 @@ Tool Collection: Cygwin
 Install freeglut in:
 	C:\home\myImportantFiles\projects\git\libraries\freeglut
 
+Project -> Properties -> Build -> C++ Compiler -> C++ Standard
+C++11	
+	
 Project -> Properties -> Build -> C++ Compiler -> Include Directories
-	../../libraries/freeglut/include
+	../../../../libraries/freeglut/include
 	
 Project -> Properties -> Build -> Linker -> Additional Library Directories
-	../../libraries/freeglut/lib/x64
+	../../../../libraries/freeglut/lib/x64
 
 Project -> Properties -> Build -> Linker -> Libraries
 Add Option -> Other Option	
@@ -102,7 +105,7 @@ Add Option -> Other Option
 Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
-	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_CygWin\Cygwin-Windows
+	C:\home\myImportantFiles\projects\git\Main\WaterMill\dist\Debug_Cygwin64\Cygwin-Windows
 	
 	
 	

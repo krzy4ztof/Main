@@ -22,22 +22,14 @@ CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/watermill
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
 CND_PACKAGE_NAME_Release=watermill.tar
 CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/watermill.tar
-# Debug_MinGW configuration
-CND_PLATFORM_Debug_MinGW=MinGW-Windows
-CND_ARTIFACT_DIR_Debug_MinGW=dist/Debug_MinGW/MinGW-Windows
-CND_ARTIFACT_NAME_Debug_MinGW=watermill
-CND_ARTIFACT_PATH_Debug_MinGW=dist/Debug_MinGW/MinGW-Windows/watermill
-CND_PACKAGE_DIR_Debug_MinGW=dist/Debug_MinGW/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug_MinGW=watermill.tar
-CND_PACKAGE_PATH_Debug_MinGW=dist/Debug_MinGW/MinGW-Windows/package/watermill.tar
-# Debug_CygWin configuration
-CND_PLATFORM_Debug_CygWin=Cygwin-Windows
-CND_ARTIFACT_DIR_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug_CygWin=watermill
-CND_ARTIFACT_PATH_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/watermill
-CND_PACKAGE_DIR_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug_CygWin=watermill.tar
-CND_PACKAGE_PATH_Debug_CygWin=dist/Debug_CygWin/Cygwin-Windows/package/watermill.tar
+# Debug_MinGW32 configuration
+CND_PLATFORM_Debug_MinGW32=MinGW-Windows
+CND_ARTIFACT_DIR_Debug_MinGW32=dist/Debug_MinGW32/MinGW-Windows
+CND_ARTIFACT_NAME_Debug_MinGW32=watermill
+CND_ARTIFACT_PATH_Debug_MinGW32=dist/Debug_MinGW32/MinGW-Windows/watermill
+CND_PACKAGE_DIR_Debug_MinGW32=dist/Debug_MinGW32/MinGW-Windows/package
+CND_PACKAGE_NAME_Debug_MinGW32=watermill.tar
+CND_PACKAGE_PATH_Debug_MinGW32=dist/Debug_MinGW32/MinGW-Windows/package/watermill.tar
 # Debug_MinGW64 configuration
 CND_PLATFORM_Debug_MinGW64=MinGW64-Windows
 CND_ARTIFACT_DIR_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows
@@ -46,6 +38,14 @@ CND_ARTIFACT_PATH_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/watermill
 CND_PACKAGE_DIR_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/package
 CND_PACKAGE_NAME_Debug_MinGW64=watermill.tar
 CND_PACKAGE_PATH_Debug_MinGW64=dist/Debug_MinGW64/MinGW64-Windows/package/watermill.tar
+# Debug_Cygwin64 configuration
+CND_PLATFORM_Debug_Cygwin64=Cygwin-Windows
+CND_ARTIFACT_DIR_Debug_Cygwin64=dist/Debug_Cygwin64/Cygwin-Windows
+CND_ARTIFACT_NAME_Debug_Cygwin64=watermill
+CND_ARTIFACT_PATH_Debug_Cygwin64=dist/Debug_Cygwin64/Cygwin-Windows/watermill
+CND_PACKAGE_DIR_Debug_Cygwin64=dist/Debug_Cygwin64/Cygwin-Windows/package
+CND_PACKAGE_NAME_Debug_Cygwin64=watermill.tar
+CND_PACKAGE_PATH_Debug_Cygwin64=dist/Debug_Cygwin64/Cygwin-Windows/package/watermill.tar
 #
 # include compiler specific variables
 #

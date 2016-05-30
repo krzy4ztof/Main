@@ -24,14 +24,14 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=WaterMill
+PROJECTNAME=Watermill
 
 # Active Configuration
 DEFAULTCONF=Debug
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Debug Release Debug_MinGW Debug_CygWin Debug_MinGW64 
+ALLCONFS=Debug Release Debug_MinGW32 Debug_MinGW64 Debug_Cygwin64 
 
 
 # build

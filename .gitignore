@@ -3,8 +3,6 @@
 bin
 .svn
 .settings
-/WaterMill/build/
-/WaterMill/dist/
 /MapEditorTrunk/target/log.txt
 /MapEditorTrunk/target/MapEditor.jar
 /MapEditorTrunk/target/run.cmd

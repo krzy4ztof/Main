@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="docs" displayName="docs" projectFiles="true">
+      <logicalFolder name="codeblocks" displayName="codeblocks" projectFiles="true">
+        <itemPath>../../../docs/codeblocks/codeblocks_cygwin64.txt</itemPath>
+        <itemPath>../../../docs/codeblocks/codeblocks_mingw32.txt</itemPath>
+        <itemPath>../../../docs/codeblocks/codeblocks_mingw64.txt</itemPath>
+      </logicalFolder>
+      <logicalFolder name="codelite" displayName="codelite" projectFiles="true">
+        <itemPath>../../../docs/codelite/codelite_cygwin64.txt</itemPath>
+        <itemPath>../../../docs/codelite/codelite_mingw32.txt</itemPath>
+        <itemPath>../../../docs/codelite/codelite_mingw64.txt</itemPath>
+        <itemPath>../../../docs/codelite/codelite_watermill.txt</itemPath>
+      </logicalFolder>
+      <logicalFolder name="eclipse" displayName="eclipse" projectFiles="true">
+        <itemPath>../../../docs/eclipse/eclipse_cygwin64.txt</itemPath>
+        <itemPath>../../../docs/eclipse/eclipse_mingw32.txt</itemPath>
+        <itemPath>../../../docs/eclipse/eclipse_mingw64.txt</itemPath>
+      </logicalFolder>
+      <logicalFolder name="netbeans" displayName="netbeans" projectFiles="true">
+        <itemPath>../../../docs/netbeans/cygwin64_readme.txt</itemPath>
+        <itemPath>../../../docs/netbeans/mingw64_readme.txt</itemPath>
+        <itemPath>../../../docs/netbeans/mingw_readme.txt</itemPath>
+      </logicalFolder>
+      <itemPath>../../../docs/watermill_readme.txt</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="media" displayName="media" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="source" displayName="source" projectFiles="true">
+      <logicalFolder name="gameInitialization"
+                     displayName="gameInitialization"
+                     projectFiles="true">
+        <logicalFolder name="linux" displayName="linux" projectFiles="true">
+          <itemPath>../../../source/gameInitialization/linux/LinuxCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxCalls.hpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="windows" displayName="windows" projectFiles="true">
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64Calls.hpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows32Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows32Calls.hpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows64Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows64Calls.hpp</itemPath>
+        </logicalFolder>
+        <itemPath>../../../source/gameInitialization/AudioSystem.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/AudioSystem.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/DataFiles.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/DataFiles.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/ErrorCode.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/ErrorCode.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/GameCodeApp.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/GameCodeApp.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/Macros.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/SystemCalls.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/VideoSystem.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/VideoSystem.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="main" displayName="main" projectFiles="true">
+        <itemPath>../../../source/main/Main.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="scripts" displayName="scripts" projectFiles="true">
+        <logicalFolder name="codeBlock" displayName="codeBlock" projectFiles="true">
+          <itemPath>../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd</itemPath>
+        </logicalFolder>
+        <logicalFolder name="codeLite" displayName="codeLite" projectFiles="true">
+          <itemPath>../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd</itemPath>
+        </logicalFolder>
+        <logicalFolder name="eclipse" displayName="eclipse" projectFiles="true">
+          <itemPath>../../../source/scripts/eclipse/runEclipseCygwin64.cmd</itemPath>
+          <itemPath>../../../source/scripts/eclipse/runEclipseMinGW32.cmd</itemPath>
+          <itemPath>../../../source/scripts/eclipse/runEclipseMinGW64.cmd</itemPath>
+        </logicalFolder>
+        <itemPath>../../../source/scripts/checkPreprocessor.cmd</itemPath>
+        <itemPath>../../../source/scripts/runCygwin.cmd</itemPath>
+        <itemPath>../../../source/scripts/runMinGW.cmd</itemPath>
+        <itemPath>../../../source/scripts/runMinGW64.cmd</itemPath>
+      </logicalFolder>
+      <logicalFolder name="testClasses" displayName="testClasses" projectFiles="true">
+        <itemPath>../../../source/testClasses/TestClass.cpp</itemPath>
+        <itemPath>../../../source/testClasses/TestClass.hpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../../../docs</Elem>
+    <Elem>../../../source</Elem>
+    <Elem>../../../media</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../../../../../libraries/freeglut/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../../../../libraries/freeglut/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerOptionItem>-lfreeglut -lopengl32 -Wl,--subsystem,windows</linkerOptionItem>
+            <linkerOptionItem>-lpsapi</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_watermill.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/cygwin64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/scripts/checkPreprocessor.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runCygwin.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_watermill.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/cygwin64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/scripts/checkPreprocessor.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runCygwin.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug_MinGW32" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../../../../../libraries/freeglut/include</pElem>
+            <pElem>../../../../../libraries/boost_1_60_0</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../../../../libraries/freeglut/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerOptionItem>-lfreeglut -lopengl32 -Wl,--subsystem,windows</linkerOptionItem>
+            <linkerOptionItem>-lpsapi</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_watermill.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/cygwin64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="../../../source/scripts/checkPreprocessor.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runCygwin.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug_MinGW64" type="1">
+      <toolsSet>
+        <compilerSet>MinGW64|MinGW</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../../../../../libraries/freeglut/include</pElem>
+            <pElem>../../../../../libraries/boost_1_60_0</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../../../../libraries/freeglut/lib/x64</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerOptionItem>-lfreeglut -lopengl32 -Wl,--subsystem,windows</linkerOptionItem>
+            <linkerOptionItem>-lpsapi</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_watermill.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/cygwin64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="../../../source/scripts/checkPreprocessor.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runCygwin.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug_Cygwin64" type="1">
+      <toolsSet>
+        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../../../../../libraries/freeglut/include</pElem>
+            <pElem>../../../../../libraries/boost_1_60_0</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../../../../libraries/freeglut/lib/x64</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerOptionItem>-lfreeglut -lopengl32 -Wl,--subsystem,windows</linkerOptionItem>
+            <linkerOptionItem>-lpsapi</linkerOptionItem>
+            <linkerOptionItem>-lboost_system</linkerOptionItem>
+            <linkerOptionItem>-lboost_filesystem</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codelite/codelite_watermill.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/eclipse/eclipse_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/cygwin64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw64_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/mingw_readme.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/VideoSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="8">
+      </item>
+      <item path="../../../source/scripts/checkPreprocessor.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeLite/runCodeLiteMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/eclipse/runEclipseMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runCygwin.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/runMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/testClasses/TestClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
