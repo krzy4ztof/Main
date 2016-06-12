@@ -122,6 +122,122 @@ diskNeeded: 2560
 14010726 * 4096 / 1024 / 1024 = 54729 MB 
 14010726 * 4096 / 1024 / 1024 / 1024 = 53.44 GB
 
+*******************
+***	RAM Memory	***
+*******************
+
+Otwórz okno System, klikając przycisk StartObraz przycisku Start, klikając prawym przyciskiem myszy polecenie Komputer, a następnie klikając polecenie Właściwości.
+
+W lewym okienku kliknij łącze Zaawansowane ustawienia systemu.  Wymagane uprawnienia administratora Jeśli zostanie wyświetlony monit o hasło administratora lub potwierdzenie, wpisz hasło lub potwierdź.
+
+Na karcie Zaawansowane w obszarze Wydajność kliknij przycisk Ustawienia.
+
+Kliknij kartę Zaawansowane, a następnie w obszarze Pamięć wirtualna kliknij przycisk Zmień.
+
+Wyczyść pole wyboru Automatycznie zarządzaj rozmiarem pliku stronicowania dla wszystkich dysków.
+
+W obszarze Dysk [etykieta woluminu], kliknij dysk, na którym znajduje się zmieniany plik stronicowania.
+
+Kliknij pozycję Rozmiar niestandardowy, wpisz nowy rozmiar w megabajtach w polu Rozmiar początkowy (MB) lub Rozmiar maksymalny (MB), kliknij przycisk Ustaw, a następnie kliknij przycisk OK.
+
+---------------------------
+---	Windows Settings	---
+---------------------------
+Total paging file size for all drives: 4858 MB
+
+---------------------------
+---	Cygwin64 Terminal	---
+---------------------------
+> cat /proc/meminfo
+
+MemTotal:        4975512 kB
+MemFree:         2122532 kB
+HighTotal:             0 kB
+HighFree:              0 kB
+LowTotal:        4975512 kB
+LowFree:         2122532 kB
+SwapTotal:       4975512 kB
+SwapFree:        4820492 kB
+
+Total Virtual Memory:
+SwapTotal 4975512/1024 = 4858 MB
+
+-------------------
+---	Cygwin64	---
+-------------------
+
+space: 51027226624 [free], 48663 [MB], 47.52 [GB]
+diskNeeded: 10485760 [needed], 10 [MB]
+...
+...
+dwMHz: 2194
+CPU speed needed: 1300 [MHz], CPU speed available: 2194 [MHz]
+percent of memory in use 66
+total kB of physical memory 4975512
+free  kB of physical memory 1673784
+total kB of paging file 9949164
+free  kB of paging file 5585708
+total MB of virtual memory 8388607
+free  MB of virtual memory 8387966
+free  kB of extended memory 0
+physical RAM needed: 536870912 [byte], 512 [MB] 0 [GB]
+physical RAM total: 5094924288 [byte], 4858 [MB] 4 [GB]
+virtual RAM needed: 1073741824 [byte], 1024 [MB] 1 [GB]
+virtual RAM available: 8795420631040 [byte], 8.388e+06 [MB] 8191 [GB]
+Main loop
+CheckCpp11: 457
+gameCodeApp init succeeded
+
+
+---------------
+---	MinGW32	---
+---------------
+
+diskFree: 12357666 [clusters], 45056 [MB], 44 [GB]
+diskNeeded: 2560 [clusters], 10 [MB]
+CPU speed needed: 1300 [MHz], CPU speed available: 2194 [MHz]
+percent of memory in use 66
+total kB of physical memory 4975512
+free  kB of physical memory 1673336
+total kB of paging file 9949164
+free  kB of paging file 5576260
+total MB of virtual memory 2047
+free  MB of virtual memory 1934
+free  kB of extended memory 0
+physical RAM needed: 536870912 [byte], 512 [MB] 0 [GB]
+physical RAM total: 5094924288 [byte], 4858 [MB] 4 [GB] 0 [TB]
+virtual RAM needed: 1073741824 [byte], 1024 [MB] 1 [GB]
+virtual RAM available: 2028228608 [byte], 1934 [MB] 1 [GB]
+Main loop
+CheckCpp11: 457
+gameCodeApp init succeeded
+
+
+
+---------------
+---	MinGW64	---
+---------------
+diskFree: 12357648 [clusters], 45056 [MB], 44 [GB]
+diskNeeded: 2560 [clusters], 10 [MB]
+CPU speed needed: 1300 [MHz], CPU speed available: 2194 [MHz]
+percent of memory in use 66
+total kB of physical memory 4975512
+free  kB of physical memory 1644092
+total kB of paging file 9949164
+free  kB of paging file 5523844
+total MB of virtual memory 8388607
+free  MB of virtual memory 8388491
+free  kB of extended memory 0
+physical RAM needed: 536870912 [byte], 512 [MB] 0 [GB]
+physical RAM total: 5094924288 [byte], 4858 [MB] 4 [GB]
+virtual RAM needed: 1073741824 [byte], 1024 [MB] 1 [GB]
+virtual RAM available: 8795970416640 [byte], 8.38849e+006 [MB] 8191 [GB]
+Main loop
+CheckCpp11: 457
+gameCodeApp init succeeded
+
+
+
 ***************
 ***	TODO	***
 ***************

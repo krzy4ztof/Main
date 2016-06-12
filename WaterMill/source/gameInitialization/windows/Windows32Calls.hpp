@@ -16,6 +16,8 @@
 
 #ifdef __WIN32
 //#ifdef __LINUX__
+//#define WINVER 0x0500
+
 #include <windows.h>
 #include <tchar.h>
 #include <string>

@@ -27,18 +27,18 @@ Project -> Buld options
 Project build options ->  Compiler settings -> Compiler Flags
 Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
 ..\..\git\libraries\boost
 ..\..\git\libraries\freeglut\include
 
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Search Directories -> Linker -> Append target options to project options
 ..\..\git\libraries\freeglut\lib\x64
 
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi
@@ -54,3 +54,13 @@ Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	bin\Debug_MinGW32\freeglut.dll
+
+---	---	---	
+Add _BSD_SOURCE macro for compilation.
+Needed for DT_DIR dirnet.h 
+	
+gcc -std=c99 -D_BSD_SOURCE -Wall a.c
+	
+Project -> Build options
+Project build options -> Other compiler options
+-D_BSD_SOURCE	

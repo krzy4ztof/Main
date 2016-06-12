@@ -118,6 +118,11 @@ namespace watermill {
         //bool GameCodeApp::IsOnlyInstance(LPCTSTR gameTitle) {
         cout << "Is the only instance in Windows 64: " << gameTitle << "?" << endl;
 
+         string gameTitleExe (gameTitle);
+        gameTitleExe.append(".exe");
+
+        cout << "Is the only instance in Windows 64: " << gameTitleExe << "?" << endl;
+
         // Get the list of process identifiers.
 
         DWORD aProcesses[1024], cbNeeded, cProcesses;
@@ -145,7 +150,7 @@ namespace watermill {
         cout << "--------------------------" << endl;
         for (i = 0; i < cProcesses; i++) {
             if (aProcesses[i] != 0) {
-                bool result = isAGameProcess(aProcesses[i], gameTitle);
+                bool result = isAGameProcess(aProcesses[i], gameTitleExe);
                 if (result) {
                     howMany++;
                 }
@@ -195,31 +200,53 @@ namespace watermill {
     //
 
     bool Windows64Calls::checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded) {
-        MEMORYSTATUSEX status;
-        GlobalMemoryStatusEx(&status);
+		MEMORYSTATUSEX status;
+		status.dwLength = sizeof ( status );
+		GlobalMemoryStatusEx ( &status );
+		int DIVkb = 1024;
+		int DIV = 1024 * 1024;
+		cout << "percent of memory in use " << status.dwMemoryLoad << endl;
+		cout << "total kB of physical memory " << status.ullTotalPhys / DIVkb << endl;
+		cout << "free  kB of physical memory " << status.ullAvailPhys / DIVkb << endl;
+		cout << "total kB of paging file " << status.ullTotalPageFile / DIVkb << endl;
+		cout << "free  kB of paging file " << status.ullAvailPageFile / DIVkb << endl;
+		cout << "total MB of virtual memory " << status.ullTotalVirtual / DIV << endl;
+		cout << "free  MB of virtual memory " << status.ullAvailVirtual / DIV << endl;
+		cout << "free  kB of extended memory " <<  status.ullAvailExtendedVirtual / DIVkb << endl;
 
-        double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
+                double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
         double ramAvailMB = status.ullTotalPhys / 1024 / 1024;
 
-        cout << "physical RAM needed: " << physicalRAMNeeded << " [byte], " << ramNeededMB << " [MB]" << endl;
-        cout << "physical RAM available: " << status.ullTotalPhys << " [byte], " << ramAvailMB << " [MB]" << endl;
+        double ramNeededGB = physicalRAMNeeded / 1024 / 1024 / 1024;
+        double ramAvailGB = status.ullTotalPhys / 1024 / 1024 / 1024;
+
+
+        cout << "physical RAM needed: " << physicalRAMNeeded << " [byte], " << ramNeededMB << " [MB] " << ramNeededGB << " [GB]" << endl;
+        cout << "physical RAM total: " << status.ullTotalPhys << " [byte], " << ramAvailMB << " [MB] " << ramAvailGB << " [GB]" << endl;
+
+                double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
+        double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
+
+
+        double virtualRamNeededGB = virtualRAMNeeded / 1024 / 1024 / 1024;
+        double virtualRamAvailGB = status.ullAvailVirtual / 1024 / 1024 / 1024;
+
+        cout << "virtual RAM needed: " << virtualRAMNeeded << " [byte], " << virtualRamNeededMB << " [MB] " << virtualRamNeededGB << " [GB]"  << endl;
+        cout << "virtual RAM available: " << status.ullAvailVirtual << " [byte], " << virtualRamAvailMB << " [MB] " << virtualRamAvailGB << " [GB]" << endl;
+
 
         if (status.ullTotalPhys < physicalRAMNeeded) {
-            // you donâ€™t have enough physical memory. Tell the player to go get a real
+            // you don’t have enough physical memory. Tell the player to go get a real
             // computer and give this one to his mother.
             cout << "CheckMemory Failure: Not enough physical memory." << endl;
             return false;
         }
 
 
-        double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
-        double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
-        cout << "virtual RAM needed: " << virtualRAMNeeded << " [byte], " << virtualRamNeededMB << " [MB]" << endl;
-        cout << "virtual RAM available: " << status.ullAvailVirtual << " [byte], " << virtualRamAvailMB << " [MB]" << endl;
 
         // Check for enough free memory.
         if (status.ullAvailVirtual < virtualRAMNeeded) {
-            // you donâ€™t have enough virtual memory available.
+            // you don’t have enough virtual memory available.
             // Tell the player to shut down the copy of Visual Studio running in the
             // background, or whatever seems to be sucking the memory dry.
             cout << "CheckMemory Failure: Not enough virtual memory." << endl;

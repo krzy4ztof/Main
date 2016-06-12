@@ -1,15 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+*/
 
 /*
- * File:   GameCodeApp.cpp
- * Author: Krzysztof
- *
- * Created on 30 kwietnia 2016, 20:15
- */
+    File:   GameCodeApp.cpp
+    Author: Krzysztof
+
+    Created on 30 kwietnia 2016, 20:15
+*/
 
 #include "GameCodeApp.hpp"
 #include<iostream>
@@ -27,80 +27,82 @@ using namespace std;
 
 namespace watermill {
 
-    const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
+	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
+	//const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
 
-    GameCodeApp::GameCodeApp() {
-        //    *dataFiles = NULL;
-        //   *audioSystem = NULL;
-        //  *videoSystem = NULL;
-    }
 
-    GameCodeApp::GameCodeApp(const GameCodeApp& orig) {
-    }
+	GameCodeApp::GameCodeApp() {
+		//    *dataFiles = NULL;
+		//   *audioSystem = NULL;
+		//  *videoSystem = NULL;
+	}
 
-    GameCodeApp::~GameCodeApp() {
-    }
+	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
+	}
 
-    bool GameCodeApp::initInstance() {
-        bool returnCode = true;
-        SystemCalls systemCalls;
+	GameCodeApp::~GameCodeApp() {
+	}
 
+	bool GameCodeApp::initInstance() {
+		bool returnCode = true;
+		SystemCalls systemCalls;
 #ifndef _DEBUG
-        if (!systemCalls.isOnlyInstance(GameCodeApp::GAME_PROCESS_NAME)) {
 
-            //if (!systemCalls.IsOnlyInstance(GAME_TITLE)) {
-            cout << "There is another process running" << endl;
-            return false;
-        }
+		if ( !systemCalls.isOnlyInstance ( GameCodeApp::GAME_PROCESS_NAME ) ) {
+			//if (!systemCalls.IsOnlyInstance(GAME_TITLE)) {
+			cout << "There is another process running" << endl;
+			return false;
+		}
+
 #endif
+		// Check for adequate machine resources.
+		bool resourceCheck = false;
 
-        // Check for adequate machine resources.
-        bool resourceCheck = false;
-        while (!resourceCheck) {
-            const DWORDLONG physicalRAM = 512 * MEGABYTE;
-            const DWORDLONG virtualRAM = 1024 * MEGABYTE;
-            const DWORDLONG diskSpace = 10 * MEGABYTE;
-            if (!systemCalls.checkHardDisk(diskSpace)) {
-                return false;
-            }
+		while ( !resourceCheck ) {
+			const DWORDLONG physicalRAM = 512 * MEGABYTE;
+			const DWORDLONG virtualRAM = 1024 * MEGABYTE;
+			const DWORDLONG diskSpace = 10 * MEGABYTE;
 
-            const DWORD minCpuSpeed = 1300; // 1.3Ghz
-            DWORD thisCPU = systemCalls.readCPUSpeed();
+			if ( !systemCalls.checkHardDisk ( diskSpace ) ) {
+				return false;
+			}
 
-            cout << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]" << endl;
-            if (thisCPU < minCpuSpeed) {
-                cout << "GetCPUSpeed reports CPU is too slow for this game." << endl;
-                return false;
-            }
+			const DWORD minCpuSpeed = 1300; // 1.3Ghz
+			DWORD thisCPU = systemCalls.readCPUSpeed();
+			cout << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]" << endl;
 
-            if (!systemCalls.checkMemory(physicalRAM, virtualRAM)) {
-                return false;
-            }
-            resourceCheck = true;
-        }
+			if ( thisCPU < minCpuSpeed ) {
+				cout << "GetCPUSpeed reports CPU is too slow for this game." << endl;
+				return false;
+			}
 
-        try {
-            dataFiles = new DataFiles;
-            audioSystem = new AudioSystem;
-            videoSystem = new VideoSystem;
+			if ( !systemCalls.checkMemory ( physicalRAM, virtualRAM ) ) {
+				return false;
+			}
 
-            bool done = true;
+			resourceCheck = true;
+		}
 
-            cout << "Main loop" << endl;
-            while (!done) {
-                // Main loop
-            }
+		try {
+			dataFiles = new DataFiles;
+			audioSystem = new AudioSystem;
+			videoSystem = new VideoSystem;
+			bool done = true;
+			cout << "Main loop" << endl;
 
-        } catch (ErrorCode& error) {
-            error.informUser();
+			while ( !done ) {
+				// Main loop
+			}
+		}
+		catch ( ErrorCode& error ) {
+			error.informUser();
+			returnCode = false;
+		}
 
-            returnCode = false;
-        }
-        SAFE_DELETE(videoSystem);
-        SAFE_DELETE(audioSystem);
-        SAFE_DELETE(dataFiles);
-
-        return (returnCode);
-    }
+		SAFE_DELETE ( videoSystem );
+		SAFE_DELETE ( audioSystem );
+		SAFE_DELETE ( dataFiles );
+		return ( returnCode );
+	}
 }
 

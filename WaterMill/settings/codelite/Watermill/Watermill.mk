@@ -2,21 +2,21 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Debug_MinGW64
+## Debug_Cygwin64
 ProjectName            :=Watermill
-ConfigurationName      :=Debug_MinGW64
+ConfigurationName      :=Debug_Cygwin64
 WorkspacePath          :=C:/home/myImportantFiles/projects/CodeLiteWorkspace
 ProjectPath            :=C:/home/myImportantFiles/projects/git/Main/WaterMill/settings/codelite/Watermill
-IntermediateDirectory  :=./Debug_MinGW64
+IntermediateDirectory  :=./Debug_Cygwin64
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Krzysztof
-Date                   :=29/05/2016
+Date                   :=09/06/2016
 CodeLitePath           :="C:/Program Files/CodeLite"
-LinkerName             :=C:/msys64/mingw64/bin/g++.exe
-SharedObjectLinkerName :=C:/msys64/mingw64/bin/g++.exe -shared -fPIC
+LinkerName             :=C:/cygwin64/bin/g++.exe
+SharedObjectLinkerName :=C:/cygwin64/bin/g++.exe -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
@@ -36,26 +36,26 @@ ObjectsFileList        :="Watermill.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
-RcCompilerName         :=C:/msys64/mingw64/bin/windres.exe
+RcCompilerName         :=C:/cygwin64/bin/windres.exe
 LinkOptions            :=  
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). $(IncludeSwitch)C:/home/myImportantFiles/projects/git/libraries/boost_1_60_0 $(IncludeSwitch)C:/home/myImportantFiles/projects/git/libraries/freeglut/include 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := $(LibrarySwitch)freeglut $(LibrarySwitch)psapi $(LibrarySwitch)opengl32 
-ArLibs                 :=  "freeglut" "psapi" "opengl32" 
+Libs                   := $(LibrarySwitch)freeglut $(LibrarySwitch)psapi $(LibrarySwitch)opengl32 $(LibrarySwitch)boost_system $(LibrarySwitch)boost_filesystem 
+ArLibs                 :=  "freeglut" "psapi" "opengl32" "boost_system" "boost_filesystem" 
 LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)C:/home/myImportantFiles/projects/git/libraries/freeglut/lib/x64 
 
 ##
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := C:/msys64/mingw64/bin/ar.exe rcu
-CXX      := C:/msys64/mingw64/bin/g++.exe
-CC       := C:/msys64/mingw64/bin/gcc.exe
-CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
+AR       := C:/cygwin64/bin/ar.exe rcu
+CXX      := C:/cygwin64/bin/g++.exe
+CC       := C:/cygwin64/bin/gcc.exe
+CXXFLAGS :=  -g -O0 -std=c++11 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := C:/msys64/mingw64/bin/as.exe
+AS       := C:/cygwin64/bin/as.exe
 
 
 ##
@@ -83,15 +83,15 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	copy C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll Debug_MinGW64
+	cp C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll Debug_Cygwin64
 	@echo Done
 
 MakeIntermediateDirs:
-	@$(MakeDirCommand) "./Debug_MinGW64"
+	@$(MakeDirCommand) "./Debug_Cygwin64"
 
 
 $(IntermediateDirectory)/.d:
-	@$(MakeDirCommand) "./Debug_MinGW64"
+	@$(MakeDirCommand) "./Debug_Cygwin64"
 
 PreBuild:
 
@@ -193,6 +193,6 @@ $(IntermediateDirectory)/Windows64Calls.cpp$(PreprocessSuffix): ../../../source/
 ## Clean
 ##
 clean:
-	$(RM) -r ./Debug_MinGW64/
+	$(RM) -r ./Debug_Cygwin64/
 
 

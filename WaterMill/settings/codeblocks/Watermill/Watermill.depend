@@ -20,7 +20,7 @@
 	<iostream>
 	"ErrorCode.hpp"
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
+1465748333 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
 	"GameCodeApp.hpp"
 	<iostream>
 	"Macros.hpp"
@@ -46,17 +46,17 @@
 	"windows/Cygwin64Calls.hpp"
 	"linux/LinuxCalls.hpp"
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.hpp
+1465503940 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.hpp
 	<windows.h>
 	"Windows32Calls.hpp"
 	<string>
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
+1465503940 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
 	<windows.h>
 	<tchar.h>
 	<string>
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
+1465750544 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
 	<windows.h>
 	"Cygwin64Calls.hpp"
 	<string>
@@ -72,8 +72,9 @@
 	"VideoSystem.hpp"
 	"ErrorCode.hpp"
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
+1465750519 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
 	"Cygwin64Calls.hpp"
+	"Cygwin64CpuCalls.h"
 	<windows.h>
 	<iostream>
 	<fstream>
@@ -88,9 +89,11 @@
 	<iomanip>
 	<boost/filesystem.hpp>
 	<boost/algorithm/string.hpp>
+	<unistd.h>
 	"../Macros.hpp"
+	"Cygwin64ProcessCalls.h"
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.cpp
+1465751635 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.cpp
 	"Windows32Calls.hpp"
 	<windows.h>
 	<iostream>
@@ -100,7 +103,7 @@
 	<direct.h>
 	"../Macros.hpp"
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
+1465751480 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
 	"Windows64Calls.hpp"
 	<windows.h>
 	<iostream>
@@ -4885,4 +4888,26 @@
 
 1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
 	"TestClass.hpp"
+
+1465750400 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
+	<string>
+
+1465750648 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.cpp
+	"Cygwin64ProcessCalls.h"
+	<iostream>
+	<string>
+	<dirent.h>
+	<string.h>
+
+1465750501 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.h
+
+1465750576 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.cpp
+	"Cygwin64CpuCalls.h"
+	<iostream>
+	<string>
+	<vector>
+	<sstream>
+	<boost/algorithm/string.hpp>
+	<regex>
+	<fstream>
 

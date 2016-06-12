@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
+					<Add directory="source/gameInitialization/windows" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -30,6 +31,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="source/gameInitialization/windows" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -42,8 +44,10 @@
 				<Option compiler="cygwin" />
 				<Compiler>
 					<Add option="-std=c++11" />
+					<Add option="-D_BSD_SOURCE" />
 					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
+					<Add directory="source/gameInitialization/windows" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -60,9 +64,11 @@
 				<Option type="1" />
 				<Option compiler="mingw64" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
+					<Add directory="source/gameInitialization/windows" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -101,6 +107,10 @@
 		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.hpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.hpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h" />
+		<Unit filename="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.hpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.cpp" />

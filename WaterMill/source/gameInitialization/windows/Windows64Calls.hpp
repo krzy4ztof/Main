@@ -16,6 +16,8 @@
 
 #ifdef __WIN64
 //#ifdef __LINUX__
+//#define WINVER 0x0500
+
 #include <windows.h>
 #include "Windows32Calls.hpp"
 #include <string>
