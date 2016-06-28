@@ -22,20 +22,25 @@
 #include <tchar.h>
 #include <string>
 
+// DWORDLONG 64-bit unsigned integer 0-2^64 -1
+// DWORDLONG = unsigned long long
+
+// DWORD 32-bit unsigned integer 0 - 2^32 -1
+// unsigned long
+
 namespace watermill {
 
-    class Windows32Calls {
-    public:
-        Windows32Calls();
-        Windows32Calls(const Windows32Calls& orig);
-        virtual ~Windows32Calls();
-        bool isOnlyInstance(const std::string&);
-        bool checkHardDisk(const int);
-        DWORD readCPUSpeed();
-        bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
-    private:
-        bool isAGameProcess(DWORD processID, const std::string& gameTitle);
-    };
+	class Windows32Calls {
+		public:
+			Windows32Calls();
+			Windows32Calls(const Windows32Calls& orig);
+			virtual ~Windows32Calls();
+			bool isOnlyInstance(const std::string&);
+			bool checkHardDisk(const int);
+			DWORD readCPUSpeed();
+			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
+		private:
+	};
 }
 #endif /* __WIN32 */
 

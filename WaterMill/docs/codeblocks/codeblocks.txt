@@ -1,0 +1,6 @@
+
+Menu -> Settings -> Editor -> General settings -> Other editor settings
+	Synchronize Editor with Project Manager
+
+	
+	

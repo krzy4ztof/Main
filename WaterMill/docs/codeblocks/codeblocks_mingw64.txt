@@ -57,7 +57,7 @@ Project build options -> Search Directories -> Linker -> Append target options t
 ..\..\git\libraries\freeglut\lib\x64
 
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi

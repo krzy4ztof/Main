@@ -23,13 +23,13 @@ Project -> Buld options
 Project build options -> Selected compiler
 Cygwin GCC
 
-Project -> Buld options
+Project -> Build options
 Project build options ->  Compiler settings -> Compiler Flags
 Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 
 Project -> Build options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
-..\..\git\libraries\boost
+////	..\..\git\libraries\boost /// REMOVE - C:\cygwin64\usr\include\boost
 ..\..\git\libraries\freeglut\include
 
 
@@ -55,6 +55,10 @@ Copy
 into
 	bin\Debug_MinGW32\freeglut.dll
 
+---	---	---
+Boost	
+	C:\cygwin64\usr\include\boost
+
 ---	---	---	
 Add _BSD_SOURCE macro for compilation.
 Needed for DT_DIR dirnet.h 
@@ -64,3 +68,4 @@ gcc -std=c99 -D_BSD_SOURCE -Wall a.c
 Project -> Build options
 Project build options -> Other compiler options
 -D_BSD_SOURCE	
+

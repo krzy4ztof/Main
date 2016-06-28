@@ -54,7 +54,7 @@ Project build options -> Search Directories -> Compiler -> Append target options
 ..\..\git\libraries\boost
 ..\..\git\libraries\freeglut\include
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi

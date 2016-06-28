@@ -12,10 +12,12 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -32,6 +34,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -45,9 +48,9 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-D_BSD_SOURCE" />
-					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -66,9 +69,10 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add directory="../../../../../libraries/boost_1_60_0" />
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
+					<Add directory="../../../../../libraries/boost_1_60_0" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -91,15 +95,22 @@
 		<Unit filename="../../../docs/netbeans/mingw64_readme.txt" />
 		<Unit filename="../../../docs/netbeans/mingw_readme.txt" />
 		<Unit filename="../../../docs/watermill_readme.txt" />
+		<Unit filename="../../../media/debugOptions.xml" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.cpp" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.hpp" />
 		<Unit filename="../../../source/gameInitialization/DataFiles.cpp" />
 		<Unit filename="../../../source/gameInitialization/DataFiles.hpp" />
+		<Unit filename="../../../source/gameInitialization/DebuggingOptions.cpp" />
+		<Unit filename="../../../source/gameInitialization/DebuggingOptions.h" />
 		<Unit filename="../../../source/gameInitialization/ErrorCode.cpp" />
 		<Unit filename="../../../source/gameInitialization/ErrorCode.hpp" />
 		<Unit filename="../../../source/gameInitialization/GameCodeApp.cpp" />
 		<Unit filename="../../../source/gameInitialization/GameCodeApp.hpp" />
+		<Unit filename="../../../source/gameInitialization/InitOptions.cpp" />
+		<Unit filename="../../../source/gameInitialization/InitOptions.h" />
 		<Unit filename="../../../source/gameInitialization/Macros.hpp" />
+		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.cpp" />
+		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.h" />
 		<Unit filename="../../../source/gameInitialization/SystemCalls.hpp" />
 		<Unit filename="../../../source/gameInitialization/VideoSystem.cpp" />
 		<Unit filename="../../../source/gameInitialization/VideoSystem.hpp" />

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<debug>
+    <options>
+        <option name="fullspeed" value="false_fullspeeed"></option>
+        <option name="hardwareAcceleration" value="true_hardware"></option>
+        <option name="antialias" value="true_antialias"></option>
+        <option name="speed" valueWrong="true_speed"></option>
+    </options>
+</debug>

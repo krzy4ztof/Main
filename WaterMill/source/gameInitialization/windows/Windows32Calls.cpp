@@ -25,6 +25,8 @@
 #include<direct.h>
 // _getdrive()
 
+// #include <strings.h> // strcasecmp
+
 #include "../Macros.hpp"
 
 #define SW_SHOWNORMAL 1
@@ -33,167 +35,171 @@ using namespace std;
 
 namespace watermill {
 
-    Windows32Calls::Windows32Calls() {
-    }
+	Windows32Calls::Windows32Calls() {
+	}
 
-    Windows32Calls::Windows32Calls(const Windows32Calls& orig) {
-    }
+	Windows32Calls::Windows32Calls(const Windows32Calls& orig) {
+	}
 
-    Windows32Calls::~Windows32Calls() {
-    }
+	Windows32Calls::~Windows32Calls() {
+	}
 
-    bool Windows32Calls::isAGameProcess(DWORD processID, const string& gameTitle) {
-        bool result = false;
+	bool isAGameProcess(DWORD processID, const string& gameTitle) {
+		bool result = false;
 
-        TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
-        TCHAR szGameProcessName[MAX_PATH];
+		TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
+		TCHAR szGameProcessName[MAX_PATH];
 
-        TCHAR *gameTitleTchar = new TCHAR[gameTitle.size() + 1];
-        gameTitleTchar[gameTitle.size()] = 0;
-        //As much as we'd love to, we can't use memcpy() because
-        //sizeof(TCHAR)==sizeof(char) may not be true:
-        copy(gameTitle.begin(), gameTitle.end(), gameTitleTchar);
+		TCHAR *gameTitleTchar = new TCHAR[gameTitle.size() + 1];
+		gameTitleTchar[gameTitle.size()] = 0;
+		//As much as we'd love to, we can't use memcpy() because
+		//sizeof(TCHAR)==sizeof(char) may not be true:
+		copy(gameTitle.begin(), gameTitle.end(), gameTitleTchar);
 
-        cout << "gameTitleTchar: " << gameTitleTchar << endl;
+		// Get a handle to the process.
+		HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
+									  PROCESS_VM_READ,
+									  FALSE, processID);
 
-        // Get a handle to the process.
-        HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
-                PROCESS_VM_READ,
-                FALSE, processID);
+		// Get the process name.
+		if (NULL != hProcess) {
+			HMODULE hMod;
+			DWORD cbNeeded;
 
-        // Get the process name.
-        if (NULL != hProcess) {
-            HMODULE hMod;
-            DWORD cbNeeded;
-
-            if (EnumProcessModules(hProcess, &hMod, sizeof (hMod),
-                    &cbNeeded)) {
-                GetModuleBaseName(hProcess, hMod, szProcessName,
-                        sizeof (szProcessName) / sizeof (TCHAR));
-            }
-        }
-
-        int cmpRes = strcmp(szProcessName, gameTitleTchar);
-
-        if (cmpRes == 0) {
-            cout << cmpRes << TEXT("; szProcess: ") << szProcessName << TEXT("; szGame: ") << szGameProcessName << TEXT("; Title: ") << gameTitle << endl;
-            _tprintf(TEXT("%s  (PID: %u)\n"), szProcessName, processID);
-            result = true;
-        }
-        // Release the handle to the process.
-        CloseHandle(hProcess);
-
-        delete[] gameTitleTchar;
-        return result;
-    }
-
-    bool Windows32Calls::isOnlyInstance(const string& gameTitle) {
-        /* EnumProcesses lists only 32 bit processes. If you run windmill.exe using Cygwin 64 bit first,
-         * then Cygwin process will not be discovered by EnumProcesses. MinGW windmill.exe process
-         * will be able to launch along with Cygwin process.
-         * Compare to Windows64Calls::IsOnlyInstance(const string&)
-         */
-
-        cout << "Is the only instance in Windows 32: " << gameTitle << "?" << endl;
-
-        string gameTitleExe (gameTitle);
-        gameTitleExe.append(".exe");
-
-        cout << "Is the only instance in Windows 32: " << gameTitleExe << "?" << endl;
-
-        // Get the list of process identifiers.
-        DWORD aProcesses[1024], cbNeeded, cProcesses;
-        unsigned int i;
-
-        if (!EnumProcesses(aProcesses, sizeof (aProcesses), &cbNeeded)) {
-            return 1;
-        }
+			if (EnumProcessModules(hProcess, &hMod, sizeof (hMod),
+								   &cbNeeded)) {
+				GetModuleBaseName(hProcess, hMod, szProcessName,
+								  sizeof (szProcessName) / sizeof (TCHAR));
+			}
+		}
 
 
-        // Calculate how many process identifiers were returned.
+		cout << "gameTitleTchar: " << gameTitleTchar << "; szProcessName: " << szProcessName << endl;
 
-        cProcesses = cbNeeded / sizeof (DWORD);
+		// strcmp - case sensitive
+		//        int cmpRes = strcmp(szProcessName, gameTitleTchar);
+		// strcasecmp - case insensitive
+		int cmpRes = strcasecmp(szProcessName, gameTitleTchar);
 
-        // Print the name and process identifier for each process.
-        int howMany = 0;
-        cout << "--------------------------" << endl;
-        for (i = 0; i < cProcesses; i++) {
-            if (aProcesses[i] != 0) {
-                bool result = isAGameProcess(aProcesses[i], gameTitleExe);
-                if (result) {
-                    howMany++;
-                }
-            }
-        }
+		if (cmpRes == 0) {
+			cout << cmpRes << TEXT("; szProcess: ") << szProcessName << TEXT("; szGame: ") << szGameProcessName << TEXT("; Title: ") << gameTitle << endl;
+			_tprintf(TEXT("%s  (PID: %u)\n"), szProcessName, processID);
+			result = true;
+		}
+		// Release the handle to the process.
+		CloseHandle(hProcess);
 
-        cout << "howMany: " << howMany << endl;
+		delete[] gameTitleTchar;
+		return result;
+	}
 
-        if (howMany >= 2) {
-            // First process is this process
-            // Second process is second game process
-            return false;
-        } else {
-            return true;
-        }
+	bool Windows32Calls::isOnlyInstance(const string& gameTitle) {
+		/* EnumProcesses lists only 32 bit processes. If you run windmill.exe using Cygwin 64 bit first,
+		 * then Cygwin process will not be discovered by EnumProcesses. MinGW windmill.exe process
+		 * will be able to launch along with Cygwin process.
+		 * Compare to Windows64Calls::IsOnlyInstance(const string&)
+		 */
 
-    }
+		cout << "Is the only instance in Windows 32: " << gameTitle << "?" << endl;
 
-    bool Windows32Calls::checkHardDisk(const int diskSpaceNeeded) {
-        // Check for enough free disk space on the current disk.
-        int const drive = _getdrive();
-        struct _diskfree_t diskfree;
+		string gameTitleExe (gameTitle);
+		gameTitleExe.append(".exe");
 
-        _getdiskfree(drive, &diskfree);
+		cout << "Is the only instance in Windows 32: " << gameTitleExe << "?" << endl;
 
-        unsigned __int64 const neededClusters =
-                diskSpaceNeeded / (diskfree.sectors_per_cluster * diskfree.bytes_per_sector);
+		// Get the list of process identifiers.
+		DWORD aProcesses[1024], cbNeeded, cProcesses;
+		unsigned int i;
 
-        double diskAvailableMB = diskfree.avail_clusters / 1024 / 1024 * 4096;
-        double diskAvailableGB = diskAvailableMB / 1024;
-        double diskNeededMB = diskSpaceNeeded / 1024 / 1024;
-
-        cout << "diskFree: " << diskfree.avail_clusters << " [clusters], " << diskAvailableMB << " [MB], " << diskAvailableGB << " [GB]" << endl;
-        cout << "diskNeeded: " << neededClusters << " [clusters], " << diskNeededMB << " [MB]" << endl;
+		if (!EnumProcesses(aProcesses, sizeof (aProcesses), &cbNeeded)) {
+			return 1;
+		}
 
 
-        if (diskfree.avail_clusters < neededClusters) {
-            // if you get here you don’t have enough disk space!
-            cout << "CheckStorage Failure: Not enough physical storage." << endl;
-            return false;
-        }
-        return true;
-    }
+		// Calculate how many process identifiers were returned.
 
-    //
-    // ReadCPUSpeed							- Chapter 5, page 140
-    //
+		cProcesses = cbNeeded / sizeof (DWORD);
 
-    DWORD Windows32Calls::readCPUSpeed() {
-        DWORD BufSize = sizeof (DWORD);
-        DWORD dwMHz = 0;
-        DWORD type = REG_DWORD;
-        HKEY hKey;
+		// Print the name and process identifier for each process.
+		int howMany = 0;
+		cout << "--------------------------" << endl;
+		for (i = 0; i < cProcesses; i++) {
+			if (aProcesses[i] != 0) {
+				bool result = isAGameProcess(aProcesses[i], gameTitleExe);
+				if (result) {
+					howMany++;
+				}
+			}
+		}
+
+		cout << "howMany: " << howMany << endl;
+
+		if (howMany >= 2) {
+			// First process is this process
+			// Second process is second game process
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	bool Windows32Calls::checkHardDisk(const int diskSpaceNeeded) {
+		// Check for enough free disk space on the current disk.
+		int const drive = _getdrive();
+		struct _diskfree_t diskfree;
+
+		_getdiskfree(drive, &diskfree);
+
+		unsigned __int64 const neededClusters =
+			diskSpaceNeeded / (diskfree.sectors_per_cluster * diskfree.bytes_per_sector);
+
+		double diskAvailableMB = diskfree.avail_clusters / 1024 / 1024 * 4096;
+		double diskAvailableGB = diskAvailableMB / 1024;
+		double diskNeededMB = diskSpaceNeeded / 1024 / 1024;
+
+		cout << "diskFree: " << diskfree.avail_clusters << " [clusters], " << diskAvailableMB << " [MB], " << diskAvailableGB << " [GB]" << endl;
+		cout << "diskNeeded: " << neededClusters << " [clusters], " << diskNeededMB << " [MB]" << endl;
 
 
-        // open the key where the proc speed is hidden:
-        long lError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
-                L"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
-                0, KEY_READ, &hKey);
+		if (diskfree.avail_clusters < neededClusters) {
+			// if you get here you don’t have enough disk space!
+			cout << "CheckStorage Failure: Not enough physical storage." << endl;
+			return false;
+		}
+		return true;
+	}
 
-        if (lError == ERROR_SUCCESS) {
-            // query the key:
-            RegQueryValueExW(hKey, L"~MHz", NULL, &type, (LPBYTE) & dwMHz, &BufSize);
-        }
+	//
+	// ReadCPUSpeed							- Chapter 5, page 140
+	//
 
-        return dwMHz;
-    }
+	DWORD Windows32Calls::readCPUSpeed() {
+		DWORD BufSize = sizeof (DWORD);
+		DWORD dwMHz = 0;
+		DWORD type = REG_DWORD;
+		HKEY hKey;
 
 
-    //
-    // CheckMemory							- Chapter 5, page 139
-    //
+		// open the key where the proc speed is hidden:
+		long lError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
+									L"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
+									0, KEY_READ, &hKey);
 
-    bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded) {
+		if (lError == ERROR_SUCCESS) {
+			// query the key:
+			RegQueryValueExW(hKey, L"~MHz", NULL, &type, (LPBYTE) & dwMHz, &BufSize);
+		}
+
+		return dwMHz;
+	}
+
+
+	//
+	// CheckMemory							- Chapter 5, page 139
+	//
+
+	bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded) {
 		MEMORYSTATUSEX status;
 		status.dwLength = sizeof ( status );
 		GlobalMemoryStatusEx ( &status );
@@ -209,57 +215,57 @@ namespace watermill {
 		cout << "free  kB of extended memory " <<  status.ullAvailExtendedVirtual / DIVkb << endl;
 
 
-        double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
-        double ramAvailMB = status.ullTotalPhys / 1024 / 1024;
+		double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
+		double ramAvailMB = status.ullTotalPhys / 1024 / 1024;
 
-        double ramNeededGB = physicalRAMNeeded / 1024 / 1024 / 1024;
-        double ramAvailGB = status.ullTotalPhys / 1024 / 1024 / 1024;
-        double ramAvailTB = status.ullTotalPhys / 1024 / 1024 / 1024 / 1024;
-
-
-        cout << "physical RAM needed: " << physicalRAMNeeded << " [byte], " << ramNeededMB << " [MB] " << ramNeededGB << " [GB]" << endl;
-        cout << "physical RAM total: " << status.ullTotalPhys << " [byte], " << ramAvailMB << " [MB] " << ramAvailGB << " [GB] "  << ramAvailTB << " [TB] "<< endl;
-
-                double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
-        double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
+		double ramNeededGB = physicalRAMNeeded / 1024 / 1024 / 1024;
+		double ramAvailGB = status.ullTotalPhys / 1024 / 1024 / 1024;
+		double ramAvailTB = status.ullTotalPhys / 1024 / 1024 / 1024 / 1024;
 
 
-        double virtualRamNeededGB = virtualRAMNeeded / 1024 / 1024 / 1024;
-        double virtualRamAvailGB = status.ullAvailVirtual / 1024 / 1024 / 1024;
+		cout << "physical RAM needed: " << physicalRAMNeeded << " [byte], " << ramNeededMB << " [MB] " << ramNeededGB << " [GB]" << endl;
+		cout << "physical RAM total: " << status.ullTotalPhys << " [byte], " << ramAvailMB << " [MB] " << ramAvailGB << " [GB] "  << ramAvailTB << " [TB] "<< endl;
 
-        cout << "virtual RAM needed: " << virtualRAMNeeded << " [byte], " << virtualRamNeededMB << " [MB] " << virtualRamNeededGB << " [GB]"  << endl;
-        cout << "virtual RAM available: " << status.ullAvailVirtual << " [byte], " << virtualRamAvailMB << " [MB] " << virtualRamAvailGB << " [GB]" << endl;
-
-
-        if (status.ullTotalPhys < physicalRAMNeeded) {
-            // you don’t have enough physical memory. Tell the player to go get a real
-            // computer and give this one to his mother.
-            cout << "CheckMemory Failure: Not enough physical memory." << endl;
-            return false;
-        }
+		double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
+		double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
 
 
+		double virtualRamNeededGB = virtualRAMNeeded / 1024 / 1024 / 1024;
+		double virtualRamAvailGB = status.ullAvailVirtual / 1024 / 1024 / 1024;
 
-        // Check for enough free memory.
-        if (status.ullAvailVirtual < virtualRAMNeeded) {
-            // you don’t have enough virtual memory available.
-            // Tell the player to shut down the copy of Visual Studio running in the
-            // background, or whatever seems to be sucking the memory dry.
-            cout << "CheckMemory Failure: Not enough virtual memory." << endl;
-            return false;
-        }
+		cout << "virtual RAM needed: " << virtualRAMNeeded << " [byte], " << virtualRamNeededMB << " [MB] " << virtualRamNeededGB << " [GB]"  << endl;
+		cout << "virtual RAM available: " << status.ullAvailVirtual << " [byte], " << virtualRamAvailMB << " [MB] " << virtualRamAvailGB << " [GB]" << endl;
 
-        char *buff = GCC_NEW char[(unsigned int) virtualRAMNeeded];
-        if (buff)
-            delete[] buff;
-        else {
-            // even though there is enough memory, it isn't available in one
-            // block, which can be critical for games that manage their own memory
-            cout << "CheckMemory Failure: Not enough contiguous available memory." << endl;
-            return false;
-        }
-        return true;
-    }
+
+		if (status.ullTotalPhys < physicalRAMNeeded) {
+			// you don’t have enough physical memory. Tell the player to go get a real
+			// computer and give this one to his mother.
+			cout << "CheckMemory Failure: Not enough physical memory." << endl;
+			return false;
+		}
+
+
+
+		// Check for enough free memory.
+		if (status.ullAvailVirtual < virtualRAMNeeded) {
+			// you don’t have enough virtual memory available.
+			// Tell the player to shut down the copy of Visual Studio running in the
+			// background, or whatever seems to be sucking the memory dry.
+			cout << "CheckMemory Failure: Not enough virtual memory." << endl;
+			return false;
+		}
+
+		char *buff = GCC_NEW char[(unsigned int) virtualRAMNeeded];
+		if (buff)
+			delete[] buff;
+		else {
+			// even though there is enough memory, it isn't available in one
+			// block, which can be critical for games that manage their own memory
+			cout << "CheckMemory Failure: Not enough contiguous available memory." << endl;
+			return false;
+		}
+		return true;
+	}
 
 
 }

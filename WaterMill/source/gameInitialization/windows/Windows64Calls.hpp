@@ -24,19 +24,19 @@
 
 namespace watermill {
 
-    class Windows64Calls : public Windows32Calls {
-    public:
-        Windows64Calls();
-        Windows64Calls(const Windows64Calls& orig);
-        virtual ~Windows64Calls();
-        //bool isOnlyInstance(TCHAR *);
-        bool isOnlyInstance(const std::string&);
-        DWORD readCPUSpeed();
-        bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
-    private:
-        //bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
-        bool isAGameProcess(DWORD processID, const std::string& gameTitle);
-    };
+	class Windows64Calls : public Windows32Calls {
+		public:
+			Windows64Calls();
+			Windows64Calls(const Windows64Calls& orig);
+			virtual ~Windows64Calls();
+			//bool isOnlyInstance(TCHAR *);
+			bool isOnlyInstance(const std::string&);
+			DWORD readCPUSpeed();
+			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
+		private:
+			//bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
+			//bool isAGameProcess(DWORD processID, const std::string& gameTitle);
+	};
 }
 #endif /* __WIN64 */
 

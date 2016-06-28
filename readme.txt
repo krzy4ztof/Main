@@ -62,3 +62,51 @@ Title, Description
 Push to the remote.
 Icon -> Sync icon - "Pull changes from and push local changes on master to the remote"
 
+*******************************
+***	Konfiguracja WinMerge	***
+*******************************
+
+W pliku
+C:\Users\User\.gitconfig 
+dodać 
+
+-----	-----	-----	------	------
+[mergetool]
+	prompt = false
+    keepBackup = false
+    keepTemporaries = false
+
+[merge]
+    tool = winmerge
+
+[mergetool "winmerge"]
+    name = WinMerge
+	trustExitCode = true
+    cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+
+[diff]
+    tool = winmerge
+
+[difftool "winmerge"]
+    name = WinMerge
+    trustExitCode = true
+	#    cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -e -u $LOCAL $REMOTE
+	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -e -ub -x -wl -u -maximise -dl "base" \"$LOCAL\" \"$REMOTE\"
+
+[core]
+	autocrlf = false
+	
+-----	-----	-----	------	------
+
+Winmerge konfiguracja:
+Menu -> Edit -> Options 
+Compare -> General
+	Whitespace -> Ignore all
+	Ignore carriage return differences (Windows/Linux/Mac)
+	
+	
+Użycie:
+
+git difftool
+git difftool HEAD
+git diftool --cached

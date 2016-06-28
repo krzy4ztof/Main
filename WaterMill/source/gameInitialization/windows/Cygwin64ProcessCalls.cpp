@@ -23,18 +23,21 @@ namespace watermill {
 
 	int isNumeric ( const char* ccharptr_CharacterList ) {
 		for ( ; *ccharptr_CharacterList; ccharptr_CharacterList++ )
-			if ( *ccharptr_CharacterList < '0' || *ccharptr_CharacterList > '9' )
-			{ return 0; } // false
+			if ( *ccharptr_CharacterList < '0' || *ccharptr_CharacterList > '9' ) {
+				return 0;    // false
+			}
 
 		return 1; // true
 	}
 
 	int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive ) {
-		if ( intCaseSensitive )
-		{ return !strcmp ( s1, s2 ); }
+		if ( intCaseSensitive ) {
+			return !strcmp ( s1, s2 );
+		}
 
-		else
-		{ return !strcasecmp ( s1, s2 ); }
+		else {
+			return !strcasecmp ( s1, s2 );
+		}
 	}
 
 	bool Cygwin64ProcessCalls::isOnlyInstance ( const std::string& gameTitle ) {

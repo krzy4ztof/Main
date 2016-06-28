@@ -70,7 +70,10 @@ int mainOpenGl(int argc, char** argv) {
 
     watermill::GameCodeApp * gameCodeApp;
     gameCodeApp = new watermill::GameCodeApp;
-    bool resInit = gameCodeApp->initInstance();
+
+//    bool resInit = gameCodeApp->initInstance();
+bool resInit = gameCodeApp->initInstanceShortDebug();
+
 
     int checkCpp11{457};
     //  auto anotherCpp11check = checkCpp11;

@@ -22,12 +22,17 @@
 #include "ErrorCode.hpp"
 
 #include "SystemCalls.hpp"
+#include "InitOptions.h"
+#include "DebuggingOptions.h"
 
 using namespace std;
 
 namespace watermill {
 
 	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
+	const string GameCodeApp::DEBUG_OPTIONS_XML = "debugOptions.xml";
+
+
 	//const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
 
 
@@ -41,6 +46,36 @@ namespace watermill {
 	}
 
 	GameCodeApp::~GameCodeApp() {
+	}
+
+	bool GameCodeApp::initInstanceShortDebug() {
+		bool returnCode = true;
+
+		try {
+			initOptions = new InitOptions;
+
+			// Load programmer's options for debugging purposes
+			debuggingOptions = new DebuggingOptions;
+
+			string debugFilePath = initOptions->getResourcesFolder() + DEBUG_OPTIONS_XML;
+			debuggingOptions->load(debugFilePath);
+
+			bool done = true;
+			cout << "Main loop" << endl;
+
+			while ( !done ) {
+				// Main loop
+			}
+		} catch ( ErrorCode& error ) {
+			error.informUser();
+			returnCode = false;
+		}
+
+		SAFE_DELETE ( debuggingOptions );
+		SAFE_DELETE ( initOptions );
+
+		return ( returnCode );
+
 	}
 
 	bool GameCodeApp::initInstance() {
@@ -59,16 +94,23 @@ namespace watermill {
 		bool resourceCheck = false;
 
 		while ( !resourceCheck ) {
-			const DWORDLONG physicalRAM = 512 * MEGABYTE;
-			const DWORDLONG virtualRAM = 1024 * MEGABYTE;
-			const DWORDLONG diskSpace = 10 * MEGABYTE;
+
+			//			const DWORDLONG physicalRAM = 512 * MEGABYTE;
+			//			const DWORDLONG virtualRAM = 1024 * MEGABYTE;
+			//			const DWORDLONG diskSpace = 10 * MEGABYTE;
+			const unsigned long long physicalRAM = 512 * MEGABYTE;
+			const unsigned long long virtualRAM = 1024 * MEGABYTE;
+			const unsigned long long diskSpace = 10 * MEGABYTE;
 
 			if ( !systemCalls.checkHardDisk ( diskSpace ) ) {
 				return false;
 			}
 
-			const DWORD minCpuSpeed = 1300; // 1.3Ghz
-			DWORD thisCPU = systemCalls.readCPUSpeed();
+			//const DWORD minCpuSpeed = 1300; // 1.3Ghz
+			//DWORD thisCPU = systemCalls.readCPUSpeed();
+			const unsigned long minCpuSpeed = 1300; // 1.3Ghz
+			unsigned long thisCPU = systemCalls.readCPUSpeed();
+
 			cout << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]" << endl;
 
 			if ( thisCPU < minCpuSpeed ) {
@@ -84,6 +126,18 @@ namespace watermill {
 		}
 
 		try {
+			initOptions = new InitOptions;
+
+			// Load programmer's options for debugging purposes
+
+			debuggingOptions = new DebuggingOptions;
+
+			//C:\home\myImportantFiles\projects\git\Main\WaterMill\media
+			//C:\home\myImportantFiles\projects\git\Main\WaterMill\settings\codeblocks\Watermill
+			//debuggingOptions.load("..\\..\\..\\media\\debugOptions.xml"); // OK
+			debuggingOptions->load("../../../media/debugOptions.xml");
+
+
 			dataFiles = new DataFiles;
 			audioSystem = new AudioSystem;
 			videoSystem = new VideoSystem;
@@ -93,8 +147,7 @@ namespace watermill {
 			while ( !done ) {
 				// Main loop
 			}
-		}
-		catch ( ErrorCode& error ) {
+		} catch ( ErrorCode& error ) {
 			error.informUser();
 			returnCode = false;
 		}
@@ -102,6 +155,9 @@ namespace watermill {
 		SAFE_DELETE ( videoSystem );
 		SAFE_DELETE ( audioSystem );
 		SAFE_DELETE ( dataFiles );
+		SAFE_DELETE ( debuggingOptions );
+		SAFE_DELETE ( initOptions );
+
 		return ( returnCode );
 	}
 }

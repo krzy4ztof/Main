@@ -2,7 +2,7 @@
 
 #include "Cygwin64CpuCalls.h"
 
-#include<iostream> // cout, endl
+#include <iostream> // cout, endl
 #include <string> // string
 #include <vector> // vector
 #include <sstream> // stringstream
@@ -75,8 +75,6 @@ namespace watermill {
 			cout << "i2: " << i2 << endl;
 		}
 
-		//cout << "internal size " << internal.size() << endl;
-
 		for ( int i = 0; i < internal.size(); i++ ) {
 			cout << "1 '" << internal[i] << "'" << endl;
 			boost::algorithm::trim ( internal[i] );
@@ -135,7 +133,7 @@ namespace watermill {
 
 
 
-	double Cygwin64CpuCalls::readCPUSpeedCygwin() {
+	unsigned long Cygwin64CpuCalls::readCPUSpeed() {
 		string line;
 		ifstream myfile ( "/proc/cpuinfo" );
 		vector <string> internal;
@@ -157,7 +155,7 @@ namespace watermill {
 				}
 
 				else {
-					//cout << "no match" << endl;
+					// No match
 				}
 
 				cout << line << '\n';
@@ -186,8 +184,6 @@ namespace watermill {
 			cout << "speed vector move: " << speed3 << endl;
 		}
 
-		cout << "* 3 " << endl;
-		// *doubleMinPtr - operator*
 		vector<double>::iterator doubleMinPtr = std::min_element ( doubleVectorPtr->begin(), doubleVectorPtr->end() );
 		cout << "* 41 " << endl;
 		double minDouble = 0;
@@ -212,11 +208,11 @@ namespace watermill {
 			doubleVectorPtr = nullptr;
 		};
 
-		//    cout << "del doubleMinPtr: " << *doubleMinPtr << endl;
 		cout << "del minDouble: " << minDouble << endl;
 
-		//   cout << "del doubleMinMove: " << *doubleMinMove << endl;
-		return minDouble;
+		unsigned long minUnsLong = static_cast <unsigned long> (minDouble);
+
+		return minUnsLong;
 	}
 
 }

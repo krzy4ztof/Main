@@ -2,3 +2,5 @@
 /obj/
 
 *.stackdump
+*.layout
+*.depend

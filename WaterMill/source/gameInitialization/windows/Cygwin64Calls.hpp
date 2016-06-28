@@ -17,33 +17,24 @@
 
 #ifdef __CYGWIN__
 //#ifdef __LINUX__
-//#define WINVER 0x0500
-
-#include <windows.h>
 #include "Cygwin64Calls.hpp"
 #include <string>
 #include <vector>
 
 namespace watermill {
 
-    class Cygwin64Calls {
-    public:
-        Cygwin64Calls();
-        Cygwin64Calls(const Cygwin64Calls& orig);
-        virtual ~Cygwin64Calls();
-        //bool isOnlyInstance(TCHAR *);
-        bool isOnlyInstance(const std::string&);
+	class Cygwin64Calls {
+		public:
+			Cygwin64Calls();
+			Cygwin64Calls(const Cygwin64Calls& orig);
+			virtual ~Cygwin64Calls();
 
-        bool checkHardDisk(const int);
-        DWORD readCPUSpeed();
-        double readCPUSpeedCygwin();
-        bool checkMemoryCygwin();
-
-        bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
-    private:
-        bool toDoubleStod(double& speed, const std::string& str);
-        bool toDoubleStream(double& speed, const std::string& str);
-    };
+			bool isOnlyInstance(const std::string&);
+			bool checkHardDisk(const int);
+			unsigned long readCPUSpeed();
+			bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
+		private:
+	};
 }
 #endif /* __CYGWIN__ */
 

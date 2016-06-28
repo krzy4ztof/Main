@@ -20,7 +20,7 @@
 	<iostream>
 	"ErrorCode.hpp"
 
-1465748333 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
+1466790768 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
 	"GameCodeApp.hpp"
 	<iostream>
 	"Macros.hpp"
@@ -29,11 +29,15 @@
 	"VideoSystem.hpp"
 	"ErrorCode.hpp"
 	"SystemCalls.hpp"
+	"InitOptions.h"
+	"DebuggingOptions.h"
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
+1467136814 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
 	"DataFiles.hpp"
 	"AudioSystem.hpp"
 	"VideoSystem.hpp"
+	"InitOptions.h"
+	"DebuggingOptions.h"
 	<string>
 
 1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.hpp
@@ -46,18 +50,17 @@
 	"windows/Cygwin64Calls.hpp"
 	"linux/LinuxCalls.hpp"
 
-1465503940 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.hpp
+1466268489 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.hpp
 	<windows.h>
 	"Windows32Calls.hpp"
 	<string>
 
-1465503940 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
+1466267072 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
 	<windows.h>
 	<tchar.h>
 	<string>
 
-1465750544 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
-	<windows.h>
+1466098949 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
 	"Cygwin64Calls.hpp"
 	<string>
 	<vector>
@@ -72,7 +75,7 @@
 	"VideoSystem.hpp"
 	"ErrorCode.hpp"
 
-1465750519 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
+1466265574 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
 	"Cygwin64Calls.hpp"
 	"Cygwin64CpuCalls.h"
 	<windows.h>
@@ -93,7 +96,7 @@
 	"../Macros.hpp"
 	"Cygwin64ProcessCalls.h"
 
-1465751635 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.cpp
+1466794758 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.cpp
 	"Windows32Calls.hpp"
 	<windows.h>
 	<iostream>
@@ -103,7 +106,7 @@
 	<direct.h>
 	"../Macros.hpp"
 
-1465751480 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
+1466268800 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
 	"Windows64Calls.hpp"
 	<windows.h>
 	<iostream>
@@ -4537,7 +4540,7 @@
 	<boost/algorithm/string/finder.hpp>
 	<boost/algorithm/string/formatter.hpp>
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
+1466790775 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -4889,7 +4892,7 @@
 1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
 	"TestClass.hpp"
 
-1465750400 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
+1466266924 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
 	<string>
 
 1465750648 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.cpp
@@ -4899,9 +4902,9 @@
 	<dirent.h>
 	<string.h>
 
-1465750501 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.h
+1466021706 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.h
 
-1465750576 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.cpp
+1466265552 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.cpp
 	"Cygwin64CpuCalls.h"
 	<iostream>
 	<string>
@@ -4910,4 +4913,1982 @@
 	<boost/algorithm/string.hpp>
 	<regex>
 	<fstream>
+
+1466796513 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.h
+	<string>
+	<map>
+	<boost/property_tree/ptree.hpp>
+
+1467053426 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.cpp
+	"DebuggingOptions.h"
+	"PropertyTreeUtils.h"
+	<string>
+	<iostream>
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/xml_parser.hpp>
+	<set>
+	<exception>
+	<map>
+	<utility>
+	<stdexcept>
+	<typeinfo>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\ptree.hpp
+	<boost/property_tree/ptree_fwd.hpp>
+	<boost/property_tree/string_path.hpp>
+	<boost/property_tree/stream_translator.hpp>
+	<boost/property_tree/exceptions.hpp>
+	<boost/property_tree/detail/ptree_utils.hpp>
+	<boost/multi_index_container.hpp>
+	<boost/multi_index/indexed_by.hpp>
+	<boost/multi_index/sequenced_index.hpp>
+	<boost/multi_index/ordered_index.hpp>
+	<boost/multi_index/member.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/throw_exception.hpp>
+	<boost/optional.hpp>
+	<utility>
+	<boost/property_tree/detail/ptree_implementation.hpp>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\ptree_fwd.hpp
+	<boost/config.hpp>
+	<boost/optional/optional_fwd.hpp>
+	<boost/throw_exception.hpp>
+	<functional>
+	<memory>
+	<string>
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\optional\optional_fwd.hpp
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\string_path.hpp
+	<boost/property_tree/ptree_fwd.hpp>
+	<boost/property_tree/id_translator.hpp>
+	<boost/property_tree/exceptions.hpp>
+	<boost/property_tree/detail/ptree_utils.hpp>
+	<boost/static_assert.hpp>
+	<boost/assert.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/optional.hpp>
+	<boost/throw_exception.hpp>
+	<algorithm>
+	<string>
+	<iterator>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\id_translator.hpp
+	<boost/property_tree/ptree_fwd.hpp>
+	<boost/optional.hpp>
+	<string>
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\optional.hpp
+	"boost/optional/optional.hpp"
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\optional\optional.hpp
+	<new>
+	<iosfwd>
+	<boost/config.hpp>
+	<boost/assert.hpp>
+	<boost/core/addressof.hpp>
+	<boost/core/enable_if.hpp>
+	<boost/core/explicit_operator_bool.hpp>
+	<boost/core/swap.hpp>
+	<boost/optional/bad_optional_access.hpp>
+	<boost/static_assert.hpp>
+	<boost/throw_exception.hpp>
+	<boost/type.hpp>
+	<boost/type_traits/alignment_of.hpp>
+	<boost/type_traits/has_nothrow_constructor.hpp>
+	<boost/type_traits/type_with_alignment.hpp>
+	<boost/type_traits/remove_const.hpp>
+	<boost/type_traits/remove_reference.hpp>
+	<boost/type_traits/decay.hpp>
+	<boost/type_traits/is_base_of.hpp>
+	<boost/type_traits/is_lvalue_reference.hpp>
+	<boost/type_traits/is_nothrow_move_assignable.hpp>
+	<boost/type_traits/is_nothrow_move_constructible.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/is_rvalue_reference.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/not.hpp>
+	<boost/detail/reference_content.hpp>
+	<boost/move/utility.hpp>
+	<boost/none.hpp>
+	<boost/utility/compare_pointees.hpp>
+	<boost/optional/optional_fwd.hpp>
+
+1440790286 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\core\explicit_operator_bool.hpp
+	<boost/config.hpp>
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\optional\bad_optional_access.hpp
+	<stdexcept>
+	<string>
+
+1440790286 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type.hpp
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\is_nothrow_move_assignable.hpp
+	<boost/config.hpp>
+	<boost/type_traits/has_trivial_move_assign.hpp>
+	<boost/type_traits/has_nothrow_assign.hpp>
+	<boost/type_traits/is_array.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/declval.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\has_trivial_move_assign.hpp
+	<boost/type_traits/intrinsics.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/type_traits/is_pod.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/is_assignable.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/is_assignable.hpp>
+	<boost/type_traits/remove_const.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\is_nothrow_move_constructible.hpp
+	<boost/config.hpp>
+	<boost/type_traits/intrinsics.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/declval.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/has_trivial_move_constructor.hpp>
+	<boost/type_traits/has_nothrow_copy.hpp>
+	<boost/type_traits/is_array.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\has_trivial_move_constructor.hpp
+	<boost/type_traits/intrinsics.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/type_traits/is_pod.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/is_constructible.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/is_constructible.hpp>
+	<boost/type_traits/remove_const.hpp>
+	<boost/type_traits/is_pod.hpp>
+	<boost/type_traits/is_volatile.hpp>
+
+1427988986 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\detail\reference_content.hpp
+	"boost/config.hpp"
+	"boost/mpl/bool.hpp"
+	"boost/type_traits/has_nothrow_copy.hpp"
+	"boost/mpl/void.hpp"
+
+1445530408 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\move\utility.hpp
+	<boost/config.hpp>
+	<boost/move/detail/config_begin.hpp>
+	<boost/move/utility_core.hpp>
+	<boost/move/traits.hpp>
+	<utility>
+	<boost/move/detail/config_end.hpp>
+
+1445530408 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\move\traits.hpp
+	<boost/config.hpp>
+	<boost/move/detail/config_begin.hpp>
+	<boost/move/core.hpp>
+	<boost/move/detail/meta_utils.hpp>
+	<boost/move/detail/type_traits.hpp>
+	<boost/move/detail/config_end.hpp>
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\none.hpp
+	"boost/none_t.hpp"
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\none_t.hpp
+
+1441989078 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\utility\compare_pointees.hpp
+	<functional>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\exceptions.hpp
+	<boost/property_tree/ptree_fwd.hpp>
+	<boost/any.hpp>
+	<string>
+	<stdexcept>
+	<boost/property_tree/detail/exception_implementation.hpp>
+
+1421921999 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\any.hpp
+	<algorithm>
+	"boost/config.hpp"
+	<boost/type_index.hpp>
+	<boost/type_traits/remove_reference.hpp>
+	<boost/type_traits/decay.hpp>
+	<boost/type_traits/remove_cv.hpp>
+	<boost/type_traits/add_reference.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/throw_exception.hpp>
+	<boost/static_assert.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/mpl/if.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index.hpp
+	<boost/config.hpp>
+	<boost/type_index/stl_type_index.hpp>
+	<boost/type_index/detail/stl_register_class.hpp>
+	<boost/type_index/ctti_type_index.hpp>
+	<boost/type_index/detail/ctti_register_class.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\stl_type_index.hpp
+	<boost/type_index/type_index_facade.hpp>
+	<typeinfo>
+	<cstring>
+	<stdexcept>
+	<boost/static_assert.hpp>
+	<boost/throw_exception.hpp>
+	<boost/core/demangle.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/remove_cv.hpp>
+	<boost/type_traits/remove_reference.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/or.hpp>
+	<boost/type_traits/is_signed.hpp>
+	<boost/type_traits/make_signed.hpp>
+	<boost/mpl/identity.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\type_index_facade.hpp
+	<boost/config.hpp>
+	<string>
+	<cstring>
+	<iosfwd>
+	<ostream>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\detail\stl_register_class.hpp
+	<boost/type_index/stl_type_index.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\ctti_type_index.hpp
+	<boost/type_index/type_index_facade.hpp>
+	<boost/type_index/detail/compile_time_type_info.hpp>
+	<cstring>
+	<boost/static_assert.hpp>
+	<boost/type_traits/remove_cv.hpp>
+	<boost/type_traits/remove_reference.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\detail\compile_time_type_info.hpp
+	<boost/config.hpp>
+	<boost/static_assert.hpp>
+	<boost/mpl/bool.hpp>
+	<algorithm>
+	<boost/preprocessor/facilities/expand.hpp>
+
+1438286441 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_index\detail\ctti_register_class.hpp
+	<boost/type_index/ctti_type_index.hpp>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\exception_implementation.hpp
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\ptree_utils.hpp
+	<boost/limits.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/mpl/has_xxx.hpp>
+	<boost/mpl/and.hpp>
+	<string>
+	<algorithm>
+	<locale>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\stream_translator.hpp
+	<boost/property_tree/ptree_fwd.hpp>
+	<boost/optional.hpp>
+	<boost/optional/optional_io.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/decay.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<sstream>
+	<string>
+	<locale>
+	<limits>
+
+1445375966 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\optional\optional_io.hpp
+	<istream>
+	<ostream>
+	"boost/none.hpp"
+	"boost/optional/optional.hpp"
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index_container.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/move/core.hpp>
+	<boost/mpl/at.hpp>
+	<boost/mpl/contains.hpp>
+	<boost/mpl/find_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/size.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/multi_index_container_fwd.hpp>
+	<boost/multi_index/detail/access_specifier.hpp>
+	<boost/multi_index/detail/adl_swap.hpp>
+	<boost/multi_index/detail/base_type.hpp>
+	<boost/multi_index/detail/do_not_copy_elements_tag.hpp>
+	<boost/multi_index/detail/converter.hpp>
+	<boost/multi_index/detail/header_holder.hpp>
+	<boost/multi_index/detail/has_tag.hpp>
+	<boost/multi_index/detail/no_duplicate_tags.hpp>
+	<boost/multi_index/detail/safe_mode.hpp>
+	<boost/multi_index/detail/scope_guard.hpp>
+	<boost/multi_index/detail/vartempl_support.hpp>
+	<boost/static_assert.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/utility/base_from_member.hpp>
+	<initializer_list>
+	<boost/multi_index/detail/archive_constructed.hpp>
+	<boost/multi_index/detail/serialization_version.hpp>
+	<boost/serialization/collection_size_type.hpp>
+	<boost/serialization/nvp.hpp>
+	<boost/serialization/split_member.hpp>
+	<boost/serialization/version.hpp>
+	<boost/throw_exception.hpp>
+	<boost/multi_index/detail/invariant_assert.hpp>
+
+1427988986 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\detail\allocator_utilities.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<cstddef>
+	<memory>
+	<new>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\at.hpp
+	<boost/mpl/at_fwd.hpp>
+	<boost/mpl/aux_/at_impl.hpp>
+	<boost/mpl/long.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\at_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\at_impl.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/advance.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\begin_end.hpp
+	<boost/mpl/begin_end_fwd.hpp>
+	<boost/mpl/aux_/begin_end_impl.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\begin_end_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\begin_end_impl.hpp
+	<boost/mpl/begin_end_fwd.hpp>
+	<boost/mpl/sequence_tag_fwd.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/aux_/has_begin.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\sequence_tag_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\has_begin.hpp
+	<boost/mpl/has_xxx.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\traits_lambda_spec.hpp
+	<boost/mpl/sequence_tag_fwd.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/config/lambda.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\sequence_tag.hpp
+	<boost/mpl/sequence_tag_fwd.hpp>
+	<boost/mpl/aux_/has_tag.hpp>
+	<boost/mpl/aux_/has_begin.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/is_msvc_eti_arg.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/yes_no.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\has_tag.hpp
+	<boost/mpl/has_xxx.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\is_msvc_eti_arg.hpp
+	<boost/mpl/aux_/yes_no.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\advance.hpp
+	<boost/mpl/advance_fwd.hpp>
+	<boost/mpl/less.hpp>
+	<boost/mpl/negate.hpp>
+	<boost/mpl/long.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/tag.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/aux_/advance_forward.hpp>
+	<boost/mpl/aux_/advance_backward.hpp>
+	<boost/mpl/aux_/value_wknd.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\advance_fwd.hpp
+	<boost/mpl/aux_/common_name_wknd.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\less.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\comparison_op.hpp
+	<boost/mpl/bool.hpp>
+	<boost/mpl/aux_/value_wknd.hpp>
+	<boost/mpl/aux_/numeric_op.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/aux_/config/integral.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\numeric_op.hpp
+	<boost/mpl/numeric_cast.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/tag.hpp>
+	<boost/mpl/aux_/numeric_cast_utils.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/msvc_eti_base.hpp>
+	<boost/mpl/aux_/value_wknd.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/limits/arity.hpp>
+	<boost/mpl/aux_/preprocessor/partial_spec_params.hpp>
+	<boost/mpl/aux_/preprocessor/def_params_tail.hpp>
+	<boost/mpl/aux_/preprocessor/repeat.hpp>
+	<boost/mpl/aux_/preprocessor/ext_params.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/preprocessor/enum.hpp>
+	<boost/mpl/aux_/preprocessor/add.hpp>
+	<boost/mpl/aux_/preprocessor/sub.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/preprocessor/dec.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\numeric_cast.hpp
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\tag.hpp
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/aux_/has_tag.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\numeric_cast_utils.hpp
+	<boost/mpl/numeric_cast.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\config\forwarding.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\msvc_eti_base.hpp
+	<boost/mpl/aux_/is_msvc_eti_arg.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/config/gcc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\negate.hpp
+	<boost/mpl/integral_c.hpp>
+	<boost/mpl/aux_/msvc_eti_base.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/config/integral.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\integral_c.hpp
+	<boost/mpl/integral_c_fwd.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/integral_wrapper.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\integral_c_fwd.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/adl_barrier.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\long.hpp
+	<boost/mpl/long_fwd.hpp>
+	<boost/mpl/aux_/integral_wrapper.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\long_fwd.hpp
+	<boost/mpl/aux_/adl_barrier.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\advance_forward.hpp
+	<boost/mpl/next.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/limits/unrolling.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/inc.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\limits\unrolling.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\advance_backward.hpp
+	<boost/mpl/prior.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/limits/unrolling.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/inc.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\prior.hpp
+	<boost/mpl/next_prior.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\deref.hpp
+	<boost/mpl/aux_/msvc_type.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\msvc_type.hpp
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/is_msvc_eti_arg.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\contains.hpp
+	<boost/mpl/contains_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/contains_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\contains_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\contains_impl.hpp
+	<boost/mpl/contains_fwd.hpp>
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/find.hpp>
+	<boost/mpl/not.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\find.hpp
+	<boost/mpl/find_if.hpp>
+	<boost/mpl/same_as.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\find_if.hpp
+	<boost/mpl/aux_/find_if_pred.hpp>
+	<boost/mpl/arg.hpp>
+	<boost/mpl/iter_fold_if.hpp>
+	<boost/mpl/aux_/common_name_wknd.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\find_if_pred.hpp
+	<boost/mpl/aux_/iter_apply.hpp>
+	<boost/mpl/not.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\iter_apply.hpp
+	<boost/mpl/apply.hpp>
+	<boost/mpl/deref.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\iter_fold_if.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/logical.hpp>
+	<boost/mpl/always.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/pair.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/aux_/iter_fold_if_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\pair.hpp
+	<boost/mpl/aux_/msvc_eti_base.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\iter_fold_if_impl.hpp
+	<boost/mpl/identity.hpp>
+	<boost/mpl/next.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/aux_/value_wknd.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/limits/unrolling.hpp>
+	<boost/preprocessor/arithmetic/sub.hpp>
+	<boost/preprocessor/repeat.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/dec.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\same_as.hpp
+	<boost/mpl/not.hpp>
+	<boost/mpl/aux_/lambda_spec.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\lambda_spec.hpp
+	<boost/mpl/void.hpp>
+	<boost/mpl/lambda_fwd.hpp>
+	<boost/mpl/int_fwd.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/lambda_arity_param.hpp>
+	<boost/mpl/aux_/config/lambda.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\size.hpp
+	<boost/mpl/size_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/size_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/msvc_eti_base.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\size_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\size_impl.hpp
+	<boost/mpl/size_fwd.hpp>
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/distance.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\distance.hpp
+	<boost/mpl/distance_fwd.hpp>
+	<boost/mpl/iter_fold.hpp>
+	<boost/mpl/iterator_range.hpp>
+	<boost/mpl/long.hpp>
+	<boost/mpl/next.hpp>
+	<boost/mpl/tag.hpp>
+	<boost/mpl/apply_wrap.hpp>
+	<boost/mpl/aux_/msvc_eti_base.hpp>
+	<boost/mpl/aux_/value_wknd.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\distance_fwd.hpp
+	<boost/mpl/aux_/common_name_wknd.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\iter_fold.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/O1_size.hpp>
+	<boost/mpl/lambda.hpp>
+	<boost/mpl/aux_/iter_fold_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\o1_size.hpp
+	<boost/mpl/O1_size_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/O1_size_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\o1_size_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\o1_size_impl.hpp
+	<boost/mpl/O1_size_fwd.hpp>
+	<boost/mpl/long.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/aux_/has_size.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\has_size.hpp
+	<boost/mpl/has_xxx.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\iter_fold_impl.hpp
+	<boost/mpl/next_prior.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/aux_/fold_impl_body.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\fold_impl_body.hpp
+	<boost/mpl/limits/unrolling.hpp>
+	<boost/mpl/aux_/preprocessor/repeat.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/dec.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\iterator_range.hpp
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index_container_fwd.hpp
+	<boost/config.hpp>
+	<boost/multi_index/identity.hpp>
+	<boost/multi_index/indexed_by.hpp>
+	<boost/multi_index/ordered_index_fwd.hpp>
+	<memory>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\identity.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/if.hpp>
+	<boost/multi_index/identity_fwd.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/remove_const.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/is_convertible.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\identity_fwd.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\indexed_by.hpp
+	<boost/config.hpp>
+	<boost/mpl/vector.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/control/expr_if.hpp>
+	<boost/preprocessor/repetition/enum.hpp>
+	<boost/preprocessor/repetition/enum_params.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\vector.hpp
+	<boost/mpl/limits/vector.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/aux_/config/preprocessor.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/stringize.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/limits/vector.hpp>
+	<boost/mpl/aux_/sequence_wrapper.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\limits\vector.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\sequence_wrapper.hpp
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/preprocessor/arithmetic/sub.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+	<boost/preprocessor/enum_params_with_a_default.hpp>
+	<boost/preprocessor/enum_params.hpp>
+	<boost/preprocessor/enum.hpp>
+	<boost/preprocessor/repeat.hpp>
+	<boost/preprocessor/comma_if.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/mpl/aux_/count_args.hpp>
+
+1444876587 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\preprocessor\enum_params_with_a_default.hpp
+	<boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+
+1444876587 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\preprocessor\repetition\enum_params_with_a_default.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/facilities/intercept.hpp>
+	<boost/preprocessor/repetition/enum_binary_params.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\ordered_index_fwd.hpp
+	<boost/multi_index/detail/ord_index_args.hpp>
+	<boost/multi_index/detail/ord_index_impl_fwd.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\ord_index_args.hpp
+	<boost/config.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/if.hpp>
+	<boost/multi_index/tag.hpp>
+	<boost/static_assert.hpp>
+	<boost/type_traits/is_same.hpp>
+	<functional>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\tag.hpp
+	<boost/config.hpp>
+	<boost/multi_index/detail/no_duplicate_tags.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/transform.hpp>
+	<boost/mpl/vector.hpp>
+	<boost/preprocessor/facilities/intercept.hpp>
+	<boost/preprocessor/repetition/enum_binary_params.hpp>
+	<boost/preprocessor/repetition/enum_params.hpp>
+	<boost/static_assert.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\no_duplicate_tags.hpp
+	<boost/config.hpp>
+	<boost/mpl/fold.hpp>
+	<boost/mpl/set/set0.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\fold.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/O1_size.hpp>
+	<boost/mpl/aux_/fold_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\fold_impl.hpp
+	<boost/mpl/next_prior.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/aux_/fold_impl_body.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\set0.hpp
+	<boost/mpl/set/aux_/at_impl.hpp>
+	<boost/mpl/set/aux_/clear_impl.hpp>
+	<boost/mpl/set/aux_/size_impl.hpp>
+	<boost/mpl/set/aux_/empty_impl.hpp>
+	<boost/mpl/set/aux_/insert_impl.hpp>
+	<boost/mpl/set/aux_/insert_range_impl.hpp>
+	<boost/mpl/set/aux_/erase_impl.hpp>
+	<boost/mpl/set/aux_/erase_key_impl.hpp>
+	<boost/mpl/set/aux_/has_key_impl.hpp>
+	<boost/mpl/set/aux_/key_type_impl.hpp>
+	<boost/mpl/set/aux_/value_type_impl.hpp>
+	<boost/mpl/set/aux_/begin_end_impl.hpp>
+	<boost/mpl/set/aux_/iterator.hpp>
+	<boost/mpl/set/aux_/item.hpp>
+	<boost/mpl/set/aux_/set0.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\at_impl.hpp
+	<boost/mpl/at_fwd.hpp>
+	<boost/mpl/set/aux_/has_key_impl.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/void.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\has_key_impl.hpp
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/has_key_fwd.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/aux_/overload_names.hpp>
+	<boost/mpl/aux_/static_cast.hpp>
+	<boost/mpl/aux_/yes_no.hpp>
+	<boost/mpl/aux_/type_wrapper.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\tag.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\has_key_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\overload_names.hpp
+	<boost/mpl/aux_/ptr_to_ref.hpp>
+	<boost/mpl/aux_/config/operators.hpp>
+	<boost/mpl/aux_/static_cast.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\ptr_to_ref.hpp
+	<boost/mpl/aux_/static_cast.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\config\operators.hpp
+	<boost/mpl/aux_/config/gcc.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\clear_impl.hpp
+	<boost/mpl/clear_fwd.hpp>
+	<boost/mpl/set/aux_/set0.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\clear_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\set0.hpp
+	<boost/mpl/long.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/aux_/yes_no.hpp>
+	<boost/mpl/aux_/overload_names.hpp>
+	<boost/mpl/aux_/config/operators.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\size_impl.hpp
+	<boost/mpl/size_fwd.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\empty_impl.hpp
+	<boost/mpl/empty_fwd.hpp>
+	<boost/mpl/not.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\empty_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\insert_impl.hpp
+	<boost/mpl/insert_fwd.hpp>
+	<boost/mpl/set/aux_/has_key_impl.hpp>
+	<boost/mpl/set/aux_/item.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/base.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\insert_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\item.hpp
+	<boost/mpl/long.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/next.hpp>
+	<boost/mpl/prior.hpp>
+	<boost/mpl/set/aux_/set0.hpp>
+	<boost/mpl/aux_/type_wrapper.hpp>
+	<boost/mpl/aux_/config/arrays.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\base.hpp
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\insert_range_impl.hpp
+	<boost/mpl/insert_range_fwd.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/placeholders.hpp>
+	<boost/mpl/fold.hpp>
+	<boost/mpl/insert.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\insert_range_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\insert.hpp
+	<boost/mpl/insert_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/insert_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\insert_impl.hpp
+	<boost/mpl/reverse_fold.hpp>
+	<boost/mpl/iterator_range.hpp>
+	<boost/mpl/clear.hpp>
+	<boost/mpl/push_front.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\reverse_fold.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/O1_size.hpp>
+	<boost/mpl/arg.hpp>
+	<boost/mpl/aux_/reverse_fold_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\reverse_fold_impl.hpp
+	<boost/mpl/next_prior.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/aux_/reverse_fold_impl_body.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\reverse_fold_impl_body.hpp
+	<boost/mpl/limits/unrolling.hpp>
+	<boost/mpl/aux_/preprocessor/repeat.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/preprocessor/arithmetic/sub.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/dec.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\clear.hpp
+	<boost/mpl/clear_fwd.hpp>
+	<boost/mpl/aux_/clear_impl.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\clear_impl.hpp
+	<boost/mpl/clear_fwd.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\push_front.hpp
+	<boost/mpl/push_front_fwd.hpp>
+	<boost/mpl/aux_/push_front_impl.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\push_front_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\push_front_impl.hpp
+	<boost/mpl/push_front_fwd.hpp>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/aux_/has_type.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\erase_impl.hpp
+	<boost/mpl/erase_fwd.hpp>
+	<boost/mpl/set/aux_/erase_key_impl.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\erase_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\erase_key_impl.hpp
+	<boost/mpl/erase_key_fwd.hpp>
+	<boost/mpl/set/aux_/has_key_impl.hpp>
+	<boost/mpl/set/aux_/item.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/base.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\erase_key_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\key_type_impl.hpp
+	<boost/mpl/key_type_fwd.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\key_type_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\value_type_impl.hpp
+	<boost/mpl/value_type_fwd.hpp>
+	<boost/mpl/set/aux_/tag.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\value_type_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\begin_end_impl.hpp
+	<boost/mpl/begin_end_fwd.hpp>
+	<boost/mpl/set/aux_/iterator.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\set\aux_\iterator.hpp
+	<boost/mpl/set/aux_/set0.hpp>
+	<boost/mpl/has_key.hpp>
+	<boost/mpl/iterator_tags.hpp>
+	<boost/mpl/next.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\has_key.hpp
+	<boost/mpl/has_key_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/has_key_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\has_key_impl.hpp
+	<boost/mpl/has_key_fwd.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\iterator_tags.hpp
+	<boost/mpl/int.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\transform.hpp
+	<boost/mpl/fold.hpp>
+	<boost/mpl/reverse_fold.hpp>
+	<boost/mpl/pair_view.hpp>
+	<boost/mpl/is_sequence.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/lambda.hpp>
+	<boost/mpl/bind.hpp>
+	<boost/mpl/or.hpp>
+	<boost/mpl/not.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/aux_/inserter_algorithm.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\pair_view.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/iterator_category.hpp>
+	<boost/mpl/advance.hpp>
+	<boost/mpl/distance.hpp>
+	<boost/mpl/next_prior.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/mpl/min_max.hpp>
+	<boost/mpl/pair.hpp>
+	<boost/mpl/iterator_tags.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\iterator_category.hpp
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\min_max.hpp
+	<boost/mpl/less.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\is_sequence.hpp
+	<boost/mpl/not.hpp>
+	<boost/mpl/and.hpp>
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/sequence_tag_fwd.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/void.hpp>
+	<boost/mpl/aux_/has_tag.hpp>
+	<boost/mpl/aux_/has_begin.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/mpl/aux_/config/eti.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/msvc_is_class.hpp>
+	<boost/type_traits/is_class.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\inserter_algorithm.hpp
+	<boost/mpl/back_inserter.hpp>
+	<boost/mpl/front_inserter.hpp>
+	<boost/mpl/push_back.hpp>
+	<boost/mpl/push_front.hpp>
+	<boost/mpl/back_inserter.hpp>
+	<boost/mpl/front_inserter.hpp>
+	<boost/mpl/clear.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/aux_/na.hpp>
+	<boost/mpl/aux_/common_name_wknd.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/preprocessor/default_params.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/preprocessor/arithmetic/dec.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\back_inserter.hpp
+	<boost/mpl/push_back.hpp>
+	<boost/mpl/inserter.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\push_back.hpp
+	<boost/mpl/push_back_fwd.hpp>
+	<boost/mpl/aux_/push_back_impl.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\push_back_fwd.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\push_back_impl.hpp
+	<boost/mpl/push_back_fwd.hpp>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/aux_/has_type.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/mpl/aux_/config/forwarding.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\inserter.hpp
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\front_inserter.hpp
+	<boost/mpl/push_front.hpp>
+	<boost/mpl/inserter.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\ord_index_impl_fwd.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\access_specifier.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\adl_swap.hpp
+	<boost/config.hpp>
+	<algorithm>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\base_type.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/at.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/size.hpp>
+	<boost/multi_index/detail/index_base.hpp>
+	<boost/multi_index/detail/is_index_list.hpp>
+	<boost/static_assert.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\index_base.hpp
+	<boost/config.hpp>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/move/core.hpp>
+	<boost/move/utility.hpp>
+	<boost/mpl/vector.hpp>
+	<boost/multi_index/detail/copy_map.hpp>
+	<boost/multi_index/detail/do_not_copy_elements_tag.hpp>
+	<boost/multi_index/detail/node_type.hpp>
+	<boost/multi_index/detail/vartempl_support.hpp>
+	<boost/multi_index_container_fwd.hpp>
+	<boost/tuple/tuple.hpp>
+	<utility>
+	<boost/multi_index/detail/index_loader.hpp>
+	<boost/multi_index/detail/index_saver.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\copy_map.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/multi_index/detail/auto_space.hpp>
+	<boost/multi_index/detail/raw_ptr.hpp>
+	<boost/noncopyable.hpp>
+	<cstddef>
+	<functional>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\auto_space.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/multi_index/detail/adl_swap.hpp>
+	<boost/noncopyable.hpp>
+	<memory>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\raw_ptr.hpp
+	<boost/config.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\do_not_copy_elements_tag.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\node_type.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/bind.hpp>
+	<boost/mpl/reverse_iter_fold.hpp>
+	<boost/mpl/deref.hpp>
+	<boost/multi_index_container_fwd.hpp>
+	<boost/multi_index/detail/header_holder.hpp>
+	<boost/multi_index/detail/index_node_base.hpp>
+	<boost/multi_index/detail/is_index_list.hpp>
+	<boost/static_assert.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\reverse_iter_fold.hpp
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/O1_size.hpp>
+	<boost/mpl/arg.hpp>
+	<boost/mpl/lambda.hpp>
+	<boost/mpl/aux_/reverse_iter_fold_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\reverse_iter_fold_impl.hpp
+	<boost/mpl/next_prior.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/if.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/mpl/aux_/config/use_preprocessed.hpp>
+	<boost/mpl/aux_/include_preprocessed.hpp>
+	<boost/mpl/aux_/reverse_fold_impl_body.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\header_holder.hpp
+	<boost/noncopyable.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\index_node_base.hpp
+	<boost/config.hpp>
+	<boost/type_traits/aligned_storage.hpp>
+	<boost/type_traits/alignment_of.hpp>
+	<boost/archive/archive_exception.hpp>
+	<boost/serialization/access.hpp>
+	<boost/throw_exception.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\aligned_storage.hpp
+	<cstddef>
+	"boost/config.hpp"
+	"boost/detail/workaround.hpp"
+	"boost/type_traits/alignment_of.hpp"
+	"boost/type_traits/type_with_alignment.hpp"
+	"boost/type_traits/is_pod.hpp"
+	"boost/type_traits/conditional.hpp"
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\archive\archive_exception.hpp
+	<exception>
+	<boost/assert.hpp>
+	<string>
+	<boost/config.hpp>
+	<boost/archive/detail/decl.hpp>
+	<excpt.h>
+	<boost/archive/detail/abi_prefix.hpp>
+	<boost/archive/detail/abi_suffix.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\archive\detail\decl.hpp
+	<boost/config.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\archive\detail\abi_prefix.hpp
+	<boost/config/abi_prefix.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\archive\detail\abi_suffix.hpp
+	<boost/config/abi_suffix.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\access.hpp
+	<boost/config.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\is_index_list.hpp
+	<boost/config.hpp>
+	<boost/mpl/empty.hpp>
+	<boost/mpl/is_sequence.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\empty.hpp
+	<boost/mpl/empty_fwd.hpp>
+	<boost/mpl/sequence_tag.hpp>
+	<boost/mpl/aux_/empty_impl.hpp>
+	<boost/mpl/aux_/na_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\aux_\empty_impl.hpp
+	<boost/mpl/empty_fwd.hpp>
+	<boost/mpl/begin_end.hpp>
+	<boost/mpl/aux_/traits_lambda_spec.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\vartempl_support.hpp
+	<boost/config.hpp>
+	<boost/move/core.hpp>
+	<boost/move/utility.hpp>
+	<boost/preprocessor/arithmetic/add.hpp>
+	<boost/preprocessor/arithmetic/sub.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/control/if.hpp>
+	<boost/preprocessor/facilities/empty.hpp>
+	<boost/preprocessor/facilities/intercept.hpp>
+	<boost/preprocessor/logical/and.hpp>
+	<boost/preprocessor/punctuation/comma.hpp>
+	<boost/preprocessor/punctuation/comma_if.hpp>
+	<boost/preprocessor/repetition/enum.hpp>
+	<boost/preprocessor/repetition/enum_params.hpp>
+	<boost/preprocessor/repetition/repeat_from_to.hpp>
+	<boost/preprocessor/seq/elem.hpp>
+	<utility>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\index_loader.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/archive/archive_exception.hpp>
+	<boost/noncopyable.hpp>
+	<boost/multi_index/detail/auto_space.hpp>
+	<boost/multi_index/detail/raw_ptr.hpp>
+	<boost/serialization/nvp.hpp>
+	<boost/throw_exception.hpp>
+	<cstddef>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\nvp.hpp
+	<utility>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/integral_c.hpp>
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/serialization/level.hpp>
+	<boost/serialization/tracking.hpp>
+	<boost/serialization/split_member.hpp>
+	<boost/serialization/base_object.hpp>
+	<boost/serialization/traits.hpp>
+	<boost/serialization/wrapper.hpp>
+	<boost/preprocessor/stringize.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\level.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/is_fundamental.hpp>
+	<boost/type_traits/is_enum.hpp>
+	<boost/type_traits/is_array.hpp>
+	<boost/type_traits/is_class.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/integral_c.hpp>
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/serialization/level_enum.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\level_enum.hpp
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\tracking.hpp
+	<boost/config.hpp>
+	<boost/static_assert.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/equal_to.hpp>
+	<boost/mpl/greater.hpp>
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/type_traits/is_pointer.hpp>
+	<boost/serialization/level.hpp>
+	<boost/serialization/tracking_enum.hpp>
+	<boost/serialization/type_info_implementation.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\equal_to.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\greater.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\tracking_enum.hpp
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\type_info_implementation.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/static_assert.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/serialization/traits.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\traits.hpp
+	<boost/config.hpp>
+	<boost/static_assert.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/serialization/level_enum.hpp>
+	<boost/serialization/tracking_enum.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\split_member.hpp
+	<boost/config.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/serialization/access.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\base_object.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/type_traits/is_pointer.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_polymorphic.hpp>
+	<boost/static_assert.hpp>
+	<boost/serialization/access.hpp>
+	<boost/serialization/force_include.hpp>
+	<boost/serialization/void_cast_fwd.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\force_include.hpp
+	<boost/config.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\void_cast_fwd.hpp
+	<cstddef>
+	<boost/serialization/force_include.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\wrapper.hpp
+	<boost/serialization/traits.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/bool.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\index_saver.hpp
+	<boost/config.hpp>
+	<boost/multi_index/detail/index_matcher.hpp>
+	<boost/noncopyable.hpp>
+	<boost/serialization/nvp.hpp>
+	<cstddef>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\index_matcher.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/noncopyable.hpp>
+	<boost/multi_index/detail/auto_space.hpp>
+	<boost/multi_index/detail/raw_ptr.hpp>
+	<cstddef>
+	<functional>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\converter.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\has_tag.hpp
+	<boost/config.hpp>
+	<boost/mpl/contains.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\safe_mode.hpp
+	<boost/assert.hpp>
+	<boost/config.hpp>
+	<algorithm>
+	<boost/detail/iterator.hpp>
+	<boost/multi_index/detail/access_specifier.hpp>
+	<boost/multi_index/detail/iter_adaptor.hpp>
+	<boost/multi_index/safe_mode_errors.hpp>
+	<boost/noncopyable.hpp>
+	<boost/serialization/split_member.hpp>
+	<boost/serialization/version.hpp>
+	<boost/detail/lightweight_mutex.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\iter_adaptor.hpp
+	<boost/config.hpp>
+	<boost/mpl/apply.hpp>
+	<boost/operators.hpp>
+
+1441989078 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\operators.hpp
+	<cstddef>
+	<iterator>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\safe_mode_errors.hpp
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\version.hpp
+	<boost/config.hpp>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/int.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/mpl/less.hpp>
+	<boost/mpl/comparison.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\comparison.hpp
+	<boost/mpl/equal_to.hpp>
+	<boost/mpl/not_equal_to.hpp>
+	<boost/mpl/less.hpp>
+	<boost/mpl/greater.hpp>
+	<boost/mpl/less_equal.hpp>
+	<boost/mpl/greater_equal.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\not_equal_to.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\less_equal.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1443891089 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\mpl\greater_equal.hpp
+	<boost/mpl/aux_/comparison_op.hpp>
+
+1445973136 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\detail\lightweight_mutex.hpp
+	<boost/smart_ptr/detail/lightweight_mutex.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\scope_guard.hpp
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/mpl/if.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\archive_constructed.hpp
+	<boost/config.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/noncopyable.hpp>
+	<boost/serialization/serialization.hpp>
+	<boost/type_traits/aligned_storage.hpp>
+	<boost/type_traits/alignment_of.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\serialization.hpp
+	<boost/config.hpp>
+	<boost/serialization/strong_typedef.hpp>
+	<boost/serialization/access.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\strong_typedef.hpp
+	<boost/config.hpp>
+	<boost/operators.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\serialization_version.hpp
+	<boost/config.hpp>
+	<boost/serialization/split_member.hpp>
+	<boost/serialization/version.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\collection_size_type.hpp
+	<cstddef>
+	<boost/serialization/strong_typedef.hpp>
+	<boost/serialization/level.hpp>
+	<boost/serialization/split_free.hpp>
+	<boost/serialization/is_bitwise_serializable.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\split_free.hpp
+	<boost/config.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/mpl/identity.hpp>
+	<boost/serialization/serialization.hpp>
+
+1444061461 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\serialization\is_bitwise_serializable.hpp
+	<boost/mpl/bool.hpp>
+	<boost/type_traits/is_arithmetic.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\invariant_assert.hpp
+	<boost/assert.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\sequenced_index.hpp
+	<boost/config.hpp>
+	<boost/bind.hpp>
+	<boost/call_traits.hpp>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/foreach_fwd.hpp>
+	<boost/iterator/reverse_iterator.hpp>
+	<boost/move/core.hpp>
+	<boost/move/utility.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/not.hpp>
+	<boost/mpl/push_front.hpp>
+	<boost/multi_index/detail/access_specifier.hpp>
+	<boost/multi_index/detail/bidir_node_iterator.hpp>
+	<boost/multi_index/detail/do_not_copy_elements_tag.hpp>
+	<boost/multi_index/detail/index_node_base.hpp>
+	<boost/multi_index/detail/safe_mode.hpp>
+	<boost/multi_index/detail/scope_guard.hpp>
+	<boost/multi_index/detail/seq_index_node.hpp>
+	<boost/multi_index/detail/seq_index_ops.hpp>
+	<boost/multi_index/detail/vartempl_support.hpp>
+	<boost/multi_index/sequenced_index_fwd.hpp>
+	<boost/tuple/tuple.hpp>
+	<boost/type_traits/is_integral.hpp>
+	<cstddef>
+	<functional>
+	<utility>
+	<initializer_list>
+	<boost/bind.hpp>
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind.hpp
+	<boost/bind/bind.hpp>
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\bind.hpp
+	<boost/config.hpp>
+	<boost/ref.hpp>
+	<boost/mem_fn.hpp>
+	<boost/type.hpp>
+	<boost/is_placeholder.hpp>
+	<boost/bind/arg.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/visit_each.hpp>
+	<boost/core/enable_if.hpp>
+	<boost/core/is_same.hpp>
+	<utility>
+	<boost/bind/storage.hpp>
+	<boost/bind/bind_template.hpp>
+	<boost/bind/bind_template.hpp>
+	<boost/bind/bind_template.hpp>
+	<boost/bind/bind_cc.hpp>
+	<boost/bind/bind_cc.hpp>
+	<boost/bind/bind_cc.hpp>
+	<boost/bind/bind_cc.hpp>
+	<boost/bind/bind_mf_cc.hpp>
+	<boost/bind/bind_mf2_cc.hpp>
+	<boost/bind/bind_mf_cc.hpp>
+	<boost/bind/bind_mf2_cc.hpp>
+	<boost/bind/bind_mf_cc.hpp>
+	<boost/bind/bind_mf2_cc.hpp>
+	<boost/bind/bind_mf_cc.hpp>
+	<boost/bind/bind_mf2_cc.hpp>
+	<boost/bind/placeholders.hpp>
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\arg.hpp
+	<boost/config.hpp>
+	<boost/is_placeholder.hpp>
+	<boost/static_assert.hpp>
+
+1440790286 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\visit_each.hpp
+
+1440790286 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\core\is_same.hpp
+	<boost/config.hpp>
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\storage.hpp
+	<boost/config.hpp>
+	<boost/bind/arg.hpp>
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\bind_template.hpp
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\bind_cc.hpp
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\bind_mf_cc.hpp
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\bind_mf2_cc.hpp
+
+1444833974 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\bind\placeholders.hpp
+	<boost/bind/arg.hpp>
+	<boost/config.hpp>
+
+1441989078 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\call_traits.hpp
+	<boost/config.hpp>
+	<boost/detail/call_traits.hpp>
+
+1441989078 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\detail\call_traits.hpp
+	<boost/config.hpp>
+	<cstddef>
+	<boost/type_traits/is_arithmetic.hpp>
+	<boost/type_traits/is_enum.hpp>
+	<boost/type_traits/is_pointer.hpp>
+	<boost/detail/workaround.hpp>
+
+1425504998 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\foreach_fwd.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\bidir_node_iterator.hpp
+	<boost/config.hpp>
+	<boost/operators.hpp>
+	<boost/serialization/nvp.hpp>
+	<boost/serialization/split_member.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\seq_index_node.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/multi_index/detail/raw_ptr.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\seq_index_ops.hpp
+	<boost/config.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/multi_index/detail/seq_index_node.hpp>
+	<boost/limits.hpp>
+	<boost/type_traits/aligned_storage.hpp>
+	<boost/type_traits/alignment_of.hpp>
+	<cstddef>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\sequenced_index_fwd.hpp
+	<boost/multi_index/tag.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\ordered_index.hpp
+	<boost/config.hpp>
+	<boost/multi_index/detail/ord_index_impl.hpp>
+	<boost/multi_index/ordered_index_fwd.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\ord_index_impl.hpp
+	<boost/config.hpp>
+	<algorithm>
+	<boost/call_traits.hpp>
+	<boost/detail/no_exceptions_support.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/foreach_fwd.hpp>
+	<boost/iterator/reverse_iterator.hpp>
+	<boost/move/core.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/push_front.hpp>
+	<boost/multi_index/detail/access_specifier.hpp>
+	<boost/multi_index/detail/bidir_node_iterator.hpp>
+	<boost/multi_index/detail/do_not_copy_elements_tag.hpp>
+	<boost/multi_index/detail/index_node_base.hpp>
+	<boost/multi_index/detail/modify_key_adaptor.hpp>
+	<boost/multi_index/detail/ord_index_node.hpp>
+	<boost/multi_index/detail/ord_index_ops.hpp>
+	<boost/multi_index/detail/safe_mode.hpp>
+	<boost/multi_index/detail/scope_guard.hpp>
+	<boost/multi_index/detail/unbounded.hpp>
+	<boost/multi_index/detail/value_compare.hpp>
+	<boost/multi_index/detail/vartempl_support.hpp>
+	<boost/multi_index/detail/ord_index_impl_fwd.hpp>
+	<boost/ref.hpp>
+	<boost/tuple/tuple.hpp>
+	<boost/type_traits/is_same.hpp>
+	<utility>
+	<initializer_list>
+	<boost/archive/archive_exception.hpp>
+	<boost/bind.hpp>
+	<boost/multi_index/detail/duplicates_iterator.hpp>
+	<boost/throw_exception.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\modify_key_adaptor.hpp
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\ord_index_node.hpp
+	<boost/config.hpp>
+	<cstddef>
+	<boost/detail/allocator_utilities.hpp>
+	<boost/multi_index/detail/raw_ptr.hpp>
+	<boost/mpl/and.hpp>
+	<boost/mpl/if.hpp>
+	<boost/multi_index/detail/uintptr_type.hpp>
+	<boost/type_traits/alignment_of.hpp>
+	<boost/type_traits/is_same.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\uintptr_type.hpp
+	<boost/config.hpp>
+	<boost/mpl/bool.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\ord_index_ops.hpp
+	<boost/config.hpp>
+	<boost/mpl/and.hpp>
+	<boost/multi_index/detail/promotes_arg.hpp>
+	<utility>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\promotes_arg.hpp
+	<boost/config.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/type_traits/intrinsics.hpp>
+	<boost/mpl/and.hpp>
+	<boost/mpl/not.hpp>
+	<boost/multi_index/detail/is_transparent.hpp>
+	<boost/type_traits/is_convertible.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\is_transparent.hpp
+	<boost/config.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/type_traits/intrinsics.hpp>
+	<boost/mpl/and.hpp>
+	<boost/mpl/not.hpp>
+	<boost/mpl/or.hpp>
+	<boost/type_traits/function_traits.hpp>
+	<boost/type_traits/is_class.hpp>
+	<boost/type_traits/is_final.hpp>
+	<boost/type_traits/is_function.hpp>
+	<boost/type_traits/is_same.hpp>
+	<boost/type_traits/remove_pointer.hpp>
+	<boost/utility/declval.hpp>
+	<boost/utility/enable_if.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\type_traits\is_final.hpp
+	<boost/type_traits/intrinsics.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/type_traits/remove_cv.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\unbounded.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\value_compare.hpp
+	<boost/config.hpp>
+	<boost/call_traits.hpp>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\detail\duplicates_iterator.hpp
+	<boost/config.hpp>
+	<cstddef>
+	<iterator>
+
+1449603873 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\multi_index\member.hpp
+	<boost/config.hpp>
+	<boost/mpl/if.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/utility/enable_if.hpp>
+	<cstddef>
+	<boost/type_traits/is_convertible.hpp>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\ptree_implementation.hpp
+	<boost/iterator/iterator_adaptor.hpp>
+	<boost/iterator/reverse_iterator.hpp>
+	<boost/assert.hpp>
+	<boost/utility/swap.hpp>
+	<memory>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\xml_parser.hpp
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/detail/xml_parser_write.hpp>
+	<boost/property_tree/detail/xml_parser_error.hpp>
+	<boost/property_tree/detail/xml_parser_writer_settings.hpp>
+	<boost/property_tree/detail/xml_parser_flags.hpp>
+	<boost/property_tree/detail/xml_parser_read_rapidxml.hpp>
+	<fstream>
+	<string>
+	<locale>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_write.hpp
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/detail/xml_parser_utils.hpp>
+	<string>
+	<ostream>
+	<iomanip>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_utils.hpp
+	<boost/property_tree/detail/ptree_utils.hpp>
+	<boost/property_tree/detail/xml_parser_error.hpp>
+	<boost/property_tree/detail/xml_parser_writer_settings.hpp>
+	<string>
+	<algorithm>
+	<locale>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_error.hpp
+	<boost/property_tree/detail/file_parser_error.hpp>
+	<string>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\file_parser_error.hpp
+	<boost/property_tree/ptree.hpp>
+	<string>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_writer_settings.hpp
+	<string>
+	<boost/property_tree/detail/ptree_utils.hpp>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_flags.hpp
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\xml_parser_read_rapidxml.hpp
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/detail/xml_parser_error.hpp>
+	<boost/property_tree/detail/xml_parser_flags.hpp>
+	<boost/property_tree/detail/xml_parser_utils.hpp>
+	<boost/property_tree/detail/rapidxml.hpp>
+	<vector>
+
+1436271648 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\property_tree\detail\rapidxml.hpp
+	<boost/assert.hpp>
+	<cstdlib>
+	<new>
+	<exception>
+
+1425504998 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\foreach.hpp
+	<cstddef>
+	<utility>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/mpl/if.hpp>
+	<boost/mpl/assert.hpp>
+	<boost/mpl/logical.hpp>
+	<boost/mpl/eval_if.hpp>
+	<boost/noncopyable.hpp>
+	<boost/range/end.hpp>
+	<boost/range/begin.hpp>
+	<boost/range/rend.hpp>
+	<boost/range/rbegin.hpp>
+	<boost/range/iterator.hpp>
+	<boost/range/reverse_iterator.hpp>
+	<boost/type_traits/is_array.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_abstract.hpp>
+	<boost/type_traits/is_base_and_derived.hpp>
+	<boost/type_traits/is_rvalue_reference.hpp>
+	<boost/iterator/iterator_traits.hpp>
+	<boost/utility/addressof.hpp>
+	<boost/foreach_fwd.hpp>
+	<new>
+	<boost/aligned_storage.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/type_traits/remove_const.hpp>
+
+1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\aligned_storage.hpp
+	<boost/type_traits/aligned_storage.hpp>
+
+1467136519 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.h
+	<string>
+
+1467135889 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.cpp
+	"InitOptions.h"
+	"ErrorCode.hpp"
+	"PropertyTreeUtils.h"
+	<string>
+	<iostream>
+	<fstream>
+	"boost/filesystem.hpp"
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/ini_parser.hpp>
+
+1467053584 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\propertytreeutils.h
+	<string>
+	<boost/property_tree/ptree.hpp>
+
+1467053693 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\propertytreeutils.cpp
+	"PropertyTreeUtils.h"
+	<boost/property_tree/ptree.hpp>
+	<iostream>
 

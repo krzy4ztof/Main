@@ -8,7 +8,7 @@ namespace watermill {
 		public:
 			Cygwin64CpuCalls();
 			virtual ~Cygwin64CpuCalls();
-			double readCPUSpeedCygwin();
+			unsigned long readCPUSpeed();
 		protected:
 
 		private:
