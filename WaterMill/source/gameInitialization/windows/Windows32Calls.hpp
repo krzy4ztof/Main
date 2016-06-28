@@ -40,6 +40,7 @@ namespace watermill {
 			DWORD readCPUSpeed();
 			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
 		private:
+			//			bool isAGameProcess(DWORD processID, const std::string& gameTitle);
 	};
 }
 #endif /* __WIN32 */

@@ -39,6 +39,8 @@ namespace watermill {
 
 	void DebuggingOptions::loadAttrNode(const boost::property_tree::ptree& xmlattrNode) {
 
+		string attrName;
+		string attrValue;
 		for(const boost::property_tree::ptree::value_type & xmlAttrChild: xmlattrNode) {
 			cout << "          XmlAttr First: " << xmlAttrChild.first.data() << "; XmlAttr Second: " << xmlAttrChild.second.data() << endl;
 			string key = xmlAttrChild.first;
@@ -118,6 +120,7 @@ namespace watermill {
 		}
 	}
 
+	string DebuggingOptions::getOption(const string &key) {
 		try {
 			return options.at(key);
 		} catch (out_of_range& ex) {
@@ -133,6 +136,8 @@ namespace watermill {
 
 		loadRootNode(tree);
 
+		//		options["hello"] = "hello world";
+		//		options.insert(pair<string,string>("plant","three plants"));
 
 		map<string, string>::iterator optionsIterator;
 
