@@ -24,5 +24,9 @@
 #define GCC_NEW new
 #endif
 
+#define GCC_ERROR(str) {cout << "ERROR: " << str << endl;}
+
+#define GCC_ASSERT(expr) { if (!expr) {cout << "ASSERT " << endl;} }
+
 #endif /* LMACROS_HPP */
 

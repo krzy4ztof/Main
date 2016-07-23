@@ -42,7 +42,6 @@ namespace watermill {
 		string attrName;
 		string attrValue;
 		for(const boost::property_tree::ptree::value_type & xmlAttrChild: xmlattrNode) {
-			cout << "          XmlAttr First: " << xmlAttrChild.first.data() << "; XmlAttr Second: " << xmlAttrChild.second.data() << endl;
 			string key = xmlAttrChild.first;
 			string value = xmlAttrChild.second.data();
 
@@ -55,12 +54,7 @@ namespace watermill {
 			if (!attrName.empty() && !attrValue.empty()) {
 				pair<string,string> optionPair = make_pair(attrName,attrValue);
 				options.insert(optionPair);
-				cout << "INSERTED OPTION: " << attrName << " : " << attrValue << endl;
 			}
-
-
-
-			cout << "          XmlAttr Key: " << key << "; XmlAttr Value: " << value << endl;
 		}
 	}
 
@@ -68,7 +62,6 @@ namespace watermill {
 		for(const boost::property_tree::ptree::value_type & optionChild: optionNode) {
 			string name = optionChild.first;
 			int compRes = name.compare("<xmlattr>");
-			cout << "compRes3: " << name << " to -> "  << compRes << endl;
 			if (compRes == 0) {
 				loadAttrNode(optionChild.second);
 			}
@@ -79,7 +72,6 @@ namespace watermill {
 		for(const boost::property_tree::ptree::value_type & optionsChild: optionsNode) {
 			string name = optionsChild.first;
 			int compRes = name.compare(OPTION_NODE_NAME);
-			cout << "compRes2: " << name << " to -> "  << compRes << endl;
 
 			if (compRes == 0) {
 				loadOptionNode(optionsChild.second);
@@ -91,7 +83,6 @@ namespace watermill {
 		for (const boost::property_tree::ptree::value_type& debugChild : debugNode) {
 			string name = debugChild.first.data();
 			int compRes = name.compare(OPTIONS_NODE_NAME);
-			cout << "compRes: " << name << " to -> "  << compRes << endl;
 
 			if (compRes == 0) {
 				loadOptionsNode(debugChild.second);
@@ -113,7 +104,6 @@ namespace watermill {
 		for (const boost::property_tree::ptree::value_type& rootChildNode : tree) {
 			string name = rootChildNode.first;
 			int compRes = name.compare(DEBUG_NODE_NAME);
-			cout << "root compRes: " << name << " to -> "  << compRes << endl;
 			if (compRes == 0) {
 				loadDebugNode(rootChildNode.second);
 			}
@@ -135,23 +125,14 @@ namespace watermill {
 		property_tree_utils::print_tree(tree,0);
 
 		loadRootNode(tree);
-
-		//		options["hello"] = "hello world";
-		//		options.insert(pair<string,string>("plant","three plants"));
-
 		map<string, string>::iterator optionsIterator;
 
 		for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
 			cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
 		}
-
-		cout << getOption("Jakas opcja") << endl;
-		cout << getOption("hardwareAcceleration") << endl;
-
 	}
 
 	void DebuggingOptions::load(const string &filename) {
-		cout << "xml fileName: " << filename << endl;
 		//checkCurDir();
 		//checkFile(filename);
 		//loadDebug(filename);

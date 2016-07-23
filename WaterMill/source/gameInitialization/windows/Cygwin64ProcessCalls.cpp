@@ -20,23 +20,25 @@ namespace watermill {
 		//dtor
 	}
 
+	namespace cygwin64_process_calls {
 
-	int isNumeric ( const char* ccharptr_CharacterList ) {
-		for ( ; *ccharptr_CharacterList; ccharptr_CharacterList++ )
-			if ( *ccharptr_CharacterList < '0' || *ccharptr_CharacterList > '9' ) {
-				return 0;    // false
-			}
+		int isNumeric ( const char* ccharptr_CharacterList ) {
+			for ( ; *ccharptr_CharacterList; ccharptr_CharacterList++ )
+				if ( *ccharptr_CharacterList < '0' || *ccharptr_CharacterList > '9' ) {
+					return 0;    // false
+				}
 
-		return 1; // true
-	}
-
-	int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive ) {
-		if ( intCaseSensitive ) {
-			return !strcmp ( s1, s2 );
+			return 1; // true
 		}
 
-		else {
-			return !strcasecmp ( s1, s2 );
+		int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive ) {
+			if ( intCaseSensitive ) {
+				return !strcmp ( s1, s2 );
+			}
+
+			else {
+				return !strcasecmp ( s1, s2 );
+			}
 		}
 	}
 
@@ -47,12 +49,11 @@ namespace watermill {
 		char* chrptr_StringToCompare;
 		char* gameTitleChar = new char[gameTitle.length() + 1];
 		strcpy ( gameTitleChar, gameTitle.c_str() );
-		cout << "chrptr_StringToCompare: " << gameTitleChar << endl;
 		pid_t pid_ProcessIdentifier = ( pid_t ) - 1 ;
 		struct dirent* de_DirEntity = NULL ;
 		DIR* dir_proc = NULL ;
 		int ( *compareFunction ) ( const char*, const char*, bool ) ;
-		compareFunction = &strcmp_Wrapper;
+		compareFunction = &cygwin64_process_calls::strcmp_Wrapper;
 		dir_proc = opendir ( "/proc/" ) ;
 
 		if ( dir_proc == NULL ) {
@@ -60,19 +61,13 @@ namespace watermill {
 			return ( pid_t ) - 2 ;
 		}
 
-		else {
-			cout << "opened proc" << endl;
-		}
-
 		int howMany = 0;
 
 		// Loop while not NULL
 		while ( ( de_DirEntity = readdir ( dir_proc ) ) ) {
 			if ( de_DirEntity->d_type == DT_DIR ) {
-				cout << "Dir name: " << de_DirEntity->d_name << endl;
 
-				if ( isNumeric ( de_DirEntity->d_name ) ) {
-					cout << "numeric" << endl;
+				if ( cygwin64_process_calls::isNumeric ( de_DirEntity->d_name ) ) {
 					strcpy ( chrarry_CommandLinePath, "/proc/" ) ;
 					strcat ( chrarry_CommandLinePath, de_DirEntity->d_name ) ;
 					strcat ( chrarry_CommandLinePath, "/cmdline" ) ;
@@ -81,7 +76,6 @@ namespace watermill {
 					if ( fd_CmdLineFile ) {
 						fscanf ( fd_CmdLineFile, "%s", chrarry_NameOfProcess ) ; // read from /proc/<NR>/cmdline
 						fclose ( fd_CmdLineFile ); // close the file prior to exiting the routine
-						cout << "Name of process: " <<  chrarry_NameOfProcess << endl;
 
 						if ( strrchr ( chrarry_NameOfProcess, '/' ) ) {
 							chrptr_StringToCompare = strrchr ( chrarry_NameOfProcess, '/' ) + 1 ;
@@ -91,13 +85,9 @@ namespace watermill {
 							chrptr_StringToCompare = chrarry_NameOfProcess ;
 						}
 
-						printf ( "Process name: %s\n", chrarry_NameOfProcess );
-						printf ( "Pure Process name: %s\n", chrptr_StringToCompare );
-
 						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
 							pid_ProcessIdentifier = ( pid_t ) atoi ( de_DirEntity->d_name ) ;
 							howMany++;
-							cout << "Watermill instance " << pid_ProcessIdentifier << " no: " << howMany <<  endl;
 						}
 					}
 				}
@@ -106,7 +96,6 @@ namespace watermill {
 
 		closedir ( dir_proc ) ;
 		delete [] gameTitleChar;
-		cout << "howMany: " << howMany << endl;
 
 		if ( howMany >= 2 ) {
 			// First process is this process

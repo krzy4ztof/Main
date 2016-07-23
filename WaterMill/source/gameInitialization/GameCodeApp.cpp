@@ -24,6 +24,10 @@
 #include "SystemCalls.hpp"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
+#include "../resourceCache/ResourceCache.h"
+#include "../resourceCache/IResourceFile.h"
+#include "../resourceCache/ResourceZipFile.h"
+
 
 using namespace std;
 
@@ -31,15 +35,22 @@ namespace watermill {
 
 	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
 	const string GameCodeApp::DEBUG_OPTIONS_XML = "debugOptions.xml";
+	const string GameCodeApp::ASSETS_ZIP = "assets.zip";
 
 
 	//const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
 
 
 	GameCodeApp::GameCodeApp() {
-		//    *dataFiles = NULL;
-		//   *audioSystem = NULL;
-		//  *videoSystem = NULL;
+
+		initOptions = NULL;
+		debuggingOptions = NULL;
+
+		resourceCache = NULL;
+		dataFiles = NULL;
+		audioSystem = NULL;
+		videoSystem = NULL;
+
 	}
 
 	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
@@ -50,6 +61,9 @@ namespace watermill {
 
 	bool GameCodeApp::initInstanceShortDebug() {
 		bool returnCode = true;
+
+		IResourceFile *zipFile = new ResourceZipFile(ASSETS_ZIP);
+		resourceCache = new ResourceCache(50,zipFile);
 
 		try {
 			initOptions = new InitOptions;
@@ -124,6 +138,9 @@ namespace watermill {
 
 			resourceCheck = true;
 		}
+
+		IResourceFile *zipFile = new ResourceZipFile(ASSETS_ZIP);
+		resourceCache = new ResourceCache(50,zipFile);
 
 		try {
 			initOptions = new InitOptions;

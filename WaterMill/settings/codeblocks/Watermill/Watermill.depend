@@ -20,7 +20,7 @@
 	<iostream>
 	"ErrorCode.hpp"
 
-1466790768 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
+1468093677 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
 	"GameCodeApp.hpp"
 	<iostream>
 	"Macros.hpp"
@@ -31,18 +31,22 @@
 	"SystemCalls.hpp"
 	"InitOptions.h"
 	"DebuggingOptions.h"
+	"../resourceCache/ResourceCache.h"
+	"../resourceCache/IResourceFile.h"
+	"../resourceCache/ResourceZipFile.h"
 
-1467136814 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
+1468092000 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
 	"DataFiles.hpp"
 	"AudioSystem.hpp"
 	"VideoSystem.hpp"
 	"InitOptions.h"
 	"DebuggingOptions.h"
+	"../resourceCache/ResourceCache.h"
 	<string>
 
 1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.hpp
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\macros.hpp
+1468868110 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\macros.hpp
 
 1464360821 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\systemcalls.hpp
 	"windows/Windows64Calls.hpp"
@@ -55,12 +59,12 @@
 	"Windows32Calls.hpp"
 	<string>
 
-1466267072 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
+1467140313 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows32calls.hpp
 	<windows.h>
 	<tchar.h>
 	<string>
 
-1466098949 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
+1467140313 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.hpp
 	"Cygwin64Calls.hpp"
 	<string>
 	<vector>
@@ -75,7 +79,7 @@
 	"VideoSystem.hpp"
 	"ErrorCode.hpp"
 
-1466265574 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
+1467140313 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64calls.cpp
 	"Cygwin64Calls.hpp"
 	"Cygwin64CpuCalls.h"
 	<windows.h>
@@ -106,7 +110,7 @@
 	<direct.h>
 	"../Macros.hpp"
 
-1466268800 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
+1467140313 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\windows64calls.cpp
 	"Windows64Calls.hpp"
 	<windows.h>
 	<iostream>
@@ -4540,7 +4544,7 @@
 	<boost/algorithm/string/finder.hpp>
 	<boost/algorithm/string/formatter.hpp>
 
-1466790775 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
+1469040931 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -4549,7 +4553,7 @@
 	"../gameInitialization/GameCodeApp.hpp"
 	<GL/glut.h>
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.hpp
+1469039085 c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.hpp
 	<iostream>
 	<boost/lambda/lambda.hpp>
 	<iterator>
@@ -4889,22 +4893,28 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
+1469041878 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
 	"TestClass.hpp"
+	"../utilities/PrimeSearch.h"
+	"../utilities/RandomGenerator.h"
+	"../utilities/MemoryUsageObject.h"
+	"../gameInitialization/Macros.hpp"
 
-1466266924 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
+1468433389 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
 	<string>
 
-1465750648 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.cpp
+1468434467 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.cpp
 	"Cygwin64ProcessCalls.h"
 	<iostream>
 	<string>
 	<dirent.h>
 	<string.h>
 
-1466021706 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.h
+1468434147 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.h
+	<string>
+	<vector>
 
-1466265552 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.cpp
+1468434334 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64cpucalls.cpp
 	"Cygwin64CpuCalls.h"
 	<iostream>
 	<string>
@@ -4919,7 +4929,7 @@
 	<map>
 	<boost/property_tree/ptree.hpp>
 
-1467053426 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.cpp
+1468434562 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.cpp
 	"DebuggingOptions.h"
 	"PropertyTreeUtils.h"
 	<string>
@@ -6869,10 +6879,10 @@
 1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\aligned_storage.hpp
 	<boost/type_traits/aligned_storage.hpp>
 
-1467136519 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.h
+1467140252 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.h
 	<string>
 
-1467135889 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.cpp
+1467140246 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.cpp
 	"InitOptions.h"
 	"ErrorCode.hpp"
 	"PropertyTreeUtils.h"
@@ -6883,7 +6893,7 @@
 	<boost/property_tree/ptree.hpp>
 	<boost/property_tree/ini_parser.hpp>
 
-1467053584 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\propertytreeutils.h
+1467140265 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\propertytreeutils.h
 	<string>
 	<boost/property_tree/ptree.hpp>
 
@@ -6891,4 +6901,60 @@
 	"PropertyTreeUtils.h"
 	<boost/property_tree/ptree.hpp>
 	<iostream>
+
+1468091614 c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\resourcecache.h
+	"IResourceFile.h"
+
+1468090900 c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\iresourcefile.h
+
+1468092574 c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\resourcezipfile.h
+	"IResourceFile.h"
+	<string>
+
+1468090905 source:c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\iresourcefile.cpp
+	"IResourceFile.h"
+
+1468091653 source:c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\resourcecache.cpp
+	"ResourceCache.h"
+	"IResourceFile.h"
+
+1468092247 source:c:\home\myimportantfiles\projects\git\main\watermill\source\resourcecache\resourcezipfile.cpp
+	"ResourceZipFile.h"
+	<string>
+
+1468864947 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\primesearch.h
+
+1468864816 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\primesearch.cpp
+	"PrimeSearch.h"
+
+1468263468 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\randomgenerator.h
+	<random>
+
+1468263495 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\randomgenerator.cpp
+	"RandomGenerator.h"
+	<random>
+	<iostream>
+
+1469293886 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.cpp
+	"MemoryPool.h"
+	<cstddef>
+	<stdlib.h>
+	<iostream>
+
+1469293848 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.h
+	<cstddef>
+
+1468867898 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.cpp
+	"MemoryUsageObject.h"
+	"../gameInitialization/Macros.hpp"
+	<iostream>
+
+1468867814 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.h
+	"MemoryPool.h"
+
+1469041411 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobjectautoinitmempool.cpp
+	"MemoryUsageObjectAutoInitMemPool.h"
+	"MemoryUsageObject.h"
+
+1468866501 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobjectautoinitmempool.h
 

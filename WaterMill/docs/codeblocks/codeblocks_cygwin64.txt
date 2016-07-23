@@ -69,3 +69,16 @@ Project -> Build options
 Project build options -> Other compiler options
 -D_BSD_SOURCE	
 
+-------------------
+---	Debugger	---
+-------------------
+
+Menu -> Settings -> Debugger -> Debugger settings -> Create config:
+Cygwin64
+Executable path: C:\cygwin64\bin\gdb.exe
+
+Menu -> Debug -> Active Debuggers:
+	GDB/CDB debugger: Cygwin64
+
+	
+	

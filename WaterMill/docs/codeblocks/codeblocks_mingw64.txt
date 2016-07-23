@@ -48,23 +48,33 @@ Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 
 Project -> Buld options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
-..\..\git\libraries\boost
+// remove: ..\..\git\libraries\boost
 ..\..\git\libraries\freeglut\include
 
 
-Project -> Buld options
+Project -> Build options
 Project build options -> Search Directories -> Linker -> Append target options to project options
 ..\..\git\libraries\freeglut\lib\x64
-
+..\..\..\..\..\..\..\..\..\msys64\mingw64\lib
 
 Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi
 opengl32
-boost_system
-(link to C:\cygwin64\lib\libboost_system.dll.a)	
-boost_filesystem
+boost_system-mt	
+(link to C:\msys64\mingw64\lib\libboost_system-mt.dll.a)	
+boost_filesystem-mt
+(link to C:\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+
+A) Boost:
+..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+B) Boost:
+libboost_filesystem-mt.dll.a
+C) Boost:
+boost_filesystem-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a)
+
 
 Project -> Remove files
 source/scripts/test.cpp
@@ -73,3 +83,23 @@ Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	bin\Debug_MinGW64\freeglut.dll
+	
+***	Boost	***
+Msys2 64 bit -> MinGW-w64 Win64 Shell
+
+pacman -S mingw-w64-x86_64-boost
+
+C:\msys64\mingw64\include\boost
+
+-------------------
+---	Debugger	---
+-------------------
+
+Menu -> Settings -> Debugger -> Debugger settings -> Create config:
+MinGW64
+Executable path: C:\msys64\mingw64\bin\gdb.exe
+
+Menu -> Debug -> Active Debuggers:
+	GDB/CDB debugger: MinGW64
+	
+	

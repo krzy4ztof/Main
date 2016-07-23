@@ -24,8 +24,14 @@ namespace watermill {
 
     class TestClass {
     public:
-        void Run();
-        void SimpleRun();
+        void run();
+        void simpleRun();
+        void primeSearchRun();
+        void randomGeneratorRun();
+        void memoryPoolRun();
+    protected:
+        void primeSearchRun(int pixels);
+
     private:
 
     };

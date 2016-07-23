@@ -12,27 +12,131 @@
  */
 
 #include "TestClass.hpp"
+#include "../utilities/PrimeSearch.h"
+#include "../utilities/RandomGenerator.h"
+#include "../utilities/MemoryUsageObject.h"
+#include "../gameInitialization/Macros.hpp"
+
 
 using namespace std;
 
 namespace watermill {
 
-    void TestClass::SimpleRun() {
-        cout << "Water Mill Simple" << endl;
-    }
+void TestClass::memoryPoolRun(){
+    cout << "new mem1" << endl;
+    MemoryUsageObject* mem1 = new MemoryUsageObject();
+    cout << "new mem2" << endl;
+    MemoryUsageObject* mem2 = new MemoryUsageObject();
+    cout << "destr mem1" << endl;
+    SAFE_DELETE (mem1);
+    cout << "destr mem2" << endl;
+    SAFE_DELETE (mem2);
 
-    void TestClass::Run() {
-        cout << "Water Mill" << endl;
+    cout << "new mem3" << endl;
+    MemoryUsageObject* mem3 = new MemoryUsageObject();
+    cout << "new mem4" << endl;
+    MemoryUsageObject* mem4 = new MemoryUsageObject();
+    cout << "new mem5" << endl;
+    MemoryUsageObject* mem5 = new MemoryUsageObject();
+    cout << "new mem6" << endl;
+    MemoryUsageObject* mem6 = new MemoryUsageObject();
 
-        cout << "Type 1 2 3 + Enter " << endl;
+    cout << "destr mem6" << endl;
+    SAFE_DELETE (mem6);
+    cout << "destr mem5" << endl;
+    SAFE_DELETE (mem5);
+    cout << "destr mem4" << endl;
+    SAFE_DELETE (mem4);
+    cout << "destr mem3" << endl;
+    SAFE_DELETE (mem3);
 
-        cout << "Press Z + Enter to end " << endl;
+}
 
 
-        using namespace boost::lambda;
-        typedef std::istream_iterator<int> in;
+	void TestClass::randomGeneratorRun() {
+		RandomGenerator rnd(1,6,0);
+		RandomGenerator rndb(1,6,0);
+		RandomGenerator rndc(1,6,0);
 
-        std::for_each(
-                in(std::cin), in(), std::cout << (_1 * 3) << " ");
-    }
+		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
+		cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
+		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
+        cout << endl;
+		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
+		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
+		cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
+		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
+    	cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
+		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
+        cout << endl;
+
+
+	}
+
+	void TestClass::primeSearchRun(int pixels) {
+		int pixelsArray [pixels];
+		for (int i=0; i<pixels; i++) {
+			pixelsArray[i] = 0;
+		}
+
+		PrimeSearch search(pixels);
+
+		int p;
+		for (int i=0; i<pixels; i++) {
+			cout << pixelsArray[i];
+		}
+
+		cout << "   [START:" << pixels << "]" << endl;
+
+		while((p=search.getNext())!=-1) {
+
+			pixelsArray[p] = 1;
+
+			for (int i=0; i<pixels; i++) {
+				cout << pixelsArray[i] ;
+			}
+
+
+			cout << "   [" << p << "]" << endl;
+		}
+
+		cout << endl;
+
+
+	}
+
+	void TestClass::primeSearchRun() {
+		primeSearchRun(7);
+		primeSearchRun(8);
+		primeSearchRun(9);
+		primeSearchRun(10);
+
+
+		primeSearchRun(17);
+		primeSearchRun(19);
+
+
+		primeSearchRun(50);
+
+
+	}
+
+	void TestClass::simpleRun() {
+		cout << "Water Mill Simple" << endl;
+	}
+
+	void TestClass::run() {
+		cout << "Water Mill" << endl;
+
+		cout << "Type 1 2 3 + Enter " << endl;
+
+		cout << "Press Z + Enter to end " << endl;
+
+
+		using namespace boost::lambda;
+		typedef std::istream_iterator<int> in;
+
+		std::for_each(
+			in(std::cin), in(), std::cout << (_1 * 3) << " ");
+	}
 }

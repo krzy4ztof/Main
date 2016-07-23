@@ -19,6 +19,7 @@
 #include "VideoSystem.hpp"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
+#include "../resourceCache/ResourceCache.h"
 
 #include <string>
 
@@ -28,6 +29,7 @@ namespace watermill {
 		public:
 			const static std::string GAME_PROCESS_NAME;
 			const static std::string DEBUG_OPTIONS_XML;
+			const static std::string ASSETS_ZIP;
 
 			GameCodeApp();
 			GameCodeApp(const GameCodeApp& orig);
@@ -40,9 +42,11 @@ namespace watermill {
 
 			InitOptions *initOptions;
 			DebuggingOptions *debuggingOptions;
+			ResourceCache *resourceCache;
 			DataFiles *dataFiles;
 			AudioSystem *audioSystem;
 			VideoSystem *videoSystem;
+
 
 	};
 }

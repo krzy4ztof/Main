@@ -11,11 +11,17 @@ namespace watermill {
 			virtual ~Cygwin64ProcessCalls();
 			bool isOnlyInstance ( const std::string& );
 
-
 		protected:
 
 		private:
 	};
+
+
+	namespace cygwin64_process_calls {
+		int isNumeric ( const char* ccharptr_CharacterList ) ;
+		int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive );
+	}
+
 }
 #endif /* __CYGWIN__ */
 #endif // CYGWIN64PROCESSCALLS_H

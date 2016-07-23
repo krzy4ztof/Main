@@ -18,6 +18,8 @@
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -35,6 +37,8 @@
 					<Add option="-O2" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -51,6 +55,8 @@
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -72,13 +78,17 @@
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
-					<Add directory="../../../../../libraries/boost_1_60_0" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
 					<Add library="psapi" />
 					<Add library="opengl32" />
+					<Add library="boost_filesystem-mt" />
+					<Add library="boost_system-mt" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
+					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -127,6 +137,12 @@
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.hpp" />
 		<Unit filename="../../../source/main/Main.cpp" />
+		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
+		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
+		<Unit filename="../../../source/resourceCache/ResourceCache.cpp" />
+		<Unit filename="../../../source/resourceCache/ResourceCache.h" />
+		<Unit filename="../../../source/resourceCache/ResourceZipFile.cpp" />
+		<Unit filename="../../../source/resourceCache/ResourceZipFile.h" />
 		<Unit filename="../../../source/scripts/checkPreprocessor.cmd" />
 		<Unit filename="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd" />
 		<Unit filename="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd" />
@@ -139,6 +155,16 @@
 		<Unit filename="../../../source/scripts/runMinGW64.cmd" />
 		<Unit filename="../../../source/testClasses/TestClass.cpp" />
 		<Unit filename="../../../source/testClasses/TestClass.hpp" />
+		<Unit filename="../../../source/utilities/MemoryPool.cpp" />
+		<Unit filename="../../../source/utilities/MemoryPool.h" />
+		<Unit filename="../../../source/utilities/MemoryUsageObject.cpp" />
+		<Unit filename="../../../source/utilities/MemoryUsageObject.h" />
+		<Unit filename="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp" />
+		<Unit filename="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h" />
+		<Unit filename="../../../source/utilities/PrimeSearch.cpp" />
+		<Unit filename="../../../source/utilities/PrimeSearch.h" />
+		<Unit filename="../../../source/utilities/RandomGenerator.cpp" />
+		<Unit filename="../../../source/utilities/RandomGenerator.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

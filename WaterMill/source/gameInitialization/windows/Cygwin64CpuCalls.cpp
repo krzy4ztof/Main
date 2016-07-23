@@ -12,7 +12,6 @@
 
 using namespace std;
 
-
 namespace watermill {
 	Cygwin64CpuCalls::Cygwin64CpuCalls() {
 		//ctor
@@ -22,116 +21,99 @@ namespace watermill {
 		//dtor
 	}
 
+	namespace cygwin64_cpu_calls {
 
-	// You could also take an existing vector as a parameter.
+		// You could also take an existing vector as a parameter.
+		void split ( vector<string>& internal, const string& str, char delimiter ) {
+			stringstream ss ( str ); // Turn the string into a stream.
+			string tok;
 
-	void split ( vector<string>& internal, const string& str, char delimiter ) {
-		stringstream ss ( str ); // Turn the string into a stream.
-		string tok;
+			while ( getline ( ss, tok, delimiter ) ) {
+				internal.push_back ( tok );
+			}
+		}
 
-		while ( getline ( ss, tok, delimiter ) ) {
-			internal.push_back ( tok );
+
+		bool toDoubleStod ( double& speed, const string& str ) {
+			try {
+				speed = stod ( str );
+				return true;
+			}
+
+			catch ( exception& e ) {
+				return false;
+			}
+		}
+
+		bool toDoubleStream ( double& speed, const string& str ) {
+			stringstream ss;
+			ss << str;
+			ss >> speed;
+
+			if ( !ss.fail() ) {
+				return true;
+			}
+
+			else {
+				return false;
+			}
+		}
+		vector<double>* findSpeedPtr ( vector <string>& internal ) {
+			vector<double>* doubleVector = new vector<double>();
+
+			for ( int i = 0; i < internal.size(); i++ ) {
+				boost::algorithm::trim ( internal[i] );
+				double speed1;
+
+				if ( toDoubleStod ( speed1, internal[i] ) ) {
+					doubleVector->push_back ( speed1 );
+				};
+			}
+
+			return doubleVector;
+		}
+
+		vector<double>& findSpeedRefError ( vector <string>& internal ) {
+			// DO NOT DO IT
+			// doubleVector is initialized on heap and returned as reference to outerMethod
+			// The outerMethod has no way of deleting object on heap
+			vector<double>* doubleVector = new vector<double>();
+
+			for ( int i = 0; i < internal.size(); i++ ) {
+				boost::algorithm::trim ( internal[i] );
+				double speed2;
+
+				if ( toDoubleStream ( speed2, internal[i] ) ) {
+					doubleVector->push_back ( speed2 );
+				};
+			}
+
+			return *doubleVector;
+		}
+
+		vector<double> findSpeedMove ( vector <string>& internal ) {
+			// Move constructor is used
+			vector<double> doubleVector;
+
+			for ( int i = 0; i < internal.size(); i++ ) {
+				boost::algorithm::trim ( internal[i] );
+				double speed2;
+
+				if ( toDoubleStream ( speed2, internal[i] ) ) {
+					doubleVector.push_back ( speed2 );
+				};
+			}
+
+			return doubleVector;
 		}
 	}
 
-
-	bool toDoubleStod ( double& speed, const string& str ) {
-		try {
-			speed = stod ( str );
-			cout << "3 speed: '" << speed << "'" << endl;
-			return true;
-		}
-
-		catch ( exception& e ) {
-			cout << "exception: " << e.what() << endl;
-			return false;
-		}
-	}
-
-	bool toDoubleStream ( double& speed, const string& str ) {
-		stringstream ss;
-		ss << str;
-		ss >> speed;
-
-		if ( !ss.fail() ) {
-			cout << "4 speed2: '" << speed << "'" << endl;
-			return true;
-		}
-
-		else {
-			cout << "fail" << endl;
-			return false;
-		}
-	}
-	vector<double>* findSpeedPtr ( vector <string>& internal ) {
-		vector<double>* doubleVector = new vector<double>();
-		cout << "findSpeedPtr" << endl;
-
-		for ( int i1 = 0; i1 < 0; i1++ ) {
-			cout << "i1: " << i1 << endl;
-		}
-
-		for ( int i2 = 0; i2 <= 0; i2++ ) {
-			cout << "i2: " << i2 << endl;
-		}
-
-		for ( int i = 0; i < internal.size(); i++ ) {
-			cout << "1 '" << internal[i] << "'" << endl;
-			boost::algorithm::trim ( internal[i] );
-			cout << "2 '" << internal[i] << "'" << endl;
-			double speed1;
-
-			if ( toDoubleStod ( speed1, internal[i] ) ) {
-				cout << "toDouble1 speed: '" << speed1 << "'" << endl;
-				doubleVector->push_back ( speed1 );
-			};
-		}
-
-		cout << "findSpeedPtr End" << endl;
-		return doubleVector;
-	}
-
-	vector<double>& findSpeedRefError ( vector <string>& internal ) {
-		// DO NOT DO IT
-		// doubleVector is initialized on heap and returned as reference to outerMethod
-		// The outerMethod has no way of deleting object on heap
-		vector<double>* doubleVector = new vector<double>();
-
-		for ( int i = 0; i < internal.size(); i++ ) {
-			cout << "1 '" << internal[i] << "'" << endl;
-			boost::algorithm::trim ( internal[i] );
-			cout << "2 '" << internal[i] << "'" << endl;
-			double speed2;
-
-			if ( toDoubleStream ( speed2, internal[i] ) ) {
-				cout << "toDouble2 speed: '" << speed2 << "'" << endl;
-				doubleVector->push_back ( speed2 );
-			};
-		}
-
-		return *doubleVector;
-	}
-
-	vector<double> findSpeedMove ( vector <string>& internal ) {
-		// Move constructor is used
-		vector<double> doubleVector;
-
-		for ( int i = 0; i < internal.size(); i++ ) {
-			cout << "1 '" << internal[i] << "'" << endl;
-			boost::algorithm::trim ( internal[i] );
-			cout << "2 '" << internal[i] << "'" << endl;
-			double speed2;
-
-			if ( toDoubleStream ( speed2, internal[i] ) ) {
-				cout << "toDouble2 speed: '" << speed2 << "'" << endl;
-				doubleVector.push_back ( speed2 );
-			};
-		}
-
-		return doubleVector;
-	}
-
-
+	using cygwin64_cpu_calls::split ;
+	using cygwin64_cpu_calls::toDoubleStod ;
+	using cygwin64_cpu_calls::toDoubleStream ;
+	using cygwin64_cpu_calls::findSpeedPtr ;
+	using cygwin64_cpu_calls::findSpeedRefError;
+	using cygwin64_cpu_calls::findSpeedMove;
 
 	unsigned long Cygwin64CpuCalls::readCPUSpeed() {
 		string line;
