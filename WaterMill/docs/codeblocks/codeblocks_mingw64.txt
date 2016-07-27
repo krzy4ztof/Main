@@ -74,6 +74,10 @@ libboost_filesystem-mt.dll.a
 C) Boost:
 boost_filesystem-mt
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a)
+D) Boost:
+boost_locale-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_locale-mt.dll.a)
+
 
 
 Project -> Remove files

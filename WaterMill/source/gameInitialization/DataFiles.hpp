@@ -16,14 +16,18 @@
 
 namespace watermill {
 
-    class DataFiles {
-    public:
-        DataFiles();
-        DataFiles(const DataFiles& orig);
-        virtual ~DataFiles();
-    private:
+	class DataFiles {
+		public:
+			DataFiles();
+			DataFiles(const DataFiles& orig);
+			virtual ~DataFiles();
+		private:
 
-    };
+	};
+
+	namespace data_files {
+		void safe_delete(DataFiles* p);
+	}
 }
 #endif /* DATAFILES_HPP */
 

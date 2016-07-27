@@ -5,6 +5,17 @@
 using namespace std;
 
 namespace watermill {
+    namespace memory_usage_object{
+        		void safe_delete(MemoryUsageObject* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
+    }
+
+	using memory_pool::safe_delete;
+
 	MemoryUsageObject::MemoryUsageObject() {
 		//ctor
 	}
@@ -25,7 +36,7 @@ namespace watermill {
 
 		if (s_pMemoryPool != NULL) {
 			GCC_ERROR("s_pMemoryPool is not NULL.  All data will be destroyed.  (Ignorable)");
-			SAFE_DELETE(s_pMemoryPool);
+			safe_delete(s_pMemoryPool);
 		}
 
 		s_pMemoryPool = GCC_NEW MemoryPool;
@@ -39,7 +50,7 @@ namespace watermill {
 	}
 	void MemoryUsageObject::destroyMemoryPool(void) {
 		GCC_ASSERT(s_pMemoryPool != NULL);
-		SAFE_DELETE(s_pMemoryPool);
+		safe_delete(s_pMemoryPool);
 	}
 	void* MemoryUsageObject::operator new(size_t size) {
 		GCC_ASSERT(s_pMemoryPool);

@@ -19,6 +19,9 @@
 #include "VideoSystem.hpp"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
+#include "PlayerOptions.h"
+#include "GameMessages.h"
+
 #include "../resourceCache/ResourceCache.h"
 
 #include <string>
@@ -29,6 +32,7 @@ namespace watermill {
 		public:
 			const static std::string GAME_PROCESS_NAME;
 			const static std::string DEBUG_OPTIONS_XML;
+			const static std::string PLAYER_OPTIONS_XML;
 			const static std::string ASSETS_ZIP;
 
 			GameCodeApp();
@@ -41,13 +45,13 @@ namespace watermill {
 			static const int MEGABYTE = 1024 * 1024;
 
 			InitOptions *initOptions;
+			PlayerOptions *playerOptions;
+			GameMessages *gameMessages;
 			DebuggingOptions *debuggingOptions;
 			ResourceCache *resourceCache;
 			DataFiles *dataFiles;
 			AudioSystem *audioSystem;
 			VideoSystem *videoSystem;
-
-
 	};
 }
 #endif /* GAMECODEAPP_HPP */

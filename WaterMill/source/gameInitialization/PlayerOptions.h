@@ -1,22 +1,24 @@
-#ifndef DEBUGGINGOPTIONS_H
-#define DEBUGGINGOPTIONS_H
+#ifndef PLAYEROPTIONS_H
+#define PLAYEROPTIONS_H
 
 #include <string>
 #include <map> // std::map
 #include <boost/property_tree/ptree.hpp>// ptree
 
 namespace watermill {
-	class DebuggingOptions {
+	class PlayerOptions {
 		public:
-			DebuggingOptions();
-			virtual ~DebuggingOptions();
+			const static std::string LANGUAGE;
+
+			PlayerOptions();
+			virtual ~PlayerOptions();
+
 			void load(const std::string &filename);
 			std::string getOption(const std::string &key);
 		protected:
 
 		private:
-			const static std::string DEBUG_NODE_NAME;
-			const static std::string OPTIONS_NODE_NAME;
+			const static std::string PLAYER_OPTIONS_NODE_NAME;
 			const static std::string OPTION_NODE_NAME;
 			const static std::string OPTION_NAME_ATTR;
 			const static std::string OPTION_VALUE_ATTR;
@@ -25,17 +27,15 @@ namespace watermill {
 			void loadAttrNode(const boost::property_tree::ptree& xmlattrNode);
 
 			void loadOptionNode(const boost::property_tree::ptree& optionNode);
-			void loadOptionsNode(const boost::property_tree::ptree& optionsNode);
-			void loadDebugNode(boost::property_tree::ptree tree);
+			void loadPlayerOptionsNode(boost::property_tree::ptree tree);
 			void loadRootNode(boost::property_tree::ptree tree);
 
 			void loadMain(const std::string &filename);
 
 	};
 
-	namespace debugging_options {
-		void safe_delete(DebuggingOptions* p);
+	namespace player_options {
+		void safe_delete(PlayerOptions* p);
 	};
 }
-
-#endif // DEBUGGINGOPTIONS_H
+#endif // PLAYEROPTIONS_H

@@ -19,29 +19,58 @@ using namespace std;
 namespace watermill {
 
 	const string InitOptions::INIT_FILENAME = "watermill.ini";
-	const string InitOptions::RESOURCES_FOLDER = "MAIN.Resources";
+	const string InitOptions::ASSETS_FOLDER = "MAIN.Assets";
+	const string InitOptions::GAME_FOLDER = "MAIN.Game";
 
-	string InitOptions::getResourcesFolder() {
-		return resourcesFolder;
+
+	namespace init_options {
+		void safe_delete(InitOptions* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
 	}
+
+	string InitOptions::getAssetsFolder() {
+		return assetsFolder;
+	}
+
+	string InitOptions::getGameFolder() {
+		return gameFolder;
+	}
+
 
 	void InitOptions::readFile(const string &filename) {
 		boost::property_tree::ptree tree;
 		boost::property_tree::read_ini(filename, tree);
 		property_tree_utils::print_tree(tree,0);
 
-		boost::optional<boost::property_tree::ptree&> resourcesTree = tree.get_child_optional(RESOURCES_FOLDER);
+		boost::optional<boost::property_tree::ptree&> assetsTree = tree.get_child_optional(ASSETS_FOLDER);
 
-
-		if (resourcesTree.is_initialized()) {
-			resourcesFolder =     resourcesTree.get().get_value<string>();
+		if (assetsTree.is_initialized()) {
+			assetsFolder =     assetsTree.get().get_value<string>();
 			//resources = resourcesTree.get_value<string>();
 			cout << "istnieje MAIN.REsources" << endl;
-			cout << resourcesFolder << endl;
+			cout << assetsFolder << endl;
 		} else {
-			string errorMessage = "There is no " +  RESOURCES_FOLDER + " value in " + INIT_FILENAME;
+			string errorMessage = "There is no " +  ASSETS_FOLDER + " value in " + INIT_FILENAME;
 			throw ErrorCode(errorMessage, 111 );
 		}
+
+		boost::optional<boost::property_tree::ptree&> gameTree = tree.get_child_optional(GAME_FOLDER);
+
+		if (gameTree.is_initialized()) {
+			gameFolder =     gameTree.get().get_value<string>();
+			//resources = resourcesTree.get_value<string>();
+			cout << "istnieje MAIN.REsources" << endl;
+			cout << gameFolder << endl;
+		} else {
+			string errorMessage = "There is no " +  GAME_FOLDER + " value in " + INIT_FILENAME;
+			throw ErrorCode(errorMessage, 111 );
+		}
+
+
 
 	}
 

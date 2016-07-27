@@ -137,6 +137,10 @@ namespace watermill {
 
 
 	};
+
+	namespace memory_pool {
+		void safe_delete(MemoryPool* p);
+	}
 }
 
 #endif // MEMORYPOOL_H

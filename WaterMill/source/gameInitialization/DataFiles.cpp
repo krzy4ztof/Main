@@ -16,19 +16,28 @@
 
 namespace watermill {
 
-    DataFiles::DataFiles() {
-        // Initialization
-        bool somethingWentWrong = false;
+	namespace data_files {
+		void safe_delete(DataFiles* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
+	}
 
-        if (somethingWentWrong) {
-            throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
-        }
-    }
+	DataFiles::DataFiles() {
+		// Initialization
+		bool somethingWentWrong = false;
 
-    DataFiles::DataFiles(const DataFiles& orig) {
-    }
+		if (somethingWentWrong) {
+			throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
+		}
+	}
 
-    DataFiles::~DataFiles() {
-    }
+	DataFiles::DataFiles(const DataFiles& orig) {
+	}
+
+	DataFiles::~DataFiles() {
+	}
 
 }

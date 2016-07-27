@@ -80,5 +80,17 @@ Executable path: C:\cygwin64\bin\gdb.exe
 Menu -> Debug -> Active Debuggers:
 	GDB/CDB debugger: Cygwin64
 
-	
-	
+***************
+***	gettext	***
+***************	
+
+Edycja pliku:
+C:\home\myImportantFiles\projects\git\Main\WaterMill\media\pl_PL\LC_MESSAGES\watermill.po
+
+1. Otworzyć plik w PoEdit (https://poedit.net/)
+2. Zostanie wygenerowany plik watermill.mo
+
+1. Otworzyć konsolę Cygwin
+2. cd /cygdrive/c/home/myImportantFiles/projects/git/Main/WaterMill/media/pl_PL/LC_MESSAGES
+3. msgfmt.py watermill.po
+4. Zostanie wygenerowany plik watermill.mo

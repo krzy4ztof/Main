@@ -16,14 +16,18 @@
 
 namespace watermill {
 
-    class AudioSystem {
-    public:
-        AudioSystem();
-        AudioSystem(const AudioSystem& orig);
-        virtual ~AudioSystem();
-    private:
+	class AudioSystem {
+		public:
+			AudioSystem();
+			AudioSystem(const AudioSystem& orig);
+			virtual ~AudioSystem();
+		private:
 
-    };
+	};
+
+	namespace audio_system {
+		void safe_delete(AudioSystem* p);
+	}
 }
 #endif /* AUDIOSYSTEM_HPP */
 

@@ -16,19 +16,28 @@
 
 namespace watermill {
 
-    AudioSystem::AudioSystem() {
+	namespace audio_system {
+		void safe_delete(AudioSystem* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
+	}
 
-        // Initialization
-        bool somethingWentWrong = false;
+	AudioSystem::AudioSystem() {
 
-        if (somethingWentWrong) {
-            throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
-        }
-    }
+		// Initialization
+		bool somethingWentWrong = false;
 
-    AudioSystem::AudioSystem(const AudioSystem& orig) {
-    }
+		if (somethingWentWrong) {
+			throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
+		}
+	}
 
-    AudioSystem::~AudioSystem() {
-    }
+	AudioSystem::AudioSystem(const AudioSystem& orig) {
+	}
+
+	AudioSystem::~AudioSystem() {
+	}
 }

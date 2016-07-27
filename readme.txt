@@ -110,3 +110,15 @@ Użycie:
 git difftool
 git difftool HEAD
 git diftool --cached
+
+***************
+***	Remove	***
+***************
+Remove a file from a Git repository without deleting it from the local filesystem
+
+cd  /c/home/myImportantFiles/projects/git/Main/WaterMill/settings/codeblocks/Watermill
+git add *
+git rm --cached Watermill.depend
+git rm --cached Watermill.exe.stackdump
+git rm --cached Watermill.layout
+

@@ -1,18 +1,18 @@
 # depslib dependency file v1.0
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\audiosystem.cpp
+1469367405 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\audiosystem.cpp
 	"AudioSystem.hpp"
 	"ErrorCode.hpp"
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\audiosystem.hpp
+1469367387 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\audiosystem.hpp
 
 1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\errorcode.hpp
 	<string>
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\datafiles.cpp
+1469367421 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\datafiles.cpp
 	"DataFiles.hpp"
 	"ErrorCode.hpp"
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\datafiles.hpp
+1469367373 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\datafiles.hpp
 
 1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\errorcode.cpp
 	<stdio.h>
@@ -20,7 +20,7 @@
 	<iostream>
 	"ErrorCode.hpp"
 
-1468093677 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
+1469644800 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.cpp
 	"GameCodeApp.hpp"
 	<iostream>
 	"Macros.hpp"
@@ -35,18 +35,20 @@
 	"../resourceCache/IResourceFile.h"
 	"../resourceCache/ResourceZipFile.h"
 
-1468092000 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
+1469644476 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamecodeapp.hpp
 	"DataFiles.hpp"
 	"AudioSystem.hpp"
 	"VideoSystem.hpp"
 	"InitOptions.h"
 	"DebuggingOptions.h"
+	"PlayerOptions.h"
+	"GameMessages.h"
 	"../resourceCache/ResourceCache.h"
 	<string>
 
-1464294700 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.hpp
+1469367528 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.hpp
 
-1468868110 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\macros.hpp
+1469373586 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\macros.hpp
 
 1464360821 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\systemcalls.hpp
 	"windows/Windows64Calls.hpp"
@@ -75,7 +77,7 @@
 	"LinuxCalls.hpp"
 	<iostream>
 
-1464294700 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.cpp
+1469367552 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\videosystem.cpp
 	"VideoSystem.hpp"
 	"ErrorCode.hpp"
 
@@ -4544,7 +4546,7 @@
 	<boost/algorithm/string/finder.hpp>
 	<boost/algorithm/string/formatter.hpp>
 
-1469040931 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
+1469643129 source:c:\home\myimportantfiles\projects\git\main\watermill\source\main\main.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -4553,7 +4555,7 @@
 	"../gameInitialization/GameCodeApp.hpp"
 	<GL/glut.h>
 
-1469039085 c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.hpp
+1469373536 c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.hpp
 	<iostream>
 	<boost/lambda/lambda.hpp>
 	<iterator>
@@ -4893,12 +4895,16 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1469041878 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
+1469644458 source:c:\home\myimportantfiles\projects\git\main\watermill\source\testclasses\testclass.cpp
 	"TestClass.hpp"
 	"../utilities/PrimeSearch.h"
 	"../utilities/RandomGenerator.h"
 	"../utilities/MemoryUsageObject.h"
 	"../gameInitialization/Macros.hpp"
+	"../gameInitialization/GameMessages.h"
+	"../gameInitialization/InitOptions.h"
+	"../gameInitialization/PlayerOptions.h"
+	"../gameInitialization/GameCodeApp.hpp"
 
 1468433389 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\windows\cygwin64processcalls.h
 	<string>
@@ -4924,12 +4930,12 @@
 	<regex>
 	<fstream>
 
-1466796513 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.h
+1469642222 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.h
 	<string>
 	<map>
 	<boost/property_tree/ptree.hpp>
 
-1468434562 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.cpp
+1469367445 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\debuggingoptions.cpp
 	"DebuggingOptions.h"
 	"PropertyTreeUtils.h"
 	<string>
@@ -6879,10 +6885,10 @@
 1450014582 c:\home\myimportantfiles\projects\git\libraries\boost_1_60_0\boost\aligned_storage.hpp
 	<boost/type_traits/aligned_storage.hpp>
 
-1467140252 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.h
+1469638400 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.h
 	<string>
 
-1467140246 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.cpp
+1469638569 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\initoptions.cpp
 	"InitOptions.h"
 	"ErrorCode.hpp"
 	"PropertyTreeUtils.h"
@@ -6935,21 +6941,21 @@
 	<random>
 	<iostream>
 
-1469293886 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.cpp
+1469359939 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.cpp
 	"MemoryPool.h"
 	<cstddef>
 	<stdlib.h>
 	<iostream>
 
-1469293848 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.h
+1469359978 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memorypool.h
 	<cstddef>
 
-1468867898 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.cpp
+1469360039 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.cpp
 	"MemoryUsageObject.h"
 	"../gameInitialization/Macros.hpp"
 	<iostream>
 
-1468867814 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.h
+1469359671 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobject.h
 	"MemoryPool.h"
 
 1469041411 source:c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobjectautoinitmempool.cpp
@@ -6957,4 +6963,42 @@
 	"MemoryUsageObject.h"
 
 1468866501 c:\home\myimportantfiles\projects\git\main\watermill\source\utilities\memoryusageobjectautoinitmempool.h
+
+1469367598 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\macros.cpp
+	"Macros.hpp"
+
+1469643764 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\messages.h
+	<string>
+
+1469643752 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\messages.cpp
+	"Messages.h"
+	<boost/locale.hpp>
+	<iostream>
+
+1469646059 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\playeroptions.cpp
+	"PlayerOptions.h"
+	"PropertyTreeUtils.h"
+	<string>
+	<iostream>
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/xml_parser.hpp>
+	<set>
+	<exception>
+	<map>
+	<utility>
+	<stdexcept>
+	<typeinfo>
+
+1469643208 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\playeroptions.h
+	<string>
+	<map>
+	<boost/property_tree/ptree.hpp>
+
+1469644540 c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamemessages.h
+	<string>
+
+1469645242 source:c:\home\myimportantfiles\projects\git\main\watermill\source\gameinitialization\gamemessages.cpp
+	"GameMessages.h"
+	<boost/locale.hpp>
+	<iostream>
 

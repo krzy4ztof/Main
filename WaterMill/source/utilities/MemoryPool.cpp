@@ -47,6 +47,15 @@ using std::cout;
 using std::endl;
 
 namespace watermill {
+	namespace memory_pool {
+		void safe_delete(MemoryPool* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
+	}
+
 	const size_t MemoryPool::CHUNK_HEADER_SIZE = (sizeof(unsigned char*));
 
 	MemoryPool::MemoryPool(void) {

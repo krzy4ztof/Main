@@ -35,6 +35,8 @@ namespace watermill {
 
 	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
 	const string GameCodeApp::DEBUG_OPTIONS_XML = "debugOptions.xml";
+	const string GameCodeApp::PLAYER_OPTIONS_XML = "playerOptions.xml";
+
 	const string GameCodeApp::ASSETS_ZIP = "assets.zip";
 
 
@@ -71,7 +73,7 @@ namespace watermill {
 			// Load programmer's options for debugging purposes
 			debuggingOptions = new DebuggingOptions;
 
-			string debugFilePath = initOptions->getResourcesFolder() + DEBUG_OPTIONS_XML;
+			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
 			debuggingOptions->load(debugFilePath);
 
 			bool done = true;
@@ -85,8 +87,8 @@ namespace watermill {
 			returnCode = false;
 		}
 
-		SAFE_DELETE ( debuggingOptions );
-		SAFE_DELETE ( initOptions );
+		debugging_options::safe_delete ( debuggingOptions );
+		init_options::safe_delete ( initOptions );
 
 		return ( returnCode );
 
@@ -145,14 +147,23 @@ namespace watermill {
 		try {
 			initOptions = new InitOptions;
 
-			// Load programmer's options for debugging purposes
 
+			playerOptions = new PlayerOptions;
+			string playerOptionsFilePath = initOptions->getGameFolder() + PLAYER_OPTIONS_XML;
+			playerOptions->load(playerOptionsFilePath);
+
+			gameMessages = new GameMessages(initOptions->getAssetsFolder(), playerOptions->getOption(playerOptions->LANGUAGE));
+			gameMessages->testMessages();
+
+			// Load programmer's options for debugging purposes
 			debuggingOptions = new DebuggingOptions;
 
 			//C:\home\myImportantFiles\projects\git\Main\WaterMill\media
 			//C:\home\myImportantFiles\projects\git\Main\WaterMill\settings\codeblocks\Watermill
 			//debuggingOptions.load("..\\..\\..\\media\\debugOptions.xml"); // OK
-			debuggingOptions->load("../../../media/debugOptions.xml");
+			//			debuggingOptions->load("../../../media/debugOptions.xml");
+			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
+			debuggingOptions->load(debugFilePath);
 
 
 			dataFiles = new DataFiles;
@@ -169,11 +180,14 @@ namespace watermill {
 			returnCode = false;
 		}
 
-		SAFE_DELETE ( videoSystem );
-		SAFE_DELETE ( audioSystem );
-		SAFE_DELETE ( dataFiles );
-		SAFE_DELETE ( debuggingOptions );
-		SAFE_DELETE ( initOptions );
+		video_system::safe_delete ( videoSystem );
+		audio_system::safe_delete ( audioSystem );
+		data_files::safe_delete ( dataFiles );
+		debugging_options::safe_delete ( debuggingOptions );
+
+		game_messages::safe_delete(gameMessages);
+		player_options::safe_delete(playerOptions);
+		init_options::safe_delete ( initOptions );
 
 		return ( returnCode );
 	}

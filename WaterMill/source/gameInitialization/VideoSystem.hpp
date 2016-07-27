@@ -16,14 +16,19 @@
 
 namespace watermill {
 
-    class VideoSystem {
-    public:
-        VideoSystem();
-        VideoSystem(const VideoSystem& orig);
-        virtual ~VideoSystem();
-    private:
+	class VideoSystem {
+		public:
+			VideoSystem();
+			VideoSystem(const VideoSystem& orig);
+			virtual ~VideoSystem();
+		private:
 
-    };
+	};
+
+
+	namespace video_system {
+		void safe_delete(VideoSystem* p);
+	}
 }
 #endif /* VIDEOSYSTEM_HPP */
 

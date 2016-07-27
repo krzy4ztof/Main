@@ -40,7 +40,8 @@ void testMain() {
 	//testClass.run();
 	//testClass.primeSearchRun();
 	//testClass.randomGeneratorRun();
-	testClass.memoryPoolRun();
+	//testClass.memoryPoolRun();
+	testClass.messagesRun();
 }
 
 /* Handler for window-repaint event. Call back when the window first appears and
@@ -73,8 +74,8 @@ int mainOpenGl(int argc, char** argv) {
 	watermill::GameCodeApp * gameCodeApp;
 	gameCodeApp = new watermill::GameCodeApp;
 
-	//    bool resInit = gameCodeApp->initInstance();
-	bool resInit = gameCodeApp->initInstanceShortDebug();
+	bool resInit = gameCodeApp->initInstance();
+	//bool resInit = gameCodeApp->initInstanceShortDebug();
 
 
 	int checkCpp11{457};
@@ -101,7 +102,7 @@ int main(int argc, char** argv) {
 	 * argv - returns address
 	 */
 
-	 testMain();
+	testMain();
 	int res = 0;
 	//res = mainOpenGl(argc, argv);
 	return res;

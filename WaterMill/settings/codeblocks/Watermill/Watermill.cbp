@@ -87,6 +87,7 @@
 					<Add library="opengl32" />
 					<Add library="boost_filesystem-mt" />
 					<Add library="boost_system-mt" />
+					<Add library="boost_locale-mt" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
 					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
 				</Linker>
@@ -116,9 +117,14 @@
 		<Unit filename="../../../source/gameInitialization/ErrorCode.hpp" />
 		<Unit filename="../../../source/gameInitialization/GameCodeApp.cpp" />
 		<Unit filename="../../../source/gameInitialization/GameCodeApp.hpp" />
+		<Unit filename="../../../source/gameInitialization/GameMessages.cpp" />
+		<Unit filename="../../../source/gameInitialization/GameMessages.h" />
 		<Unit filename="../../../source/gameInitialization/InitOptions.cpp" />
 		<Unit filename="../../../source/gameInitialization/InitOptions.h" />
+		<Unit filename="../../../source/gameInitialization/Macros.cpp" />
 		<Unit filename="../../../source/gameInitialization/Macros.hpp" />
+		<Unit filename="../../../source/gameInitialization/PlayerOptions.cpp" />
+		<Unit filename="../../../source/gameInitialization/PlayerOptions.h" />
 		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.cpp" />
 		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.h" />
 		<Unit filename="../../../source/gameInitialization/SystemCalls.hpp" />

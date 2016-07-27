@@ -1,4 +1,5 @@
-#include "DebuggingOptions.h"
+#include "PlayerOptions.h"
+
 #include "PropertyTreeUtils.h"
 
 #include <string> // string
@@ -16,20 +17,25 @@
 
 #include <typeinfo> // typeid
 
-
-using namespace std;
-// std::string
+using std::string;
+using std::cout;
+using std::endl;
+using std::pair;
+using std::map;
+using std::iterator;
+using std::out_of_range;
 
 namespace watermill {
 
-	const string DebuggingOptions::DEBUG_NODE_NAME = "debug";
-	const string DebuggingOptions::OPTIONS_NODE_NAME = "options";
-	const string DebuggingOptions::OPTION_NODE_NAME = "option";
-	const string DebuggingOptions::OPTION_NAME_ATTR = "name";
-	const string DebuggingOptions::OPTION_VALUE_ATTR = "value";
+	const string PlayerOptions::LANGUAGE = "language";
 
-	namespace debugging_options {
-		void safe_delete(DebuggingOptions* p) {
+	const string PlayerOptions::PLAYER_OPTIONS_NODE_NAME = "playerOptions";
+	const string PlayerOptions::OPTION_NODE_NAME = "option";
+	const string PlayerOptions::OPTION_NAME_ATTR = "name";
+	const string PlayerOptions::OPTION_VALUE_ATTR = "value";
+
+	namespace player_options {
+		void safe_delete(PlayerOptions* p) {
 			if (p) {
 				delete (p);
 				(p)=nullptr;
@@ -37,16 +43,16 @@ namespace watermill {
 		}
 	}
 
-	DebuggingOptions::DebuggingOptions() {
+	PlayerOptions::PlayerOptions() {
 		//ctor
 	}
 
-	DebuggingOptions::~DebuggingOptions() {
+	PlayerOptions::~PlayerOptions() {
 		//dtor
 	}
 
 
-	void DebuggingOptions::loadAttrNode(const boost::property_tree::ptree& xmlattrNode) {
+	void PlayerOptions::loadAttrNode(const boost::property_tree::ptree& xmlattrNode) {
 
 		string attrName;
 		string attrValue;
@@ -67,7 +73,7 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::loadOptionNode(const boost::property_tree::ptree& optionNode) {
+	void PlayerOptions::loadOptionNode(const boost::property_tree::ptree& optionNode) {
 		for(const boost::property_tree::ptree::value_type & optionChild: optionNode) {
 			string name = optionChild.first;
 			int compRes = name.compare("<xmlattr>");
@@ -77,30 +83,19 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::loadOptionsNode(const boost::property_tree::ptree& optionsNode) {
-		for(const boost::property_tree::ptree::value_type & optionsChild: optionsNode) {
-			string name = optionsChild.first;
+	void PlayerOptions::loadPlayerOptionsNode(boost::property_tree::ptree playerOptionsNode) {
+		for (const boost::property_tree::ptree::value_type& playerOptionsChild : playerOptionsNode) {
+			string name = playerOptionsChild.first.data();
 			int compRes = name.compare(OPTION_NODE_NAME);
 
 			if (compRes == 0) {
-				loadOptionNode(optionsChild.second);
-			}
-		}
-	}
-
-	void DebuggingOptions::loadDebugNode(boost::property_tree::ptree debugNode) {
-		for (const boost::property_tree::ptree::value_type& debugChild : debugNode) {
-			string name = debugChild.first.data();
-			int compRes = name.compare(OPTIONS_NODE_NAME);
-
-			if (compRes == 0) {
-				loadOptionsNode(debugChild.second);
+				loadOptionNode(playerOptionsChild.second);
 			}
 		}
 	}
 
 
-	void DebuggingOptions::loadRootNode(boost::property_tree::ptree tree) {
+	void PlayerOptions::loadRootNode(boost::property_tree::ptree tree) {
 		// see C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0\boost\property_tree\ptree_fwd.hpp
 		// typedef basic_ptree<std::string, std::string> ptree;
 
@@ -112,14 +107,14 @@ namespace watermill {
 
 		for (const boost::property_tree::ptree::value_type& rootChildNode : tree) {
 			string name = rootChildNode.first;
-			int compRes = name.compare(DEBUG_NODE_NAME);
+			int compRes = name.compare(PLAYER_OPTIONS_NODE_NAME);
 			if (compRes == 0) {
-				loadDebugNode(rootChildNode.second);
+				loadPlayerOptionsNode(rootChildNode.second);
 			}
 		}
 	}
 
-	string DebuggingOptions::getOption(const string &key) {
+	string PlayerOptions::getOption(const string &key) {
 		try {
 			return options.at(key);
 		} catch (out_of_range& ex) {
@@ -128,7 +123,7 @@ namespace watermill {
 		return "UNSET";
 	}
 
-	void DebuggingOptions::loadMain(const string &filename) {
+	void PlayerOptions::loadMain(const string &filename) {
 		boost::property_tree::ptree tree;
 		boost::property_tree::read_xml(filename, tree);
 		property_tree_utils::print_tree(tree,0);
@@ -141,15 +136,7 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::load(const string &filename) {
-		//checkCurDir();
-		//checkFile(filename);
-		//loadDebug(filename);
-		//		loadPets(filename);
-		//loadOptions(filename);
-
+	void PlayerOptions::load(const string &filename) {
 		loadMain(filename);
-
-
 	}
 }

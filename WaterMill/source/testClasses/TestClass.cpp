@@ -16,41 +16,59 @@
 #include "../utilities/RandomGenerator.h"
 #include "../utilities/MemoryUsageObject.h"
 #include "../gameInitialization/Macros.hpp"
+#include "../gameInitialization/GameMessages.h"
+#include "../gameInitialization/InitOptions.h"
+#include "../gameInitialization/PlayerOptions.h"
+#include "../gameInitialization/GameCodeApp.hpp"
 
 
 using namespace std;
 
+using watermill::memory_usage_object::safe_delete;
+
 namespace watermill {
 
-void TestClass::memoryPoolRun(){
-    cout << "new mem1" << endl;
-    MemoryUsageObject* mem1 = new MemoryUsageObject();
-    cout << "new mem2" << endl;
-    MemoryUsageObject* mem2 = new MemoryUsageObject();
-    cout << "destr mem1" << endl;
-    SAFE_DELETE (mem1);
-    cout << "destr mem2" << endl;
-    SAFE_DELETE (mem2);
+	void TestClass::messagesRun() {
+		InitOptions initOptions;
+		PlayerOptions playerOptions;
 
-    cout << "new mem3" << endl;
-    MemoryUsageObject* mem3 = new MemoryUsageObject();
-    cout << "new mem4" << endl;
-    MemoryUsageObject* mem4 = new MemoryUsageObject();
-    cout << "new mem5" << endl;
-    MemoryUsageObject* mem5 = new MemoryUsageObject();
-    cout << "new mem6" << endl;
-    MemoryUsageObject* mem6 = new MemoryUsageObject();
+		string playerOptionsFilePath = initOptions.getGameFolder() + GameCodeApp::PLAYER_OPTIONS_XML;
 
-    cout << "destr mem6" << endl;
-    SAFE_DELETE (mem6);
-    cout << "destr mem5" << endl;
-    SAFE_DELETE (mem5);
-    cout << "destr mem4" << endl;
-    SAFE_DELETE (mem4);
-    cout << "destr mem3" << endl;
-    SAFE_DELETE (mem3);
+		playerOptions.load(playerOptionsFilePath);
 
-}
+		GameMessages  msg(initOptions.getAssetsFolder(), playerOptions.getOption(playerOptions.LANGUAGE));
+		msg.testMessages();
+	}
+
+	void TestClass::memoryPoolRun() {
+		cout << "new mem1" << endl;
+		MemoryUsageObject* mem1 = new MemoryUsageObject();
+		cout << "new mem2" << endl;
+		MemoryUsageObject* mem2 = new MemoryUsageObject();
+		cout << "destr mem1" << endl;
+		safe_delete(mem1);
+		cout << "destr mem2" << endl;
+		safe_delete (mem2);
+
+		cout << "new mem3" << endl;
+		MemoryUsageObject* mem3 = new MemoryUsageObject();
+		cout << "new mem4" << endl;
+		MemoryUsageObject* mem4 = new MemoryUsageObject();
+		cout << "new mem5" << endl;
+		MemoryUsageObject* mem5 = new MemoryUsageObject();
+		cout << "new mem6" << endl;
+		MemoryUsageObject* mem6 = new MemoryUsageObject();
+
+		cout << "destr mem6" << endl;
+		safe_delete (mem6);
+		cout << "destr mem5" << endl;
+		safe_delete (mem5);
+		cout << "destr mem4" << endl;
+		safe_delete (mem4);
+		cout << "destr mem3" << endl;
+		safe_delete (mem3);
+
+	}
 
 
 	void TestClass::randomGeneratorRun() {
@@ -61,14 +79,14 @@ void TestClass::memoryPoolRun(){
 		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
 		cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
 		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
-        cout << endl;
+		cout << endl;
 		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
 		cout << "A: " << rnd.random() << ":" << rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<rnd.random() << ":" <<endl;
 		cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
 		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
-    	cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
+		cout << "B: " << rndb.random() << ":" << rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<rndb.random() << ":" <<endl;
 		cout << "C: " << rndc.random() << ":" << rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<rndc.random() << ":" <<endl;
-        cout << endl;
+		cout << endl;
 
 
 	}
@@ -136,7 +154,7 @@ void TestClass::memoryPoolRun(){
 		using namespace boost::lambda;
 		typedef std::istream_iterator<int> in;
 
-		std::for_each(
-			in(std::cin), in(), std::cout << (_1 * 3) << " ");
+		//	std::for_each(
+		//			in(std::cin), in(), std::cout << (_1 * 3) << " ");
 	}
 }

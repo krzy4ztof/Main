@@ -16,18 +16,27 @@
 
 namespace watermill {
 
-    VideoSystem::VideoSystem() {
-        // Initialization
-        bool somethingWentWrong = false;
+	namespace video_system {
+		void safe_delete(VideoSystem* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
+	}
 
-        if (somethingWentWrong) {
-            throw ErrorCode("EC_VIDEOSYSTEM_PROBLEM", 789);
-        }
-    }
+	VideoSystem::VideoSystem() {
+		// Initialization
+		bool somethingWentWrong = false;
 
-    VideoSystem::VideoSystem(const VideoSystem& orig) {
-    }
+		if (somethingWentWrong) {
+			throw ErrorCode("EC_VIDEOSYSTEM_PROBLEM", 789);
+		}
+	}
 
-    VideoSystem::~VideoSystem() {
-    }
+	VideoSystem::VideoSystem(const VideoSystem& orig) {
+	}
+
+	VideoSystem::~VideoSystem() {
+	}
 }

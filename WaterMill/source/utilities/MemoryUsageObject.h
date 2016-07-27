@@ -28,5 +28,9 @@ namespace watermill {
 		private:
 
 	};
+
+	namespace memory_usage_object {
+		void safe_delete(MemoryUsageObject* p);
+	}
 }
 #endif // MEMORYUSAGEOBJECT_H

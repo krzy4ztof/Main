@@ -29,6 +29,7 @@ namespace watermill {
         void primeSearchRun();
         void randomGeneratorRun();
         void memoryPoolRun();
+        void messagesRun();
     protected:
         void primeSearchRun(int pixels);
 
