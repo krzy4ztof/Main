@@ -41,7 +41,8 @@ void testMain() {
 	//testClass.primeSearchRun();
 	//testClass.randomGeneratorRun();
 	//testClass.memoryPoolRun();
-	testClass.messagesRun();
+	//testClass.messagesRun();
+	testClass.luaRun();
 }
 
 /* Handler for window-repaint event. Call back when the window first appears and

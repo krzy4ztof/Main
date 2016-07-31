@@ -2,6 +2,6 @@
 <playerOptions>
     <!-- <option name="language" value="en.UTF-8"/> -->
 	<option name="language" value="pl.UTF-8"/>
-	
+
 	<option name="fullscreen" value="false"/>
 </playerOptions>

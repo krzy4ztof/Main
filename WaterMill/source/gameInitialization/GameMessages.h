@@ -6,6 +6,9 @@
 namespace watermill {
 	class GameMessages {
 		public:
+			const static std::string STRINGS_FOLDER;
+			const static std::string MESSAGE_DOMAIN;
+
 			GameMessages(std::string assetsFolder, std::string language);
 			virtual ~GameMessages();
 

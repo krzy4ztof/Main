@@ -30,6 +30,7 @@ namespace watermill {
         void randomGeneratorRun();
         void memoryPoolRun();
         void messagesRun();
+        void luaRun();
     protected:
         void primeSearchRun(int pixels);
 

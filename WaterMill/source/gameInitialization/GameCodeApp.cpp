@@ -152,8 +152,18 @@ namespace watermill {
 			string playerOptionsFilePath = initOptions->getGameFolder() + PLAYER_OPTIONS_XML;
 			playerOptions->load(playerOptionsFilePath);
 
+
+			cout << "init game messages" << endl;
 			gameMessages = new GameMessages(initOptions->getAssetsFolder(), playerOptions->getOption(playerOptions->LANGUAGE));
+
+			cout << "test game messages" << endl;
 			gameMessages->testMessages();
+
+
+			cout << "end game messages" << endl;
+
+			luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
+			luaStateManager->testLua("test.lua");
 
 			// Load programmer's options for debugging purposes
 			debuggingOptions = new DebuggingOptions;
@@ -162,6 +172,7 @@ namespace watermill {
 			//C:\home\myImportantFiles\projects\git\Main\WaterMill\settings\codeblocks\Watermill
 			//debuggingOptions.load("..\\..\\..\\media\\debugOptions.xml"); // OK
 			//			debuggingOptions->load("../../../media/debugOptions.xml");
+
 			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
 			debuggingOptions->load(debugFilePath);
 
@@ -183,6 +194,8 @@ namespace watermill {
 		video_system::safe_delete ( videoSystem );
 		audio_system::safe_delete ( audioSystem );
 		data_files::safe_delete ( dataFiles );
+		lua_state_manager::safe_delete(luaStateManager);
+
 		debugging_options::safe_delete ( debuggingOptions );
 
 		game_messages::safe_delete(gameMessages);

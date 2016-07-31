@@ -1,3 +1,21 @@
+*******************
+***	Packages	***
+*******************
+Msys packages:
+https://sourceforge.net/p/msys2/wiki/Packages/
+
+Open shell
+MinGW-w64 Win64 Shell
+
+
+example:
+mingw/mingw-w64-lua 5.3.0-1 
+A powerful light-weight programming language designed for extending applications. (mingw-w64)
+
+MinGW 64:
+	pacman -S mingw-w64-lua 5.3.0-1 
+	
+	
 *******************************
 ***	MinGW64 compiler setup	***
 *******************************
@@ -16,6 +34,17 @@ Linker for static libs: ar.exe
 Debugger: There isn't one for MinGW 64-bit yet, clear this and leave it blank
 Resource compiler: windres.exe
 Make program: make.exe
+
+
+Global Compiler Settings -> Selected Compiler -> Search directories -> Compiler
+C:\msys64\usr\local\include
+(lua headers)
+
+Global Compiler Settings -> Selected Compiler -> Search directories -> Linker
+C:\msys64\usr\local\lib
+(lua libraries)
+
+
 
 ***********************************
 ***	Project settings MinGW64	***
@@ -62,19 +91,18 @@ Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi
 opengl32
-boost_system-mt	
-(link to C:\msys64\mingw64\lib\libboost_system-mt.dll.a)	
-boost_filesystem-mt
-(link to C:\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+
+lua
+(link to C:\msys64\usr\local\lib\liblua.a)
 
 A) Boost:
-..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+boost_system-mt	
+(link to C:\msys64\mingw64\lib\libboost_system-mt.dll.a)	
 B) Boost:
-libboost_filesystem-mt.dll.a
-C) Boost:
 boost_filesystem-mt
+(link to C:\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a)
-D) Boost:
+C) Boost:
 boost_locale-mt
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_locale-mt.dll.a)
 
@@ -106,4 +134,53 @@ Executable path: C:\msys64\mingw64\bin\gdb.exe
 Menu -> Debug -> Active Debuggers:
 	GDB/CDB debugger: MinGW64
 	
-	
+***************************
+***	Lua installation	***
+***************************
+
+https://www.lua.org/download.html
+Download 
+lua-5.3.3.tar.gz
+
+Extract
+lua-5.3.3_Sources.zip
+into folder
+C:\msys64\home\Krzysztof\lua53
+
+
+https://www.lua.org/download.html
+Building:
+
+>> cd ~/lua53
+>> tar zxf lua-5.3.3.tar.gz
+>> cd lua-5.3.3
+
+
+
+Check where is mingw32-make.exe located:
+>> where mingw32-make
+C:\msys64\mingw64\bin\mingw32-make.exe
+
+file:///C:/msys64/home/Krzysztof/lua53/lua-5.3.3/doc/readme.html
+Build Lua
+>> mingw32-make mingw 
+>> mingw32-make test
+
+Installing Lua
+>> mingw32-make install
+Installs lua.exe, luac.exe, lua.h into
+C:\msys64\usr\local\bin\lua.exe
+C:\msys64\usr\local\include\lua.h
+C:\msys64\usr\local\lib\liblua.a
+
+>> cp lua53.dll /bin/
+Copy
+C:\msys64\home\Krzysztof\lua53\lua-5.3.3\src\lua53.dll
+into
+C:\msys64\bin
+
+Create script
+~/lua53/lua_script.txt
+>> cd ~/lua53
+Run script
+>> lua.exe lua_script.txt

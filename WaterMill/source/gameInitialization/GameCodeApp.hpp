@@ -23,6 +23,8 @@
 #include "GameMessages.h"
 
 #include "../resourceCache/ResourceCache.h"
+#include "../luaScripting/LuaStateManager.h"
+
 
 #include <string>
 
@@ -47,6 +49,7 @@ namespace watermill {
 			InitOptions *initOptions;
 			PlayerOptions *playerOptions;
 			GameMessages *gameMessages;
+			LuaStateManager *luaStateManager;
 			DebuggingOptions *debuggingOptions;
 			ResourceCache *resourceCache;
 			DataFiles *dataFiles;

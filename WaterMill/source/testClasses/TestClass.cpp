@@ -20,6 +20,9 @@
 #include "../gameInitialization/InitOptions.h"
 #include "../gameInitialization/PlayerOptions.h"
 #include "../gameInitialization/GameCodeApp.hpp"
+#include "../gameInitialization/ErrorCode.hpp"
+#include "../luaScripting/LuaStateManager.h"
+
 
 
 using namespace std;
@@ -27,6 +30,12 @@ using namespace std;
 using watermill::memory_usage_object::safe_delete;
 
 namespace watermill {
+
+	void TestClass::luaRun() {
+		InitOptions initOptions;
+		LuaStateManager luaStateManager(initOptions.getAssetsFolder());
+		luaStateManager.testLua("test.lua");
+	}
 
 	void TestClass::messagesRun() {
 		InitOptions initOptions;
@@ -36,9 +45,14 @@ namespace watermill {
 
 		playerOptions.load(playerOptionsFilePath);
 
-		GameMessages  msg(initOptions.getAssetsFolder(), playerOptions.getOption(playerOptions.LANGUAGE));
-		msg.testMessages();
+		try {
+			GameMessages  msg(initOptions.getAssetsFolder(), playerOptions.getOption(playerOptions.LANGUAGE));
+			msg.testMessages();
+		} catch ( ErrorCode& error ) {
+			error.informUser();
+		}
 	}
+
 
 	void TestClass::memoryPoolRun() {
 		cout << "new mem1" << endl;

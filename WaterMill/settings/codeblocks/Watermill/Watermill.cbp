@@ -20,6 +20,7 @@
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -39,6 +40,7 @@
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -57,6 +59,7 @@
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -64,6 +67,8 @@
 					<Add library="opengl32" />
 					<Add library="boost_system" />
 					<Add library="boost_filesystem" />
+					<Add library="boost_locale" />
+					<Add library="lua" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
 				</Linker>
 			</Target>
@@ -80,6 +85,7 @@
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -88,6 +94,7 @@
 					<Add library="boost_filesystem-mt" />
 					<Add library="boost_system-mt" />
 					<Add library="boost_locale-mt" />
+					<Add library="lua" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
 					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
 				</Linker>
@@ -96,6 +103,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../../../assets/scripts/test.lua" />
+		<Unit filename="../../../assets/strings/.gitignore" />
+		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.mo" />
+		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.po" />
+		<Unit filename="../../../assets/strings/pl/LC_MESSAGES/watermill.mo" />
+		<Unit filename="../../../assets/strings/pl/LC_MESSAGES/watermill.po" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_cygwin64.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_mingw32.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_mingw64.txt" />
@@ -106,7 +119,8 @@
 		<Unit filename="../../../docs/netbeans/mingw64_readme.txt" />
 		<Unit filename="../../../docs/netbeans/mingw_readme.txt" />
 		<Unit filename="../../../docs/watermill_readme.txt" />
-		<Unit filename="../../../media/debugOptions.xml" />
+		<Unit filename="../../../game/debugOptions.xml" />
+		<Unit filename="../../../game/playerOptions.xml" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.cpp" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.hpp" />
 		<Unit filename="../../../source/gameInitialization/DataFiles.cpp" />
@@ -142,6 +156,8 @@
 		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.hpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.hpp" />
+		<Unit filename="../../../source/luaScripting/LuaStateManager.cpp" />
+		<Unit filename="../../../source/luaScripting/LuaStateManager.h" />
 		<Unit filename="../../../source/main/Main.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
@@ -171,6 +187,7 @@
 		<Unit filename="../../../source/utilities/PrimeSearch.h" />
 		<Unit filename="../../../source/utilities/RandomGenerator.cpp" />
 		<Unit filename="../../../source/utilities/RandomGenerator.h" />
+		<Unit filename="watermill.ini" />
 		<Extensions>
 			<code_completion />
 			<envvars />

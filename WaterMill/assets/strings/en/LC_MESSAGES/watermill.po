@@ -16,6 +16,5 @@ msgstr ""
 msgid "hello_world"
 msgstr "Hello World en!!!"
 
-
 msgid "hello_world_only_en"
 msgstr "Hello World only en!!!"

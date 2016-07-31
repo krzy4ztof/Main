@@ -1,3 +1,9 @@
+*******************
+***	Packages	***
+*******************
+To install additional cygwin compoments - run
+C:\home\normalFiles\cygwin_package\setup-x86_64.exe
+
 ***********************************
 ***	Project settings Cygwin64	***
 ***********************************
@@ -43,9 +49,18 @@ Project build options -> Linker Settings -> Link Libraries -> Add
 freeglut
 psapi
 opengl32
+
+lua
+(link to C:\cygwin64\lib\liblua.dll.a)
+
+A) Boost:
 boost_system
 (link to C:\cygwin64\lib\libboost_system.dll.a)	
+B) Boost:
 boost_filesystem
+C) Boost:
+boost_locale
+(link to C:\cygwin64\lib\\libboost_locale.dll.a)
 
 Project -> Remove files
 source/scripts/test.cpp
@@ -94,3 +109,17 @@ C:\home\myImportantFiles\projects\git\Main\WaterMill\media\pl_PL\LC_MESSAGES\wat
 2. cd /cygdrive/c/home/myImportantFiles/projects/git/Main/WaterMill/media/pl_PL/LC_MESSAGES
 3. msgfmt.py watermill.po
 4. Zostanie wygenerowany plik watermill.mo
+
+***********
+***	LUA	***
+***********
+
+Package:
+All->Interpreters
+	5.2.4-1 lua: Lua programming language interpreter
+	5.2.4-1 lua-devel: Lua programming language interpreter
+	
+	
+
+
+
