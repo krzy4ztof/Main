@@ -9,8 +9,16 @@
 #include <boost/algorithm/string.hpp> // boost::algorithm::to_lower(str)
 #include <regex> //regex_search, smatch, pattern
 #include <fstream> // ifstream
+#include "../../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
-using namespace std;
+using std::string;
+using std::stringstream;
+using std::vector;
+using std::exception;
+using std::ifstream;
+using std::regex;
+using std::smatch;
 
 namespace watermill {
 	Cygwin64CpuCalls::Cygwin64CpuCalls() {
@@ -122,16 +130,18 @@ namespace watermill {
 		smatch matches;
 		regex pattern ( "cpu mhz" );
 
+		stringstream ss;
 		if ( myfile.is_open() ) {
 			while ( getline ( myfile, line ) ) {
 				boost::algorithm::to_lower ( line );
 
 				if ( regex_search ( line, matches, pattern ) ) {
-					cout << "line: " << line << endl;
+					ss << "line: " << line;
+					logger::trace(ss);
 
 					for ( int i = 0; i < matches.size(); ++i )
-						cout << "\tmatches[" << i << "]: "
-							 << matches[i] << endl;
+						ss << "\tmatches[" << i << "]: " << matches[i];
+					logger::trace(ss);
 
 					split ( internal, line, ':' );
 				}
@@ -140,57 +150,72 @@ namespace watermill {
 					// No match
 				}
 
-				cout << line << '\n';
+				ss << line;
+				logger::trace(ss);
+
 			}
 
-			cout << "--------------" << endl;
+			logger::trace("--------------");
+
 			myfile.close();
 		}
 
 		else {
-			cout << "Unable to open file";
+			logger::warning("Unable to open file");
+
 		}
 
-		cout << "internal size: " << internal.size() << endl;
+		ss << "internal size: " << internal.size();
+		logger::trace(ss);
+
 		// DO NOT DO IT
 		//        vector<double>& doubleVectorRef = findSpeedRefError(internal);
 		vector<double>* doubleVectorPtr = findSpeedPtr ( internal );
 
 		for ( double speed3 : *doubleVectorPtr ) {
-			cout << "speed vector ptr: " << speed3 << endl;
+			ss << "speed vector ptr: " << speed3;
+			logger::trace(ss);
+
 		}
 
 		vector<double> doubleVectorMove = findSpeedMove ( internal );
 
 		for ( double speed3 : doubleVectorMove ) {
-			cout << "speed vector move: " << speed3 << endl;
+			ss << "speed vector move: " << speed3;
+			logger::trace(ss);
+
 		}
 
 		vector<double>::iterator doubleMinPtr = std::min_element ( doubleVectorPtr->begin(), doubleVectorPtr->end() );
-		cout << "* 41 " << endl;
+		logger::trace("* 41 ");
+
 		double minDouble = 0;
 
 		if ( doubleMinPtr != doubleVectorPtr->end() ) {
-			cout << "!!!" << endl;
-			cout << "doubleMinPtr1: " << *doubleMinPtr << endl;
+			logger::trace("!!!");
+			ss << "doubleMinPtr1: " << *doubleMinPtr;
+			logger::trace(ss);
 			minDouble = *doubleMinPtr;
 		}
 
-		cout << "minDouble: " << minDouble << endl;
-		cout << "* 5 " << endl;
+		ss << "minDouble: " << minDouble;
+		logger::trace(ss);
+		logger::trace("* 5 ");
 		vector<double>::iterator doubleMinMove = std::min_element ( doubleVectorMove.begin(), doubleVectorMove.end() );
 
 		if ( doubleMinMove != doubleVectorMove.end() ) {
-			cout << "doubleMinMove: " << *doubleMinMove << "; size: " << doubleMinMove.base() << endl;
+			ss << "doubleMinMove: " << *doubleMinMove << "; size: " << doubleMinMove.base();
+			logger::trace(ss);
 		}
 
 		if ( doubleVectorPtr ) {
-			cout << "delete doubleVectorPtr" << endl;
+			logger::trace("delete doubleVectorPtr");
 			delete doubleVectorPtr;
 			doubleVectorPtr = nullptr;
 		};
 
-		cout << "del minDouble: " << minDouble << endl;
+		ss << "del minDouble: " << minDouble;
+		logger::trace(ss);
 
 		unsigned long minUnsLong = static_cast <unsigned long> (minDouble);
 

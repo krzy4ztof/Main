@@ -16,21 +16,23 @@
 
 #include <iostream>
 
-#include <boost/lambda/lambda.hpp>
-#include <iterator>
-#include <algorithm>
+//#include <boost/lambda/lambda.hpp>
+//#include <iterator>
+//#include <algorithm>
 
 namespace watermill {
 
     class TestClass {
     public:
-        void run();
+       // void run();
         void simpleRun();
         void primeSearchRun();
         void randomGeneratorRun();
         void memoryPoolRun();
         void messagesRun();
         void luaRun();
+      //  void videoFreeGlutRun();
+        void loggerRun();
     protected:
         void primeSearchRun(int pixels);
 

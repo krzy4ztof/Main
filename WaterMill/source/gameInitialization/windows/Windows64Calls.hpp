@@ -33,10 +33,15 @@ namespace watermill {
 			bool isOnlyInstance(const std::string&);
 			DWORD readCPUSpeed();
 			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
+
+			std::string getSaveGameFolderPath();
+
 		private:
-			//bool isAGameProcess(DWORD processID, TCHAR * gameTitle);
-			//bool isAGameProcess(DWORD processID, const std::string& gameTitle);
 	};
+
+	namespace windows64calls {
+		std::string tcharToString(TCHAR *);
+	}
 }
 #endif /* __WIN64 */
 

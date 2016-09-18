@@ -22,7 +22,8 @@
 #include "../gameInitialization/GameCodeApp.hpp"
 #include "../gameInitialization/ErrorCode.hpp"
 #include "../luaScripting/LuaStateManager.h"
-
+#include "../gameInitialization/VideoSystem.hpp"
+#include "../debugging/Logger.h"
 
 
 using namespace std;
@@ -30,6 +31,34 @@ using namespace std;
 using watermill::memory_usage_object::safe_delete;
 
 namespace watermill {
+
+	void TestClass::loggerRun() {
+		logger::init();
+
+		logger::test();
+
+		logger::trace("Trace logged");
+		logger::debug("Debug logged");
+		logger::info("Information logged");
+		logger::warning("Warning logged");
+		logger::error("Error logged");
+		logger::fatal("Fatal logged");
+
+		logger::destroy();
+	}
+
+	/*
+		void TestClass::videoFreeGlutRun() {
+			VideoSystem*	videoSystem = new VideoSystem;
+			videoSystem->startFreeGlut(GameCodeApp::GAME_PROCESS_NAME);
+
+			videoSystem->startFreeGlutMainLoop();
+
+			video_system::safe_delete(videoSystem);
+		}*/
+
+	//void TestClass:saveRun(){
+	//}
 
 	void TestClass::luaRun() {
 		InitOptions initOptions;
@@ -155,20 +184,5 @@ namespace watermill {
 
 	void TestClass::simpleRun() {
 		cout << "Water Mill Simple" << endl;
-	}
-
-	void TestClass::run() {
-		cout << "Water Mill" << endl;
-
-		cout << "Type 1 2 3 + Enter " << endl;
-
-		cout << "Press Z + Enter to end " << endl;
-
-
-		using namespace boost::lambda;
-		typedef std::istream_iterator<int> in;
-
-		//	std::for_each(
-		//			in(std::cin), in(), std::cout << (_1 * 3) << " ");
 	}
 }

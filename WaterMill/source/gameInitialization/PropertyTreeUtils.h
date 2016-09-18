@@ -5,16 +5,6 @@
 #include <boost/property_tree/ptree.hpp>
 
 namespace watermill {
-	class PropertyTreeUtils {
-		public:
-			PropertyTreeUtils();
-			virtual ~PropertyTreeUtils();
-
-		protected:
-
-		private:
-
-	};
 
 	namespace property_tree_utils {
 		const boost::property_tree::ptree& empty_ptree();

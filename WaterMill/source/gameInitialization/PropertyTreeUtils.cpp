@@ -2,17 +2,15 @@
 
 #include <boost/property_tree/ptree.hpp>
 #include <iostream> // cout, endl
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
+using std::stringstream;
 
 namespace watermill {
-	PropertyTreeUtils::PropertyTreeUtils() {
-		//ctor
-	}
-
-	PropertyTreeUtils::~PropertyTreeUtils() {
-		//dtor
-	}
 
 	namespace property_tree_utils {
 		const boost::property_tree::ptree& empty_ptree() {
@@ -21,16 +19,17 @@ namespace watermill {
 		}
 
 
-		string printValueType(const std::string& s) {
+		string printValueType(const string& s) {
 			return "\"" + s + "\"";
 		};
 
 		void print_tree(const boost::property_tree::ptree& propertyTree, int level) {
-			const std::string sep(2 * level, ' ');
+			const string sep(2 * level, ' ');
 			for(const boost::property_tree::ptree::value_type &valueType: propertyTree) {
-				std::cout
-						<< sep
-						<< printValueType(valueType.first) << " : " << printValueType(valueType.second.data()) << "\n";
+				stringstream ss;
+				ss << sep << printValueType(valueType.first) << " : " << printValueType(valueType.second.data());
+				logger::trace(ss);
+
 				print_tree(valueType.second, level + 1);
 			}
 		}

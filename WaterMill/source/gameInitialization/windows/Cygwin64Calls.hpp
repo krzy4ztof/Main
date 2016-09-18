@@ -33,6 +33,9 @@ namespace watermill {
 			bool checkHardDisk(const int);
 			unsigned long readCPUSpeed();
 			bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
+
+			std::string getSaveGameFolderPath();
+
 		private:
 	};
 }

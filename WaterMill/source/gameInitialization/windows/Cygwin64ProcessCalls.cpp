@@ -8,7 +8,10 @@
 #include <dirent.h> //readdir, opendir, DIR, DT_DIR, dirent
 #include <string.h> // strcasestr
 
-using namespace std;
+#include "../../utilities/StringUtils.h"
+#include "../../debugging/Logger.h"
+
+using std::string;
 
 
 namespace watermill {
@@ -42,14 +45,16 @@ namespace watermill {
 		}
 	}
 
-	bool Cygwin64ProcessCalls::isOnlyInstance ( const std::string& gameTitle ) {
-		cout << "tutaj" << endl;
+	bool Cygwin64ProcessCalls::isOnlyInstance ( const string& gameTitle ) {
+		logger::trace("tutaj");
 		char chrarry_CommandLinePath[100]  ;
 		char chrarry_NameOfProcess[300]  ;
 		char* chrptr_StringToCompare;
-		char* gameTitleChar = new char[gameTitle.length() + 1];
-		strcpy ( gameTitleChar, gameTitle.c_str() );
-		pid_t pid_ProcessIdentifier = ( pid_t ) - 1 ;
+
+		char* gameTitleChar = string_utils::stringToChar(gameTitle);
+		//char* gameTitleChar = new char[gameTitle.length() + 1];
+		//strcpy ( gameTitleChar, gameTitle.c_str() );
+
 		struct dirent* de_DirEntity = NULL ;
 		DIR* dir_proc = NULL ;
 		int ( *compareFunction ) ( const char*, const char*, bool ) ;
@@ -57,7 +62,7 @@ namespace watermill {
 		dir_proc = opendir ( "/proc/" ) ;
 
 		if ( dir_proc == NULL ) {
-			cout << "Couldn't open the  PROC_DIRECTORY directory" << endl ;
+			logger::warning("Couldn't open the  PROC_DIRECTORY directory");
 			return ( pid_t ) - 2 ;
 		}
 
@@ -86,7 +91,6 @@ namespace watermill {
 						}
 
 						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
-							pid_ProcessIdentifier = ( pid_t ) atoi ( de_DirEntity->d_name ) ;
 							howMany++;
 						}
 					}
@@ -95,7 +99,8 @@ namespace watermill {
 		}
 
 		closedir ( dir_proc ) ;
-		delete [] gameTitleChar;
+
+		string_utils::safe_delete_char_array(gameTitleChar);
 
 		if ( howMany >= 2 ) {
 			// First process is this process

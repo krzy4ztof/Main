@@ -39,6 +39,7 @@ Make program: make.exe
 Global Compiler Settings -> Selected Compiler -> Search directories -> Compiler
 C:\msys64\usr\local\include
 (lua headers)
+C:\msys64\mingw64\x86_64-w64-mingw32\include
 
 Global Compiler Settings -> Selected Compiler -> Search directories -> Linker
 C:\msys64\usr\local\lib
@@ -71,15 +72,18 @@ Project -> Build options
 Project build options -> Selected compiler
 MinGW64
 
-Project -> Buld options
+Project -> Build options
 Project build options ->  Compiler settings -> Compiler Flags
 Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 
-Project -> Buld options
+Other
+
+
+Project -> Build options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
 // remove: ..\..\git\libraries\boost
 ..\..\git\libraries\freeglut\include
-
+..\..\..\..\..\..\..\..\..\msys64\mingw64\x86_64-w64-mingw32\include
 
 Project -> Build options
 Project build options -> Search Directories -> Linker -> Append target options to project options
@@ -105,6 +109,16 @@ boost_filesystem-mt
 C) Boost:
 boost_locale-mt
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_locale-mt.dll.a)
+D) Boost:
+boost_log-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log-mt.dll.a)
+E) Boost:
+boost_thread-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_thread-mt.dll.a)
+F) Boost:
+boost_log_setup-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log_setup-mt.dll.a)
+
 
 
 
@@ -184,3 +198,82 @@ Create script
 >> cd ~/lua53
 Run script
 >> lua.exe lua_script.txt
+
+***********
+***	SDL	***
+***********
+
+
+Msys packages:
+https://sourceforge.net/p/msys2/wiki/Packages/
+mingw/mingw-w64-SDL2 2.0.3-2
+
+https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/
+example:
+mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz.sig	
+mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz
+
+Open shell
+MinGW-w64 Win64 Shell
+
+
+MinGW 64:
+pacman -S mingw-w64-x86_64-SDL2
+
+---------------------------
+---	SDL	unsuccessfull	---
+---------------------------
+
+>> tar zxf SDL2-devel-2.0.4-mingw.tar.gz
+C:\msys64\home\Krzysztof\SDL2-2.0.4\
+>> cd SDL2-2.0.4
+make native
+
+New folders and files appear:
+C:\msys64\usr\bin\sdl2-config
+C:\msys64\usr\bin\SDL2.dll
+C:\msys64\usr\include\SDL2
+C:\msys64\usr\lib\libSDL.a
+	libSDL2.dll.a, libSDL2.la, libSDL2_test.a, libSDL2main.a 
+C:\msys64\usr\lib\cmake\SDL2\sdl2-config.cmake
+
+
+
+Test
+cd /c/home/myImportantFiles/projects/git/Main/TestExamples/SDLGlewPrj/
+
+
+
+---------------------------
+---	SDL	unsuccessfull	---
+---------------------------
+	
+C:\msys64\home\Krzysztof\sdl\SDL2-2.0.4.tar.gz
+
+>> tar zxf SDL2-2.0.4.tar.gz
+
+C:\msys64\home\Krzysztof\SDL2-2.0.4\
+>> cd SDL2-2.0.4
+
+SDL2-2.0.4/INSTALL.TXT
+Linux and other UNIX systems:
+* Run './configure; make; make install'
+        
+
+./configure
+configure: error:
+*** Unsupported host:  Please add to configure.in
+
+
+***************
+***	GLEW	***
+***************
+
+https://sourceforge.net/p/msys2/wiki/Packages/
+mingw/mingw-w64-glew 1.12.0-1 (mingw-w64-x86_64) 
+GLEW, The OpenGL Extension Wrangler Library (mingw-w64)
+
+pacman -S mingw-w64-x86_64-glew
+
+Files created:
+C:\msys64\mingw64\lib\libglew32.dll

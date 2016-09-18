@@ -12,9 +12,10 @@
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+#include "../debugging/Logger.h"
 
-using namespace std;
-// std::string
+using std::string;
+using std::ifstream;
 
 namespace watermill {
 
@@ -51,8 +52,8 @@ namespace watermill {
 		if (assetsTree.is_initialized()) {
 			assetsFolder =     assetsTree.get().get_value<string>();
 			//resources = resourcesTree.get_value<string>();
-			cout << "istnieje MAIN.REsources" << endl;
-			cout << assetsFolder << endl;
+			logger::trace("istnieje MAIN.REsources");
+			logger::trace(assetsFolder);
 		} else {
 			string errorMessage = "There is no " +  ASSETS_FOLDER + " value in " + INIT_FILENAME;
 			throw ErrorCode(errorMessage, 111 );
@@ -63,8 +64,8 @@ namespace watermill {
 		if (gameTree.is_initialized()) {
 			gameFolder =     gameTree.get().get_value<string>();
 			//resources = resourcesTree.get_value<string>();
-			cout << "istnieje MAIN.REsources" << endl;
-			cout << gameFolder << endl;
+			logger::trace("istnieje MAIN.REsources");
+			logger::trace(gameFolder);
 		} else {
 			string errorMessage = "There is no " +  GAME_FOLDER + " value in " + INIT_FILENAME;
 			throw ErrorCode(errorMessage, 111 );
@@ -79,13 +80,13 @@ namespace watermill {
 		ifstream myfile(filename);
 
 		if ( myfile.is_open() ) {
-			cout << "otwarte!!!!" <<endl;
+			logger::trace("otwarte!!!!");
 			myfile.close();
 
 			readFile(filename);
 
 		} else {
-			cout << "NIE otwarte!!!!" <<endl;
+			logger::trace("NIE otwarte!!!!");
 
 			const boost::filesystem::path& initialPath = boost::filesystem::initial_path();
 

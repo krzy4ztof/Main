@@ -16,10 +16,13 @@
 #include <stdexcept>      // std::out_of_range
 
 #include <typeinfo> // typeid
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 using std::string;
 using std::cout;
 using std::endl;
+using std::stringstream;
 using std::pair;
 using std::map;
 using std::iterator;
@@ -118,7 +121,9 @@ namespace watermill {
 		try {
 			return options.at(key);
 		} catch (out_of_range& ex) {
-			cout << "Exception: " << ex.what() << endl;
+			stringstream ss;
+			ss << "Exception: " << ex.what();
+			logger::warning(ss);
 		}
 		return "UNSET";
 	}
@@ -129,11 +134,6 @@ namespace watermill {
 		property_tree_utils::print_tree(tree,0);
 
 		loadRootNode(tree);
-		map<string, string>::iterator optionsIterator;
-
-		for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
-			cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
-		}
 	}
 
 	void PlayerOptions::load(const string &filename) {

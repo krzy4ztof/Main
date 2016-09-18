@@ -24,7 +24,8 @@
 
 #include "../resourceCache/ResourceCache.h"
 #include "../luaScripting/LuaStateManager.h"
-
+#include "../eventManager/EventManager.h"
+#include "../gameLogic/BaseGameLogic.h"
 
 #include <string>
 
@@ -42,7 +43,15 @@ namespace watermill {
 			virtual ~GameCodeApp();
 
 			bool initInstance();
-			bool initInstanceShortDebug();
+
+			// GameCode Specific Stuff
+			BaseGameLogic *m_pGame;
+
+			// You must define these functions to initialize your game.
+			virtual BaseGameLogic *createGameAndView()=0;
+			virtual std::string vGetGameAppDirectory()=0;
+
+
 		private:
 			static const int MEGABYTE = 1024 * 1024;
 
@@ -50,11 +59,14 @@ namespace watermill {
 			PlayerOptions *playerOptions;
 			GameMessages *gameMessages;
 			LuaStateManager *luaStateManager;
+			EventManager *eventManager;
 			DebuggingOptions *debuggingOptions;
 			ResourceCache *resourceCache;
 			DataFiles *dataFiles;
 			AudioSystem *audioSystem;
 			VideoSystem *videoSystem;
+
+			std::string saveGameDirectory;
 	};
 }
 #endif /* GAMECODEAPP_HPP */

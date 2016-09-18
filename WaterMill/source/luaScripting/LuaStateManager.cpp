@@ -3,11 +3,15 @@
 #include <iostream> // cout, endl
 #include <string> // string
 #include <cstring>// strcpy
+#include "../utilities/StringUtils.h"
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::strcpy;
+using std::stringstream;
 
 namespace watermill {
 
@@ -18,7 +22,6 @@ namespace watermill {
 	}
 
 	LuaStateManager::~LuaStateManager() {
-		//dtor
 	}
 
 	void LuaStateManager::print_error(lua_State* state) {
@@ -62,23 +65,23 @@ namespace watermill {
 
 	void LuaStateManager::testLua(string scriptFileName) {
 
-		cout << "lua script: " << scriptFileName << endl;
+		stringstream ss;
+		ss << "lua script: " << scriptFileName;
+		logger::trace(ss);
 
 		string scriptFullFileName = scriptsFolder + scriptFileName;
-		cout << "lua full script: " << scriptFullFileName << endl;
+		ss << "lua full script: " << scriptFullFileName;
+		logger::trace(ss);
 
 
-		char* scriptNameChar = new char[scriptFullFileName.length() + 1];
-		strcpy ( scriptNameChar, scriptFullFileName.c_str() );
+		char* scriptNameChar = string_utils::stringToChar(scriptFullFileName);
 
 		execute(scriptNameChar);
 
 		//lua_State *state = luaL_newstate();
-
-
 		//lua_close(state);
-		delete[] scriptNameChar;
 
+		string_utils::safe_delete_char_array(scriptNameChar);
 	}
 
 
@@ -95,10 +98,13 @@ namespace watermill {
 			// The number of function arguments will be on top of the stack.
 			int args = lua_gettop(state);
 
-			printf("howdy() was called with %d arguments:\n", args);
+			stringstream ss;
+			ss << "howdy() was called with "<< args <<" arguments";
+			logger::trace(ss);
 
 			for ( int n=1; n<=args; ++n) {
-				printf("  argument %d: '%s'\n", n, lua_tostring(state, n));
+				ss << "  argument " << n << ": "<< lua_tostring(state, n);
+				logger::trace(ss);
 			}
 
 			// Push the return value on top of the stack. NOTE: We haven't popped the

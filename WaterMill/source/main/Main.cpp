@@ -20,18 +20,18 @@
 #include "../gameInitialization/Macros.hpp"
 #include "../testClasses/TestClass.hpp"
 #include "../gameInitialization/GameCodeApp.hpp"
+#include "../watermillGame/WatermillGame.h"
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 
 //#include <windows.h>  // For MS Windows
-#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
+//#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 
-
-using namespace std;
-
-/*
- *
- */
-
+using std::string;
+using std::cout;
+using std::endl;
+using std::stringstream;
 
 
 void testMain() {
@@ -42,57 +42,40 @@ void testMain() {
 	//testClass.randomGeneratorRun();
 	//testClass.memoryPoolRun();
 	//testClass.messagesRun();
-	testClass.luaRun();
+	//testClass.luaRun();
+	//testClass.videoFreeGlutRun();
+	testClass.loggerRun();
 }
 
-/* Handler for window-repaint event. Call back when the window first appears and
-   whenever the window needs to be re-painted. */
-void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-	glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer
+int mainInit(int argc, char** argv) {
 
-	// Draw a Red 1x1 Square centered at origin
-	glBegin(GL_QUADS); // Each set of 4 vertices form a quad
-	glColor3f(1.0f, 0.0f, 0.0f); // Red
-	glVertex2f(-0.5f, -0.5f); // x, y
-	glVertex2f(0.5f, -0.5f);
-	glVertex2f(0.5f, 0.5f);
-	glVertex2f(-0.5f, 0.5f);
-	glEnd();
+	//TODO: see
+	// C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	// \GCC4\GameCode4\GameCode4.cpp
 
-	glFlush(); // Render now
-}
+	//  INT WINAPI GameCode4(HINSTANCE hInstance,
+	//                 HINSTANCE hPrevInstance,
+	//                 LPWSTR    lpCmdLine,
+	//                 int       nCmdShow)
 
-/* Main function: GLUT runs as a console application starting at main()  */
-int mainOpenGl(int argc, char** argv) {
+	watermill::logger::init();
+	watermill::logger::test();
 
-	glutInit(&argc, argv); // Initialize GLUT
-	glutCreateWindow(GAME_TITLE); // Create a window with the given title
-	glutInitWindowSize(320, 320); // Set the window's initial width & height
-	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
-	glutDisplayFunc(display); // Register display callback handler for window re-paint
 
 	watermill::GameCodeApp * gameCodeApp;
-	gameCodeApp = new watermill::GameCodeApp;
+	gameCodeApp = new watermill::WatermillGame;
 
 	bool resInit = gameCodeApp->initInstance();
-	//bool resInit = gameCodeApp->initInstanceShortDebug();
-
-
-	int checkCpp11{457};
-	//  auto anotherCpp11check = checkCpp11;
-
-	cout << "CheckCpp11: " << checkCpp11 << endl;
-	//  cout << " AnotherCheckCpp11: " << anotherCpp11check << endl;
 
 	if (!resInit) {
-		cout << "gameCodeApp init failed" << endl;
+		watermill::logger::error("gameCodeApp init failed");
 		return 1;
 	} else {
-		cout << "gameCodeApp init succeeded" << endl;
+		watermill::logger::trace("gameCodeApp init succeeded");
 	}
 
-	glutMainLoop(); // Enter the infinitely event-processing loop
+	watermill::logger::destroy();
+
 	return 0;
 }
 
@@ -103,10 +86,11 @@ int main(int argc, char** argv) {
 	 * argv - returns address
 	 */
 
-	testMain();
+	//testMain();
 	int res = 0;
-	//res = mainOpenGl(argc, argv);
-	return res;
+	res = mainInit(argc, argv);
+	cout << "MAIN END" << endl;
 
+	return res;
 }
 

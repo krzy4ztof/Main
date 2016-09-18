@@ -21,6 +21,9 @@
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
 					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="source/debugging" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -41,6 +44,9 @@
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
 					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="source/debugging" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -60,15 +66,21 @@
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
 					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="source/debugging" />
 				</Compiler>
 				<Linker>
-					<Add library="freeglut" />
 					<Add library="psapi" />
 					<Add library="opengl32" />
+					<Add library="freeglut" />
+					<Add library="lua" />
 					<Add library="boost_system" />
 					<Add library="boost_filesystem" />
 					<Add library="boost_locale" />
-					<Add library="lua" />
+					<Add library="boost_log" />
+					<Add library="boost_thread" />
+					<Add library="boost_log_setup" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
 				</Linker>
 			</Target>
@@ -80,12 +92,17 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="-DBOOST_LOG_DYN_LINK" />
 					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
 					<Add directory="source/utilities" />
 					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="../../../../../../../../../msys64/mingw64/x86_64-w64-mingw32/include" />
+					<Add directory="source/debugging" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -94,6 +111,9 @@
 					<Add library="boost_filesystem-mt" />
 					<Add library="boost_system-mt" />
 					<Add library="boost_locale-mt" />
+					<Add library="boost_log-mt" />
+					<Add library="boost_thread-mt" />
+					<Add library="boost_log_setup-mt" />
 					<Add library="lua" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
 					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
@@ -121,6 +141,10 @@
 		<Unit filename="../../../docs/watermill_readme.txt" />
 		<Unit filename="../../../game/debugOptions.xml" />
 		<Unit filename="../../../game/playerOptions.xml" />
+		<Unit filename="../../../source/debugging/Logger.cpp" />
+		<Unit filename="../../../source/debugging/Logger.h" />
+		<Unit filename="../../../source/eventManager/EventManager.cpp" />
+		<Unit filename="../../../source/eventManager/EventManager.h" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.cpp" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.hpp" />
 		<Unit filename="../../../source/gameInitialization/DataFiles.cpp" />
@@ -156,6 +180,8 @@
 		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.hpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.hpp" />
+		<Unit filename="../../../source/gameLogic/BaseGameLogic.cpp" />
+		<Unit filename="../../../source/gameLogic/BaseGameLogic.h" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.cpp" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.h" />
 		<Unit filename="../../../source/main/Main.cpp" />
@@ -187,6 +213,12 @@
 		<Unit filename="../../../source/utilities/PrimeSearch.h" />
 		<Unit filename="../../../source/utilities/RandomGenerator.cpp" />
 		<Unit filename="../../../source/utilities/RandomGenerator.h" />
+		<Unit filename="../../../source/utilities/StringUtils.cpp" />
+		<Unit filename="../../../source/utilities/StringUtils.h" />
+		<Unit filename="../../../source/watermillGame/WatermillGame.cpp" />
+		<Unit filename="../../../source/watermillGame/WatermillGame.h" />
+		<Unit filename="../../../source/watermillGame/WatermillLogic.cpp" />
+		<Unit filename="../../../source/watermillGame/WatermillLogic.h" />
 		<Unit filename="watermill.ini" />
 		<Extensions>
 			<code_completion />

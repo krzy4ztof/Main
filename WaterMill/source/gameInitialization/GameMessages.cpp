@@ -4,18 +4,17 @@
 #include <boost/locale.hpp>
 #include <iostream>
 #include <exception> // exception
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 using std::cout;
 using std::endl;
 using std::locale;
 using std::string;
 using std::exception;
+using std::stringstream;
 using boost::locale::translate;
 using boost::locale::generator;
-
-//using namespace std;
-//using namespace boost::locale;
-
 
 namespace watermill {
 
@@ -33,7 +32,9 @@ namespace watermill {
 
 	GameMessages::GameMessages(string assetsFolder, string language) {
 
-		cout << "LAN: " << language << endl;
+		stringstream ss;
+		ss << "LAN: " << language;
+		logger::trace(ss);
 		//this->assetsFolder = assetsFolder;
 		//this->language = language;
 		generator gen;
@@ -46,7 +47,6 @@ namespace watermill {
 		//locale::global(gen(""));
 		//locale loc = gen("");
 
-		cout << "LAN1" << endl;
 		//locale loc = gen(language);
 
 		locale loc;
@@ -55,26 +55,28 @@ namespace watermill {
 
 
 		} catch (exception& e) {
-			cout << "EXCEPTIOn1" << endl;
+			logger::warning("EXCEPTIOn1");
 			throw ErrorCode("GAME_MESSAGES_PROBLEM", 789);
 		}		//locale loc = gen("en.UTF-8");
 		//locale loc = gen("pl.UTF-8");
 
-		cout << "LAN2" << endl;
 		locale::global(loc);
 
 		//		cout.imbue(locale());
+		//cout.imbue(loc);
+		ss.imbue(loc);
 
-		cout << "LAN3" << endl;
-		cout.imbue(loc);
 
 		//cout << "The language code is " << std::use_facet<boost::locale::info>(some_locale).language() << endl;
 
-		cout << "The language code is " << std::use_facet<boost::locale::info>(loc).language() << endl;
+		ss << "The language code is " << std::use_facet<boost::locale::info>(loc).language();
+		logger::trace(ss);
 
-		cout << "The country code is " << std::use_facet<boost::locale::info>(loc).country() << endl;
+		ss << "The country code is " << std::use_facet<boost::locale::info>(loc).country();
+		logger::trace(ss);
 
-		cout << "name " << loc.name() << endl;
+		ss << "name " << loc.name();
+		logger::trace(ss);
 	}
 
 	GameMessages::~GameMessages() {
@@ -82,15 +84,20 @@ namespace watermill {
 	}
 
 	void GameMessages::testMessages() {
-
-
+		stringstream ss;
 		// Display a message using current system locale
-		cout << translate("hello_world") << endl;
-		cout << translate("hello_world_only_pl_pl") << endl;
-		cout << translate("hello_world_only_pl") << endl;
-		cout << translate("hello_world_only_en") << endl;
-		cout << translate("hello_world_only_default") << endl;
+		ss << translate("hello_world");
+		logger::trace(ss);
+		ss << translate("hello_world_only_pl_pl");
+		logger::trace(ss);
+		ss << translate("hello_world_only_pl");
+		logger::trace(ss);
+		ss << translate("hello_world_only_en");
+		logger::trace(ss);
+		ss << translate("hello_world_only_default");
+		logger::trace(ss);
 
-		cout << "Próba kodowania Cześć Świecie" << endl;
+		ss << "Próba kodowania Cześć Świecie";
+		logger::trace(ss);
 	}
 }

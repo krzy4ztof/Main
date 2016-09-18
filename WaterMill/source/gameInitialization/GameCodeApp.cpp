@@ -12,8 +12,7 @@
 */
 
 #include "GameCodeApp.hpp"
-#include<iostream>
-// cout
+#include<iostream> // cout
 
 #include "Macros.hpp"
 #include "DataFiles.hpp"
@@ -28,8 +27,13 @@
 #include "../resourceCache/IResourceFile.h"
 #include "../resourceCache/ResourceZipFile.h"
 
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream, std::stringbuf
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
+using std::stringstream;
 
 namespace watermill {
 
@@ -38,10 +42,6 @@ namespace watermill {
 	const string GameCodeApp::PLAYER_OPTIONS_XML = "playerOptions.xml";
 
 	const string GameCodeApp::ASSETS_ZIP = "assets.zip";
-
-
-	//const string GameCodeApp::GAME_PROCESS_NAME = "watermill.exe";
-
 
 	GameCodeApp::GameCodeApp() {
 
@@ -61,47 +61,13 @@ namespace watermill {
 	GameCodeApp::~GameCodeApp() {
 	}
 
-	bool GameCodeApp::initInstanceShortDebug() {
-		bool returnCode = true;
-
-		IResourceFile *zipFile = new ResourceZipFile(ASSETS_ZIP);
-		resourceCache = new ResourceCache(50,zipFile);
-
-		try {
-			initOptions = new InitOptions;
-
-			// Load programmer's options for debugging purposes
-			debuggingOptions = new DebuggingOptions;
-
-			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
-			debuggingOptions->load(debugFilePath);
-
-			bool done = true;
-			cout << "Main loop" << endl;
-
-			while ( !done ) {
-				// Main loop
-			}
-		} catch ( ErrorCode& error ) {
-			error.informUser();
-			returnCode = false;
-		}
-
-		debugging_options::safe_delete ( debuggingOptions );
-		init_options::safe_delete ( initOptions );
-
-		return ( returnCode );
-
-	}
-
 	bool GameCodeApp::initInstance() {
 		bool returnCode = true;
 		SystemCalls systemCalls;
 #ifndef _DEBUG
 
 		if ( !systemCalls.isOnlyInstance ( GameCodeApp::GAME_PROCESS_NAME ) ) {
-			//if (!systemCalls.IsOnlyInstance(GAME_TITLE)) {
-			cout << "There is another process running" << endl;
+			logger::warning("There is another process running");
 			return false;
 		}
 
@@ -114,8 +80,13 @@ namespace watermill {
 			//			const DWORDLONG physicalRAM = 512 * MEGABYTE;
 			//			const DWORDLONG virtualRAM = 1024 * MEGABYTE;
 			//			const DWORDLONG diskSpace = 10 * MEGABYTE;
-			const unsigned long long physicalRAM = 512 * MEGABYTE;
-			const unsigned long long virtualRAM = 1024 * MEGABYTE;
+
+			//const unsigned long long physicalRAM = 512 * MEGABYTE;
+			//const unsigned long long virtualRAM = 1024 * MEGABYTE;
+			const unsigned long long physicalRAM = 1 * MEGABYTE;
+			const unsigned long long virtualRAM = 1 * MEGABYTE;
+
+
 			const unsigned long long diskSpace = 10 * MEGABYTE;
 
 			if ( !systemCalls.checkHardDisk ( diskSpace ) ) {
@@ -127,10 +98,12 @@ namespace watermill {
 			const unsigned long minCpuSpeed = 1300; // 1.3Ghz
 			unsigned long thisCPU = systemCalls.readCPUSpeed();
 
-			cout << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]" << endl;
+			stringstream ss;
+			ss << "CPU speed needed: " << minCpuSpeed << " [MHz], CPU speed available: " << thisCPU << " [MHz]";
+			logger::trace(ss);
 
 			if ( thisCPU < minCpuSpeed ) {
-				cout << "GetCPUSpeed reports CPU is too slow for this game." << endl;
+				logger::warning("GetCPUSpeed reports CPU is too slow for this game.");
 				return false;
 			}
 
@@ -153,17 +126,18 @@ namespace watermill {
 			playerOptions->load(playerOptionsFilePath);
 
 
-			cout << "init game messages" << endl;
+			logger::trace("init game messages");
 			gameMessages = new GameMessages(initOptions->getAssetsFolder(), playerOptions->getOption(playerOptions->LANGUAGE));
 
-			cout << "test game messages" << endl;
+			logger::trace("test game messages");
 			gameMessages->testMessages();
 
-
-			cout << "end game messages" << endl;
+			logger::trace("end game messages");
 
 			luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
 			luaStateManager->testLua("test.lua");
+
+			eventManager = new EventManager();
 
 			// Load programmer's options for debugging purposes
 			debuggingOptions = new DebuggingOptions;
@@ -173,19 +147,49 @@ namespace watermill {
 			//debuggingOptions.load("..\\..\\..\\media\\debugOptions.xml"); // OK
 			//			debuggingOptions->load("../../../media/debugOptions.xml");
 
-			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
-			debuggingOptions->load(debugFilePath);
+			logger::trace("debuggingOptions+++++");
 
+			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
+			logger::trace("debuggingOptions+++++2");
+
+			debuggingOptions->load(debugFilePath);
+			logger::trace("debuggingOptions+++++3");
 
 			dataFiles = new DataFiles;
 			audioSystem = new AudioSystem;
 			videoSystem = new VideoSystem;
-			bool done = true;
-			cout << "Main loop" << endl;
 
+			logger::trace("videoSystem++++");
+
+			// initialize the directory location you can store save game files
+			//_tcscpy_s(m_saveGameDirectory, GetSaveGameDirectory(GetHwnd(), VGetGameAppDirectory()));
+			//string* gameAppDir =
+
+			saveGameDirectory = vGetGameAppDirectory();
+
+			stringstream ss;
+			ss << "saveGame: " << saveGameDirectory;
+			logger::trace(ss);
+
+			systemCalls.getSaveGameFolderPath();
+			videoSystem->startFreeGlut(GAME_PROCESS_NAME);
+
+			logger::trace("createGameAndView++++");
+
+			m_pGame = createGameAndView();
+
+
+			bool done = false;
+			logger::trace("Main loop+++");
+
+			videoSystem->startFreeGlutMainLoop();
 			while ( !done ) {
 				// Main loop
+
+				done = true;
 			}
+
+
 		} catch ( ErrorCode& error ) {
 			error.informUser();
 			returnCode = false;
@@ -195,6 +199,7 @@ namespace watermill {
 		audio_system::safe_delete ( audioSystem );
 		data_files::safe_delete ( dataFiles );
 		lua_state_manager::safe_delete(luaStateManager);
+		event_manager::safe_delete(eventManager);
 
 		debugging_options::safe_delete ( debuggingOptions );
 

@@ -60,7 +60,21 @@ B) Boost:
 boost_filesystem
 C) Boost:
 boost_locale
-(link to C:\cygwin64\lib\\libboost_locale.dll.a)
+(link to C:\cygwin64\lib\libboost_locale.dll.a)
+
+D) Boost:
+boost_log
+(link to C:\cygwin64\lib\libboost_log.dll.a)
+E) Boost:
+boost_thread
+(link to C:\cygwin64\lib\libboost_thread.dll.a)
+F) Boost:
+boost_log_setup
+(link to C:\cygwin64\lib\libboost_log_setup.dll.a)
+
+glut
+(link to C:\cygwin64\usr\x86_64-w64-mingw32\sys-root\mingw\lib)
+
 
 Project -> Remove files
 source/scripts/test.cpp
@@ -118,8 +132,70 @@ Package:
 All->Interpreters
 	5.2.4-1 lua: Lua programming language interpreter
 	5.2.4-1 lua-devel: Lua programming language interpreter
-	
-	
 
+***************
+***	GLEW	***
+***************
+Package:
+All->Devel
+	mingw64-x86_g4-glew: OpenGL Extension Wrangler library for Win64  toolchain
+	mingw64+x86_64-pkg-config
+
+***********
+***	SDL	***
+***********
+
+
+Package:
+All->Devel
+	mingw64-x86_64-SDL2: Simple DirectMedia Layer core library for Win64 toolchain   --- UNINSTALL!!
+	
+	
+C:\cygwin64\home\Krzysztof\sdl\SDL2-2.0.4.tar.gz
+
+>> tar zxf SDL2-2.0.4.tar.gz
+>> cd SDL2-2.0.4
+
+SDL2-2.0.4/INSTALL.TXT
+Linux and other UNIX systems:
+* Run './configure; make; make install'
+        
+
+./configure
+make
+errors
+        
+
+***************
+***	SFML	***
+***************
+	
+C:\cygwin64\home\Krzysztof\sfml\SFML-2.4.0-linux-gcc-64-bit.tar.gz
+tar zxf SFML-2.4.0-linux-gcc-64-bit.tar.gz
+cd SFML-2.4.0
+
+
+cmake	
+Package:
+All->Devel
+	cmake: Cross-platform makefile generation system
+	cmake-doc: Cross-platform makefile generation system (documentation)
+	cmake-gui: Cross-platform makefile generation system (GUI)
+
+cd /home/Krzysztof/sfml/sfml_build
+ cmake -G"Unix Makefiles" ./unix_build
+
+
+https://github.com/SFML/SFML
+
+
+cd C:\home\myImportantFiles\projects\git
+git clone https://github.com/SFML/SFML
+
+copy C:\home\myImportantFiles\projects\git to C:\cygwin64\home\Krzysztof\sfml\sfml-git\SFML
+cd ~/sfml/sfml-git/SFML
+
+cd ~/sfml/sfml_build
+cmake -G"Unix Makefiles" ~/sfml/sfml-git/SFML
 
 

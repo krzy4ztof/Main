@@ -14,6 +14,8 @@
 #ifndef VIDEOSYSTEM_HPP
 #define VIDEOSYSTEM_HPP
 
+#include <string> // string
+
 namespace watermill {
 
 	class VideoSystem {
@@ -21,13 +23,19 @@ namespace watermill {
 			VideoSystem();
 			VideoSystem(const VideoSystem& orig);
 			virtual ~VideoSystem();
+/* */
+			void startFreeGlut(std::string title);
+			void startFreeGlutMainLoop();
+		/*	void display_xxx(); */
 		private:
+
 
 	};
 
 
 	namespace video_system {
 		void safe_delete(VideoSystem* p);
+		void displayFreeGlut();
 	}
 }
 #endif /* VIDEOSYSTEM_HPP */

@@ -78,15 +78,87 @@ Reformat: All Lines
 Remove Trailing Whitespace From: All Lines
 
 
-*******************
-***	TeapotWars	***
-*******************
+*******************************
+***	TeapotWars - Main Entry	***
+*******************************
 
 Main entry:
-C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source\TeapotWars\Msvc
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\TeapotWars\Msvc
 
 int APIENTRY _tWinMain
 
+
+---	1.	---
+Start of the application:
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\TeapotWars\TeapotWars.cpp
+	
+TeapotWarsApp g_TeapotWarsApp; - constructor of TeapotWarsApp and GameCodeApp is called; 
+	
+---	2.	---
+TeapotWarsApp is subclass of GameCodeApp
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\TeapotWars\Msvc\TeapotWars.h
+class TeapotWarsApp : public GameCodeApp
+
+---	3.	---	
+g_pApp is initialized in GameCodeApp constructor.
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\GCC4\GameCode4\GameCode.cpp
+GameCodeApp::GameCodeApp()
+{
+	g_pApp = this;
+		
+---	4.	---	
+Start of windows application
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\TeapotWars\TeapotWars.cpp
+	
+INT WINAPI wWinMain
+	return GameCode4(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+
+---	5.	---	
+GameCode4 is called.
+g_pApp was initialized in step 3.
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\GCC4\GameCode4\GameCode4.cpp
+
+INT WINAPI GameCode4(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPWSTR    lpCmdLine,
+                     int       nCmdShow)
+{
+    Logger::Init("logging.xml");
+	// Perform application initialization
+	if (!g_pApp->InitInstance (hInstance, lpCmdLine, 0, g_pApp->m_Options.m_ScreenSize.x, g_pApp->m_Options.m_ScreenSize.y)) 
+
+
+
+***************************
+***	TeapotWars - Logger	***
+***************************
+
+Log macros used everythere, defined in 	
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\GCC4\Debugging\Logger.h
+
+#define GCC_INFO(str)
+	...
+		Logger::Log("INFO", s, NULL, NULL, 0);
+	
+Logger::Log defined in
+C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
+	\GCC4\Debugging\Logger.cpp
+
+namespace Logger
+	void Log
+		s_pLogMgr->Log(tag, message, funcName, sourceFile, lineNum);
+		
+where (Logger.cpp)
+static LogMgr* s_pLogMgr = NULL;		
+	
+	
 ***********	
 ***	Git	***
 ***********
@@ -287,5 +359,17 @@ git rm -r nbproject (-r recursice)
 git rm -r -f nbproject (-f force removal)
 
 
+||=== Build: Debug_MinGW64 in Watermill (compiler: MinGW64) ===|
+
+C:\home\myImportantFiles\projects\git\Main\WaterMill\source\debugging\Logger.cpp||
+In function 'void watermill::logger::custom_formatter(const boost::log::v2_mt_nt5::record_view&, 
+boost::log::v2_mt_nt5::formatting_ostream&)':|
+
+C:\home\myImportantFiles\projects\git\Main\WaterMill\source\debugging\Logger.cpp|127|error: 
+conversion from 'boost::log::v2_mt_nt5::result_of::extract<boost::posix_time::ptime, void>::type 
+{aka boost::log::v2_mt_nt5::value_ref<boost::posix_time::ptime, void>}' 
+to non-scalar type 'boost::posix_time::ptime' requested|
+
+||=== Build failed: 1 error(s), 0 warning(s) (0 minute(s), 18 second(s)) ===|
 
 

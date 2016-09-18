@@ -11,38 +11,36 @@
  * Created on 30 kwietnia 2016, 13:58
  */
 
-#include<stdio.h>
-// printf
-#include<string.h>
-// strcpy
-#include<iostream>
-// cout
+#include<iostream> // cout
 #include "ErrorCode.hpp"
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
-using namespace std;
-// std::string
+using std::string;
+using std::stringstream;
 
 namespace watermill {
 
-    ErrorCode::ErrorCode() {
-    }
+	ErrorCode::ErrorCode() {
+	}
 
-    //ErrorCode::ErrorCode(char error_message[], int error_number) {
+	//ErrorCode::ErrorCode(char error_message[], int error_number) {
 
-    ErrorCode::ErrorCode(const string& error_message, int error_number) {
-        number = error_number;
-        message = error_message;
-        //strcpy(message, error_message);
-    }
+	ErrorCode::ErrorCode(const string& error_message, int error_number) {
+		number = error_number;
+		message = error_message;
+	}
 
-    ErrorCode::ErrorCode(const ErrorCode& orig) {
-    }
+	ErrorCode::ErrorCode(const ErrorCode& orig) {
+	}
 
-    ErrorCode::~ErrorCode() {
-    }
+	ErrorCode::~ErrorCode() {
+	}
 
-    void ErrorCode::informUser() {
-        std::cout << "Error Code: " << message << "; number: " << number << std::endl;
-    }
+	void ErrorCode::informUser() {
+		stringstream ss;
+		ss << "Error Code: " << message << "; number: " << number;
+		logger::error(ss);
+	}
 }
 

@@ -122,3 +122,5 @@ git rm --cached Watermill.depend
 git rm --cached Watermill.exe.stackdump
 git rm --cached Watermill.layout
 
+git commit -m 'Tile for commit'
+git push

@@ -1,10 +1,8 @@
 #include "RandomGenerator.h"
 #include <random> // mt19937, uniform_int_distribution
-//#include <boost/random/mersenne_twister.hpp> // mt19937
-//#include <boost/random/uniform_int_distribution.hpp> // uniform_int_distribution
-#include<iostream> // cout
 
-using namespace std;
+using std::mt19937;
+using std::uniform_int_distribution;
 
 namespace watermill {
 

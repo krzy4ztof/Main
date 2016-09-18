@@ -131,14 +131,14 @@ namespace watermill {
 	void DebuggingOptions::loadMain(const string &filename) {
 		boost::property_tree::ptree tree;
 		boost::property_tree::read_xml(filename, tree);
-		property_tree_utils::print_tree(tree,0);
+	//	property_tree_utils::print_tree(tree,0);
 
 		loadRootNode(tree);
 		map<string, string>::iterator optionsIterator;
 
-		for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
-			cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
-		}
+	//	for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
+	//		cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
+	//	}
 	}
 
 	void DebuggingOptions::load(const string &filename) {
