@@ -124,3 +124,10 @@ git rm --cached Watermill.layout
 
 git commit -m 'Tile for commit'
 git push
+
+***************
+***	Rename	***
+***************
+Rename from Windows64Calls.hpp to Windows64Calls.h
+
+git mv Windows64Calls.hpp Windows64Calls.h

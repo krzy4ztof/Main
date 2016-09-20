@@ -147,8 +147,8 @@ namespace watermill {
 		restart();
 
 		currentPrime = prime_array;
-		int s = sizeof(prime_array)/sizeof(prime_array[0]);
 
+		int s = sizeof(prime_array)/sizeof(prime_array[0]);
 		// if this GCC_ASSERT gets hit you didn't have enough prime numbers to deal with this number of
 		// elements. Go back to the web site.
 		//GCC_ASSERT(prime_array[s-1]>maxElements);

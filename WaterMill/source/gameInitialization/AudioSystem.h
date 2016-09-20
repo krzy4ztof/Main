@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   AudioSystem.hpp
+ * File:   AudioSystem.h
  * Author: Krzysztof
  *
  * Created on 30 kwietnia 2016, 12:48
  */
 
-#ifndef AUDIOSYSTEM_HPP
-#define AUDIOSYSTEM_HPP
+#ifndef AUDIOSYSTEM_H
+#define AUDIOSYSTEM_H
 
 namespace watermill {
 
@@ -29,5 +29,5 @@ namespace watermill {
 		void safe_delete(AudioSystem* p);
 	}
 }
-#endif /* AUDIOSYSTEM_HPP */
+#endif /* AUDIOSYSTEM_H */
 

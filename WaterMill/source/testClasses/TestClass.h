@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   TestClass.hpp
+ * File:   TestClass.h
  * Author: Krzysztof
  *
  * Created on 29 kwietnia 2016, 21:37
  */
 
-#ifndef TESTCLASS_HPP
-#define TESTCLASS_HPP
+#ifndef TESTCLASS_H
+#define TESTCLASS_H
 
 #include <iostream>
 
@@ -40,5 +40,5 @@ namespace watermill {
 
     };
 }
-#endif /* TESTCLASS_HPP */
+#endif /* TESTCLASS_H */
 

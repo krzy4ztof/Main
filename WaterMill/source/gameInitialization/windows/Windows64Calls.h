@@ -5,21 +5,21 @@
  */
 
 /*
- * File:   Windows64Calls.hpp
+ * File:   Windows64Calls.h
  * Author: Krzysztof
  *
  * Created on 2 maja 2016, 20:05
  */
 
-#ifndef WINDOWS64CALLS_HPP
-#define WINDOWS64CALLS_HPP
+#ifndef WINDOWS64CALLS_H
+#define WINDOWS64CALLS_H
 
 #ifdef __WIN64
 //#ifdef __LINUX__
 //#define WINVER 0x0500
 
 #include <windows.h>
-#include "Windows32Calls.hpp"
+#include "Windows32Calls.h"
 #include <string>
 
 namespace watermill {
@@ -45,4 +45,4 @@ namespace watermill {
 }
 #endif /* __WIN64 */
 
-#endif /* WINDOWS64CALLS_HPP */
+#endif /* WINDOWS64CALLS_H */

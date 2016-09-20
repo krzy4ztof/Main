@@ -14,14 +14,14 @@
 #ifdef __WIN64
 //#ifdef __LINUX__
 
-#include "Windows64Calls.hpp"
+#include "Windows64Calls.h"
 #include <windows.h>
 #include <iostream>
 
 #include <stdio.h>
 #include <psapi.h>
 
-#include "../Macros.hpp"
+#include "../Macros.h"
 
 #include <stdlib.h> //getenv
 #include "../../debugging/Logger.h"

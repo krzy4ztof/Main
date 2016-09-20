@@ -11,8 +11,8 @@
  * Created on 30 kwietnia 2016, 12:48
  */
 
-#include "DataFiles.hpp"
-#include "ErrorCode.hpp"
+#include "DataFiles.h"
+#include "ErrorCode.h"
 
 namespace watermill {
 

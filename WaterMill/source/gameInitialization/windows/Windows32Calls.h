@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   WindowsCalls.hpp
+ * File:   WindowsCalls.h
  * Author: Krzysztof
  *
  * Created on 2 maja 2016, 19:22
  */
 
-#ifndef WINDOWS32CALLS_HPP
-#define WINDOWS32CALLS_HPP
+#ifndef WINDOWS32CALLS_H
+#define WINDOWS32CALLS_H
 
 #ifdef __WIN32
 //#ifdef __LINUX__
@@ -45,5 +45,5 @@ namespace watermill {
 }
 #endif /* __WIN32 */
 
-#endif /* WINDOWSCALLS_HPP */
+#endif /* WINDOWSCALLS_H */
 

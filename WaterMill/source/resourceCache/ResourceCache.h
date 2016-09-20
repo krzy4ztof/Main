@@ -16,5 +16,9 @@ namespace watermill {
 			unsigned int cacheSize;			// total memory size
 			unsigned int allocated;			// total memory allocated
 	};
+
+	namespace resource_cache {
+		void safe_delete(ResourceCache* p);
+	};
 }
 #endif // RESOURCECACHE_H

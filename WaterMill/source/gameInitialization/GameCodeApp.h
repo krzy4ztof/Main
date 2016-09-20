@@ -5,18 +5,18 @@
  */
 
 /*
- * File:   GameCodeApp.hpp
+ * File:   GameCodeApp.h
  * Author: Krzysztof
  *
  * Created on 30 kwietnia 2016, 20:15
  */
 
-#ifndef GAMECODEAPP_HPP
-#define GAMECODEAPP_HPP
+#ifndef GAMECODEAPP_H
+#define GAMECODEAPP_H
 
-#include "DataFiles.hpp"
-#include "AudioSystem.hpp"
-#include "VideoSystem.hpp"
+#include "DataFiles.h"
+#include "AudioSystem.h"
+#include "VideoSystem.h"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
 #include "PlayerOptions.h"
@@ -42,7 +42,10 @@ namespace watermill {
 			GameCodeApp(const GameCodeApp& orig);
 			virtual ~GameCodeApp();
 
+			bool initAllOptions();
 			bool initInstance();
+			void mainLoop();
+			void onClose();
 
 			// GameCode Specific Stuff
 			BaseGameLogic *m_pGame;
@@ -68,6 +71,10 @@ namespace watermill {
 
 			std::string saveGameDirectory;
 	};
+
+    namespace game_code_app {
+		void safe_delete(GameCodeApp* p);
+	};
 }
-#endif /* GAMECODEAPP_HPP */
+#endif /* GAMECODEAPP_H */
 

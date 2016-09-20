@@ -12,26 +12,23 @@
  */
 
 
-#include <cstdlib>
-#include <stdio.h>
+//#include <cstdlib>
+//#include <stdio.h>
 
-#include<iostream> // cout
-
-#include "../gameInitialization/Macros.hpp"
-#include "../testClasses/TestClass.hpp"
-#include "../gameInitialization/GameCodeApp.hpp"
-#include "../watermillGame/WatermillGame.h"
-#include "../debugging/Logger.h"
-#include <sstream>      // std::stringstream
+#include<iostream> // cout, endl
+//#include "../gameInitialization/Macros.h"
+#include "../testClasses/TestClass.h"
+//#include <sstream>      // std::stringstream
+#include "GameMain.h"
 
 
 //#include <windows.h>  // For MS Windows
 //#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 
-using std::string;
+//using std::string;
 using std::cout;
 using std::endl;
-using std::stringstream;
+//using std::stringstream;
 
 
 void testMain() {
@@ -47,6 +44,7 @@ void testMain() {
 	testClass.loggerRun();
 }
 
+/*
 int mainInit(int argc, char** argv) {
 
 	//TODO: see
@@ -78,6 +76,7 @@ int mainInit(int argc, char** argv) {
 
 	return 0;
 }
+*/
 
 int main(int argc, char** argv) {
 	/*
@@ -87,8 +86,10 @@ int main(int argc, char** argv) {
 	 */
 
 	//testMain();
+
+	watermill::GameMain gameMain;
 	int res = 0;
-	res = mainInit(argc, argv);
+	res = gameMain.init(argc, argv);
 	cout << "MAIN END" << endl;
 
 	return res;

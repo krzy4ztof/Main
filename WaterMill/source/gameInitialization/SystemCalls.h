@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   SystemCalls.hpp
+ * File:   SystemCalls.h
  * Author: Krzysztof
  *
  * Created on 2 maja 2016, 19:47
  */
 
-#ifndef SYSTEMCALLS_HPP
-#define SYSTEMCALLS_HPP
+#ifndef SYSTEMCALLS_H
+#define SYSTEMCALLS_H
 
 using namespace watermill;
 
@@ -22,19 +22,19 @@ using namespace watermill;
 #ifdef __WIN64
 // __WIN64 Only 64 bit
 // MinGW64
-#include "windows/Windows64Calls.hpp"
+#include "windows/Windows64Calls.h"
 //using SystemCalls = WindowsCalls;
 typedef Windows64Calls SystemCalls;
 #else
 // MinGW
-#include "windows/Windows32Calls.hpp"
+#include "windows/Windows32Calls.h"
 //using SystemCalls = WindowsCalls;
 typedef Windows32Calls SystemCalls;
 #endif /* __WIN64 */
 #else
 
 #ifdef __CYGWIN__
-#include "windows/Cygwin64Calls.hpp"
+#include "windows/Cygwin64Calls.h"
 //using SystemCalls = WindowsCalls;
 typedef Cygwin64Calls SystemCalls;
 
@@ -42,7 +42,7 @@ typedef Cygwin64Calls SystemCalls;
 
 #ifdef __LINUX__
 //#ifdef __WIN32__
-#include "linux/LinuxCalls.hpp"
+#include "linux/LinuxCalls.h"
 //using SystemCalls = LinuxCalls;
 typedef LinuxCalls SystemCalls;
 #endif /* __LINUX__ */

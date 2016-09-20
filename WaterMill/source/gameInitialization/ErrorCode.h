@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   ErrorCode.hpp
+ * File:   ErrorCode.h
  * Author: Krzysztof
  *
  * Created on 30 kwietnia 2016, 13:58
  */
 
-#ifndef ERRORCODE_HPP
-#define ERRORCODE_HPP
+#ifndef ERRORCODE_H
+#define ERRORCODE_H
 #include <string>
 
 namespace watermill {
@@ -30,5 +30,5 @@ namespace watermill {
 
     };
 }
-#endif /* ERRORCODE_HPP */
+#endif /* ERRORCODE_H */
 

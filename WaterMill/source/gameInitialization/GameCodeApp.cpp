@@ -11,16 +11,16 @@
     Created on 30 kwietnia 2016, 20:15
 */
 
-#include "GameCodeApp.hpp"
+#include "GameCodeApp.h"
 #include<iostream> // cout
 
-#include "Macros.hpp"
-#include "DataFiles.hpp"
-#include "AudioSystem.hpp"
-#include "VideoSystem.hpp"
-#include "ErrorCode.hpp"
+#include "Macros.h"
+#include "DataFiles.h"
+#include "AudioSystem.h"
+#include "VideoSystem.h"
+#include "ErrorCode.h"
 
-#include "SystemCalls.hpp"
+#include "SystemCalls.h"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
 #include "../resourceCache/ResourceCache.h"
@@ -45,13 +45,18 @@ namespace watermill {
 
 	GameCodeApp::GameCodeApp() {
 
-		initOptions = NULL;
-		debuggingOptions = NULL;
+		initOptions = nullptr;
+		playerOptions = nullptr;
+		debuggingOptions = nullptr;
 
-		resourceCache = NULL;
-		dataFiles = NULL;
-		audioSystem = NULL;
-		videoSystem = NULL;
+		resourceCache = nullptr;
+
+		gameMessages = nullptr;
+		luaStateManager = nullptr;
+		eventManager = nullptr;
+		dataFiles = nullptr;
+		audioSystem = nullptr;
+		videoSystem = nullptr;
 
 	}
 
@@ -59,6 +64,30 @@ namespace watermill {
 	}
 
 	GameCodeApp::~GameCodeApp() {
+		logger::trace("GameCodeApp Destroy");
+		onClose();
+	}
+
+	bool GameCodeApp::initAllOptions() {
+		bool returnCode = true;
+
+		try {
+			initOptions = new InitOptions;
+
+			playerOptions = new PlayerOptions;
+			string playerOptionsFilePath = initOptions->getGameFolder() + PLAYER_OPTIONS_XML;
+			playerOptions->load(playerOptionsFilePath);
+
+			// Load programmer's options for debugging purposes
+			debuggingOptions = new DebuggingOptions;
+			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
+			debuggingOptions->load(debugFilePath);
+		} catch ( ErrorCode& error ) {
+			error.informUser();
+			returnCode = false;
+		}
+
+		return returnCode;
 	}
 
 	bool GameCodeApp::initInstance() {
@@ -118,42 +147,13 @@ namespace watermill {
 		resourceCache = new ResourceCache(50,zipFile);
 
 		try {
-			initOptions = new InitOptions;
-
-
-			playerOptions = new PlayerOptions;
-			string playerOptionsFilePath = initOptions->getGameFolder() + PLAYER_OPTIONS_XML;
-			playerOptions->load(playerOptionsFilePath);
-
-
-			logger::trace("init game messages");
 			gameMessages = new GameMessages(initOptions->getAssetsFolder(), playerOptions->getOption(playerOptions->LANGUAGE));
-
-			logger::trace("test game messages");
 			gameMessages->testMessages();
-
-			logger::trace("end game messages");
 
 			luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
 			luaStateManager->testLua("test.lua");
 
 			eventManager = new EventManager();
-
-			// Load programmer's options for debugging purposes
-			debuggingOptions = new DebuggingOptions;
-
-			//C:\home\myImportantFiles\projects\git\Main\WaterMill\media
-			//C:\home\myImportantFiles\projects\git\Main\WaterMill\settings\codeblocks\Watermill
-			//debuggingOptions.load("..\\..\\..\\media\\debugOptions.xml"); // OK
-			//			debuggingOptions->load("../../../media/debugOptions.xml");
-
-			logger::trace("debuggingOptions+++++");
-
-			string debugFilePath = initOptions->getGameFolder() + DEBUG_OPTIONS_XML;
-			logger::trace("debuggingOptions+++++2");
-
-			debuggingOptions->load(debugFilePath);
-			logger::trace("debuggingOptions+++++3");
 
 			dataFiles = new DataFiles;
 			audioSystem = new AudioSystem;
@@ -178,36 +178,66 @@ namespace watermill {
 
 			m_pGame = createGameAndView();
 
+			/*
+						bool done = false;
+						logger::trace("Main loop+++");
 
-			bool done = false;
-			logger::trace("Main loop+++");
+						videoSystem->startFreeGlutMainLoop();
+						while ( !done ) {
+							// Main loop
 
-			videoSystem->startFreeGlutMainLoop();
-			while ( !done ) {
-				// Main loop
-
-				done = true;
-			}
-
+							done = true;
+						}
+			*/
 
 		} catch ( ErrorCode& error ) {
 			error.informUser();
 			returnCode = false;
 		}
+		return ( returnCode );
+	}
 
+	void GameCodeApp::mainLoop() {
+		bool done = false;
+		logger::trace("Main loop+++");
+
+		videoSystem->startFreeGlutMainLoop();
+		while ( !done ) {
+			// Main loop
+
+			done = true;
+		}
+
+	}
+
+	void GameCodeApp::onClose() {
+
+		// gameView
+		// saveGameDirectory
 		video_system::safe_delete ( videoSystem );
 		audio_system::safe_delete ( audioSystem );
 		data_files::safe_delete ( dataFiles );
-		lua_state_manager::safe_delete(luaStateManager);
 		event_manager::safe_delete(eventManager);
 
-		debugging_options::safe_delete ( debuggingOptions );
-
+		lua_state_manager::safe_delete(luaStateManager);
 		game_messages::safe_delete(gameMessages);
+
+
+		resource_cache::safe_delete(resourceCache);
+		//IResourceFile
+		debugging_options::safe_delete ( debuggingOptions );
 		player_options::safe_delete(playerOptions);
 		init_options::safe_delete ( initOptions );
 
-		return ( returnCode );
+	}
+
+	namespace game_code_app {
+		void safe_delete(GameCodeApp* p) {
+			if (p) {
+				delete (p);
+				(p)=nullptr;
+			}
+		}
 	}
 }
 

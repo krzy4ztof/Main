@@ -24,6 +24,7 @@
 					<Add directory="source/eventManager" />
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
+					<Add directory="source/main" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -47,6 +48,7 @@
 					<Add directory="source/eventManager" />
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
+					<Add directory="source/main" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -69,6 +71,7 @@
 					<Add directory="source/eventManager" />
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
+					<Add directory="source/main" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -103,6 +106,7 @@
 					<Add directory="source/watermillGame" />
 					<Add directory="../../../../../../../../../msys64/mingw64/x86_64-w64-mingw32/include" />
 					<Add directory="source/debugging" />
+					<Add directory="source/main" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -146,44 +150,46 @@
 		<Unit filename="../../../source/eventManager/EventManager.cpp" />
 		<Unit filename="../../../source/eventManager/EventManager.h" />
 		<Unit filename="../../../source/gameInitialization/AudioSystem.cpp" />
-		<Unit filename="../../../source/gameInitialization/AudioSystem.hpp" />
+		<Unit filename="../../../source/gameInitialization/AudioSystem.h" />
 		<Unit filename="../../../source/gameInitialization/DataFiles.cpp" />
-		<Unit filename="../../../source/gameInitialization/DataFiles.hpp" />
+		<Unit filename="../../../source/gameInitialization/DataFiles.h" />
 		<Unit filename="../../../source/gameInitialization/DebuggingOptions.cpp" />
 		<Unit filename="../../../source/gameInitialization/DebuggingOptions.h" />
 		<Unit filename="../../../source/gameInitialization/ErrorCode.cpp" />
-		<Unit filename="../../../source/gameInitialization/ErrorCode.hpp" />
+		<Unit filename="../../../source/gameInitialization/ErrorCode.h" />
 		<Unit filename="../../../source/gameInitialization/GameCodeApp.cpp" />
-		<Unit filename="../../../source/gameInitialization/GameCodeApp.hpp" />
+		<Unit filename="../../../source/gameInitialization/GameCodeApp.h" />
 		<Unit filename="../../../source/gameInitialization/GameMessages.cpp" />
 		<Unit filename="../../../source/gameInitialization/GameMessages.h" />
 		<Unit filename="../../../source/gameInitialization/InitOptions.cpp" />
 		<Unit filename="../../../source/gameInitialization/InitOptions.h" />
 		<Unit filename="../../../source/gameInitialization/Macros.cpp" />
-		<Unit filename="../../../source/gameInitialization/Macros.hpp" />
+		<Unit filename="../../../source/gameInitialization/Macros.h" />
 		<Unit filename="../../../source/gameInitialization/PlayerOptions.cpp" />
 		<Unit filename="../../../source/gameInitialization/PlayerOptions.h" />
 		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.cpp" />
 		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.h" />
-		<Unit filename="../../../source/gameInitialization/SystemCalls.hpp" />
+		<Unit filename="../../../source/gameInitialization/SystemCalls.h" />
 		<Unit filename="../../../source/gameInitialization/VideoSystem.cpp" />
-		<Unit filename="../../../source/gameInitialization/VideoSystem.hpp" />
+		<Unit filename="../../../source/gameInitialization/VideoSystem.h" />
 		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.cpp" />
-		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.hpp" />
+		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.cpp" />
-		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.hpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.cpp" />
-		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.hpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Windows32Calls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.cpp" />
-		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.hpp" />
+		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.h" />
 		<Unit filename="../../../source/gameLogic/BaseGameLogic.cpp" />
 		<Unit filename="../../../source/gameLogic/BaseGameLogic.h" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.cpp" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.h" />
+		<Unit filename="../../../source/main/GameMain.cpp" />
+		<Unit filename="../../../source/main/GameMain.h" />
 		<Unit filename="../../../source/main/Main.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
@@ -202,7 +208,7 @@
 		<Unit filename="../../../source/scripts/runMinGW.cmd" />
 		<Unit filename="../../../source/scripts/runMinGW64.cmd" />
 		<Unit filename="../../../source/testClasses/TestClass.cpp" />
-		<Unit filename="../../../source/testClasses/TestClass.hpp" />
+		<Unit filename="../../../source/testClasses/TestClass.h" />
 		<Unit filename="../../../source/utilities/MemoryPool.cpp" />
 		<Unit filename="../../../source/utilities/MemoryPool.h" />
 		<Unit filename="../../../source/utilities/MemoryUsageObject.cpp" />

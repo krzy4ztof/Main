@@ -1,5 +1,5 @@
 
-#include "Macros.hpp"
+#include "Macros.h"
 
 namespace watermill {
 	namespace macros {

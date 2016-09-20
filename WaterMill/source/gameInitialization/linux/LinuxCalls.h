@@ -5,15 +5,15 @@
  */
 
 /*
- * File:   LinuxCalls.hpp
+ * File:   LinuxCalls.h
  * Author: Krzysztof
  *
  * Created on 2 maja 2016, 19:22
  */
 
 
-#ifndef LINUXCALLS_HPP
-#define LINUXCALLS_HPP
+#ifndef LINUXCALLS_H
+#define LINUXCALLS_H
 
 #ifdef __LINUX__
 //#ifdef __WIN32__
@@ -32,5 +32,5 @@ namespace watermill {
 }
 #endif /* __LINUX__ */
 
-#endif /* LINUXCALLS_HPP */
+#endif /* LINUXCALLS_H */
 

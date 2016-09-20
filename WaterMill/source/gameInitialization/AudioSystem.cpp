@@ -11,8 +11,8 @@
  * Created on 30 kwietnia 2016, 12:48
  */
 
-#include "AudioSystem.hpp"
-#include "ErrorCode.hpp"
+#include "AudioSystem.h"
+#include "ErrorCode.h"
 
 namespace watermill {
 

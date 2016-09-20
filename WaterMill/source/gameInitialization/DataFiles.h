@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   DataFiles.hpp
+ * File:   DataFiles.h
  * Author: Krzysztof
  *
  * Created on 30 kwietnia 2016, 12:48
  */
 
-#ifndef DATAFILES_HPP
-#define DATAFILES_HPP
+#ifndef DATAFILES_H
+#define DATAFILES_H
 
 namespace watermill {
 
@@ -29,5 +29,5 @@ namespace watermill {
 		void safe_delete(DataFiles* p);
 	}
 }
-#endif /* DATAFILES_HPP */
+#endif /* DATAFILES_H */
 

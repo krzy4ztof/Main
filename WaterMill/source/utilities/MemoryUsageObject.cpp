@@ -1,5 +1,5 @@
 #include "MemoryUsageObject.h"
-#include "../gameInitialization/Macros.hpp"
+#include "../gameInitialization/Macros.h"
 #include <iostream> // cout, endl
 
 using namespace std;

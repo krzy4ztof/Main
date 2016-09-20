@@ -12,7 +12,7 @@
  */
 
 #include<iostream> // cout
-#include "ErrorCode.hpp"
+#include "ErrorCode.h"
 #include "../debugging/Logger.h"
 #include <sstream>      // std::stringstream
 

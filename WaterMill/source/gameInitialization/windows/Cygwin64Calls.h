@@ -5,19 +5,19 @@
  */
 
 /*
- * File:   Cygwin64Calls.hpp
+ * File:   Cygwin64Calls.h
  * Author: Krzysztof
  *
  * Created on 6 maja 2016, 22:02
  */
 
-#ifndef CYGWIN64CALLS_HPP
-#define CYGWIN64CALLS_HPP
+#ifndef CYGWIN64CALLS_H
+#define CYGWIN64CALLS_H
 
 
 #ifdef __CYGWIN__
 //#ifdef __LINUX__
-#include "Cygwin64Calls.hpp"
+#include "Cygwin64Calls.h"
 #include <string>
 #include <vector>
 
@@ -41,5 +41,5 @@ namespace watermill {
 }
 #endif /* __CYGWIN__ */
 
-#endif /* CYGWIN64CALLS_HPP */
+#endif /* CYGWIN64CALLS_H */
 

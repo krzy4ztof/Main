@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   lMacros.hpp
+ * File:   Macros.h
  * Author: Krzysztof
  *
  * Created on 1 maja 2016, 18:53
  */
 
-#ifndef LMACROS_HPP
-#define LMACROS_HPP
+#ifndef LMACROS_H
+#define LMACROS_H
 
 namespace watermill {
 	namespace macros {
@@ -35,5 +35,5 @@ namespace watermill {
 	}
 }
 
-#endif /* LMACROS_HPP */
+#endif /* LMACROS_H */
 

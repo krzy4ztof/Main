@@ -1,5 +1,5 @@
 #include "GameMessages.h"
-#include "ErrorCode.hpp"
+#include "ErrorCode.h"
 
 #include <boost/locale.hpp>
 #include <iostream>

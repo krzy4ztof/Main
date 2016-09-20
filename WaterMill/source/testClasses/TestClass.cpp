@@ -11,18 +11,18 @@
  * Created on 29 kwietnia 2016, 21:30
  */
 
-#include "TestClass.hpp"
+#include "TestClass.h"
 #include "../utilities/PrimeSearch.h"
 #include "../utilities/RandomGenerator.h"
 #include "../utilities/MemoryUsageObject.h"
-#include "../gameInitialization/Macros.hpp"
+#include "../gameInitialization/Macros.h"
 #include "../gameInitialization/GameMessages.h"
 #include "../gameInitialization/InitOptions.h"
 #include "../gameInitialization/PlayerOptions.h"
-#include "../gameInitialization/GameCodeApp.hpp"
-#include "../gameInitialization/ErrorCode.hpp"
+#include "../gameInitialization/GameCodeApp.h"
+#include "../gameInitialization/ErrorCode.h"
 #include "../luaScripting/LuaStateManager.h"
-#include "../gameInitialization/VideoSystem.hpp"
+#include "../gameInitialization/VideoSystem.h"
 #include "../debugging/Logger.h"
 
 

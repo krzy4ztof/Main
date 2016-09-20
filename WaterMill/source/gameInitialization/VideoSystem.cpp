@@ -11,8 +11,8 @@
  * Created on 30 kwietnia 2016, 12:49
  */
 
-#include "VideoSystem.hpp"
-#include "ErrorCode.hpp"
+#include "VideoSystem.h"
+#include "ErrorCode.h"
 
 //#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 #include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
@@ -20,7 +20,7 @@
 
 //#include <cstring>// strcpy
 
-#include "../gameInitialization/Macros.hpp" // GAME_TITLE
+#include "../gameInitialization/Macros.h" // GAME_TITLE
 #include <iostream> // cout, endl
 
 #include <cstdio> //fflush, printf
@@ -47,7 +47,7 @@ namespace watermill {
 		whenever the window needs to be re-painted. */
 		/**/
 		void displayFreeGlut() {
-			logger::trace("display----");
+			logger::info("display----");
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
 			glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer
 

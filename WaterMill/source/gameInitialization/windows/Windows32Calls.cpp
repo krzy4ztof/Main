@@ -14,7 +14,7 @@
 #ifdef __WIN32
 //#ifdef __LINUX__
 
-#include "Windows32Calls.hpp"
+#include "Windows32Calls.h"
 #include <windows.h>
 #include <iostream>
 
@@ -27,7 +27,7 @@
 
 // #include <strings.h> // strcasecmp
 
-#include "../Macros.hpp"
+#include "../Macros.h"
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
 

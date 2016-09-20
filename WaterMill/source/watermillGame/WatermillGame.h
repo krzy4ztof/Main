@@ -1,7 +1,7 @@
 #ifndef WATERMILLGAME_H
 #define WATERMILLGAME_H
 
-#include "../gameInitialization/GameCodeApp.hpp"
+#include "../gameInitialization/GameCodeApp.h"
 #include "../gameLogic/BaseGameLogic.h"
 
 #include <string>

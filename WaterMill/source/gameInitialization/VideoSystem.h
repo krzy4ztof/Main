@@ -5,14 +5,14 @@
  */
 
 /*
- * File:   VideoSystem.hpp
+ * File:   VideoSystem.h
  * Author: Krzysztof
  *
  * Created on 30 kwietnia 2016, 12:49
  */
 
-#ifndef VIDEOSYSTEM_HPP
-#define VIDEOSYSTEM_HPP
+#ifndef VIDEOSYSTEM_H
+#define VIDEOSYSTEM_H
 
 #include <string> // string
 
@@ -38,5 +38,5 @@ namespace watermill {
 		void displayFreeGlut();
 	}
 }
-#endif /* VIDEOSYSTEM_HPP */
+#endif /* VIDEOSYSTEM_H */
 

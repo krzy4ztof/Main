@@ -1,5 +1,5 @@
 #include "InitOptions.h"
-#include "ErrorCode.hpp"
+#include "ErrorCode.h"
 #include "PropertyTreeUtils.h"
 
 // TODO: remove

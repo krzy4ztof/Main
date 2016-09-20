@@ -14,7 +14,7 @@
 
 #ifdef __CYGWIN__
 
-#include "Cygwin64Calls.hpp"
+#include "Cygwin64Calls.h"
 #include "Cygwin64CpuCalls.h"
 
 #include <windows.h>
@@ -41,7 +41,7 @@
 
 #include <unistd.h> // sysconf, _SC_PHYS_PAGES, _SC_PAGE_SIZE
 
-#include "../Macros.hpp"
+#include "../Macros.h"
 
 #include "Cygwin64ProcessCalls.h"
 #include "../../debugging/Logger.h"
