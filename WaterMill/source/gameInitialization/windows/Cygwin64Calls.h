@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-namespace watermill {
+namespace base_game {
 
 	class Cygwin64Calls {
 		public:
@@ -34,7 +34,7 @@ namespace watermill {
 			unsigned long readCPUSpeed();
 			bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
 
-			std::string getSaveGameFolderPath();
+			std::string getUserProfilePath();
 
 		private:
 	};

@@ -1,7 +1,7 @@
 #include "MemoryUsageObjectAutoInitMemPool.h"
 #include "MemoryUsageObject.h"
 
-namespace watermill {
+namespace base_game {
 
 	static MemoryUsageObjectAutoInitMemPool memoryUsageObjectAutoInitMemPool;
 

@@ -27,13 +27,15 @@
 
 #include "../utilities/StringUtils.h"
 #include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::fflush;
+using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	namespace video_system {
 		void safe_delete(VideoSystem* p) {
@@ -66,6 +68,53 @@ namespace watermill {
 		}
 
 		/**/
+
+		void onChangeSize(int width, int height) {
+			stringstream ss;
+			ss << "GLUT Width: " << width << ", height: " << height;
+			logger::info(ss);
+		}
+
+		void onClose() {
+			logger::info("GLUT onClose");
+
+			// !!!!!!!!!!!!!!!!!!!!
+			// If glutLeaveMainLoop()
+			// it is not commented out snd
+			//  		glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE,
+			//		  GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+			// is commented out in VideoSystem::startFreeGlut then after this invocation program exits.
+			// GameCodeApp destructor is not called. Memory pool destructor is not called either.
+
+			//glutLeaveMainLoop();
+			// !!!!!!!!!!!!!!!!!!!!
+
+		}
+
+		void onHideShow(int state) {
+			stringstream ss;
+
+			if (state == GLUT_NOT_VISIBLE) {
+				ss << " GLUT window hidden";
+
+				logger::info(ss);
+
+			} else {
+				ss << " GLUT window visible";
+
+				logger::info(ss);
+
+			}
+
+			ss << "GLUT_NOT_VISIBLE: " << GLUT_NOT_VISIBLE << ", GLUT_VISIBLE: " << GLUT_VISIBLE;
+			logger::info(ss);
+
+			ss << "GLUT visibilityFunction: " << state;
+			logger::info(ss);
+
+		}
+
+
 	}
 
 	VideoSystem::VideoSystem() {
@@ -99,8 +148,13 @@ namespace watermill {
 		logger::trace("glutInit+++");
 		glutInit(&argc, argv); // Initialize GLUT
 		glutCreateWindow(titleChar); // Create a window with the given title
+
 		glutInitWindowSize(320, 320); // Set the window's initial width & height
 		glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
+
+		//glutFullScreen();
+
+
 		logger::trace("glutDisplayFunc+++");
 		glutDisplayFunc(video_system::displayFreeGlut); // Register display callback handler for window re-paint
 		//glutDisplayFunc(this->*display); // Register display callback handler for window re-paint
@@ -108,10 +162,19 @@ namespace watermill {
 		//glutDisplayFunc([](){display();});
 		//glutDisplayFunc(VideoSystem::display);
 
+		glutReshapeFunc(video_system::onChangeSize);
 
+		glutCloseFunc(video_system::onClose);
+
+		glutVisibilityFunc(video_system::onHideShow);
+
+		// !!!!!!!!!!!!!!!!!!!!
 		// Note: glutSetOption is only available with freeglut
+
+		// Following code can be commented. But onClose() need to contain call to glutLeaveMainLoop();
 		glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE,
 					  GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+		// !!!!!!!!!!!!!!!!!!!!
 
 		//mainInit(argc, argv);
 		logger::trace("glutMainLoop+++");

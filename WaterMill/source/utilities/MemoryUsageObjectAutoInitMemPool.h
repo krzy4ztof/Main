@@ -7,7 +7,7 @@
 // pool yourself.
 //---------------------------------------------------------------------------------------------------------------------
 
-namespace watermill {
+namespace base_game {
 	class MemoryUsageObjectAutoInitMemPool {
 		public:
 			MemoryUsageObjectAutoInitMemPool();

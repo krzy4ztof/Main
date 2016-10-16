@@ -37,7 +37,7 @@ using std::ofstream;
 //using std::ostream;
 //using std::clog;
 
-namespace watermill {
+namespace base_game {
 
 	const string Logger::LOG_FILENAME = "watermill.log";
 

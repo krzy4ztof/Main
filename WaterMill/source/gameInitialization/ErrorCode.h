@@ -15,20 +15,20 @@
 #define ERRORCODE_H
 #include <string>
 
-namespace watermill {
+namespace base_game {
 
-    class ErrorCode {
-    public:
-        ErrorCode();
-        ErrorCode(const std::string&, int);
-        ErrorCode(const ErrorCode& orig);
-        virtual ~ErrorCode();
-        void informUser(void);
-    private:
-        std::string message;
-        int number;
+	class ErrorCode {
+		public:
+			ErrorCode();
+			ErrorCode(const std::string&, int);
+			ErrorCode(const ErrorCode& orig);
+			virtual ~ErrorCode();
+			void informUser(void);
+		private:
+			std::string message;
+			int number;
 
-    };
+	};
 }
 #endif /* ERRORCODE_H */
 

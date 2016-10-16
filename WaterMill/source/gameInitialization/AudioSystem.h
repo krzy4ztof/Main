@@ -14,7 +14,7 @@
 #ifndef AUDIOSYSTEM_H
 #define AUDIOSYSTEM_H
 
-namespace watermill {
+namespace base_game {
 
 	class AudioSystem {
 		public:

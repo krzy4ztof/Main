@@ -3,11 +3,14 @@
 
 #include "../gameInitialization/GameCodeApp.h"
 #include "../gameLogic/BaseGameLogic.h"
+#include "../resourceCache/ResourceCache.h"
 
 #include <string>
 
+
+
 namespace watermill {
-	class WatermillGame : public GameCodeApp {
+	class WatermillGame : public base_game::GameCodeApp {
 		public:
 			const static std::string GAME_APP_DIRECTORY;
 
@@ -16,7 +19,7 @@ namespace watermill {
 			virtual std::string vGetGameAppDirectory();
 
 		protected:
-			virtual BaseGameLogic *createGameAndView();
+			virtual base_game::BaseGameLogic *createGameAndView(base_game::ResourceCache* resourceCache);
 		private:
 	};
 }

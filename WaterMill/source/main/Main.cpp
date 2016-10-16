@@ -30,9 +30,11 @@ using std::cout;
 using std::endl;
 //using std::stringstream;
 
+using base_game::TestClass;
+using watermill::GameMain;
 
 void testMain() {
-	watermill::TestClass testClass;
+	TestClass testClass;
 	//testClass.simpleRun();
 	//testClass.run();
 	//testClass.primeSearchRun();
@@ -44,40 +46,6 @@ void testMain() {
 	testClass.loggerRun();
 }
 
-/*
-int mainInit(int argc, char** argv) {
-
-	//TODO: see
-	// C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
-	// \GCC4\GameCode4\GameCode4.cpp
-
-	//  INT WINAPI GameCode4(HINSTANCE hInstance,
-	//                 HINSTANCE hPrevInstance,
-	//                 LPWSTR    lpCmdLine,
-	//                 int       nCmdShow)
-
-	watermill::logger::init();
-	watermill::logger::test();
-
-
-	watermill::GameCodeApp * gameCodeApp;
-	gameCodeApp = new watermill::WatermillGame;
-
-	bool resInit = gameCodeApp->initInstance();
-
-	if (!resInit) {
-		watermill::logger::error("gameCodeApp init failed");
-		return 1;
-	} else {
-		watermill::logger::trace("gameCodeApp init succeeded");
-	}
-
-	watermill::logger::destroy();
-
-	return 0;
-}
-*/
-
 int main(int argc, char** argv) {
 	/*
 	 * main (int argc, char* argv[])
@@ -87,7 +55,7 @@ int main(int argc, char** argv) {
 
 	//testMain();
 
-	watermill::GameMain gameMain;
+	GameMain gameMain;
 	int res = 0;
 	res = gameMain.init(argc, argv);
 	cout << "MAIN END" << endl;

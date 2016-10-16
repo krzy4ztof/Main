@@ -2,17 +2,15 @@
 #include "../gameInitialization/Macros.h"
 #include <iostream> // cout, endl
 
-using namespace std;
-
-namespace watermill {
-    namespace memory_usage_object{
-        		void safe_delete(MemoryUsageObject* p) {
+namespace base_game {
+	namespace memory_usage_object {
+		void safe_delete(MemoryUsageObject* p) {
 			if (p) {
 				delete (p);
 				(p)=nullptr;
 			}
 		}
-    }
+	}
 
 	using memory_pool::safe_delete;
 

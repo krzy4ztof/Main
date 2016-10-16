@@ -11,6 +11,7 @@
 #include <fstream> // ifstream
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
+#include "../../utilities/StringUtils.h"
 
 using std::string;
 using std::stringstream;
@@ -20,7 +21,7 @@ using std::ifstream;
 using std::regex;
 using std::smatch;
 
-namespace watermill {
+namespace base_game {
 	Cygwin64CpuCalls::Cygwin64CpuCalls() {
 		//ctor
 	}
@@ -31,41 +32,6 @@ namespace watermill {
 
 	namespace cygwin64_cpu_calls {
 
-		// You could also take an existing vector as a parameter.
-		void split ( vector<string>& internal, const string& str, char delimiter ) {
-			stringstream ss ( str ); // Turn the string into a stream.
-			string tok;
-
-			while ( getline ( ss, tok, delimiter ) ) {
-				internal.push_back ( tok );
-			}
-		}
-
-
-		bool toDoubleStod ( double& speed, const string& str ) {
-			try {
-				speed = stod ( str );
-				return true;
-			}
-
-			catch ( exception& e ) {
-				return false;
-			}
-		}
-
-		bool toDoubleStream ( double& speed, const string& str ) {
-			stringstream ss;
-			ss << str;
-			ss >> speed;
-
-			if ( !ss.fail() ) {
-				return true;
-			}
-
-			else {
-				return false;
-			}
-		}
 		vector<double>* findSpeedPtr ( vector <string>& internal ) {
 			vector<double>* doubleVector = new vector<double>();
 
@@ -73,7 +39,7 @@ namespace watermill {
 				boost::algorithm::trim ( internal[i] );
 				double speed1;
 
-				if ( toDoubleStod ( speed1, internal[i] ) ) {
+				if ( string_utils::stringToDoubleStod ( speed1, internal[i] ) ) {
 					doubleVector->push_back ( speed1 );
 				};
 			}
@@ -91,7 +57,7 @@ namespace watermill {
 				boost::algorithm::trim ( internal[i] );
 				double speed2;
 
-				if ( toDoubleStream ( speed2, internal[i] ) ) {
+				if ( string_utils::stringToDoubleStream ( speed2, internal[i] ) ) {
 					doubleVector->push_back ( speed2 );
 				};
 			}
@@ -107,7 +73,7 @@ namespace watermill {
 				boost::algorithm::trim ( internal[i] );
 				double speed2;
 
-				if ( toDoubleStream ( speed2, internal[i] ) ) {
+				if ( string_utils::stringToDoubleStream ( speed2, internal[i] ) ) {
 					doubleVector.push_back ( speed2 );
 				};
 			}
@@ -116,9 +82,6 @@ namespace watermill {
 		}
 	}
 
-	using cygwin64_cpu_calls::split ;
-	using cygwin64_cpu_calls::toDoubleStod ;
-	using cygwin64_cpu_calls::toDoubleStream ;
 	using cygwin64_cpu_calls::findSpeedPtr ;
 	using cygwin64_cpu_calls::findSpeedRefError;
 	using cygwin64_cpu_calls::findSpeedMove;
@@ -143,7 +106,7 @@ namespace watermill {
 						ss << "\tmatches[" << i << "]: " << matches[i];
 					logger::trace(ss);
 
-					split ( internal, line, ':' );
+					string_utils::splitString ( internal, line, ':' );
 				}
 
 				else {

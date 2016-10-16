@@ -16,17 +16,17 @@
 
 #include <string> // string
 
-namespace watermill {
+namespace base_game {
 
 	class VideoSystem {
 		public:
 			VideoSystem();
 			VideoSystem(const VideoSystem& orig);
 			virtual ~VideoSystem();
-/* */
+			/* */
 			void startFreeGlut(std::string title);
 			void startFreeGlutMainLoop();
-		/*	void display_xxx(); */
+			/*	void display_xxx(); */
 		private:
 
 
@@ -36,6 +36,9 @@ namespace watermill {
 	namespace video_system {
 		void safe_delete(VideoSystem* p);
 		void displayFreeGlut();
+		void onChangeSize(int width, int height);
+		void onClose();
+		void onHideShow(int state);
 	}
 }
 #endif /* VIDEOSYSTEM_H */

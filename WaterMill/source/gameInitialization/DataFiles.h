@@ -14,7 +14,7 @@
 #ifndef DATAFILES_H
 #define DATAFILES_H
 
-namespace watermill {
+namespace base_game {
 
 	class DataFiles {
 		public:

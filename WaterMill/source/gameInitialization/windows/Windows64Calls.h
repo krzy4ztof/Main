@@ -22,7 +22,7 @@
 #include "Windows32Calls.h"
 #include <string>
 
-namespace watermill {
+namespace base_game {
 
 	class Windows64Calls : public Windows32Calls {
 		public:
@@ -34,7 +34,7 @@ namespace watermill {
 			DWORD readCPUSpeed();
 			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
 
-			std::string getSaveGameFolderPath();
+			std::string getUserProfilePath();
 
 		private:
 	};

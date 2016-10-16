@@ -26,11 +26,13 @@
 #include "../debugging/Logger.h"
 
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
-using watermill::memory_usage_object::safe_delete;
+using base_game::memory_usage_object::safe_delete;
 
-namespace watermill {
+namespace base_game {
 
 	void TestClass::loggerRun() {
 		logger::init();

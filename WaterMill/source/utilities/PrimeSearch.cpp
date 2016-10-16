@@ -52,7 +52,7 @@
 
 #include "PrimeSearch.h"
 
-namespace watermill {
+namespace base_game {
 
 
 
@@ -139,7 +139,7 @@ namespace watermill {
 		//int b = (rand()%7)+1;
 		int b = 7;
 		//int c = (rand()%5)+1;
-        int c = 5;
+		int c = 5;
 
 		skip = (a * maxElements * maxElements) + (b * maxElements) + c;
 		skip &= ~0xc0000000;		// this keeps skip from becoming too large....

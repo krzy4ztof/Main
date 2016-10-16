@@ -9,7 +9,7 @@
 // IMPORTANT: InitMemoryPool() and DestroyMemoryPool() must be called manually unless you use the GCC_MEMORYPOOL_AUTOINIT()
 // macro below.
 //---------------------------------------------------------------------------------------------------------------------
-namespace watermill {
+namespace base_game {
 	class MemoryUsageObject {
 		public:
 			MemoryUsageObject();

@@ -13,7 +13,7 @@ using std::endl;
 using std::strcpy;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	const string LuaStateManager::SCRIPTS_FOLDER = "scripts/";
 

@@ -4,7 +4,7 @@
 #include "../gameLogic/BaseGameLogic.h"
 
 namespace watermill {
-	class WatermillLogic : public BaseGameLogic{
+	class WatermillLogic : public base_game::BaseGameLogic {
 		public:
 			WatermillLogic();
 			virtual ~WatermillLogic();

@@ -18,17 +18,17 @@
 #ifdef __LINUX__
 //#ifdef __WIN32__
 
-namespace watermill {
+namespace base_game {
 
-    class LinuxCalls {
-    public:
-        LinuxCalls();
-        LinuxCalls(const LinuxCalls& orig);
-        virtual ~LinuxCalls();
-        bool IsOnlyInstance(char*);
-        //bool IsOnlyInstance(LPCTSTR);
-    private:
-    };
+	class LinuxCalls {
+		public:
+			LinuxCalls();
+			LinuxCalls(const LinuxCalls& orig);
+			virtual ~LinuxCalls();
+			bool IsOnlyInstance(char*);
+			//bool IsOnlyInstance(LPCTSTR);
+		private:
+	};
 }
 #endif /* __LINUX__ */
 

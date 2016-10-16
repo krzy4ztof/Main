@@ -10,7 +10,7 @@ using std::cout;
 using std::endl;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	namespace property_tree_utils {
 		const boost::property_tree::ptree& empty_ptree() {
@@ -28,7 +28,7 @@ namespace watermill {
 			for(const boost::property_tree::ptree::value_type &valueType: propertyTree) {
 				stringstream ss;
 				ss << sep << printValueType(valueType.first) << " : " << printValueType(valueType.second.data());
-				logger::trace(ss);
+				logger::info(ss);
 
 				print_tree(valueType.second, level + 1);
 			}

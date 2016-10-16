@@ -1,10 +1,9 @@
 #include "ResourceZipFile.h"
 #include <string>
 
-using namespace std;
-// std::string
+using std::string;
 
-namespace watermill {
+namespace base_game {
 	ResourceZipFile::ResourceZipFile(const string fileName) {
 		//ctor
 	}

@@ -46,6 +46,7 @@
 #include "Cygwin64ProcessCalls.h"
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
+#include "../../utilities/StringUtils.h"
 
 #define SW_SHOWNORMAL 1
 
@@ -53,7 +54,7 @@ using std::string;
 using std::stringstream;
 using std::setprecision;
 
-namespace watermill {
+namespace base_game {
 
 	Cygwin64Calls::Cygwin64Calls() {
 	}
@@ -156,8 +157,15 @@ namespace watermill {
 		return true;
 	}
 
-	string Cygwin64Calls::getSaveGameFolderPath() {
-		return "XXX";
+	string Cygwin64Calls::getUserProfilePath() {
+		char* userProfile = getenv("HOME");
+		if (userProfile != nullptr) {
+			stringstream ss;
+			ss << "HOME: " << userProfile;
+			logger::info(ss);
+		}
+
+		return string_utils::charToString(userProfile);
 	}
 
 }

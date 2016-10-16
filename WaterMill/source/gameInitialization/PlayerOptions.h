@@ -5,7 +5,7 @@
 #include <map> // std::map
 #include <boost/property_tree/ptree.hpp>// ptree
 
-namespace watermill {
+namespace base_game {
 	class PlayerOptions {
 		public:
 			const static std::string LANGUAGE;
@@ -26,9 +26,9 @@ namespace watermill {
 
 			void loadAttrNode(const boost::property_tree::ptree& xmlattrNode);
 
-			void loadOptionNode(const boost::property_tree::ptree& optionNode);
+			void loadOptionNode(const boost::property_tree::ptree optionNode);
 			void loadPlayerOptionsNode(boost::property_tree::ptree tree);
-			void loadRootNode(boost::property_tree::ptree tree);
+			void loadRootNode(boost::property_tree::ptree& tree);
 
 			void loadMain(const std::string &filename);
 

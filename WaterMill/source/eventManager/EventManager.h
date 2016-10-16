@@ -1,7 +1,7 @@
 #ifndef EVENTMANAGER_H
 #define EVENTMANAGER_H
 
-namespace watermill {
+namespace base_game {
 	class EventManager {
 		public:
 			EventManager();

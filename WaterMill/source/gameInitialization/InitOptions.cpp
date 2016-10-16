@@ -1,6 +1,6 @@
 #include "InitOptions.h"
 #include "ErrorCode.h"
-#include "PropertyTreeUtils.h"
+#include "../utilities/PropertyTreeUtils.h"
 
 // TODO: remove
 //#include <dirent.h> //readdir, opendir, DIR, DT_DIR, dirent
@@ -17,7 +17,7 @@
 using std::string;
 using std::ifstream;
 
-namespace watermill {
+namespace base_game {
 
 	const string InitOptions::INIT_FILENAME = "watermill.ini";
 	const string InitOptions::ASSETS_FOLDER = "MAIN.Assets";

@@ -1,7 +1,7 @@
 #ifndef IRESOURCEFILE_H
 #define IRESOURCEFILE_H
 
-namespace watermill {
+namespace base_game {
 	class IResourceFile {
 		public:
 			virtual ~IResourceFile();

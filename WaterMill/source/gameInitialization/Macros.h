@@ -14,10 +14,12 @@
 #ifndef LMACROS_H
 #define LMACROS_H
 
-namespace watermill {
+#include<iostream> // cout, endl
+
+namespace base_game {
 	namespace macros {
 
-//#define SAFE_DELETE(p) { if (p) { delete (p); (p)=NULL; } }
+		//#define SAFE_DELETE(p) { if (p) { delete (p); (p)=NULL; } }
 
 #define GAME_TITLE  "WaterMill Game"
 		// #define GAME_PROCESS_NAME  "watermill.exe"
@@ -28,10 +30,12 @@ namespace watermill {
 	#define GCC_NEW new
 #endif
 
-#define GCC_ERROR(str) {cout << "ERROR: " << str << endl;}
+#define GCC_ERROR(str) {std::cout << "ERROR: " << str << std::endl;}
 
-#define GCC_ASSERT(expr) { if (!expr) {cout << "ASSERT " << endl;} }
+#define GCC_ASSERT(expr) { if (!expr) {std::cout << "ASSERT " << std::endl;} }
 
+
+		//	void safe_delete(auto* p);
 	}
 }
 

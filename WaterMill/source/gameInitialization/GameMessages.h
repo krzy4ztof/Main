@@ -3,7 +3,7 @@
 
 #include <string> // string
 
-namespace watermill {
+namespace base_game {
 	class GameMessages {
 		public:
 			const static std::string STRINGS_FOLDER;

@@ -14,9 +14,9 @@ namespace watermill {
 		protected:
 
 		private:
-//			InitOptions *initOptions;
-//			PlayerOptions *playerOptions;
-//			DebuggingOptions *debuggingOptions;
+			//			InitOptions *initOptions;
+			//			PlayerOptions *playerOptions;
+			//			DebuggingOptions *debuggingOptions;
 	};
 }
 #endif // GAMEMAIN_H

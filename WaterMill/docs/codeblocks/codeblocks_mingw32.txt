@@ -47,12 +47,12 @@ C:\home\myImportantFiles\projects\git\Main\WaterMill\
 
 Project -> Buld options
 Project build options -> Search Directories -> Linker -> Append target options to project options
-..\..\git\libraries\freeglut\lib\
+..\..\git\libraries\freeglut\lib\ - REMOVE
 
 Project -> Buld options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
-..\..\git\libraries\boost
-..\..\git\libraries\freeglut\include
+..\..\git\libraries\boost - REMOVE
+..\..\git\libraries\freeglut\include - REMOVE
 
 Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add

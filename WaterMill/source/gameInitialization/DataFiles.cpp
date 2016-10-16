@@ -14,7 +14,7 @@
 #include "DataFiles.h"
 #include "ErrorCode.h"
 
-namespace watermill {
+namespace base_game {
 
 	namespace data_files {
 		void safe_delete(DataFiles* p) {

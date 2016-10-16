@@ -26,10 +26,12 @@
 #include "../luaScripting/LuaStateManager.h"
 #include "../eventManager/EventManager.h"
 #include "../gameLogic/BaseGameLogic.h"
+#include "../saveManager/SaveManager.h"
 
-#include <string>
 
-namespace watermill {
+#include <string> // string
+
+namespace base_game {
 
 	class GameCodeApp {
 		public:
@@ -51,7 +53,7 @@ namespace watermill {
 			BaseGameLogic *m_pGame;
 
 			// You must define these functions to initialize your game.
-			virtual BaseGameLogic *createGameAndView()=0;
+			virtual BaseGameLogic *createGameAndView(ResourceCache* resourceCache)=0;
 			virtual std::string vGetGameAppDirectory()=0;
 
 
@@ -68,11 +70,11 @@ namespace watermill {
 			DataFiles *dataFiles;
 			AudioSystem *audioSystem;
 			VideoSystem *videoSystem;
+			SaveManager *saveManager;
 
-			std::string saveGameDirectory;
 	};
 
-    namespace game_code_app {
+	namespace game_code_app {
 		void safe_delete(GameCodeApp* p);
 	};
 }

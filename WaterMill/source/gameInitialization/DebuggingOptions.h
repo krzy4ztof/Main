@@ -5,7 +5,7 @@
 #include <map> // std::map
 #include <boost/property_tree/ptree.hpp>// ptree
 
-namespace watermill {
+namespace base_game {
 	class DebuggingOptions {
 		public:
 			DebuggingOptions();

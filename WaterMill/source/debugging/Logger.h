@@ -12,7 +12,7 @@
 #include <boost/log/utility/formatting_ostream.hpp>// boost::log::formatting_ostream
 #include <sstream>      // std::stringstream, std::stringbuf
 
-namespace watermill {
+namespace base_game {
 
 	//        typedef boost::log::sinks::synchronous_sink< boost::log::sinks::text_ostream_backend > text_sink;
 	typedef boost::log::sinks::asynchronous_sink< boost::log::sinks::text_ostream_backend > text_sink;

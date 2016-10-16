@@ -26,16 +26,17 @@
 #include "../resourceCache/ResourceCache.h"
 #include "../resourceCache/IResourceFile.h"
 #include "../resourceCache/ResourceZipFile.h"
+#include "../resourceCache/XmlResourceLoader.h"
 
 #include "../debugging/Logger.h"
-#include <sstream>      // std::stringstream, std::stringbuf
+#include <sstream>      // std::stringstream
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
 	const string GameCodeApp::DEBUG_OPTIONS_XML = "debugOptions.xml";
@@ -58,13 +59,15 @@ namespace watermill {
 		audioSystem = nullptr;
 		videoSystem = nullptr;
 
+		saveManager = nullptr;
+
 	}
 
 	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
 	}
 
 	GameCodeApp::~GameCodeApp() {
-		logger::trace("GameCodeApp Destroy");
+		logger::info("GameCodeApp Destroy");
 		onClose();
 	}
 
@@ -144,7 +147,8 @@ namespace watermill {
 		}
 
 		IResourceFile *zipFile = new ResourceZipFile(ASSETS_ZIP);
-		resourceCache = new ResourceCache(50,zipFile);
+		resourceCache = new ResourceCache(initOptions->getAssetsFolder(),50,zipFile);
+		resourceCache->registerLoader(xml_resource_loader::createXmlResourceLoader());
 
 		try {
 			gameMessages = new GameMessages(initOptions->getAssetsFolder(), playerOptions->getOption(playerOptions->LANGUAGE));
@@ -165,18 +169,28 @@ namespace watermill {
 			//_tcscpy_s(m_saveGameDirectory, GetSaveGameDirectory(GetHwnd(), VGetGameAppDirectory()));
 			//string* gameAppDir =
 
-			saveGameDirectory = vGetGameAppDirectory();
+			saveManager = new SaveManager();
+			string gameAppDirectory = vGetGameAppDirectory();
 
 			stringstream ss;
-			ss << "saveGame: " << saveGameDirectory;
-			logger::trace(ss);
+			ss << "saveGame: " << gameAppDirectory;
+			logger::info(ss);
 
-			systemCalls.getSaveGameFolderPath();
+			string userProfilePath = systemCalls.getUserProfilePath();
+
+			ss << "userProfilePathStr: " << userProfilePath;
+			logger::info(ss);
+
+
+			saveManager->init(userProfilePath, gameAppDirectory);
+
 			videoSystem->startFreeGlut(GAME_PROCESS_NAME);
 
 			logger::trace("createGameAndView++++");
 
-			m_pGame = createGameAndView();
+			m_pGame = createGameAndView(resourceCache);
+
+			resourceCache->preLoad("*.jpg");
 
 			/*
 						bool done = false;
@@ -201,7 +215,11 @@ namespace watermill {
 		bool done = false;
 		logger::trace("Main loop+++");
 
+		//TODO: remove tempCreateActors
+		m_pGame->tempCreateActors();
+
 		videoSystem->startFreeGlutMainLoop();
+
 		while ( !done ) {
 			// Main loop
 
@@ -212,11 +230,12 @@ namespace watermill {
 
 	void GameCodeApp::onClose() {
 
+
 		// gameView
-		// saveGameDirectory
-		video_system::safe_delete ( videoSystem );
-		audio_system::safe_delete ( audioSystem );
-		data_files::safe_delete ( dataFiles );
+		save_manager::safe_delete(saveManager);
+		video_system::safe_delete(videoSystem);
+		audio_system::safe_delete(audioSystem);
+		data_files::safe_delete(dataFiles);
 		event_manager::safe_delete(eventManager);
 
 		lua_state_manager::safe_delete(luaStateManager);
@@ -225,9 +244,9 @@ namespace watermill {
 
 		resource_cache::safe_delete(resourceCache);
 		//IResourceFile
-		debugging_options::safe_delete ( debuggingOptions );
+		debugging_options::safe_delete(debuggingOptions);
 		player_options::safe_delete(playerOptions);
-		init_options::safe_delete ( initOptions );
+		init_options::safe_delete(initOptions);
 
 	}
 

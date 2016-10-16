@@ -2,12 +2,21 @@
 #define STRINGUTILS_H
 
 #include <string> // string
+#include <vector> // vector
 
-namespace watermill {
+namespace base_game {
 	namespace string_utils {
-	    char* stringToChar(std::string inputString);
+		char* stringToChar(std::string inputString);
+		std::string charToString(char* inputChar);
 
-	    void safe_delete_char_array(char* p);
+		void splitString ( std::vector<std::string>& outputVector, const std::string& inputString, char delimiter );
+		bool stringToDoubleStod ( double& outputDouble, const std::string& inputString );
+		bool stringToDoubleStream ( double& outputDouble, const std::string& inputString );
+
+		void safe_delete_char_array(char* p);
+
+		int isCharNumeric ( const char* ccharptr_CharacterList ) ;
+		int compareChars ( const char *s1, const char *s2, bool intCaseSensitive );
 	}
 }
 

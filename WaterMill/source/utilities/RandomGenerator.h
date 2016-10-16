@@ -2,7 +2,7 @@
 #define RANDOMGENERATOR_H
 #include <random> // mt19937, uniform_int_distribution
 
-namespace watermill {
+namespace base_game {
 	class RandomGenerator {
 		public:
 			RandomGenerator(int min, int max, int seed);
@@ -10,13 +10,13 @@ namespace watermill {
 			virtual ~RandomGenerator();
 			void setSeed(int n);
 
-			 int random();
+			int random();
 
 		protected:
 
 		private:
-            std::mt19937 generator;
-            std::uniform_int_distribution<int> distribution;
+			std::mt19937 generator;
+			std::uniform_int_distribution<int> distribution;
 	};
 }
 #endif // RANDOMGENERATOR_H

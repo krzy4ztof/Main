@@ -33,6 +33,13 @@ Project -> Build options
 Project build options ->  Compiler settings -> Compiler Flags
 Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 
+
+Debug_Cygwin64:
+Produce debugging symbols [-g]
+Enable all common compiler warnings (overrides many other settings) [-Wall]
+
+
+
 Project -> Build options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
 ////	..\..\git\libraries\boost /// REMOVE - C:\cygwin64\usr\include\boost

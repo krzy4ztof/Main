@@ -91,7 +91,7 @@ you must call the Restart() method, OR call GetNext(true).
 ********************************************************************/
 
 
-namespace watermill {
+namespace base_game {
 	class PrimeSearch {
 		public:
 			PrimeSearch(int elements);
@@ -106,7 +106,7 @@ namespace watermill {
 			virtual ~PrimeSearch();
 
 		protected:
-		    void GCC_ASSERT(bool expr);
+			void GCC_ASSERT(bool expr);
 
 		private:
 			static int prime_array[];

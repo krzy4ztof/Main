@@ -1,6 +1,6 @@
 #include "IResourceFile.h"
 
-namespace watermill {
+namespace base_game {
 
 
 	IResourceFile::~IResourceFile() {

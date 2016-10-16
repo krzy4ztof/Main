@@ -1,6 +1,6 @@
 #include "PlayerOptions.h"
 
-#include "PropertyTreeUtils.h"
+#include "../utilities/PropertyTreeUtils.h"
 
 #include <string> // string
 #include <iostream> // cout, endl
@@ -28,7 +28,11 @@ using std::map;
 using std::iterator;
 using std::out_of_range;
 
-namespace watermill {
+using boost::property_tree::ptree;
+using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp
+using boost::property_tree::read_xml;
+
+namespace base_game {
 
 	const string PlayerOptions::LANGUAGE = "language";
 
@@ -55,11 +59,11 @@ namespace watermill {
 	}
 
 
-	void PlayerOptions::loadAttrNode(const boost::property_tree::ptree& xmlattrNode) {
+	void PlayerOptions::loadAttrNode(const ptree& xmlattrNode) {
 
 		string attrName;
 		string attrValue;
-		for(const boost::property_tree::ptree::value_type & xmlAttrChild: xmlattrNode) {
+		for(const value_type & xmlAttrChild: xmlattrNode) {
 			string key = xmlAttrChild.first;
 			string value = xmlAttrChild.second.data();
 
@@ -76,8 +80,8 @@ namespace watermill {
 		}
 	}
 
-	void PlayerOptions::loadOptionNode(const boost::property_tree::ptree& optionNode) {
-		for(const boost::property_tree::ptree::value_type & optionChild: optionNode) {
+	void PlayerOptions::loadOptionNode(const ptree optionNode) {
+		for(const value_type & optionChild: optionNode) {
 			string name = optionChild.first;
 			int compRes = name.compare("<xmlattr>");
 			if (compRes == 0) {
@@ -86,8 +90,8 @@ namespace watermill {
 		}
 	}
 
-	void PlayerOptions::loadPlayerOptionsNode(boost::property_tree::ptree playerOptionsNode) {
-		for (const boost::property_tree::ptree::value_type& playerOptionsChild : playerOptionsNode) {
+	void PlayerOptions::loadPlayerOptionsNode(ptree playerOptionsNode) {
+		for (const value_type& playerOptionsChild : playerOptionsNode) {
 			string name = playerOptionsChild.first.data();
 			int compRes = name.compare(OPTION_NODE_NAME);
 
@@ -98,7 +102,7 @@ namespace watermill {
 	}
 
 
-	void PlayerOptions::loadRootNode(boost::property_tree::ptree tree) {
+	void PlayerOptions::loadRootNode(ptree& tree) {
 		// see C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0\boost\property_tree\ptree_fwd.hpp
 		// typedef basic_ptree<std::string, std::string> ptree;
 
@@ -108,7 +112,7 @@ namespace watermill {
 		// typedef std::pair<const Key, self_type>      value_type;
 		// value_type = pair<std::string, basic_ptree<std::string. std::string>>
 
-		for (const boost::property_tree::ptree::value_type& rootChildNode : tree) {
+		for (const value_type& rootChildNode : tree) {
 			string name = rootChildNode.first;
 			int compRes = name.compare(PLAYER_OPTIONS_NODE_NAME);
 			if (compRes == 0) {
@@ -129,8 +133,8 @@ namespace watermill {
 	}
 
 	void PlayerOptions::loadMain(const string &filename) {
-		boost::property_tree::ptree tree;
-		boost::property_tree::read_xml(filename, tree);
+		ptree tree;
+		read_xml(filename, tree);
 		property_tree_utils::print_tree(tree,0);
 
 		loadRootNode(tree);

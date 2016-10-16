@@ -1,5 +1,5 @@
 #include "DebuggingOptions.h"
-#include "PropertyTreeUtils.h"
+#include "../utilities/PropertyTreeUtils.h"
 
 #include <string> // string
 #include <iostream> // cout, endl
@@ -15,12 +15,23 @@
 #include <stdexcept>      // std::out_of_range
 
 #include <typeinfo> // typeid
+#include "../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 
-using namespace std;
-// std::string
+using std::stringstream;
+using std::string;
+using std::pair;
+using std::out_of_range;
+using std::map;
+using std::iterator;
 
-namespace watermill {
+using boost::property_tree::ptree;
+using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp
+using boost::property_tree::read_xml;
+
+
+namespace base_game {
 
 	const string DebuggingOptions::DEBUG_NODE_NAME = "debug";
 	const string DebuggingOptions::OPTIONS_NODE_NAME = "options";
@@ -46,11 +57,11 @@ namespace watermill {
 	}
 
 
-	void DebuggingOptions::loadAttrNode(const boost::property_tree::ptree& xmlattrNode) {
+	void DebuggingOptions::loadAttrNode(const ptree& xmlattrNode) {
 
 		string attrName;
 		string attrValue;
-		for(const boost::property_tree::ptree::value_type & xmlAttrChild: xmlattrNode) {
+		for(const value_type & xmlAttrChild: xmlattrNode) {
 			string key = xmlAttrChild.first;
 			string value = xmlAttrChild.second.data();
 
@@ -67,8 +78,8 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::loadOptionNode(const boost::property_tree::ptree& optionNode) {
-		for(const boost::property_tree::ptree::value_type & optionChild: optionNode) {
+	void DebuggingOptions::loadOptionNode(const ptree& optionNode) {
+		for(const value_type & optionChild: optionNode) {
 			string name = optionChild.first;
 			int compRes = name.compare("<xmlattr>");
 			if (compRes == 0) {
@@ -77,8 +88,8 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::loadOptionsNode(const boost::property_tree::ptree& optionsNode) {
-		for(const boost::property_tree::ptree::value_type & optionsChild: optionsNode) {
+	void DebuggingOptions::loadOptionsNode(const ptree& optionsNode) {
+		for(const value_type & optionsChild: optionsNode) {
 			string name = optionsChild.first;
 			int compRes = name.compare(OPTION_NODE_NAME);
 
@@ -88,8 +99,8 @@ namespace watermill {
 		}
 	}
 
-	void DebuggingOptions::loadDebugNode(boost::property_tree::ptree debugNode) {
-		for (const boost::property_tree::ptree::value_type& debugChild : debugNode) {
+	void DebuggingOptions::loadDebugNode(ptree debugNode) {
+		for (const value_type& debugChild : debugNode) {
 			string name = debugChild.first.data();
 			int compRes = name.compare(OPTIONS_NODE_NAME);
 
@@ -100,7 +111,7 @@ namespace watermill {
 	}
 
 
-	void DebuggingOptions::loadRootNode(boost::property_tree::ptree tree) {
+	void DebuggingOptions::loadRootNode(ptree tree) {
 		// see C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0\boost\property_tree\ptree_fwd.hpp
 		// typedef basic_ptree<std::string, std::string> ptree;
 
@@ -110,7 +121,7 @@ namespace watermill {
 		// typedef std::pair<const Key, self_type>      value_type;
 		// value_type = pair<std::string, basic_ptree<std::string. std::string>>
 
-		for (const boost::property_tree::ptree::value_type& rootChildNode : tree) {
+		for (const value_type& rootChildNode : tree) {
 			string name = rootChildNode.first;
 			int compRes = name.compare(DEBUG_NODE_NAME);
 			if (compRes == 0) {
@@ -123,7 +134,9 @@ namespace watermill {
 		try {
 			return options.at(key);
 		} catch (out_of_range& ex) {
-			cout << "Exception: " << ex.what() << endl;
+			stringstream ss;
+			ss << "Exception: " << ex.what();
+			logger::error(ss);
 		}
 		return "UNSET";
 	}
@@ -131,14 +144,14 @@ namespace watermill {
 	void DebuggingOptions::loadMain(const string &filename) {
 		boost::property_tree::ptree tree;
 		boost::property_tree::read_xml(filename, tree);
-	//	property_tree_utils::print_tree(tree,0);
+		//	property_tree_utils::print_tree(tree,0);
 
 		loadRootNode(tree);
 		map<string, string>::iterator optionsIterator;
 
-	//	for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
-	//		cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
-	//	}
+		//	for (optionsIterator = options.begin(); optionsIterator!=options.end(); optionsIterator++) {
+		//		cout << "Option: " << optionsIterator->first << " => " << optionsIterator->second << endl;
+		//	}
 	}
 
 	void DebuggingOptions::load(const string &filename) {

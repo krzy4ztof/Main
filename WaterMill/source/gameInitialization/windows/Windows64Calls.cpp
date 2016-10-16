@@ -26,6 +26,7 @@
 #include <stdlib.h> //getenv
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
+#include "../../utilities/StringUtils.h"
 
 #define SW_SHOWNORMAL 1
 
@@ -34,7 +35,7 @@ using std::cout;
 using std::endl;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	Windows64Calls::Windows64Calls() {
 	}
@@ -261,7 +262,7 @@ namespace watermill {
 		return true;
 	}
 
-	string Windows64Calls::getSaveGameFolderPath() {
+	string Windows64Calls::getUserProfilePath() {
 
 		char* userProfile = getenv("userprofile");
 		if (userProfile != nullptr) {
@@ -269,22 +270,8 @@ namespace watermill {
 			ss << "userprofile: " << userProfile;
 			logger::info(ss);
 		}
-		/*
-			LPWSTR wszPath = NULL;
-			HRESULT hr;
 
-			hr = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, NULL, &wszPath);
-
-			std::cout << wszPath << std::endl; //this is the mem space?
-			std::cout << &wszPath << std::endl; //what's in the mem space, pointer to another mem space
-			std::cout << *(&wszPath) << std::endl; //dereference the pointer?
-
-
-			if (SUCCEEDED(hr)) {
-				std::cout << "it worked but how do i get the path as a string?\n";
-			}*/
-
-		return "XXX";
+		return string_utils::charToString(userProfile);
 	}
 
 	namespace windows64calls {

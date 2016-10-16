@@ -20,25 +20,25 @@
 //#include <iterator>
 //#include <algorithm>
 
-namespace watermill {
+namespace base_game {
 
-    class TestClass {
-    public:
-       // void run();
-        void simpleRun();
-        void primeSearchRun();
-        void randomGeneratorRun();
-        void memoryPoolRun();
-        void messagesRun();
-        void luaRun();
-      //  void videoFreeGlutRun();
-        void loggerRun();
-    protected:
-        void primeSearchRun(int pixels);
+	class TestClass {
+		public:
+			// void run();
+			void simpleRun();
+			void primeSearchRun();
+			void randomGeneratorRun();
+			void memoryPoolRun();
+			void messagesRun();
+			void luaRun();
+			//  void videoFreeGlutRun();
+			void loggerRun();
+		protected:
+			void primeSearchRun(int pixels);
 
-    private:
+		private:
 
-    };
+	};
 }
 #endif /* TESTCLASS_H */
 

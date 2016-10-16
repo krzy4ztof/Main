@@ -14,7 +14,7 @@
 #include "AudioSystem.h"
 #include "ErrorCode.h"
 
-namespace watermill {
+namespace base_game {
 
 	namespace audio_system {
 		void safe_delete(AudioSystem* p) {

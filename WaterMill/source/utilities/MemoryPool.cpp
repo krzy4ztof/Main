@@ -46,7 +46,7 @@ using std::size_t;
 using std::cout;
 using std::endl;
 
-namespace watermill {
+namespace base_game {
 	namespace memory_pool {
 		void safe_delete(MemoryPool* p) {
 			if (p) {

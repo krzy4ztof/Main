@@ -2,9 +2,9 @@
 #define RESOURCEZIPFILE_H
 
 #include "IResourceFile.h"
-#include <string>
+#include <string> //string
 
-namespace watermill {
+namespace base_game {
 	class ResourceZipFile : public IResourceFile {
 		public:
 			ResourceZipFile(const std::string fileName);

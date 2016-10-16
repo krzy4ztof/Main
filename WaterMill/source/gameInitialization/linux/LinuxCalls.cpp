@@ -16,31 +16,31 @@
 
 #include "LinuxCalls.h"
 #include <iostream>
-using namespace std;
-// std::cout
-// std::endl
 
-namespace watermill {
+using std::cout;
+using std::endl;
 
-    LinuxCalls::LinuxCalls() {
-    }
+namespace base_game {
 
-    LinuxCalls::LinuxCalls(const LinuxCalls& orig) {
-    }
+	LinuxCalls::LinuxCalls() {
+	}
 
-    LinuxCalls::~LinuxCalls() {
-    }
+	LinuxCalls::LinuxCalls(const LinuxCalls& orig) {
+	}
 
-    //
-    // IsOnlyInstance							- Chapter 5, page 137
-    //
+	LinuxCalls::~LinuxCalls() {
+	}
 
-    bool LinuxCalls::IsOnlyInstance(char * gameTitle) {
+	//
+	// IsOnlyInstance							- Chapter 5, page 137
+	//
 
-        //bool GameCodeApp::IsOnlyInstance(LPCTSTR gameTitle) {
-        cout << "Is the only Linux: " << gameTitle << "?" << endl;
+	bool LinuxCalls::IsOnlyInstance(char * gameTitle) {
 
-        return true;
-    }
+		//bool GameCodeApp::IsOnlyInstance(LPCTSTR gameTitle) {
+		cout << "Is the only Linux: " << gameTitle << "?" << endl;
+
+		return true;
+	}
 }
 #endif /* __LINUX__ */

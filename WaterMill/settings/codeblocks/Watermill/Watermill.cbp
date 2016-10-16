@@ -14,8 +14,6 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add directory="../../../../../libraries/boost_1_60_0" />
-					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
@@ -25,12 +23,13 @@
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
 					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
 					<Add library="psapi" />
 					<Add library="opengl32" />
-					<Add directory="../../../../../libraries/freeglut/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release_MinGW32">
@@ -49,6 +48,8 @@
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
 					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -72,6 +73,8 @@
 					<Add directory="source/watermillGame" />
 					<Add directory="source/debugging" />
 					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -93,6 +96,7 @@
 				<Option type="1" />
 				<Option compiler="mingw64" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="-DBOOST_LOG_DYN_LINK" />
@@ -107,6 +111,8 @@
 					<Add directory="../../../../../../../../../msys64/mingw64/x86_64-w64-mingw32/include" />
 					<Add directory="source/debugging" />
 					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -145,6 +151,20 @@
 		<Unit filename="../../../docs/watermill_readme.txt" />
 		<Unit filename="../../../game/debugOptions.xml" />
 		<Unit filename="../../../game/playerOptions.xml" />
+		<Unit filename="../../../source/actors/Actor.cpp" />
+		<Unit filename="../../../source/actors/Actor.h" />
+		<Unit filename="../../../source/actors/ActorComponent.cpp" />
+		<Unit filename="../../../source/actors/ActorComponent.h" />
+		<Unit filename="../../../source/actors/ActorFactory.cpp" />
+		<Unit filename="../../../source/actors/ActorFactory.h" />
+		<Unit filename="../../../source/actors/ComponentFactory.cpp" />
+		<Unit filename="../../../source/actors/ComponentFactory.h" />
+		<Unit filename="../../../source/actors/RenderComponent.cpp" />
+		<Unit filename="../../../source/actors/RenderComponent.h" />
+		<Unit filename="../../../source/actors/ScriptComponent.cpp" />
+		<Unit filename="../../../source/actors/ScriptComponent.h" />
+		<Unit filename="../../../source/actors/TransformComponent.cpp" />
+		<Unit filename="../../../source/actors/TransformComponent.h" />
 		<Unit filename="../../../source/debugging/Logger.cpp" />
 		<Unit filename="../../../source/debugging/Logger.h" />
 		<Unit filename="../../../source/eventManager/EventManager.cpp" />
@@ -167,8 +187,6 @@
 		<Unit filename="../../../source/gameInitialization/Macros.h" />
 		<Unit filename="../../../source/gameInitialization/PlayerOptions.cpp" />
 		<Unit filename="../../../source/gameInitialization/PlayerOptions.h" />
-		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.cpp" />
-		<Unit filename="../../../source/gameInitialization/PropertyTreeUtils.h" />
 		<Unit filename="../../../source/gameInitialization/SystemCalls.h" />
 		<Unit filename="../../../source/gameInitialization/VideoSystem.cpp" />
 		<Unit filename="../../../source/gameInitialization/VideoSystem.h" />
@@ -193,10 +211,18 @@
 		<Unit filename="../../../source/main/Main.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
+		<Unit filename="../../../source/resourceCache/IResourceLoader.cpp" />
+		<Unit filename="../../../source/resourceCache/IResourceLoader.h" />
+		<Unit filename="../../../source/resourceCache/Resource.cpp" />
+		<Unit filename="../../../source/resourceCache/Resource.h" />
 		<Unit filename="../../../source/resourceCache/ResourceCache.cpp" />
 		<Unit filename="../../../source/resourceCache/ResourceCache.h" />
 		<Unit filename="../../../source/resourceCache/ResourceZipFile.cpp" />
 		<Unit filename="../../../source/resourceCache/ResourceZipFile.h" />
+		<Unit filename="../../../source/resourceCache/XmlResourceLoader.cpp" />
+		<Unit filename="../../../source/resourceCache/XmlResourceLoader.h" />
+		<Unit filename="../../../source/saveManager/SaveManager.cpp" />
+		<Unit filename="../../../source/saveManager/SaveManager.h" />
 		<Unit filename="../../../source/scripts/checkPreprocessor.cmd" />
 		<Unit filename="../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd" />
 		<Unit filename="../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd" />
@@ -217,6 +243,8 @@
 		<Unit filename="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h" />
 		<Unit filename="../../../source/utilities/PrimeSearch.cpp" />
 		<Unit filename="../../../source/utilities/PrimeSearch.h" />
+		<Unit filename="../../../source/utilities/PropertyTreeUtils.cpp" />
+		<Unit filename="../../../source/utilities/PropertyTreeUtils.h" />
 		<Unit filename="../../../source/utilities/RandomGenerator.cpp" />
 		<Unit filename="../../../source/utilities/RandomGenerator.h" />
 		<Unit filename="../../../source/utilities/StringUtils.cpp" />

@@ -65,7 +65,7 @@
 
 #include <cstddef> //size_t
 
-namespace watermill {
+namespace base_game {
 	class MemoryPool {
 
 		private:

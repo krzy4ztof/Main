@@ -4,7 +4,7 @@
 #include <lua.hpp> // lua_State
 #include <string> // string
 
-namespace watermill {
+namespace base_game {
 	class LuaStateManager {
 		public:
 			const static std::string SCRIPTS_FOLDER;

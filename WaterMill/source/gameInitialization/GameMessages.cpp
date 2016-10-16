@@ -16,7 +16,7 @@ using std::stringstream;
 using boost::locale::translate;
 using boost::locale::generator;
 
-namespace watermill {
+namespace base_game {
 
 	namespace game_messages {
 		void safe_delete(GameMessages* p) {

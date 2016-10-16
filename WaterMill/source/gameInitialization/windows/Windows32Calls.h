@@ -28,7 +28,7 @@
 // DWORD 32-bit unsigned integer 0 - 2^32 -1
 // unsigned long
 
-namespace watermill {
+namespace base_game {
 
 	class Windows32Calls {
 		public:

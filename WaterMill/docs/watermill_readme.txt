@@ -372,4 +372,12 @@ to non-scalar type 'boost::posix_time::ptime' requested|
 
 ||=== Build failed: 1 error(s), 0 warning(s) (0 minute(s), 18 second(s)) ===|
 
+***********
+***	CPP	***
+***********
 
+Logger.cpp
+namespace logging = boost::log;
+
+ActorFactory.cpp
+using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp

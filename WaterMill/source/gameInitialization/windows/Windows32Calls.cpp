@@ -36,7 +36,7 @@
 using std::string;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	Windows32Calls::Windows32Calls() {
 	}

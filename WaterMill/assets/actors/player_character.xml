@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor type="character">
+	<transformComponent>
+	</transformComponent>
+	
+	<renderComponent>
+	</renderComponent>
+	
+	<scriptComponent>
+	</scriptComponent>
+</actor>

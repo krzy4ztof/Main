@@ -19,7 +19,7 @@
 using std::string;
 using std::stringstream;
 
-namespace watermill {
+namespace base_game {
 
 	ErrorCode::ErrorCode() {
 	}

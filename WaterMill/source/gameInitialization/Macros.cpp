@@ -1,7 +1,7 @@
 
 #include "Macros.h"
 
-namespace watermill {
+namespace base_game {
 	namespace macros {
 	}
 }

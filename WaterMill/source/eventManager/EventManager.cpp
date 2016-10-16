@@ -1,6 +1,6 @@
 #include "EventManager.h"
 
-namespace watermill {
+namespace base_game {
 	EventManager::EventManager() {
 		//ctor
 	}

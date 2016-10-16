@@ -4,6 +4,9 @@
 #include "../watermillGame/WatermillGame.h"
 #include "../debugging/Logger.h"
 
+namespace logger=base_game::logger;
+namespace game_code_app=base_game::game_code_app;
+using base_game::GameCodeApp;
 
 namespace watermill {
 
@@ -50,7 +53,7 @@ namespace watermill {
 		gameCodeApp->mainLoop();
 
 		game_code_app::safe_delete(gameCodeApp);
-		logger::trace("gameCodeApp init succeeded");
+		logger::info("gameCodeApp init succeeded");
 		logger::destroy();
 		return 0;
 

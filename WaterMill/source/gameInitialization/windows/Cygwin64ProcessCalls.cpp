@@ -14,7 +14,7 @@
 using std::string;
 
 
-namespace watermill {
+namespace base_game {
 	Cygwin64ProcessCalls::Cygwin64ProcessCalls() {
 		//ctor
 	}
@@ -23,27 +23,6 @@ namespace watermill {
 		//dtor
 	}
 
-	namespace cygwin64_process_calls {
-
-		int isNumeric ( const char* ccharptr_CharacterList ) {
-			for ( ; *ccharptr_CharacterList; ccharptr_CharacterList++ )
-				if ( *ccharptr_CharacterList < '0' || *ccharptr_CharacterList > '9' ) {
-					return 0;    // false
-				}
-
-			return 1; // true
-		}
-
-		int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive ) {
-			if ( intCaseSensitive ) {
-				return !strcmp ( s1, s2 );
-			}
-
-			else {
-				return !strcasecmp ( s1, s2 );
-			}
-		}
-	}
 
 	bool Cygwin64ProcessCalls::isOnlyInstance ( const string& gameTitle ) {
 		logger::trace("tutaj");
@@ -58,7 +37,7 @@ namespace watermill {
 		struct dirent* de_DirEntity = NULL ;
 		DIR* dir_proc = NULL ;
 		int ( *compareFunction ) ( const char*, const char*, bool ) ;
-		compareFunction = &cygwin64_process_calls::strcmp_Wrapper;
+		compareFunction = &string_utils::compareChars;
 		dir_proc = opendir ( "/proc/" ) ;
 
 		if ( dir_proc == NULL ) {
@@ -72,7 +51,7 @@ namespace watermill {
 		while ( ( de_DirEntity = readdir ( dir_proc ) ) ) {
 			if ( de_DirEntity->d_type == DT_DIR ) {
 
-				if ( cygwin64_process_calls::isNumeric ( de_DirEntity->d_name ) ) {
+				if ( string_utils::isCharNumeric ( de_DirEntity->d_name ) ) {
 					strcpy ( chrarry_CommandLinePath, "/proc/" ) ;
 					strcat ( chrarry_CommandLinePath, de_DirEntity->d_name ) ;
 					strcat ( chrarry_CommandLinePath, "/cmdline" ) ;

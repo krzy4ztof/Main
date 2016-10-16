@@ -4,7 +4,7 @@
 #ifdef __CYGWIN__
 #include <string> // string
 
-namespace watermill {
+namespace base_game {
 	class Cygwin64ProcessCalls {
 		public:
 			Cygwin64ProcessCalls();
@@ -15,13 +15,6 @@ namespace watermill {
 
 		private:
 	};
-
-
-	namespace cygwin64_process_calls {
-		int isNumeric ( const char* ccharptr_CharacterList ) ;
-		int strcmp_Wrapper ( const char *s1, const char *s2, bool intCaseSensitive );
-	}
-
 }
 #endif /* __CYGWIN__ */
 #endif // CYGWIN64PROCESSCALLS_H
