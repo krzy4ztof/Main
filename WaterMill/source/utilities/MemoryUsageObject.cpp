@@ -28,11 +28,11 @@ namespace base_game {
 	// file where your class function definitions are.
 	//	- _className_:		The name of this class.
 	//---------------------------------------------------------------------------------------------------------------------
-	MemoryPool* MemoryUsageObject::s_pMemoryPool = NULL;
+	MemoryPool* MemoryUsageObject::s_pMemoryPool = nullptr;
 
 	void MemoryUsageObject::initMemoryPool(unsigned int numChunks, const char* debugName) {
 
-		if (s_pMemoryPool != NULL) {
+		if (s_pMemoryPool != nullptr) {
 			GCC_ERROR("s_pMemoryPool is not NULL.  All data will be destroyed.  (Ignorable)");
 			safe_delete(s_pMemoryPool);
 		}
@@ -47,7 +47,8 @@ namespace base_game {
 		s_pMemoryPool->Init(sizeof(MemoryUsageObject), numChunks);
 	}
 	void MemoryUsageObject::destroyMemoryPool(void) {
-		GCC_ASSERT(s_pMemoryPool != NULL);
+		GCC_ASSERT(!s_pMemoryPool);
+		//GCC_ASSERT(s_memoryPool != NULL);
 		safe_delete(s_pMemoryPool);
 	}
 	void* MemoryUsageObject::operator new(size_t size) {

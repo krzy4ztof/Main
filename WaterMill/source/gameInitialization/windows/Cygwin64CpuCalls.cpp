@@ -35,7 +35,7 @@ namespace base_game {
 		vector<double>* findSpeedPtr ( vector <string>& internal ) {
 			vector<double>* doubleVector = new vector<double>();
 
-			for ( int i = 0; i < internal.size(); i++ ) {
+			for ( size_t i = 0; i < internal.size(); i++ ) {
 				boost::algorithm::trim ( internal[i] );
 				double speed1;
 
@@ -53,7 +53,7 @@ namespace base_game {
 			// The outerMethod has no way of deleting object on heap
 			vector<double>* doubleVector = new vector<double>();
 
-			for ( int i = 0; i < internal.size(); i++ ) {
+			for ( size_t i = 0; i < internal.size(); i++ ) {
 				boost::algorithm::trim ( internal[i] );
 				double speed2;
 
@@ -69,7 +69,7 @@ namespace base_game {
 			// Move constructor is used
 			vector<double> doubleVector;
 
-			for ( int i = 0; i < internal.size(); i++ ) {
+			for ( size_t i = 0; i < internal.size(); i++ ) {
 				boost::algorithm::trim ( internal[i] );
 				double speed2;
 
@@ -102,7 +102,7 @@ namespace base_game {
 					ss << "line: " << line;
 					logger::trace(ss);
 
-					for ( int i = 0; i < matches.size(); ++i )
+					for ( size_t i = 0; i < matches.size(); ++i )
 						ss << "\tmatches[" << i << "]: " << matches[i];
 					logger::trace(ss);
 

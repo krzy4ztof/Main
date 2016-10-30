@@ -18,16 +18,12 @@ using std::stringstream;
 using boost::property_tree::ptree;
 using boost::property_tree::read_xml;
 
-
 namespace base_game {
 
 	ResourceCache::ResourceCache(const string& assetsFolder, const unsigned int sizeInMb, IResourceFile *resFile) {
-		//ctor
 		cacheSize = sizeInMb * 1024 * 1024;				// total memory size
 		allocated = 0;									// total memory allocated
 		resourceFile = resFile;
-
-		//	assetsFolder = assetsFolderX;
 		this->assetsFolder = assetsFolder;
 	}
 
@@ -54,16 +50,9 @@ namespace base_game {
 		stringstream ss;
 		ss << "tempLoadAndReturnRootXmlElement: " << assetsFolder << " + " << resourceName;
 		logger::info(ss);
+		string filename = assetsFolder + resourceName;
 
-		string filename = assetsFolder + "actors/" + resourceName;
-
-		//ptree tree;
 		read_xml(filename, tree);
-
-		//property_tree_utils::print_tree(tree,0);
-
-		//		loadRootNode(tree);
-		//return tree;
 	}
 
 	namespace resource_cache {

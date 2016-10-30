@@ -13,14 +13,9 @@ namespace base_game {
 			ActorFactory();
 			virtual ~ActorFactory();
 
-			//			std::shared_ptr<base_game::Actor> createActor(std::string actorResource);
 			std::shared_ptr<base_game::Actor> createActor(boost::property_tree::ptree& actorTree);
 
 			boost::optional<boost::property_tree::ptree&> getActorNode(boost::property_tree::ptree& actorTree);
-
-			//	std::shared_ptr<base_game::Actor> loadActorNode(boost::property_tree::ptree actorNode);
-
-
 		protected:
 
 		private:

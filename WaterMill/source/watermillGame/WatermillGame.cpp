@@ -16,11 +16,11 @@ namespace watermill {
 	const string WatermillGame::GAME_APP_DIRECTORY = "GameEngine\\Watermill\\1.0";
 
 	WatermillGame::WatermillGame() {
-		//ctor
+		logger::info("Create WatermillGame");
 	}
 
 	WatermillGame::~WatermillGame() {
-		//dtor
+		logger::info("Destroy WatermillGame");
 	}
 
 	BaseGameLogic *WatermillGame::createGameAndView(ResourceCache* resourceCache) {

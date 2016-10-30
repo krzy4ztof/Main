@@ -27,6 +27,7 @@
 #include "../resourceCache/IResourceFile.h"
 #include "../resourceCache/ResourceZipFile.h"
 #include "../resourceCache/XmlResourceLoader.h"
+#include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
 #include <sstream>      // std::stringstream
@@ -45,6 +46,7 @@ namespace base_game {
 	const string GameCodeApp::ASSETS_ZIP = "assets.zip";
 
 	GameCodeApp::GameCodeApp() {
+		logger::info("Create GameCodeApp");
 
 		initOptions = nullptr;
 		playerOptions = nullptr;
@@ -67,7 +69,7 @@ namespace base_game {
 	}
 
 	GameCodeApp::~GameCodeApp() {
-		logger::info("GameCodeApp Destroy");
+		logger::info("Destroy GameCodeApp");
 		onClose();
 	}
 
@@ -216,7 +218,8 @@ namespace base_game {
 		logger::trace("Main loop+++");
 
 		//TODO: remove tempCreateActors
-		m_pGame->tempCreateActors();
+		//m_pGame->tempCreateActors();
+		m_pGame->tempTestActors();
 
 		videoSystem->startFreeGlutMainLoop();
 
@@ -230,7 +233,7 @@ namespace base_game {
 
 	void GameCodeApp::onClose() {
 
-
+		base_game_logic::safe_delete(m_pGame);
 		// gameView
 		save_manager::safe_delete(saveManager);
 		video_system::safe_delete(videoSystem);

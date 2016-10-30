@@ -47,6 +47,8 @@
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
 #include "../../utilities/StringUtils.h"
+#include "../../utilities/NumberUtils.h"
+
 
 #define SW_SHOWNORMAL 1
 
@@ -103,6 +105,9 @@ namespace base_game {
 		long pages = sysconf ( _SC_PHYS_PAGES ); // number of pages of physical memory
 		long pages_avail = sysconf ( _SC_AVPHYS_PAGES ); // The number of currently available pages of physical memory.
 		long page_size = sysconf ( _SC_PAGE_SIZE );  // size of page in bytes
+
+
+
 		stringstream ss;
 
 		ss << "Cygwin total number of pages " << pages;
@@ -122,9 +127,23 @@ namespace base_game {
 		ss << "Cygwin Mem free (MB) (MemFree, LowFree - total virtual memory): " << pages_avail * page_size / 1024 / 1024;
 		logger::trace(ss);
 
+
+		ss << "Memory needed (bytes): " << physicalRAMNeeded;
+		logger::trace(ss);
+		ss << "Cygwin Mem (bytes) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size;
+		logger::trace(ss);
+
+
 		//if ( status.ullTotalPhys < physicalRAMNeeded ) {
 
-		if ( pages * page_size < physicalRAMNeeded ) {
+
+		unsigned long long pagesULL = number_utils::toUnsignLongLong(pages);
+		unsigned long long pageSizeULL = number_utils::toUnsignLongLong(page_size);
+		unsigned long long pagesAvailULL = number_utils::toUnsignLongLong(pages_avail);
+
+
+		if ( pagesULL * pageSizeULL < physicalRAMNeeded ) {
+			//if ( pages * page_size < physicalRAMNeeded ) {
 			// you don't have enough physical memory. Tell the player to go get a real
 			// computer and give this one to his mother.
 			logger::warning("CheckMemory Failure: Not enough physical memory.");
@@ -133,7 +152,8 @@ namespace base_game {
 
 
 		// Check for enough free memory.
-		if ( pages_avail * page_size < virtualRAMNeeded ) {
+		if ( pagesAvailULL * pageSizeULL < virtualRAMNeeded ) {
+			//if ( pages_avail * page_size < virtualRAMNeeded ) {
 			// you don't have enough virtual memory available.
 			// Tell the player to shut down the copy of Visual Studio running in the
 			// background, or whatever seems to be sucking the memory dry.

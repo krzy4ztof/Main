@@ -25,6 +25,7 @@
 					<Add directory="source/main" />
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -50,6 +51,7 @@
 					<Add directory="source/main" />
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -75,6 +77,7 @@
 					<Add directory="source/main" />
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -113,6 +116,7 @@
 					<Add directory="source/main" />
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -133,6 +137,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../../../assets/actors/player_character.xml" />
 		<Unit filename="../../../assets/scripts/test.lua" />
 		<Unit filename="../../../assets/strings/.gitignore" />
 		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.mo" />
@@ -204,6 +209,7 @@
 		<Unit filename="../../../source/gameInitialization/windows/Windows64Calls.h" />
 		<Unit filename="../../../source/gameLogic/BaseGameLogic.cpp" />
 		<Unit filename="../../../source/gameLogic/BaseGameLogic.h" />
+		<Unit filename="../../../source/gameLogic/BaseGameState.h" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.cpp" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.h" />
 		<Unit filename="../../../source/main/GameMain.cpp" />
@@ -241,6 +247,8 @@
 		<Unit filename="../../../source/utilities/MemoryUsageObject.h" />
 		<Unit filename="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp" />
 		<Unit filename="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h" />
+		<Unit filename="../../../source/utilities/NumberUtils.cpp" />
+		<Unit filename="../../../source/utilities/NumberUtils.h" />
 		<Unit filename="../../../source/utilities/PrimeSearch.cpp" />
 		<Unit filename="../../../source/utilities/PrimeSearch.h" />
 		<Unit filename="../../../source/utilities/PropertyTreeUtils.cpp" />
