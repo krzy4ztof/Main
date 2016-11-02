@@ -26,6 +26,7 @@
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -52,6 +53,7 @@
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -78,6 +80,7 @@
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -117,6 +120,7 @@
 					<Add directory="source/saveManager" />
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -133,6 +137,68 @@
 					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
 				</Linker>
 			</Target>
+			<Target title="Debug_Linux">
+				<Option output="bin/Debug_Linux/Watermill" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug_Linux/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="source/debugging" />
+					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
+				</Compiler>
+				<Linker>
+					<Add library="boost_system" />
+					<Add library="boost_filesystem" />
+					<Add library="boost_thread" />
+					<Add library="boost_log" />
+					<Add library="boost_log_setup" />
+					<Add library="pthread" />
+					<Add library="boost_locale" />
+					<Add library="glut" />
+					<Add library="GL" />
+					<Add library="GLU" />
+					<Add library="lua" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
+			<Target title="Release_Linux">
+				<Option output="bin/Release_Linux/Watermill" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release_Linux/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="source/gameInitialization/windows" />
+					<Add directory="source/gameInitialization" />
+					<Add directory="source/resourceCache" />
+					<Add directory="source/utilities" />
+					<Add directory="source/luaScripting" />
+					<Add directory="source/eventManager" />
+					<Add directory="source/watermillGame" />
+					<Add directory="source/debugging" />
+					<Add directory="source/main" />
+					<Add directory="source/saveManager" />
+					<Add directory="source/actors" />
+					<Add directory="source/gameLogic" />
+					<Add directory="source/gameInitialization/linux" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -140,9 +206,7 @@
 		<Unit filename="../../../assets/actors/player_character.xml" />
 		<Unit filename="../../../assets/scripts/test.lua" />
 		<Unit filename="../../../assets/strings/.gitignore" />
-		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.mo" />
 		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.po" />
-		<Unit filename="../../../assets/strings/pl/LC_MESSAGES/watermill.mo" />
 		<Unit filename="../../../assets/strings/pl/LC_MESSAGES/watermill.po" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_cygwin64.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_mingw32.txt" />
@@ -150,9 +214,6 @@
 		<Unit filename="../../../docs/eclipse/eclipse_cygwin64.txt" />
 		<Unit filename="../../../docs/eclipse/eclipse_mingw32.txt" />
 		<Unit filename="../../../docs/eclipse/eclipse_mingw64.txt" />
-		<Unit filename="../../../docs/netbeans/cygwin64_readme.txt" />
-		<Unit filename="../../../docs/netbeans/mingw64_readme.txt" />
-		<Unit filename="../../../docs/netbeans/mingw_readme.txt" />
 		<Unit filename="../../../docs/watermill_readme.txt" />
 		<Unit filename="../../../game/debugOptions.xml" />
 		<Unit filename="../../../game/playerOptions.xml" />
@@ -197,6 +258,10 @@
 		<Unit filename="../../../source/gameInitialization/VideoSystem.h" />
 		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.cpp" />
 		<Unit filename="../../../source/gameInitialization/linux/LinuxCalls.h" />
+		<Unit filename="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp" />
+		<Unit filename="../../../source/gameInitialization/linux/LinuxCpuCalls.h" />
+		<Unit filename="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp" />
+		<Unit filename="../../../source/gameInitialization/linux/LinuxProcessCalls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.cpp" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64Calls.h" />
 		<Unit filename="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp" />

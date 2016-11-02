@@ -111,6 +111,29 @@ git difftool
 git difftool HEAD
 git diftool --cached
 
+
+***********************************
+***	Konfiguracja Kdiff3 Ubuntu	***
+***********************************
+
+Configure gedit as editor for git purposes (for example editing comments).
+	git config --global core.editor gedit
+	
+Configure KDiff3 as differences viewer and merging editor.
+	git config --global diff.tool kdiff3
+	git config --global merge.tool kdiff3
+
+
+-----	-----	-----	------	------
+
+Użycie:
+
+git difftool
+git difftool HEAD
+git diftool --cached
+
+
+
 ***************
 ***	Remove	***
 ***************
