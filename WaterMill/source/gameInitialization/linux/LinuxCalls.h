@@ -15,8 +15,8 @@
 #ifndef LINUXCALLS_H
 #define LINUXCALLS_H
 
-#ifdef __LINUX__
-//#ifdef __WIN32__
+#ifdef __linux__
+#include <string>
 
 namespace base_game {
 
@@ -25,12 +25,17 @@ namespace base_game {
 			LinuxCalls();
 			LinuxCalls(const LinuxCalls& orig);
 			virtual ~LinuxCalls();
-			bool IsOnlyInstance(char*);
-			//bool IsOnlyInstance(LPCTSTR);
+
+			bool isOnlyInstance(const std::string&);
+			bool checkHardDisk(const int);
+			unsigned long readCPUSpeed();
+			bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
+
+			std::string getUserProfilePath();
 		private:
 	};
 }
-#endif /* __LINUX__ */
+#endif /* __linux__ */
 
 #endif /* LINUXCALLS_H */
 

@@ -129,7 +129,9 @@ namespace base_game {
 
 			//const DWORD minCpuSpeed = 1300; // 1.3Ghz
 			//DWORD thisCPU = systemCalls.readCPUSpeed();
-			const unsigned long minCpuSpeed = 1300; // 1.3Ghz
+			//const unsigned long minCpuSpeed = 1300; // 1.3Ghz
+			const unsigned long minCpuSpeed = 900; // 0.9Ghz
+
 			unsigned long thisCPU = systemCalls.readCPUSpeed();
 
 			stringstream ss;

@@ -37,12 +37,12 @@
 		//typedef base_game::Cygwin64Calls SystemCalls;
 	#endif /* __CYGWIN__ */
 
-	#ifdef __LINUX__
+	#ifdef __linux__
 		//#ifdef __WIN32__
 		#include "linux/LinuxCalls.h"
 		//using SystemCalls = LinuxCalls;
 		//typedef base_game::LinuxCalls SystemCalls;
-	#endif /* __LINUX__ */
+	#endif /* __linux__ */
 
 #endif /* __WIN32*/
 
@@ -64,9 +64,9 @@ namespace base_game {
 		typedef Cygwin64Calls SystemCalls;
 	#endif /* __CYGWIN__ */
 
-	#ifdef __LINUX__
+	#ifdef __linux__
 		typedef LinuxCalls SystemCalls;
-	#endif /* __LINUX__ */
+	#endif /* __linux__ */
 
 #endif /* __WIN32*/
 
