@@ -59,12 +59,15 @@ using std::setprecision;
 namespace base_game {
 
 	Cygwin64Calls::Cygwin64Calls() {
+		logger::info("Create Cygwin64Calls");
 	}
 
 	Cygwin64Calls::Cygwin64Calls ( const Cygwin64Calls& orig ) {
+		logger::info("Create Cygwin64Calls");
 	}
 
 	Cygwin64Calls::~Cygwin64Calls() {
+		logger::info("Destroy Cygwin64Calls");
 	}
 
 	bool Cygwin64Calls::isOnlyInstance ( const string& gameTitle ) {
@@ -182,7 +185,7 @@ namespace base_game {
 		if (userProfile != nullptr) {
 			stringstream ss;
 			ss << "HOME: " << userProfile;
-			logger::info(ss);
+			logger::trace(ss);
 		}
 
 		return string_utils::charToString(userProfile);

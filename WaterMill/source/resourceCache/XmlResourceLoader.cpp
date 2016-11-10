@@ -1,15 +1,16 @@
 #include "XmlResourceLoader.h"
+#include "../debugging/Logger.h"
 
 #include <memory> // shared_ptr
 using std::shared_ptr;
 
 namespace base_game {
 	XmlResourceLoader::XmlResourceLoader() {
-		//ctor
+		logger::info("Create XmlResourceLoader");
 	}
 
 	XmlResourceLoader::~XmlResourceLoader() {
-		//dtor
+		logger::info("Destroy XmlResourceLoader");
 	}
 
 	namespace xml_resource_loader {

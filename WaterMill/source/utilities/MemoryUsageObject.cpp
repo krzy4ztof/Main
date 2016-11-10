@@ -1,25 +1,19 @@
 #include "MemoryUsageObject.h"
 #include "../gameInitialization/Macros.h"
 #include <iostream> // cout, endl
+//#include "../utilities/Templates.h"
+
+using std::cout;
+using std::endl;
 
 namespace base_game {
-	namespace memory_usage_object {
-		void safe_delete(MemoryUsageObject* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
-	using memory_pool::safe_delete;
 
 	MemoryUsageObject::MemoryUsageObject() {
-		//ctor
+		cout << "Create MemoryUsageObject" << endl;
 	}
 
 	MemoryUsageObject::~MemoryUsageObject() {
-		//dtor
+		cout << "Destroy MemoryUsageObject" << endl;
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------
@@ -34,7 +28,8 @@ namespace base_game {
 
 		if (s_pMemoryPool != nullptr) {
 			GCC_ERROR("s_pMemoryPool is not NULL.  All data will be destroyed.  (Ignorable)");
-			safe_delete(s_pMemoryPool);
+			//templates::safe_delete<MemoryPool>(s_pMemoryPool);
+			memory_pool::safe_delete(s_pMemoryPool);
 		}
 
 		s_pMemoryPool = GCC_NEW MemoryPool;
@@ -49,7 +44,8 @@ namespace base_game {
 	void MemoryUsageObject::destroyMemoryPool(void) {
 		GCC_ASSERT(!s_pMemoryPool);
 		//GCC_ASSERT(s_memoryPool != NULL);
-		safe_delete(s_pMemoryPool);
+		//templates::safe_delete<MemoryPool>(s_pMemoryPool);
+		memory_pool::safe_delete(s_pMemoryPool);
 	}
 	void* MemoryUsageObject::operator new(size_t size) {
 		GCC_ASSERT(s_pMemoryPool);

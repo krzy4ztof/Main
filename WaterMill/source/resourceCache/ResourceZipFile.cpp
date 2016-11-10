@@ -1,14 +1,16 @@
 #include "ResourceZipFile.h"
+#include "../debugging/Logger.h"
+
 #include <string>
 
 using std::string;
 
 namespace base_game {
 	ResourceZipFile::ResourceZipFile(const string fileName) {
-		//ctor
+		logger::info("Create ResourceZipFile");
 	}
 
 	ResourceZipFile::~ResourceZipFile() {
-		//dtor
+		logger::info("Destroy ResourceZipFile");
 	}
 }

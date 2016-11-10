@@ -13,19 +13,12 @@
 
 #include "DataFiles.h"
 #include "ErrorCode.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 
-	namespace data_files {
-		void safe_delete(DataFiles* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
 	DataFiles::DataFiles() {
+		logger::info("Create DataFiles");
 		// Initialization
 		bool somethingWentWrong = false;
 
@@ -35,9 +28,11 @@ namespace base_game {
 	}
 
 	DataFiles::DataFiles(const DataFiles& orig) {
+		logger::info("Create DataFiles");
 	}
 
 	DataFiles::~DataFiles() {
+		logger::info("Destroy DataFiles");
 	}
 
 }

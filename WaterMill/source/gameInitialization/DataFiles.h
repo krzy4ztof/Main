@@ -24,10 +24,6 @@ namespace base_game {
 		private:
 
 	};
-
-	namespace data_files {
-		void safe_delete(DataFiles* p);
-	}
 }
 #endif /* DATAFILES_H */
 

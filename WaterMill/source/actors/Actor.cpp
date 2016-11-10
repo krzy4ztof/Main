@@ -45,7 +45,7 @@ namespace base_game {
 	void Actor::describeYourself() {
 		stringstream ss;
 		ss << "Actor Id: " << id;
-		logger::info(ss);
+		logger::trace(ss);
 
 		map<size_t, shared_ptr<ActorComponent>>::iterator componentsIterator;
 
@@ -68,7 +68,7 @@ namespace base_game {
 	}
 
 	void Actor::tempTestComponents() {
-		logger::info("Actor::tempTestComponents");
+		logger::trace("Actor::tempTestComponents");
 
 		weak_ptr<TransformComponent> transformComp  = getComponent<TransformComponent>(TransformComponent::COMPONENT_NAME);
 

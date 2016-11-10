@@ -38,12 +38,15 @@ using std::stringstream;
 namespace base_game {
 
 	Windows64Calls::Windows64Calls() {
+		logger::info("Create Windows64Calls");
 	}
 
 	Windows64Calls::Windows64Calls(const Windows64Calls& orig) {
+		logger::info("Create Windows64Calls");
 	}
 
 	Windows64Calls::~Windows64Calls() {
+		logger::info("Destroy Windows64Calls");
 	}
 
 	//
@@ -268,7 +271,7 @@ namespace base_game {
 		if (userProfile != nullptr) {
 			stringstream ss;
 			ss << "userprofile: " << userProfile;
-			logger::info(ss);
+			logger::trace(ss);
 		}
 
 		return string_utils::charToString(userProfile);

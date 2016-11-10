@@ -24,7 +24,7 @@ namespace base_game {
 
 
 	RenderComponent::RenderComponent() {
-		//ctor
+		logger::info("Create RenderComponent");
 	}
 
 	RenderComponent::~RenderComponent() {
@@ -82,14 +82,14 @@ namespace base_game {
 	void RenderComponent::describeYourself() {
 		stringstream ss;
 		ss << "RenderComponent Id: " << vGetId() << "; r: " << r << "; g: " << g << "; b: " << b  << "; a: " << a;
-		logger::info(ss);
+		logger::trace(ss);
 	}
 
 	void RenderComponent::vPostInit() {
 	}
 
 	void RenderComponent::tempRenderComponentFunction() {
-		logger::info("Perform tempRenderComponentFunction");
+		logger::trace("Perform tempRenderComponentFunction");
 	}
 
 

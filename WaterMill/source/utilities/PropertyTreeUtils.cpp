@@ -28,7 +28,7 @@ namespace base_game {
 			for(const boost::property_tree::ptree::value_type &valueType: propertyTree) {
 				stringstream ss;
 				ss << sep << printValueType(valueType.first) << " : " << printValueType(valueType.second.data());
-				logger::info(ss);
+				logger::trace(ss);
 
 				print_tree(valueType.second, level + 1);
 			}

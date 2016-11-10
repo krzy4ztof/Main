@@ -47,9 +47,12 @@ using std::cout;
 using std::endl;
 
 namespace base_game {
+
 	namespace memory_pool {
-		void safe_delete(MemoryPool* p) {
-			if (p) {
+		//void safe_delete(MemoryPool* p) {
+
+		void safe_delete(MemoryPool*& p) {
+			if ((p)!=nullptr) {
 				delete (p);
 				(p)=nullptr;
 			}
@@ -69,7 +72,7 @@ namespace base_game {
 	}
 
 	bool MemoryPool::Init(unsigned int chunkSize, unsigned int numChunks) {
-		cout << "MemoryPool::destroy()" << endl;
+		cout << "MemoryPool::Init()" << endl;
 
 		// it's safe to call Init() without calling Destroy()
 		if (m_ppRawMemoryArray)
@@ -80,8 +83,15 @@ namespace base_game {
 		m_numChunks = numChunks;
 
 		// attempt to grow the memory array
-		if (GrowMemoryArray())
+		if (GrowMemoryArray()) {
+			cout << "End true MemoryPool::Init()" << endl;
+
 			return true;
+
+		}
+
+		cout << "End false MemoryPool::Init()" << endl;
+
 		return false;
 	}
 
@@ -172,6 +182,7 @@ namespace base_game {
 		m_allocPeak = 0;
 		m_numAllocs = 0;
 #endif
+		cout << "End MemoryPool::reset()" << endl;
 	}
 
 	bool MemoryPool::GrowMemoryArray(void) {
@@ -218,6 +229,8 @@ namespace base_game {
 		m_ppRawMemoryArray = ppNewMemArray;
 		++m_memArraySize;
 
+		cout << "End MemoryPool::growMemoryArray()" << endl;
+
 		return true;
 	}
 
@@ -247,6 +260,8 @@ namespace base_game {
 			// move to the next block
 			pCurr += blockSize;
 		}
+
+		cout << "End MemoryPool::allocateNewMemoryBlock()" << endl;
 
 		return pNewMem;
 	}

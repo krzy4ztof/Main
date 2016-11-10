@@ -27,6 +27,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -54,6 +55,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -81,6 +83,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -121,6 +124,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -158,6 +162,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_system" />
@@ -194,6 +199,7 @@
 					<Add directory="source/actors" />
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
+					<Add directory="source/mainLoop" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -280,6 +286,11 @@
 		<Unit filename="../../../source/main/GameMain.cpp" />
 		<Unit filename="../../../source/main/GameMain.h" />
 		<Unit filename="../../../source/main/Main.cpp" />
+		<Unit filename="../../../source/mainLoop/Process.cpp" />
+		<Unit filename="../../../source/mainLoop/Process.h" />
+		<Unit filename="../../../source/mainLoop/ProcessManager.cpp" />
+		<Unit filename="../../../source/mainLoop/ProcessManager.h" />
+		<Unit filename="../../../source/mainLoop/ProcessState.h" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
 		<Unit filename="../../../source/resourceCache/IResourceLoader.cpp" />
@@ -322,6 +333,7 @@
 		<Unit filename="../../../source/utilities/RandomGenerator.h" />
 		<Unit filename="../../../source/utilities/StringUtils.cpp" />
 		<Unit filename="../../../source/utilities/StringUtils.h" />
+		<Unit filename="../../../source/utilities/Templates.h" />
 		<Unit filename="../../../source/watermillGame/WatermillGame.cpp" />
 		<Unit filename="../../../source/watermillGame/WatermillGame.h" />
 		<Unit filename="../../../source/watermillGame/WatermillLogic.cpp" />

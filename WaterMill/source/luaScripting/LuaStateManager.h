@@ -23,7 +23,6 @@ namespace base_game {
 	};
 
 	namespace lua_state_manager {
-		void safe_delete(LuaStateManager* p);
 		int howdy(lua_State* state);
 	}
 }

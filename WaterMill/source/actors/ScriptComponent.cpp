@@ -25,7 +25,7 @@ namespace base_game {
 
 
 	ScriptComponent::ScriptComponent() {
-		//ctor
+		logger::info("Create ScriptComponent");
 	}
 
 	ScriptComponent::~ScriptComponent() {
@@ -94,14 +94,14 @@ namespace base_game {
 	void ScriptComponent::describeYourself() {
 		stringstream ss;
 		ss << "ScriptComponent Id: " << vGetId() << "; constructor: " << constructor << "; destructor: " << destructor << "; actorType: " << actorType;
-		logger::info(ss);
+		logger::trace(ss);
 	}
 
 	void ScriptComponent::vPostInit() {
 	}
 
 	void ScriptComponent::tempScriptComponentFunction() {
-		logger::info("Perform tempScriptComponentFunction");
+		logger::trace("Perform tempScriptComponentFunction");
 	}
 
 	namespace script_component {

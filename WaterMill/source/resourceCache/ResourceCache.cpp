@@ -21,6 +21,8 @@ using boost::property_tree::read_xml;
 namespace base_game {
 
 	ResourceCache::ResourceCache(const string& assetsFolder, const unsigned int sizeInMb, IResourceFile *resFile) {
+		logger::info("Create ResourceCache");
+
 		cacheSize = sizeInMb * 1024 * 1024;				// total memory size
 		allocated = 0;									// total memory allocated
 		resourceFile = resFile;
@@ -28,7 +30,7 @@ namespace base_game {
 	}
 
 	ResourceCache::~ResourceCache() {
-		//dtor
+		logger::info("Destroy ResourceCache");
 	}
 
 	int ResourceCache::preLoad(const string& pattern) {
@@ -49,18 +51,9 @@ namespace base_game {
 	void ResourceCache::tempLoadAndReturnRootXmlElement(const string& resourceName, ptree& tree) {
 		stringstream ss;
 		ss << "tempLoadAndReturnRootXmlElement: " << assetsFolder << " + " << resourceName;
-		logger::info(ss);
+		logger::trace(ss);
 		string filename = assetsFolder + resourceName;
 
 		read_xml(filename, tree);
-	}
-
-	namespace resource_cache {
-		void safe_delete(ResourceCache* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
 	}
 }

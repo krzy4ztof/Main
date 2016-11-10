@@ -5,6 +5,7 @@
 #include "../actors/Actor.h"
 #include "../gameInitialization/Macros.h"
 #include "../resourceCache/ResourceCache.h"
+#include "../utilities/Templates.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <memory> // shared_ptr, weak_ptr
@@ -23,26 +24,30 @@ using std::make_pair;
 using std::pair;
 using std::map;
 
+using base_game::BaseGameState::spawningPlayersActors;
+using base_game::BaseGameState::running;
+
 
 namespace base_game {
-
-	namespace base_game_logic {
-		void safe_delete(BaseGameLogic* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
 
 	BaseGameLogic::BaseGameLogic() {
 		logger::info("Create BaseGameLogic");
 		actorFactory = nullptr;
+		pProcessManager = new ProcessManager();
 	}
 
 	BaseGameLogic::~BaseGameLogic() {
 		logger::info("Destroy BaseGameLogic");
-		actor_factory::safe_delete(actorFactory);
+
+		//delete(pProcessManager); // TODO: template
+		templates::safe_delete<ProcessManager>(pProcessManager);
+
+		templates::safe_delete<ProcessManager>(pProcessManager);
+
+		//actor_factory::safe_delete(actorFactory);
+
+		templates::safe_delete<ActorFactory>(actorFactory);
+		//actor_factory::safe_delete(actorFactory);
 
 		map<unsigned int, shared_ptr<Actor>>::iterator actorsIterator;
 		for (actorsIterator = actors.begin(); actorsIterator!=actors.end(); actorsIterator++) {
@@ -64,6 +69,7 @@ namespace base_game {
 	}
 
 	void BaseGameLogic::vChangeState(BaseGameState newState) {
+
 	}
 
 	shared_ptr<Actor> BaseGameLogic::vCreateActor(const string& actorResource) {
@@ -116,6 +122,32 @@ namespace base_game {
 	}
 
 
+	void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
+
+		int deltaMilliseconds = int(elapsedTime * 1000.0f);
+		lifetime += elapsedTime;
+
+		stringstream ss;
+		switch(state) {
+
+			case spawningPlayersActors: {
+					break;
+				}
+
+			case running: {
+					pProcessManager->updateProcesses(deltaMilliseconds);
+					break;
+				}
+		}
+	}
+
+	void BaseGameLogic::tempTestProcessManager() {
+		state = running;
+		vOnUpdate(0,10);
+
+	}
+
+
 
 	void BaseGameLogic::tempTestActors() {
 		vChangeState(spawningPlayersActors);
@@ -143,11 +175,11 @@ namespace base_game {
 
 		stringstream ss;
 		ss << "Post init actor use_count: " << actor.use_count();
-		logger::info(ss);
+		logger::trace(ss);
 
 		if (actor) {
 			actor->describeYourself();
-			logger::info("Stworzono actor");
+			logger::trace("Stworzono actor");
 		} else {
 			logger::error("Nie stworzono actor");
 		}
@@ -160,7 +192,7 @@ namespace base_game {
 		ss << "Post reset actor use_count: " << actor.use_count();
 
 
-		logger::info(ss);
+		logger::trace(ss);
 
 	}
 

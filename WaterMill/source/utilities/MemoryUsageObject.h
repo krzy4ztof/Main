@@ -29,8 +29,5 @@ namespace base_game {
 
 	};
 
-	namespace memory_usage_object {
-		void safe_delete(MemoryUsageObject* p);
-	}
 }
 #endif // MEMORYUSAGEOBJECT_H

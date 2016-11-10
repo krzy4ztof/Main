@@ -51,6 +51,7 @@
 
 
 #include "PrimeSearch.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 
@@ -130,6 +131,7 @@ namespace base_game {
 
 
 	PrimeSearch::PrimeSearch(int elements) {
+		logger::info("Create PrimeSearch");
 		//GCC_ASSERT(elements>0 && "Can't do a PrimeSearch if you have 0 elements to search through, buddy-boy");
 
 		maxElements = elements;
@@ -163,7 +165,7 @@ namespace base_game {
 	}
 
 	PrimeSearch::~PrimeSearch() {
-		//dtor
+		logger::info("Destroy PrimeSearch");
 	}
 
 	int PrimeSearch::getNext(bool restartBool) {

@@ -138,8 +138,10 @@ namespace base_game {
 
 	};
 
+
 	namespace memory_pool {
-		void safe_delete(MemoryPool* p);
+		void safe_delete(MemoryPool*& p);
+
 	}
 }
 

@@ -41,21 +41,13 @@ namespace base_game {
 	const string PlayerOptions::OPTION_NAME_ATTR = "name";
 	const string PlayerOptions::OPTION_VALUE_ATTR = "value";
 
-	namespace player_options {
-		void safe_delete(PlayerOptions* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
 
 	PlayerOptions::PlayerOptions() {
-		//ctor
+		logger::info("Create PlayerOptions");
 	}
 
 	PlayerOptions::~PlayerOptions() {
-		//dtor
+		logger::info("Destroy PlayerOptions");
 	}
 
 

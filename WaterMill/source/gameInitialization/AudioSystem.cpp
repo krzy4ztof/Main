@@ -13,19 +13,12 @@
 
 #include "AudioSystem.h"
 #include "ErrorCode.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 
-	namespace audio_system {
-		void safe_delete(AudioSystem* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
 	AudioSystem::AudioSystem() {
+		logger::info("Create AudioSystem");
 
 		// Initialization
 		bool somethingWentWrong = false;
@@ -36,8 +29,10 @@ namespace base_game {
 	}
 
 	AudioSystem::AudioSystem(const AudioSystem& orig) {
+		logger::info("Create AudioSystem");
 	}
 
 	AudioSystem::~AudioSystem() {
+		logger::info("Destroy AudioSystem");
 	}
 }

@@ -11,9 +11,5 @@ namespace base_game {
 
 		private:
 	};
-
-	namespace event_manager {
-		void safe_delete(EventManager* p);
-	}
 }
 #endif // EVENTMANAGER_H

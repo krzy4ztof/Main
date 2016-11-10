@@ -28,11 +28,6 @@ namespace base_game {
 			ComponentFactory* componentFactory;
 
 	};
-
-	namespace actor_factory {
-		void safe_delete(ActorFactory* p);
-	}
-
 }
 
 #endif // ACTORFACTORY_H

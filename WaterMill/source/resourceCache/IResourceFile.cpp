@@ -1,9 +1,10 @@
 #include "IResourceFile.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 
 
 	IResourceFile::~IResourceFile() {
-		//dtor
+		logger::info("Destroy IResourceFile");
 	}
 }

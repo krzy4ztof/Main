@@ -1,20 +1,12 @@
 #include "EventManager.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 	EventManager::EventManager() {
-		//ctor
+		logger::info("Create EventManager");
 	}
 
 	EventManager::~EventManager() {
-		//dtor
-	}
-
-	namespace event_manager {
-		void safe_delete(EventManager* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
+		logger::info("Destroy EventManager");
 	}
 }

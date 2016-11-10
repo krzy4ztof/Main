@@ -16,11 +16,11 @@ using std::string;
 
 namespace base_game {
 	Cygwin64ProcessCalls::Cygwin64ProcessCalls() {
-		//ctor
+		logger::info("Create Cygwin64ProcessCalls");
 	}
 
 	Cygwin64ProcessCalls::~Cygwin64ProcessCalls() {
-		//dtor
+		logger::info("Destroy Cygwin64ProcessCalls");
 	}
 
 

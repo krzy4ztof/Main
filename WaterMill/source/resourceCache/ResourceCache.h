@@ -29,9 +29,5 @@ namespace base_game {
 			unsigned int allocated;			// total memory allocated
 			std::string assetsFolder;
 	};
-
-	namespace resource_cache {
-		void safe_delete(ResourceCache* p);
-	};
 }
 #endif // RESOURCECACHE_H

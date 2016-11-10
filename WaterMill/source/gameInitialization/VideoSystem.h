@@ -34,7 +34,6 @@ namespace base_game {
 
 
 	namespace video_system {
-		void safe_delete(VideoSystem* p);
 		void displayFreeGlut();
 		void onChangeSize(int width, int height);
 		void onClose();

@@ -32,10 +32,6 @@ namespace base_game {
 			void loadMain(const std::string &filename);
 
 	};
-
-	namespace debugging_options {
-		void safe_delete(DebuggingOptions* p);
-	};
 }
 
 #endif // DEBUGGINGOPTIONS_H

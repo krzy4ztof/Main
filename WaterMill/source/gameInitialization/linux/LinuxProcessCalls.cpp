@@ -10,21 +10,24 @@
 
 #include "../../utilities/StringUtils.h"
 #include "../../debugging/Logger.h"
+#include <sstream>      // std::stringstream
 
 using std::string;
+using std::stringstream;
 
 
 namespace base_game {
 	LinuxProcessCalls::LinuxProcessCalls() {
-		//ctor
+		logger::info("Create LinuxProcessCalls");
 	}
 
 	LinuxProcessCalls::~LinuxProcessCalls() {
-		//dtor
+		logger::info("Destroy LinuxProcessCalls");
 	}
 
 
 	bool LinuxProcessCalls::isOnlyInstance ( const string& gameTitle ) {
+		stringstream ss;
 		logger::trace("tutaj");
 		char chrarry_CommandLinePath[100]  ;
 		char chrarry_NameOfProcess[300]  ;
@@ -70,6 +73,10 @@ namespace base_game {
 						}
 
 						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
+							ss << "proces podobny: " << chrptr_StringToCompare;
+							logger::info(ss);
+
+
 							howMany++;
 						}
 					}
@@ -78,16 +85,24 @@ namespace base_game {
 		}
 
 		closedir ( dir_proc ) ;
+		logger::trace("tutaj 2");
 
 		string_utils::safe_delete_char_array(gameTitleChar);
 
+		ss << "tutaj howMany: " << howMany;
+		logger::info(ss);
+
 		if ( howMany >= 2 ) {
+			logger::trace("tutaj false");
+
 			// First process is this process
 			// Second process is second game process
 			return false;
 		}
 
 		else {
+			logger::trace("tutaj true");
+
 			return true;
 		}
 	}

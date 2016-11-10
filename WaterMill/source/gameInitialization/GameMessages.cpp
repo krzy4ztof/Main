@@ -18,19 +18,12 @@ using boost::locale::generator;
 
 namespace base_game {
 
-	namespace game_messages {
-		void safe_delete(GameMessages* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
 	const string GameMessages::STRINGS_FOLDER = "strings/";
 	const string GameMessages::MESSAGE_DOMAIN = "watermill";
 
 	GameMessages::GameMessages(string assetsFolder, string language) {
+
+		logger::info("Create GameMessages");
 
 		stringstream ss;
 		ss << "LAN: " << language;
@@ -80,7 +73,7 @@ namespace base_game {
 	}
 
 	GameMessages::~GameMessages() {
-		//dtor
+		logger::info("Destroy GameMessages");
 	}
 
 	void GameMessages::testMessages() {

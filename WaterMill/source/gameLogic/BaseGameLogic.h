@@ -6,6 +6,7 @@
 #include "../actors/Actor.h"
 #include "BaseGameLogic.h"
 #include "BaseGameState.h"
+#include "../mainLoop/ProcessManager.h"
 
 #include <memory> // shared_ptr, weak_ptr
 #include <map> // map
@@ -20,6 +21,7 @@ namespace base_game {
 
 			void tempCreateActors();
 			void tempTestActors();
+			void tempTestProcessManager();
 
 			virtual std::shared_ptr<Actor> vCreateActor(const std::string &actorResource);  // [rez] note: don't store this strong pointer outside of this class
 			virtual void vDestroyActor(const unsigned int actorId);
@@ -27,7 +29,14 @@ namespace base_game {
 
 			virtual void vChangeState(BaseGameState newState);
 
+			// Logic Update
+			virtual void vOnUpdate(float time, float elapsedTime);
+
 		protected:
+			float lifetime;								//indicates how long this game has been in session
+			BaseGameState state;
+			ProcessManager* pProcessManager;				// a game logic entity
+
 			std::map<unsigned int, std::shared_ptr<Actor>> actors;
 
 			ActorFactory* actorFactory;
@@ -36,10 +45,6 @@ namespace base_game {
 
 		private:
 	};
-
-	namespace base_game_logic {
-		void safe_delete(BaseGameLogic* p);
-	}
 }
 
 #endif // BASEGAMELOGIC_H

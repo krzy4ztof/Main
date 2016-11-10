@@ -26,9 +26,5 @@ namespace base_game {
 			std::map<std::string,ActorComponent* (*)(void)> creationFunctions;
 	};
 
-	namespace component_factory {
-		void safe_delete(ComponentFactory* p);
-	}
-
 }
 #endif // COMPONENTFACTORY_H

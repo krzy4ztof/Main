@@ -73,10 +73,6 @@ namespace base_game {
 			SaveManager *saveManager;
 
 	};
-
-	namespace game_code_app {
-		void safe_delete(GameCodeApp* p);
-	};
 }
 #endif /* GAMECODEAPP_H */
 

@@ -4,6 +4,7 @@
 #include "RenderComponent.h"
 #include "ScriptComponent.h"
 #include "TransformComponent.h"
+#include "../utilities/Templates.h"
 
 #include <memory> // shared_ptr
 #include <string> // string
@@ -24,6 +25,7 @@ namespace base_game {
 	const string ActorFactory::ACTOR_NODE_NAME = "actor";
 
 	ActorFactory::ActorFactory() {
+		logger::info("Create ActorFactory");
 		componentFactory = new ComponentFactory;
 		componentFactory->registerComponent(RenderComponent::COMPONENT_NAME, &render_component::componentFactory);
 		componentFactory->registerComponent(ScriptComponent::COMPONENT_NAME, &script_component::componentFactory);
@@ -31,7 +33,9 @@ namespace base_game {
 	}
 
 	ActorFactory::~ActorFactory() {
-		component_factory::safe_delete(componentFactory);
+		logger::info("Destroy ActorFactory");
+		//component_factory::safe_delete(componentFactory);
+		templates::safe_delete<ComponentFactory>(componentFactory);
 	}
 
 	unsigned int ActorFactory::getNextActorId() {
@@ -68,18 +72,18 @@ namespace base_game {
 			string name = actorChild.first;
 			int compRes = name.compare("<xmlattr>");
 			if (compRes == 0) {
-				logger::info("To jest <xmlattr>");
+				logger::trace("To jest <xmlattr>");
 			} else {
 				shared_ptr<ActorComponent> actorComponent =  componentFactory->create(actorChild);
 
 				if (actorComponent) {
-					logger::info("Stworzono actorComponent");
+					logger::trace("Stworzono actorComponent");
 					actor->addComponent(actorComponent);
 					actorComponent->setOwner(actor);
 
 					stringstream ss;
 					ss << "Post add actorComponent actor use_count: " << actor.use_count();
-					logger::info(ss);
+					logger::trace(ss);
 				} else {
 					logger::error("Nie stworzono actorComponent");
 					return shared_ptr<Actor>();
@@ -99,6 +103,7 @@ namespace base_game {
 		return element;
 	}
 
+	/*
 	namespace actor_factory {
 		void safe_delete(ActorFactory* p) {
 			if (p) {
@@ -106,5 +111,5 @@ namespace base_game {
 				(p)=nullptr;
 			}
 		}
-	}
+	}*/
 }

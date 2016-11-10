@@ -23,16 +23,6 @@ namespace base_game {
 	const string InitOptions::ASSETS_FOLDER = "MAIN.Assets";
 	const string InitOptions::GAME_FOLDER = "MAIN.Game";
 
-
-	namespace init_options {
-		void safe_delete(InitOptions* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
 	string InitOptions::getAssetsFolder() {
 		return assetsFolder;
 	}
@@ -97,6 +87,8 @@ namespace base_game {
 	}
 
 	InitOptions::InitOptions() {
+		logger::info("Create InitOptions");
+
 
 		// Initialization
 		bool somethingWentWrong = false;
@@ -111,7 +103,7 @@ namespace base_game {
 	}
 
 	InitOptions::~InitOptions() {
-		//dtor
+		logger::info("Destroy InitOptions");
 	}
 
 }

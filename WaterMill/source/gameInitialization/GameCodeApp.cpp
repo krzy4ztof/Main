@@ -30,6 +30,8 @@
 #include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
+#include "../utilities/Templates.h"
+
 #include <sstream>      // std::stringstream
 
 using std::string;
@@ -66,6 +68,7 @@ namespace base_game {
 	}
 
 	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
+		logger::info("Create GameCodeApp");
 	}
 
 	GameCodeApp::~GameCodeApp() {
@@ -178,12 +181,12 @@ namespace base_game {
 
 			stringstream ss;
 			ss << "saveGame: " << gameAppDirectory;
-			logger::info(ss);
+			logger::trace(ss);
 
 			string userProfilePath = systemCalls.getUserProfilePath();
 
 			ss << "userProfilePathStr: " << userProfilePath;
-			logger::info(ss);
+			logger::trace(ss);
 
 
 			saveManager->init(userProfilePath, gameAppDirectory);
@@ -222,12 +225,12 @@ namespace base_game {
 		//TODO: remove tempCreateActors
 		//m_pGame->tempCreateActors();
 		m_pGame->tempTestActors();
+		m_pGame->tempTestProcessManager();
 
 		videoSystem->startFreeGlutMainLoop();
 
 		while ( !done ) {
 			// Main loop
-
 			done = true;
 		}
 
@@ -235,33 +238,23 @@ namespace base_game {
 
 	void GameCodeApp::onClose() {
 
-		base_game_logic::safe_delete(m_pGame);
+		templates::safe_delete<BaseGameLogic>(m_pGame);
 		// gameView
-		save_manager::safe_delete(saveManager);
-		video_system::safe_delete(videoSystem);
-		audio_system::safe_delete(audioSystem);
-		data_files::safe_delete(dataFiles);
-		event_manager::safe_delete(eventManager);
+		templates::safe_delete<SaveManager>(saveManager);
+		templates::safe_delete<VideoSystem>(videoSystem);
+		templates::safe_delete<AudioSystem>(audioSystem);
+		templates::safe_delete<DataFiles>(dataFiles);
+		templates::safe_delete<EventManager>(eventManager);
+		templates::safe_delete<LuaStateManager>(luaStateManager);
+		templates::safe_delete<GameMessages>(gameMessages);
 
-		lua_state_manager::safe_delete(luaStateManager);
-		game_messages::safe_delete(gameMessages);
-
-
-		resource_cache::safe_delete(resourceCache);
+		templates::safe_delete<ResourceCache>(resourceCache);
 		//IResourceFile
-		debugging_options::safe_delete(debuggingOptions);
-		player_options::safe_delete(playerOptions);
-		init_options::safe_delete(initOptions);
+		templates::safe_delete<DebuggingOptions>(debuggingOptions);
+		templates::safe_delete<PlayerOptions>(playerOptions);
+		templates::safe_delete<InitOptions>(initOptions);
 
 	}
 
-	namespace game_code_app {
-		void safe_delete(GameCodeApp* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
 }
 

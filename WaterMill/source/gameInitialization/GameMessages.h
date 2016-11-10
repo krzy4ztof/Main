@@ -20,9 +20,5 @@ namespace base_game {
 			//  std::string assetsFolder;
 			//  std::string language;
 	};
-
-	namespace game_messages {
-		void safe_delete(GameMessages* p);
-	};
 }
 #endif // GAMEMESSAGES_H

@@ -38,44 +38,35 @@ namespace base_game {
 		vector <string> foldersVector;
 
 		ss << "SaveManager saveGame: " << gameAppDir;
-		logger::info(ss);
+		logger::trace(ss);
 		ss << "SaveManager userProfilePathStr: " << userProfile;
-		logger::info(ss);
+		logger::trace(ss);
 
 		savePath = new path(userProfile);
 
 		string_utils::splitString ( foldersVector, gameAppDir, '\\' );
 		for (string folder : foldersVector) {
 			ss << "folder: " << folder;
-			logger::info(ss);
+			logger::trace(ss);
 			*savePath /= folder;
 			ss << "path: " << *savePath;
-			logger::info(ss);
+			logger::trace(ss);
 
 
 			file_status st = status(*savePath);
 			ss << "path exists: " << exists(st);
-			logger::info(ss);
+			logger::trace(ss);
 
 			if (!exists(st)) {
 				try {
 					if (create_directory(*savePath)) {
 						ss << "path created: " << *savePath;
-						logger::info(ss);
+						logger::trace(ss);
 					}
 				} catch (filesystem_error &e) {
 					ss << e.what();
 					logger::error(ss);
 				}
-			}
-		}
-	}
-
-	namespace save_manager {
-		void safe_delete(SaveManager* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
 			}
 		}
 	}

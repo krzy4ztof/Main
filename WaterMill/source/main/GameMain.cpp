@@ -3,18 +3,31 @@
 #include "../gameInitialization/GameCodeApp.h"
 #include "../watermillGame/WatermillGame.h"
 #include "../debugging/Logger.h"
+#include "../utilities/Templates.h"
+
+#include <iostream> // cout, endl
+
+using std::cout;
+using std::endl;
+
 
 namespace logger=base_game::logger;
-namespace game_code_app=base_game::game_code_app;
+namespace templates=base_game::templates;
+//namespace game_code_app=base_game::game_code_app;
 using base_game::GameCodeApp;
+
+
 
 namespace watermill {
 
 	GameMain::GameMain() {
+		cout << "Create GameMain" << endl;
 	}
 
 	GameMain::~GameMain() {
+		cout << "Destroy GameMain" << endl;
 	}
+
 
 	int GameMain::init(int argc, char** argv) {
 
@@ -52,7 +65,10 @@ namespace watermill {
 
 		gameCodeApp->mainLoop();
 
-		game_code_app::safe_delete(gameCodeApp);
+		//game_code_app::safe_delete(gameCodeApp);
+		//templates::safe_delete<WatermillGame>(gameCodeApp);
+		templates::safe_delete<GameCodeApp>(gameCodeApp);
+
 		logger::info("gameCodeApp init succeeded");
 		logger::destroy();
 		return 0;

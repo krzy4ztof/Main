@@ -14,6 +14,7 @@ using base_game::BaseGameLogic;
 using base_game::BaseGameState;
 using base_game::Actor;
 using base_game::BaseGameState::spawningPlayersActors;
+using base_game::BaseGameState::running;
 
 
 namespace logger = base_game::logger;
@@ -39,11 +40,15 @@ namespace watermill {
 					shared_ptr<Actor> pActor = vCreateActor("actors/player_character.xml");
 					if (pActor) {
 						ss << "Actor Created!!!: ";
-						logger::info(ss);
+						logger::trace(ss);
 					} else {
 						ss << "Actor NOT Created!!!: ";
-						logger::info(ss);
+						logger::trace(ss);
 					}
+					break;
+				}
+
+			case running: {
 					break;
 				}
 		}

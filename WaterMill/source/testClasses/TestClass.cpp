@@ -24,13 +24,14 @@
 #include "../luaScripting/LuaStateManager.h"
 #include "../gameInitialization/VideoSystem.h"
 #include "../debugging/Logger.h"
+#include "../utilities/Templates.h"
 
 
 using std::cout;
 using std::endl;
 using std::string;
 
-using base_game::memory_usage_object::safe_delete;
+//using base_game::memory_usage_object::safe_delete;
 
 namespace base_game {
 
@@ -91,9 +92,9 @@ namespace base_game {
 		cout << "new mem2" << endl;
 		MemoryUsageObject* mem2 = new MemoryUsageObject();
 		cout << "destr mem1" << endl;
-		safe_delete(mem1);
+		templates::safe_delete<MemoryUsageObject>(mem1);
 		cout << "destr mem2" << endl;
-		safe_delete (mem2);
+		templates::safe_delete<MemoryUsageObject>(mem2);
 
 		cout << "new mem3" << endl;
 		MemoryUsageObject* mem3 = new MemoryUsageObject();
@@ -105,13 +106,13 @@ namespace base_game {
 		MemoryUsageObject* mem6 = new MemoryUsageObject();
 
 		cout << "destr mem6" << endl;
-		safe_delete (mem6);
+		templates::safe_delete<MemoryUsageObject>(mem6);
 		cout << "destr mem5" << endl;
-		safe_delete (mem5);
+		templates::safe_delete<MemoryUsageObject>(mem5);
 		cout << "destr mem4" << endl;
-		safe_delete (mem4);
+		templates::safe_delete<MemoryUsageObject>(mem4);
 		cout << "destr mem3" << endl;
-		safe_delete (mem3);
+		templates::safe_delete<MemoryUsageObject>(mem3);
 
 	}
 

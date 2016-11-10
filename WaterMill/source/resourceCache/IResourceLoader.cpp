@@ -1,11 +1,12 @@
 #include "IResourceLoader.h"
+#include "../debugging/Logger.h"
 
 namespace base_game {
 	IResourceLoader::IResourceLoader() {
-		//ctor
+		logger::info("Create IResourceLoader");
 	}
 
 	IResourceLoader::~IResourceLoader() {
-		//dtor
+		logger::info("Destroy IResourceLoader");
 	}
 }

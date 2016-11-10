@@ -24,9 +24,5 @@ namespace base_game {
 			void checkFile(const std::string &filename);
 			void readFile(const std::string &filename);
 	};
-
-	namespace init_options {
-		void safe_delete(InitOptions* p);
-	}
 }
 #endif // INITOPTIONS_H

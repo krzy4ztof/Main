@@ -18,10 +18,12 @@ namespace base_game {
 	const string LuaStateManager::SCRIPTS_FOLDER = "scripts/";
 
 	LuaStateManager::LuaStateManager(string assetsFolder) {
+		logger::info("Create LuaStateManager");
 		scriptsFolder = assetsFolder  + SCRIPTS_FOLDER;
 	}
 
 	LuaStateManager::~LuaStateManager() {
+		logger::info("Destroy LuaStateManager");
 	}
 
 	void LuaStateManager::print_error(lua_State* state) {
@@ -87,12 +89,6 @@ namespace base_game {
 
 
 	namespace lua_state_manager {
-		void safe_delete(LuaStateManager* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
 
 		int howdy(lua_State* state) {
 			// The number of function arguments will be on top of the stack.

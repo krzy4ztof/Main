@@ -24,11 +24,11 @@ using std::min_element;
 
 namespace base_game {
 	LinuxCpuCalls::LinuxCpuCalls() {
-		//ctor
+		logger::info("Create LinuxCpuCalls");
 	}
 
 	LinuxCpuCalls::~LinuxCpuCalls() {
-		//dtor
+		logger::info("Destroy LinuxCpuCalls");
 	}
 
 	namespace linux_cpu_calls {
@@ -136,7 +136,7 @@ namespace base_game {
 		for (doubleIterPtr = doubleVectorPtr->begin(); doubleIterPtr != doubleVectorPtr->end(); doubleIterPtr++ ) {
 
 			ss << "avgSpeed: " << avgSpeed << "; curSpeed: " << *doubleIterPtr;
-			logger::info(ss);
+			logger::trace(ss);
 
 
 			avgSpeed += *doubleIterPtr;
@@ -149,7 +149,7 @@ namespace base_game {
 
 
 		ss << "avgSpeed: " << avgSpeed << "; size: " << doubleVectorPtr->size();;
-		logger::info(ss);
+		logger::trace(ss);
 
 
 

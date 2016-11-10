@@ -37,12 +37,15 @@ using std::setprecision;
 namespace base_game {
 
 	LinuxCalls::LinuxCalls() {
+		logger::info("Create LinuxCalls");
 	}
 
 	LinuxCalls::LinuxCalls(const LinuxCalls& orig) {
+		logger::info("Create LinuxCalls");
 	}
 
 	LinuxCalls::~LinuxCalls() {
+		logger::info("Destroy LinuxCalls");
 	}
 
 	//
@@ -50,11 +53,13 @@ namespace base_game {
 	//
 
 	bool LinuxCalls::isOnlyInstance(const string& gameTitle) {
-			LinuxProcessCalls cygwinProcess;
+		LinuxProcessCalls cygwinProcess;
 		stringstream ss;
 		ss << "Is the only instance in Linux: " << gameTitle << "?";
 		logger::trace(ss);
 		bool isOnlyResult = cygwinProcess.isOnlyInstance ( gameTitle );
+		ss << "Is the only instance in Linux result 2: ?";
+		logger::trace(ss);
 		return isOnlyResult;
 	}
 
@@ -74,7 +79,7 @@ namespace base_game {
 
 
 	unsigned long LinuxCalls::readCPUSpeed() {
-        LinuxCpuCalls cpuCalls;
+		LinuxCpuCalls cpuCalls;
 		unsigned long speed = cpuCalls.readCPUSpeed();
 		return speed;
 	}
@@ -157,11 +162,11 @@ namespace base_game {
 	string LinuxCalls::getUserProfilePath() {
 		//return "/home/kletki";
 
-        char* userProfile = getenv("HOME");
+		char* userProfile = getenv("HOME");
 		if (userProfile != nullptr) {
 			stringstream ss;
 			ss << "HOME: " << userProfile;
-			logger::info(ss);
+			logger::trace(ss);
 		}
 
 		return string_utils::charToString(userProfile);

@@ -39,21 +39,12 @@ namespace base_game {
 	const string DebuggingOptions::OPTION_NAME_ATTR = "name";
 	const string DebuggingOptions::OPTION_VALUE_ATTR = "value";
 
-	namespace debugging_options {
-		void safe_delete(DebuggingOptions* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-	}
-
 	DebuggingOptions::DebuggingOptions() {
-		//ctor
+		logger::info("Create DebuggingOptions");
 	}
 
 	DebuggingOptions::~DebuggingOptions() {
-		//dtor
+		logger::info("Destroy DebuggingOptions");
 	}
 
 

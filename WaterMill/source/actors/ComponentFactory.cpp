@@ -17,11 +17,11 @@ using std::map;
 
 namespace base_game {
 	ComponentFactory::ComponentFactory() {
-		//ctor
+		logger::info("Create ComponentFactory");
 	}
 
 	ComponentFactory::~ComponentFactory() {
-		//dtor
+		logger::info("Destroy ComponentFactory");
 	}
 
 	void ComponentFactory::registerComponent(std::string name, ActorComponent* (*factoryFunction)(void)) {
@@ -33,7 +33,7 @@ namespace base_game {
 			creationFunctions[name] = factoryFunction; //"zarejestrowano-"+name;
 			stringstream ss;
 			ss << "zarejestrowano: " << name << "; function: " << creationFunctions[name];
-			logger::info(ss);
+			logger::trace(ss);
 
 		}
 
@@ -45,7 +45,7 @@ namespace base_game {
 		string name = componentValueType.first.data();
 		stringstream ss;
 		ss << "loadActorNode component: " << name;
-		logger::info(ss);
+		logger::trace(ss);
 
 		//map<string,string>::iterator findIt = creationFunctions.find(name);
 		ActorComponent* actorComponent = nullptr;
@@ -71,7 +71,7 @@ namespace base_game {
 		if (actorComponent) {
 			stringstream ss;
 			ss << "stworzono komponent: "<< name;
-			logger::info(ss);
+			logger::trace(ss);
 
 			if (!actorComponent->vInit(componentValueType.second)) {
 				stringstream ss;
@@ -92,15 +92,5 @@ namespace base_game {
 
 
 		return shared_ptr<ActorComponent>(actorComponent);
-	}
-
-	namespace component_factory {
-		void safe_delete(ComponentFactory* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
-
 	}
 }

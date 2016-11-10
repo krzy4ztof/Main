@@ -11,15 +11,10 @@ namespace base_game {
 			virtual ~SaveManager();
 			void init(std::string userProfile, std::string gameAppDir);
 
-
 		protected:
 
 		private:
 			boost::filesystem::path* savePath;
 	};
-
-	namespace save_manager {
-		void safe_delete(SaveManager* p);
-	}
 }
 #endif // SAVEMANAGER_H

@@ -38,12 +38,6 @@ using std::stringstream;
 namespace base_game {
 
 	namespace video_system {
-		void safe_delete(VideoSystem* p) {
-			if (p) {
-				delete (p);
-				(p)=nullptr;
-			}
-		}
 
 		/* Handler for window-repaint event. Call back when the window first appears and
 		whenever the window needs to be re-painted. */
@@ -72,11 +66,11 @@ namespace base_game {
 		void onChangeSize(int width, int height) {
 			stringstream ss;
 			ss << "GLUT Width: " << width << ", height: " << height;
-			logger::info(ss);
+			logger::trace(ss);
 		}
 
 		void onClose() {
-			logger::info("GLUT onClose");
+			logger::trace("GLUT onClose");
 
 			// !!!!!!!!!!!!!!!!!!!!
 			// If glutLeaveMainLoop()
@@ -97,20 +91,20 @@ namespace base_game {
 			if (state == GLUT_NOT_VISIBLE) {
 				ss << " GLUT window hidden";
 
-				logger::info(ss);
+				logger::trace(ss);
 
 			} else {
 				ss << " GLUT window visible";
 
-				logger::info(ss);
+				logger::trace(ss);
 
 			}
 
 			ss << "GLUT_NOT_VISIBLE: " << GLUT_NOT_VISIBLE << ", GLUT_VISIBLE: " << GLUT_VISIBLE;
-			logger::info(ss);
+			logger::trace(ss);
 
 			ss << "GLUT visibilityFunction: " << state;
-			logger::info(ss);
+			logger::trace(ss);
 
 		}
 
@@ -118,6 +112,7 @@ namespace base_game {
 	}
 
 	VideoSystem::VideoSystem() {
+		logger::info("Create VideoSystem");
 		// Initialization
 		bool somethingWentWrong = false;
 
@@ -127,6 +122,7 @@ namespace base_game {
 	}
 
 	VideoSystem::VideoSystem(const VideoSystem& orig) {
+		logger::info("Destroy VideoSystem");
 	}
 
 	VideoSystem::~VideoSystem() {

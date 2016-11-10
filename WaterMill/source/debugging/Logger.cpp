@@ -132,9 +132,11 @@ namespace base_game {
 
 
 	Logger::Logger() {
+		cout <<"Create Logger" << endl;
 	}
 
 	Logger::~Logger() {
+		cout <<"Destroy Logger" << endl;
 		boost::shared_ptr< logging::core > core = logging::core::get();
 
 		// Remove the sink from the core, so that no records are passed to it

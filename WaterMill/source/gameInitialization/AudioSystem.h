@@ -24,10 +24,6 @@ namespace base_game {
 		private:
 
 	};
-
-	namespace audio_system {
-		void safe_delete(AudioSystem* p);
-	}
 }
 #endif /* AUDIOSYSTEM_H */
 

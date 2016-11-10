@@ -33,9 +33,5 @@ namespace base_game {
 			void loadMain(const std::string &filename);
 
 	};
-
-	namespace player_options {
-		void safe_delete(PlayerOptions* p);
-	};
 }
 #endif // PLAYEROPTIONS_H

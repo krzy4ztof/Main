@@ -28,7 +28,7 @@ namespace base_game {
 	const string TransformComponent::ATTR_Z = "<xmlattr>.z";
 
 	TransformComponent::TransformComponent() {
-		//ctor
+		logger::info("Create TransformComponent");
 	}
 
 	TransformComponent::~TransformComponent() {
@@ -61,7 +61,7 @@ namespace base_game {
 		} else {
 			ss << "Transform x not initialized ";
 		}
-		logger::info(ss);
+		logger::trace(ss);
 
 		optional<int> yValue = positionNode.get_optional<int>(ATTR_Y);
 		if (yValue.is_initialized()) {
@@ -70,7 +70,7 @@ namespace base_game {
 		} else {
 			ss << "Transform y not initialized ";
 		}
-		logger::info(ss);
+		logger::trace(ss);
 
 
 		optional<int> zValue = positionNode.get_optional<int>(ATTR_Z);
@@ -80,7 +80,7 @@ namespace base_game {
 		} else {
 			ss << "Transform z not initialized ";
 		}
-		logger::info(ss);
+		logger::trace(ss);
 
 		return true;
 	}
@@ -93,21 +93,21 @@ namespace base_game {
 	void TransformComponent::describeYourself() {
 		stringstream ss;
 		ss << "TransformComponent Id: " << vGetId() << "; x: " << x << "; y: " << y << "; z: " << z ;
-		logger::info(ss);
+		logger::trace(ss);
 	}
 
 	void TransformComponent::vPostInit() {
 	}
 
 	void TransformComponent::tempTransformComponentFunction() {
-		logger::info("Perform tempTransformComponentFunction");
-		logger::info("Call tempRenderComponentFunction from tempTransformComponentFunction");
+		logger::trace("Perform tempTransformComponentFunction");
+		logger::trace("Call tempRenderComponentFunction from tempTransformComponentFunction");
 		weak_ptr<RenderComponent> renderComp  = pOwner->getComponent<RenderComponent>(RenderComponent::COMPONENT_NAME);
 		if (shared_ptr<RenderComponent> shrRenderComp = renderComp.lock()) {
 			shrRenderComp->tempRenderComponentFunction();
 		}
 
-		logger::info("Call tempScriptComponentFunction from tempTransformComponentFunction");
+		logger::trace("Call tempScriptComponentFunction from tempTransformComponentFunction");
 		weak_ptr<ScriptComponent> scriptComp = pOwner->getComponent<ScriptComponent>(ScriptComponent::COMPONENT_NAME);
 		if (shared_ptr<ScriptComponent> shrScriptComp = scriptComp.lock()) {
 			shrScriptComp->tempScriptComponentFunction();
