@@ -18,7 +18,7 @@
 namespace base_game {
 
 	AudioSystem::AudioSystem() {
-		logger::info("Create AudioSystem");
+		logger::trace("Create AudioSystem");
 
 		// Initialization
 		bool somethingWentWrong = false;
@@ -29,10 +29,10 @@ namespace base_game {
 	}
 
 	AudioSystem::AudioSystem(const AudioSystem& orig) {
-		logger::info("Create AudioSystem");
+		logger::trace("Create AudioSystem");
 	}
 
 	AudioSystem::~AudioSystem() {
-		logger::info("Destroy AudioSystem");
+		logger::trace("Destroy AudioSystem");
 	}
 }

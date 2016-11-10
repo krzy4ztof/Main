@@ -21,7 +21,7 @@ using boost::property_tree::read_xml;
 namespace base_game {
 
 	ResourceCache::ResourceCache(const string& assetsFolder, const unsigned int sizeInMb, IResourceFile *resFile) {
-		logger::info("Create ResourceCache");
+		logger::trace("Create ResourceCache");
 
 		cacheSize = sizeInMb * 1024 * 1024;				// total memory size
 		allocated = 0;									// total memory allocated
@@ -30,7 +30,7 @@ namespace base_game {
 	}
 
 	ResourceCache::~ResourceCache() {
-		logger::info("Destroy ResourceCache");
+		logger::trace("Destroy ResourceCache");
 	}
 
 	int ResourceCache::preLoad(const string& pattern) {

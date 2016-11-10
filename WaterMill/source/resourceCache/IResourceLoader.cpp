@@ -3,10 +3,10 @@
 
 namespace base_game {
 	IResourceLoader::IResourceLoader() {
-		logger::info("Create IResourceLoader");
+		logger::trace("Create IResourceLoader");
 	}
 
 	IResourceLoader::~IResourceLoader() {
-		logger::info("Destroy IResourceLoader");
+		logger::trace("Destroy IResourceLoader");
 	}
 }

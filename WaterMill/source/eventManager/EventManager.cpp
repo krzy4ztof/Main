@@ -3,10 +3,10 @@
 
 namespace base_game {
 	EventManager::EventManager() {
-		logger::info("Create EventManager");
+		logger::trace("Create EventManager");
 	}
 
 	EventManager::~EventManager() {
-		logger::info("Destroy EventManager");
+		logger::trace("Destroy EventManager");
 	}
 }

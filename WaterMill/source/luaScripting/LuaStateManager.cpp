@@ -18,12 +18,12 @@ namespace base_game {
 	const string LuaStateManager::SCRIPTS_FOLDER = "scripts/";
 
 	LuaStateManager::LuaStateManager(string assetsFolder) {
-		logger::info("Create LuaStateManager");
+		logger::trace("Create LuaStateManager");
 		scriptsFolder = assetsFolder  + SCRIPTS_FOLDER;
 	}
 
 	LuaStateManager::~LuaStateManager() {
-		logger::info("Destroy LuaStateManager");
+		logger::trace("Destroy LuaStateManager");
 	}
 
 	void LuaStateManager::print_error(lua_State* state) {

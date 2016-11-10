@@ -18,7 +18,7 @@
 namespace base_game {
 
 	DataFiles::DataFiles() {
-		logger::info("Create DataFiles");
+		logger::trace("Create DataFiles");
 		// Initialization
 		bool somethingWentWrong = false;
 
@@ -28,11 +28,11 @@ namespace base_game {
 	}
 
 	DataFiles::DataFiles(const DataFiles& orig) {
-		logger::info("Create DataFiles");
+		logger::trace("Create DataFiles");
 	}
 
 	DataFiles::~DataFiles() {
-		logger::info("Destroy DataFiles");
+		logger::trace("Destroy DataFiles");
 	}
 
 }

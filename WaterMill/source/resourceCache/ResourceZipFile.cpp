@@ -7,10 +7,10 @@ using std::string;
 
 namespace base_game {
 	ResourceZipFile::ResourceZipFile(const string fileName) {
-		logger::info("Create ResourceZipFile");
+		logger::trace("Create ResourceZipFile");
 	}
 
 	ResourceZipFile::~ResourceZipFile() {
-		logger::info("Destroy ResourceZipFile");
+		logger::trace("Destroy ResourceZipFile");
 	}
 }

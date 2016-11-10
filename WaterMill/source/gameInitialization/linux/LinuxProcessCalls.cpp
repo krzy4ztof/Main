@@ -18,11 +18,11 @@ using std::stringstream;
 
 namespace base_game {
 	LinuxProcessCalls::LinuxProcessCalls() {
-		logger::info("Create LinuxProcessCalls");
+		logger::trace("Create LinuxProcessCalls");
 	}
 
 	LinuxProcessCalls::~LinuxProcessCalls() {
-		logger::info("Destroy LinuxProcessCalls");
+		logger::trace("Destroy LinuxProcessCalls");
 	}
 
 
@@ -74,7 +74,7 @@ namespace base_game {
 
 						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
 							ss << "proces podobny: " << chrptr_StringToCompare;
-							logger::info(ss);
+							logger::trace(ss);
 
 
 							howMany++;
@@ -90,7 +90,7 @@ namespace base_game {
 		string_utils::safe_delete_char_array(gameTitleChar);
 
 		ss << "tutaj howMany: " << howMany;
-		logger::info(ss);
+		logger::trace(ss);
 
 		if ( howMany >= 2 ) {
 			logger::trace("tutaj false");

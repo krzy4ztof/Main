@@ -43,11 +43,11 @@ namespace base_game {
 
 
 	PlayerOptions::PlayerOptions() {
-		logger::info("Create PlayerOptions");
+		logger::trace("Create PlayerOptions");
 	}
 
 	PlayerOptions::~PlayerOptions() {
-		logger::info("Destroy PlayerOptions");
+		logger::trace("Destroy PlayerOptions");
 	}
 
 

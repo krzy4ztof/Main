@@ -23,7 +23,7 @@ namespace base_game {
 
 	GameMessages::GameMessages(string assetsFolder, string language) {
 
-		logger::info("Create GameMessages");
+		logger::trace("Create GameMessages");
 
 		stringstream ss;
 		ss << "LAN: " << language;
@@ -73,7 +73,7 @@ namespace base_game {
 	}
 
 	GameMessages::~GameMessages() {
-		logger::info("Destroy GameMessages");
+		logger::trace("Destroy GameMessages");
 	}
 
 	void GameMessages::testMessages() {

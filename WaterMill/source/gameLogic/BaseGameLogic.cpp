@@ -31,13 +31,13 @@ using base_game::BaseGameState::running;
 namespace base_game {
 
 	BaseGameLogic::BaseGameLogic() {
-		logger::info("Create BaseGameLogic");
+		logger::trace("Create BaseGameLogic");
 		actorFactory = nullptr;
 		pProcessManager = new ProcessManager();
 	}
 
 	BaseGameLogic::~BaseGameLogic() {
-		logger::info("Destroy BaseGameLogic");
+
 
 		//delete(pProcessManager); // TODO: template
 		templates::safe_delete<ProcessManager>(pProcessManager);
@@ -55,6 +55,7 @@ namespace base_game {
 		}
 		actors.clear();
 
+		logger::trace("Destroy BaseGameLogic");
 	}
 
 	bool BaseGameLogic::init(ResourceCache* resourceCache) {

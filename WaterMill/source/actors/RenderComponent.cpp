@@ -24,11 +24,11 @@ namespace base_game {
 
 
 	RenderComponent::RenderComponent() {
-		logger::info("Create RenderComponent");
+		logger::trace("Create RenderComponent");
 	}
 
 	RenderComponent::~RenderComponent() {
-		logger::info("Destroy RenderComponent");
+		logger::trace("Destroy RenderComponent");
 	}
 
 	/*

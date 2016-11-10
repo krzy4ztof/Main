@@ -24,11 +24,11 @@ using std::min_element;
 
 namespace base_game {
 	LinuxCpuCalls::LinuxCpuCalls() {
-		logger::info("Create LinuxCpuCalls");
+		logger::trace("Create LinuxCpuCalls");
 	}
 
 	LinuxCpuCalls::~LinuxCpuCalls() {
-		logger::info("Destroy LinuxCpuCalls");
+		logger::trace("Destroy LinuxCpuCalls");
 	}
 
 	namespace linux_cpu_calls {

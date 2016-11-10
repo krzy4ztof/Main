@@ -38,15 +38,15 @@ using std::stringstream;
 namespace base_game {
 
 	Windows64Calls::Windows64Calls() {
-		logger::info("Create Windows64Calls");
+		logger::trace("Create Windows64Calls");
 	}
 
 	Windows64Calls::Windows64Calls(const Windows64Calls& orig) {
-		logger::info("Create Windows64Calls");
+		logger::trace("Create Windows64Calls");
 	}
 
 	Windows64Calls::~Windows64Calls() {
-		logger::info("Destroy Windows64Calls");
+		logger::trace("Destroy Windows64Calls");
 	}
 
 	//

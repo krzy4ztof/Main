@@ -62,17 +62,17 @@ namespace base_game {
 	const size_t MemoryPool::CHUNK_HEADER_SIZE = (sizeof(unsigned char*));
 
 	MemoryPool::MemoryPool(void) {
-		cout << "MemoryPool()" << endl;
+		cout << "Create MemoryPool" << endl;
 		Reset();
 	}
 
 	MemoryPool::~MemoryPool(void) {
-		cout << "Destr MemoryPool()" << endl;
+		cout << "Destroy MemoryPool" << endl;
 		Destroy();
 	}
 
 	bool MemoryPool::Init(unsigned int chunkSize, unsigned int numChunks) {
-		cout << "MemoryPool::Init()" << endl;
+		//cout << "MemoryPool::Init()" << endl;
 
 		// it's safe to call Init() without calling Destroy()
 		if (m_ppRawMemoryArray)
@@ -84,19 +84,19 @@ namespace base_game {
 
 		// attempt to grow the memory array
 		if (GrowMemoryArray()) {
-			cout << "End true MemoryPool::Init()" << endl;
+			//	cout << "End true MemoryPool::Init()" << endl;
 
 			return true;
 
 		}
 
-		cout << "End false MemoryPool::Init()" << endl;
+		//cout << "End false MemoryPool::Init()" << endl;
 
 		return false;
 	}
 
 	void MemoryPool::Destroy(void) {
-		cout << "MemoryPool::destroy()" << endl;
+		//cout << "MemoryPool::destroy()" << endl;
 
 		// dump the state of the memory pool
 #ifdef _DEBUG
@@ -120,7 +120,7 @@ namespace base_game {
 	}
 
 	void* MemoryPool::Alloc(void) {
-		cout << "MemoryPool::alloc()" << endl;
+		//cout << "MemoryPool::alloc()" << endl;
 
 		// If we're out of memory chunks, grow the pool.  This is very expensive.
 		if (!m_pHead) {
@@ -152,7 +152,7 @@ namespace base_game {
 	}
 
 	void MemoryPool::Free(void* pMem) {
-		cout << "MemoryPool::free()" << endl;
+		//cout << "MemoryPool::free()" << endl;
 
 		if (pMem != NULL) {	// calling Free() on a NULL pointer is perfectly valid
 			// The pointer we get back is just to the data section of the chunk.  This gets us the full chunk.
@@ -171,7 +171,7 @@ namespace base_game {
 	}
 
 	void MemoryPool::Reset(void) {
-		cout << "MemoryPool::reset()" << endl;
+		//cout << "MemoryPool::reset()" << endl;
 		m_ppRawMemoryArray = NULL;
 		m_pHead = NULL;
 		m_chunkSize = 0;
@@ -182,11 +182,11 @@ namespace base_game {
 		m_allocPeak = 0;
 		m_numAllocs = 0;
 #endif
-		cout << "End MemoryPool::reset()" << endl;
+		//cout << "End MemoryPool::reset()" << endl;
 	}
 
 	bool MemoryPool::GrowMemoryArray(void) {
-		cout << "MemoryPool::growMemoryArray()" << endl;
+		//cout << "MemoryPool::growMemoryArray()" << endl;
 #ifdef _DEBUG
 		std::string str("Growing memory pool: [" + GetDebugName() + ":" + ToStr((unsigned long)m_chunkSize) + "] = " + ToStr((unsigned long)m_memArraySize + 1) + "\n");
 		::OutputDebugStringA(str.c_str());  // the logger is not initialized during many of the initial memory pool growths, so let's just use the OS version
@@ -229,13 +229,13 @@ namespace base_game {
 		m_ppRawMemoryArray = ppNewMemArray;
 		++m_memArraySize;
 
-		cout << "End MemoryPool::growMemoryArray()" << endl;
+		//cout << "End MemoryPool::growMemoryArray()" << endl;
 
 		return true;
 	}
 
 	unsigned char* MemoryPool::AllocateNewMemoryBlock(void) {
-		cout << "MemoryPool::allocateNewMemoryBlock()" << endl;
+		//cout << "MemoryPool::allocateNewMemoryBlock()" << endl;
 
 		// calculate the size of each block and the size of the actual memory allocation
 		size_t blockSize = m_chunkSize + CHUNK_HEADER_SIZE;  // chunk + linked list overhead
@@ -261,19 +261,19 @@ namespace base_game {
 			pCurr += blockSize;
 		}
 
-		cout << "End MemoryPool::allocateNewMemoryBlock()" << endl;
+		//cout << "End MemoryPool::allocateNewMemoryBlock()" << endl;
 
 		return pNewMem;
 	}
 
 	unsigned char* MemoryPool::GetNext(unsigned char* pBlock) {
-		cout << "MemoryPool::getNext()" << endl;
+		//cout << "MemoryPool::getNext()" << endl;
 		unsigned char** ppChunkHeader = (unsigned char**)pBlock;
 		return ppChunkHeader[0];
 	}
 
 	void MemoryPool::SetNext(unsigned char* pBlockToChange, unsigned char* pNewNext) {
-		cout << "MemoryPool::setNext()" << endl;
+		//cout << "MemoryPool::setNext()" << endl;
 		unsigned char** ppChunkHeader = (unsigned char**)pBlockToChange;
 		ppChunkHeader[0] = pNewNext;
 	}

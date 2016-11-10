@@ -37,15 +37,15 @@ using std::setprecision;
 namespace base_game {
 
 	LinuxCalls::LinuxCalls() {
-		logger::info("Create LinuxCalls");
+		logger::trace("Create LinuxCalls");
 	}
 
 	LinuxCalls::LinuxCalls(const LinuxCalls& orig) {
-		logger::info("Create LinuxCalls");
+		logger::trace("Create LinuxCalls");
 	}
 
 	LinuxCalls::~LinuxCalls() {
-		logger::info("Destroy LinuxCalls");
+		logger::trace("Destroy LinuxCalls");
 	}
 
 	//

@@ -25,11 +25,11 @@ namespace base_game {
 
 
 	ScriptComponent::ScriptComponent() {
-		logger::info("Create ScriptComponent");
+		logger::trace("Create ScriptComponent");
 	}
 
 	ScriptComponent::~ScriptComponent() {
-		logger::info("Destroy ScriptComponent");
+		logger::trace("Destroy ScriptComponent");
 	}
 
 

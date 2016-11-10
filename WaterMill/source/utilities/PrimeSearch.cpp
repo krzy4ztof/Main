@@ -131,7 +131,7 @@ namespace base_game {
 
 
 	PrimeSearch::PrimeSearch(int elements) {
-		logger::info("Create PrimeSearch");
+		logger::trace("Create PrimeSearch");
 		//GCC_ASSERT(elements>0 && "Can't do a PrimeSearch if you have 0 elements to search through, buddy-boy");
 
 		maxElements = elements;
@@ -165,7 +165,7 @@ namespace base_game {
 	}
 
 	PrimeSearch::~PrimeSearch() {
-		logger::info("Destroy PrimeSearch");
+		logger::trace("Destroy PrimeSearch");
 	}
 
 	int PrimeSearch::getNext(bool restartBool) {

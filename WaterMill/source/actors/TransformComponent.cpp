@@ -28,11 +28,11 @@ namespace base_game {
 	const string TransformComponent::ATTR_Z = "<xmlattr>.z";
 
 	TransformComponent::TransformComponent() {
-		logger::info("Create TransformComponent");
+		logger::trace("Create TransformComponent");
 	}
 
 	TransformComponent::~TransformComponent() {
-		logger::info("Destroy TransformComponent");
+		logger::trace("Destroy TransformComponent");
 	}
 
 	/*

@@ -23,11 +23,11 @@ using std::smatch;
 
 namespace base_game {
 	Cygwin64CpuCalls::Cygwin64CpuCalls() {
-		logger::info("Create Cygwin64CpuCalls");
+		logger::trace("Create Cygwin64CpuCalls");
 	}
 
 	Cygwin64CpuCalls::~Cygwin64CpuCalls() {
-		logger::info("Destroy Cygwin64CpuCalls");
+		logger::trace("Destroy Cygwin64CpuCalls");
 	}
 
 	namespace cygwin64_cpu_calls {

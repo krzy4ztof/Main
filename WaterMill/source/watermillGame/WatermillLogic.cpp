@@ -21,11 +21,11 @@ namespace logger = base_game::logger;
 
 namespace watermill {
 	WatermillLogic::WatermillLogic() {
-		logger::info("Create WatermillLogic");
+		logger::trace("Create WatermillLogic");
 	}
 
 	WatermillLogic::~WatermillLogic() {
-		logger::info("Destroy WatermillLogic");
+		logger::trace("Destroy WatermillLogic");
 	}
 
 	void WatermillLogic::vChangeState(BaseGameState newState) {

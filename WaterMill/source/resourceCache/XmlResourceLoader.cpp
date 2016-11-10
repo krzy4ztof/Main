@@ -6,11 +6,11 @@ using std::shared_ptr;
 
 namespace base_game {
 	XmlResourceLoader::XmlResourceLoader() {
-		logger::info("Create XmlResourceLoader");
+		logger::trace("Create XmlResourceLoader");
 	}
 
 	XmlResourceLoader::~XmlResourceLoader() {
-		logger::info("Destroy XmlResourceLoader");
+		logger::trace("Destroy XmlResourceLoader");
 	}
 
 	namespace xml_resource_loader {

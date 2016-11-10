@@ -59,15 +59,15 @@ using std::setprecision;
 namespace base_game {
 
 	Cygwin64Calls::Cygwin64Calls() {
-		logger::info("Create Cygwin64Calls");
+		logger::trace("Create Cygwin64Calls");
 	}
 
 	Cygwin64Calls::Cygwin64Calls ( const Cygwin64Calls& orig ) {
-		logger::info("Create Cygwin64Calls");
+		logger::trace("Create Cygwin64Calls");
 	}
 
 	Cygwin64Calls::~Cygwin64Calls() {
-		logger::info("Destroy Cygwin64Calls");
+		logger::trace("Destroy Cygwin64Calls");
 	}
 
 	bool Cygwin64Calls::isOnlyInstance ( const string& gameTitle ) {

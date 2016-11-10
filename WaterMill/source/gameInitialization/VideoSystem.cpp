@@ -112,7 +112,7 @@ namespace base_game {
 	}
 
 	VideoSystem::VideoSystem() {
-		logger::info("Create VideoSystem");
+		logger::trace("Create VideoSystem");
 		// Initialization
 		bool somethingWentWrong = false;
 
@@ -122,10 +122,11 @@ namespace base_game {
 	}
 
 	VideoSystem::VideoSystem(const VideoSystem& orig) {
-		logger::info("Destroy VideoSystem");
+		logger::trace("Create VideoSystem");
 	}
 
 	VideoSystem::~VideoSystem() {
+		logger::trace("Destroy VideoSystem");
 	}
 
 	/* Main function: GLUT runs as a console application starting at main()  */

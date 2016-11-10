@@ -7,11 +7,11 @@ using std::stringstream;
 
 namespace base_game {
 	ProcessManager::ProcessManager() {
-		logger::info("Create ProcessManager");
+		logger::trace("Create ProcessManager");
 	}
 
 	ProcessManager::~ProcessManager() {
-		logger::info("Destroy ProcessManager");
+		logger::trace("Destroy ProcessManager");
 	}
 
 	unsigned int ProcessManager::updateProcesses(unsigned long deltaMs) {

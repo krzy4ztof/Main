@@ -21,12 +21,12 @@ using boost::filesystem::filesystem_error;
 
 namespace base_game {
 	SaveManager::SaveManager() {
-		logger::info("Create SaveManager");
+		logger::trace("Create SaveManager");
 		savePath = nullptr;
 	}
 
 	SaveManager::~SaveManager() {
-		logger::info("Destroy SaveManager");
+		logger::trace("Destroy SaveManager");
 		if(savePath) {
 			delete(savePath);
 		}

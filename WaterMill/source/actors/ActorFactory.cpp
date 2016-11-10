@@ -25,7 +25,7 @@ namespace base_game {
 	const string ActorFactory::ACTOR_NODE_NAME = "actor";
 
 	ActorFactory::ActorFactory() {
-		logger::info("Create ActorFactory");
+		logger::trace("Create ActorFactory");
 		componentFactory = new ComponentFactory;
 		componentFactory->registerComponent(RenderComponent::COMPONENT_NAME, &render_component::componentFactory);
 		componentFactory->registerComponent(ScriptComponent::COMPONENT_NAME, &script_component::componentFactory);
@@ -33,8 +33,7 @@ namespace base_game {
 	}
 
 	ActorFactory::~ActorFactory() {
-		logger::info("Destroy ActorFactory");
-		//component_factory::safe_delete(componentFactory);
+		logger::trace("Destroy ActorFactory");
 		templates::safe_delete<ComponentFactory>(componentFactory);
 	}
 

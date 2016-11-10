@@ -23,12 +23,12 @@ using std::map;
 
 namespace base_game {
 	Actor::Actor(unsigned int actorId) {
-		logger::info("Create Actor");
+		logger::trace("Create Actor");
 		id=actorId;
 	}
 
 	Actor::~Actor() {
-		logger::info("Destroy Actor");
+		logger::trace("Destroy Actor");
 	}
 
 	bool Actor::init(ptree actorNode) {

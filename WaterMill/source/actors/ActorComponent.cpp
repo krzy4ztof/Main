@@ -11,11 +11,11 @@ using std::hash;
 
 namespace base_game {
 	ActorComponent::ActorComponent() {
-		logger::info("Create ActorComponent");
+		logger::trace("Create ActorComponent");
 	}
 
 	ActorComponent::~ActorComponent() {
-		logger::info("Destroy ActorComponent");
+		logger::trace("Destroy ActorComponent");
 		pOwner.reset();
 	}
 

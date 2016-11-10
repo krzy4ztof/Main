@@ -13,12 +13,10 @@ namespace base_game {
 	MemoryUsageObjectAutoInitMemPool::MemoryUsageObjectAutoInitMemPool(void) {
 		cout << "Create MemoryUsageObjectAutoInitMemPool" << endl;
 		MemoryUsageObject::initMemoryPool(3, "MemoryUsageObject");
-		cout << "End Create MemoryUsageObjectAutoInitMemPool" << endl;
 	}
 
 	MemoryUsageObjectAutoInitMemPool::~MemoryUsageObjectAutoInitMemPool(void) {
-		cout << "Destroy MemoryUsageObjectAutoInitMemPool" << endl;
 		MemoryUsageObject::destroyMemoryPool();
-		cout << "End Destroy MemoryUsageObjectAutoInitMemPool" << endl;
+		cout << "Destroy MemoryUsageObjectAutoInitMemPool" << endl;
 	}
 }

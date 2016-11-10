@@ -48,7 +48,7 @@ namespace base_game {
 	const string GameCodeApp::ASSETS_ZIP = "assets.zip";
 
 	GameCodeApp::GameCodeApp() {
-		logger::info("Create GameCodeApp");
+		logger::trace("Create GameCodeApp");
 
 		initOptions = nullptr;
 		playerOptions = nullptr;
@@ -68,12 +68,12 @@ namespace base_game {
 	}
 
 	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
-		logger::info("Create GameCodeApp");
+		logger::trace("Create GameCodeApp");
 	}
 
 	GameCodeApp::~GameCodeApp() {
-		logger::info("Destroy GameCodeApp");
 		onClose();
+		logger::trace("Destroy GameCodeApp");
 	}
 
 	bool GameCodeApp::initAllOptions() {

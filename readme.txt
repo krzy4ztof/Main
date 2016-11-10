@@ -162,3 +162,13 @@ git mv Windows64Calls.hpp Windows64Calls.h
 Solve conflicts
 
 git mergetool
+
+
+*******************
+***	Git Push	***
+*******************
+git config --global push.default simple
+
+[push]
+	default = simple
+	

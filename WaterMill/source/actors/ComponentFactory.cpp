@@ -17,11 +17,11 @@ using std::map;
 
 namespace base_game {
 	ComponentFactory::ComponentFactory() {
-		logger::info("Create ComponentFactory");
+		logger::trace("Create ComponentFactory");
 	}
 
 	ComponentFactory::~ComponentFactory() {
-		logger::info("Destroy ComponentFactory");
+		logger::trace("Destroy ComponentFactory");
 	}
 
 	void ComponentFactory::registerComponent(std::string name, ActorComponent* (*factoryFunction)(void)) {
@@ -54,7 +54,7 @@ namespace base_game {
 
 
 		if (findIt != creationFunctions.end()) {
-			logger::info("Komponent jest zarejestrowany");
+			logger::trace("Komponent jest zarejestrowany");
 
 			ActorComponent* (*factoryFunction)(void) = findIt->second;
 

@@ -87,7 +87,7 @@ namespace base_game {
 	}
 
 	InitOptions::InitOptions() {
-		logger::info("Create InitOptions");
+		logger::trace("Create InitOptions");
 
 
 		// Initialization
@@ -103,7 +103,7 @@ namespace base_game {
 	}
 
 	InitOptions::~InitOptions() {
-		logger::info("Destroy InitOptions");
+		logger::trace("Destroy InitOptions");
 	}
 
 }

@@ -40,11 +40,11 @@ namespace base_game {
 	const string DebuggingOptions::OPTION_VALUE_ATTR = "value";
 
 	DebuggingOptions::DebuggingOptions() {
-		logger::info("Create DebuggingOptions");
+		logger::trace("Create DebuggingOptions");
 	}
 
 	DebuggingOptions::~DebuggingOptions() {
-		logger::info("Destroy DebuggingOptions");
+		logger::trace("Destroy DebuggingOptions");
 	}
 
 

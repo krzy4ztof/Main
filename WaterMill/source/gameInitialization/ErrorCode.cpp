@@ -22,23 +22,23 @@ using std::stringstream;
 namespace base_game {
 
 	ErrorCode::ErrorCode() {
-		logger::info("Create ErrorCode");
+		logger::trace("Create ErrorCode");
 	}
 
 	//ErrorCode::ErrorCode(char error_message[], int error_number) {
 
 	ErrorCode::ErrorCode(const string& error_message, int error_number) {
-		logger::info("Create ErrorCode");
+		logger::trace("Create ErrorCode");
 		number = error_number;
 		message = error_message;
 	}
 
 	ErrorCode::ErrorCode(const ErrorCode& orig) {
-		logger::info("Create ErrorCode");
+		logger::trace("Create ErrorCode");
 	}
 
 	ErrorCode::~ErrorCode() {
-		logger::info("Destroy ErrorCode");
+		logger::trace("Destroy ErrorCode");
 	}
 
 	void ErrorCode::informUser() {
