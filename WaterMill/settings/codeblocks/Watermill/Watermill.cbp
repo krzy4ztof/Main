@@ -28,6 +28,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -56,6 +57,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -84,6 +86,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add library="psapi" />
@@ -125,6 +128,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -163,6 +167,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_system" />
@@ -200,6 +205,7 @@
 					<Add directory="source/gameLogic" />
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
+					<Add directory="source/userInterface" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -321,6 +327,10 @@
 		<Unit filename="../../../source/scripts/runMinGW64.cmd" />
 		<Unit filename="../../../source/testClasses/TestClass.cpp" />
 		<Unit filename="../../../source/testClasses/TestClass.h" />
+		<Unit filename="../../../source/userInterface/HumanView.cpp" />
+		<Unit filename="../../../source/userInterface/HumanView.h" />
+		<Unit filename="../../../source/userInterface/IGameView.cpp" />
+		<Unit filename="../../../source/userInterface/IGameView.h" />
 		<Unit filename="../../../source/utilities/MemoryPool.cpp" />
 		<Unit filename="../../../source/utilities/MemoryPool.h" />
 		<Unit filename="../../../source/utilities/MemoryUsageObject.cpp" />

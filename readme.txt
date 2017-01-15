@@ -41,6 +41,19 @@ git push -u origin master
 lub 
 git push
 
+*******************************************************
+***	Wyslanie zmian do remote repozytorium Ubuntu	***
+*******************************************************
+
+Command line:
+
+git add *
+git commit -m 'commit name'
+git push
+
+Username for 'https://github.com': krzy4ztof@poczta.onet.pl
+Password for 'https://krzy4ztof@poczta.onet.pl@github.com': 
+
 ***************************************
 ***	Rozna wielkosc liter w Windows	***
 ***************************************
