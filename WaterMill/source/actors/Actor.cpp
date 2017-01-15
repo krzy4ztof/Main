@@ -22,6 +22,8 @@ using std::pair;
 using std::map;
 
 namespace base_game {
+	const unsigned int Actor::INVALID_ACTOR_ID = 0;
+
 	Actor::Actor(unsigned int actorId) {
 		logger::trace("Create Actor");
 		id=actorId;

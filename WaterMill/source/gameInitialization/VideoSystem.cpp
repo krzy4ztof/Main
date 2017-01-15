@@ -29,6 +29,8 @@
 #include "../debugging/Logger.h"
 #include <sstream>      // std::stringstream
 
+#include "GameCodeApp.h"//g_pApp
+
 using std::string;
 using std::cout;
 using std::endl;
@@ -38,6 +40,10 @@ using std::stringstream;
 namespace base_game {
 
 	namespace video_system {
+
+		float angle = 0.0f;
+		int lastTime = 0;
+
 
 		/* Handler for window-repaint event. Call back when the window first appears and
 		whenever the window needs to be re-painted. */
@@ -61,7 +67,74 @@ namespace base_game {
 			glFlush(); // Render now
 		}
 
+		void onIdle() {
+			stringstream ss;
+
+			// miliseconds
+			int time = glutGet(GLUT_ELAPSED_TIME);
+			int elapsedTime = time - lastTime;
+			lastTime = time;
+
+			//renderScene();
+
+			//			ss << "GLUT IDLE: " << time;
+			//			logger::info(ss);
+
+			//displayFreeGlut();
+
+			double timeDouble = static_cast<float>(time);
+			float elapsedTimeFloat = static_cast<float>(elapsedTime);
+
+			ss << "GLUT RENDER SCENE: time:" << time << "; elapsedTime " << elapsedTime  << "; angle: " <<   angle;
+			//logger::info(ss);
+
+			if (base_game::g_pApp != nullptr) {
+				//base_game::g_pApp->testGlobal();
+				//base_game::g_pApp->onUpdateGame(timeDouble,elapsedTimeFloat);
+				g_pApp->onUpdateGame(timeDouble,elapsedTimeFloat);
+				g_pApp->onFrameRender(timeDouble,elapsedTimeFloat);
+
+			} else {
+				ss << "g_pApp not initialized " << time << "; angle: " <<   angle;
+				logger::info(ss);
+			}
+
+
+
+		}
 		/**/
+
+		void renderScene(void) {
+
+			stringstream ss;
+			//float angle = 0.0f;
+
+			// Clear Color and Depth Buffers
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			// Reset transformations
+			glLoadIdentity();
+			// Set the camera
+			gluLookAt(	0.0f, 0.0f, 10.0f,
+						0.0f, 0.0f,  0.0f,
+						0.0f, 1.0f,  0.0f);
+
+			glRotatef(angle, 0.0f, 1.0f, 0.0f);
+
+			glBegin(GL_TRIANGLES);
+			glVertex3f(-2.0f,-2.0f, 0.0f);
+			glVertex3f( 2.0f, 0.0f, 0.0);
+			glVertex3f( 0.0f, 2.0f, 0.0);
+			glEnd();
+
+			//if (angle < 3.0f){
+			angle+=0.1f;
+			//}
+			glutSwapBuffers();
+
+			//base_game::g_pApp->testGlobal();
+
+		}
 
 		void onChangeSize(int width, int height) {
 			stringstream ss;
@@ -70,7 +143,7 @@ namespace base_game {
 		}
 
 		void onClose() {
-			logger::trace("GLUT onClose");
+			logger::info("GLUT onClose");
 
 			// !!!!!!!!!!!!!!!!!!!!
 			// If glutLeaveMainLoop()
@@ -107,6 +180,43 @@ namespace base_game {
 			logger::trace(ss);
 
 		}
+
+		void onTimer(int value) {
+			stringstream ss;
+			ss << "GLUT TIMER: " << value;
+			logger::info(ss);
+
+		}
+
+		void changeSize(int w, int h) {
+
+			// Prevent a divide by zero, when window is too short
+			// (you cant make a window of zero width).
+			if (h == 0)
+				h = 1;
+
+			float ratio =  w * 1.0 / h;
+
+			// Use the Projection Matrix
+			glMatrixMode(GL_PROJECTION);
+
+			// Reset Matrix
+			glLoadIdentity();
+
+			// Set the viewport to be the entire window
+			glViewport(0, 0, w, h);
+
+			// Set the correct perspective.
+			gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+
+			// Get Back to the Modelview
+			glMatrixMode(GL_MODELVIEW);
+		}
+
+
+
+
+
 
 
 	}
@@ -159,11 +269,19 @@ namespace base_game {
 		//glutDisplayFunc([](){display();});
 		//glutDisplayFunc(VideoSystem::display);
 
-		glutReshapeFunc(video_system::onChangeSize);
+		//glutReshapeFunc(video_system::onChangeSize);
+		glutReshapeFunc(video_system::changeSize);
+
 
 		glutCloseFunc(video_system::onClose);
 
 		glutVisibilityFunc(video_system::onHideShow);
+
+		glutIdleFunc(video_system::onIdle);
+		//glutIdleFunc(video_system::renderScene);
+
+
+		glutTimerFunc(100,video_system::onTimer,3);
 
 		// !!!!!!!!!!!!!!!!!!!!
 		// Note: glutSetOption is only available with freeglut

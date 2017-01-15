@@ -15,7 +15,7 @@ namespace base_game {
 			virtual ~ProcessManager();
 
 			// interface
-			unsigned int updateProcesses(unsigned long deltaMs);  // updates all attached processes
+			void updateProcesses(unsigned long deltaMs);  // updates all attached processes
 			std::weak_ptr<Process> attachProcess(std::shared_ptr<Process> pProcess);  // attaches a process to the process mgr
 
 		protected:

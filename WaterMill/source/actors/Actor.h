@@ -10,6 +10,8 @@
 namespace base_game {
 	class Actor {
 		public:
+			const static unsigned int INVALID_ACTOR_ID;
+
 			Actor(unsigned int actorId);
 			virtual ~Actor();
 			bool init(boost::property_tree::ptree actorNode);

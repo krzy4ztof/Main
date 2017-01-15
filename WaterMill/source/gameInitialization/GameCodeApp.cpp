@@ -40,6 +40,9 @@ using std::endl;
 using std::stringstream;
 
 namespace base_game {
+	GameCodeApp* g_pApp = nullptr;
+	//g_pApp = nullptr;
+
 
 	const string GameCodeApp::GAME_PROCESS_NAME = "watermill";
 	const string GameCodeApp::DEBUG_OPTIONS_XML = "debugOptions.xml";
@@ -49,6 +52,7 @@ namespace base_game {
 
 	GameCodeApp::GameCodeApp() {
 		logger::trace("Create GameCodeApp");
+		g_pApp = this;
 
 		initOptions = nullptr;
 		playerOptions = nullptr;
@@ -65,11 +69,17 @@ namespace base_game {
 
 		saveManager = nullptr;
 
+		m_bQuitting = false;
+
+		m_HasModalDialog = 0;
+
 	}
 
+	/*
 	GameCodeApp::GameCodeApp ( const GameCodeApp& orig ) {
 		logger::trace("Create GameCodeApp");
-	}
+		g_pApp = this;
+	}*/
 
 	GameCodeApp::~GameCodeApp() {
 		onClose();
@@ -225,6 +235,7 @@ namespace base_game {
 		//TODO: remove tempCreateActors
 		//m_pGame->tempCreateActors();
 		m_pGame->tempTestActors();
+		m_pGame->tempAddViews();
 		m_pGame->tempTestProcessManager();
 
 		videoSystem->startFreeGlutMainLoop();
@@ -234,6 +245,52 @@ namespace base_game {
 			done = true;
 		}
 
+	}
+
+	bool GameCodeApp::isQuitting() {
+		return m_bQuitting;
+	}
+
+	bool GameCodeApp::hasModalDialog() {
+		return m_HasModalDialog!=0;
+	}
+
+	void  GameCodeApp::onUpdateGame( double fTime, float fElapsedTime) { //, void* pUserContext  )
+		if (hasModalDialog()) {
+			// don't update the game if a modal dialog is up.
+			return;
+		}
+
+		if (isQuitting()) {
+			// TODO:
+			//PostMessage(g_pApp->GetHwnd(), WM_CLOSE, 0, 0);
+			logger::info("GameCodeApp::onUpdateGame - isQuitting");
+		}
+
+		//if (g_pApp->m_pGame)
+		if (m_pGame)
+
+		{
+			/*
+			      IEventManager::Get()->VUpdate(20); // allow event queue to process for up to 20 ms
+
+				if (g_pApp->m_pBaseSocketManager)
+					g_pApp->m_pBaseSocketManager->DoSelect(0);	// pause 0 microseconds
+
+
+				g_pApp->m_pGame->VOnUpdate(float(fTime), fElapsedTime);
+			*/
+
+			m_pGame->vOnUpdate(float(fTime), fElapsedTime);
+
+		}
+	}
+
+	void  GameCodeApp::onFrameRender( double fTime, float fElapsedTime) { //, void* pUserContext  )
+		m_pGame->onFrameRender(fTime,fElapsedTime	);
+
+		// TODO:
+		// m_pGame->VRenderDiagnostics();
 	}
 
 	void GameCodeApp::onClose() {
@@ -253,6 +310,17 @@ namespace base_game {
 		templates::safe_delete<DebuggingOptions>(debuggingOptions);
 		templates::safe_delete<PlayerOptions>(playerOptions);
 		templates::safe_delete<InitOptions>(initOptions);
+
+	}
+
+	void GameCodeApp::testGlobal() {
+		stringstream ss;
+		ss << "test GameCodeApp global ";
+		logger::info(ss);
+
+		if (m_pGame) {
+			//m_pGame->tempTestProcessManager();
+		}
 
 	}
 

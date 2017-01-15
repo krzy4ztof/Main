@@ -25,6 +25,7 @@ namespace base_game {
 	MemoryPool* MemoryUsageObject::s_pMemoryPool = nullptr;
 
 	void MemoryUsageObject::initMemoryPool(unsigned int numChunks, const char* debugName) {
+		//cout << "MemoryUsageObject::initMemoryPool" << endl;
 
 		if (s_pMemoryPool != nullptr) {
 			GCC_ERROR("s_pMemoryPool is not NULL.  All data will be destroyed.  (Ignorable)");
@@ -40,30 +41,45 @@ namespace base_game {
 			s_pMemoryPool->SetDebugName("MemoryUsageObject");
 		}
 		s_pMemoryPool->Init(sizeof(MemoryUsageObject), numChunks);
+		//cout << "End MemoryUsageObject::initMemoryPool" << endl;
 	}
 	void MemoryUsageObject::destroyMemoryPool(void) {
-		GCC_ASSERT(!s_pMemoryPool);
-		//GCC_ASSERT(s_memoryPool != NULL);
+		cout << "MemoryUsageObject::destroyMemoryPool" << endl;
+
+
+		GCC_ASSERT(s_pMemoryPool);
+
+		//GCC_ASSERT(!s_pMemoryPool);
+		//GCC_ASSERT(s_pMemoryPool != nullptr);
 		//templates::safe_delete<MemoryPool>(s_pMemoryPool);
 		memory_pool::safe_delete(s_pMemoryPool);
+		cout << "End MemoryUsageObject::destroyMemoryPool" << endl;
 	}
 	void* MemoryUsageObject::operator new(size_t size) {
+		//cout << "MemoryUsageObject::new" << endl;
 		GCC_ASSERT(s_pMemoryPool);
 		void* pMem = s_pMemoryPool->Alloc();
+		//cout << "End MemoryUsageObject::new" << endl;
 		return pMem;
 	}
 	void MemoryUsageObject::operator delete(void* pPtr) {
+		//cout << "MemoryUsageObject::delete" << endl;
 		GCC_ASSERT(s_pMemoryPool);
 		s_pMemoryPool->Free(pPtr);
+		//cout << "End MemoryUsageObject::delete" << endl;
 	}
 	void* MemoryUsageObject::operator new[](size_t size) {
+		//cout << "MemoryUsageObject::new[]" << endl;
 		GCC_ASSERT(s_pMemoryPool);
 		void* pMem = s_pMemoryPool->Alloc();
+		//cout << "End MemoryUsageObject::new[]" << endl;
 		return pMem;
 	}
 	void MemoryUsageObject::operator delete[](void* pPtr) {
+		//cout << "MemoryUsageObject::delete[]" << endl;
 		GCC_ASSERT(s_pMemoryPool);
 		s_pMemoryPool->Free(pPtr);
+		//cout << "End MemoryUsageObject::delete[]" << endl;
 	}
 }
 

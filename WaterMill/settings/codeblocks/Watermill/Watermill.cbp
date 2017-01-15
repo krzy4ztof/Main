@@ -286,11 +286,15 @@
 		<Unit filename="../../../source/main/GameMain.cpp" />
 		<Unit filename="../../../source/main/GameMain.h" />
 		<Unit filename="../../../source/main/Main.cpp" />
+		<Unit filename="../../../source/mainLoop/DelayProcess.cpp" />
+		<Unit filename="../../../source/mainLoop/DelayProcess.h" />
 		<Unit filename="../../../source/mainLoop/Process.cpp" />
 		<Unit filename="../../../source/mainLoop/Process.h" />
 		<Unit filename="../../../source/mainLoop/ProcessManager.cpp" />
 		<Unit filename="../../../source/mainLoop/ProcessManager.h" />
 		<Unit filename="../../../source/mainLoop/ProcessState.h" />
+		<Unit filename="../../../source/mainLoop/TempTestProcess.cpp" />
+		<Unit filename="../../../source/mainLoop/TempTestProcess.h" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
 		<Unit filename="../../../source/resourceCache/IResourceLoader.cpp" />

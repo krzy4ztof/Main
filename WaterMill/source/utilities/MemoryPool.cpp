@@ -67,8 +67,9 @@ namespace base_game {
 	}
 
 	MemoryPool::~MemoryPool(void) {
-		cout << "Destroy MemoryPool" << endl;
 		Destroy();
+		cout << "Destroy MemoryPool" << endl;
+
 	}
 
 	bool MemoryPool::Init(unsigned int chunkSize, unsigned int numChunks) {
@@ -117,6 +118,8 @@ namespace base_game {
 
 		// update member variables
 		Reset();
+		//cout << "End MemoryPool::destroy()" << endl;
+
 	}
 
 	void* MemoryPool::Alloc(void) {
@@ -144,9 +147,8 @@ namespace base_game {
 		unsigned char* pRet = m_pHead;
 		m_pHead = GetNext(m_pHead);
 
-		cout << "###    memArraySize: " << m_memArraySize << endl;
-		cout << "###    ppRawMemoryArray: " << m_ppRawMemoryArray << endl;
-		cout << "###    pHead: " << m_pHead << endl;
+		//cout << "###    memArraySize: " << m_memArraySize << endl;
+		//cout << "End MemoryPool::alloc()" << endl;
 
 		return (pRet + CHUNK_HEADER_SIZE);  // make sure we return a pointer to the data section only
 	}
@@ -269,6 +271,8 @@ namespace base_game {
 	unsigned char* MemoryPool::GetNext(unsigned char* pBlock) {
 		//cout << "MemoryPool::getNext()" << endl;
 		unsigned char** ppChunkHeader = (unsigned char**)pBlock;
+		//cout << "End MemoryPool::getNext()" << endl;
+
 		return ppChunkHeader[0];
 	}
 
@@ -276,6 +280,8 @@ namespace base_game {
 		//cout << "MemoryPool::setNext()" << endl;
 		unsigned char** ppChunkHeader = (unsigned char**)pBlockToChange;
 		ppChunkHeader[0] = pNewNext;
+		//cout << "End MemoryPool::setNext()" << endl;
+
 	}
 
 }

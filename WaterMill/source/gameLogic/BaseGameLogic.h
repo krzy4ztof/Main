@@ -7,6 +7,7 @@
 #include "BaseGameLogic.h"
 #include "BaseGameState.h"
 #include "../mainLoop/ProcessManager.h"
+#include "../userInterface/IGameView.h"
 
 #include <memory> // shared_ptr, weak_ptr
 #include <map> // map
@@ -22,6 +23,10 @@ namespace base_game {
 			void tempCreateActors();
 			void tempTestActors();
 			void tempTestProcessManager();
+			void tempAddViews();
+
+			virtual void vAddView(std::shared_ptr<IGameView> pView, unsigned int actorId=Actor::INVALID_ACTOR_ID);
+			virtual void vRemoveView(std::shared_ptr<IGameView> pView);
 
 			virtual std::shared_ptr<Actor> vCreateActor(const std::string &actorResource);  // [rez] note: don't store this strong pointer outside of this class
 			virtual void vDestroyActor(const unsigned int actorId);
@@ -31,6 +36,7 @@ namespace base_game {
 
 			// Logic Update
 			virtual void vOnUpdate(float time, float elapsedTime);
+			void onFrameRender( double fTime, float fElapsedTime);
 
 		protected:
 			float lifetime;								//indicates how long this game has been in session
@@ -38,6 +44,7 @@ namespace base_game {
 			ProcessManager* pProcessManager;				// a game logic entity
 
 			std::map<unsigned int, std::shared_ptr<Actor>> actors;
+			std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
 			ActorFactory* actorFactory;
 			ResourceCache* resourceCache;

@@ -33,6 +33,12 @@
 
 namespace base_game {
 
+	class GameCodeApp;
+
+	extern GameCodeApp *g_pApp;
+	// GameCodeApp *g_pApp;
+
+
 	class GameCodeApp {
 		public:
 			const static std::string GAME_PROCESS_NAME;
@@ -41,7 +47,7 @@ namespace base_game {
 			const static std::string ASSETS_ZIP;
 
 			GameCodeApp();
-			GameCodeApp(const GameCodeApp& orig);
+			//GameCodeApp(const GameCodeApp& orig);
 			virtual ~GameCodeApp();
 
 			bool initAllOptions();
@@ -49,12 +55,24 @@ namespace base_game {
 			void mainLoop();
 			void onClose();
 
+			void testGlobal();
+
 			// GameCode Specific Stuff
 			BaseGameLogic *m_pGame;
 
 			// You must define these functions to initialize your game.
 			virtual BaseGameLogic *createGameAndView(ResourceCache* resourceCache)=0;
 			virtual std::string vGetGameAppDirectory()=0;
+
+			//			static void onUpdateGame( double fTime, float fElapsedTime);
+			void onUpdateGame( double fTime, float fElapsedTime);
+			void onFrameRender( double fTime, float fElapsedTime);
+			bool isQuitting();
+			bool hasModalDialog();
+
+		protected:
+			bool m_bQuitting;						// true if the app is running the exit sequence
+			int m_HasModalDialog;					// determines if a modal dialog is up
 
 
 		private:
@@ -73,6 +91,8 @@ namespace base_game {
 			SaveManager *saveManager;
 
 	};
+
+
 }
 #endif /* GAMECODEAPP_H */
 

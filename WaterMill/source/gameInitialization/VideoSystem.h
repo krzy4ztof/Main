@@ -34,10 +34,16 @@ namespace base_game {
 
 
 	namespace video_system {
+		//float angle; // = 0.0f;
+		void renderScene();
+		void changeSize(int w, int h);
+
 		void displayFreeGlut();
 		void onChangeSize(int width, int height);
 		void onClose();
 		void onHideShow(int state);
+		void onIdle();
+		void onTimer(int value);
 	}
 }
 #endif /* VIDEOSYSTEM_H */

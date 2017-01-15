@@ -33,6 +33,8 @@ namespace base_game {
 			void luaRun();
 			//  void videoFreeGlutRun();
 			void loggerRun();
+			void shiftOperatorRun();
+			void bitwiseOrOperatorRun();
 		protected:
 			void primeSearchRun(int pixels);
 

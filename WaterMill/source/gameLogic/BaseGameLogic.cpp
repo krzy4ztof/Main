@@ -6,6 +6,12 @@
 #include "../gameInitialization/Macros.h"
 #include "../resourceCache/ResourceCache.h"
 #include "../utilities/Templates.h"
+#include "../mainLoop/ProcessManager.h"
+#include "../mainLoop/TempTestProcess.h"
+#include "../mainLoop/DelayProcess.h"
+#include "../userInterface/IGameView.h"
+#include "../userInterface/HumanView.h"
+
 
 #include <boost/property_tree/ptree.hpp>
 #include <memory> // shared_ptr, weak_ptr
@@ -38,16 +44,12 @@ namespace base_game {
 
 	BaseGameLogic::~BaseGameLogic() {
 
+		while (!m_gameViews.empty()) {
+			m_gameViews.pop_front();
+		}
 
-		//delete(pProcessManager); // TODO: template
 		templates::safe_delete<ProcessManager>(pProcessManager);
-
-		templates::safe_delete<ProcessManager>(pProcessManager);
-
-		//actor_factory::safe_delete(actorFactory);
-
 		templates::safe_delete<ActorFactory>(actorFactory);
-		//actor_factory::safe_delete(actorFactory);
 
 		map<unsigned int, shared_ptr<Actor>>::iterator actorsIterator;
 		for (actorsIterator = actors.begin(); actorsIterator!=actors.end(); actorsIterator++) {
@@ -63,6 +65,19 @@ namespace base_game {
 		actorFactory = vCreateActorFactory();
 		this->resourceCache = resourceCache;
 		return true;
+	}
+
+	void BaseGameLogic::vAddView(shared_ptr<IGameView> pView, unsigned int actorId) {
+		// This makes sure that all views have a non-zero view id.
+		int viewId = static_cast<int>(m_gameViews.size());
+		m_gameViews.push_back(pView);
+		pView->vOnAttach(viewId, actorId);
+		pView->vOnRestore();
+	}
+
+
+	void BaseGameLogic::vRemoveView(shared_ptr<IGameView> pView) {
+		m_gameViews.remove(pView);
 	}
 
 	ActorFactory* BaseGameLogic::vCreateActorFactory(void) {
@@ -125,7 +140,9 @@ namespace base_game {
 
 	void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
 
-		int deltaMilliseconds = int(elapsedTime * 1000.0f);
+		//int deltaMilliseconds = int(elapsedTime * 1000.0f);
+		int deltaMilliseconds = int(elapsedTime);
+
 		lifetime += elapsedTime;
 
 		stringstream ss;
@@ -142,13 +159,81 @@ namespace base_game {
 		}
 	}
 
-	void BaseGameLogic::tempTestProcessManager() {
-		state = running;
-		vOnUpdate(0,10);
+	void BaseGameLogic::onFrameRender(double time, float elapsedTime) {
+
+		/*
+			for(GameViewList::iterator i=pGame->m_gameViews.begin(),
+					end=pGame->m_gameViews.end(); i!=end; ++i) {
+				(*i)->VOnRender(fTime, fElapsedTime);
+			}
+		*/
+
+		std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
+		for(viewIterator=m_gameViews.begin(); viewIterator!=m_gameViews.end(); viewIterator++) {
+			(*viewIterator)->vOnRender(time, elapsedTime);
+		}
+
+
+
 
 	}
 
+	void BaseGameLogic::tempTestProcessManager() {
+		state = running;
 
+		shared_ptr<Process> pProcess1 (new TempTestProcess("Initalize Action GROUP 1"));
+		pProcessManager->attachProcess(pProcess1);
+		shared_ptr<Process> pProcess2 (new TempTestProcess("Second Action GROUP 1"));
+		pProcess1->attachChild(pProcess2);
+		shared_ptr<Process> pProcess3 (new TempTestProcess("Third Action GROUP 1"));
+		pProcess1->attachChild(pProcess3);
+		shared_ptr<Process> pProcess4 (new TempTestProcess("Last Action GROUP 1"));
+		pProcess2->attachChild(pProcess4);
+
+		shared_ptr<Process> pDelay(new DelayProcess(1000)); // delay for 1 second
+		pProcessManager->attachProcess(pDelay);
+
+		shared_ptr<Process> pProcess1g2 (new TempTestProcess("Initalize Action GROUP 2"));
+		pDelay->attachChild(pProcess1g2);
+		shared_ptr<Process> pProcess2g2 (new TempTestProcess("Second Action GROUP 2"));
+		pProcess1g2->attachChild(pProcess2g2);
+		shared_ptr<Process> pProcess3g2 (new TempTestProcess("Third Action GROUP 2"));
+		pProcess2g2->attachChild(pProcess3g2);
+
+		//vOnUpdate(0,0);
+
+
+		shared_ptr<Process> pProcess1g3 (new TempTestProcess("Initalize Action GROUP 3"));
+		pProcessManager->attachProcess(pProcess1g3);
+		shared_ptr<Process> pProcess2g3 (new TempTestProcess("Second Action GROUP 3"));
+		pProcess1g3->attachChild(pProcess2g3);
+		shared_ptr<Process> pProcess3g3 (new TempTestProcess("Third Action GROUP 3"));
+		pProcess1g3->attachChild(pProcess3g3);
+
+
+		/*
+				vOnUpdate(0,1);
+				vOnUpdate(0,2);
+				vOnUpdate(0,3);
+				vOnUpdate(0,4);
+				vOnUpdate(0,5);
+				vOnUpdate(0,6);
+				vOnUpdate(0,7);
+				*/
+
+
+	}
+
+	void BaseGameLogic::tempAddViews() {
+
+		IGameView* gameView = new HumanView();
+		shared_ptr<IGameView> pView = shared_ptr<IGameView>(gameView);
+
+		vAddView(pView, 0);
+
+
+	}
 
 	void BaseGameLogic::tempTestActors() {
 		vChangeState(spawningPlayersActors);

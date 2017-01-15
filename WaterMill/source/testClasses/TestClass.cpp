@@ -35,6 +35,100 @@ using std::string;
 
 namespace base_game {
 
+	void TestClass::bitwiseOrOperatorRun() {
+		unsigned short int successCount = 1;
+		unsigned short int failCount = 5536;
+		unsigned int result = successCount << 16;
+		unsigned int resultOr = ((successCount << 16) | failCount);
+
+		cout << " << 16: " << result << " : " << resultOr << endl;
+
+
+	}
+
+	void TestClass::shiftOperatorRun() {
+
+
+		//unsigned short int - 2 bytes
+		// << 16 = 0
+
+		unsigned short int successCount = 8;
+		// unsigned int successCount = 8;
+
+
+		//	unsigned short int failCount = 1;
+
+		cout << successCount << endl;
+		successCount = successCount << 1;
+		cout << " << 1 " << successCount << endl;
+
+		successCount = 8;
+		successCount = successCount << 2;
+		cout << " << 2 " << successCount << endl;
+
+		successCount = 8;
+		successCount = successCount << 3;
+		cout << " << 3 " << successCount << endl;
+
+		successCount = 8;
+		cout << successCount << endl;
+		successCount = successCount << 6;
+		cout << " << 6 " << successCount << endl;
+
+
+
+		successCount = 8;
+		successCount = successCount << 7;
+		cout << " << 7 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 8;
+		cout << " << 8 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 9;
+		cout << " << 9 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 10;
+		cout << " << 10 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 11;
+		cout << " << 11 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 12;
+		cout << " << 12 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 13;
+		cout << " << 13 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 14;
+		cout << " << 14 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 15;
+		cout << " << 15 " << successCount << endl;
+
+
+		successCount = 8;
+		successCount = successCount << 16;
+		cout << " << 16 " << successCount << endl;
+
+
+	}
+
 	void TestClass::loggerRun() {
 		logger::init();
 
@@ -87,6 +181,9 @@ namespace base_game {
 
 
 	void TestClass::memoryPoolRun() {
+
+		logger::init();
+
 		cout << "new mem1" << endl;
 		MemoryUsageObject* mem1 = new MemoryUsageObject();
 		cout << "new mem2" << endl;
@@ -100,6 +197,8 @@ namespace base_game {
 		MemoryUsageObject* mem3 = new MemoryUsageObject();
 		cout << "new mem4" << endl;
 		MemoryUsageObject* mem4 = new MemoryUsageObject();
+
+
 		cout << "new mem5" << endl;
 		MemoryUsageObject* mem5 = new MemoryUsageObject();
 		cout << "new mem6" << endl;
