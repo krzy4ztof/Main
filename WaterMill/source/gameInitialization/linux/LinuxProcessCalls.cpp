@@ -11,6 +11,7 @@
 #include "../../utilities/StringUtils.h"
 #include "../../debugging/Logger.h"
 #include <sstream>      // std::stringstream
+#include "../../utilities/Templates.h"
 
 using std::string;
 using std::stringstream;
@@ -52,6 +53,11 @@ namespace base_game {
 
 		// Loop while not NULL
 		while ( ( de_DirEntity = readdir ( dir_proc ) ) ) {
+
+            memset(chrarry_CommandLinePath,0,sizeof(chrarry_CommandLinePath));
+            memset(chrarry_NameOfProcess,0,sizeof(chrarry_NameOfProcess));
+
+
 			if ( de_DirEntity->d_type == DT_DIR ) {
 
 				if ( string_utils::isCharNumeric ( de_DirEntity->d_name ) ) {
@@ -73,7 +79,7 @@ namespace base_game {
 						}
 
 						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
-							ss << "proces podobny: " << chrptr_StringToCompare;
+							ss << "proces podobny: " << chrptr_StringToCompare << " // " << "/proc/" <<  de_DirEntity->d_name << "/cmdLine";
 							logger::trace(ss);
 
 
@@ -87,7 +93,8 @@ namespace base_game {
 		closedir ( dir_proc ) ;
 		logger::trace("tutaj 2");
 
-		string_utils::safe_delete_char_array(gameTitleChar);
+		templates::safe_delete_array<char>(gameTitleChar);
+		//string_utils::safe_delete_char_array(gameTitleChar);
 
 		ss << "tutaj howMany: " << howMany;
 		logger::trace(ss);

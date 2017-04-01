@@ -30,6 +30,7 @@
 #include <sstream>      // std::stringstream
 
 #include "GameCodeApp.h"//g_pApp
+#include "../utilities/Templates.h"
 
 using std::string;
 using std::cout;
@@ -281,7 +282,12 @@ namespace base_game {
 		//glutIdleFunc(video_system::renderScene);
 
 
-		glutTimerFunc(100,video_system::onTimer,3);
+		glutTimerFunc(100,video_system::onTimer,1);
+
+		glutTimerFunc(200,video_system::onTimer,2);
+
+
+		glutTimerFunc(300,video_system::onTimer,3);
 
 		// !!!!!!!!!!!!!!!!!!!!
 		// Note: glutSetOption is only available with freeglut
@@ -299,7 +305,8 @@ namespace base_game {
 
 		logger::trace("after glutMainLoop+++");
 
-		string_utils::safe_delete_char_array(titleChar);
+        templates::safe_delete_array<char>(titleChar);
+		//string_utils::safe_delete_char_array(titleChar);
 	}
 
 	void VideoSystem::startFreeGlutMainLoop() {

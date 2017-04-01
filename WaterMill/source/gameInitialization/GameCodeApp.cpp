@@ -165,6 +165,12 @@ namespace base_game {
 
 		IResourceFile *zipFile = new ResourceZipFile(ASSETS_ZIP);
 		resourceCache = new ResourceCache(initOptions->getAssetsFolder(),50,zipFile);
+
+		if (!resourceCache->init()){
+				logger::warning("Failed to initialize resource cache!  Are your paths set up correctly?");
+		return false;
+		}
+
 		resourceCache->registerLoader(xml_resource_loader::createXmlResourceLoader());
 
 		try {
@@ -208,6 +214,7 @@ namespace base_game {
 			m_pGame = createGameAndView(resourceCache);
 
 			resourceCache->preLoad("*.jpg");
+logger::info("createGameAndView+2");
 
 			/*
 						bool done = false;
@@ -234,9 +241,12 @@ namespace base_game {
 
 		//TODO: remove tempCreateActors
 		//m_pGame->tempCreateActors();
-		m_pGame->tempTestActors();
-		m_pGame->tempAddViews();
-		m_pGame->tempTestProcessManager();
+
+		m_pGame->tempTestZipFile(initOptions->getAssetsFolder());
+		//m_pGame->tempTestActors();//ok
+		m_pGame->tempAddViews();//ok
+		//m_pGame->tempTestProcessManager();//ok
+
 
 		videoSystem->startFreeGlutMainLoop();
 

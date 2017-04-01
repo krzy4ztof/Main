@@ -39,13 +39,14 @@ void testMain() {
 	//testClass.run();
 	//testClass.primeSearchRun();
 	//testClass.randomGeneratorRun();
-	testClass.memoryPoolRun();
+	//testClass.memoryPoolRun();
 	//testClass.messagesRun();
 	//testClass.luaRun();
 	//testClass.videoFreeGlutRun();
 	//testClass.loggerRun();
 	//testClass.shiftOperatorRun();
 	//testClass.bitwiseOrOperatorRun();
+	testClass.writeReadZlibRun();
 }
 
 int main(int argc, char** argv) {

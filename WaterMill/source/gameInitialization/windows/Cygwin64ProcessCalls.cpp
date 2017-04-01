@@ -10,6 +10,7 @@
 
 #include "../../utilities/StringUtils.h"
 #include "../../debugging/Logger.h"
+#include "../utilities/Templates.h"
 
 using std::string;
 
@@ -49,6 +50,10 @@ namespace base_game {
 
 		// Loop while not NULL
 		while ( ( de_DirEntity = readdir ( dir_proc ) ) ) {
+
+		    memset(chrarry_CommandLinePath,0,sizeof(chrarry_CommandLinePath));
+            memset(chrarry_NameOfProcess,0,sizeof(chrarry_NameOfProcess));
+
 			if ( de_DirEntity->d_type == DT_DIR ) {
 
 				if ( string_utils::isCharNumeric ( de_DirEntity->d_name ) ) {
@@ -79,7 +84,8 @@ namespace base_game {
 
 		closedir ( dir_proc ) ;
 
-		string_utils::safe_delete_char_array(gameTitleChar);
+		templates::safe_delete_array<char>(gameTitleChar);
+//		string_utils::safe_delete_char_array(gameTitleChar);
 
 		if ( howMany >= 2 ) {
 			// First process is this process

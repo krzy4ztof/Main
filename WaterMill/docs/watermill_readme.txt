@@ -60,16 +60,16 @@ C Compiler > Include Directories:
 	C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
 C++ Compiler > Include Directories:
 	C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
-	
+
 Project -> Properties -> Build -> C Compiler -> Include Directories
 	C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
-	
+
 Project -> Properties -> Build -> C++ Compiler -> Include Directories
 	C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
 
 *******************
 ***	Formatting	***
-*******************	
+*******************
 
 Main Menu -> Tools -> Options
 Editor -> On Save
@@ -93,32 +93,32 @@ int APIENTRY _tWinMain
 Start of the application:
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\TeapotWars\TeapotWars.cpp
-	
-TeapotWarsApp g_TeapotWarsApp; - constructor of TeapotWarsApp and GameCodeApp is called; 
-	
+
+TeapotWarsApp g_TeapotWarsApp; - constructor of TeapotWarsApp and GameCodeApp is called;
+
 ---	2.	---
 TeapotWarsApp is subclass of GameCodeApp
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\TeapotWars\Msvc\TeapotWars.h
 class TeapotWarsApp : public GameCodeApp
 
----	3.	---	
+---	3.	---
 g_pApp is initialized in GameCodeApp constructor.
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\GCC4\GameCode4\GameCode.cpp
 GameCodeApp::GameCodeApp()
 {
 	g_pApp = this;
-		
----	4.	---	
+
+---	4.	---
 Start of windows application
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\TeapotWars\TeapotWars.cpp
-	
+
 INT WINAPI wWinMain
 	return GameCode4(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
 
----	5.	---	
+---	5.	---
 GameCode4 is called.
 g_pApp was initialized in step 3.
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
@@ -131,7 +131,7 @@ INT WINAPI GameCode4(HINSTANCE hInstance,
 {
     Logger::Init("logging.xml");
 	// Perform application initialization
-	if (!g_pApp->InitInstance (hInstance, lpCmdLine, 0, g_pApp->m_Options.m_ScreenSize.x, g_pApp->m_Options.m_ScreenSize.y)) 
+	if (!g_pApp->InitInstance (hInstance, lpCmdLine, 0, g_pApp->m_Options.m_ScreenSize.x, g_pApp->m_Options.m_ScreenSize.y))
 
 
 
@@ -139,14 +139,14 @@ INT WINAPI GameCode4(HINSTANCE hInstance,
 ***	TeapotWars - Logger	***
 ***************************
 
-Log macros used everythere, defined in 	
+Log macros used everythere, defined in
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\GCC4\Debugging\Logger.h
 
 #define GCC_INFO(str)
 	...
 		Logger::Log("INFO", s, NULL, NULL, 0);
-	
+
 Logger::Log defined in
 C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 	\GCC4\Debugging\Logger.cpp
@@ -154,24 +154,24 @@ C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source
 namespace Logger
 	void Log
 		s_pLogMgr->Log(tag, message, funcName, sourceFile, lineNum);
-		
+
 where (Logger.cpp)
-static LogMgr* s_pLogMgr = NULL;		
-	
-	
-***********	
+static LogMgr* s_pLogMgr = NULL;
+
+
+***********
 ***	Git	***
 ***********
 
 Popup Menu -> Git -> Commit
-	
-Popup Menu -> Git -> Remote -> Push to Upstream
-	
 
-***************	
+Popup Menu -> Git -> Remote -> Push to Upstream
+
+
+***************
 ***	C++11	***
 ***************
-	
+
 warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
 
 
@@ -189,9 +189,9 @@ diskNeeded: 2560
 
 1 MB = 1024 kB = 1024 * 1024 byte
 
-4096 kB = 1 cluster 
+4096 kB = 1 cluster
 
-14010726 * 4096 / 1024 / 1024 = 54729 MB 
+14010726 * 4096 / 1024 / 1024 = 54729 MB
 14010726 * 4096 / 1024 / 1024 / 1024 = 53.44 GB
 
 *******************
@@ -362,12 +362,12 @@ git rm -r -f nbproject (-f force removal)
 ||=== Build: Debug_MinGW64 in Watermill (compiler: MinGW64) ===|
 
 C:\home\myImportantFiles\projects\git\Main\WaterMill\source\debugging\Logger.cpp||
-In function 'void watermill::logger::custom_formatter(const boost::log::v2_mt_nt5::record_view&, 
+In function 'void watermill::logger::custom_formatter(const boost::log::v2_mt_nt5::record_view&,
 boost::log::v2_mt_nt5::formatting_ostream&)':|
 
-C:\home\myImportantFiles\projects\git\Main\WaterMill\source\debugging\Logger.cpp|127|error: 
-conversion from 'boost::log::v2_mt_nt5::result_of::extract<boost::posix_time::ptime, void>::type 
-{aka boost::log::v2_mt_nt5::value_ref<boost::posix_time::ptime, void>}' 
+C:\home\myImportantFiles\projects\git\Main\WaterMill\source\debugging\Logger.cpp|127|error:
+conversion from 'boost::log::v2_mt_nt5::result_of::extract<boost::posix_time::ptime, void>::type
+{aka boost::log::v2_mt_nt5::value_ref<boost::posix_time::ptime, void>}'
 to non-scalar type 'boost::posix_time::ptime' requested|
 
 ||=== Build failed: 1 error(s), 0 warning(s) (0 minute(s), 18 second(s)) ===|
@@ -381,3 +381,95 @@ namespace logging = boost::log;
 
 ActorFactory.cpp
 using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp
+
+
+***************************
+*** Various CPP tricks  ***
+***************************
+
+---------------------------------------------------
+--- How to clear all contents in a char array   ---
+---------------------------------------------------
+
+char chrarry_CommandLinePath[100]  ;
+memset(chrarry_CommandLinePath,0,sizeof(chrarry_CommandLinePath));
+
+see LinuxProcessCalls.cpp
+
+
+***************
+*** TODO    ***
+***************
+
+dokonczyc metode
+ZipFile::init - kompresuje plik i zapisuje go w pamieci
+ZipFile::readFile - czyt plik z pamieci i dekompresuje go
+BaseGameLogic::tempTestZipFile - metoda main z ZipFile GameCodingComplete
+
+***************
+*** TODO 2  ***
+***************
+
+Patrz: https://theboostcpplibraries.com/boost.iostreams-filters
+Example 34.8. Writing and reading data compressed with ZLIB
+
+ZipFile::init dodac array_source i zlib_decompressor wg example 34.8
+
+
+
+ZipFile.cpp:
+  word    compression;      // Z_NO_COMPRESSION or Z_DEFLATED
+
+ZipFile::ReadFile
+    inflate
+
+ZipFile::ReadLargeFile
+    inflate
+
+http://www.zlib.net/zlib_how.html
+From zlib.h we use the basic compression functions deflateInit(), deflate(), and deflateEnd(),
+and the basic decompression functions inflateInit(), inflate(), and inflateEnd().
+
+
+***************
+*** TODO 3  ***
+***************
+
+initCompressed - wczytywanie już skompresowanego pliku
+
+***************
+*** TODO 4  ***
+***************
+
+ZipFile.saveNotCompressedAll - dokonczyc
+
+wczytywanie kilku plikow tempSecondZip.txt, tempThirdZip.txt, tempTestZipFile.txt
+i zapisanie ich jako jeden zzipowany plik / lub nie zzipowany
+
+TZipDirFileHeader, TZipDirHeader, TZIPLOCALHEADER - nadpisanie operatora <<, inicjacja parametrow jako wartosci 0
+
+
+zapis w postaci binarnej
+// ofs.write(*it); ??
+
+http://www.cplusplus.com/forum/beginner/41234/
+
+http://stackoverflow.com/questions/8329767/writing-into-binary-files
+
+
+*****************
+*** TODO 4.2  ***
+*****************
+
+Dokonczyc
+
+ZipFile
+			void test_saveCompressedDirFileHeader(const std::string& outFileName); // todo
+            bool test_initCompressedDirFileHeader(const std::string& resFileName); // todo
+
+
+
+
+            ZipFile::test_saveCompressedDirFileHeader
+            return; // ERROR - remove and fix the ERROR
+            //		inDec.push(fh); // ERROR HERE - uncomment and fix compilation error

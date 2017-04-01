@@ -182,6 +182,7 @@
 					<Add library="GLU" />
 					<Add library="lua" />
 					<Add library="dl" />
+					<Add library="boost_iostreams" />
 				</Linker>
 			</Target>
 			<Target title="Release_Linux">
@@ -216,11 +217,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="../../../assets/actors/player_character.xml" />
+		<Unit filename="../../../assets/graphics/tempTestZipFile.txt" />
 		<Unit filename="../../../assets/scripts/test.lua" />
 		<Unit filename="../../../assets/strings/.gitignore" />
 		<Unit filename="../../../assets/strings/en/LC_MESSAGES/watermill.po" />
 		<Unit filename="../../../assets/strings/pl/LC_MESSAGES/watermill.po" />
+		<Unit filename="../../../docs/codeblocks/codeblocks.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_cygwin64.txt" />
+		<Unit filename="../../../docs/codeblocks/codeblocks_linux.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_mingw32.txt" />
 		<Unit filename="../../../docs/codeblocks/codeblocks_mingw64.txt" />
 		<Unit filename="../../../docs/eclipse/eclipse_cygwin64.txt" />
@@ -301,6 +305,8 @@
 		<Unit filename="../../../source/mainLoop/ProcessState.h" />
 		<Unit filename="../../../source/mainLoop/TempTestProcess.cpp" />
 		<Unit filename="../../../source/mainLoop/TempTestProcess.h" />
+		<Unit filename="../../../source/resourceCache/DefaultResourceLoader.cpp" />
+		<Unit filename="../../../source/resourceCache/DefaultResourceLoader.h" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.h" />
 		<Unit filename="../../../source/resourceCache/IResourceLoader.cpp" />
@@ -309,10 +315,20 @@
 		<Unit filename="../../../source/resourceCache/Resource.h" />
 		<Unit filename="../../../source/resourceCache/ResourceCache.cpp" />
 		<Unit filename="../../../source/resourceCache/ResourceCache.h" />
+		<Unit filename="../../../source/resourceCache/ResourceHandle.cpp" />
+		<Unit filename="../../../source/resourceCache/ResourceHandle.h" />
 		<Unit filename="../../../source/resourceCache/ResourceZipFile.cpp" />
 		<Unit filename="../../../source/resourceCache/ResourceZipFile.h" />
+		<Unit filename="../../../source/resourceCache/TZipDirFileHeader.cpp" />
+		<Unit filename="../../../source/resourceCache/TZipDirFileHeader.h" />
+		<Unit filename="../../../source/resourceCache/TZipDirHeader.cpp" />
+		<Unit filename="../../../source/resourceCache/TZipDirHeader.h" />
+		<Unit filename="../../../source/resourceCache/TZipLocalHeader.cpp" />
+		<Unit filename="../../../source/resourceCache/TZipLocalHeader.h" />
 		<Unit filename="../../../source/resourceCache/XmlResourceLoader.cpp" />
 		<Unit filename="../../../source/resourceCache/XmlResourceLoader.h" />
+		<Unit filename="../../../source/resourceCache/ZipFile.cpp" />
+		<Unit filename="../../../source/resourceCache/ZipFile.h" />
 		<Unit filename="../../../source/saveManager/SaveManager.cpp" />
 		<Unit filename="../../../source/saveManager/SaveManager.h" />
 		<Unit filename="../../../source/scripts/checkPreprocessor.cmd" />

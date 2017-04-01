@@ -35,6 +35,7 @@ namespace base_game {
 			void loggerRun();
 			void shiftOperatorRun();
 			void bitwiseOrOperatorRun();
+			void writeReadZlibRun();
 		protected:
 			void primeSearchRun(int pixels);
 

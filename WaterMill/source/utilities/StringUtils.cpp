@@ -1,4 +1,5 @@
 #include "StringUtils.h"
+#include "../utilities/Templates.h"
 
 #include <cstring>// strcpy
 #include <string> // string
@@ -10,16 +11,19 @@ using std::strcpy;
 using std::stringstream;
 using std::vector;
 using std::exception;
+using std::transform;
 
 namespace base_game {
 	namespace string_utils {
 
+	/*
 		void safe_delete_char_array(char* p) {
 			if (p) {
 				delete [] (p);
 				(p)=nullptr;
 			}
 		}
+		*/
 		char* stringToChar(string inputString) {
 			char* outputChar = new char[inputString.length() + 1];
 			strcpy ( outputChar, inputString.c_str() );
@@ -87,6 +91,10 @@ namespace base_game {
 			else {
 				return !strcasecmp ( s1, s2 );
 			}
+		}
+
+        void toLower (string& inputString) {
+			transform(inputString.begin(), inputString.end(), inputString.begin(), ::tolower);
 		}
 	}
 }

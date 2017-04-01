@@ -35,6 +35,27 @@ namespace base_game {
 			}
 
 		}
+
+		template <class className>
+		void safe_delete_array(className* p){
+		std::stringstream ss;
+			if (p)  {
+				ss << "SAFE_DELETE delete: " << typeid(p).name();
+				logger::info(ss);
+
+				delete [] (p);
+				(p)=nullptr;
+			}
+
+		}
+
+		/*
+		void safe_delete_char_array(char* p) {
+			if (p) {
+				delete [] (p);
+				(p)=nullptr;
+			}
+		}*/
 	}
 }
 

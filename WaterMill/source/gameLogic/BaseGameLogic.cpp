@@ -11,6 +11,7 @@
 #include "../mainLoop/DelayProcess.h"
 #include "../userInterface/IGameView.h"
 #include "../userInterface/HumanView.h"
+#include "../resourceCache/ZipFile.h"
 
 
 #include <boost/property_tree/ptree.hpp>
@@ -20,6 +21,7 @@
 #include <string> // string
 #include <utility> // pair, make_pair
 #include <map> // map
+#include <fstream> // ifstream
 
 using boost::property_tree::ptree;
 using std::shared_ptr;
@@ -29,6 +31,8 @@ using std::string;
 using std::make_pair;
 using std::pair;
 using std::map;
+using std::ifstream;
+using std::endl;
 
 using base_game::BaseGameState::spawningPlayersActors;
 using base_game::BaseGameState::running;
@@ -191,7 +195,7 @@ namespace base_game {
 		shared_ptr<Process> pProcess4 (new TempTestProcess("Last Action GROUP 1"));
 		pProcess2->attachChild(pProcess4);
 
-		shared_ptr<Process> pDelay(new DelayProcess(1000)); // delay for 1 second
+		shared_ptr<Process> pDelay(new DelayProcess(500)); // delay for 0.5 second
 		pProcessManager->attachProcess(pDelay);
 
 		shared_ptr<Process> pProcess1g2 (new TempTestProcess("Initalize Action GROUP 2"));
@@ -279,6 +283,84 @@ namespace base_game {
 
 
 		logger::trace(ss);
+
+	}
+
+	void BaseGameLogic::tempTestZipFile(const string& assetsFolder) {
+		logger::info("BaseGameLogic::tempTestZipFile");
+
+		stringstream ss;
+		ss << "assetsFolder: " << assetsFolder;
+		logger::info(ss);
+
+		string filename = assetsFolder + "graphics/tempTestZipFile.txt";
+		string filenameOut = assetsFolder + "graphics/tempTestZipFileOut.txt";
+        string filenameZipOut = assetsFolder + "graphics/tempTestZipFileZipOut.txt";
+
+		string filenameOutAll = assetsFolder + "graphics/tempTestZipFileOutAll.txt";
+
+		ss << "zipFile: " << filename;
+		logger::info(ss);
+
+		ifstream myfile(filename);
+		string line;
+
+		if ( myfile.is_open() ) {
+			logger::info("otwarte!!!!");
+
+
+			while (getline(myfile, line)) {
+				ss << line << endl;
+			}
+
+			//ss << myfile;
+			logger::info(ss);
+
+			myfile.close();
+
+
+			//readFile(filename);
+			ZipFile zipFile;
+			/*if (zipFile.init(filename) == false) {
+				logger::info("NIE zainicjowano zip file!!!!");
+
+			} else {
+
+			}*/
+
+			if (zipFile.initNotCompressed(filename) == false) {
+				logger::info("NIE zainicjowano initNotCompressed zip file!!!!");
+
+			} else {
+
+			zipFile.saveNotCompressed(filenameOut);
+
+			zipFile.saveCompressed(filenameZipOut);
+
+			zipFile.saveNotCompressedAll(filenameOutAll);
+
+
+
+			string filenameZipDirHeaderOut = assetsFolder + "graphics/tempTestDirHeaderOut.txt";
+            zipFile.test_saveNotCompressedDirFileHeader(filenameZipDirHeaderOut);
+			zipFile.test_initNotCompressedDirFileHeader(filenameZipDirHeaderOut);
+
+			string filenameZipDirHeaderOutZip = assetsFolder + "graphics/tempTestDirHeaderOutZip.txt";
+			zipFile.test_saveCompressedDirFileHeader(filenameZipDirHeaderOutZip);
+
+
+
+}
+
+
+
+		} else {
+			logger::info("NIE otwarte!!!!");
+
+			//string errorMessage = "There is no " + INIT_FILENAME + " in " + initialPath.string() + " folder ";
+			//throw ErrorCode(errorMessage, 111 );
+
+		};
 
 	}
 

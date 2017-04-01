@@ -81,6 +81,9 @@ boost_thread
 F) Boost:
 boost_log_setup
 (link to \usr\lib\x86_64-linux-gnu\libboost_log_setup.a)
+G) Boost:
+boost_iostreams
+(link to \usr\lib\x86_64-linux-gnu\libboost_iostreams.a)
 
 
 lua

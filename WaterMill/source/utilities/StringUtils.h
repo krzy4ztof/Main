@@ -13,10 +13,12 @@ namespace base_game {
 		bool stringToDoubleStod ( double& outputDouble, const std::string& inputString );
 		bool stringToDoubleStream ( double& outputDouble, const std::string& inputString );
 
-		void safe_delete_char_array(char* p);
+		//void safe_delete_char_array(char* p);
 
 		int isCharNumeric ( const char* ccharptr_CharacterList ) ;
 		int compareChars ( const char *s1, const char *s2, bool intCaseSensitive );
+
+		void toLower(std::string& inputString);
 	}
 }
 

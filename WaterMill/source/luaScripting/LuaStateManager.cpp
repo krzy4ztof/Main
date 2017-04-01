@@ -5,6 +5,7 @@
 #include <cstring>// strcpy
 #include "../utilities/StringUtils.h"
 #include "../debugging/Logger.h"
+#include "../utilities/Templates.h"
 #include <sstream>      // std::stringstream
 
 using std::string;
@@ -83,7 +84,8 @@ namespace base_game {
 		//lua_State *state = luaL_newstate();
 		//lua_close(state);
 
-		string_utils::safe_delete_char_array(scriptNameChar);
+templates::safe_delete_array<char>(scriptNameChar);
+	//	string_utils::safe_delete_char_array(scriptNameChar);
 	}
 
 

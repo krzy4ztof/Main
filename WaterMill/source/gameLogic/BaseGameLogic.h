@@ -24,6 +24,7 @@ namespace base_game {
 			void tempTestActors();
 			void tempTestProcessManager();
 			void tempAddViews();
+			void tempTestZipFile(const std::string &assetsFolder);
 
 			virtual void vAddView(std::shared_ptr<IGameView> pView, unsigned int actorId=Actor::INVALID_ACTOR_ID);
 			virtual void vRemoveView(std::shared_ptr<IGameView> pView);
