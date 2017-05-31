@@ -124,9 +124,13 @@ sudo apt install lua5.2
 
 Zainstalować readline:
 sudo apt-get install libreadline
+sudo apt-get install libreadline-dev
+
 
 cd /home/kletki/my_home/utils/lua53
 curl -R -O http://www.lua.org/ftp/lua-5.3.3.tar.gz
+# Ewentualnie Pobrać https://www.lua.org/ftp/
+# i skopiować do katalogu lua53
 tar zxf lua-5.3.3.tar.gz
 cd lua-5.3.3
 make linux test
