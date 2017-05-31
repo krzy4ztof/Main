@@ -1,3 +1,17 @@
+*******************************
+***	Setup MinGW64 compiler	***
+*******************************
+
+Then, add the PATH variable to eclipse:
+1) you need to go "windows\preferences\c/c++\build\environment"
+2) then just click Add...
+3) Set fields with the next values:
+Name: PATH
+Value: C:\msys64\mingw64\bin
+where "C:\msys64\mingw64\bin" is your real path where mingw binaries are stored. (to make sure that you set the right path just go to this directory and find gcc.exe or g++.exe. if you find it it's ok.)
+4) Choose "Append variables to native environment"
+5) Press "Apply" and then "OK"
+
 ***************
 ***	Eclipse	***
 ***************
@@ -50,16 +64,54 @@ C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 All options
 
 C/C++ General -> Paths and Symbols -> Includes -> GNU C++
-C:\home\myImportantFiles\projects\git\libraries\freeglut\include
-C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include
+C:\msys64\mingw64\include
+C:\msys64\mingw64\x86_64-w64-mingw32\include
+C:\msys64\usr\local\include
+
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x86
+C:\msys64\mingw64\lib
+C:\msys64\mingw64\x86_64-w64-mingw32\lib
+C:\msys64\usr\local\lib
+
+
 C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
 freeglut
 psapi
 opengl32
+
+lua
+(link to C:\msys64\usr\local\lib\liblua.a)
+
+A) Boost:
+boost_system-mt	
+(link to C:\msys64\mingw64\lib\libboost_system-mt.dll.a)	
+B) Boost:
+boost_filesystem-mt
+(link to C:\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a)
+C) Boost:
+boost_locale-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_locale-mt.dll.a)
+D) Boost:
+boost_log-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log-mt.dll.a)
+E) Boost:
+boost_thread-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_thread-mt.dll.a)
+F) Boost:
+boost_log_setup-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log_setup-mt.dll.a)
+G) Boost:
+boost_iostreams-mt
+(link to C:\msys64\mingw64\lib\libboost_iostreams-mt.dll.a)
+
+
+
 
 C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Compiler
 

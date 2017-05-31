@@ -112,7 +112,6 @@
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="-DBOOST_LOG_DYN_LINK" />
-					<Add directory="../../../../../libraries/freeglut/include" />
 					<Add directory="source/gameInitialization/windows" />
 					<Add directory="source/gameInitialization" />
 					<Add directory="source/resourceCache" />
@@ -120,7 +119,6 @@
 					<Add directory="source/luaScripting" />
 					<Add directory="source/eventManager" />
 					<Add directory="source/watermillGame" />
-					<Add directory="../../../../../../../../../msys64/mingw64/x86_64-w64-mingw32/include" />
 					<Add directory="source/debugging" />
 					<Add directory="source/main" />
 					<Add directory="source/saveManager" />
@@ -129,6 +127,10 @@
 					<Add directory="source/gameInitialization/linux" />
 					<Add directory="source/mainLoop" />
 					<Add directory="source/userInterface" />
+					<Add directory="../../../../../../../../../../../msys64/mingw64/include" />
+					<Add directory="../../../../../../../../../../../msys64/mingw64/x86_64-w64-mingw32/include" />
+					<Add directory="../../../../../../../../../../../msys64/usr/local/include" />
+					<Add directory="../../../../../libraries/freeglut/include" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
@@ -141,8 +143,10 @@
 					<Add library="boost_thread-mt" />
 					<Add library="boost_log_setup-mt" />
 					<Add library="lua" />
+					<Add library="boost_iostreams-mt" />
 					<Add directory="../../../../../libraries/freeglut/lib/x64" />
-					<Add directory="../../../../../../../../../msys64/mingw64/lib" />
+					<Add directory="../../../../../../../../../../../msys64/mingw64/lib" />
+					<Add directory="../../../../../../../../../../../msys64/usr/local/lib" />
 				</Linker>
 			</Target>
 			<Target title="Debug_Linux">
@@ -293,9 +297,6 @@
 		<Unit filename="../../../source/gameLogic/BaseGameState.h" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.cpp" />
 		<Unit filename="../../../source/luaScripting/LuaStateManager.h" />
-		<Unit filename="../../../source/main/GameMain.cpp" />
-		<Unit filename="../../../source/main/GameMain.h" />
-		<Unit filename="../../../source/main/Main.cpp" />
 		<Unit filename="../../../source/mainLoop/DelayProcess.cpp" />
 		<Unit filename="../../../source/mainLoop/DelayProcess.h" />
 		<Unit filename="../../../source/mainLoop/Process.cpp" />
@@ -305,6 +306,9 @@
 		<Unit filename="../../../source/mainLoop/ProcessState.h" />
 		<Unit filename="../../../source/mainLoop/TempTestProcess.cpp" />
 		<Unit filename="../../../source/mainLoop/TempTestProcess.h" />
+		<Unit filename="../../../source/main/GameMain.cpp" />
+		<Unit filename="../../../source/main/GameMain.h" />
+		<Unit filename="../../../source/main/Main.cpp" />
 		<Unit filename="../../../source/resourceCache/DefaultResourceLoader.cpp" />
 		<Unit filename="../../../source/resourceCache/DefaultResourceLoader.h" />
 		<Unit filename="../../../source/resourceCache/IResourceFile.cpp" />

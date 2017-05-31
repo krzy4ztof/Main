@@ -65,13 +65,13 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.612010398" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.309145860" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release">
-								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.237828819" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.641110675" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.237828819" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.641110675" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1640843454" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.1666667987" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release">
-								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.exe.release.option.optimization.level.564246683" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.release.option.optimization.level" valueType="enumerated"/>
-								<option id="gnu.c.compiler.mingw.exe.release.option.debugging.level.1617546421" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.exe.release.option.optimization.level.564246683" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.release.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.mingw.exe.release.option.debugging.level.1617546421" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1366022583" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release.1844482307" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release"/>
@@ -169,19 +169,19 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.cygwin.base.2110662257" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.cygwin.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.313954386" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base">
-								<option id="gnu.cpp.compiler.option.include.paths.2001933663" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.cpp.compiler.option.include.paths.2001933663" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;C:\home\myImportantFiles\projects\git\libraries\freeglut\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.optimization.level.1681575208" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.debugging.level.2120212948" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.dialect.std.719641542" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.dialect.flags.2078086527" name="Other dialect flags" superClass="gnu.cpp.compiler.option.dialect.flags" value="-std=c++11" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.optimization.level.1681575208" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.2120212948" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.dialect.std.719641542" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.dialect.flags.2078086527" name="Other dialect flags" superClass="gnu.cpp.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=c++11" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1325386004" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1728277764" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base">
-								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.174413962" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.debugging.level.974475582" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.174413962" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.974475582" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.2007698622" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.base.1530248341" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.base"/>
@@ -234,8 +234,10 @@
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.994928731" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.301787647" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1844316028" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\home\myImportantFiles\projects\git\libraries\freeglut\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\home\myImportantFiles\projects\git\libraries\boost_1_60_0&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\x86_64-w64-mingw32\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\usr\local\include&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1151198610" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -247,12 +249,23 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.731121618" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 							<tool command="C:\msys64\mingw64\bin\g++" id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.1925389533" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 								<option id="gnu.cpp.link.option.paths.2082066114" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\x86_64-w64-mingw32\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\msys64\usr\local\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.186041527" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="freeglut"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="psapi"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="opengl32"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="lua"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_system-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_filesystem-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_locale-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_log-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_thread-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_log_setup-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_iostreams-mt"/>
 								</option>
 								<option id="gnu.cpp.link.option.userobjs.499567114" name="Other objects" superClass="gnu.cpp.link.option.userobjs"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.658742404" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -275,6 +288,8 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug_MinGW64"/>
+		<configuration configurationName="Debug_Cygwin"/>
 		<configuration configurationName="Debug_MinGW">
 			<resource resourceType="PROJECT" workspacePath="/Watermill"/>
 		</configuration>
@@ -285,6 +300,8 @@
 			<resource resourceType="PROJECT" workspacePath="/Watermill"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074;cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.361110605;cdt.managedbuild.tool.gnu.cpp.compiler.input.1461235085">
@@ -296,10 +313,16 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087;cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1672947834;cdt.managedbuild.tool.gnu.c.compiler.input.1977158959">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087.1430551094;cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087.1430551094.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.261269068;cdt.managedbuild.tool.gnu.cpp.compiler.input.1151198610">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074;cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.136026181;cdt.managedbuild.tool.gnu.c.compiler.input.1492217123">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1959568754;cdt.managedbuild.config.gnu.mingw.exe.release.1959568754.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.309145860;cdt.managedbuild.tool.gnu.cpp.compiler.input.1640843454">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087.1430551094;cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074.745383087.1430551094.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.987640562;cdt.managedbuild.tool.gnu.c.compiler.input.525728953">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1959568754;cdt.managedbuild.config.gnu.mingw.exe.release.1959568754.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.1666667987;cdt.managedbuild.tool.gnu.c.compiler.input.1366022583">

@@ -1,0 +1,659 @@
+[00001|2017-05-31 20:01:13|   ] : Hello world!
+[00002|2017-05-31 20:01:13|  trace] : A trace severity message
+[00003|2017-05-31 20:01:13|  trace] : A trace severity message 2
+[00004|2017-05-31 20:01:13|  trace] : Create GameCodeApp
+[00005|2017-05-31 20:01:13|  trace] : Create WatermillGame
+[00006|2017-05-31 20:01:13|  trace] : Create InitOptions
+[00007|2017-05-31 20:01:13|  trace] : otwarte!!!!
+[00008|2017-05-31 20:01:13|  trace] : "MAIN" : ""
+[00009|2017-05-31 20:01:13|  trace] :   "Assets" : "../../../assets/"
+[00010|2017-05-31 20:01:13|  trace] :   "Game" : "../../../game/"
+[00011|2017-05-31 20:01:13|  trace] : istnieje MAIN.REsources
+[00012|2017-05-31 20:01:13|  trace] : ../../../assets/
+[00013|2017-05-31 20:01:13|  trace] : istnieje MAIN.REsources
+[00014|2017-05-31 20:01:13|  trace] : ../../../game/
+[00015|2017-05-31 20:01:13|  trace] : Create PlayerOptions
+[00016|2017-05-31 20:01:13|  trace] : "playerOptions" : "
+    
+	
+	
+"
+[00017|2017-05-31 20:01:13|  trace] :   "<xmlcomment>" : " <option name="language" value="en.UTF-8"/> "
+[00018|2017-05-31 20:01:13|  trace] :   "option" : ""
+[00019|2017-05-31 20:01:13|  trace] :     "<xmlattr>" : ""
+[00020|2017-05-31 20:01:13|  trace] :       "name" : "language"
+[00021|2017-05-31 20:01:13|  trace] :       "value" : "pl.UTF-8"
+[00022|2017-05-31 20:01:13|  trace] :   "option" : ""
+[00023|2017-05-31 20:01:13|  trace] :     "<xmlattr>" : ""
+[00024|2017-05-31 20:01:13|  trace] :       "name" : "fullscreen"
+[00025|2017-05-31 20:01:13|  trace] :       "value" : "false"
+[00026|2017-05-31 20:01:13|  trace] : Create DebuggingOptions
+[00027|2017-05-31 20:01:13|  trace] : Create Windows64Calls
+[00028|2017-05-31 20:01:13|  trace] : Is the only instance in Windows 64: watermill?
+[00029|2017-05-31 20:01:13|  trace] : Is the only instance in Windows 64: watermill.exe?
+[00030|2017-05-31 20:01:13|  trace] : --------------------------
+[00031|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00032|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00033|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00034|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00035|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00036|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00037|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00038|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00039|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00040|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00041|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00042|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00043|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00044|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00045|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00046|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00047|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00048|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00049|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00050|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00051|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00052|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00053|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00054|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00055|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00056|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00057|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00058|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00059|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00060|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00061|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00062|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00063|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00064|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00065|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00066|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00067|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00068|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00069|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00070|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00071|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00072|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00073|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00074|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00075|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00076|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00077|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00078|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00079|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00080|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00081|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00082|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00083|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00084|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00085|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00086|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00087|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00088|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00089|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00090|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00091|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00092|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00093|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00094|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00095|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00096|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00097|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00098|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00099|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00100|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00101|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00102|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00103|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00104|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00105|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00106|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00107|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00108|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00109|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00110|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00111|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00112|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00113|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00114|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00115|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00116|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00117|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00118|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00119|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00120|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00121|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00122|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00123|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00124|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00125|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00126|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00127|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00128|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00129|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00130|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00131|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00132|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00133|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00134|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00135|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00136|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00137|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00138|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00139|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00140|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00141|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00142|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00143|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00144|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00145|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00146|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00147|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00148|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00149|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00150|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00151|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: ETDCtrl.exe
+[00152|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: nvcontainer.exe
+[00153|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00154|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00155|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: sihost.exe
+[00156|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00157|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: taskhostw.exe
+[00158|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: igfxEM.exe
+[00159|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: Explorer.EXE
+[00160|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00161|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: ETDIntelligent.exe
+[00162|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: SearchUI.exe
+[00163|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: ShellExperienceHost.exe
+[00164|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.SettingsApp.exe
+[00165|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00166|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: SkypeHost.exe
+[00167|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: nvtray.exe
+[00168|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: MSASCuiL.exe
+[00169|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: RAVCpl64.exe
+[00170|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00171|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00172|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00173|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenterTray.exe
+[00174|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: utility.exe
+[00175|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: DolbyDAX2TrayIcon.exe
+[00176|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00177|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: OneDrive.exe
+[00178|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00179|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: jusched.exe
+[00180|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00181|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00182|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00183|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00184|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: cmd.exe
+[00185|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00186|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: McChHost.exe
+[00187|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00188|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00189|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00190|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: ModuleCoreService.exe
+[00191|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00192|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00193|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00194|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00195|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00196|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00197|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: HostAppServiceUpdater.exe
+[00198|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: DllHost.exe
+[00199|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00200|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00201|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00202|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00203|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00204|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00205|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00206|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00207|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: notepad++.exe
+[00208|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00209|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00210|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00211|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: smartscreen.exe
+[00212|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: eclipse.exe
+[00213|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00214|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00215|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00216|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: McUICnt.exe
+[00217|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: flux.exe
+[00218|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: backgroundTaskHost.exe
+[00219|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: ApplicationFrameHost.exe
+[00220|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: SearchProtocolHost.exe
+[00221|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00222|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00223|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00224|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00225|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: starter.exe
+[00226|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00227|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: Watermill.exe
+[00228|2017-05-31 20:01:13|  trace] : Watermill.exe (PID: 16328)
+[00229|2017-05-31 20:01:13|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00230|2017-05-31 20:01:13|  trace] : howMany: 1
+[00231|2017-05-31 20:01:13|  trace] : diskFree: 203516546 [clusters], 794624 [MB], 776 [GB]
+[00232|2017-05-31 20:01:13|  trace] : diskNeeded: 2560 [clusters], 10 [MB]
+[00233|2017-05-31 20:01:13|  trace] : CPU speed needed: 900 [MHz], CPU speed available: 2808 [MHz]
+[00234|2017-05-31 20:01:13|  trace] : percent of memory in use 18
+[00235|2017-05-31 20:01:13|  trace] : total kB of physical memory 33426596
+[00236|2017-05-31 20:01:13|  trace] : free  kB of physical memory 27199704
+[00237|2017-05-31 20:01:13|  trace] : total kB of paging file 38669476
+[00238|2017-05-31 20:01:13|  trace] : free  kB of paging file 32251200
+[00239|2017-05-31 20:01:13|  trace] : total MB of virtual memory 134217727
+[00240|2017-05-31 20:01:13|  trace] : free  MB of virtual memory 134217550
+[00241|2017-05-31 20:01:13|  trace] : free  kB of extended memory 0
+[00242|2017-05-31 20:01:13|  trace] : physical RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00243|2017-05-31 20:01:13|  trace] : physical RAM total: 34228834304 [byte], 32643 [MB] 31 [GB]
+[00244|2017-05-31 20:01:13|  trace] : virtual RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00245|2017-05-31 20:01:13|  trace] : virtual RAM available: 140737302409216 [byte], 1.34218e+008 [MB] 131071 [GB]
+[00246|2017-05-31 20:01:13|   info] : Create ResourceZipFile
+[00247|2017-05-31 20:01:13|   info] : Create ResourceCache
+[00248|2017-05-31 20:01:13|   info] : Create ZipFile
+[00249|2017-05-31 20:01:13|   info] : ZipFile::init: assets.zip
+[00250|2017-05-31 20:01:13|  trace] : Create IResourceLoader
+[00251|2017-05-31 20:01:13|  trace] : Create DefaultResourceLoader
+[00252|2017-05-31 20:01:13|  trace] : Create IResourceLoader
+[00253|2017-05-31 20:01:13|  trace] : Create XmlResourceLoader
+[00254|2017-05-31 20:01:13|  trace] : Create GameMessages
+[00255|2017-05-31 20:01:13|  trace] : LAN: pl.UTF-8
+[00256|2017-05-31 20:01:13|  trace] : The language code is pl
+[00257|2017-05-31 20:01:13|  trace] : The country code is 
+[00258|2017-05-31 20:01:13|  trace] : name *
+[00259|2017-05-31 20:01:13|  trace] : hello_world
+[00260|2017-05-31 20:01:13|  trace] : hello_world_only_pl_pl
+[00261|2017-05-31 20:01:13|  trace] : hello_world_only_pl
+[00262|2017-05-31 20:01:13|  trace] : hello_world_only_en
+[00263|2017-05-31 20:01:13|  trace] : hello_world_only_default
+[00264|2017-05-31 20:01:13|  trace] : Pr√≥ba kodowania Cze≈õƒá ≈öwiecie
+[00265|2017-05-31 20:01:13|  trace] : Create LuaStateManager
+[00266|2017-05-31 20:01:13|  trace] : lua script: test.lua
+[00267|2017-05-31 20:01:13|  trace] : lua full script: ../../../assets/scripts/test.lua
+[00268|2017-05-31 20:01:13|  trace] : howdy() was called with 3 arguments
+[00269|2017-05-31 20:01:13|  trace] :   argument 1: First
+[00270|2017-05-31 20:01:13|  trace] :   argument 2: Second
+[00271|2017-05-31 20:01:13|  trace] :   argument 3: 112233
+[00272|2017-05-31 20:01:13|   info] : SAFE_DELETE delete: Pc
+[00273|2017-05-31 20:01:13|  trace] : Create EventManager
+[00274|2017-05-31 20:01:13|  trace] : Create DataFiles
+[00275|2017-05-31 20:01:13|  trace] : Create AudioSystem
+[00276|2017-05-31 20:01:13|  trace] : Create VideoSystem
+[00277|2017-05-31 20:01:13|  trace] : videoSystem++++
+[00278|2017-05-31 20:01:13|  trace] : Create SaveManager
+[00279|2017-05-31 20:01:13|  trace] : saveGame: GameEngine\Watermill\1.0
+[00280|2017-05-31 20:01:13|  trace] : userprofile: C:\Users\Krzysztof
+[00281|2017-05-31 20:01:13|  trace] : userProfilePathStr: C:\Users\Krzysztof
+[00282|2017-05-31 20:01:13|  trace] : SaveManager saveGame: GameEngine\Watermill\1.0
+[00283|2017-05-31 20:01:13|  trace] : SaveManager userProfilePathStr: C:\Users\Krzysztof
+[00284|2017-05-31 20:01:13|  trace] : folder: GameEngine
+[00285|2017-05-31 20:01:13|  trace] : path: "C:\Users\Krzysztof\GameEngine"
+[00286|2017-05-31 20:01:13|  trace] : path exists: 1
+[00287|2017-05-31 20:01:13|  trace] : folder: Watermill
+[00288|2017-05-31 20:01:13|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill"
+[00289|2017-05-31 20:01:13|  trace] : path exists: 1
+[00290|2017-05-31 20:01:13|  trace] : folder: 1.0
+[00291|2017-05-31 20:01:13|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill\1.0"
+[00292|2017-05-31 20:01:13|  trace] : path exists: 1
+[00293|2017-05-31 20:01:13|  trace] : glutInit+++
+[00294|2017-05-31 20:01:13|  trace] : glutDisplayFunc+++
+[00295|2017-05-31 20:01:13|  trace] : glutMainLoop+++
+[00296|2017-05-31 20:01:13|  trace] : after glutMainLoop+++
+[00297|2017-05-31 20:01:13|   info] : SAFE_DELETE delete: Pc
+[00298|2017-05-31 20:01:13|  trace] : createGameAndView++++
+[00299|2017-05-31 20:01:13|  trace] : WatermillGame::createGameAndView
+[00300|2017-05-31 20:01:13|  trace] : Create BaseGameLogic
+[00301|2017-05-31 20:01:13|  trace] : Create ProcessManager
+[00302|2017-05-31 20:01:13|  trace] : Create WatermillLogic
+[00303|2017-05-31 20:01:13|  trace] : Create ActorFactory
+[00304|2017-05-31 20:01:13|  trace] : Create ComponentFactory
+[00305|2017-05-31 20:01:13|  trace] : zarejestrowano: renderComponent; function: 1
+[00306|2017-05-31 20:01:13|  trace] : zarejestrowano: scriptComponent; function: 1
+[00307|2017-05-31 20:01:13|  trace] : zarejestrowano: transformComponent; function: 1
+[00308|2017-05-31 20:01:13|   info] : Create Resource
+[00309|2017-05-31 20:01:13|   info] : Orig name: TestImage.jpg
+[00310|2017-05-31 20:01:13|   info] : Tolower name: testimage.jpg
+[00311|2017-05-31 20:01:13|   info] : ResourceCache::getHandle
+[00312|2017-05-31 20:01:13|   info] : ResourceCache::find
+[00313|2017-05-31 20:01:13|   info] : ResourceCache::load
+[00314|2017-05-31 20:01:13|   info] : Create ResourceHandle
+[00315|2017-05-31 20:01:13|   info] : Destroy ResourceHandle
+[00316|2017-05-31 20:01:13|   info] : Destroy Resource
+[00317|2017-05-31 20:01:13|   info] : Destroy Resource
+[00318|2017-05-31 20:01:13|   info] : createGameAndView+2
+[00319|2017-05-31 20:01:13|  trace] : Destroy Windows64Calls
+[00320|2017-05-31 20:01:13|  trace] : Main loop+++
+[00321|2017-05-31 20:01:13|   info] : BaseGameLogic::tempTestZipFile
+[00322|2017-05-31 20:01:13|   info] : assetsFolder: ../../../assets/
+[00323|2017-05-31 20:01:13|   info] : zipFile: ../../../assets/graphics/tempTestZipFile.txt
+[00324|2017-05-31 20:01:13|   info] : otwarte!!!!
+[00325|2017-05-31 20:01:13|   info] : temp_Test_File_zip_txt_1st_line
+temp_Test_File_zip_txt_2nd_line
+temp_Test_File_zip_txt_3rd_line
+
+[00326|2017-05-31 20:01:13|   info] : Create ZipFile
+[00327|2017-05-31 20:01:13|   info] : ZipFile::init: ../../../assets/graphics/tempTestZipFile.txt
+[00328|2017-05-31 20:01:13|   info] : Start compressed: xú+IÕ-àI-.âwÀÃIçØ ,à/©(â7
+‰dÊ•rï`ó7 K¡+o\ï 0ò%Ö
+[00329|2017-05-31 20:01:13|   info] : -------------
+[00330|2017-05-31 20:01:13|   info] : Start decompressed: temp_Test_File_zip_txt_1st_line
+temp_Test_File_zip_txt_2nd_line
+temp_Test_File_zip_txt_3rd_line
+
+[00331|2017-05-31 20:01:13|   info] : Save compressed: xú+IÕ-àI-.âwÀÃIçØ ,à/©(â7
+‰dÊ•rï`ó7 K¡+o\ï 0ò%Ö
+[00332|2017-05-31 20:01:13|   info] : -------------
+[00333|2017-05-31 20:01:13|   info] : Create TZipDirFileHeader
+[00334|2017-05-31 20:01:13|   info] : Create TZipDirHeader
+[00335|2017-05-31 20:01:13|   info] : Start decompressed: temp_Test_File_zip_txt_1st_line
+temp_Test_File_zip_txt_2nd_line
+temp_Test_File_zip_txt_3rd_line
+
+[00336|2017-05-31 20:01:13|   info] : SIZE_OF_FH: 56
+[00337|2017-05-31 20:01:13|   info] : Destroy TZipDirHeader
+[00338|2017-05-31 20:01:13|   info] : Destroy TZipDirFileHeader
+[00339|2017-05-31 20:01:13|   info] : Create TZipDirFileHeader
+[00340|2017-05-31 20:01:13|   info] : 
+[00341|2017-05-31 20:01:13|   info] : SIZE_OF_FH: 56
+[00342|2017-05-31 20:01:13|   info] : 33639248
+
+33639248
+
+00000010000000010100101101010000
+
+SIG: 2014b50
+ISCOMPRESSION: 0
+VERMADE: 1111
+VERNEEDED: 2222
+FLAG: 3333
+COMPRESSION: 4154
+MODTIME: 5555
+MODDATE: 6666
+CRC32: 77771177
+CSIZE: 88221188
+UCSIZE: 99334499
+FNAMELEN: 1010
+XTRALEN: 2020
+CMNTLEN: 3030
+DISKSTART: 4242
+INTATTR: 5050
+EXTATTR: 61626364
+HROFFSET: 71727374
+
+[00343|2017-05-31 20:01:13|   info] : Destroy TZipDirFileHeader
+[00344|2017-05-31 20:01:13|   info] : ZipFile::test_initNotCompressedDirFileHeader: ../../../assets/graphics/tempTestDirHeaderOut.txt
+[00345|2017-05-31 20:01:13|   info] : Create TZipDirFileHeader
+[00346|2017-05-31 20:01:13|   info] : CHECK FH: 
+[00347|2017-05-31 20:01:13|   info] : 33639248
+
+33639248
+
+00000010000000010100101101010000
+
+SIG: 2014b50
+ISCOMPRESSION: 0
+VERMADE: 1111
+VERNEEDED: 2222
+FLAG: 3333
+COMPRESSION: 4154
+MODTIME: 5555
+MODDATE: 6666
+CRC32: 77771177
+CSIZE: 88221188
+UCSIZE: 99334499
+FNAMELEN: 1010
+XTRALEN: 2020
+CMNTLEN: 3030
+DISKSTART: 4242
+INTATTR: 5050
+EXTATTR: 61626364
+HROFFSET: 71727374
+
+[00348|2017-05-31 20:01:13|   info] : END CHECK FH
+[00349|2017-05-31 20:01:13|   info] : Destroy TZipDirFileHeader
+[00350|2017-05-31 20:01:13|   info] : Destroy ZipFile
+[00351|2017-05-31 20:01:13|   info] : Create HumanView
+[00352|2017-05-31 20:01:13|   info] : vOnRestore HumanView
+[00353|2017-05-31 20:01:13|  trace] :  GLUT window visible
+[00354|2017-05-31 20:01:13|  trace] : GLUT_NOT_VISIBLE: 0, GLUT_VISIBLE: 1
+[00355|2017-05-31 20:01:13|  trace] : GLUT visibilityFunction: 1
+[00356|2017-05-31 20:01:13|   info] : display----
+[00357|2017-05-31 20:01:13|   info] : GLUT TIMER: 1
+[00358|2017-05-31 20:01:13|   info] : GLUT TIMER: 2
+[00359|2017-05-31 20:01:13|   info] : GLUT TIMER: 3
+[00360|2017-05-31 20:01:16|   info] : display----
+[00361|2017-05-31 20:01:19|   info] : display----
+[00362|2017-05-31 20:01:19|   info] : display----
+[00363|2017-05-31 20:01:19|   info] : display----
+[00364|2017-05-31 20:01:19|   info] : display----
+[00365|2017-05-31 20:01:19|   info] : display----
+[00366|2017-05-31 20:01:19|   info] : display----
+[00367|2017-05-31 20:01:19|   info] : display----
+[00368|2017-05-31 20:01:19|   info] : display----
+[00369|2017-05-31 20:01:19|   info] : display----
+[00370|2017-05-31 20:01:19|   info] : display----
+[00371|2017-05-31 20:01:19|   info] : display----
+[00372|2017-05-31 20:01:19|   info] : display----
+[00373|2017-05-31 20:01:19|   info] : display----
+[00374|2017-05-31 20:01:19|   info] : display----
+[00375|2017-05-31 20:01:19|   info] : display----
+[00376|2017-05-31 20:01:19|   info] : display----
+[00377|2017-05-31 20:01:19|   info] : display----
+[00378|2017-05-31 20:01:19|   info] : display----
+[00379|2017-05-31 20:01:19|   info] : display----
+[00380|2017-05-31 20:01:19|   info] : display----
+[00381|2017-05-31 20:01:19|   info] : display----
+[00382|2017-05-31 20:01:19|   info] : display----
+[00383|2017-05-31 20:01:19|   info] : display----
+[00384|2017-05-31 20:01:20|   info] : display----
+[00385|2017-05-31 20:01:20|   info] : display----
+[00386|2017-05-31 20:01:20|   info] : display----
+[00387|2017-05-31 20:01:20|   info] : display----
+[00388|2017-05-31 20:01:20|   info] : display----
+[00389|2017-05-31 20:01:20|   info] : display----
+[00390|2017-05-31 20:01:20|   info] : display----
+[00391|2017-05-31 20:01:20|   info] : display----
+[00392|2017-05-31 20:01:20|   info] : display----
+[00393|2017-05-31 20:01:20|   info] : display----
+[00394|2017-05-31 20:01:20|   info] : display----
+[00395|2017-05-31 20:01:20|   info] : display----
+[00396|2017-05-31 20:01:21|   info] : display----
+[00397|2017-05-31 20:01:21|   info] : display----
+[00398|2017-05-31 20:01:21|   info] : display----
+[00399|2017-05-31 20:01:21|   info] : display----
+[00400|2017-05-31 20:01:21|   info] : display----
+[00401|2017-05-31 20:01:21|   info] : display----
+[00402|2017-05-31 20:01:21|   info] : display----
+[00403|2017-05-31 20:01:21|   info] : display----
+[00404|2017-05-31 20:01:21|   info] : display----
+[00405|2017-05-31 20:01:21|   info] : display----
+[00406|2017-05-31 20:01:21|   info] : display----
+[00407|2017-05-31 20:01:21|   info] : display----
+[00408|2017-05-31 20:01:21|   info] : display----
+[00409|2017-05-31 20:01:21|   info] : display----
+[00410|2017-05-31 20:01:21|   info] : display----
+[00411|2017-05-31 20:01:21|   info] : display----
+[00412|2017-05-31 20:01:21|   info] : display----
+[00413|2017-05-31 20:01:21|   info] : display----
+[00414|2017-05-31 20:01:21|   info] : display----
+[00415|2017-05-31 20:01:21|   info] : display----
+[00416|2017-05-31 20:01:21|   info] : display----
+[00417|2017-05-31 20:01:21|   info] : display----
+[00418|2017-05-31 20:01:21|   info] : display----
+[00419|2017-05-31 20:01:21|   info] : display----
+[00420|2017-05-31 20:01:21|   info] : display----
+[00421|2017-05-31 20:01:21|   info] : display----
+[00422|2017-05-31 20:01:21|   info] : display----
+[00423|2017-05-31 20:01:21|   info] : display----
+[00424|2017-05-31 20:01:21|   info] : display----
+[00425|2017-05-31 20:01:21|   info] : display----
+[00426|2017-05-31 20:01:21|   info] : display----
+[00427|2017-05-31 20:01:21|   info] : display----
+[00428|2017-05-31 20:01:21|   info] : display----
+[00429|2017-05-31 20:01:21|   info] : display----
+[00430|2017-05-31 20:01:21|   info] : display----
+[00431|2017-05-31 20:01:21|   info] : display----
+[00432|2017-05-31 20:01:21|   info] : display----
+[00433|2017-05-31 20:01:22|   info] : display----
+[00434|2017-05-31 20:01:22|   info] : display----
+[00435|2017-05-31 20:01:22|   info] : display----
+[00436|2017-05-31 20:01:22|   info] : display----
+[00437|2017-05-31 20:01:22|   info] : display----
+[00438|2017-05-31 20:01:22|   info] : display----
+[00439|2017-05-31 20:01:22|   info] : display----
+[00440|2017-05-31 20:01:22|   info] : display----
+[00441|2017-05-31 20:01:22|   info] : display----
+[00442|2017-05-31 20:01:22|   info] : display----
+[00443|2017-05-31 20:01:22|   info] : display----
+[00444|2017-05-31 20:01:22|   info] : display----
+[00445|2017-05-31 20:01:22|   info] : display----
+[00446|2017-05-31 20:01:22|   info] : display----
+[00447|2017-05-31 20:01:22|   info] : display----
+[00448|2017-05-31 20:01:22|   info] : display----
+[00449|2017-05-31 20:01:22|   info] : display----
+[00450|2017-05-31 20:01:22|   info] : display----
+[00451|2017-05-31 20:01:22|   info] : display----
+[00452|2017-05-31 20:01:22|   info] : display----
+[00453|2017-05-31 20:01:22|   info] : display----
+[00454|2017-05-31 20:01:24|   info] : display----
+[00455|2017-05-31 20:01:24|   info] : display----
+[00456|2017-05-31 20:01:24|   info] : display----
+[00457|2017-05-31 20:01:24|   info] : display----
+[00458|2017-05-31 20:01:24|   info] : display----
+[00459|2017-05-31 20:01:24|   info] : display----
+[00460|2017-05-31 20:01:24|   info] : display----
+[00461|2017-05-31 20:01:24|   info] : display----
+[00462|2017-05-31 20:01:24|   info] : display----
+[00463|2017-05-31 20:01:24|   info] : display----
+[00464|2017-05-31 20:01:24|   info] : display----
+[00465|2017-05-31 20:01:24|   info] : display----
+[00466|2017-05-31 20:01:24|   info] : display----
+[00467|2017-05-31 20:01:24|   info] : display----
+[00468|2017-05-31 20:01:24|   info] : display----
+[00469|2017-05-31 20:01:24|   info] : display----
+[00470|2017-05-31 20:01:24|   info] : display----
+[00471|2017-05-31 20:01:24|   info] : display----
+[00472|2017-05-31 20:01:24|   info] : display----
+[00473|2017-05-31 20:01:25|   info] : display----
+[00474|2017-05-31 20:01:25|   info] : display----
+[00475|2017-05-31 20:01:25|   info] : display----
+[00476|2017-05-31 20:01:25|   info] : display----
+[00477|2017-05-31 20:01:28|   info] : display----
+[00478|2017-05-31 20:01:36|   info] : display----
+[00479|2017-05-31 20:01:39|   info] : display----
+[00480|2017-05-31 20:01:39|   info] : display----
+[00481|2017-05-31 20:01:39|   info] : display----
+[00482|2017-05-31 20:01:39|   info] : display----
+[00483|2017-05-31 20:01:39|   info] : display----
+[00484|2017-05-31 20:01:39|   info] : display----
+[00485|2017-05-31 20:01:39|   info] : display----
+[00486|2017-05-31 20:01:39|   info] : display----
+[00487|2017-05-31 20:01:39|   info] : display----
+[00488|2017-05-31 20:01:39|   info] : display----
+[00489|2017-05-31 20:01:39|   info] : display----
+[00490|2017-05-31 20:01:39|   info] : display----
+[00491|2017-05-31 20:01:39|   info] : display----
+[00492|2017-05-31 20:01:39|   info] : display----
+[00493|2017-05-31 20:01:39|   info] : display----
+[00494|2017-05-31 20:01:39|   info] : display----
+[00495|2017-05-31 20:01:39|   info] : display----
+[00496|2017-05-31 20:01:39|   info] : display----
+[00497|2017-05-31 20:01:39|   info] : display----
+[00498|2017-05-31 20:01:39|   info] : display----
+[00499|2017-05-31 20:01:39|   info] : display----
+[00500|2017-05-31 20:01:39|   info] : display----
+[00501|2017-05-31 20:01:39|   info] : display----
+[00502|2017-05-31 20:01:39|   info] : display----
+[00503|2017-05-31 20:01:39|   info] : display----
+[00504|2017-05-31 20:01:39|   info] : display----
+[00505|2017-05-31 20:01:39|   info] : display----
+[00506|2017-05-31 20:01:39|   info] : display----
+[00507|2017-05-31 20:01:39|   info] : display----
+[00508|2017-05-31 20:01:39|   info] : display----
+[00509|2017-05-31 20:01:39|   info] : display----
+[00510|2017-05-31 20:01:39|   info] : display----
+[00511|2017-05-31 20:01:39|   info] : display----
+[00512|2017-05-31 20:01:39|   info] : display----
+[00513|2017-05-31 20:01:39|   info] : display----
+[00514|2017-05-31 20:01:39|   info] : display----
+[00515|2017-05-31 20:01:40|   info] : display----
+[00516|2017-05-31 20:01:41|   info] : display----
+[00517|2017-05-31 20:01:41|   info] : display----
+[00518|2017-05-31 20:01:41|   info] : display----
+[00519|2017-05-31 20:01:41|   info] : display----
+[00520|2017-05-31 20:01:41|   info] : display----
+[00521|2017-05-31 20:01:41|   info] : display----
+[00522|2017-05-31 20:01:41|   info] : display----
+[00523|2017-05-31 20:01:41|   info] : display----
+[00524|2017-05-31 20:01:41|   info] : display----
+[00525|2017-05-31 20:01:41|   info] : display----
+[00526|2017-05-31 20:01:41|   info] : display----
+[00527|2017-05-31 20:01:41|   info] : display----
+[00528|2017-05-31 20:01:41|   info] : display----
+[00529|2017-05-31 20:01:42|   info] : display----
+[00530|2017-05-31 20:01:42|   info] : display----
+[00531|2017-05-31 20:01:42|   info] : display----
+[00532|2017-05-31 20:01:42|   info] : display----
+[00533|2017-05-31 20:01:42|   info] : display----
+[00534|2017-05-31 20:01:42|   info] : display----
+[00535|2017-05-31 20:01:42|   info] : display----
+[00536|2017-05-31 20:01:42|   info] : display----
+[00537|2017-05-31 20:01:42|   info] : display----
+[00538|2017-05-31 20:01:42|   info] : display----
+[00539|2017-05-31 20:01:42|   info] : display----
+[00540|2017-05-31 20:01:42|   info] : display----
+[00541|2017-05-31 20:01:42|   info] : display----
+[00542|2017-05-31 20:01:42|   info] : display----
+[00543|2017-05-31 20:01:42|   info] : display----
+[00544|2017-05-31 20:01:42|   info] : display----
+[00545|2017-05-31 20:01:42|   info] : display----
+[00546|2017-05-31 20:01:42|   info] : display----
+[00547|2017-05-31 20:01:42|   info] : display----
+[00548|2017-05-31 20:01:42|   info] : display----
+[00549|2017-05-31 20:01:43|   info] : display----
+[00550|2017-05-31 20:01:58|   info] : GLUT onClose
+[00551|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game11GameCodeAppE
+[00552|2017-05-31 20:01:58|  trace] : Destroy WatermillGame
+[00553|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
+[00554|2017-05-31 20:01:58|  trace] : Destroy WatermillLogic
+[00555|2017-05-31 20:01:58|   info] : Destroy HumanView
+[00556|2017-05-31 20:01:58|   info] : Destroy IGameView
+[00557|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00558|2017-05-31 20:01:58|  trace] : Destroy ProcessManager
+[00559|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game12ActorFactoryE
+[00560|2017-05-31 20:01:58|  trace] : Destroy ActorFactory
+[00561|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game16ComponentFactoryE
+[00562|2017-05-31 20:01:58|  trace] : Destroy ComponentFactory
+[00563|2017-05-31 20:01:58|  trace] : Destroy BaseGameLogic
+[00564|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game11SaveManagerE
+[00565|2017-05-31 20:01:58|  trace] : Destroy SaveManager
+[00566|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game11VideoSystemE
+[00567|2017-05-31 20:01:58|  trace] : Destroy VideoSystem
+[00568|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game11AudioSystemE
+[00569|2017-05-31 20:01:58|  trace] : Destroy AudioSystem
+[00570|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game9DataFilesE
+[00571|2017-05-31 20:01:58|  trace] : Destroy DataFiles
+[00572|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game12EventManagerE
+[00573|2017-05-31 20:01:58|  trace] : Destroy EventManager
+[00574|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game15LuaStateManagerE
+[00575|2017-05-31 20:01:58|  trace] : Destroy LuaStateManager
+[00576|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game12GameMessagesE
+[00577|2017-05-31 20:01:58|  trace] : Destroy GameMessages
+[00578|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game13ResourceCacheE
+[00579|2017-05-31 20:01:58|   info] : Destroy ResourceCache
+[00580|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game13IResourceFileE
+[00581|2017-05-31 20:01:58|   info] : Destroy ResourceZipFile
+[00582|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game7ZipFileE
+[00583|2017-05-31 20:01:58|   info] : Destroy ZipFile
+[00584|2017-05-31 20:01:58|   info] : Destroy IResourceFile
+[00585|2017-05-31 20:01:58|  trace] : Destroy XmlResourceLoader
+[00586|2017-05-31 20:01:58|  trace] : Destroy IResourceLoader
+[00587|2017-05-31 20:01:58|  trace] : Destroy DefaultResourceLoader
+[00588|2017-05-31 20:01:58|  trace] : Destroy IResourceLoader
+[00589|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game16DebuggingOptionsE
+[00590|2017-05-31 20:01:58|  trace] : Destroy DebuggingOptions
+[00591|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game13PlayerOptionsE
+[00592|2017-05-31 20:01:58|  trace] : Destroy PlayerOptions
+[00593|2017-05-31 20:01:58|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
+[00594|2017-05-31 20:01:58|  trace] : Destroy InitOptions
+[00595|2017-05-31 20:01:58|  trace] : Destroy GameCodeApp
+[00596|2017-05-31 20:01:58|   info] : gameCodeApp init succeeded

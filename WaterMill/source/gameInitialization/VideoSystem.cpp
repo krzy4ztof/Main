@@ -116,10 +116,11 @@ namespace base_game {
 			// Reset transformations
 			glLoadIdentity();
 			// Set the camera
-			gluLookAt(	0.0f, 0.0f, 10.0f,
+			// TODO: not working on Windows
+			/*gluLookAt(	0.0f, 0.0f, 10.0f,
 						0.0f, 0.0f,  0.0f,
 						0.0f, 1.0f,  0.0f);
-
+*/
 			glRotatef(angle, 0.0f, 1.0f, 0.0f);
 
 			glBegin(GL_TRIANGLES);
@@ -208,7 +209,8 @@ namespace base_game {
 			glViewport(0, 0, w, h);
 
 			// Set the correct perspective.
-			gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+			// TODO: not working on Windows
+			//gluPerspective(45.0f, ratio, 0.1f, 100.0f);
 
 			// Get Back to the Modelview
 			glMatrixMode(GL_MODELVIEW);

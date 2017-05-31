@@ -12,8 +12,19 @@ example:
 mingw/mingw-w64-lua 5.3.0-1 
 A powerful light-weight programming language designed for extending applications. (mingw-w64)
 
+
+GCC:
+pacman -S mingw-w64-x86_64-gcc
+pacman -S mingw-w64-x86_64-boost
+pacman -S make
+pacman -S mingw-w64-x86_64-toolchain
+pacman -S cmake
+pacman -S tar
+pacman -S base-devel
+
 MinGW 64:
 	pacman -S mingw-w64-lua 5.3.0-1 
+	
 	
 	
 *******************************
@@ -27,6 +38,7 @@ Global Compiler Settings -> Selected Compiler -> Toolchain executables -> Compil
 C:\msys64\mingw64
 
 Global Compiler Settings -> Selected Compiler -> Toolchain executables -> Program Files
+Windows 7:
 C compiler: gcc.exe
 C++ compiler: g++.exe
 Linker for dynamic libs: g++.exe
@@ -34,6 +46,15 @@ Linker for static libs: ar.exe
 Debugger: There isn't one for MinGW 64-bit yet, clear this and leave it blank
 Resource compiler: windres.exe
 Make program: make.exe
+
+Windows 10:
+C compiler: x86_64-w64-mingw32-gcc.exe
+C++ compiler: x86_64-w64-mingw32-g++.exe
+Linker for dynamic libs: x86_64-w64-mingw32-g++.exe
+Linker for static libs: x86_64-w64-mingw32-gcc-ar.exear.xee
+Debugger: GDB/CDB debugger: Default
+Resource compiler: windres.exe
+Make program: mingw32-make.exe
 
 
 Global Compiler Settings -> Selected Compiler -> Search directories -> Compiler
@@ -44,7 +65,7 @@ C:\msys64\mingw64\x86_64-w64-mingw32\include
 Global Compiler Settings -> Selected Compiler -> Search directories -> Linker
 C:\msys64\usr\local\lib
 (lua libraries)
-
+..\..\..\..\..\..\..\..\..\..\..\msys64\usr\local\lib
 
 
 ***********************************
@@ -87,13 +108,22 @@ Other
 Project -> Build options
 Project build options -> Search Directories -> Compiler -> Append target options to project options
 // remove: ..\..\git\libraries\boost
-..\..\git\libraries\freeglut\include
-..\..\..\..\..\..\..\..\..\msys64\mingw64\x86_64-w64-mingw32\include
+
+Freeglut
+..\..\..\..\..\libraries\freeglut\include
+
+..\..\..\..\..\..\..\..\..\..\..\msys64\mingw64\include
+..\..\..\..\..\..\..\..\..\..\..\msys64\mingw64\x86_64-w64-mingw32\include
+
+LUA:
+..\..\..\..\..\..\..\..\..\..\..\msys64\usr\local\include
+
 
 Project -> Build options
 Project build options -> Search Directories -> Linker -> Append target options to project options
-..\..\git\libraries\freeglut\lib\x64
-..\..\..\..\..\..\..\..\..\msys64\mingw64\lib
+..\..\..\..\..\libraries\freeglut\lib\x64
+..\..\..\..\..\..\..\..\..\..\..\msys64\mingw64\lib
+
 
 Project -> Build options
 Project build options -> Linker Settings -> Link Libraries -> Add
@@ -123,7 +153,9 @@ boost_thread-mt
 F) Boost:
 boost_log_setup-mt
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log_setup-mt.dll.a)
-
+G) Boost:
+boost_iostreams-mt
+(link to C:\msys64\mingw64\lib\libboost_iostreams-mt.dll.a)
 
 
 
@@ -152,6 +184,25 @@ Executable path: C:\msys64\mingw64\bin\gdb.exe
 
 Menu -> Debug -> Active Debuggers:
 	GDB/CDB debugger: MinGW64
+
+***************	
+***	Glut	***	
+***************
+tar zxf glut-3.6.tar.gz
+	
+*******************
+***	Freeglut	***
+*******************
+tar -vxf freeglut-3.0.0.tar.gz
+cd freeglut-3.0.0/
+
+Download 
+freeglut-MinGW-3.0.0-1.mp.zip
+from
+http://www.transmissionzero.co.uk/computing/using-glut-with-mingw/
+	
+Unzip to
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut
 	
 ***************************
 ***	Lua installation	***

@@ -26,9 +26,19 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>assets</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/assets</locationURI>
+		</link>
+		<link>
 			<name>docs</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/docs</locationURI>
+		</link>
+		<link>
+			<name>game</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/game</locationURI>
 		</link>
 		<link>
 			<name>source</name>
@@ -36,234 +46,79 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>docs/codeblocks_mingw32.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/codeblocks_mingw32.txt</locationURI>
+			<name>source/actors</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/actors</locationURI>
 		</link>
 		<link>
-			<name>docs/cygwin64_readme.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/cygwin64_readme.txt</locationURI>
+			<name>source/debugging</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/debugging</locationURI>
 		</link>
 		<link>
-			<name>docs/eclipse_cygwin64.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/eclipse_cygwin64.txt</locationURI>
-		</link>
-		<link>
-			<name>docs/eclipse_mingw32.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/eclipse_mingw32.txt</locationURI>
-		</link>
-		<link>
-			<name>docs/mingw64_readme.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/mingw64_readme.txt</locationURI>
-		</link>
-		<link>
-			<name>docs/mingw_readme.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/mingw_readme.txt</locationURI>
-		</link>
-		<link>
-			<name>docs/watermill_readme.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/docs/watermill_readme.txt</locationURI>
+			<name>source/eventManager</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/eventManager</locationURI>
 		</link>
 		<link>
 			<name>source/gameInitialization</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization</locationURI>
+		</link>
+		<link>
+			<name>source/gameLogic</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/gameLogic</locationURI>
+		</link>
+		<link>
+			<name>source/luaScripting</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/luaScripting</locationURI>
 		</link>
 		<link>
 			<name>source/main</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/main</locationURI>
+		</link>
+		<link>
+			<name>source/mainLoop</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/mainLoop</locationURI>
+		</link>
+		<link>
+			<name>source/resourceCache</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/resourceCache</locationURI>
+		</link>
+		<link>
+			<name>source/saveManager</name>
+			<type>2</type>
+			<locationURI>PARENT-3-PROJECT_LOC/source/saveManager</locationURI>
 		</link>
 		<link>
 			<name>source/scripts</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/scripts</locationURI>
 		</link>
 		<link>
 			<name>source/testClasses</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/testClasses</locationURI>
 		</link>
 		<link>
-			<name>source/gameInitialization/AudioSystem.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/AudioSystem.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/AudioSystem.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/AudioSystem.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/DataFiles.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/DataFiles.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/DataFiles.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/DataFiles.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/ErrorCode.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/ErrorCode.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/ErrorCode.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/ErrorCode.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/GameCodeApp.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/GameCodeApp.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/GameCodeApp.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/GameCodeApp.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/Macros.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/Macros.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/SystemCalls.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/SystemCalls.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/VideoSystem.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/VideoSystem.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/VideoSystem.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/VideoSystem.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/linux</name>
+			<name>source/userInterface</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/userInterface</locationURI>
 		</link>
 		<link>
-			<name>source/gameInitialization/windows</name>
+			<name>source/utilities</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/utilities</locationURI>
 		</link>
 		<link>
-			<name>source/main/Main.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/main/Main.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/checkPreprocessor.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/checkPreprocessor.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/codeBlock</name>
+			<name>source/watermillGame</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/eclipse</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/runCygwin.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/runCygwin.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/runMinGW.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/runMinGW.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/runMinGW64.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/runMinGW64.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/test.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/test.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/testClasses/TestClass.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/testClasses/TestClass.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/testClasses/TestClass.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/testClasses/TestClass.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/linux/LinuxCalls.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/linux/LinuxCalls.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/linux/LinuxCalls.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/linux/LinuxCalls.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Cygwin64Calls.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Cygwin64Calls.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Cygwin64Calls.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Cygwin64Calls.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Windows32Calls.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Windows32Calls.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Windows32Calls.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Windows32Calls.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Windows64Calls.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Windows64Calls.cpp</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization/windows/Windows64Calls.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization/windows/Windows64Calls.hpp</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/codeBlock/runCodeBlockMingw32.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/codeBlock/runCodeBlockMingw32.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/eclipse/runEclipseCygwin64.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/eclipse/runEclipseCygwin64.cmd</locationURI>
-		</link>
-		<link>
-			<name>source/scripts/eclipse/runEclipseMingw32.cmd</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts/eclipse/runEclipseMingw32.cmd</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/source/watermillGame</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

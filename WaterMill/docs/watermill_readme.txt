@@ -1,3 +1,18 @@
+***************
+***	History	***
+***************
+
+Project started from Netbeans.
+Then configuration moved to CodeBlocks.
+Working compilers: Linux, MinGW64.
+MinGW32, Cygwin - not working.
+
+Windows10:
+Codeblocks, Eclipse, 
+
+
+
+
 ***********************************
 ***	Cygwin/MinGW precompiler	***
 ***********************************

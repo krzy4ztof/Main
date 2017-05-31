@@ -41,10 +41,12 @@ namespace base_game {
 		// Reset transformations
 		glLoadIdentity();
 		// Set the camera
+		// TODO: not working on Windows
+		/*
 		gluLookAt(	0.0f, 0.0f, 10.0f,
 					0.0f, 0.0f,  0.0f,
 					0.0f, 1.0f,  0.0f);
-
+*/
 		glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
 		glBegin(GL_TRIANGLES);

@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="97">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="assets" displayName="assets" projectFiles="true">
+      <logicalFolder name="actors" displayName="actors" projectFiles="true">
+        <itemPath>../../../assets/actors/player_character.xml</itemPath>
+      </logicalFolder>
+      <logicalFolder name="graphics" displayName="graphics" projectFiles="true">
+        <itemPath>../../../assets/graphics/tempSecondZip.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempTestDirHeaderOut.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempTestZipFile.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempTestZipFileOut.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempTestZipFileOutAll.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempTestZipFileZipOut.txt</itemPath>
+        <itemPath>../../../assets/graphics/tempThirdZip.txt</itemPath>
+      </logicalFolder>
+      <logicalFolder name="scripts" displayName="scripts" projectFiles="true">
+        <itemPath>../../../assets/scripts/test.lua</itemPath>
+      </logicalFolder>
+      <logicalFolder name="strings" displayName="strings" projectFiles="true">
+        <logicalFolder name="en" displayName="en" projectFiles="true">
+          <logicalFolder name="LC_MESSAGES" displayName="LC_MESSAGES" projectFiles="true">
+            <itemPath>../../../assets/strings/en/LC_MESSAGES/watermill.po</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="pl" displayName="pl" projectFiles="true">
+          <logicalFolder name="LC_MESSAGES" displayName="LC_MESSAGES" projectFiles="true">
+            <itemPath>../../../assets/strings/pl/LC_MESSAGES/watermill.po</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <itemPath>../../../assets/strings/.gitignore</itemPath>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="docs" displayName="docs" projectFiles="true">
       <logicalFolder name="codeblocks" displayName="codeblocks" projectFiles="true">
+        <itemPath>../../../docs/codeblocks/codeblocks.txt</itemPath>
         <itemPath>../../../docs/codeblocks/codeblocks_cygwin64.txt</itemPath>
+        <itemPath>../../../docs/codeblocks/codeblocks_linux.txt</itemPath>
         <itemPath>../../../docs/codeblocks/codeblocks_mingw32.txt</itemPath>
         <itemPath>../../../docs/codeblocks/codeblocks_mingw64.txt</itemPath>
       </logicalFolder>
@@ -22,8 +54,15 @@
         <itemPath>../../../docs/netbeans/cygwin64_readme.txt</itemPath>
         <itemPath>../../../docs/netbeans/mingw64_readme.txt</itemPath>
         <itemPath>../../../docs/netbeans/mingw_readme.txt</itemPath>
+        <itemPath>../../../docs/netbeans/netbeans_cygwin64.txt</itemPath>
+        <itemPath>../../../docs/netbeans/netbeans_mingw32.txt</itemPath>
+        <itemPath>../../../docs/netbeans/netbeans_mingw64.txt</itemPath>
       </logicalFolder>
       <itemPath>../../../docs/watermill_readme.txt</itemPath>
+    </logicalFolder>
+    <logicalFolder name="game" displayName="game" projectFiles="true">
+      <itemPath>../../../game/debugOptions.xml</itemPath>
+      <itemPath>../../../game/playerOptions.xml</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -36,42 +75,156 @@
                    projectFiles="true">
     </logicalFolder>
     <logicalFolder name="source" displayName="source" projectFiles="true">
+      <logicalFolder name="actors" displayName="actors" projectFiles="true">
+        <itemPath>../../../source/actors/Actor.cpp</itemPath>
+        <itemPath>../../../source/actors/Actor.h</itemPath>
+        <itemPath>../../../source/actors/ActorComponent.cpp</itemPath>
+        <itemPath>../../../source/actors/ActorComponent.h</itemPath>
+        <itemPath>../../../source/actors/ActorFactory.cpp</itemPath>
+        <itemPath>../../../source/actors/ActorFactory.h</itemPath>
+        <itemPath>../../../source/actors/ComponentFactory.cpp</itemPath>
+        <itemPath>../../../source/actors/ComponentFactory.h</itemPath>
+        <itemPath>../../../source/actors/RenderComponent.cpp</itemPath>
+        <itemPath>../../../source/actors/RenderComponent.h</itemPath>
+        <itemPath>../../../source/actors/ScriptComponent.cpp</itemPath>
+        <itemPath>../../../source/actors/ScriptComponent.h</itemPath>
+        <itemPath>../../../source/actors/TransformComponent.cpp</itemPath>
+        <itemPath>../../../source/actors/TransformComponent.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="debugging" displayName="debugging" projectFiles="true">
+        <itemPath>../../../source/debugging/Logger.cpp</itemPath>
+        <itemPath>../../../source/debugging/Logger.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="eventManager"
+                     displayName="eventManager"
+                     projectFiles="true">
+        <itemPath>../../../source/eventManager/EventManager.cpp</itemPath>
+        <itemPath>../../../source/eventManager/EventManager.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="gameInitialization"
                      displayName="gameInitialization"
                      projectFiles="true">
         <logicalFolder name="linux" displayName="linux" projectFiles="true">
           <itemPath>../../../source/gameInitialization/linux/LinuxCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxCalls.h</itemPath>
           <itemPath>../../../source/gameInitialization/linux/LinuxCalls.hpp</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxCpuCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxCpuCalls.h</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxProcessCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/linux/LinuxProcessCalls.h</itemPath>
         </logicalFolder>
         <logicalFolder name="windows" displayName="windows" projectFiles="true">
           <itemPath>../../../source/gameInitialization/windows/Cygwin64Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64Calls.h</itemPath>
           <itemPath>../../../source/gameInitialization/windows/Cygwin64Calls.hpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64CpuCalls.h</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h</itemPath>
           <itemPath>../../../source/gameInitialization/windows/Windows32Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows32Calls.h</itemPath>
           <itemPath>../../../source/gameInitialization/windows/Windows32Calls.hpp</itemPath>
           <itemPath>../../../source/gameInitialization/windows/Windows64Calls.cpp</itemPath>
+          <itemPath>../../../source/gameInitialization/windows/Windows64Calls.h</itemPath>
           <itemPath>../../../source/gameInitialization/windows/Windows64Calls.hpp</itemPath>
         </logicalFolder>
         <itemPath>../../../source/gameInitialization/AudioSystem.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/AudioSystem.h</itemPath>
         <itemPath>../../../source/gameInitialization/AudioSystem.hpp</itemPath>
         <itemPath>../../../source/gameInitialization/DataFiles.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/DataFiles.h</itemPath>
         <itemPath>../../../source/gameInitialization/DataFiles.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/DebuggingOptions.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/DebuggingOptions.h</itemPath>
         <itemPath>../../../source/gameInitialization/ErrorCode.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/ErrorCode.h</itemPath>
         <itemPath>../../../source/gameInitialization/ErrorCode.hpp</itemPath>
         <itemPath>../../../source/gameInitialization/GameCodeApp.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/GameCodeApp.h</itemPath>
         <itemPath>../../../source/gameInitialization/GameCodeApp.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/GameMessages.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/GameMessages.h</itemPath>
+        <itemPath>../../../source/gameInitialization/InitOptions.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/InitOptions.h</itemPath>
+        <itemPath>../../../source/gameInitialization/Macros.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/Macros.h</itemPath>
         <itemPath>../../../source/gameInitialization/Macros.hpp</itemPath>
+        <itemPath>../../../source/gameInitialization/PlayerOptions.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/PlayerOptions.h</itemPath>
+        <itemPath>../../../source/gameInitialization/SystemCalls.h</itemPath>
         <itemPath>../../../source/gameInitialization/SystemCalls.hpp</itemPath>
         <itemPath>../../../source/gameInitialization/VideoSystem.cpp</itemPath>
+        <itemPath>../../../source/gameInitialization/VideoSystem.h</itemPath>
         <itemPath>../../../source/gameInitialization/VideoSystem.hpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="gameLogic" displayName="gameLogic" projectFiles="true">
+        <itemPath>../../../source/gameLogic/BaseGameLogic.cpp</itemPath>
+        <itemPath>../../../source/gameLogic/BaseGameLogic.h</itemPath>
+        <itemPath>../../../source/gameLogic/BaseGameState.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="luaScripting"
+                     displayName="luaScripting"
+                     projectFiles="true">
+        <itemPath>../../../source/luaScripting/LuaStateManager.cpp</itemPath>
+        <itemPath>../../../source/luaScripting/LuaStateManager.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="main" displayName="main" projectFiles="true">
+        <itemPath>../../../source/main/GameMain.cpp</itemPath>
+        <itemPath>../../../source/main/GameMain.h</itemPath>
         <itemPath>../../../source/main/Main.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="mainLoop" displayName="mainLoop" projectFiles="true">
+        <itemPath>../../../source/mainLoop/DelayProcess.cpp</itemPath>
+        <itemPath>../../../source/mainLoop/DelayProcess.h</itemPath>
+        <itemPath>../../../source/mainLoop/Process.cpp</itemPath>
+        <itemPath>../../../source/mainLoop/Process.h</itemPath>
+        <itemPath>../../../source/mainLoop/ProcessManager.cpp</itemPath>
+        <itemPath>../../../source/mainLoop/ProcessManager.h</itemPath>
+        <itemPath>../../../source/mainLoop/ProcessState.h</itemPath>
+        <itemPath>../../../source/mainLoop/TempTestProcess.cpp</itemPath>
+        <itemPath>../../../source/mainLoop/TempTestProcess.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="resourceCache"
+                     displayName="resourceCache"
+                     projectFiles="true">
+        <itemPath>../../../source/resourceCache/DefaultResourceLoader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/DefaultResourceLoader.h</itemPath>
+        <itemPath>../../../source/resourceCache/IResourceFile.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/IResourceFile.h</itemPath>
+        <itemPath>../../../source/resourceCache/IResourceLoader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/IResourceLoader.h</itemPath>
+        <itemPath>../../../source/resourceCache/Resource.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/Resource.h</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceCache.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceCache.h</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceHandle.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceHandle.h</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceZipFile.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/ResourceZipFile.h</itemPath>
+        <itemPath>../../../source/resourceCache/TZipDirFileHeader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/TZipDirFileHeader.h</itemPath>
+        <itemPath>../../../source/resourceCache/TZipDirHeader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/TZipDirHeader.h</itemPath>
+        <itemPath>../../../source/resourceCache/TZipLocalHeader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/TZipLocalHeader.h</itemPath>
+        <itemPath>../../../source/resourceCache/XmlResourceLoader.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/XmlResourceLoader.h</itemPath>
+        <itemPath>../../../source/resourceCache/ZipFile.cpp</itemPath>
+        <itemPath>../../../source/resourceCache/ZipFile.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="saveManager" displayName="saveManager" projectFiles="true">
+        <itemPath>../../../source/saveManager/SaveManager.cpp</itemPath>
+        <itemPath>../../../source/saveManager/SaveManager.h</itemPath>
       </logicalFolder>
       <logicalFolder name="scripts" displayName="scripts" projectFiles="true">
         <logicalFolder name="codeBlock" displayName="codeBlock" projectFiles="true">
           <itemPath>../../../source/scripts/codeBlock/runCodeBlockCygwin64.cmd</itemPath>
           <itemPath>../../../source/scripts/codeBlock/runCodeBlockMinGW32.cmd</itemPath>
           <itemPath>../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runWatermillCygwin64.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runWatermillLinux.sh</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runWatermillMinGW32.cmd</itemPath>
+          <itemPath>../../../source/scripts/codeBlock/runWatermillMinGW64.cmd</itemPath>
         </logicalFolder>
         <logicalFolder name="codeLite" displayName="codeLite" projectFiles="true">
           <itemPath>../../../source/scripts/codeLite/runCodeLiteCygwin64.cmd</itemPath>
@@ -87,10 +240,47 @@
         <itemPath>../../../source/scripts/runCygwin.cmd</itemPath>
         <itemPath>../../../source/scripts/runMinGW.cmd</itemPath>
         <itemPath>../../../source/scripts/runMinGW64.cmd</itemPath>
+        <itemPath>../../../source/scripts/test.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="testClasses" displayName="testClasses" projectFiles="true">
         <itemPath>../../../source/testClasses/TestClass.cpp</itemPath>
+        <itemPath>../../../source/testClasses/TestClass.h</itemPath>
         <itemPath>../../../source/testClasses/TestClass.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="userInterface"
+                     displayName="userInterface"
+                     projectFiles="true">
+        <itemPath>../../../source/userInterface/HumanView.cpp</itemPath>
+        <itemPath>../../../source/userInterface/HumanView.h</itemPath>
+        <itemPath>../../../source/userInterface/IGameView.cpp</itemPath>
+        <itemPath>../../../source/userInterface/IGameView.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="utilities" displayName="utilities" projectFiles="true">
+        <itemPath>../../../source/utilities/MemoryPool.cpp</itemPath>
+        <itemPath>../../../source/utilities/MemoryPool.h</itemPath>
+        <itemPath>../../../source/utilities/MemoryUsageObject.cpp</itemPath>
+        <itemPath>../../../source/utilities/MemoryUsageObject.h</itemPath>
+        <itemPath>../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp</itemPath>
+        <itemPath>../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h</itemPath>
+        <itemPath>../../../source/utilities/NumberUtils.cpp</itemPath>
+        <itemPath>../../../source/utilities/NumberUtils.h</itemPath>
+        <itemPath>../../../source/utilities/PrimeSearch.cpp</itemPath>
+        <itemPath>../../../source/utilities/PrimeSearch.h</itemPath>
+        <itemPath>../../../source/utilities/PropertyTreeUtils.cpp</itemPath>
+        <itemPath>../../../source/utilities/PropertyTreeUtils.h</itemPath>
+        <itemPath>../../../source/utilities/RandomGenerator.cpp</itemPath>
+        <itemPath>../../../source/utilities/RandomGenerator.h</itemPath>
+        <itemPath>../../../source/utilities/StringUtils.cpp</itemPath>
+        <itemPath>../../../source/utilities/StringUtils.h</itemPath>
+        <itemPath>../../../source/utilities/Templates.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="watermillGame"
+                     displayName="watermillGame"
+                     projectFiles="true">
+        <itemPath>../../../source/watermillGame/WatermillGame.cpp</itemPath>
+        <itemPath>../../../source/watermillGame/WatermillGame.h</itemPath>
+        <itemPath>../../../source/watermillGame/WatermillLogic.cpp</itemPath>
+        <itemPath>../../../source/watermillGame/WatermillLogic.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -113,6 +303,8 @@
     <Elem>../../../docs</Elem>
     <Elem>../../../source</Elem>
     <Elem>../../../media</Elem>
+    <Elem>../../../assets</Elem>
+    <Elem>../../../game</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -138,7 +330,71 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="../../../assets/actors/player_character.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempSecondZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestDirHeaderOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFile.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOutAll.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileZipOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempThirdZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/scripts/test.lua" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/en/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/strings/pl/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_linux.txt"
             ex="false"
             tool="3"
             flavor2="0">
@@ -203,11 +459,116 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../docs/netbeans/netbeans_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/debugOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/playerOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.hpp"
@@ -220,7 +581,22 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/DataFiles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -228,6 +604,11 @@
       <item path="../../../source/gameInitialization/ErrorCode.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/ErrorCode.hpp"
@@ -240,12 +621,62 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/GameCodeApp.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameMessages.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameMessages.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -260,6 +691,11 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/VideoSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/VideoSystem.hpp"
             ex="false"
             tool="3"
@@ -270,7 +706,32 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -280,7 +741,32 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -288,6 +774,11 @@
       <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
@@ -300,12 +791,218 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/scripts/checkPreprocessor.cmd"
             ex="false"
@@ -323,6 +1020,26 @@
             flavor2="0">
       </item>
       <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillLinux.sh"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW64.cmd"
             ex="false"
             tool="3"
             flavor2="0">
@@ -372,12 +1089,144 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/scripts/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/testClasses/TestClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/Templates.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -403,7 +1252,71 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../../../assets/actors/player_character.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempSecondZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestDirHeaderOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFile.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOutAll.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileZipOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempThirdZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/scripts/test.lua" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/en/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/strings/pl/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_linux.txt"
             ex="false"
             tool="3"
             flavor2="0">
@@ -468,11 +1381,116 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../docs/netbeans/netbeans_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/debugOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/playerOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.hpp"
@@ -485,7 +1503,22 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/DataFiles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -493,6 +1526,11 @@
       <item path="../../../source/gameInitialization/ErrorCode.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/ErrorCode.hpp"
@@ -505,12 +1543,62 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/GameCodeApp.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameMessages.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameMessages.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -525,6 +1613,11 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/VideoSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/VideoSystem.hpp"
             ex="false"
             tool="3"
@@ -535,7 +1628,32 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -545,7 +1663,32 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -553,6 +1696,11 @@
       <item path="../../../source/gameInitialization/windows/Windows32Calls.cpp"
             ex="false"
             tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
@@ -565,12 +1713,218 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/scripts/checkPreprocessor.cmd"
             ex="false"
@@ -588,6 +1942,26 @@
             flavor2="0">
       </item>
       <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillLinux.sh"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW64.cmd"
             ex="false"
             tool="3"
             flavor2="0">
@@ -637,12 +2011,144 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/scripts/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
+      <item path="../../../source/testClasses/TestClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/Templates.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -671,7 +2177,71 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="../../../assets/actors/player_character.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempSecondZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestDirHeaderOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFile.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOutAll.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileZipOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempThirdZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/scripts/test.lua" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/en/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/strings/pl/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_linux.txt"
             ex="false"
             tool="3"
             flavor2="0">
@@ -736,12 +2306,117 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../docs/netbeans/netbeans_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/debugOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/playerOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.cpp"
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.hpp"
             ex="false"
@@ -753,7 +2428,22 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/DataFiles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -762,6 +2452,11 @@
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/ErrorCode.hpp"
             ex="false"
@@ -773,12 +2468,62 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/GameCodeApp.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameMessages.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameMessages.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -793,6 +2538,11 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/VideoSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/VideoSystem.hpp"
             ex="false"
             tool="3"
@@ -803,7 +2553,32 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -813,7 +2588,32 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -822,6 +2622,11 @@
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
             ex="false"
@@ -833,12 +2638,218 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/scripts/checkPreprocessor.cmd"
             ex="false"
@@ -856,6 +2867,26 @@
             flavor2="0">
       </item>
       <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillLinux.sh"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW64.cmd"
             ex="false"
             tool="3"
             flavor2="0">
@@ -905,12 +2936,144 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/scripts/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.cpp"
             ex="false"
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/testClasses/TestClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/Templates.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -940,7 +3103,71 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="../../../assets/actors/player_character.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempSecondZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestDirHeaderOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFile.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOutAll.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileZipOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempThirdZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/scripts/test.lua" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/en/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/strings/pl/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_linux.txt"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1005,12 +3232,117 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../docs/netbeans/netbeans_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/debugOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/playerOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.cpp"
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.hpp"
             ex="false"
@@ -1022,7 +3354,22 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/DataFiles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1031,6 +3378,11 @@
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/ErrorCode.hpp"
             ex="false"
@@ -1042,12 +3394,62 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/GameCodeApp.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameMessages.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameMessages.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1062,6 +3464,11 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/VideoSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/VideoSystem.hpp"
             ex="false"
             tool="3"
@@ -1072,7 +3479,32 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1082,7 +3514,32 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1091,6 +3548,11 @@
             ex="false"
             tool="1"
             flavor2="9">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
             ex="false"
@@ -1102,12 +3564,218 @@
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/scripts/checkPreprocessor.cmd"
             ex="false"
@@ -1125,6 +3793,26 @@
             flavor2="0">
       </item>
       <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillLinux.sh"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW64.cmd"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1174,12 +3862,144 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/scripts/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.cpp"
             ex="false"
             tool="1"
             flavor2="9">
       </item>
+      <item path="../../../source/testClasses/TestClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/Templates.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1211,7 +4031,71 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="../../../assets/actors/player_character.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempSecondZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestDirHeaderOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFile.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileOutAll.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempTestZipFileZipOut.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/graphics/tempThirdZip.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/scripts/test.lua" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/.gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../assets/strings/en/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../assets/strings/pl/LC_MESSAGES/watermill.po"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/codeblocks/codeblocks_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/codeblocks/codeblocks_linux.txt"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1276,12 +4160,117 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../docs/netbeans/netbeans_cygwin64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw32.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../docs/netbeans/netbeans_mingw64.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../docs/watermill_readme.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/debugOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../game/playerOptions.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/actors/Actor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ActorFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ComponentFactory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/RenderComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/ScriptComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/actors/TransformComponent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/debugging/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/eventManager/EventManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.cpp"
             ex="false"
             tool="1"
             flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/AudioSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/AudioSystem.hpp"
             ex="false"
@@ -1293,7 +4282,22 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/DataFiles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/DataFiles.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/DebuggingOptions.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1302,6 +4306,11 @@
             ex="false"
             tool="1"
             flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/ErrorCode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/ErrorCode.hpp"
             ex="false"
@@ -1313,12 +4322,62 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/GameCodeApp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/GameCodeApp.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameInitialization/GameMessages.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/GameMessages.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/InitOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/Macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/Macros.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/PlayerOptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/SystemCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1333,6 +4392,11 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/VideoSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/VideoSystem.hpp"
             ex="false"
             tool="3"
@@ -1343,7 +4407,32 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/linux/LinuxCalls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxCpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/linux/LinuxProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1353,7 +4442,32 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Cygwin64Calls.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64CpuCalls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Cygwin64ProcessCalls.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1362,6 +4476,11 @@
             ex="false"
             tool="1"
             flavor2="8">
+      </item>
+      <item path="../../../source/gameInitialization/windows/Windows32Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/gameInitialization/windows/Windows32Calls.hpp"
             ex="false"
@@ -1373,12 +4492,218 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/gameInitialization/windows/Windows64Calls.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/gameInitialization/windows/Windows64Calls.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameLogic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/gameLogic/BaseGameState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/luaScripting/LuaStateManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../../source/main/GameMain.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../../source/main/Main.cpp" ex="false" tool="1" flavor2="8">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/DelayProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/Process.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/ProcessState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/mainLoop/TempTestProcess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/DefaultResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/IResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/Resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceCache.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceHandle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ResourceZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirFileHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipDirHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/TZipLocalHeader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/XmlResourceLoader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/resourceCache/ZipFile.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/saveManager/SaveManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../../source/scripts/checkPreprocessor.cmd"
             ex="false"
@@ -1396,6 +4721,26 @@
             flavor2="0">
       </item>
       <item path="../../../source/scripts/codeBlock/runCodeBlockMinGW64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillCygwin64.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillLinux.sh"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW32.cmd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/scripts/codeBlock/runWatermillMinGW64.cmd"
             ex="false"
             tool="3"
             flavor2="0">
@@ -1445,12 +4790,144 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../../source/scripts/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.cpp"
             ex="false"
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../source/testClasses/TestClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../../source/testClasses/TestClass.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/HumanView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/userInterface/IGameView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObject.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/MemoryUsageObjectAutoInitMemPool.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/NumberUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PrimeSearch.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/PropertyTreeUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/RandomGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/StringUtils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/utilities/Templates.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillGame.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../source/watermillGame/WatermillLogic.h"
             ex="false"
             tool="3"
             flavor2="0">

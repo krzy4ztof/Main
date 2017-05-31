@@ -6,13 +6,15 @@
             <name>Watermill</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions>hpp</header-extensions>
+            <header-extensions>h,hpp</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../../../docs</sourceRootElem>
                 <sourceRootElem>../../../source</sourceRootElem>
                 <sourceRootElem>../../../media</sourceRootElem>
+                <sourceRootElem>../../../assets</sourceRootElem>
+                <sourceRootElem>../../../game</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
