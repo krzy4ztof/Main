@@ -8,9 +8,11 @@ Working compilers: Linux, MinGW64.
 MinGW32, Cygwin - not working.
 
 Windows10:
-Codeblocks, Eclipse, 
+Codeblocks, Eclipse
+Netbeans - nieudana instalacja. Nie da się skonfigurowac make dla mingw64.
 
 
+Eclipse, MinGW64 aktualna wersja do developmentu
 
 
 ***********************************
