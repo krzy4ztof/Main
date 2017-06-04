@@ -1,0 +1,92 @@
+***********************
+***	Eclipse Linux	***
+***********************
+File -> Import -> File system 
+From directory:
+C:\home\myImportantFiles\projects\git\Main\WaterMill
+docs
+media
+source
+
+
+Advanced:
+Create links in workspace: true
+Create virtual folders: true
+Create link locations relative to: PROJECT_LOC
+
+Project -> Properties -> C/C++ Build -> Settings -> Build Artifact
+Artifact extension: - // previous version was exe, do not add any extension
+
+Project -> Properties -> C/C++ Build -> Settings -> Tool Settings ->
+GCC C++ Compiler -> Dialect -> Language standard: 
+ISO C++11 (-std=c++0x)
+
+
+Project -> Properties -> C/C++ Build -> Settinmgs -> Tool Settings ->
+GCC C++ Compiler -> Miscellaneous -> Other flags: (add -fno-stack-protector)
+-c -fmessage-length=0 -fno-stack-protector
+
+GCC C++ Compiler -> Debugging -> Debug Level
+(Default -g)
+
+C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+/usr/local/include
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
+/usr/local/lib
+
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
+
+
+pthread
+dl
+
+glut
+(link to \usr\lib\x86_64-linux-gnu\libglut.a)
+GL
+(link to \usr\lib\x86_64-linux-gnu\libGL.so)
+GLU
+(link to \usr\lib\x86_64-linux-gnu\libGLU.a)
+
+
+A) Boost:
+boost_system
+(link to \usr\lib\x86_64-linux-gnu\libboost_system.a)	
+B) Boost:
+boost_filesystem
+(link to \usr\lib\x86_64-linux-gnu\libboost_filesystem.a
+C) Boost:
+boost_locale
+(link to \usr\lib\x86_64-linux-gnu\libboost_locale.a)
+D) Boost:
+boost_log
+(link to \usr\lib\x86_64-linux-gnu\libboost_log.a)
+E) Boost:
+boost_thread
+(link to \usr\lib\x86_64-linux-gnu\libboost_thread.a)
+F) Boost:
+boost_log_setup
+(link to \usr\lib\x86_64-linux-gnu\libboost_log_setup.a)
+G) Boost:
+boost_iostreams
+(link to \usr\lib\x86_64-linux-gnu\libboost_iostreams.a)
+
+
+lua
+(link to \usr\local\lib\liblua.a)
+
+
+Debug Configurations
+	C/C++ Application
+		Watermill Debug_Linux
+
+Project:
+	Watermill
+	
+C/C++ Application:
+	${project_path}/Debug_Linux/Watermill.exe
+	Debug_Linux/Watermill.exe
+
+
+

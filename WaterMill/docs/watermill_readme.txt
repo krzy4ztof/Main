@@ -490,3 +490,19 @@ ZipFile
             ZipFile::test_saveCompressedDirFileHeader
             return; // ERROR - remove and fix the ERROR
             //		inDec.push(fh); // ERROR HERE - uncomment and fix compilation error
+
+
+
+*******************
+***	FUTURE TODO	***
+*******************
+
+Poprawić 
+
+bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
+
+Gdy aplikacja uruhamiana jest z CodeBlock, to w przypadku gdy jest otwarty Nautiuls na katalogu .../Watermill, to traktowane jest to jako instancja procesu watermill i aplikacja nie jest uruchamiana.
+
+
+
+									

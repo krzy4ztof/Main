@@ -3,3 +3,5 @@
 /Debug_Cygwin/
 /Debug_MinGW64/
 watermill.log
+/Debug_Linux/
+core

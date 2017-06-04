@@ -13,107 +13,142 @@
 #include <sstream>      // std::stringstream
 #include "../../utilities/Templates.h"
 
+#include <boost/filesystem.hpp> // path, file_status, is_directory, filesystem_error, directory_iterator, exists, directory_entry
+#include <boost/filesystem/fstream.hpp> // ifstream
+#include <boost/algorithm/string/trim.hpp> // trim
+#include <boost/algorithm/string.hpp> // split, is_any_of, to_lower
+
+#include <vector> // vector;
+
+using boost::filesystem::path;
+using boost::filesystem::file_status;
+
+using boost::filesystem::exists;
+using boost::filesystem::is_directory;
+using boost::filesystem::is_regular_file;
+
+using boost::filesystem::filesystem_error;
+using boost::filesystem::directory_iterator;
+using boost::filesystem::directory_entry;
+
+using boost::filesystem::ifstream;
+
 using std::string;
 using std::stringstream;
+using std::vector;
 
+using boost::algorithm::trim;
+
+using boost::algorithm::split;
+using boost::algorithm::is_any_of;
+//using boost::algorithm::to_lower;
 
 namespace base_game {
-	LinuxProcessCalls::LinuxProcessCalls() {
-		logger::trace("Create LinuxProcessCalls");
-	}
+LinuxProcessCalls::LinuxProcessCalls() {
+	logger::trace("Create LinuxProcessCalls");
+}
 
-	LinuxProcessCalls::~LinuxProcessCalls() {
-		logger::trace("Destroy LinuxProcessCalls");
-	}
+LinuxProcessCalls::~LinuxProcessCalls() {
+	logger::trace("Destroy LinuxProcessCalls");
+}
 
+//TODO: When running from CodeBlocks isOnlyInstance recognizes nautilus sessions. When Nautilus is opened on ..\Watermill folder, it is treated as application instance
+bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
+	stringstream ss;
+	logger::trace("tutaj");
 
-	bool LinuxProcessCalls::isOnlyInstance ( const string& gameTitle ) {
-		stringstream ss;
-		logger::trace("tutaj");
-		char chrarry_CommandLinePath[100]  ;
-		char chrarry_NameOfProcess[300]  ;
-		char* chrptr_StringToCompare;
+	int howManyGames = 0;
+	path procPath { "/proc/" };
 
-		char* gameTitleChar = string_utils::stringToChar(gameTitle);
-		//char* gameTitleChar = new char[gameTitle.length() + 1];
-		//strcpy ( gameTitleChar, gameTitle.c_str() );
+	try {
+		//file_status fileStatus = status(procPath);
 
-		struct dirent* de_DirEntity = NULL ;
-		DIR* dir_proc = NULL ;
-		int ( *compareFunction ) ( const char*, const char*, bool ) ;
-		compareFunction = &string_utils::compareChars;
-		dir_proc = opendir ( "/proc/" ) ;
+		if (exists(procPath) && is_directory(procPath)) {
+		} else {
 
-		if ( dir_proc == NULL ) {
-			logger::warning("Couldn't open the  PROC_DIRECTORY directory");
-			return ( pid_t ) - 2 ;
-		}
+			ss << "Couldn't open the " + procPath.string() + " directory";
 
-		int howMany = 0;
-
-		// Loop while not NULL
-		while ( ( de_DirEntity = readdir ( dir_proc ) ) ) {
-
-            memset(chrarry_CommandLinePath,0,sizeof(chrarry_CommandLinePath));
-            memset(chrarry_NameOfProcess,0,sizeof(chrarry_NameOfProcess));
-
-
-			if ( de_DirEntity->d_type == DT_DIR ) {
-
-				if ( string_utils::isCharNumeric ( de_DirEntity->d_name ) ) {
-					strcpy ( chrarry_CommandLinePath, "/proc/" ) ;
-					strcat ( chrarry_CommandLinePath, de_DirEntity->d_name ) ;
-					strcat ( chrarry_CommandLinePath, "/cmdline" ) ;
-					FILE* fd_CmdLineFile = fopen ( chrarry_CommandLinePath, "rt" ) ; // open the file for reading text
-
-					if ( fd_CmdLineFile ) {
-						fscanf ( fd_CmdLineFile, "%s", chrarry_NameOfProcess ) ; // read from /proc/<NR>/cmdline
-						fclose ( fd_CmdLineFile ); // close the file prior to exiting the routine
-
-						if ( strrchr ( chrarry_NameOfProcess, '/' ) ) {
-							chrptr_StringToCompare = strrchr ( chrarry_NameOfProcess, '/' ) + 1 ;
-						}
-
-						else {
-							chrptr_StringToCompare = chrarry_NameOfProcess ;
-						}
-
-						if ( compareFunction ( chrptr_StringToCompare, gameTitleChar, false ) ) {
-							ss << "proces podobny: " << chrptr_StringToCompare << " // " << "/proc/" <<  de_DirEntity->d_name << "/cmdLine";
-							logger::trace(ss);
-
-
-							howMany++;
-						}
-					}
-				}
-			}
-		}
-
-		closedir ( dir_proc ) ;
-		logger::trace("tutaj 2");
-
-		templates::safe_delete_array<char>(gameTitleChar);
-		//string_utils::safe_delete_char_array(gameTitleChar);
-
-		ss << "tutaj howMany: " << howMany;
-		logger::trace(ss);
-
-		if ( howMany >= 2 ) {
-			logger::trace("tutaj false");
-
-			// First process is this process
-			// Second process is second game process
+			logger::error(ss);
 			return false;
 		}
 
-		else {
-			logger::trace("tutaj true");
+		directory_iterator dirIterator { procPath };
+		while (dirIterator != directory_iterator { }) {
+			directory_entry dirEntry = *dirIterator;
 
-			return true;
+			string lastDir = dirEntry.path().filename().string();
+
+			if (string_utils::isStringNumeric(lastDir)) {
+				path cmdPath = dirEntry.path() / path("cmdline");
+
+				if (exists(cmdPath) && is_regular_file(cmdPath)) {
+
+					ifstream cmdFile;
+
+					cmdFile.open(cmdPath, std::ios::in);
+					string strCmdline;
+
+					if (cmdFile) {
+
+						while (getline(cmdFile, strCmdline)) {
+
+							vector<string> vectorCmd;
+							split(vectorCmd, strCmdline, is_any_of("/"));
+
+							if (!vectorCmd.empty()) {
+								string lastVectorElement;
+
+								lastVectorElement = vectorCmd[vectorCmd.size()
+										- 1];
+
+								if (string_utils::doesStringContainsIgnoreCase(
+										lastVectorElement, gameTitle)) {
+
+									ss << "podobny proces: " + strCmdline;
+									logger::info(ss);
+
+									ss << cmdPath;
+									logger::info(ss);
+
+
+									howManyGames++;
+
+								}
+							}
+
+						}
+					}
+
+				}
+			}
+
+			dirIterator++;
 		}
-	}
-}
 
+	} catch (filesystem_error &error) {
+
+		ss << "Error: " << error.what();
+		logger::error(ss);
+	}
+
+	ss << "tutaj howManyGames: " << howManyGames;
+	logger::info(ss);
+
+	if (howManyGames >= 2) {
+		logger::info("tutaj howManyGames false");
+
+		// First process is this process
+		// Second process is second game process
+		return false;
+	}
+
+	else {
+		logger::info("tutaj howManyGames true");
+
+		return true;
+	}
+
+}
+}
 
 #endif /* __linux__ */
