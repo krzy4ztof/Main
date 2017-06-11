@@ -345,9 +345,21 @@ namespace base_game {
             zipFile.test_saveNotCompressedDirFileHeader(filenameZipDirHeaderOut);
 			zipFile.test_initNotCompressedDirFileHeader(filenameZipDirHeaderOut);
 
+			zipFile.test_saveNotCompressedDirFileHeaderArraySource(
+					assetsFolder
+							+ "graphics/tempTestDirHeaderOutArraySource.txt");
+
+			zipFile.test_saveCompressedAbcd(
+					assetsFolder + "graphics/tempTestAbcdOutZip");
+			zipFile.test_saveNotCompressedAbcd(
+					assetsFolder + "graphics/tempTestAbcdOut.txt");
+
 			string filenameZipDirHeaderOutZip = assetsFolder + "graphics/tempTestDirHeaderOutZip.txt";
 			zipFile.test_saveCompressedDirFileHeader(filenameZipDirHeaderOutZip);
-
+			zipFile.test_initCompressedDirFileHeaderIntoVectorChar(
+					filenameZipDirHeaderOutZip);
+			zipFile.test_initCompressedDirFileHeader(
+					filenameZipDirHeaderOutZip);
 
 
 }

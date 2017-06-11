@@ -11,7 +11,7 @@
 #include <boost/iostreams/device/file.hpp> // boost::iostreams::file_source
 #include <boost/iostreams/stream.hpp> // boost::iostreams::stream
 #include <boost/iostreams/filtering_stream.hpp> // boost::iostreams::filtering_istream;
-#include <boost/iostreams/device/array.hpp> // boost::iostreams::array_source
+#include <boost/iostreams/device/array.hpp> // boost::iostreams::array_source, boost::iostreams::array_sink
 #include <boost/filesystem/fstream.hpp>
 
 #include <sstream>      // std::stringstream
@@ -53,6 +53,7 @@ using boost::iostreams::back_inserter;
 using boost::iostreams::array_source;
 using boost::filesystem::ofstream;
 using boost::filesystem::path;
+using boost::iostreams::array_sink;
 
 //typedef unsigned long dword;
 //typedef unsigned short word;
@@ -479,6 +480,12 @@ namespace base_game {
 		return true;
 	}
 
+// --------------------------------------------------------------------------
+// Function:      initCompressed
+// Purpose:       loads file that has compression saves data into vector<char> data
+// Parameters:
+// --------------------------------------------------------------------------
+
 	bool ZipFile::initCompressed(const std::string& resFileName) {
 		return true;
 	};
@@ -625,10 +632,132 @@ namespace base_game {
 
 	bool ZipFile::test_initCompressedDirFileHeader(const std::string& resFileName) {
 
-		// TODO
+	//stringstream memory_stream;
+	stringstream ss;
+
+	ss << "ZipFile::test_initCompressedDirFileHeader: " << resFileName;
+	logger::info(ss);
+
+	/////////////////////////
+
+	TZipDirFileHeader fh;
+
+	filtering_istreambuf inDec;
+	inDec.push(zlib_decompressor());
+
+	ifstream ifs(resFileName, ios::binary);
+	inDec.push(ifs);
+
+	vector<char> vecCharDec;
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+
+	// ERROR
+	//TZipDirFileHeader* pfh =
+	//		reinterpret_cast<TZipDirFileHeader*>(vecCharDec.data(), vecCharDec.size());
+
+	TZipDirFileHeader* pfh =
+			reinterpret_cast<TZipDirFileHeader*>(vecCharDec.data());
+
+// OK
+//	char* pData = vecCharDec.data();
+//	TZipDirFileHeader* pfh = reinterpret_cast<TZipDirFileHeader*>(pData);
+
+	pfh->describeYourself();
+
+	ss << "myTZipDirFileHeader contains:";
+	logger::info(ss);
+	ss << *pfh;
+	logger::info(ss);
+
+
+	/*
+	TZipDirFileHeader pfh =
+			reinterpret_cast<TZipDirFileHeader>(vecCharDec);
+
+	ss << "myTZipDirFileHeader contains:";
+	logger::info(ss);
+	ss << pfh;
+	logger::info(ss);
+	 */
+
+
+
+/*
+	TZipDirFileHeader* pfh =
+			reinterpret_cast<TZipDirFileHeader*>(vecCharDec.data(), vecCharDec.size());
+
+	fh = *pfh;
+
+	ss << "myTZipDirFileHeader contains:";
+	logger::info(ss);
+	ss << fh;
+	logger::info(ss);
+	 */
+
+	/*
+	 * OK
+	vector<char> vecCharDec;
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+
+	ss << "myvector contains:";
+	logger::info(ss);
+
+	for (std::vector<char>::iterator it = vecCharDec.begin();
+			it != vecCharDec.end(); ++it) {
+		ss << ' ' << *it;
+		logger::info(ss);
+	}
+	 */
+
+	/*
+	ifs.read(reinterpret_cast<char *>(&fh), sizeof(fh));
+
+	ss << "CHECK FH: ";
+	logger::info(ss);
+	ss << fh;
+	logger::info(ss);
+
+	ss << "END CHECK FH";
+	logger::info(ss);
+	 */
 
 		return true;
 	}
+
+bool ZipFile::test_initCompressedDirFileHeaderIntoVectorChar(
+		const std::string& resFileName) {
+
+	//stringstream memory_stream;
+	stringstream ss;
+
+	ss << "ZipFile::test_initCompressedDirFileHeader: " << resFileName;
+	logger::info(ss);
+
+	/////////////////////////
+
+	TZipDirFileHeader fh;
+
+	filtering_istreambuf inDec;
+	inDec.push(zlib_decompressor());
+
+	ifstream ifs(resFileName, ios::binary);
+	inDec.push(ifs);
+
+
+	vector<char> vecCharDec;
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+	ss << "myvector contains:";
+	logger::info(ss);
+
+	for (std::vector<char>::iterator it = vecCharDec.begin();
+			it != vecCharDec.end(); ++it) {
+		ss << ' ' << *it;
+		logger::info(ss);
+	}
+
+	return true;
+}
+
 
 	// Saves data as compressed file
 	void ZipFile::saveCompressed(const std::string& outFileName) {
@@ -851,59 +980,164 @@ namespace base_game {
 	// --------------------------------------------------------------------------
 	void ZipFile::test_saveCompressedDirFileHeader(const std::string& outFileName) {
 
-	return; // ERROR - remove and fix the ERROR
 		stringstream ss;
 
 		TZipDirFileHeader fh;
 		fh.testInitiation();
 
-
 		//array_source src{reinterpret_cast<char *>(&fh),sizeof(fh)};
-		filtering_istreambuf inDec; //filtering_streambuf<input>
+	filtering_istreambuf inDec;
+	/*filtering_streambuf<input>
+	 See http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/filtering_streambuf.html#headers
+	 */
+	/*
+	 * zlib_compressor() - Filter
+	 * see:
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/zlib.html#basic_zlib_compressor
+	 *
+	 * zlib_compressor is DualUseFilter which act as an InputFilter or as an OutputFilter
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/concepts/dual_use_filter.html
+	 *
+	 */
 
-		inDec.push(zlib_compressor());
-//		inDec.push(fh); // ERROR HERE
+	inDec.push(zlib_compressor());
+	/*
+	 * see http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/filtering_streambuf.html#headers
+	 *
+	 * void push( const T& t, ...
+	 * where T	-	A CopyConstructible model of one of the Filter or Device concepts
+	 * whose character type is Ch and whose mode refines Mode
+	 *
+	 * zlib_compressor is InputFilter when passed to input stream
+	 * see
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/guide/filtering_streams.html
+	 */
+
+	/**
+	 * We use output device  array_source
+	 */
+	array_source source { reinterpret_cast<char *>(&fh), sizeof(fh) };
+
+	/**
+	 * Input inDec filtering_streambuf<input> accepts output array_source as push parameter.
+	 *
+	 * If a filtering_streambuf or filtering_stream has mode input,
+	 * data flows from the chain's end to its beginning — starting at a Source
+	 * and passing through zero or more InputFilters
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/guide/filtering_streams.html
+	 *
+	 */
+	inDec.push(source);
 
 		vector<char> vecCharDec;
 
 		// copy compressed inDec to vecCharDec
-		boost::iostreams::copy(inDec,boost::iostreams::back_inserter(vecCharDec));
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
 
+	//ss << vecCharDec;
+	//logger::info(ss);
 
+	path outFilePath { outFileName };
+	ofstream ofs(outFilePath, ios::binary);
 
-		path outFilePath{outFileName};
-		ofstream ofs(outFilePath,ios::binary);
+	/**
+	 for (vector<char>::iterator it = vecCharDec.begin(); it != vecCharDec.end(); ++it) {
+	 //cout << *it;
+	 ofs.write(reinterpret_cast<char *>(&it),sizeof(it));
+	 }
+	 */
+	ofs.write(reinterpret_cast<char *>(vecCharDec.data()), vecCharDec.size());// OK wynik plik: ABCD; dla kompresji: x.strv...
 
-
-
-		for (vector<char>::iterator it = vecCharDec.begin(); it != vecCharDec.end(); ++it) {
-			//cout << *it;
-			ofs.write(reinterpret_cast<char *>(&it),sizeof(it));
-		}
 		ofs.close();
-		//			ofstream ofs{outFilePath, ios::out | ios::app | ios::binary};
-		//		ofstream ofs{outFilePath};
-		/*
-			ofstream ofs(outFilePath,ios::binary);
-
-
-
-
-
-			ofs.write(reinterpret_cast<char *>(&fh),sizeof(fh));
-
-			logger::info(ss);
-
-			ss << "SIZE_OF_FH: " << sizeof(fh);
-			logger::info(ss);
-
-			ss << fh;
-			logger::info(ss);
-		*/
+	//inDec.close();
 
 	};
 
 
+
+	// --------------------------------------------------------------------------
+// Function:      test_saveNotCompressedDirFileHeaderArraySource
+// Purpose:       Initialize TZipDirFileHeader fh with testInitiation(),
+//                  and save to file. USes array_source
+//               Read further this file with test_initCompressedDirFileHeader
+// Parameters:
+// --------------------------------------------------------------------------
+void ZipFile::test_saveNotCompressedDirFileHeaderArraySource(
+		const std::string& outFileName) {
+
+	stringstream ss;
+
+	TZipDirFileHeader fh;
+	fh.testInitiation();
+
+	//array_source src{reinterpret_cast<char *>(&fh),sizeof(fh)};
+	filtering_istreambuf inDec;
+	/*filtering_streambuf<input>
+	 See http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/filtering_streambuf.html#headers
+	 */
+	/*
+	 * zlib_compressor() - Filter
+	 * see:
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/zlib.html#basic_zlib_compressor
+	 *
+	 * zlib_compressor is DualUseFilter which act as an InputFilter or as an OutputFilter
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/concepts/dual_use_filter.html
+	 *
+	 */
+
+	//inDec.push(zlib_compressor());
+	/*
+	 * see http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/classes/filtering_streambuf.html#headers
+	 *
+	 * void push( const T& t, ...
+	 * where T	-	A CopyConstructible model of one of the Filter or Device concepts
+	 * whose character type is Ch and whose mode refines Mode
+	 *
+	 * zlib_compressor is InputFilter when passed to input stream
+	 * see
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/guide/filtering_streams.html
+	 */
+
+	/**
+	 * We use output device  array_source
+	 */
+	array_source source { reinterpret_cast<char *>(&fh), sizeof(fh) };
+
+	/**
+	 * Input inDec filtering_streambuf<input> accepts output array_source as push parameter.
+	 *
+	 * If a filtering_streambuf or filtering_stream has mode input,
+	 * data flows from the chain's end to its beginning — starting at a Source
+	 * and passing through zero or more InputFilters
+	 * http://www.boost.org/doc/libs/1_64_0/libs/iostreams/doc/guide/filtering_streams.html
+	 *
+	 */
+	inDec.push(source);
+
+	vector<char> vecCharDec;
+
+	// copy compressed inDec to vecCharDec
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+
+	//ss << vecCharDec;
+	//logger::info(ss);
+
+	path outFilePath { outFileName };
+	ofstream ofs(outFilePath, ios::binary);
+
+	/**
+	 for (vector<char>::iterator it = vecCharDec.begin(); it != vecCharDec.end(); ++it) {
+	 //cout << *it;
+	 ofs.write(reinterpret_cast<char *>(&it),sizeof(it));
+	 }
+	 */
+	ofs.write(reinterpret_cast<char *>(vecCharDec.data()), vecCharDec.size());// OK wynik plik: ABCD; dla kompresji: x.strv...
+
+	ofs.close();
+	//inDec.close();
+
+}
+;
 	// --------------------------------------------------------------------------
 	// Function:      test_saveNotCompressedDirFileHeader
 	// Purpose:       Initialize TZipDirFileHeader fh with testInitiation(),
@@ -925,7 +1159,11 @@ namespace base_game {
 
 		TZipDirFileHeader fh;
 		fh.testInitiation();
-
+	/*
+	 * http://en.cppreference.com/w/cpp/io/basic_ostream/write
+	 *
+	 * basic_ostream& write( const char_type* s, std::streamsize count );
+	 */
 		ofs.write(reinterpret_cast<char *>(&fh),sizeof(fh));
 
 		logger::info(ss);
@@ -939,6 +1177,109 @@ namespace base_game {
 		ofs.close();
 
 	};
+
+void ZipFile::test_saveNotCompressedAbcd(const std::string& outFileName) {
+
+	stringstream ss;
+
+	TZipDirFileHeader fh;
+	fh.testInitiation();
+
+	filtering_istreambuf inDec;
+
+	//inDec.push(zlib_compressor());
+
+	std::stringstream original;
+	std::string fhstr = "ABCD";
+
+	original << fhstr; // Dla plików ABCD
+	inDec.push(original);
+//	inDec.push(fhstr);
+
+	vector<char> vecCharDec;
+
+	// copy compressed inDec to vecCharDec
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+
+	path outFilePath { outFileName };
+	ofstream ofs(outFilePath, ios::binary);
+
+	/**
+	 * //ofs.write(reinterpret_cast<char *>(&vecCharDec), sizeof(vecCharDec));
+
+	 */
+
+	//ofs.write(reinterpret_cast<char *>(&vecCharDec[0]), sizeof(vecCharDec));
+	//ofs.write(reinterpret_cast<char *>(fhstr.data()), sizeof(fhstr));
+	//ofs.write(fhstr.c_str(), fhstr.size());//OK wynik plik: ABCD
+//		ofs << original.str();	//OK wynik plik: ABCD
+	ofs.write(reinterpret_cast<char *>(vecCharDec.data()), vecCharDec.size());// OK wynik plik: ABCD; dla kompresji: x.strv...
+
+	ofs.close();
+
+}
+;
+
+void ZipFile::test_saveCompressedAbcd(const std::string& outFileName) {
+
+//return; // ERROR - remove and fix the ERROR
+	stringstream ss;
+
+	TZipDirFileHeader fh;
+	fh.testInitiation();
+
+
+	//array_source src{reinterpret_cast<char *>(&fh),sizeof(fh)};
+	filtering_istreambuf inDec;
+	inDec.push(zlib_compressor());
+
+
+std::stringstream original;
+	std::string fhstr = "ABCD";
+
+	/*
+	 * http://www.cplusplus.com/reference/ostream/ostream/write/
+	 */
+	original << fhstr; // Dla plików ABCD
+//	original.write(reinterpret_cast<char *>(&fh), sizeof(fh));
+	inDec.push(original);
+//	inDec.push(fhstr);
+
+	vector<char> vecCharDec;
+
+	// copy compressed inDec to vecCharDec
+	boost::iostreams::copy(inDec, boost::iostreams::back_inserter(vecCharDec));
+
+//ss << vecCharDec;
+//logger::info(ss);
+
+	path outFilePath { outFileName };
+	ofstream ofs(outFilePath, ios::binary);
+
+	/**
+	 for (vector<char>::iterator it = vecCharDec.begin(); it != vecCharDec.end(); ++it) {
+	 //cout << *it;
+	 ofs.write(reinterpret_cast<char *>(&it),sizeof(it));
+	 }
+	 */
+	/**
+	 * //ofs.write(reinterpret_cast<char *>(&vecCharDec), sizeof(vecCharDec));
+
+	 */
+
+//ofs.write(reinterpret_cast<char *>(&vecCharDec[0]), sizeof(vecCharDec));
+
+//ofs.write(reinterpret_cast<char *>(fhstr.data()), sizeof(fhstr));
+
+//ofs.write(fhstr.c_str(), fhstr.size());//OK wynik plik: ABCD
+//		ofs << original.str();	//OK wynik plik: ABCD
+	ofs.write(reinterpret_cast<char *>(vecCharDec.data()), vecCharDec.size()); // OK wynik plik: ABCD; dla kompresji: x.strv...
+
+
+	ofs.close();
+
+}
+;
 
 
 	// --------------------------------------------------------------------------

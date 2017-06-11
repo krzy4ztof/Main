@@ -56,6 +56,7 @@ namespace base_game {
 			}
 
 			void testInitiation();
+	void describeYourself();
 
 		protected:
 

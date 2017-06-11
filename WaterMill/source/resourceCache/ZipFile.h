@@ -25,8 +25,16 @@ namespace base_game {
 
 			void test_saveCompressedDirFileHeader(const std::string& outFileName); // todo
             bool test_initCompressedDirFileHeader(const std::string& resFileName); // todo
+	bool test_initCompressedDirFileHeaderIntoVectorChar(
+			const std::string& resFileName); // ok
+
+	void test_saveCompressedAbcd(const std::string& outFileName); // ok
+	void test_saveNotCompressedAbcd(const std::string& outFileName); // ok
+
 
 			void test_saveNotCompressedDirFileHeader(const std::string& outFileName); // ok
+	void test_saveNotCompressedDirFileHeaderArraySource(
+			const std::string& outFileName); // ok
             bool test_initNotCompressedDirFileHeader(const std::string& resFileName); // ok
 
 

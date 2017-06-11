@@ -492,6 +492,14 @@ ZipFile
             //		inDec.push(fh); // ERROR HERE - uncomment and fix compilation error
 
 
+Działa:
+			string filenameZipDirHeaderOutZip = assetsFolder + "graphics/tempTestDirHeaderOutZip.txt";
+			zipFile.test_saveCompressedDirFileHeader(filenameZipDirHeaderOutZip);
+			zipFile.test_initCompressedDirFileHeader(
+					filenameZipDirHeaderOutZip);
+					
+teraz dodać TZipHeader, TLocalHeader i zmienic metody testowe na docelowe.
+
 
 *******************
 ***	FUTURE TODO	***
