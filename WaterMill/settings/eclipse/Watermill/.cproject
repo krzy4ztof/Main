@@ -16,7 +16,16 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1866526074." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.2041919689" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.1995636270" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
-							<builder buildPath="${workspace_loc:/Watermill}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.951599295" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Watermill}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.951599295" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug_MinGW"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug_Cygwin"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug_MinGW64"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug_Linux"/>
+								</outputEntries>
+							</builder>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.1460351631" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1275305204" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -254,18 +263,19 @@
 									<listOptionValue builtIn="false" value="&quot;C:\msys64\usr\local\lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64&quot;"/>
 								</option>
-								<option id="gnu.cpp.link.option.libs.186041527" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="freeglut"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="psapi"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="opengl32"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="lua"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_system-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_filesystem-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_locale-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_log-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_thread-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_log_setup-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_iostreams-mt"/>
+								<option id="gnu.cpp.link.option.libs.186041527" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="freeglut"/>
+									<listOptionValue builtIn="false" value="minizip"/>
+									<listOptionValue builtIn="false" value="psapi"/>
+									<listOptionValue builtIn="false" value="opengl32"/>
+									<listOptionValue builtIn="false" value="lua"/>
+									<listOptionValue builtIn="false" value="boost_system-mt"/>
+									<listOptionValue builtIn="false" value="boost_filesystem-mt"/>
+									<listOptionValue builtIn="false" value="boost_locale-mt"/>
+									<listOptionValue builtIn="false" value="boost_log-mt"/>
+									<listOptionValue builtIn="false" value="boost_thread-mt"/>
+									<listOptionValue builtIn="false" value="boost_log_setup-mt"/>
+									<listOptionValue builtIn="false" value="boost_iostreams-mt"/>
 								</option>
 								<option id="gnu.cpp.link.option.userobjs.499567114" name="Other objects" superClass="gnu.cpp.link.option.userobjs"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.658742404" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

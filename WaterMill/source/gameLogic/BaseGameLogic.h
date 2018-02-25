@@ -14,45 +14,49 @@
 #include <string> // string
 
 namespace base_game {
-	class BaseGameLogic {
-		public:
-			BaseGameLogic();
-			virtual ~BaseGameLogic();
-			bool init(ResourceCache* resourceCache);
+class BaseGameLogic {
+public:
+	BaseGameLogic();
+	virtual ~BaseGameLogic();
+	bool init(ResourceCache* resourceCache);
 
-			void tempCreateActors();
-			void tempTestActors();
-			void tempTestProcessManager();
-			void tempAddViews();
-			void tempTestZipFile(const std::string &assetsFolder);
+	void tempCreateActors();
+	void tempTestActors();
+	void tempTestProcessManager();
+	void tempAddViews();
+	void tempTestZipFile(const std::string &assetsFolder,
+			const std::string& assetsReadMode,
+			const std::string& assetsSaveMode);
 
-			virtual void vAddView(std::shared_ptr<IGameView> pView, unsigned int actorId=Actor::INVALID_ACTOR_ID);
-			virtual void vRemoveView(std::shared_ptr<IGameView> pView);
+	virtual void vAddView(std::shared_ptr<IGameView> pView,
+			unsigned int actorId = Actor::INVALID_ACTOR_ID);
+	virtual void vRemoveView(std::shared_ptr<IGameView> pView);
 
-			virtual std::shared_ptr<Actor> vCreateActor(const std::string &actorResource);  // [rez] note: don't store this strong pointer outside of this class
-			virtual void vDestroyActor(const unsigned int actorId);
-			virtual std::weak_ptr<Actor> vGetActor(const unsigned int actorId);
+	virtual std::shared_ptr<Actor> vCreateActor(
+			const std::string &actorResource); // [rez] note: don't store this strong pointer outside of this class
+	virtual void vDestroyActor(const unsigned int actorId);
+	virtual std::weak_ptr<Actor> vGetActor(const unsigned int actorId);
 
-			virtual void vChangeState(BaseGameState newState);
+	virtual void vChangeState(BaseGameState newState);
 
-			// Logic Update
-			virtual void vOnUpdate(float time, float elapsedTime);
-			void onFrameRender( double fTime, float fElapsedTime);
+	// Logic Update
+	virtual void vOnUpdate(float time, float elapsedTime);
+	void onFrameRender(double fTime, float fElapsedTime);
 
-		protected:
-			float lifetime;								//indicates how long this game has been in session
-			BaseGameState state;
-			ProcessManager* pProcessManager;				// a game logic entity
+protected:
+	float lifetime;			//indicates how long this game has been in session
+	BaseGameState state;
+	ProcessManager* pProcessManager;				// a game logic entity
 
-			std::map<unsigned int, std::shared_ptr<Actor>> actors;
-			std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
+	std::map<unsigned int, std::shared_ptr<Actor>> actors;
+	std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
-			ActorFactory* actorFactory;
-			ResourceCache* resourceCache;
-			virtual ActorFactory* vCreateActorFactory(void);
+	ActorFactory* actorFactory;
+	ResourceCache* resourceCache;
+	virtual ActorFactory* vCreateActorFactory(void);
 
-		private:
-	};
+private:
+};
 }
 
 #endif // BASEGAMELOGIC_H

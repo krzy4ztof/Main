@@ -1,32 +1,3 @@
-*******************
-***	Packages	***
-*******************
-Msys packages:
-https://sourceforge.net/p/msys2/wiki/Packages/
-
-Open shell
-MinGW-w64 Win64 Shell
-
-
-example:
-mingw/mingw-w64-lua 5.3.0-1 
-A powerful light-weight programming language designed for extending applications. (mingw-w64)
-
-
-GCC:
-pacman -S mingw-w64-x86_64-gcc
-pacman -S mingw-w64-x86_64-boost
-pacman -S make
-pacman -S mingw-w64-x86_64-toolchain
-pacman -S cmake
-pacman -S tar
-pacman -S base-devel
-
-MinGW 64:
-	pacman -S mingw-w64-lua 5.3.0-1 
-	
-	
-	
 *******************************
 ***	MinGW64 compiler setup	***
 *******************************
@@ -185,154 +156,6 @@ Executable path: C:\msys64\mingw64\bin\gdb.exe
 Menu -> Debug -> Active Debuggers:
 	GDB/CDB debugger: MinGW64
 
-***************	
-***	Glut	***	
-***************
-tar zxf glut-3.6.tar.gz
-	
-*******************
-***	Freeglut	***
-*******************
-tar -vxf freeglut-3.0.0.tar.gz
-cd freeglut-3.0.0/
-
-Download 
-freeglut-MinGW-3.0.0-1.mp.zip
-from
-http://www.transmissionzero.co.uk/computing/using-glut-with-mingw/
-	
-Unzip to
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut
-	
-***************************
-***	Lua installation	***
-***************************
-
-https://www.lua.org/download.html
-Download 
-lua-5.3.3.tar.gz
-
-Extract
-lua-5.3.3_Sources.zip
-into folder
-C:\msys64\home\Krzysztof\lua53
-
-
-https://www.lua.org/download.html
-Building:
-
->> cd ~/lua53
->> tar zxf lua-5.3.3.tar.gz
->> cd lua-5.3.3
-
-
-
-Check where is mingw32-make.exe located:
->> where mingw32-make
-C:\msys64\mingw64\bin\mingw32-make.exe
-
-file:///C:/msys64/home/Krzysztof/lua53/lua-5.3.3/doc/readme.html
-Build Lua
->> mingw32-make mingw 
->> mingw32-make test
-
-Installing Lua
->> mingw32-make install
-Installs lua.exe, luac.exe, lua.h into
-C:\msys64\usr\local\bin\lua.exe
-C:\msys64\usr\local\include\lua.h
-C:\msys64\usr\local\lib\liblua.a
-
->> cp lua53.dll /bin/
-Copy
-C:\msys64\home\Krzysztof\lua53\lua-5.3.3\src\lua53.dll
-into
-C:\msys64\bin
-
-Create script
-~/lua53/lua_script.txt
->> cd ~/lua53
-Run script
->> lua.exe lua_script.txt
-
-***********
-***	SDL	***
-***********
-
-
-Msys packages:
-https://sourceforge.net/p/msys2/wiki/Packages/
-mingw/mingw-w64-SDL2 2.0.3-2
-
-https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/
-example:
-mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz.sig	
-mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz
-
-Open shell
-MinGW-w64 Win64 Shell
-
-
-MinGW 64:
-pacman -S mingw-w64-x86_64-SDL2
-
----------------------------
----	SDL	unsuccessfull	---
----------------------------
-
->> tar zxf SDL2-devel-2.0.4-mingw.tar.gz
-C:\msys64\home\Krzysztof\SDL2-2.0.4\
->> cd SDL2-2.0.4
-make native
-
-New folders and files appear:
-C:\msys64\usr\bin\sdl2-config
-C:\msys64\usr\bin\SDL2.dll
-C:\msys64\usr\include\SDL2
-C:\msys64\usr\lib\libSDL.a
-	libSDL2.dll.a, libSDL2.la, libSDL2_test.a, libSDL2main.a 
-C:\msys64\usr\lib\cmake\SDL2\sdl2-config.cmake
-
-
-
-Test
-cd /c/home/myImportantFiles/projects/git/Main/TestExamples/SDLGlewPrj/
-
-
-
----------------------------
----	SDL	unsuccessfull	---
----------------------------
-	
-C:\msys64\home\Krzysztof\sdl\SDL2-2.0.4.tar.gz
-
->> tar zxf SDL2-2.0.4.tar.gz
-
-C:\msys64\home\Krzysztof\SDL2-2.0.4\
->> cd SDL2-2.0.4
-
-SDL2-2.0.4/INSTALL.TXT
-Linux and other UNIX systems:
-* Run './configure; make; make install'
-        
-
-./configure
-configure: error:
-*** Unsupported host:  Please add to configure.in
-
-
-***************
-***	GLEW	***
-***************
-
-https://sourceforge.net/p/msys2/wiki/Packages/
-mingw/mingw-w64-glew 1.12.0-1 (mingw-w64-x86_64) 
-GLEW, The OpenGL Extension Wrangler Library (mingw-w64)
-
-pacman -S mingw-w64-x86_64-glew
-
-Files created:
-C:\msys64\mingw64\lib\libglew32.dll
 
 
 ***************
@@ -348,3 +171,9 @@ Current Variable -> New
 C:\msys64\mingw64\lib\
 
 C:\msys64\mingw64\include\boost
+
+
+*******
+
+
+

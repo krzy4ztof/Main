@@ -6,32 +6,36 @@
 #include <boost/property_tree/ptree.hpp>// ptree
 
 namespace base_game {
-	class DebuggingOptions {
-		public:
-			DebuggingOptions();
-			virtual ~DebuggingOptions();
-			void load(const std::string &filename);
-			std::string getOption(const std::string &key);
-		protected:
+class DebuggingOptions {
+public:
+	const static std::string ASSETS_READ_MODE;
 
-		private:
-			const static std::string DEBUG_NODE_NAME;
-			const static std::string OPTIONS_NODE_NAME;
-			const static std::string OPTION_NODE_NAME;
-			const static std::string OPTION_NAME_ATTR;
-			const static std::string OPTION_VALUE_ATTR;
-			std::map<std::string,std::string> options;
+	const static std::string ASSETS_SAVE_MODE;
 
-			void loadAttrNode(const boost::property_tree::ptree& xmlattrNode);
+	DebuggingOptions();
+	virtual ~DebuggingOptions();
+	void load(const std::string &filename);
+	std::string getOption(const std::string &key);
+protected:
 
-			void loadOptionNode(const boost::property_tree::ptree& optionNode);
-			void loadOptionsNode(const boost::property_tree::ptree& optionsNode);
-			void loadDebugNode(boost::property_tree::ptree tree);
-			void loadRootNode(boost::property_tree::ptree tree);
+private:
+	const static std::string DEBUG_NODE_NAME;
+	const static std::string OPTIONS_NODE_NAME;
+	const static std::string OPTION_NODE_NAME;
+	const static std::string OPTION_NAME_ATTR;
+	const static std::string OPTION_VALUE_ATTR;
+	std::map<std::string, std::string> options;
 
-			void loadMain(const std::string &filename);
+	void loadAttrNode(const boost::property_tree::ptree& xmlattrNode);
 
-	};
+	void loadOptionNode(const boost::property_tree::ptree& optionNode);
+	void loadOptionsNode(const boost::property_tree::ptree& optionsNode);
+	void loadDebugNode(boost::property_tree::ptree tree);
+	void loadRootNode(boost::property_tree::ptree tree);
+
+	void loadMain(const std::string &filename);
+
+};
 }
 
 #endif // DEBUGGINGOPTIONS_H

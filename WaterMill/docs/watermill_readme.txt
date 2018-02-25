@@ -501,6 +501,197 @@ Działa:
 teraz dodać TZipHeader, TLocalHeader i zmienic metody testowe na docelowe.
 
 
+Dopisać w Debug_options.xml tryby wczytywania zasobów
+tryb Read
+wczytanie zasobów z folderu jako osobne pliki
+wczytanie zasobów z pliku assets.rar - nieskompresowanego pojedynczego pliki
+wczytanie zasobów z pliku assets.zip - skompresowanego pojedynczego pliki
+
+tryb Save
+zapisanie zasobów jako nieskompresowany pojedyńczy plik assets.rar
+zapisanie zasobów jako skompresowany pojedyńczy plik assets.zip
+
+Dokonczyc
+	bool GameCodeApp::initAllOptions() {
+	
+			//TODO
+		if (DebuggingOptions::ASSETS_SAVE_MODE_NONE.compare(saveMode)){
+
+		
+		
+GameMain.init
+	GameCodeApp.initInstance
+		ResourceCache::init
+			DevelopmentResourceZipFile::vOpen
+				DevelopmentResourceZipFile::readAssetsDirectory		
+		DevelopmentResourceZipFile::vSave
+			DevelopmentResourceZipFile::saveFolderMode
+				DevelopmentResourceZipFile::prepareOutputDir
+					DevelopmentResourceZipFile::getOutputFolderName
+				DevelopmentResourceZipFile::createFilesAndFolders
+					DevelopmentResourceZipFile::createFolder
+					DevelopmentResourceZipFile::copyFile
+	GameCodeApp.mainLoop
+		BaseGameLogic::tempTestZipFile
+			ZipFile.test_saveNotCompressedAll
+		
+Napisac		
+DevelopmentResourceZipFile.saveUnzipMode - zapisywanie plikow jako jednego unzip
+	Na podstawie: ZipFile::test_saveNotCompressedAll
+DevelopmentResourceZipFile.saveZipMode - zapisywanie plikow jako jednego zip
+		
+ResourceZipFile.saveFolderMode - tjw
+ResourceZipFile.saveUnzipMode -tjw
+ResourceZipFile.saveZipMode -tjw		
+
+DevelopmentResourceUnzipFile.saveFolderMode - tjw
+DevelopmentResourceUnzipFile.saveUnzipMode -tjw
+DevelopmentResourceUnzipFile.saveZipMode -tjw
+
+DevelopmentResourceFolder.saveUnzipMode -tjw
+DevelopmentResourceFolder.saveZipMode -tjw
+
+---	30/10/2017	---
+
+Teraz piszę:
+        <!--  boost not compatible with windows zip format
+        <option name="assetsReadMode" value="zipFile"></option>
+        <option name="assetsSaveMode" value="folder"></option>
+        -->
+ResourceZipFile.vOpen
+ResourceZipFile.saveFolderMode
+
+Jednak okazało się że boost zlib_decompressor nie odczytuje windowsowego pliku zip assets.zip
+bool ZipFile::initCompressed_fails(const std::string& resFileName) {
+//inDec.push(zlib_decompressor());
+
+--- TODO:
+
+Tak więc trzeba napisać
+        <option name="assetsReadMode" value="folder"></option>
+        <option name="assetsSaveMode" value="unzipFile"></option>  
+        
+DevelopmentResourceFolder.saveUnzipMode -tjw
+        
+
+---	02/11/2017	---
+
+dokonczyc
+DevelopmentResourceFolder::createUnzipFile
+
+--	03/11/2017	---
+
+dokonczyc
+DevelopmentResourceFolder::saveAssetsFile
+	//TODO:
+	// dopisac zapis dirFileHeadersList, dh
+
+
+--	04/11/2017	---
+dokonczyc 
+DevelopmentResourceFolder::createUnzipFile	
+
+		// TODO zapis iteratora TZipDirFileHeader
+		// ofs.write(reinterpret_cast<char *>(&(*it)), sizeof(TZipDirFileHeader));
+
+--	05/11/2017	---
+TODO 
+DevelopmentResourceUnzipFile::readUnzipAssets
+        <option name="assetsReadMode" value="unzipFile"></option>
+        <option name="assetsSaveMode" value="folder"></option>
+
+
+--	10/11/2017	---
+TODO 
+ZipFile::~ZipFile() - program nie zamyka sie - program crashuje
+void safe_delete_debug(className*& p) {
+
+bool ZipFile::initNotCompressed(const std::string& resFileName) {
+        <option name="assetsReadMode" value="unzipFile"></option>
+        <option name="assetsSaveMode" value="folder"></option>
+
+--	11/11/2017	---
+TODO:
+bool ZipFile::initNotCompressed(const std::string& resFileName) {
+        <option name="assetsReadMode" value="unzipFile"></option>
+        <option name="assetsSaveMode" value="folder"></option>
+
+--	12/11/2017	---
+TODO:
+bool ZipFile::initLocalHeader - nie czyta poprawnie calego pliku assetsUnzip.zip
+
+
+--	12/11/2017	---
+TODO:
+metody
+	bool initDirFileHeaders(unsigned short nDirEntries); //FINAL VERSION
+	bool initLocalHeader(char* pLocalHeader, unsigned short fnameLen,
+			unsigned long cSize); //FINAL VERSION
+
+powinny zapisywac wyniki do
+	std::map<std::string, ZipFileAsset> m_zipContentsMap; //FINAL VERSION
+
+
+--	19/11/2017	---
+nastepnie 	
+        <option name="assetsSaveMode" value="folder"></option>
+bedzie wykorzystywalo m_zipContentsMap do zapisania plikow do folderu
+
+--	03/12/2017	---
+Dokonczyc
+ZipFile::createFilesAndFolders(const string folderName) 
+
+
+--	18/02/2017	---
+TODO:
+
+bool DevelopmentResourceUnzipFile::vSaveUnzipMode() {
+        <option name="assetsReadMode" value="unzipFile"></option>
+        <option name="assetsSaveMode" value="unzipFile"></option>
+
+
+--	21/02/2017	---
+TODO:
+dokonczyc
+bool ZipFile::saveAsset(ofstream& ofs, ZipFileAsset* pZipFileAsset,
+		list<TZipDirFileHeader*>& dirFileHeadersList, const TZipDirHeader& dh,
+		unsigned short saveMode) {
+
+--	23/02/2017	---
+zweryfikowac
+bool ZipFile::saveAssetFileContents
+	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
+		if (ZipFile::NOT_COMPRESSED == saveMode) {
+		
+a pozniej poprawic 
+		} else {
+			ss << "Saves not compressed file contents: "
+					<< pZipFileAsset->fileName
+					<< " as compressed";		
+
+--	24/02/2017	---
+
+
+bool DevelopmentResourceUnzipFile::vSaveUnzipMode() {
+        <option name="assetsReadMode" value="unzipFile"></option>
+        <option name="assetsSaveMode" value="zipFile"></option>
+
+
+a pozniej poprawic 
+		} else {
+			ss << "Saves not compressed file contents: "
+					<< pZipFileAsset->fileName
+					<< " as compressed";		
+
+
+
+--	25/02/2017	---
+
+Wprowadzic zapis do pola:
+			Z_NO_COMPRESSION = 0,
+				Z_DEFLATED = 1
+
+		
 *******************
 ***	FUTURE TODO	***
 *******************
@@ -514,3 +705,4 @@ Gdy aplikacja uruhamiana jest z CodeBlock, to w przypadku gdy jest otwarty Nauti
 
 
 									
+Bill Gates
