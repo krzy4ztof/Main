@@ -1,411 +1,419 @@
-[00001|2018-02-25 15:38:38|   ] : Hello world!
-[00002|2018-02-25 15:38:38|  trace] : A trace severity message
-[00003|2018-02-25 15:38:38|  trace] : A trace severity message 2
-[00004|2018-02-25 15:38:38|  trace] : Create GameCodeApp
-[00005|2018-02-25 15:38:38|  trace] : Create WatermillGame
-[00006|2018-02-25 15:38:38|  trace] : Create InitOptions
-[00007|2018-02-25 15:38:38|  trace] : otwarte!!!!
-[00008|2018-02-25 15:38:38|  trace] : "MAIN" : ""
-[00009|2018-02-25 15:38:38|  trace] :   "Root" : "../../../"
-[00010|2018-02-25 15:38:38|  trace] :   "Assets" : "../../../assets/"
-[00011|2018-02-25 15:38:38|  trace] :   "Game" : "../../../game/"
-[00012|2018-02-25 15:38:38|  trace] : istnieje MAIN.REsources
-[00013|2018-02-25 15:38:38|  trace] : ../../../
-[00014|2018-02-25 15:38:38|  trace] : istnieje MAIN.REsources
-[00015|2018-02-25 15:38:38|  trace] : ../../../assets/
-[00016|2018-02-25 15:38:38|  trace] : istnieje MAIN.REsources
-[00017|2018-02-25 15:38:38|  trace] : ../../../game/
-[00018|2018-02-25 15:38:38|  trace] : Create PlayerOptions
-[00019|2018-02-25 15:38:38|  trace] : "playerOptions" : "
+[00001|2018-02-25 18:18:41|   ] : Hello world!
+[00002|2018-02-25 18:18:41|  trace] : A trace severity message
+[00003|2018-02-25 18:18:41|  trace] : A trace severity message 2
+[00004|2018-02-25 18:18:41|  trace] : Create GameCodeApp
+[00005|2018-02-25 18:18:41|  trace] : Create WatermillGame
+[00006|2018-02-25 18:18:41|  trace] : Create InitOptions
+[00007|2018-02-25 18:18:41|  trace] : otwarte!!!!
+[00008|2018-02-25 18:18:41|  trace] : "MAIN" : ""
+[00009|2018-02-25 18:18:41|  trace] :   "Root" : "../../../"
+[00010|2018-02-25 18:18:41|  trace] :   "Assets" : "../../../assets/"
+[00011|2018-02-25 18:18:41|  trace] :   "Game" : "../../../game/"
+[00012|2018-02-25 18:18:41|  trace] : istnieje MAIN.REsources
+[00013|2018-02-25 18:18:41|  trace] : ../../../
+[00014|2018-02-25 18:18:41|  trace] : istnieje MAIN.REsources
+[00015|2018-02-25 18:18:41|  trace] : ../../../assets/
+[00016|2018-02-25 18:18:41|  trace] : istnieje MAIN.REsources
+[00017|2018-02-25 18:18:41|  trace] : ../../../game/
+[00018|2018-02-25 18:18:41|  trace] : Create PlayerOptions
+[00019|2018-02-25 18:18:41|  trace] : "playerOptions" : "
     
 	
 	
 "
-[00020|2018-02-25 15:38:38|  trace] :   "<xmlcomment>" : " <option name="language" value="en.UTF-8"/> "
-[00021|2018-02-25 15:38:38|  trace] :   "option" : ""
-[00022|2018-02-25 15:38:38|  trace] :     "<xmlattr>" : ""
-[00023|2018-02-25 15:38:38|  trace] :       "name" : "language"
-[00024|2018-02-25 15:38:38|  trace] :       "value" : "pl.UTF-8"
-[00025|2018-02-25 15:38:38|  trace] :   "option" : ""
-[00026|2018-02-25 15:38:38|  trace] :     "<xmlattr>" : ""
-[00027|2018-02-25 15:38:38|  trace] :       "name" : "fullscreen"
-[00028|2018-02-25 15:38:38|  trace] :       "value" : "false"
-[00029|2018-02-25 15:38:38|  trace] : Create DebuggingOptions
-[00030|2018-02-25 15:38:38|   info] : debuggingOptions assetsReadMode: unzipFile
-[00031|2018-02-25 15:38:38|  trace] : Create Windows64Calls
-[00032|2018-02-25 15:38:38|  trace] : Is the only instance in Windows 64: watermill?
-[00033|2018-02-25 15:38:38|  trace] : Is the only instance in Windows 64: watermill.exe?
-[00034|2018-02-25 15:38:39|  trace] : --------------------------
-[00035|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00036|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00037|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00038|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00039|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00040|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00041|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00042|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00043|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00044|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00045|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00046|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00047|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00048|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00049|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00050|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00051|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00052|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00053|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00054|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00055|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00056|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00057|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00058|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00059|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00060|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00061|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00062|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00063|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00064|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00065|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00066|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00067|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00068|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00069|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00070|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00071|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00072|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00073|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00074|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00075|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00076|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00077|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00078|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00079|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00080|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00081|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00082|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00083|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00084|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00085|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00086|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00087|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00088|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00089|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00090|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00091|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00092|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00093|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00094|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00095|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00096|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00097|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00098|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00099|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00100|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00101|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00102|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00103|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00104|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00105|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00106|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00107|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00108|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00109|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00110|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00111|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00112|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00113|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00114|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00115|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00116|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00117|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00118|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00119|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00120|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00121|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00122|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00123|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00124|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00125|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00126|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00127|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00128|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00129|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00130|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00131|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00132|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00133|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00134|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00135|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00136|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00137|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00138|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00139|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00140|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00141|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00142|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00143|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00144|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00145|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00146|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00147|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00148|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00149|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00150|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00151|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: ETDCtrl.exe
-[00152|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00153|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: sihost.exe
-[00154|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00155|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: nvcontainer.exe
-[00156|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: taskhostw.exe
-[00157|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00158|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: Explorer.EXE
-[00159|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: igfxEM.exe
-[00160|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00161|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: ShellExperienceHost.exe
-[00162|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: ETDIntelligent.exe
-[00163|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.SettingsApp.exe
-[00164|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: SearchUI.exe
-[00165|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00166|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00167|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: SkypeHost.exe
-[00168|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00169|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: nvtray.exe
-[00170|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: MSASCuiL.exe
-[00171|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RAVCpl64.exe
-[00172|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00173|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00174|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00175|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenterTray.exe
-[00176|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: utility.exe
-[00177|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00178|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: DolbyDAX2TrayIcon.exe
-[00179|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: OneDrive.exe
-[00180|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: flux.exe
-[00181|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: 5KPlayer.exe
-[00182|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00183|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00184|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: jusched.exe
-[00185|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00186|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00187|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00188|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00189|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00190|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00191|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00192|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00193|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00194|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00195|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00196|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00197|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00198|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00199|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00200|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00201|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00202|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00203|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00204|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00205|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00206|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00207|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00208|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: HostAppServiceUpdater.exe
-[00209|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: NVIDIA Web Helper.exe
-[00210|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
-[00211|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00212|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: jucheck.exe
-[00213|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00214|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: ApplicationFrameHost.exe
-[00215|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: WinStore.App.exe
-[00216|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00217|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00218|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: Video.UI.exe
-[00219|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: Microsoft.Photos.exe
-[00220|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00221|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: eclipse.exe
-[00222|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: explorer.exe
-[00223|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00224|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00225|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: DllHost.exe
-[00226|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00227|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: geany.exe
-[00228|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00229|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00230|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: starter.exe
-[00231|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
-[00232|2018-02-25 15:38:39|  trace] : gameTitle: watermill.exe; szProcessName: Watermill.exe
-[00233|2018-02-25 15:38:39|  trace] : Watermill.exe (PID: 14532)
-[00234|2018-02-25 15:38:39|  trace] : howMany: 1
-[00235|2018-02-25 15:38:39|  trace] : diskFree: 190692185 [clusters], 741376 [MB], 724 [GB]
-[00236|2018-02-25 15:38:39|  trace] : diskNeeded: 2560 [clusters], 10 [MB]
-[00237|2018-02-25 15:38:39|  trace] : CPU speed needed: 900 [MHz], CPU speed available: 2808 [MHz]
-[00238|2018-02-25 15:38:39|  trace] : percent of memory in use 22
-[00239|2018-02-25 15:38:39|  trace] : total kB of physical memory 33426596
-[00240|2018-02-25 15:38:39|  trace] : free  kB of physical memory 26046732
-[00241|2018-02-25 15:38:39|  trace] : total kB of paging file 38407332
-[00242|2018-02-25 15:38:39|  trace] : free  kB of paging file 30799396
-[00243|2018-02-25 15:38:39|  trace] : total MB of virtual memory 134217727
-[00244|2018-02-25 15:38:39|  trace] : free  MB of virtual memory 134217507
-[00245|2018-02-25 15:38:39|  trace] : free  kB of extended memory 0
-[00246|2018-02-25 15:38:39|  trace] : physical RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
-[00247|2018-02-25 15:38:39|  trace] : physical RAM total: 34228834304 [byte], 32643 [MB] 31 [GB]
-[00248|2018-02-25 15:38:39|  trace] : virtual RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
-[00249|2018-02-25 15:38:39|  trace] : virtual RAM available: 140737257332736 [byte], 1.34218e+008 [MB] 131071 [GB]
-[00250|2018-02-25 15:38:39|   info] : Create IResourceFile(rootFolder)
-[00251|2018-02-25 15:38:39|   info] : Create DevelopmentResourceUnzipFile(folderName, fileName)
-[00252|2018-02-25 15:38:39|   info] : Create ResourceCache
-[00253|2018-02-25 15:38:39|  trace] : SAFE_DELETE pointer null
-[00254|2018-02-25 15:38:39|   info] : Create ZipFile
-[00255|2018-02-25 15:38:39|   info] : OPEN OPEN OPEN ../../..//assetsUnzip.zip
-[00256|2018-02-25 15:38:39|   info] : Correct TZipDirHeader signature c3c3c3c3
-[00257|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00258|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1dba0
-[00259|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[0] signature b2b2b2b2
-[00260|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1dba0
-[00261|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00262|2018-02-25 15:38:39|   info] : VEC FILE NAME: strings\pl\LC_MESSAGES\watermill.po
-[00263|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1ddbb
-[00264|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1dba0
-[00265|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00266|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1ddbb
-[00267|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[1] signature b2b2b2b2
-[00268|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1ddbb
-[00269|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00270|2018-02-25 15:38:39|   info] : VEC FILE NAME: strings\en\LC_MESSAGES\watermill.po
-[00271|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1dfcc
-[00272|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1ddbb
-[00273|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00274|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1dfcc
-[00275|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[2] signature b2b2b2b2
-[00276|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1dfcc
-[00277|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00278|2018-02-25 15:38:39|   info] : VEC FILE NAME: tempGraphics\test.txt
-[00279|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e009
-[00280|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1dfcc
-[00281|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00282|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e009
-[00283|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[3] signature b2b2b2b2
-[00284|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e009
-[00285|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00286|2018-02-25 15:38:39|   info] : VEC FILE NAME: scripts\test.lua
-[00287|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e142
-[00288|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e009
-[00289|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00290|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e142
-[00291|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[4] signature b2b2b2b2
-[00292|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e142
-[00293|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00294|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestAbcdOutZip
-[00295|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e191
-[00296|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e142
-[00297|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00298|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e191
-[00299|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[5] signature b2b2b2b2
-[00300|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e191
-[00301|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00302|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestAbcdOut.txt
-[00303|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e1d9
-[00304|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e191
-[00305|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00306|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e1d9
-[00307|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[6] signature b2b2b2b2
-[00308|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e1d9
-[00309|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00310|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOutArraySource.txt
-[00311|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e265
-[00312|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e1d9
-[00313|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00314|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e265
-[00315|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[7] signature b2b2b2b2
-[00316|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e265
-[00317|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00318|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOutZip.txt
-[00319|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e2ed
-[00320|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e265
-[00321|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00322|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e2ed
-[00323|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[8] signature b2b2b2b2
-[00324|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e2ed
-[00325|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00326|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOut.txt
-[00327|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e36e
-[00328|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e2ed
-[00329|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00330|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e36e
-[00331|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[9] signature b2b2b2b2
-[00332|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e36e
-[00333|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00334|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestAllOut.txt
-[00335|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e5c1
-[00336|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e36e
-[00337|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00338|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e5c1
-[00339|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[10] signature b2b2b2b2
-[00340|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e5c1
-[00341|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00342|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestZipFileZipOut.txt
-[00343|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e63f
-[00344|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e5c1
-[00345|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00346|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e63f
-[00347|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[11] signature b2b2b2b2
-[00348|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e63f
-[00349|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00350|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestZipFile.txt
-[00351|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e6e6
-[00352|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e63f
-[00353|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00354|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e6e6
-[00355|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[12] signature b2b2b2b2
-[00356|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e6e6
-[00357|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00358|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestZipFileOutAll.txt
-[00359|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e768
-[00360|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e6e6
-[00361|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00362|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e768
-[00363|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[13] signature b2b2b2b2
-[00364|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e768
-[00365|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00366|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempTestZipFileOut.txt
-[00367|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e812
-[00368|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e768
-[00369|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00370|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e812
-[00371|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[14] signature b2b2b2b2
-[00372|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e812
-[00373|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00374|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempSecondZip.txt
-[00375|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e8d6
-[00376|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e812
-[00377|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00378|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e8d6
-[00379|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[15] signature b2b2b2b2
-[00380|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e8d6
-[00381|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00382|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\tempThirdZip.txt
-[00383|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e949
-[00384|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e8d6
-[00385|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00386|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e949
-[00387|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[16] signature b2b2b2b2
-[00388|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e949
-[00389|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00390|2018-02-25 15:38:39|   info] : VEC FILE NAME: graphics\polskie•Í∆znaki.txt
-[00391|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1e999
-[00392|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e949
-[00393|2018-02-25 15:38:39|   info] : Create ZipFileAsset
-[00394|2018-02-25 15:38:39|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e999
-[00395|2018-02-25 15:38:39|   info] : Correct TZipDirFileHeader[17] signature b2b2b2b2
-[00396|2018-02-25 15:38:39|   info] : PRE pASSET address: 0xbb1e999
-[00397|2018-02-25 15:38:39|   info] : Correct TZipLocalHeader signature a1a1a1a1
-[00398|2018-02-25 15:38:39|   info] : VEC FILE NAME: actors\player_character.xml
-[00399|2018-02-25 15:38:39|   info] : POST pASSET address: 0xbb1eb71
-[00400|2018-02-25 15:38:39|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xbb1e999
-[00401|2018-02-25 15:38:39|   info] : ZipFile DescribeYourself
-[00402|2018-02-25 15:38:39|   info] : Number of Entries: 18
-[00403|2018-02-25 15:38:39|   info] : TZipDirHeader DescribeYourself
-[00404|2018-02-25 15:38:39|   info] : %S%SIG: c3c3c3c3
+[00020|2018-02-25 18:18:41|  trace] :   "<xmlcomment>" : " <option name="language" value="en.UTF-8"/> "
+[00021|2018-02-25 18:18:41|  trace] :   "option" : ""
+[00022|2018-02-25 18:18:41|  trace] :     "<xmlattr>" : ""
+[00023|2018-02-25 18:18:41|  trace] :       "name" : "language"
+[00024|2018-02-25 18:18:41|  trace] :       "value" : "pl.UTF-8"
+[00025|2018-02-25 18:18:41|  trace] :   "option" : ""
+[00026|2018-02-25 18:18:41|  trace] :     "<xmlattr>" : ""
+[00027|2018-02-25 18:18:41|  trace] :       "name" : "fullscreen"
+[00028|2018-02-25 18:18:41|  trace] :       "value" : "false"
+[00029|2018-02-25 18:18:41|  trace] : Create DebuggingOptions
+[00030|2018-02-25 18:18:41|   info] : debuggingOptions assetsReadMode: unzipFile
+[00031|2018-02-25 18:18:41|  trace] : Create Windows64Calls
+[00032|2018-02-25 18:18:41|  trace] : Is the only instance in Windows 64: watermill?
+[00033|2018-02-25 18:18:41|  trace] : Is the only instance in Windows 64: watermill.exe?
+[00034|2018-02-25 18:18:41|  trace] : --------------------------
+[00035|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00036|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00037|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00038|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00039|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00040|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00041|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00042|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00043|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00044|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00045|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00046|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00047|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00048|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00049|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00050|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00051|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00052|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00053|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00054|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00055|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00056|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00057|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00058|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00059|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00060|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00061|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00062|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00063|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00064|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00065|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00066|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00067|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00068|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00069|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00070|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00071|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00072|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00073|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00074|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00075|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00076|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00077|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00078|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00079|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00080|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00081|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00082|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00083|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00084|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00085|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00086|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00087|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00088|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00089|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00090|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00091|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00092|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00093|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00094|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00095|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00096|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00097|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00098|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00099|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00100|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00101|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00102|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00103|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00104|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00105|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00106|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00107|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00108|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00109|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00110|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00111|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00112|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00113|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00114|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00115|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00116|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00117|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00118|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00119|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00120|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00121|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00122|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00123|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00124|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00125|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00126|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00127|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00128|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00129|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00130|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00131|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00132|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00133|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00134|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00135|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00136|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00137|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00138|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00139|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00140|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00141|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00142|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00143|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00144|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00145|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00146|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00147|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00148|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00149|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00150|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00151|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: ETDCtrl.exe
+[00152|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00153|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: sihost.exe
+[00154|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00155|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: nvcontainer.exe
+[00156|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: taskhostw.exe
+[00157|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00158|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: Explorer.EXE
+[00159|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: igfxEM.exe
+[00160|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00161|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: ShellExperienceHost.exe
+[00162|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: ETDIntelligent.exe
+[00163|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.SettingsApp.exe
+[00164|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: SearchUI.exe
+[00165|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00166|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00167|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: SkypeHost.exe
+[00168|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00169|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: nvtray.exe
+[00170|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: MSASCuiL.exe
+[00171|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RAVCpl64.exe
+[00172|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00173|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00174|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00175|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenterTray.exe
+[00176|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: utility.exe
+[00177|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00178|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: DolbyDAX2TrayIcon.exe
+[00179|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: OneDrive.exe
+[00180|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: flux.exe
+[00181|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: 5KPlayer.exe
+[00182|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00183|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00184|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: jusched.exe
+[00185|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00186|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00187|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00188|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00189|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00190|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00191|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00192|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00193|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00194|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00195|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00196|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00197|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00198|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00199|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00200|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00201|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00202|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00203|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00204|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00205|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00206|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00207|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00208|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: HostAppServiceUpdater.exe
+[00209|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: NVIDIA Web Helper.exe
+[00210|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00211|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00212|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: jucheck.exe
+[00213|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00214|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: ApplicationFrameHost.exe
+[00215|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: WinStore.App.exe
+[00216|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00217|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00218|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: Video.UI.exe
+[00219|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: Microsoft.Photos.exe
+[00220|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00221|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: eclipse.exe
+[00222|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: explorer.exe
+[00223|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00224|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00225|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: DllHost.exe
+[00226|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00227|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: geany.exe
+[00228|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: git-bash.exe
+[00229|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: mintty.exe
+[00230|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00231|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: bash.exe
+[00232|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00233|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00234|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00235|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00236|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00237|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00238|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: starter.exe
+[00239|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00240|2018-02-25 18:18:41|  trace] : gameTitle: watermill.exe; szProcessName: Watermill.exe
+[00241|2018-02-25 18:18:41|  trace] : Watermill.exe (PID: 12180)
+[00242|2018-02-25 18:18:41|  trace] : howMany: 1
+[00243|2018-02-25 18:18:41|  trace] : diskFree: 190614057 [clusters], 741376 [MB], 724 [GB]
+[00244|2018-02-25 18:18:41|  trace] : diskNeeded: 2560 [clusters], 10 [MB]
+[00245|2018-02-25 18:18:41|  trace] : CPU speed needed: 900 [MHz], CPU speed available: 2808 [MHz]
+[00246|2018-02-25 18:18:41|  trace] : percent of memory in use 22
+[00247|2018-02-25 18:18:41|  trace] : total kB of physical memory 33426596
+[00248|2018-02-25 18:18:41|  trace] : free  kB of physical memory 25774352
+[00249|2018-02-25 18:18:41|  trace] : total kB of paging file 38407332
+[00250|2018-02-25 18:18:41|  trace] : free  kB of paging file 30441664
+[00251|2018-02-25 18:18:41|  trace] : total MB of virtual memory 134217727
+[00252|2018-02-25 18:18:41|  trace] : free  MB of virtual memory 134217508
+[00253|2018-02-25 18:18:41|  trace] : free  kB of extended memory 0
+[00254|2018-02-25 18:18:41|  trace] : physical RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00255|2018-02-25 18:18:41|  trace] : physical RAM total: 34228834304 [byte], 32643 [MB] 31 [GB]
+[00256|2018-02-25 18:18:41|  trace] : virtual RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00257|2018-02-25 18:18:41|  trace] : virtual RAM available: 140737257914368 [byte], 1.34218e+008 [MB] 131071 [GB]
+[00258|2018-02-25 18:18:41|   info] : Create IResourceFile(rootFolder)
+[00259|2018-02-25 18:18:41|   info] : Create DevelopmentResourceUnzipFile(folderName, fileName)
+[00260|2018-02-25 18:18:41|   info] : Create ResourceCache
+[00261|2018-02-25 18:18:41|  trace] : SAFE_DELETE pointer null
+[00262|2018-02-25 18:18:41|   info] : Create ZipFile
+[00263|2018-02-25 18:18:41|   info] : OPEN OPEN OPEN ../../..//assetsUnzip.zip
+[00264|2018-02-25 18:18:41|   info] : Correct TZipDirHeader signature c3c3c3c3
+[00265|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00266|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca5c0
+[00267|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[0] signature b2b2b2b2
+[00268|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1ca5c0
+[00269|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00270|2018-02-25 18:18:41|   info] : VEC FILE NAME: strings\pl\LC_MESSAGES\watermill.po
+[00271|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1ca7db
+[00272|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca5c0
+[00273|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00274|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca7db
+[00275|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[1] signature b2b2b2b2
+[00276|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1ca7db
+[00277|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00278|2018-02-25 18:18:41|   info] : VEC FILE NAME: strings\en\LC_MESSAGES\watermill.po
+[00279|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1ca9ec
+[00280|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca7db
+[00281|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00282|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca9ec
+[00283|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[2] signature b2b2b2b2
+[00284|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1ca9ec
+[00285|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00286|2018-02-25 18:18:41|   info] : VEC FILE NAME: tempGraphics\test.txt
+[00287|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1caa29
+[00288|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1ca9ec
+[00289|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00290|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1caa29
+[00291|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[3] signature b2b2b2b2
+[00292|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1caa29
+[00293|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00294|2018-02-25 18:18:41|   info] : VEC FILE NAME: scripts\test.lua
+[00295|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cab62
+[00296|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1caa29
+[00297|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00298|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cab62
+[00299|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[4] signature b2b2b2b2
+[00300|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cab62
+[00301|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00302|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestAbcdOutZip
+[00303|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cabb1
+[00304|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cab62
+[00305|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00306|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cabb1
+[00307|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[5] signature b2b2b2b2
+[00308|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cabb1
+[00309|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00310|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestAbcdOut.txt
+[00311|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cabf9
+[00312|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cabb1
+[00313|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00314|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cabf9
+[00315|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[6] signature b2b2b2b2
+[00316|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cabf9
+[00317|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00318|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOutArraySource.txt
+[00319|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cac85
+[00320|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cabf9
+[00321|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00322|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cac85
+[00323|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[7] signature b2b2b2b2
+[00324|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cac85
+[00325|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00326|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOutZip.txt
+[00327|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cad0d
+[00328|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cac85
+[00329|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00330|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cad0d
+[00331|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[8] signature b2b2b2b2
+[00332|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cad0d
+[00333|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00334|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestDirHeaderOut.txt
+[00335|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cad8e
+[00336|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cad0d
+[00337|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00338|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cad8e
+[00339|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[9] signature b2b2b2b2
+[00340|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cad8e
+[00341|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00342|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestAllOut.txt
+[00343|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cafe1
+[00344|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cad8e
+[00345|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00346|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cafe1
+[00347|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[10] signature b2b2b2b2
+[00348|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cafe1
+[00349|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00350|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestZipFileZipOut.txt
+[00351|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb05f
+[00352|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cafe1
+[00353|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00354|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb05f
+[00355|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[11] signature b2b2b2b2
+[00356|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb05f
+[00357|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00358|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestZipFile.txt
+[00359|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb106
+[00360|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb05f
+[00361|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00362|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb106
+[00363|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[12] signature b2b2b2b2
+[00364|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb106
+[00365|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00366|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestZipFileOutAll.txt
+[00367|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb188
+[00368|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb106
+[00369|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00370|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb188
+[00371|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[13] signature b2b2b2b2
+[00372|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb188
+[00373|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00374|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempTestZipFileOut.txt
+[00375|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb232
+[00376|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb188
+[00377|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00378|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb232
+[00379|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[14] signature b2b2b2b2
+[00380|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb232
+[00381|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00382|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempSecondZip.txt
+[00383|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb2f6
+[00384|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb232
+[00385|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00386|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb2f6
+[00387|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[15] signature b2b2b2b2
+[00388|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb2f6
+[00389|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00390|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\tempThirdZip.txt
+[00391|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb369
+[00392|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb2f6
+[00393|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00394|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb369
+[00395|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[16] signature b2b2b2b2
+[00396|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb369
+[00397|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00398|2018-02-25 18:18:41|   info] : VEC FILE NAME: graphics\polskie•Í∆znaki.txt
+[00399|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb3b9
+[00400|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb369
+[00401|2018-02-25 18:18:41|   info] : Create ZipFileAsset
+[00402|2018-02-25 18:18:41|   info] : PRE INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb3b9
+[00403|2018-02-25 18:18:41|   info] : Correct TZipDirFileHeader[17] signature b2b2b2b2
+[00404|2018-02-25 18:18:41|   info] : PRE pASSET address: 0xa1cb3b9
+[00405|2018-02-25 18:18:41|   info] : Correct TZipLocalHeader signature a1a1a1a1
+[00406|2018-02-25 18:18:41|   info] : VEC FILE NAME: actors\player_character.xml
+[00407|2018-02-25 18:18:41|   info] : POST pASSET address: 0xa1cb591
+[00408|2018-02-25 18:18:41|   info] : POST INIT LOCAL HEADER pLocalHeaderData address: 0xa1cb3b9
+[00409|2018-02-25 18:18:41|   info] : ZipFile DescribeYourself
+[00410|2018-02-25 18:18:41|   info] : Number of Entries: 18
+[00411|2018-02-25 18:18:41|   info] : TZipDirHeader DescribeYourself
+[00412|2018-02-25 18:18:41|   info] : %S%SIG: c3c3c3c3
 ISCOMPRESSION: 0
 NDISK: 0
 NSTARTDISK: 0
@@ -418,11 +426,11 @@ DIROFFSET:
 CMTLEN: 
 0
 %E%
-[00405|2018-02-25 15:38:39|   info] : TZipDirHeader DescribeYourself END
-[00406|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00407|2018-02-25 15:38:39|   info] : FileName: actors\player_character.xml
-[00408|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00409|2018-02-25 15:38:39|   info] : 2998055602
+[00413|2018-02-25 18:18:41|   info] : TZipDirHeader DescribeYourself END
+[00414|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00415|2018-02-25 18:18:41|   info] : FileName: actors\player_character.xml
+[00416|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00417|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -447,9 +455,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00410|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00411|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00412|2018-02-25 15:38:39|   info] : 2711724449
+[00418|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00419|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00420|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -467,13 +475,13 @@ UCSIZE: 0
 FNAMELEN: 1b
 XTRALEN 0
 %E%
-[00413|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00414|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00415|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00416|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00417|2018-02-25 15:38:39|   info] : FileName: graphics\polskie•Í∆znaki.txt
-[00418|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00419|2018-02-25 15:38:39|   info] : 2998055602
+[00421|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00422|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00423|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00424|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00425|2018-02-25 18:18:41|   info] : FileName: graphics\polskie•Í∆znaki.txt
+[00426|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00427|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -498,9 +506,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00420|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00421|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00422|2018-02-25 15:38:39|   info] : 2711724449
+[00428|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00429|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00430|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -518,13 +526,13 @@ UCSIZE: 0
 FNAMELEN: 1c
 XTRALEN 0
 %E%
-[00423|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00424|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00425|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00426|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00427|2018-02-25 15:38:39|   info] : FileName: graphics\tempSecondZip.txt
-[00428|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00429|2018-02-25 15:38:39|   info] : 2998055602
+[00431|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00432|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00433|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00434|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00435|2018-02-25 18:18:41|   info] : FileName: graphics\tempSecondZip.txt
+[00436|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00437|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -549,9 +557,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00430|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00431|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00432|2018-02-25 15:38:39|   info] : 2711724449
+[00438|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00439|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00440|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -569,13 +577,13 @@ UCSIZE: 0
 FNAMELEN: 1a
 XTRALEN 0
 %E%
-[00433|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00434|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00435|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00436|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00437|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestAbcdOut.txt
-[00438|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00439|2018-02-25 15:38:39|   info] : 2998055602
+[00441|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00442|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00443|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00444|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00445|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestAbcdOut.txt
+[00446|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00447|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -600,9 +608,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00440|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00441|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00442|2018-02-25 15:38:39|   info] : 2711724449
+[00448|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00449|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00450|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -620,13 +628,13 @@ UCSIZE: 0
 FNAMELEN: 1c
 XTRALEN 0
 %E%
-[00443|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00444|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00445|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00446|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00447|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestAbcdOutZip
-[00448|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00449|2018-02-25 15:38:39|   info] : 2998055602
+[00451|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00452|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00453|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00454|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00455|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestAbcdOutZip
+[00456|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00457|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -651,9 +659,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00450|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00451|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00452|2018-02-25 15:38:39|   info] : 2711724449
+[00458|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00459|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00460|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -671,13 +679,13 @@ UCSIZE: 0
 FNAMELEN: 1b
 XTRALEN 0
 %E%
-[00453|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00454|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00455|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00456|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00457|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestAllOut.txt
-[00458|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00459|2018-02-25 15:38:39|   info] : 2998055602
+[00461|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00462|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00463|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00464|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00465|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestAllOut.txt
+[00466|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00467|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -702,9 +710,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00460|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00461|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00462|2018-02-25 15:38:39|   info] : 2711724449
+[00468|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00469|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00470|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -722,13 +730,13 @@ UCSIZE: 0
 FNAMELEN: 1b
 XTRALEN 0
 %E%
-[00463|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00464|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00465|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00466|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00467|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestDirHeaderOut.txt
-[00468|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00469|2018-02-25 15:38:39|   info] : 2998055602
+[00471|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00472|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00473|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00474|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00475|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestDirHeaderOut.txt
+[00476|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00477|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -753,9 +761,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00470|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00471|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00472|2018-02-25 15:38:39|   info] : 2711724449
+[00478|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00479|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00480|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -773,13 +781,13 @@ UCSIZE: 0
 FNAMELEN: 21
 XTRALEN 0
 %E%
-[00473|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00474|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00475|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00476|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00477|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestDirHeaderOutArraySource.txt
-[00478|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00479|2018-02-25 15:38:39|   info] : 2998055602
+[00481|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00482|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00483|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00484|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00485|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestDirHeaderOutArraySource.txt
+[00486|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00487|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -804,9 +812,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00480|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00481|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00482|2018-02-25 15:38:39|   info] : 2711724449
+[00488|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00489|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00490|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -824,13 +832,13 @@ UCSIZE: 0
 FNAMELEN: 2c
 XTRALEN 0
 %E%
-[00483|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00484|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00485|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00486|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00487|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestDirHeaderOutZip.txt
-[00488|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00489|2018-02-25 15:38:39|   info] : 2998055602
+[00491|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00492|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00493|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00494|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00495|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestDirHeaderOutZip.txt
+[00496|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00497|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -855,9 +863,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00490|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00491|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00492|2018-02-25 15:38:39|   info] : 2711724449
+[00498|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00499|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00500|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -875,13 +883,13 @@ UCSIZE: 0
 FNAMELEN: 24
 XTRALEN 0
 %E%
-[00493|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00494|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00495|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00496|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00497|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestZipFile.txt
-[00498|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00499|2018-02-25 15:38:39|   info] : 2998055602
+[00501|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00502|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00503|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00504|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00505|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestZipFile.txt
+[00506|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00507|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -906,9 +914,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00500|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00501|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00502|2018-02-25 15:38:39|   info] : 2711724449
+[00508|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00509|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00510|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -926,13 +934,13 @@ UCSIZE: 0
 FNAMELEN: 1c
 XTRALEN 0
 %E%
-[00503|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00504|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00505|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00506|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00507|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestZipFileOut.txt
-[00508|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00509|2018-02-25 15:38:39|   info] : 2998055602
+[00511|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00512|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00513|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00514|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00515|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestZipFileOut.txt
+[00516|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00517|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -957,9 +965,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00510|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00511|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00512|2018-02-25 15:38:39|   info] : 2711724449
+[00518|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00519|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00520|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -977,13 +985,13 @@ UCSIZE: 0
 FNAMELEN: 1f
 XTRALEN 0
 %E%
-[00513|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00514|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00515|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00516|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00517|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestZipFileOutAll.txt
-[00518|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00519|2018-02-25 15:38:39|   info] : 2998055602
+[00521|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00522|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00523|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00524|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00525|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestZipFileOutAll.txt
+[00526|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00527|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1008,9 +1016,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00520|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00521|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00522|2018-02-25 15:38:39|   info] : 2711724449
+[00528|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00529|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00530|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1028,13 +1036,13 @@ UCSIZE: 0
 FNAMELEN: 22
 XTRALEN 0
 %E%
-[00523|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00524|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00525|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00526|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00527|2018-02-25 15:38:39|   info] : FileName: graphics\tempTestZipFileZipOut.txt
-[00528|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00529|2018-02-25 15:38:39|   info] : 2998055602
+[00531|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00532|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00533|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00534|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00535|2018-02-25 18:18:41|   info] : FileName: graphics\tempTestZipFileZipOut.txt
+[00536|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00537|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1059,9 +1067,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00530|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00531|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00532|2018-02-25 15:38:39|   info] : 2711724449
+[00538|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00539|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00540|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1079,13 +1087,13 @@ UCSIZE: 0
 FNAMELEN: 22
 XTRALEN 0
 %E%
-[00533|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00534|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00535|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00536|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00537|2018-02-25 15:38:39|   info] : FileName: graphics\tempThirdZip.txt
-[00538|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00539|2018-02-25 15:38:39|   info] : 2998055602
+[00541|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00542|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00543|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00544|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00545|2018-02-25 18:18:41|   info] : FileName: graphics\tempThirdZip.txt
+[00546|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00547|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1110,9 +1118,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00540|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00541|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00542|2018-02-25 15:38:39|   info] : 2711724449
+[00548|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00549|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00550|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1130,13 +1138,13 @@ UCSIZE: 0
 FNAMELEN: 19
 XTRALEN 0
 %E%
-[00543|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00544|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00545|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00546|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00547|2018-02-25 15:38:39|   info] : FileName: scripts\test.lua
-[00548|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00549|2018-02-25 15:38:39|   info] : 2998055602
+[00551|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00552|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00553|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00554|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00555|2018-02-25 18:18:41|   info] : FileName: scripts\test.lua
+[00556|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00557|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1161,9 +1169,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00550|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00551|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00552|2018-02-25 15:38:39|   info] : 2711724449
+[00558|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00559|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00560|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1181,13 +1189,13 @@ UCSIZE: 0
 FNAMELEN: 10
 XTRALEN 0
 %E%
-[00553|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00554|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00555|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00556|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00557|2018-02-25 15:38:39|   info] : FileName: strings\en\LC_MESSAGES\watermill.po
-[00558|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00559|2018-02-25 15:38:39|   info] : 2998055602
+[00561|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00562|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00563|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00564|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00565|2018-02-25 18:18:41|   info] : FileName: strings\en\LC_MESSAGES\watermill.po
+[00566|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00567|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1212,9 +1220,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00560|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00561|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00562|2018-02-25 15:38:39|   info] : 2711724449
+[00568|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00569|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00570|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1232,13 +1240,13 @@ UCSIZE: 0
 FNAMELEN: 23
 XTRALEN 0
 %E%
-[00563|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00564|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00565|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00566|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00567|2018-02-25 15:38:39|   info] : FileName: strings\pl\LC_MESSAGES\watermill.po
-[00568|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00569|2018-02-25 15:38:39|   info] : 2998055602
+[00571|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00572|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00573|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00574|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00575|2018-02-25 18:18:41|   info] : FileName: strings\pl\LC_MESSAGES\watermill.po
+[00576|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00577|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1263,9 +1271,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00570|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00571|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00572|2018-02-25 15:38:39|   info] : 2711724449
+[00578|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00579|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00580|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1283,13 +1291,13 @@ UCSIZE: 0
 FNAMELEN: 23
 XTRALEN 0
 %E%
-[00573|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00574|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00575|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00576|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself
-[00577|2018-02-25 15:38:39|   info] : FileName: tempGraphics\test.txt
-[00578|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself
-[00579|2018-02-25 15:38:39|   info] : 2998055602
+[00581|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00582|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00583|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00584|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself
+[00585|2018-02-25 18:18:41|   info] : FileName: tempGraphics\test.txt
+[00586|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself
+[00587|2018-02-25 18:18:41|   info] : 2998055602
 
 2998055602
 
@@ -1314,9 +1322,9 @@ INTATTR: 0
 EXTATTR: 0
 HDROFFSET: 0
 %E%
-[00580|2018-02-25 15:38:39|   info] : TZipDirFileHeader DescribeYourself END
-[00581|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself
-[00582|2018-02-25 15:38:39|   info] : 2711724449
+[00588|2018-02-25 18:18:41|   info] : TZipDirFileHeader DescribeYourself END
+[00589|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself
+[00590|2018-02-25 18:18:41|   info] : 2711724449
 
 2711724449
 
@@ -1334,267 +1342,265 @@ UCSIZE: 0
 FNAMELEN: 15
 XTRALEN 0
 %E%
-[00583|2018-02-25 15:38:39|   info] : TZipLocalHeader DescribeYourself END
-[00584|2018-02-25 15:38:39|   info] : FILE CONTENTS: 
-[00585|2018-02-25 15:38:39|   info] : ZipFileAsset DescribeYourself END
-[00586|2018-02-25 15:38:39|  trace] : Create IResourceLoader
-[00587|2018-02-25 15:38:39|  trace] : Create DefaultResourceLoader
-[00588|2018-02-25 15:38:39|   info] : VSAVE: ../../../
-[00589|2018-02-25 15:38:39|   info] : ZipFile prepareOutputDir: ../../..//assetsUnzipToFolder
-[00590|2018-02-25 15:38:39|   info] : START createFilesAndFolders
-[00591|2018-02-25 15:38:39|   info] : fileName: actors\player_character.xml
-[00592|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\actors\player_character.xml"
-[00593|2018-02-25 15:38:39|   info] : only filename "player_character.xml"
-[00594|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\actors"
-[00595|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\actors
-[00596|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00597|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\actors\player_character.xml"
-[00598|2018-02-25 15:38:39|   info] : fileName: graphics\polskie•Í∆znaki.txt
-[00599|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\polskie•Í∆znaki.txt"
-[00600|2018-02-25 15:38:39|   info] : only filename "polskie•Í∆znaki.txt"
-[00601|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00602|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\graphics
-[00603|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00604|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\polskie•Í∆znaki.txt"
-[00605|2018-02-25 15:38:39|   info] : fileName: graphics\tempSecondZip.txt
-[00606|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempSecondZip.txt"
-[00607|2018-02-25 15:38:39|   info] : only filename "tempSecondZip.txt"
-[00608|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00609|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00610|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00611|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempSecondZip.txt"
-[00612|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestAbcdOut.txt
-[00613|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOut.txt"
-[00614|2018-02-25 15:38:39|   info] : only filename "tempTestAbcdOut.txt"
-[00615|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00616|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00617|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00618|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOut.txt"
-[00619|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestAbcdOutZip
-[00620|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOutZip"
-[00621|2018-02-25 15:38:39|   info] : only filename "tempTestAbcdOutZip"
-[00622|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00623|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00624|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00625|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOutZip"
-[00626|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestAllOut.txt
-[00627|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAllOut.txt"
-[00628|2018-02-25 15:38:39|   info] : only filename "tempTestAllOut.txt"
-[00629|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00630|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00631|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00632|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAllOut.txt"
-[00633|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestDirHeaderOut.txt
-[00634|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOut.txt"
-[00635|2018-02-25 15:38:39|   info] : only filename "tempTestDirHeaderOut.txt"
-[00636|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00637|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00638|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00639|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOut.txt"
-[00640|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestDirHeaderOutArraySource.txt
-[00641|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutArraySource.txt"
-[00642|2018-02-25 15:38:39|   info] : only filename "tempTestDirHeaderOutArraySource.txt"
-[00643|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00644|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00645|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00646|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutArraySource.txt"
-[00647|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestDirHeaderOutZip.txt
-[00648|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutZip.txt"
-[00649|2018-02-25 15:38:39|   info] : only filename "tempTestDirHeaderOutZip.txt"
-[00650|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00651|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00652|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00653|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutZip.txt"
-[00654|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestZipFile.txt
-[00655|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFile.txt"
-[00656|2018-02-25 15:38:39|   info] : only filename "tempTestZipFile.txt"
-[00657|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00658|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00659|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00660|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFile.txt"
-[00661|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestZipFileOut.txt
-[00662|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOut.txt"
-[00663|2018-02-25 15:38:39|   info] : only filename "tempTestZipFileOut.txt"
-[00664|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00665|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00666|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00667|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOut.txt"
-[00668|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestZipFileOutAll.txt
-[00669|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOutAll.txt"
-[00670|2018-02-25 15:38:39|   info] : only filename "tempTestZipFileOutAll.txt"
-[00671|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00672|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00673|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00674|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOutAll.txt"
-[00675|2018-02-25 15:38:39|   info] : fileName: graphics\tempTestZipFileZipOut.txt
-[00676|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileZipOut.txt"
-[00677|2018-02-25 15:38:39|   info] : only filename "tempTestZipFileZipOut.txt"
-[00678|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00679|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00680|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00681|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileZipOut.txt"
-[00682|2018-02-25 15:38:39|   info] : fileName: graphics\tempThirdZip.txt
-[00683|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempThirdZip.txt"
-[00684|2018-02-25 15:38:39|   info] : only filename "tempThirdZip.txt"
-[00685|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
-[00686|2018-02-25 15:38:39|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
-[00687|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00688|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempThirdZip.txt"
-[00689|2018-02-25 15:38:39|   info] : fileName: scripts\test.lua
-[00690|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\scripts\test.lua"
-[00691|2018-02-25 15:38:39|   info] : only filename "test.lua"
-[00692|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\scripts"
-[00693|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\scripts
-[00694|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00695|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\scripts\test.lua"
-[00696|2018-02-25 15:38:39|   info] : fileName: strings\en\LC_MESSAGES\watermill.po
-[00697|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES\watermill.po"
-[00698|2018-02-25 15:38:39|   info] : only filename "watermill.po"
-[00699|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES"
-[00700|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES
-[00701|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00702|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES\watermill.po"
-[00703|2018-02-25 15:38:39|   info] : fileName: strings\pl\LC_MESSAGES\watermill.po
-[00704|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES\watermill.po"
-[00705|2018-02-25 15:38:39|   info] : only filename "watermill.po"
-[00706|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES"
-[00707|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES
-[00708|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00709|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES\watermill.po"
-[00710|2018-02-25 15:38:39|   info] : fileName: tempGraphics\test.txt
-[00711|2018-02-25 15:38:39|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\tempGraphics\test.txt"
-[00712|2018-02-25 15:38:39|   info] : only filename "test.txt"
-[00713|2018-02-25 15:38:39|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\tempGraphics"
-[00714|2018-02-25 15:38:39|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\tempGraphics
-[00715|2018-02-25 15:38:39|   info] : Saving not compressed files to folder
-[00716|2018-02-25 15:38:39|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\tempGraphics\test.txt"
-[00717|2018-02-25 15:38:39|   info] : END createFilesAndFolders
-[00718|2018-02-25 15:38:39|   info] : -------------
-[00719|2018-02-25 15:38:39|  trace] : Create IResourceLoader
-[00720|2018-02-25 15:38:39|  trace] : Create XmlResourceLoader
-[00721|2018-02-25 15:38:39|  trace] : Create GameMessages
-[00722|2018-02-25 15:38:39|  trace] : LAN: pl.UTF-8
-[00723|2018-02-25 15:38:39|  trace] : The language code is pl
-[00724|2018-02-25 15:38:39|  trace] : The country code is 
-[00725|2018-02-25 15:38:39|  trace] : name *
-[00726|2018-02-25 15:38:39|  trace] : hello_world
-[00727|2018-02-25 15:38:39|  trace] : hello_world_only_pl_pl
-[00728|2018-02-25 15:38:39|  trace] : hello_world_only_pl
-[00729|2018-02-25 15:38:39|  trace] : hello_world_only_en
-[00730|2018-02-25 15:38:39|  trace] : hello_world_only_default
-[00731|2018-02-25 15:38:39|  trace] : Pr√≥ba kodowania Cze≈õƒá ≈öwiecie
-[00732|2018-02-25 15:38:39|  trace] : Create LuaStateManager
-[00733|2018-02-25 15:38:39|  trace] : lua script: test.lua
-[00734|2018-02-25 15:38:39|  trace] : lua full script: ../../../assets/scripts/test.lua
-[00735|2018-02-25 15:38:39|  trace] : howdy() was called with 3 arguments
-[00736|2018-02-25 15:38:39|  trace] :   argument 1: First
-[00737|2018-02-25 15:38:39|  trace] :   argument 2: Second
-[00738|2018-02-25 15:38:39|  trace] :   argument 3: 112233
-[00739|2018-02-25 15:38:39|   info] : SAFE_DELETE delete: Pc
-[00740|2018-02-25 15:38:39|  trace] : Create EventManager
-[00741|2018-02-25 15:38:39|  trace] : Create DataFiles
-[00742|2018-02-25 15:38:39|  trace] : Create AudioSystem
-[00743|2018-02-25 15:38:39|  trace] : Create VideoSystem
-[00744|2018-02-25 15:38:39|  trace] : videoSystem++++
-[00745|2018-02-25 15:38:39|  trace] : Create SaveManager
-[00746|2018-02-25 15:38:39|  trace] : saveGame: GameEngine\Watermill\1.0
-[00747|2018-02-25 15:38:39|  trace] : userprofile: C:\Users\Krzysztof
-[00748|2018-02-25 15:38:39|  trace] : userProfilePathStr: C:\Users\Krzysztof
-[00749|2018-02-25 15:38:39|  trace] : SaveManager saveGame: GameEngine\Watermill\1.0
-[00750|2018-02-25 15:38:39|  trace] : SaveManager userProfilePathStr: C:\Users\Krzysztof
-[00751|2018-02-25 15:38:39|  trace] : folder: GameEngine
-[00752|2018-02-25 15:38:39|  trace] : path: "C:\Users\Krzysztof\GameEngine"
-[00753|2018-02-25 15:38:39|  trace] : path exists: 1
-[00754|2018-02-25 15:38:39|  trace] : folder: Watermill
-[00755|2018-02-25 15:38:39|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill"
-[00756|2018-02-25 15:38:39|  trace] : path exists: 1
-[00757|2018-02-25 15:38:39|  trace] : folder: 1.0
-[00758|2018-02-25 15:38:39|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill\1.0"
-[00759|2018-02-25 15:38:39|  trace] : path exists: 1
-[00760|2018-02-25 15:38:39|  trace] : glutInit+++
-[00761|2018-02-25 15:38:39|  trace] : glutDisplayFunc+++
-[00762|2018-02-25 15:38:39|  trace] : glutMainLoop+++
-[00763|2018-02-25 15:38:39|  trace] : after glutMainLoop+++
-[00764|2018-02-25 15:38:39|   info] : SAFE_DELETE delete: Pc
-[00765|2018-02-25 15:38:39|  trace] : createGameAndView++++
-[00766|2018-02-25 15:38:39|  trace] : WatermillGame::createGameAndView
-[00767|2018-02-25 15:38:39|  trace] : Create BaseGameLogic
-[00768|2018-02-25 15:38:39|  trace] : Create ProcessManager
-[00769|2018-02-25 15:38:39|  trace] : Create WatermillLogic
-[00770|2018-02-25 15:38:39|  trace] : Create ActorFactory
-[00771|2018-02-25 15:38:39|  trace] : Create ComponentFactory
-[00772|2018-02-25 15:38:39|  trace] : zarejestrowano: renderComponent; function: 1
-[00773|2018-02-25 15:38:39|  trace] : zarejestrowano: scriptComponent; function: 1
-[00774|2018-02-25 15:38:39|  trace] : zarejestrowano: transformComponent; function: 1
-[00775|2018-02-25 15:38:39|   info] : Create Resource
-[00776|2018-02-25 15:38:39|   info] : Orig name: TestImage.jpg
-[00777|2018-02-25 15:38:39|   info] : Tolower name: testimage.jpg
-[00778|2018-02-25 15:38:39|   info] : ResourceCache::getHandle
-[00779|2018-02-25 15:38:39|   info] : ResourceCache::find
-[00780|2018-02-25 15:38:39|   info] : ResourceCache::load
-[00781|2018-02-25 15:38:39|   info] : Create ResourceHandle
-[00782|2018-02-25 15:38:39|   info] : Destroy ResourceHandle
-[00783|2018-02-25 15:38:39|   info] : Destroy Resource
-[00784|2018-02-25 15:38:39|   info] : Destroy Resource
-[00785|2018-02-25 15:38:39|   info] : createGameAndView+2
-[00786|2018-02-25 15:38:39|  trace] : Destroy Windows64Calls
-[00787|2018-02-25 15:38:39|  trace] : Main loop+++
-[00788|2018-02-25 15:38:39|   info] : BaseGameLogic::tempTestZipFile
-[00789|2018-02-25 15:38:39|   info] : Create HumanView
-[00790|2018-02-25 15:38:39|   info] : vOnRestore HumanView
-[00791|2018-02-25 15:38:39|  trace] :  GLUT window visible
-[00792|2018-02-25 15:38:39|  trace] : GLUT_NOT_VISIBLE: 0, GLUT_VISIBLE: 1
-[00793|2018-02-25 15:38:39|  trace] : GLUT visibilityFunction: 1
-[00794|2018-02-25 15:38:39|   info] : display----
-[00795|2018-02-25 15:38:39|   info] : GLUT TIMER: 1
-[00796|2018-02-25 15:38:39|   info] : GLUT TIMER: 2
-[00797|2018-02-25 15:38:39|   info] : GLUT TIMER: 3
-[00798|2018-02-25 15:38:42|   info] : GLUT onClose
-[00799|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game11GameCodeAppE
-[00800|2018-02-25 15:38:42|  trace] : Destroy WatermillGame
-[00801|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
-[00802|2018-02-25 15:38:42|  trace] : Destroy WatermillLogic
-[00803|2018-02-25 15:38:42|   info] : Destroy HumanView
-[00804|2018-02-25 15:38:42|   info] : Destroy IGameView
-[00805|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
-[00806|2018-02-25 15:38:42|  trace] : Destroy ProcessManager
-[00807|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game12ActorFactoryE
-[00808|2018-02-25 15:38:42|  trace] : Destroy ActorFactory
-[00809|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game16ComponentFactoryE
-[00810|2018-02-25 15:38:42|  trace] : Destroy ComponentFactory
-[00811|2018-02-25 15:38:42|  trace] : Destroy BaseGameLogic
-[00812|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game11SaveManagerE
-[00813|2018-02-25 15:38:42|  trace] : Destroy SaveManager
-[00814|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game11VideoSystemE
-[00815|2018-02-25 15:38:42|  trace] : Destroy VideoSystem
-[00816|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game11AudioSystemE
-[00817|2018-02-25 15:38:42|  trace] : Destroy AudioSystem
-[00818|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game9DataFilesE
-[00819|2018-02-25 15:38:42|  trace] : Destroy DataFiles
-[00820|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game12EventManagerE
-[00821|2018-02-25 15:38:42|  trace] : Destroy EventManager
-[00822|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game15LuaStateManagerE
-[00823|2018-02-25 15:38:42|  trace] : Destroy LuaStateManager
-[00824|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game12GameMessagesE
-[00825|2018-02-25 15:38:42|  trace] : Destroy GameMessages
-[00826|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game13ResourceCacheE
-[00827|2018-02-25 15:38:42|   info] : Destroy ResourceCache
-[00828|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game13IResourceFileE
-[00829|2018-02-25 15:38:42|   info] : Destroy DevelopmentResourceUnzipFile
-[00830|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game7ZipFileE
-[00831|2018-02-25 15:38:42|   info] : Destroy ZipFile
-[00832|2018-02-25 15:38:42|   info] : PRE CLEAR: file Data size 5089
-[00833|2018-02-25 15:38:42|   info] : POST CLEAR: file Data size 0
-[00834|2018-02-25 15:38:42|   info] : Destroy IResourceFile
-[00835|2018-02-25 15:38:42|  trace] : Destroy XmlResourceLoader
-[00836|2018-02-25 15:38:42|  trace] : Destroy IResourceLoader
-[00837|2018-02-25 15:38:42|  trace] : Destroy DefaultResourceLoader
-[00838|2018-02-25 15:38:42|  trace] : Destroy IResourceLoader
-[00839|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game16DebuggingOptionsE
-[00840|2018-02-25 15:38:42|  trace] : Destroy DebuggingOptions
-[00841|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game13PlayerOptionsE
-[00842|2018-02-25 15:38:42|  trace] : Destroy PlayerOptions
-[00843|2018-02-25 15:38:42|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
-[00844|2018-02-25 15:38:42|  trace] : Destroy InitOptions
-[00845|2018-02-25 15:38:42|  trace] : Destroy GameCodeApp
-[00846|2018-02-25 15:38:42|   info] : gameCodeApp init succeeded
+[00591|2018-02-25 18:18:41|   info] : TZipLocalHeader DescribeYourself END
+[00592|2018-02-25 18:18:41|   info] : FILE CONTENTS: 
+[00593|2018-02-25 18:18:41|   info] : ZipFileAsset DescribeYourself END
+[00594|2018-02-25 18:18:41|  trace] : Create IResourceLoader
+[00595|2018-02-25 18:18:41|  trace] : Create DefaultResourceLoader
+[00596|2018-02-25 18:18:41|   info] : VSAVE: ../../../
+[00597|2018-02-25 18:18:41|   info] : ZipFile prepareOutputDir: ../../..//assetsUnzipToFolder
+[00598|2018-02-25 18:18:41|   info] : START createFilesAndFolders
+[00599|2018-02-25 18:18:41|   info] : fileName: actors\player_character.xml
+[00600|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\actors\player_character.xml"
+[00601|2018-02-25 18:18:41|   info] : only filename "player_character.xml"
+[00602|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\actors"
+[00603|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\actors
+[00604|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00605|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\actors\player_character.xml"
+[00606|2018-02-25 18:18:41|   info] : fileName: graphics\polskie•Í∆znaki.txt
+[00607|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\polskie•Í∆znaki.txt"
+[00608|2018-02-25 18:18:41|   info] : only filename "polskie•Í∆znaki.txt"
+[00609|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00610|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\graphics
+[00611|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00612|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\polskie•Í∆znaki.txt"
+[00613|2018-02-25 18:18:41|   info] : fileName: graphics\tempSecondZip.txt
+[00614|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempSecondZip.txt"
+[00615|2018-02-25 18:18:41|   info] : only filename "tempSecondZip.txt"
+[00616|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00617|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00618|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00619|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempSecondZip.txt"
+[00620|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestAbcdOut.txt
+[00621|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOut.txt"
+[00622|2018-02-25 18:18:41|   info] : only filename "tempTestAbcdOut.txt"
+[00623|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00624|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00625|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00626|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOut.txt"
+[00627|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestAbcdOutZip
+[00628|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOutZip"
+[00629|2018-02-25 18:18:41|   info] : only filename "tempTestAbcdOutZip"
+[00630|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00631|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00632|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00633|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAbcdOutZip"
+[00634|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestAllOut.txt
+[00635|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAllOut.txt"
+[00636|2018-02-25 18:18:41|   info] : only filename "tempTestAllOut.txt"
+[00637|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00638|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00639|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00640|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestAllOut.txt"
+[00641|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestDirHeaderOut.txt
+[00642|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOut.txt"
+[00643|2018-02-25 18:18:41|   info] : only filename "tempTestDirHeaderOut.txt"
+[00644|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00645|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00646|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00647|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOut.txt"
+[00648|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestDirHeaderOutArraySource.txt
+[00649|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutArraySource.txt"
+[00650|2018-02-25 18:18:41|   info] : only filename "tempTestDirHeaderOutArraySource.txt"
+[00651|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00652|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00653|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00654|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutArraySource.txt"
+[00655|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestDirHeaderOutZip.txt
+[00656|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutZip.txt"
+[00657|2018-02-25 18:18:41|   info] : only filename "tempTestDirHeaderOutZip.txt"
+[00658|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00659|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00660|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00661|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestDirHeaderOutZip.txt"
+[00662|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestZipFile.txt
+[00663|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFile.txt"
+[00664|2018-02-25 18:18:41|   info] : only filename "tempTestZipFile.txt"
+[00665|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00666|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00667|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00668|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFile.txt"
+[00669|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestZipFileOut.txt
+[00670|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOut.txt"
+[00671|2018-02-25 18:18:41|   info] : only filename "tempTestZipFileOut.txt"
+[00672|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00673|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00674|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00675|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOut.txt"
+[00676|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestZipFileOutAll.txt
+[00677|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOutAll.txt"
+[00678|2018-02-25 18:18:41|   info] : only filename "tempTestZipFileOutAll.txt"
+[00679|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00680|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00681|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00682|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileOutAll.txt"
+[00683|2018-02-25 18:18:41|   info] : fileName: graphics\tempTestZipFileZipOut.txt
+[00684|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileZipOut.txt"
+[00685|2018-02-25 18:18:41|   info] : only filename "tempTestZipFileZipOut.txt"
+[00686|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00687|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00688|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00689|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempTestZipFileZipOut.txt"
+[00690|2018-02-25 18:18:41|   info] : fileName: graphics\tempThirdZip.txt
+[00691|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\graphics\tempThirdZip.txt"
+[00692|2018-02-25 18:18:41|   info] : only filename "tempThirdZip.txt"
+[00693|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\graphics"
+[00694|2018-02-25 18:18:41|   info] : ALREADY EXISTS: ..\..\..\\assetsUnzipToFolder\graphics
+[00695|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00696|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\graphics\tempThirdZip.txt"
+[00697|2018-02-25 18:18:41|   info] : fileName: scripts\test.lua
+[00698|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\scripts\test.lua"
+[00699|2018-02-25 18:18:41|   info] : only filename "test.lua"
+[00700|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\scripts"
+[00701|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\scripts
+[00702|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00703|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\scripts\test.lua"
+[00704|2018-02-25 18:18:41|   info] : fileName: strings\en\LC_MESSAGES\watermill.po
+[00705|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES\watermill.po"
+[00706|2018-02-25 18:18:41|   info] : only filename "watermill.po"
+[00707|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES"
+[00708|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES
+[00709|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00710|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\strings\en\LC_MESSAGES\watermill.po"
+[00711|2018-02-25 18:18:41|   info] : fileName: strings\pl\LC_MESSAGES\watermill.po
+[00712|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES\watermill.po"
+[00713|2018-02-25 18:18:41|   info] : only filename "watermill.po"
+[00714|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES"
+[00715|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES
+[00716|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00717|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\strings\pl\LC_MESSAGES\watermill.po"
+[00718|2018-02-25 18:18:41|   info] : fileName: tempGraphics\test.txt
+[00719|2018-02-25 18:18:41|   info] : full preferred Path: "..\..\..\\assetsUnzipToFolder\tempGraphics\test.txt"
+[00720|2018-02-25 18:18:41|   info] : only filename "test.txt"
+[00721|2018-02-25 18:18:41|   info] : no filename preferred Path: "..\..\..\\assetsUnzipToFolder\tempGraphics"
+[00722|2018-02-25 18:18:41|   info] : CREATING NEW: ..\..\..\\assetsUnzipToFolder\tempGraphics
+[00723|2018-02-25 18:18:41|   info] : Saving not compressed files to folder
+[00724|2018-02-25 18:18:41|   info] : copy file into: "..\..\..\\assetsUnzipToFolder\tempGraphics\test.txt"
+[00725|2018-02-25 18:18:41|   info] : END createFilesAndFolders
+[00726|2018-02-25 18:18:41|  trace] : Create IResourceLoader
+[00727|2018-02-25 18:18:41|  trace] : Create XmlResourceLoader
+[00728|2018-02-25 18:18:41|  trace] : Create GameMessages
+[00729|2018-02-25 18:18:41|  trace] : LAN: pl.UTF-8
+[00730|2018-02-25 18:18:41|  trace] : The language code is pl
+[00731|2018-02-25 18:18:41|  trace] : The country code is 
+[00732|2018-02-25 18:18:41|  trace] : name *
+[00733|2018-02-25 18:18:41|  trace] : hello_world
+[00734|2018-02-25 18:18:41|  trace] : hello_world_only_pl_pl
+[00735|2018-02-25 18:18:41|  trace] : hello_world_only_pl
+[00736|2018-02-25 18:18:41|  trace] : hello_world_only_en
+[00737|2018-02-25 18:18:41|  trace] : hello_world_only_default
+[00738|2018-02-25 18:18:41|  trace] : Pr√≥ba kodowania Cze≈õƒá ≈öwiecie
+[00739|2018-02-25 18:18:41|  trace] : Create LuaStateManager
+[00740|2018-02-25 18:18:41|  trace] : lua script: test.lua
+[00741|2018-02-25 18:18:41|  trace] : lua full script: ../../../assets/scripts/test.lua
+[00742|2018-02-25 18:18:41|  trace] : howdy() was called with 3 arguments
+[00743|2018-02-25 18:18:41|  trace] :   argument 1: First
+[00744|2018-02-25 18:18:41|  trace] :   argument 2: Second
+[00745|2018-02-25 18:18:41|  trace] :   argument 3: 112233
+[00746|2018-02-25 18:18:41|   info] : SAFE_DELETE delete: Pc
+[00747|2018-02-25 18:18:41|  trace] : Create EventManager
+[00748|2018-02-25 18:18:41|  trace] : Create DataFiles
+[00749|2018-02-25 18:18:41|  trace] : Create AudioSystem
+[00750|2018-02-25 18:18:41|  trace] : Create VideoSystem
+[00751|2018-02-25 18:18:41|  trace] : videoSystem++++
+[00752|2018-02-25 18:18:41|  trace] : Create SaveManager
+[00753|2018-02-25 18:18:41|  trace] : saveGame: GameEngine\Watermill\1.0
+[00754|2018-02-25 18:18:41|  trace] : userprofile: C:\Users\Krzysztof
+[00755|2018-02-25 18:18:41|  trace] : userProfilePathStr: C:\Users\Krzysztof
+[00756|2018-02-25 18:18:41|  trace] : SaveManager saveGame: GameEngine\Watermill\1.0
+[00757|2018-02-25 18:18:41|  trace] : SaveManager userProfilePathStr: C:\Users\Krzysztof
+[00758|2018-02-25 18:18:41|  trace] : folder: GameEngine
+[00759|2018-02-25 18:18:41|  trace] : path: "C:\Users\Krzysztof\GameEngine"
+[00760|2018-02-25 18:18:41|  trace] : path exists: 1
+[00761|2018-02-25 18:18:41|  trace] : folder: Watermill
+[00762|2018-02-25 18:18:41|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill"
+[00763|2018-02-25 18:18:41|  trace] : path exists: 1
+[00764|2018-02-25 18:18:41|  trace] : folder: 1.0
+[00765|2018-02-25 18:18:41|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill\1.0"
+[00766|2018-02-25 18:18:41|  trace] : path exists: 1
+[00767|2018-02-25 18:18:41|  trace] : glutInit+++
+[00768|2018-02-25 18:18:41|  trace] : glutDisplayFunc+++
+[00769|2018-02-25 18:18:41|  trace] : glutMainLoop+++
+[00770|2018-02-25 18:18:41|  trace] : after glutMainLoop+++
+[00771|2018-02-25 18:18:41|   info] : SAFE_DELETE delete: Pc
+[00772|2018-02-25 18:18:41|  trace] : createGameAndView++++
+[00773|2018-02-25 18:18:41|  trace] : WatermillGame::createGameAndView
+[00774|2018-02-25 18:18:41|  trace] : Create BaseGameLogic
+[00775|2018-02-25 18:18:41|  trace] : Create ProcessManager
+[00776|2018-02-25 18:18:41|  trace] : Create WatermillLogic
+[00777|2018-02-25 18:18:41|  trace] : Create ActorFactory
+[00778|2018-02-25 18:18:41|  trace] : Create ComponentFactory
+[00779|2018-02-25 18:18:41|  trace] : zarejestrowano: renderComponent; function: 1
+[00780|2018-02-25 18:18:41|  trace] : zarejestrowano: scriptComponent; function: 1
+[00781|2018-02-25 18:18:41|  trace] : zarejestrowano: transformComponent; function: 1
+[00782|2018-02-25 18:18:41|   info] : Create Resource
+[00783|2018-02-25 18:18:41|   info] : Orig name: TestImage.jpg
+[00784|2018-02-25 18:18:41|   info] : Tolower name: testimage.jpg
+[00785|2018-02-25 18:18:41|   info] : ResourceCache::getHandle
+[00786|2018-02-25 18:18:41|   info] : ResourceCache::find
+[00787|2018-02-25 18:18:41|   info] : ResourceCache::load
+[00788|2018-02-25 18:18:41|   info] : Create ResourceHandle
+[00789|2018-02-25 18:18:41|   info] : Destroy ResourceHandle
+[00790|2018-02-25 18:18:41|   info] : Destroy Resource
+[00791|2018-02-25 18:18:41|   info] : Destroy Resource
+[00792|2018-02-25 18:18:41|   info] : createGameAndView+2
+[00793|2018-02-25 18:18:41|  trace] : Destroy Windows64Calls
+[00794|2018-02-25 18:18:41|  trace] : Main loop+++
+[00795|2018-02-25 18:18:41|   info] : Create HumanView
+[00796|2018-02-25 18:18:41|   info] : vOnRestore HumanView
+[00797|2018-02-25 18:18:41|  trace] :  GLUT window visible
+[00798|2018-02-25 18:18:41|  trace] : GLUT_NOT_VISIBLE: 0, GLUT_VISIBLE: 1
+[00799|2018-02-25 18:18:41|  trace] : GLUT visibilityFunction: 1
+[00800|2018-02-25 18:18:41|   info] : display----
+[00801|2018-02-25 18:18:41|   info] : GLUT TIMER: 1
+[00802|2018-02-25 18:18:41|   info] : GLUT TIMER: 2
+[00803|2018-02-25 18:18:41|   info] : GLUT TIMER: 3
+[00804|2018-02-25 18:18:43|   info] : GLUT onClose
+[00805|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game11GameCodeAppE
+[00806|2018-02-25 18:18:43|  trace] : Destroy WatermillGame
+[00807|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
+[00808|2018-02-25 18:18:43|  trace] : Destroy WatermillLogic
+[00809|2018-02-25 18:18:43|   info] : Destroy HumanView
+[00810|2018-02-25 18:18:43|   info] : Destroy IGameView
+[00811|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00812|2018-02-25 18:18:43|  trace] : Destroy ProcessManager
+[00813|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game12ActorFactoryE
+[00814|2018-02-25 18:18:43|  trace] : Destroy ActorFactory
+[00815|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game16ComponentFactoryE
+[00816|2018-02-25 18:18:43|  trace] : Destroy ComponentFactory
+[00817|2018-02-25 18:18:43|  trace] : Destroy BaseGameLogic
+[00818|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game11SaveManagerE
+[00819|2018-02-25 18:18:43|  trace] : Destroy SaveManager
+[00820|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game11VideoSystemE
+[00821|2018-02-25 18:18:43|  trace] : Destroy VideoSystem
+[00822|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game11AudioSystemE
+[00823|2018-02-25 18:18:43|  trace] : Destroy AudioSystem
+[00824|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game9DataFilesE
+[00825|2018-02-25 18:18:43|  trace] : Destroy DataFiles
+[00826|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game12EventManagerE
+[00827|2018-02-25 18:18:43|  trace] : Destroy EventManager
+[00828|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game15LuaStateManagerE
+[00829|2018-02-25 18:18:43|  trace] : Destroy LuaStateManager
+[00830|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game12GameMessagesE
+[00831|2018-02-25 18:18:43|  trace] : Destroy GameMessages
+[00832|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game13ResourceCacheE
+[00833|2018-02-25 18:18:43|   info] : Destroy ResourceCache
+[00834|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game13IResourceFileE
+[00835|2018-02-25 18:18:43|   info] : Destroy DevelopmentResourceUnzipFile
+[00836|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game7ZipFileE
+[00837|2018-02-25 18:18:43|   info] : Destroy ZipFile
+[00838|2018-02-25 18:18:43|   info] : PRE CLEAR: file Data size 5089
+[00839|2018-02-25 18:18:43|   info] : POST CLEAR: file Data size 0
+[00840|2018-02-25 18:18:43|   info] : Destroy IResourceFile
+[00841|2018-02-25 18:18:43|  trace] : Destroy XmlResourceLoader
+[00842|2018-02-25 18:18:43|  trace] : Destroy IResourceLoader
+[00843|2018-02-25 18:18:43|  trace] : Destroy DefaultResourceLoader
+[00844|2018-02-25 18:18:43|  trace] : Destroy IResourceLoader
+[00845|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game16DebuggingOptionsE
+[00846|2018-02-25 18:18:43|  trace] : Destroy DebuggingOptions
+[00847|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game13PlayerOptionsE
+[00848|2018-02-25 18:18:43|  trace] : Destroy PlayerOptions
+[00849|2018-02-25 18:18:43|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
+[00850|2018-02-25 18:18:43|  trace] : Destroy InitOptions
+[00851|2018-02-25 18:18:43|  trace] : Destroy GameCodeApp
+[00852|2018-02-25 18:18:43|   info] : gameCodeApp init succeeded

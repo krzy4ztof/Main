@@ -18,8 +18,6 @@ public:
 	const static std::string ASSETS_SAVE_MODE_UNZIPFILE;
 
 	const static std::string ASSETS_FOLDER_TO_FOLDER;
-//	const static std::string ASSETS_DEV_UNZIP_FOLDER;
-//	const static std::string ASSETS_DEV_ZIP_FOLDER;
 
 	const static std::string ASSETS_FOLDER;
 	const static std::string ASSETS_UNZIP_FILE;
@@ -36,7 +34,6 @@ public:
 	virtual ~IResourceFile();
 	virtual bool vOpen()=0;
 
-//			virtual bool vSave(const std::string saveMode)=0;
 	virtual bool vSave(const std::string saveMode);
 
 protected:
@@ -45,7 +42,6 @@ protected:
 	virtual bool vSaveFolderMode()=0;
 	virtual bool vSaveUnzipMode()=0;
 	virtual bool vSaveZipMode()=0;
-//	virtual bool vCreateFolder(boost::filesystem::path newFolder);
 
 private:
 };

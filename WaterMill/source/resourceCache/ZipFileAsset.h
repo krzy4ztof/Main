@@ -27,7 +27,6 @@ public:
 
 	unsigned short getFileNameLength();
 	unsigned long getFileDataSize();
-//	std::string getUnzipFileName();
 
 	void describeYourself();
 

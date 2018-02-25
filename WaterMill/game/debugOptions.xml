@@ -6,44 +6,26 @@
         <option name="antialias" value="true_antialias"></option>
         <option name="speed" valueWrong="true_speed"></option>
         
-        
         <option name="assetsReadMode" value="folder"></option>
-        <option name="assetsSaveMode" value="folder"></option>        
-        
-         <!--   
-        <option name="assetsReadMode" value="folder"></option>
-        <option name="assetsSaveMode" value="unzipFile"></option>        
-           -->
-           <!-- 
-        <option name="assetsReadMode" value="folder"></option>
-        <option name="assetsSaveMode" value="zipFile"></option>     
-          -->
-          
-       <!--  
-        <option name="assetsReadMode" value="unzipFile"></option>
         <option name="assetsSaveMode" value="folder"></option>
-        -->
-      <!-- 
-        <option name="assetsReadMode" value="unzipFile"></option>
-        <option name="assetsSaveMode" value="unzipFile"></option>
-   -->
-     <!--
-        <option name="assetsReadMode" value="unzipFile"></option>
-        <option name="assetsSaveMode" value="zipFile"></option>
-   -->  
+
+        
+        <!-- <option name="assetsReadMode" value="folder"></option>  -->
+        <!-- <option name="assetsSaveMode" value="folder"></option>         -->          
+        <!-- <option name="assetsSaveMode" value="unzipFile"></option>         -->
+        <!-- <option name="assetsSaveMode" value="zipFile"></option>    -->  
+          
+       
+     <!--   <option name="assetsReadMode" value="unzipFile"></option> -->
+     <!--    <option name="assetsSaveMode" value="folder"></option>        -->
+      <!-- <option name="assetsSaveMode" value="unzipFile"></option> -->
+      <!-- <option name="assetsSaveMode" value="zipFile"></option>  -->
       
-      <!-- 
-        <option name="assetsReadMode" value="zipFile"></option>
-	 <option name="assetsSaveMode" value="folder"></option>
-	 -->
-   <!-- 
-     <option name="assetsReadMode" value="zipFile"></option>
-	 <option name="assetsSaveMode" value="zipFile"></option>
-    -->
-   <!-- 
-     <option name="assetsReadMode" value="zipFile"></option>
-	 <option name="assetsSaveMode" value="unzipFile"></option>
-      -->
+         
+      <!--    <option name="assetsReadMode" value="zipFile"></option>-->
+	   <!--  <option name="assetsSaveMode" value="folder"></option>	-->
+	 <!-- <option name="assetsSaveMode" value="zipFile"></option>  -->
+	 <!--    <option name="assetsSaveMode" value="unzipFile"></option>-->
        
     </options>
 </debug>

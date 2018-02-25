@@ -17,26 +17,6 @@ TZipLocalHeader::~TZipLocalHeader() {
 	logger::info("Destroy TZipLocalHeader");
 }
 
-/*
-
- ofstream& operator<<(ofstream& ofs, const TZipLocalHeader& zipLocalHeader) {
-
- ofs << "|" << zipLocalHeader.sig
- << "|" << zipLocalHeader.version
- << "|" << zipLocalHeader.flag
- << "|" << zipLocalHeader.compression
- << "|" << zipLocalHeader.modTime
- << "|" << zipLocalHeader.modDate
- << "|" << zipLocalHeader.crc32
- << "|" << zipLocalHeader.cSize
- << "|" << zipLocalHeader.ucSize
- << "|" << zipLocalHeader.fnameLen
- << "|" << zipLocalHeader.xtraLen;
-
- return ofs;
- }
- */
-
 void TZipLocalHeader::testInitiation() {
 	// unsigned long (4)
 	sig = TZipLocalHeader::SIGNATURE;

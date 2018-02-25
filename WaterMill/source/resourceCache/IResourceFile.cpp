@@ -9,13 +9,6 @@
 
 using std::string;
 
-/*
- using std::stringstream;
-
- using boost::filesystem::path;
- using boost::filesystem::filesystem_error;
- using boost::filesystem::create_directory;
- */
 
 namespace base_game {
 
@@ -29,8 +22,6 @@ const string IResourceFile::ASSETS_SAVE_MODE_ZIPFILE = "zipFile";
 const string IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE = "unzipFile";
 
 const string IResourceFile::ASSETS_FOLDER_TO_FOLDER = "assetsFolderToFolder";
-//const string IResourceFile::ASSETS_DEV_UNZIP_FOLDER = "assetsDevUnzip";
-//const string IResourceFile::ASSETS_DEV_ZIP_FOLDER = "assetsDevZip";
 
 const string IResourceFile::ASSETS_FOLDER = "assets";
 const string IResourceFile::ASSETS_UNZIP_FILE = "assetsUnzip.zip";
@@ -47,8 +38,6 @@ const string IResourceFile::ASSETS_ZIP_TO_ZIP = "assetsZipToZip.zip";
 IResourceFile::IResourceFile(const string rootFolder) :
 		m_rootFolder(rootFolder) {
 	logger::info("Create IResourceFile(rootFolder)");
-//	m_assetsFolder = assetsFolder;
-
 }
 
 IResourceFile::~IResourceFile() {
@@ -68,32 +57,4 @@ bool IResourceFile::vSave(const string saveMode) {
 
 	return true;
 }
-/*
- bool IResourceFile::vCreateFolder(path newFolder) {
- stringstream ss;
-
- if (exists(newFolder)) {
- //	ss << "ALREADY EXISTS: " << newFolder.string();
- //	logger::info(ss);
-
- } else {
- //	ss << "CREATING NEW: " << newFolder.string();
- //	logger::info(ss);
-
- path newSubFolder { };
- for (path element : newFolder) {
- newSubFolder /= element;
-
- try {
-
- create_directory(newSubFolder);
- } catch (filesystem_error &ex) {
- logger::error(ex.what());
- }
- }
- }
-
- return true;
- }
- */
 }

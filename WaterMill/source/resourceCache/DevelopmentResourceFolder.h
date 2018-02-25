@@ -49,24 +49,8 @@ protected:
 	bool fileToIgnore(boost::filesystem::path filePath);
 
 	virtual bool vSaveUnzipMode();
-	bool createUnzipFile_222(const std::string folderName,
-			const std::string assetsUnzipFile);
-
-	bool saveUnzipAsset_222(boost::filesystem::ofstream& ofs,
-			const boost::filesystem::path resourceFilePath,
-			const std::string shortFileName,
-			std::list<TZipDirFileHeader*>& dirFileHeadersList,
-			const TZipDirHeader& dh);
 
 	virtual bool vSaveZipMode();
-	bool createZipFile_222(const std::string folderName,
-			const std::string assetsUnzipFile);
-
-	bool saveZipAsset_222(boost::filesystem::ofstream& ofs,
-			const boost::filesystem::path resourceFilePath,
-			const std::string shortFileName,
-			std::list<TZipDirFileHeader*>& dirFileHeadersList,
-			const TZipDirHeader& dh);
 
 	bool createAssetFile(const std::string folderName,
 			const std::string assetsUnzipFile, const std::string saveMode);

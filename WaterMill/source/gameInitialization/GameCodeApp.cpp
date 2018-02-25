@@ -299,13 +299,6 @@ void GameCodeApp::mainLoop() {
 	//TODO: remove tempCreateActors
 	//m_pGame->tempCreateActors();
 
-	string readMode = debuggingOptions->getOption(
-			debuggingOptions->ASSETS_READ_MODE);
-	string saveMode = debuggingOptions->getOption(
-			debuggingOptions->ASSETS_SAVE_MODE);
-
-	m_pGame->tempTestZipFile(initOptions->getAssetsFolder(), readMode,
-			saveMode);
 	//m_pGame->tempTestActors();//ok
 	m_pGame->tempAddViews();		//ok
 	//m_pGame->tempTestProcessManager();//ok

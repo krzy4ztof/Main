@@ -17,22 +17,17 @@ namespace base_game {
 
 class DevelopmentResourceUnzipFile: public IResourceFile {
 public:
-//	DevelopmentResourceUnzipFile();
 	DevelopmentResourceUnzipFile(const std::string folderName,
 			const std::string fileName);
-	//ResourceZipFile(const std::string fileName, const std::string readMode);
 
 	virtual ~DevelopmentResourceUnzipFile();
 
 	virtual bool vOpen();
-//	virtual bool vSave(const std::string saveMode);
 
 protected:
 	virtual bool vSaveFolderMode();
 	virtual bool vSaveUnzipMode();
 	virtual bool vSaveZipMode();
-
-	//bool readUnzipAssets();
 
 private:
 	ZipFile *m_pZipFile;

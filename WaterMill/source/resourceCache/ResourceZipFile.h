@@ -10,8 +10,7 @@ namespace base_game {
 class ResourceZipFile: public IResourceFile {
 public:
 	ResourceZipFile(const std::string folderName, const std::string fileName);
-	//		ResourceZipFile(const std::string fileName, const std::string readMode);
-//			ResourceZipFile();
+
 	virtual ~ResourceZipFile();
 	virtual bool vOpen();
 	//		virtual bool vSave(const std::string saveMode);

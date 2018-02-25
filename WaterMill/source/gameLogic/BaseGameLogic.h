@@ -24,9 +24,6 @@ public:
 	void tempTestActors();
 	void tempTestProcessManager();
 	void tempAddViews();
-	void tempTestZipFile(const std::string &assetsFolder,
-			const std::string& assetsReadMode,
-			const std::string& assetsSaveMode);
 
 	virtual void vAddView(std::shared_ptr<IGameView> pView,
 			unsigned int actorId = Actor::INVALID_ACTOR_ID);

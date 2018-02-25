@@ -51,11 +51,6 @@ unsigned long ZipFileAsset::getFileDataSize() {
 	return 0;
 }
 
-/*
- string ZipFileAsset::getUnzipFileName() {
- return fileName;
- }
- */
 
 void ZipFileAsset::describeYourself() {
 	stringstream ss;
@@ -72,13 +67,6 @@ void ZipFileAsset::describeYourself() {
 
 	ss << "FILE CONTENTS: ";
 	logger::info(ss);
-
-	/*
-	 for (unsigned long i = 0; i < getFileDataSize(); i++) {
-	 ss << m_pDirData[i];
-	 }
-	 logger::info(ss);
-	 */
 
 	ss << "ZipFileAsset DescribeYourself END";
 	logger::info(ss);
