@@ -686,11 +686,65 @@ a pozniej poprawic
 
 
 --	25/02/2017	---
+Wszystkie metody odczytu i zapisu zrobione. Został tylko refaktor kodu.
+
 
 Wprowadzic zapis do pola:
 			Z_NO_COMPRESSION = 0,
 				Z_DEFLATED = 1
 
+Refactor - kompresja
+//TODO: compression
+bool ZipFile::saveFileNameNoCompression
+bool ZipFile::saveFileNameCompression
+bool ZipFile::saveFileNameDecompression
+
+Refactor
+bool ZipFile::saveAssetFileContents(ofstream& ofs, ZipFileAsset* pZipFileAsset,
+		unsigned short outputSaveMode, vector<char>& vecFileContents) {
+
+bool DevelopmentResourceFolder::saveAssetFileName(TZipLocalHeader& lh,
+
+bool DevelopmentResourceFolder::saveAssetFileContents(ofstream& ofs,
+		const path resourceFilePath, const string saveMode,
+		vector<char>& vecFileContents) {
+		
+Połączenie		
+bool ZipFile::copyZipFile(path inPath, ZipFileAsset* pZipFileAsset) {
+bool ZipFile::copyUnzipFile(path inPath, ZipFileAsset* pZipFileAsset) {
+
+więcej metod w stylu:
+string ZipFile::zipToUnzip(string zipString) {
+		
+		
+---	07/03/2018	---
+todo:
+
+bool DevelopmentResourceFolder::createAssetFile(const string folderName,
+		const string assetsUnzipFile, const string saveMode)		
+zmienić 
+ const string saveMode
+na
+unsigned short outputSaveMode
+
+i
+Wprowadzic zapis do pola:
+			Z_NO_COMPRESSION = 0,
+				Z_DEFLATED = 1
+
+porównaj z 
+bool ZipFile::save(const std::string& outFileName,
+		unsigned short outputSaveMode)
+				
+---	12/03/2018	---
+todo:
+
+
+porównaj z 
+bool ZipFile::save(const std::string& outFileName,
+		unsigned short outputSaveMode)
+		
+Przetestować				
 		
 *******************
 ***	FUTURE TODO	***

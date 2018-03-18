@@ -24,8 +24,7 @@ public:
 
 	bool init(const std::string& resFileName, unsigned short inputSaveMode);
 	bool save(const std::string& outFileName, unsigned short outputSaveMode);
-	void saveAsFolder(const std::string& outFolderName); 
-
+	void saveAsFolder(const std::string& outFolderName);
 
 	void describeYourself();
 
@@ -34,9 +33,9 @@ protected:
 	void reset();
 	unsigned short getNumberOfEntries();
 	bool initZipDirHeader();
-	bool initDirFileHeaders(unsigned short nDirEntries); 
+	bool initDirFileHeaders(unsigned short nDirEntries);
 
-	bool initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pLocalHeader); 
+	bool initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pLocalHeader);
 
 	bool isZipFileHeaderCorrect(TZipDirFileHeader* pZipDirFileHeader, int i);
 	bool isZipLocalHeaderCorrect(TZipLocalHeader* pZipLocalHeader);
@@ -44,10 +43,10 @@ protected:
 	bool prepareOutputDir(const std::string folderName);
 	bool createFilesAndFolders(const std::string folderName);
 	bool createFolder(boost::filesystem::path newFolder);
-	bool copyFile(boost::filesystem::path inPath, ZipFileAsset* pZipFileAsset); 
-	bool copyUnzipFile(boost::filesystem::path inPath,
+	void copyFile(boost::filesystem::path inPath, ZipFileAsset* pZipFileAsset);
+	void copyUnzipFile(boost::filesystem::path inPath,
 			ZipFileAsset* pZipFileAsset);
-	bool copyZipFile(boost::filesystem::path inPath,
+	void copyZipFile(boost::filesystem::path inPath,
 			ZipFileAsset* pZipFileAsset);
 
 	bool saveAsset(boost::filesystem::ofstream& ofs,
@@ -55,16 +54,43 @@ protected:
 			std::list<TZipDirFileHeader*>& dirFileHeadersList,
 			const TZipDirHeader& dh, unsigned short outputSaveMode);
 
-	bool saveAssetFileName(TZipLocalHeader& lh,
+	void saveAssetFileName(TZipLocalHeader& lh,
 			boost::filesystem::ofstream& ofs, ZipFileAsset* zipFileAsset,
 			unsigned short outputSaveMode);
+
+	void saveFileNameNoCompression(TZipLocalHeader& lh,
+			boost::filesystem::ofstream& ofs, ZipFileAsset* pZipFileAsset);
+
+	void saveFileNameCompression(TZipLocalHeader& lh,
+			boost::filesystem::ofstream& ofs, ZipFileAsset* pZipFileAsset);
+
+	void saveFileNameDecompression(TZipLocalHeader& lh,
+			boost::filesystem::ofstream& ofs, ZipFileAsset* pZipFileAsset);
+
+
+	bool saveAssetFileName_ok_111(TZipLocalHeader& lh,
+			boost::filesystem::ofstream& ofs, ZipFileAsset* zipFileAsset,
+			unsigned short outputSaveMode);
+
+	void saveAssetFileNoCompression(boost::filesystem::ofstream& ofs,
+			ZipFileAsset* pZipFileAsset, std::vector<char>& vecFileContents);
+
+	void saveAssetFileCompression(boost::filesystem::ofstream& ofs,
+			ZipFileAsset* pZipFileAsset, std::vector<char>& vecFileContents);
+
+	void saveAssetFileDecompression(boost::filesystem::ofstream& ofs,
+			ZipFileAsset* pZipFileAsset, std::vector<char>& vecFileContents);
+
 
 	bool saveAssetFileContents(boost::filesystem::ofstream& ofs,
 			ZipFileAsset* pZipFileAsset, unsigned short outputSaveMode,
 			std::vector<char>& vecFileContents);
 
+	bool saveAssetFileContents_ok_111(boost::filesystem::ofstream& ofs,
+			ZipFileAsset* pZipFileAsset, unsigned short outputSaveMode,
+			std::vector<char>& vecFileContents);
 
-	std::string zipToUnzip(std::string zipString); 
+	std::string zipToUnzip(std::string zipString);
 
 private:
 

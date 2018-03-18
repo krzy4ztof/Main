@@ -1,3 +1,21 @@
+##### WaterMill
+assets.zip
+assetsUnzip.zip
+
+assetsFolderToFolder
+assetsZipToFolder
+assetsUnzipToFolder
+
+assetsZipToZip.zip
+assetsZipToUnzip.zip
+
+assetsUnzipToZip.zip
+assetsUnzipToUnzip.zip
+
+docs/watermill_readme_2.txt
+docs/watermill_readme_notatki.txt
+
+##### General
 
 .metadata
 bin/

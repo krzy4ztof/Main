@@ -282,6 +282,7 @@ bool DevelopmentResourceFolder::saveAssetFileName(TZipLocalHeader& lh,
 		ofstream& ofs, const string shortFileName, const string saveMode) {
 	if (IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE.compare(saveMode) == 0) {
 		lh.fnameLen = shortFileName.length();
+		lh.isCompression = TZipLocalHeader::Z_NO_COMPRESSION;
 
 		//local header
 		ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
@@ -301,6 +302,7 @@ bool DevelopmentResourceFolder::saveAssetFileName(TZipLocalHeader& lh,
 				boost::iostreams::back_inserter(vecFileName));
 
 		lh.fnameLen = vecFileName.size();
+		lh.isCompression = TZipLocalHeader::Z_DEFLATED;
 
 		// Local Header
 		ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
@@ -369,6 +371,13 @@ bool DevelopmentResourceFolder::saveAsset(ofstream& ofs,
 	logger::info(ss);
 
 	TZipDirFileHeader* dfh = new TZipDirFileHeader();
+
+	if (IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE.compare(saveMode) == 0) {
+		dfh->isCompression = TZipDirFileHeader::Z_NO_COMPRESSION;
+	} else if (IResourceFile::ASSETS_SAVE_MODE_ZIPFILE.compare(saveMode) == 0) {
+		dfh->isCompression = TZipDirFileHeader::Z_DEFLATED;
+	}
+
 	dfh->cSize = vecFileContents.size();
 	dfh->fnameLen = lh.fnameLen;
 	dirFileHeadersList.push_back(dfh);
@@ -429,6 +438,14 @@ bool DevelopmentResourceFolder::createAssetFile(const string folderName,
 
 		// Save TZipDirHeader
 		dh.nDirEntries = dirFileHeadersList.size();
+
+		if (IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE.compare(saveMode) == 0) {
+			dh.isCompression = TZipDirHeader::Z_NO_COMPRESSION;
+		} else if (IResourceFile::ASSETS_SAVE_MODE_ZIPFILE.compare(saveMode)
+				== 0) {
+			dh.isCompression = TZipDirHeader::Z_DEFLATED;
+		}
+
 		ofs.write(reinterpret_cast<char *>(&dh), sizeof(dh));
 
 		ofs.close();
