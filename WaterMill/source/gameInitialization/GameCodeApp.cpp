@@ -13,6 +13,7 @@
 
 #include "GameCodeApp.h"
 #include<iostream> // cout
+#include <string> // string
 
 #include "Macros.h"
 #include "DataFiles.h"
@@ -36,10 +37,14 @@
 #include "../resourceCache/DevelopmentResourceFolder.h"
 #include "../resourceCache/DevelopmentResourceUnzipFile.h"
 
+#include <memory> // shared_ptr, weak_ptr, make_shared
+
 using std::string;
 using std::cout;
 using std::endl;
 using std::stringstream;
+using std::make_shared;
+using std::shared_ptr;
 
 namespace base_game {
 GameCodeApp* g_pApp = nullptr;
@@ -59,7 +64,8 @@ GameCodeApp::GameCodeApp() {
 	playerOptions = nullptr;
 	debuggingOptions = nullptr;
 
-	resourceCache = nullptr;
+	// resourceCache = nullptr;
+	shrdPtrResourceCache = nullptr;
 
 	gameMessages = nullptr;
 	luaStateManager = nullptr;
@@ -178,27 +184,52 @@ bool GameCodeApp::initInstance() {
 	string saveMode = debuggingOptions->getOption(
 			debuggingOptions->ASSETS_SAVE_MODE);
 
-	IResourceFile *zipFile = nullptr; // Will be removed in ResourceCache destructor
+//	IResourceFile *zipFile = nullptr; // Will be removed in ResourceCache destructor
+	shared_ptr<IResourceFile> zipFile; // Will be removed in ResourceCache destructor
 
 	if (IResourceFile::ASSETS_READ_MODE_FOLDER.compare(readMode) == 0) {
 //			zipFile = new DevelopmentResourceZipFile(ASSETS_ZIP, readMode, initOptions->getAssetsFolder());
-		zipFile = new DevelopmentResourceFolder(initOptions->getRootFolder(),
-				initOptions->getAssetsFolder());
+
+//		zipFile = new DevelopmentResourceFolder(initOptions->getRootFolder(),
+//				initOptions->getAssetsFolder());
+
+		zipFile = make_shared<DevelopmentResourceFolder>(
+				initOptions->getRootFolder(), initOptions->getAssetsFolder());
+
 
 	} else if (IResourceFile::ASSETS_READ_MODE_UNZIPFILE.compare(readMode)
 			== 0) {
-		zipFile = new DevelopmentResourceUnzipFile(initOptions->getRootFolder(),
-				IResourceFile::ASSETS_UNZIP_FILE);
+//		zipFile = new DevelopmentResourceUnzipFile(initOptions->getRootFolder(),
+//				IResourceFile::ASSETS_UNZIP_FILE);
+
+		zipFile = make_shared<DevelopmentResourceUnzipFile>(
+				initOptions->getRootFolder(), IResourceFile::ASSETS_UNZIP_FILE);
+
 	} else if (IResourceFile::ASSETS_READ_MODE_ZIPFILE.compare(readMode) == 0) {
-		zipFile = new ResourceZipFile(initOptions->getRootFolder(),
+//		zipFile = new ResourceZipFile(initOptions->getRootFolder(),
+//				IResourceFile::ASSETS_ZIP_FILE);
+
+		zipFile = make_shared<ResourceZipFile>(initOptions->getRootFolder(),
 				IResourceFile::ASSETS_ZIP_FILE);
+
 	}
 
-	resourceCache = new ResourceCache(initOptions->getAssetsFolder(), 50,
-			zipFile);
+//	resourceCache = new ResourceCache(initOptions->getAssetsFolder(), 50,
+//			zipFile);
+
+	//ResourceCache* resCache = new ResourceCache(initOptions->getAssetsFolder(),
+	//	50, zipFile);
+
+//	shrdPtrResourceCache->
+
+
+	shrdPtrResourceCache = make_shared<ResourceCache>(
+			initOptions->getAssetsFolder(), 50, zipFile);
 
 	// Call to zipFile->vOpen();
-	if (!resourceCache->init()) {
+
+	if (!shrdPtrResourceCache->init()) {
+				// if (!resourceCache->init()) {
 		logger::warning(
 				"Failed to initialize resource cache!  Are your paths set up correctly?");
 		return false;
@@ -227,7 +258,7 @@ bool GameCodeApp::initInstance() {
 		//TODO save method invocation
 	}
 
-	resourceCache->registerLoader(
+	shrdPtrResourceCache->registerLoader(
 			xml_resource_loader::createXmlResourceLoader());
 
 	try {
@@ -268,9 +299,9 @@ bool GameCodeApp::initInstance() {
 
 		logger::trace("createGameAndView++++");
 
-		m_pGame = createGameAndView(resourceCache);
+		m_pGame = createGameAndView(shrdPtrResourceCache);
 
-		resourceCache->preLoad("*.jpg");
+		shrdPtrResourceCache->preLoad("*.jpg");
 		logger::info("createGameAndView+2");
 
 		/*
@@ -297,9 +328,9 @@ void GameCodeApp::mainLoop() {
 	logger::trace("Main loop+++");
 
 	//TODO: remove tempCreateActors
-	//m_pGame->tempCreateActors();
+	m_pGame->tempCreateActors();
 
-	//m_pGame->tempTestActors();//ok
+//	m_pGame->tempTestActors();	//ok
 	m_pGame->tempAddViews();		//ok
 	//m_pGame->tempTestProcessManager();//ok
 
@@ -370,7 +401,8 @@ void GameCodeApp::onClose() {
 	templates::safe_delete<LuaStateManager>(luaStateManager);
 	templates::safe_delete<GameMessages>(gameMessages);
 
-	templates::safe_delete<ResourceCache>(resourceCache);
+	//templates::safe_delete<ResourceCache>(resourceCache);
+	shrdPtrResourceCache.reset();
 	//IResourceFile
 	templates::safe_delete<DebuggingOptions>(debuggingOptions);
 	templates::safe_delete<PlayerOptions>(playerOptions);

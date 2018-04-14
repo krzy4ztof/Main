@@ -29,6 +29,7 @@
 #include "../saveManager/SaveManager.h"
 
 #include <string> // string
+#include <memory> // shared_ptr, weak_ptr
 
 namespace base_game {
 
@@ -59,7 +60,8 @@ public:
 	BaseGameLogic *m_pGame;
 
 	// You must define these functions to initialize your game.
-	virtual BaseGameLogic *createGameAndView(ResourceCache* resourceCache)=0;
+	virtual BaseGameLogic *createGameAndView(
+			std::shared_ptr<ResourceCache> resourceCache)=0;
 	virtual std::string vGetGameAppDirectory()=0;
 
 	//			static void onUpdateGame( double fTime, float fElapsedTime);
@@ -81,7 +83,9 @@ private:
 	LuaStateManager *luaStateManager;
 	EventManager *eventManager;
 	DebuggingOptions *debuggingOptions;
-	ResourceCache *resourceCache;
+	// ResourceCache *resourceCache;
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+
 	DataFiles *dataFiles;
 	AudioSystem *audioSystem;
 	VideoSystem *videoSystem;

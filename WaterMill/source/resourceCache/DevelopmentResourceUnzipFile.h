@@ -10,8 +10,10 @@
 
 #include "IResourceFile.h"
 #include "ZipFile.h"
+//#include "Resource.h"
 
 #include <string> //string
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
 
@@ -23,6 +25,9 @@ public:
 	virtual ~DevelopmentResourceUnzipFile();
 
 	virtual bool vOpen();
+	virtual void vTempReadResource(const Resource& resource);
+	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource);
+
 
 protected:
 	virtual bool vSaveFolderMode();

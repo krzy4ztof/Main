@@ -39,20 +39,20 @@ using std::ofstream;
 
 namespace base_game {
 
-	const string Logger::LOG_FILENAME = "watermill.log";
+// const string Logger::LOG_FILENAME = "watermill.log";
 
 	Logger* Logger::s_Logger = nullptr;
 
 
 	namespace logger {
 
-		void init() {
+void init(const string logFileName) {
 
 			if (!Logger::s_Logger) {
 				Logger::s_Logger = new Logger();
 			}
 
-			Logger::s_Logger->init();
+	Logger::s_Logger->init(logFileName);
 
 		}
 
@@ -156,12 +156,14 @@ namespace base_game {
 		logfile.reset();
 	}
 
-	void Logger::init() {
+void Logger::init(const string logFileName) {
 		logfile = boost::make_shared< text_sink >();
 
 		// Add a stream to write log to
+//		logfile->locked_backend()->add_stream(
+//			boost::make_shared<ofstream >(LOG_FILENAME));
 		logfile->locked_backend()->add_stream(
-			boost::make_shared<ofstream >(LOG_FILENAME));
+			boost::make_shared<ofstream>(logFileName));
 
 		logfile->set_formatter( expr::stream
 

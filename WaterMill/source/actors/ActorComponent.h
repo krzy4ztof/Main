@@ -34,6 +34,7 @@ namespace base_game {
 			std::shared_ptr<Actor> pOwner;
 
 		private:
+
 	};
 }
 #endif // ACTORCOMPONENT_H

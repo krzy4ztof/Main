@@ -47,12 +47,13 @@ void testMain() {
 	//testClass.writeReadZlibRun();
 }
 
+/*
+ * main (int argc, char* argv[])
+ * 'char** argv'  the same as   'char* argv[]' means pointer to pointer to char
+ * argv - returns address
+ */
+
 int main(int argc, char** argv) {
-	/*
-	 * main (int argc, char* argv[])
-	 * 'char** argv'  the same as   'char* argv[]' means pointer to pointer to char
-	 * argv - returns address
-	 */
 
 	//testMain();
 	//miniZipMain(argc, argv);
@@ -67,4 +68,3 @@ int main(int argc, char** argv) {
 	return res;
 
 }
-

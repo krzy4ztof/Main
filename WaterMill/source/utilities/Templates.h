@@ -16,6 +16,7 @@ void safe_delete(className*& p) {
 		logger::trace(ss);
 		delete (p);
 		(p) = nullptr;
+		logger::trace("SAFE_DELETE successfull");
 	} else {
 		logger::trace("SAFE_DELETE pointer null");
 	}

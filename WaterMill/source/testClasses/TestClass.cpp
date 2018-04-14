@@ -139,7 +139,7 @@ namespace base_game {
 	}
 
 	void TestClass::loggerRun() {
-		logger::init();
+	logger::init("watermilll.log");
 
 		logger::test();
 
@@ -191,7 +191,7 @@ namespace base_game {
 
 	void TestClass::memoryPoolRun() {
 
-		logger::init();
+	logger::init("watermill.log");
 
 		cout << "new mem1" << endl;
 		MemoryUsageObject* mem1 = new MemoryUsageObject();

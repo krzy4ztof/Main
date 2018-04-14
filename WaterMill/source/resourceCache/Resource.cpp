@@ -29,7 +29,8 @@ namespace base_game {
 		logger::info("Destroy Resource");
 	}
 
-	const string Resource::getName() {
+const string Resource::getName() const {
 		return name;
 	}
+
 }

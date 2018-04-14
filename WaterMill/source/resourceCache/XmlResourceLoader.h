@@ -3,12 +3,15 @@
 
 #include "IResourceLoader.h"
 #include <memory> // shared_ptr
+#include <string> // string
 
 namespace base_game {
 	class XmlResourceLoader : public IResourceLoader {
 		public:
 			XmlResourceLoader();
 			virtual ~XmlResourceLoader();
+
+	virtual std::string vGetPattern();
 
 		protected:
 

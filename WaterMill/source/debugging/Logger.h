@@ -26,7 +26,7 @@ namespace base_game {
 
 			virtual ~Logger();
 			Logger();
-			void init();
+	void init(const std::string logFileName);
 
 			void trace(std::string text);
 			void debug(std::string text);
@@ -40,7 +40,7 @@ namespace base_game {
 		protected:
 
 		private:
-			const static std::string LOG_FILENAME;
+	// const static std::string LOG_FILENAME;
 			void log(std::string text, boost::log::trivial::severity_level sevLevel);
 
 			boost::log::sources::severity_logger< boost::log::trivial::severity_level > severityLogger;
@@ -50,7 +50,7 @@ namespace base_game {
 	};
 
 	namespace logger {
-		void init();
+void init(const std::string logFileName);
 		void test();
 		void destroy();
 		void trace(std::string text);

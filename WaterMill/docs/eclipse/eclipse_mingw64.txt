@@ -86,6 +86,41 @@ Add
 C:\msys64\mingw64\bin
 to windows user path variable
 
+
+*******************************
+***	Eclipse Code Analysis	***
+*******************************
+
+Codan Errors Example:
+
+Description	
+	Invalid arguments '
+		Candidates are:
+		void add_sink(const boost::shared_ptr<boost::log::v2_mt_nt5::sinks::sink> &)
+		'
+		
+Resource
+	Logger.cpp
+	
+Path
+	/Watermill/source/debugging		
+
+Type
+	Semantic Error
+	
+Location
+	line 179	
+	
+
+
+Switch off Codan Errors
+
+Window -> Preferences
+	C/C++ -> Code Analysis
+		Syntax and Semantic Errors 
+			false
+			
+
 ***********************
 ***	Eclipse Mingw	***
 ***********************
@@ -169,6 +204,11 @@ G) Boost:
 boost_iostreams-mt
 (link to C:\msys64\mingw64\lib\libboost_iostreams-mt.dll.a)
 
+H) Boost:
+boost_unit_test_framework-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_unit_test_framework-mt.dll.a)
+
+
 minizip
 (link to C:\msys64\mingw64\lib\minizip.dll.a)
 
@@ -193,7 +233,7 @@ Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	Debug_MinGW\freeglut.dll
-	***************	
+***************	
 ***	Glut	***	
 ***************
 tar zxf glut-3.6.tar.gz
@@ -385,3 +425,169 @@ https://www.eclipse.org/forums/index.php/t/277909/
 C)
 Use MSYS2 and rm command to remove Windows.exe
 http://geekthis.net/post/mingw-fix-permission-denied-ld-and-error/
+
+*******************
+***	Unit Tests	***
+*******************
+H) Boost:
+boost_unit_test_framework-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_unit_test_framework-mt.dll.a)
+
+Menu -> Project -> Build Configurations -> Manage...
+New
+
+Name: Test_MinGW64
+Copy settings from
+Existing configuration: Debug_MinGW64
+
+
+right click on 
+test 
+folder
+Resource Configurations -> Exclude from Build...
+select:
+Debug, Release, Debug_MinGW, Debug_MinGW64, Debug_Cygwin, Debug_Linux
+do not select: 
+Test_MinGW64
+
+
+right click on 
+source/main/Main.cpp
+Resource Configurations -> Exclude from Build...
+select:
+Test_MinGW64
+
+
+
+Run Configuratoions
+Test Watermill.exe
+
+Main
+C/C++ Application
+Test_MinGW64/Watermill.exe
+
+Arguments
+--log_level=test_suite
+
+
+
+right click on 
+project
+Properties -> C/C++ Build, Settings, 
+Configuration: Test_MinGW64
+
+Tool Settings, GCC C++ Compiler, Includes, 
+and add the path /.../workspace/ProjectName
+
+Add directory path
+${workspace_loc:/${ProjName}}
+
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+into
+	Test_MinGW64\freeglut.dll
+
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Configuration: Test_MinGW64
+				Refresh Policy 
+					Resources: Watermill - remove
+					Resources: empty
+
+-----------------------------------
+---	Run Tests from the console	---
+-----------------------------------
+
+run
+MSYS2 MinGW 64-bit
+console
+
+cd /c/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/settings/eclipse/Watermill/Test_MinGW64
+./Watermill.exe
+
+cmd and powershell do not work
+
+----
+Eclipse CDT
+Help -> Eclipse Marketplace
+Cute 
+CUTE C++ Unite Testing Easier
+
+
+
+-----------------------
+---	BaseGame lib	---
+-----------------------
+
+New Project -> C/C++ Project
+C++ Managed Build
+Static Library 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGame
+
+C++ Version: C++17
+
+Name of library:
+libBaseGame.a
+
+-------------------
+---	MainGame	---
+-------------------
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\MainGame
+
+Basic settings:
+Source: source
+
+
+C++ Version: C++17
+
+
+MainGame -> Properties
+	Properties for MainGame
+		C/C++ General -> Paths and Symbols -> 
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+			Library Paths
+				/BaseGame/Debug
+	
+
+-----------------------
+---	BaseGame test	---
+-----------------------
+
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest
+
+Basic settings:
+Source: source
+
+
+C++ Version: C++17
+
+
+BaseGameTest -> Properties
+	Properties for BaseGameTest
+		C/C++ General -> Paths and Symbols -> 
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+					boost_unit_test_framework-mt
+			Library Paths
+				/BaseGame/Debug
+				C:\msys64\mingw64\lib
+				
+			References:
+				BaseGame[Active]
+

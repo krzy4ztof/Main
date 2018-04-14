@@ -63,10 +63,10 @@ BaseGameLogic::~BaseGameLogic() {
 	logger::trace("Destroy BaseGameLogic");
 }
 
-bool BaseGameLogic::init(ResourceCache* resourceCache) {
+bool BaseGameLogic::init(shared_ptr<ResourceCache> resourceCache) {
 
-	actorFactory = vCreateActorFactory();
-	this->resourceCache = resourceCache;
+	actorFactory = vCreateActorFactory(resourceCache);
+	this->shrdPtrResourceCache = resourceCache;
 	return true;
 }
 
@@ -83,8 +83,9 @@ void BaseGameLogic::vRemoveView(shared_ptr<IGameView> pView) {
 	m_gameViews.remove(pView);
 }
 
-ActorFactory* BaseGameLogic::vCreateActorFactory(void) {
-	return new ActorFactory;
+ActorFactory* BaseGameLogic::vCreateActorFactory(
+		shared_ptr<ResourceCache> resourceCache) {
+	return new ActorFactory(resourceCache);
 }
 
 void BaseGameLogic::vChangeState(BaseGameState newState) {
@@ -92,11 +93,13 @@ void BaseGameLogic::vChangeState(BaseGameState newState) {
 }
 
 shared_ptr<Actor> BaseGameLogic::vCreateActor(const string& actorResource) {
-	ptree tree;
-	resourceCache->tempLoadAndReturnRootXmlElement(actorResource, tree);
+	//ptree tree;
+	//shrdPtrResourceCache->tempLoadAndReturnRootXmlElement(actorResource, tree);
 
 	//	actorFactory->createActor("player_character.xml");
-	shared_ptr<Actor> pActor = actorFactory->createActor(tree);
+//	shared_ptr<Actor> pActor = actorFactory->createActor(actorResource, tree);
+	shared_ptr<Actor> pActor = actorFactory->createActor(actorResource);
+
 
 	if (pActor) {
 		pActor->describeYourself();
@@ -258,13 +261,12 @@ void BaseGameLogic::tempCreateActors() {
 	//Resource resource("player_character.xml");
 	//resourceCache->getHandle();
 
-	ptree tree;
-
-	resourceCache->tempLoadAndReturnRootXmlElement(
-			"actors/player_character.xml", tree);
+	//ptree tree;
 
 	//	actorFactory->createActor("player_character.xml");
-	shared_ptr<Actor> actor = actorFactory->createActor(tree);
+	//shared_ptr<Actor> actor = actorFactory->createActor(tree);
+	shared_ptr<Actor> actor = actorFactory->createActor(
+			"actors/player_character.xml");
 
 	stringstream ss;
 	ss << "Post init actor use_count: " << actor.use_count();

@@ -13,11 +13,14 @@
 #include "TZipDirFileHeader.h"
 #include "TZipDirHeader.h"
 #include "TZipLocalHeader.h"
+//#include "Resource.h"
 
 #include <string> //string
 #include <vector> //vector
 
 #include <boost/filesystem.hpp> // boost::filesystem::path;
+#include <boost/optional.hpp> // boost::optional;
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
 
@@ -33,6 +36,9 @@ public:
 
 	virtual bool vOpen();
 //	virtual bool vSave(const std::string saveMode);
+
+	virtual void vTempReadResource(const Resource& resource);
+	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource);
 
 protected:
 	bool readAssetsDirectory(); //const std::string assetsFolder);
@@ -68,6 +74,8 @@ protected:
 	bool saveAssetFileContents(boost::filesystem::ofstream& ofs,
 			const boost::filesystem::path resourceFilePath,
 			const std::string saveMode, std::vector<char>& vecFileContents);
+
+	boost::optional<boost::filesystem::path> getPath(const Resource &resource);
 
 private:
 	std::string m_assetsFolder;

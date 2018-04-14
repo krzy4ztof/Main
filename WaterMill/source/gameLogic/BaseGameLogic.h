@@ -4,7 +4,7 @@
 #include "../actors/ActorFactory.h"
 #include "../resourceCache/ResourceCache.h"
 #include "../actors/Actor.h"
-#include "BaseGameLogic.h"
+//#include "BaseGameLogic.h"
 #include "BaseGameState.h"
 #include "../mainLoop/ProcessManager.h"
 #include "../userInterface/IGameView.h"
@@ -18,7 +18,7 @@ class BaseGameLogic {
 public:
 	BaseGameLogic();
 	virtual ~BaseGameLogic();
-	bool init(ResourceCache* resourceCache);
+	bool init(std::shared_ptr<ResourceCache> resourceCache);
 
 	void tempCreateActors();
 	void tempTestActors();
@@ -49,8 +49,9 @@ protected:
 	std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
 	ActorFactory* actorFactory;
-	ResourceCache* resourceCache;
-	virtual ActorFactory* vCreateActorFactory(void);
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	virtual ActorFactory* vCreateActorFactory(
+			std::shared_ptr<ResourceCache> resourceCache);
 
 private:
 };

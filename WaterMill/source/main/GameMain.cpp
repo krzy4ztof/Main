@@ -41,7 +41,7 @@ namespace watermill {
 		//                 int       nCmdShow)
 		bool returnCode = true;
 
-		logger::init();
+	logger::init("watermill.log");
 		logger::test();
 
 		GameCodeApp * gameCodeApp;

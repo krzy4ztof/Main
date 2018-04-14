@@ -6,11 +6,17 @@
  */
 
 #include "../debugging/Logger.h"
+#include "DevelopmentResourceFolder.h"
+#include "TZipDirFileHeader.h"
+#include "TZipDirHeader.h"
+#include "TZipLocalHeader.h"
+
 
 #include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
 //boost::filesystem::filesystem_error; boost::filesystem::directory_entry; boost::filesystem::exists;
 //boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
 //boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;
+#include <boost/filesystem/operations.hpp> // boost::filesystem::file_size
 
 #include <boost/iostreams/device/file.hpp> //  boost::iostreams::file_source; boost::iostreams::file_sink
 #include <boost/iostreams/stream.hpp> // boost::iostreams::stream; boost::iostreams::stream_buffer
@@ -20,16 +26,13 @@
 #include <boost/iostreams/copy.hpp> //boost::iostreams::copy
 #include <boost/iostreams/filter/zlib.hpp> //zlib_compressor
 #include <boost/iostreams/device/array.hpp> // boost::iostreams::array_source;
+#include <boost/optional.hpp> // boost::optional
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 #include <string>
 #include <sstream>      // std::stringstream
 #include <regex> // std::regex, std::regex_replace
 #include <vector> //std::vector
-#include "DevelopmentResourceFolder.h"
-#include "TZipDirFileHeader.h"
-#include "TZipDirHeader.h"
-#include "TZipLocalHeader.h"
-
 #include <list> // std::list
 
 //using std::ios::binary;
@@ -52,19 +55,22 @@ using boost::filesystem::is_regular_file;
 using boost::filesystem::create_directory;
 using boost::filesystem::remove_all;
 using boost::filesystem::copy_file;
+using boost::filesystem::file_size;
+
 using boost::filesystem::ofstream;
 using boost::filesystem::ifstream;
 
 using boost::iostreams::zlib_compressor;
 using boost::iostreams::file_source;
 using boost::iostreams::file_sink;
-
 using boost::iostreams::stream;
 using boost::iostreams::stream_buffer;
-
 using boost::iostreams::filtering_istreambuf;
-
 using boost::iostreams::array_source;
+
+using boost::optional;
+
+using boost::uintmax_t;
 
 namespace base_game {
 
@@ -74,8 +80,6 @@ DevelopmentResourceFolder::DevelopmentResourceFolder(const string rootFolder,
 	logger::info("Create DevelopmentResourceFolder(rootFolder, assetsFolder)");
 
 }
-
-
 
 DevelopmentResourceFolder::~DevelopmentResourceFolder() {
 	logger::info("Destroy DevelopmentResourceZipFile");
@@ -87,6 +91,98 @@ DevelopmentResourceFolder::~DevelopmentResourceFolder() {
 bool DevelopmentResourceFolder::vOpen() {
 
 	return readAssetsDirectory();
+}
+
+optional<path> DevelopmentResourceFolder::getPath(const Resource &resource) {
+	stringstream ss;
+
+	path thisResPath { this->m_assetsFolder };
+	thisResPath /= resource.getName();
+	thisResPath = thisResPath.make_preferred();
+	string thisResourceName = thisResPath.string();
+
+	ss << "thisResPath: " << thisResourceName;
+	logger::info(ss);
+
+	for (path resourcePath : m_paths) {
+
+		resourcePath = resourcePath.make_preferred();
+		string resourceName = resourcePath.string();
+
+
+
+
+		ss << "makePreferred: " << resourcePath.make_preferred()
+				<< " filename: " << resourcePath.filename();
+
+		logger::info(ss);
+// makePreferred: "..\..\..\assets\actors\player_character.xml" filename: "player_character.xml"
+// makePreferred: "..\..\..\assets\graphics\polskieĄęĆznaki.txt" filename: "polskieĄęĆznaki.txt"
+
+		int compRes = thisResourceName.compare(resourceName);
+		if (compRes == 0) {
+			ss << "THIS IS THIS: " << resourceName;
+			logger::info(ss);
+			int i;
+			i++;
+
+			return resourcePath;
+
+		}
+	}
+
+	return optional<path> { };
+
+}
+
+void DevelopmentResourceFolder::vTempReadResource(const Resource& resource) {
+	stringstream ss;
+	ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
+	//		<< resource.getName();
+
+	logger::info(ss);
+
+}
+
+
+
+uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
+		const Resource &resource) {
+	stringstream ss;
+	ss << "DevelopmentResourceFolder::vGetRawResourceSize: "
+	<< resource.getName();
+// DevelopmentResourceFolder::vTempReadResource: actors/player_character.xml
+
+	logger::info(ss);
+
+	ss << "Root Folder: " << this->m_rootFolder;
+	logger::info(ss);
+
+	ss << "Asset Folder: " << this->m_assetsFolder;
+	logger::info(ss);
+
+	optional<path> optPath = this->getPath(resource);
+
+	if (!optPath.is_initialized()) {
+		ss << "RESOURCE NOT  FOUND " << resource.getName();
+		logger::info(ss);
+		return -1;
+
+	} else {
+
+		// __MINGW_EXTENSION typedef unsigned long long   uintmax_t;
+		uintmax_t fileSize = file_size(optPath.get());
+
+		ss << "PATH FOUND " << optPath->string() << " File Size " << fileSize;
+		logger::info(ss);
+
+		return fileSize;
+
+	}
+
+
+	
+	return -1;
 }
 
 bool DevelopmentResourceFolder::readAssetsDirectory() {
@@ -233,7 +329,6 @@ bool DevelopmentResourceFolder::createFilesAndFolders(const string folderName) {
 
 	regex exprAssetsFolder(assetsRegex);
 
-
 	for (path resourcePath : m_paths) {
 
 		path parentPath = resourcePath.parent_path();
@@ -249,7 +344,6 @@ bool DevelopmentResourceFolder::createFilesAndFolders(const string folderName) {
 	return true;
 }
 
-
 bool DevelopmentResourceFolder::vSaveFolderMode() {
 	stringstream ss;
 	ss << "VSAVE: " << m_assetsFolder;
@@ -263,7 +357,6 @@ bool DevelopmentResourceFolder::vSaveFolderMode() {
 
 	return true;
 }
-
 
 bool DevelopmentResourceFolder::vSaveUnzipMode() {
 	stringstream ss;
@@ -386,7 +479,6 @@ bool DevelopmentResourceFolder::saveAsset(ofstream& ofs,
 
 }
 
-
 bool DevelopmentResourceFolder::createAssetFile(const string folderName,
 		const string assetsUnzipFile, const string saveMode) {
 	//string assetsOutFolder = getOutputFolderName(folderName);
@@ -469,7 +561,6 @@ bool DevelopmentResourceFolder::vSaveZipMode() {
 
 	createAssetFile(this->m_rootFolder, assetsZipFile,
 			IResourceFile::ASSETS_SAVE_MODE_ZIPFILE);
-
 
 	return true;
 }

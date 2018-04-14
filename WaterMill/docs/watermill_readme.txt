@@ -746,6 +746,82 @@ bool ZipFile::save(const std::string& outFileName,
 		
 Przetestować				
 		
+---	18/03/2018	---		
+ActorFactory::loadAndReturnRootXmlElement
+		
+DevelopmentResourceFolder::vTempReadResource
+		odczytywanie pliku na podstawie: const Resource& res
+		
+
+---	21/03/2018	---		
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+		
+DevelopmentResourceFolder::vTempReadResource
+
+---	22/03/2018	---		
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+skasować
+DevelopmentResourceFolder::vTempReadResource
+
+Kontynuacja
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+	
+dodać WILDCARD MATCH
+	
+---	25/03/2018	---			
+
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+skasować
+DevelopmentResourceFolder::vTempReadResource
+
+Kontynuacja
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+	
+dodać
+    int allocSize = rawSize + ((loader->VAddNullZero()) ? (1) : (0));
+	char *rawBuffer = loader->VUseRawFile() ? Allocate(allocSize) : GCC_NEW char[allocSize];
+    memset(rawBuffer, 0, allocSize);
+
+
+---	08/04/2018	---
+
+tj 25/03/2018
+
+dodatkowo
+
+/Watermill/test/actors/ActorFactoryTest.cpp
+
+dopisać
+shared_ptr<Actor> ActorFactory::createActor(const string& resourceName)
+
+usunąć
+void BaseGameLogic::tempCreateActors()
+
+usunąć
+firstBoostTest.cpp, secondBoostTest.cpp
+
+---	12/04/2018	---
+tj 08/04/2018
+
+dalej:
+/Watermill/test/actors/ActorFactoryTest.cpp
+
+
+
+
+		
+		
 *******************
 ***	FUTURE TODO	***
 *******************

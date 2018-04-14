@@ -46,6 +46,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>test</name>
+			<type>2</type>
+			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/test</location>
+		</link>
+		<link>
 			<name>source/actors</name>
 			<type>2</type>
 			<locationURI>PARENT-3-PROJECT_LOC/source/actors</locationURI>

@@ -2,6 +2,7 @@
 #define DEFAULTRESOURCELOADER_H
 
 #include "IResourceLoader.h"
+#include <string> // string
 
 namespace base_game {
 class DefaultResourceLoader: public IResourceLoader
@@ -9,6 +10,8 @@ class DefaultResourceLoader: public IResourceLoader
     public:
         DefaultResourceLoader();
         virtual ~DefaultResourceLoader();
+
+	virtual std::string vGetPattern();
 
     protected:
 

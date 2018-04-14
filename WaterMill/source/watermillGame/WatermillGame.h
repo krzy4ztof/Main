@@ -6,7 +6,7 @@
 #include "../resourceCache/ResourceCache.h"
 
 #include <string>
-
+#include <memory> // shared_ptr, weak_ptr
 
 
 namespace watermill {
@@ -19,7 +19,8 @@ namespace watermill {
 			virtual std::string vGetGameAppDirectory();
 
 		protected:
-			virtual base_game::BaseGameLogic *createGameAndView(base_game::ResourceCache* resourceCache);
+	virtual base_game::BaseGameLogic* createGameAndView(
+			std::shared_ptr<base_game::ResourceCache> resourceCache);
 		private:
 	};
 }

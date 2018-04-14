@@ -1,7 +1,10 @@
 #ifndef IRESOURCEFILE_H
 #define IRESOURCEFILE_H
 
+#include "Resource.h"
+
 #include <string>
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
 class IResourceFile {
@@ -33,6 +36,15 @@ public:
 
 	virtual ~IResourceFile();
 	virtual bool vOpen()=0;
+
+	virtual void vTempReadResource(const Resource& resource)=0;
+	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource)=0;
+
+	//virtual int VGetRawResource(const Resource &r, char *buffer)=0;
+	//virtual int VGetNumResources() const = 0;
+	//virtual std::string VGetResourceName(int num) const = 0;
+	//virtual bool VIsUsingDevelopmentDirectories(void) const = 0;
+
 
 	virtual bool vSave(const std::string saveMode);
 

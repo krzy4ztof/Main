@@ -25,12 +25,16 @@
 #include <sstream>      // std::stringstream
 //#include <vector> // vector
 
+#include <boost/cstdint.hpp> // boost::uintmax_t
+
 using std::string;
 using std::stringstream;
 //using std::vector;
 
 using boost::filesystem::path;
 using boost::filesystem::ifstream;
+
+using boost::uintmax_t;
 
 //using boost::iostreams::filtering_istreambuf;
 //using boost::iostreams::back_inserter;
@@ -65,6 +69,20 @@ bool DevelopmentResourceUnzipFile::vOpen() {
 	return result;
 
 	return false;
+}
+
+void DevelopmentResourceUnzipFile::vTempReadResource(const Resource& resource) {
+	stringstream ss;
+	ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
+	//		<< resource.getName();
+
+	logger::info(ss);
+
+}
+
+uintmax_t DevelopmentResourceUnzipFile::vGetRawResourceSize(
+		const Resource &resource) {
+	return -1;
 }
 
 bool DevelopmentResourceUnzipFile::vSaveFolderMode() {

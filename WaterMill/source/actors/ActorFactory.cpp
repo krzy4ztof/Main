@@ -12,6 +12,8 @@
 #include "../utilities/PropertyTreeUtils.h"
 #include "../debugging/Logger.h"
 #include <sstream>      // std::stringstream
+#include <boost/property_tree/xml_parser.hpp> // read_xml
+#include <boost/optional.hpp> // boost::optional
 
 using std::shared_ptr;
 using std::string;
@@ -19,32 +21,99 @@ using boost::property_tree::ptree;
 using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp
 using std::stringstream;
 using boost::optional;
+using boost::property_tree::read_xml;
 
 namespace base_game {
 
 	const string ActorFactory::ACTOR_NODE_NAME = "actor";
 
-	ActorFactory::ActorFactory() {
+ActorFactory::ActorFactory(shared_ptr<ResourceCache> resourceCache) {
 		logger::trace("Create ActorFactory");
 		componentFactory = new ComponentFactory;
 		componentFactory->registerComponent(RenderComponent::COMPONENT_NAME, &render_component::componentFactory);
 		componentFactory->registerComponent(ScriptComponent::COMPONENT_NAME, &script_component::componentFactory);
 		componentFactory->registerComponent(TransformComponent::COMPONENT_NAME, &transform_component::componentFactory);
+
+	this->shrdPtrResourceCache = resourceCache;
 	}
 
 	ActorFactory::~ActorFactory() {
 		logger::trace("Destroy ActorFactory");
 		templates::safe_delete<ComponentFactory>(componentFactory);
+
+	shrdPtrResourceCache.reset();
 	}
 
 	unsigned int ActorFactory::getNextActorId() {
 		nextActorId++;
 		return nextActorId;
 	};
+ptree* ActorFactory::loadAndReturnRootXmlElement(const string& resourceName) {
+	// See TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
 
-	shared_ptr<Actor> ActorFactory::createActor(ptree& actorTree) {
-		property_tree_utils::print_tree(actorTree,0);
-		optional<ptree&> actorNode = getActorNode(actorTree);
+	stringstream ss;
+	ss << "ActorFactory::loadAndReturnRootXmlElement: "
+			<< shrdPtrResourceCache->tempGetAssetsFolder() << " + "
+			<< resourceName;
+	logger::info(ss);
+
+	Resource resource(resourceName);
+	optional<shared_ptr<ResourceHandle>> pResourceHandle =
+			shrdPtrResourceCache->getHandle(&resource);
+
+	//     shared_ptr<XmlResourceExtraData> pExtraData = static_pointer_cast<XmlResourceExtraData>(pResourceHandle->GetExtra());
+	// return pExtraData->GetRoot();
+
+
+	ptree* pPtree = new ptree();
+
+	string filename = shrdPtrResourceCache->tempGetAssetsFolder()
+			+ resourceName;
+
+	read_xml(filename, *pPtree);
+
+	return pPtree;
+}
+
+ptree* ActorFactory::loadAndReturnRootXmlElement_222(
+		const string& resourceName) {
+	// See TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
+
+
+
+	stringstream ss;
+	ss << "ActorFactory::loadAndReturnRootXmlElement: "
+			<< shrdPtrResourceCache->tempGetAssetsFolder()
+			<< " + "
+			<< resourceName;
+	logger::trace(ss);
+
+	ptree* pPtree = new ptree();
+
+	string filename = shrdPtrResourceCache->tempGetAssetsFolder()
+			+ resourceName;
+
+	read_xml(filename, *pPtree);
+
+	return pPtree;
+}
+
+shared_ptr<Actor> ActorFactory::createActor(const string& resourceName) {
+
+//shared_ptr<Actor> ActorFactory::createActor(const string& resourceName,
+			//	ptree& actorTree) {
+
+	//	shared_ptr<Actor> ActorFactory::createActor(ptree& actorTree) {
+
+	//void ResourceCache::tempLoadAndReturnRootXmlElement(const string& resourceName, ptree& tree) {
+			//shrdPtrResourceCache->tempLoadAndReturnRootXmlElement(
+			//	"actors/player_character.xml", actorTree);
+
+	//ptree* actorTree = shrdPtrResourceCache->loadAndReturnRootXmlElement(resourceName);
+	ptree* actorTree = loadAndReturnRootXmlElement(resourceName);
+
+			property_tree_utils::print_tree(*actorTree,0);
+			optional<ptree&> actorNode = getActorNode(*actorTree);
 		if (!actorNode.is_initialized()) {
 			stringstream ss;
 			ss << "Failed to create actor from resource! ";

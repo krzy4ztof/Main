@@ -8,7 +8,7 @@ namespace base_game {
 		public:
 			Resource(const std::string &name);
 			virtual ~Resource();
-			const std::string getName();
+	const std::string getName() const;
 
 		protected:
 

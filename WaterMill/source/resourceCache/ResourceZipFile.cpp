@@ -4,9 +4,12 @@
 
 #include <string>
 #include <sstream>      // std::stringstream
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 using std::string;
 using std::stringstream;
+
+using boost::uintmax_t;
 
 namespace base_game {
 //	ResourceZipFile::ResourceZipFile(const string fileName):ResourceZipFile(fileName,"zipFile"){
@@ -35,6 +38,19 @@ bool ResourceZipFile::vOpen() {
 
 	m_pZipFile->describeYourself();
 	return result;
+}
+
+void ResourceZipFile::vTempReadResource(const Resource& resource) {
+	stringstream ss;
+	ss << "ResourceZipFile::vTempReadResource: ";
+	//		<< resource.getName();
+
+	logger::info(ss);
+
+}
+
+uintmax_t ResourceZipFile::vGetRawResourceSize(const Resource &resource) {
+	return -1;
 }
 
 bool ResourceZipFile::vSaveFolderMode() {
