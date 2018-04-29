@@ -185,3 +185,36 @@ git config --global push.default simple
 [push]
 	default = simple
 	
+
+
+***************
+***	SSH KEY	***
+***************
+
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+cd ~
+ls -al ~/.ssh
+
+ssh-keygen -t rsa -b 4096 -C "krzy4ztof@poczta.onet.pl"
+
+Enter passphrase (empty for no passphrase): [empty]
+Enter same passphrase again: [empty]
+
+/c/Users/Krzysztof/.ssh/
+	id_rsa
+	id_rsa.pub
+
+eval $(ssh-agent -s)
+
+ssh-add ~/.ssh/id_rsa
+	 _rsa.pub
+
+https://github.build.ge.com/settings/profile
+SSH and GPG keys -> New SSH Key
+
+Paste from clipboard into Key field.
+
+passphrase
+GEU3x
+
