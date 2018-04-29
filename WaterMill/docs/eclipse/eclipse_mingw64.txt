@@ -146,10 +146,15 @@ Project -> Properties -> C/C++ Build -> Tool Chain Editor
 Current toolchain: MinGW GCC
 
 C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+
+Other dialect flags:
+	-std=c++1z
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 Command
 C:\msys64\mingw64\bin\g++
 
-C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Compiler
+C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker
 Command
 C:\msys64\mingw64\bin\g++
 
@@ -233,6 +238,19 @@ Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	Debug_MinGW\freeglut.dll
+	
+BaseGameTest -> Properties
+	Properties for BaseGameTest
+		C/C++ General -> Paths and Symbols -> 
+			References:
+				BaseGame[Active]
+			Library Paths
+				/BaseGame/Debug_MinGW64
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+					
+	
 ***************	
 ***	Glut	***	
 ***************
@@ -514,80 +532,112 @@ Help -> Eclipse Marketplace
 Cute 
 CUTE C++ Unite Testing Easier
 
+***********************************
+***	Custom Makefile Watermill	***
+***********************************
 
 
------------------------
----	BaseGame lib	---
------------------------
-
-New Project -> C/C++ Project
-C++ Managed Build
-Static Library 
-Toolchains: MinGW GCC
-
-Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGame
-
-C++ Version: C++17
-
-Name of library:
-libBaseGame.a
-
--------------------
----	MainGame	---
--------------------
-New Project -> C/C++ Project
-C++ Managed Build
-Executable 
-Toolchains: MinGW GCC
-
-Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\MainGame
-
-Basic settings:
-Source: source
-
-
-C++ Version: C++17
-
-
-MainGame -> Properties
-	Properties for MainGame
-		C/C++ General -> Paths and Symbols -> 
-			Libraries -> Add..
-				Select file from workspace
-					BaseGame			(points to libBaseGame.a)
-			Library Paths
-				/BaseGame/Debug
-	
-
------------------------
----	BaseGame test	---
------------------------
-
-New Project -> C/C++ Project
-C++ Managed Build
-Executable 
-Toolchains: MinGW GCC
-
-Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest
-
-Basic settings:
-Source: source
-
-
-C++ Version: C++17
-
-
-BaseGameTest -> Properties
-	Properties for BaseGameTest
-		C/C++ General -> Paths and Symbols -> 
-			Libraries -> Add..
-				Select file from workspace
-					BaseGame			(points to libBaseGame.a)
-					boost_unit_test_framework-mt
-			Library Paths
-				/BaseGame/Debug
-				C:\msys64\mingw64\lib
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/Watermill/scripts}/runMake.cmd 
 				
-			References:
-				BaseGame[Active]
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/Watermill/scripts}
+NO:
+mingw32-make -f ../../../scripts/makefileWatermillEclipse1.mk
+make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermillEclipse1.mk				
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: watermill_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill\settings\make\Watermill\Debug_MinGW64
+
+
+Run configuration:
+	Name: Watermill-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${watermill_make}\Watermill.exe
+
+
+***********************************
+***	Custom Makefile BaseGame	***
+***********************************
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGame/scripts}/runMake.cmd 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGame/scripts}
+
+
+***************************************
+***	Custom Makefile BaseGameTest	***
+***************************************
+
+
+BaseGameTest -> properties
+	Properties for BaseGameTest
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGameTest/scripts}/runMake.cmd 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGameTest/scripts}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: basegametest_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\BaseGameTest\Debug_MinGW64
+
+
+Run configuration:
+	Name: BaseGameTest-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${basegametest_make}/BaseGameTest.exe
+	
+***********	
+***	git	***
+***********
+
+git checkout -b dev	
+
+git push
+
+git checkout master
+git pull
+
+git checkout dev
+git merge master
+
+
 

@@ -1,0 +1,11 @@
+[00001|2018-04-18 22:19:31|   ] : Hello world!
+[00002|2018-04-18 22:19:31|  trace] : A trace severity message
+[00003|2018-04-18 22:19:31|  trace] : A trace severity message 2
+[00004|2018-04-18 22:19:31|  trace] : Create GameCodeApp
+[00005|2018-04-18 22:19:31|  trace] : Create WatermillGame
+[00006|2018-04-18 22:19:31|  trace] : Create InitOptions
+[00007|2018-04-18 22:19:31|  trace] : NIE otwarte!!!!
+[00008|2018-04-18 22:19:31|  trace] : Create ErrorCode
+[00009|2018-04-18 22:19:31|  error] : Error Code: There is no watermill.ini in C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill folder ; number: 111
+[00010|2018-04-18 22:19:31|  trace] : Destroy ErrorCode
+[00011|2018-04-18 22:19:31|  error] : gameCodeApp init Options failed

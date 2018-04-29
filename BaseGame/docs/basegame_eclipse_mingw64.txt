@@ -1,0 +1,234 @@
+
+
+-------------------
+---	MainGame	---
+-------------------
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\MainGame
+
+Basic settings:
+Source: source
+
+
+C++ Version: C++17
+
+
+MainGame -> Properties
+	Properties for MainGame
+		C/C++ General -> Paths and Symbols -> 
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+			Library Paths
+				/BaseGame/Debug
+	
+
+-----------------------
+---	BaseGame test	---
+-----------------------
+
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest
+
+Basic settings:
+Source: source
+
+
+C++ Version: C++17
+
+
+BaseGameTest -> Properties
+	Properties for BaseGameTest
+		C/C++ General -> Paths and Symbols -> 
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+					boost_unit_test_framework-mt
+			Library Paths
+				/BaseGame/Debug
+				C:\msys64\mingw64\lib
+				
+			References:
+				BaseGame[Active]
+
+***************************
+***	BaseGame Settings	***
+***************************
+
+-----------------------
+---	BaseGame lib	---
+-----------------------
+
+New Project -> C/C++ Project
+C++ Managed Build
+Static Library 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGame
+
+C++ Version: C++17
+
+Name of library:
+libBaseGame.a
+
+
+Project -> 
+	Properties for BaseGame
+		C/C++ Build -> Settings ->
+			Build Artifact
+				Artifact type: Static Library / (can be changed to Dynamic Library)
+
+
+
+
+
+New -> Folder -> Advanced -> Linked Folder 
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGame\source
+
+Project Explorer -> source -> Properties
+	Properties for source
+		C/C++ General  -> Paths and Symbols	->	Exclude resource from build = false
+
+
+Project -> 
+	Properties for BaseGame
+		Create New Configuration
+			Debug_MinGW64
+				Copy settings from Existing configuration: Debug
+				
+				
+		C/C++ General -> Paths and Symbols ->
+			Source location
+				/BaseGame/source
+				
+		C/C++ General -> Paths and Symbols -> 
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+					boost_unit_test_framework-mt
+			Library Paths
+				/BaseGame/Debug
+				C:\msys64\mingw64\lib
+				
+
+
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64
+
+Project -> Properties -> C/C++ Build -> Tool Chain Editor 
+Current toolchain: MinGW GCC
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+Command
+C:\msys64\mingw64\bin\g++
+
+C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker
+Command
+C:\msys64\mingw64\bin\g++
+
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64
+
+Project -> Properties -> C/C++ Build -> Tool Chain Editor 
+Current toolchain: MinGW GCC
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+Command
+C:\msys64\mingw64\bin\g++
+
+C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker
+Command
+C:\msys64\mingw64\bin\g++
+
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+All options
+
+C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include
+C:\msys64\mingw64\include
+C:\msys64\mingw64\x86_64-w64-mingw32\include
+C:\msys64\usr\local\include
+
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x86
+C:\msys64\mingw64\lib
+C:\msys64\mingw64\x86_64-w64-mingw32\lib
+C:\msys64\usr\local\lib
+
+
+C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
+
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
+freeglut
+psapi
+opengl32
+
+lua
+(link to C:\msys64\usr\local\lib\liblua.a)
+
+A) Boost:
+boost_system-mt	
+(link to C:\msys64\mingw64\lib\libboost_system-mt.dll.a)	
+B) Boost:
+boost_filesystem-mt
+(link to C:\msys64\mingw64\lib\libboost_filesystem-mt.dll.a
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_filesystem-mt.dll.a)
+C) Boost:
+boost_locale-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_locale-mt.dll.a)
+D) Boost:
+boost_log-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log-mt.dll.a)
+E) Boost:
+boost_thread-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_thread-mt.dll.a)
+F) Boost:
+boost_log_setup-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_log_setup-mt.dll.a)
+G) Boost:
+boost_iostreams-mt
+(link to C:\msys64\mingw64\lib\libboost_iostreams-mt.dll.a)
+
+Exclude (scripts) from build
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Source Location
+Source folders on build path:
+/BaseGame/
+	Filter (\source\scripts\)
+
+
+
+
+
+
+
+
+
+
+cd /home/myImportantFiles/projects/git/Main
+git add BaseGame/*
+
+
+git mv Watermill/source/testClasses/* BaseGame/source/testClasses
+
+
+
+*******************
+***	Problems	***
+*******************
+
+https://www.eclipse.org/forums/index.php/t/247093/
+
+http://wiki.eclipse.org/CDT/User/FAQ#Why_does_CDT_with_MinGW_do_full_rebuilds_on_all_of_my_build_and_launch_actions_although_all_settings_suggest_an_incremental_build.3F
+

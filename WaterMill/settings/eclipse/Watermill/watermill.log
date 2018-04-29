@@ -1,524 +1,564 @@
-[00001|2018-04-14 17:54:04|   ] : Hello world!
-[00002|2018-04-14 17:54:04|  trace] : A trace severity message
-[00003|2018-04-14 17:54:04|  trace] : A trace severity message 2
-[00004|2018-04-14 17:54:04|  trace] : Create GameCodeApp
-[00005|2018-04-14 17:54:04|  trace] : Create WatermillGame
-[00006|2018-04-14 17:54:04|  trace] : Create InitOptions
-[00007|2018-04-14 17:54:04|  trace] : otwarte!!!!
-[00008|2018-04-14 17:54:04|  trace] : "MAIN" : ""
-[00009|2018-04-14 17:54:04|  trace] :   "Root" : "../../../"
-[00010|2018-04-14 17:54:04|  trace] :   "Assets" : "../../../assets/"
-[00011|2018-04-14 17:54:04|  trace] :   "Game" : "../../../game/"
-[00012|2018-04-14 17:54:04|  trace] : istnieje MAIN.REsources
-[00013|2018-04-14 17:54:04|  trace] : ../../../
-[00014|2018-04-14 17:54:04|  trace] : istnieje MAIN.REsources
-[00015|2018-04-14 17:54:04|  trace] : ../../../assets/
-[00016|2018-04-14 17:54:04|  trace] : istnieje MAIN.REsources
-[00017|2018-04-14 17:54:04|  trace] : ../../../game/
-[00018|2018-04-14 17:54:04|  trace] : Create PlayerOptions
-[00019|2018-04-14 17:54:04|  trace] : "playerOptions" : "
+[00001|2018-04-29 17:49:19|   ] : Hello world!
+[00002|2018-04-29 17:49:19|  trace] : A trace severity message
+[00003|2018-04-29 17:49:19|  trace] : A trace severity message 2
+[00004|2018-04-29 17:49:19|  trace] : Create GameCodeApp
+[00005|2018-04-29 17:49:19|  trace] : Create WatermillGame
+[00006|2018-04-29 17:49:20|  trace] : Create InitOptions
+[00007|2018-04-29 17:49:20|  trace] : otwarte!!!!
+[00008|2018-04-29 17:49:20|  trace] : "MAIN" : ""
+[00009|2018-04-29 17:49:20|  trace] :   "Root" : "../../../"
+[00010|2018-04-29 17:49:20|  trace] :   "Assets" : "../../../assets/"
+[00011|2018-04-29 17:49:20|  trace] :   "Game" : "../../../game/"
+[00012|2018-04-29 17:49:20|  trace] : istnieje MAIN.REsources
+[00013|2018-04-29 17:49:20|  trace] : ../../../
+[00014|2018-04-29 17:49:20|  trace] : istnieje MAIN.REsources
+[00015|2018-04-29 17:49:20|  trace] : ../../../assets/
+[00016|2018-04-29 17:49:20|  trace] : istnieje MAIN.REsources
+[00017|2018-04-29 17:49:20|  trace] : ../../../game/
+[00018|2018-04-29 17:49:20|  trace] : Create PlayerOptions
+[00019|2018-04-29 17:49:20|  trace] : "playerOptions" : "
     
 	
 	
 "
-[00020|2018-04-14 17:54:04|  trace] :   "<xmlcomment>" : " <option name="language" value="en.UTF-8"/> "
-[00021|2018-04-14 17:54:04|  trace] :   "option" : ""
-[00022|2018-04-14 17:54:04|  trace] :     "<xmlattr>" : ""
-[00023|2018-04-14 17:54:04|  trace] :       "name" : "language"
-[00024|2018-04-14 17:54:04|  trace] :       "value" : "pl.UTF-8"
-[00025|2018-04-14 17:54:04|  trace] :   "option" : ""
-[00026|2018-04-14 17:54:04|  trace] :     "<xmlattr>" : ""
-[00027|2018-04-14 17:54:04|  trace] :       "name" : "fullscreen"
-[00028|2018-04-14 17:54:04|  trace] :       "value" : "false"
-[00029|2018-04-14 17:54:04|  trace] : Create DebuggingOptions
-[00030|2018-04-14 17:54:04|   info] : debuggingOptions assetsReadMode: folder
-[00031|2018-04-14 17:54:04|  trace] : Create Windows64Calls
-[00032|2018-04-14 17:54:04|  trace] : Is the only instance in Windows 64: watermill?
-[00033|2018-04-14 17:54:04|  trace] : Is the only instance in Windows 64: watermill.exe?
-[00034|2018-04-14 17:54:04|  trace] : --------------------------
-[00035|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00036|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00037|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00038|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00039|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00040|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00041|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00042|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00043|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00044|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00045|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00046|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00047|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00048|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00049|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00050|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00051|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00052|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00053|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00054|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00055|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00056|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00057|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00058|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00059|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00060|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00061|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00062|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00063|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00064|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00065|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00066|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00067|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00068|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00069|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00070|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00071|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00072|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00073|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00074|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00075|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00076|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00077|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00078|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00079|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00080|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00081|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00082|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00083|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00084|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00085|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00086|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00087|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00088|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00089|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00090|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00091|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00092|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00093|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00094|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00095|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00096|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00097|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00098|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00099|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00100|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00101|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00102|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00103|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00104|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00105|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00106|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00107|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00108|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00109|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00110|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00111|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00112|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00113|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00114|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00115|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00116|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00117|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00118|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00119|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00120|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00121|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00122|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00123|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00124|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00125|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00126|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00127|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00128|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00129|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00130|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00131|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00132|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00133|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00134|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00135|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00136|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00137|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00138|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00139|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00140|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00141|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00142|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00143|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00144|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00145|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00146|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00147|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00148|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00149|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00150|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: ETDCtrl.exe
-[00151|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: nvcontainer.exe
-[00152|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00153|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: sihost.exe
-[00154|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: taskhostw.exe
-[00155|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00156|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: igfxEM.exe
-[00157|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: Explorer.EXE
-[00158|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00159|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: ETDIntelligent.exe
-[00160|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: ShellExperienceHost.exe
-[00161|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: SearchUI.exe
-[00162|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00163|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00164|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: SkypeHost.exe
-[00165|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00166|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00167|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: MSASCuiL.exe
-[00168|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RAVCpl64.exe
-[00169|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00170|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00171|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
-[00172|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenterTray.exe
-[00173|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: utility.exe
-[00174|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00175|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: DolbyDAX2TrayIcon.exe
-[00176|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: OneDrive.exe
-[00177|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: flux.exe
-[00178|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: 5KPlayer.exe
-[00179|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00180|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00181|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: jusched.exe
-[00182|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00183|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00184|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00185|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00186|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00187|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00188|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00189|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00190|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00191|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00192|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00193|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00194|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00195|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00196|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00197|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00198|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00199|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00200|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00201|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
-[00202|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: HostAppServiceUpdater.exe
-[00203|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: NVIDIA Web Helper.exe
-[00204|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
-[00205|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: ApplicationFrameHost.exe
-[00206|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: WinStore.App.exe
-[00207|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00208|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: Microsoft.Photos.exe
-[00209|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00210|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00211|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: LockApp.exe
-[00212|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
-[00213|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00214|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.SettingsApp.exe
-[00215|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00216|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00217|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: eclipse.exe
-[00218|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: DllHost.exe
-[00219|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00220|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: geany.exe
-[00221|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00222|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.Device.exe
-[00223|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenter.exe
-[00224|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00225|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00226|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00227|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00228|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00229|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00230|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
-[00231|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
-[00232|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: starter.exe
-[00233|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
-[00234|2018-04-14 17:54:04|  trace] : gameTitle: watermill.exe; szProcessName: Watermill.exe
-[00235|2018-04-14 17:54:04|  trace] : Watermill.exe (PID: 1488)
-[00236|2018-04-14 17:54:04|  trace] : howMany: 1
-[00237|2018-04-14 17:54:04|  trace] : diskFree: 188371791 [clusters], 733184 [MB], 716 [GB]
-[00238|2018-04-14 17:54:04|  trace] : diskNeeded: 2560 [clusters], 10 [MB]
-[00239|2018-04-14 17:54:04|  trace] : CPU speed needed: 900 [MHz], CPU speed available: 2808 [MHz]
-[00240|2018-04-14 17:54:04|  trace] : percent of memory in use 24
-[00241|2018-04-14 17:54:04|  trace] : total kB of physical memory 33426596
-[00242|2018-04-14 17:54:04|  trace] : free  kB of physical memory 25329256
-[00243|2018-04-14 17:54:04|  trace] : total kB of paging file 38407332
-[00244|2018-04-14 17:54:04|  trace] : free  kB of paging file 29743580
-[00245|2018-04-14 17:54:04|  trace] : total MB of virtual memory 134217727
-[00246|2018-04-14 17:54:04|  trace] : free  MB of virtual memory 134217507
-[00247|2018-04-14 17:54:04|  trace] : free  kB of extended memory 0
-[00248|2018-04-14 17:54:04|  trace] : physical RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
-[00249|2018-04-14 17:54:04|  trace] : physical RAM total: 34228834304 [byte], 32643 [MB] 31 [GB]
-[00250|2018-04-14 17:54:04|  trace] : virtual RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
-[00251|2018-04-14 17:54:04|  trace] : virtual RAM available: 140737257304064 [byte], 1.34218e+008 [MB] 131071 [GB]
-[00252|2018-04-14 17:54:04|   info] : Create IResourceFile(rootFolder)
-[00253|2018-04-14 17:54:04|   info] : Create DevelopmentResourceFolder(rootFolder, assetsFolder)
-[00254|2018-04-14 17:54:04|   info] : Create ResourceCache
-[00255|2018-04-14 17:54:04|   info] : assetsPath: ../../../assets/
-[00256|2018-04-14 17:54:04|  trace] : Create IResourceLoader
-[00257|2018-04-14 17:54:04|  trace] : Create DefaultResourceLoader
-[00258|2018-04-14 17:54:04|   info] : VSAVE: ../../../assets/
-[00259|2018-04-14 17:54:04|   info] : VSAVE DEV: ../../../assetsFolderToFolder/
-[00260|2018-04-14 17:54:04|  trace] : Create IResourceLoader
-[00261|2018-04-14 17:54:04|  trace] : Create XmlResourceLoader
-[00262|2018-04-14 17:54:04|  trace] : Create GameMessages
-[00263|2018-04-14 17:54:04|  trace] : LAN: pl.UTF-8
-[00264|2018-04-14 17:54:04|  trace] : The language code is pl
-[00265|2018-04-14 17:54:04|  trace] : The country code is 
-[00266|2018-04-14 17:54:04|  trace] : name *
-[00267|2018-04-14 17:54:04|  trace] : hello_world
-[00268|2018-04-14 17:54:04|  trace] : hello_world_only_pl_pl
-[00269|2018-04-14 17:54:04|  trace] : hello_world_only_pl
-[00270|2018-04-14 17:54:04|  trace] : hello_world_only_en
-[00271|2018-04-14 17:54:04|  trace] : hello_world_only_default
-[00272|2018-04-14 17:54:04|  trace] : Pr√≥ba kodowania Cze≈õƒá ≈öwiecie
-[00273|2018-04-14 17:54:04|  trace] : Create LuaStateManager
-[00274|2018-04-14 17:54:04|  trace] : lua script: test.lua
-[00275|2018-04-14 17:54:04|  trace] : lua full script: ../../../assets/scripts/test.lua
-[00276|2018-04-14 17:54:04|  trace] : howdy() was called with 3 arguments
-[00277|2018-04-14 17:54:04|  trace] :   argument 1: First
-[00278|2018-04-14 17:54:04|  trace] :   argument 2: Second
-[00279|2018-04-14 17:54:04|  trace] :   argument 3: 112233
-[00280|2018-04-14 17:54:04|   info] : SAFE_DELETE delete: Pc
-[00281|2018-04-14 17:54:04|  trace] : Create EventManager
-[00282|2018-04-14 17:54:04|  trace] : Create DataFiles
-[00283|2018-04-14 17:54:04|  trace] : Create AudioSystem
-[00284|2018-04-14 17:54:04|  trace] : Create VideoSystem
-[00285|2018-04-14 17:54:04|  trace] : videoSystem++++
-[00286|2018-04-14 17:54:04|  trace] : Create SaveManager
-[00287|2018-04-14 17:54:04|  trace] : saveGame: GameEngine\Watermill\1.0
-[00288|2018-04-14 17:54:04|  trace] : userprofile: C:\Users\Krzysztof
-[00289|2018-04-14 17:54:04|  trace] : userProfilePathStr: C:\Users\Krzysztof
-[00290|2018-04-14 17:54:04|  trace] : SaveManager saveGame: GameEngine\Watermill\1.0
-[00291|2018-04-14 17:54:04|  trace] : SaveManager userProfilePathStr: C:\Users\Krzysztof
-[00292|2018-04-14 17:54:04|  trace] : folder: GameEngine
-[00293|2018-04-14 17:54:04|  trace] : path: "C:\Users\Krzysztof\GameEngine"
-[00294|2018-04-14 17:54:04|  trace] : path exists: 1
-[00295|2018-04-14 17:54:04|  trace] : folder: Watermill
-[00296|2018-04-14 17:54:04|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill"
-[00297|2018-04-14 17:54:04|  trace] : path exists: 1
-[00298|2018-04-14 17:54:04|  trace] : folder: 1.0
-[00299|2018-04-14 17:54:04|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill\1.0"
-[00300|2018-04-14 17:54:04|  trace] : path exists: 1
-[00301|2018-04-14 17:54:04|  trace] : glutInit+++
-[00302|2018-04-14 17:54:04|  trace] : glutDisplayFunc+++
-[00303|2018-04-14 17:54:04|  trace] : glutMainLoop+++
-[00304|2018-04-14 17:54:04|  trace] : after glutMainLoop+++
-[00305|2018-04-14 17:54:04|   info] : SAFE_DELETE delete: Pc
-[00306|2018-04-14 17:54:04|  trace] : createGameAndView++++
-[00307|2018-04-14 17:54:04|  trace] : WatermillGame::createGameAndView
-[00308|2018-04-14 17:54:04|  trace] : Create BaseGameLogic
-[00309|2018-04-14 17:54:04|  trace] : Create ProcessManager
-[00310|2018-04-14 17:54:04|  trace] : Create WatermillLogic
-[00311|2018-04-14 17:54:04|  trace] : Create ActorFactory
-[00312|2018-04-14 17:54:04|  trace] : Create ComponentFactory
-[00313|2018-04-14 17:54:04|  trace] : zarejestrowano: renderComponent; function: 1
-[00314|2018-04-14 17:54:04|  trace] : zarejestrowano: scriptComponent; function: 1
-[00315|2018-04-14 17:54:04|  trace] : zarejestrowano: transformComponent; function: 1
-[00316|2018-04-14 17:54:04|   info] : Create Resource
-[00317|2018-04-14 17:54:04|   info] : Orig name: TestImage.jpg
-[00318|2018-04-14 17:54:04|   info] : Tolower name: testimage.jpg
-[00319|2018-04-14 17:54:04|   info] : ResourceCache::getHandle
-[00320|2018-04-14 17:54:04|   info] : ResourceCache::find
-[00321|2018-04-14 17:54:04|   info] : Pattern *.xml
-[00322|2018-04-14 17:54:04|   info] : Pattern *.xml fileName: testimage.jpg
-[00323|2018-04-14 17:54:04|   info] : testimage.jpg DOES NOT MATCH *.xml
-[00324|2018-04-14 17:54:04|   info] : Pattern *
-[00325|2018-04-14 17:54:04|   info] : Pattern * fileName: testimage.jpg
-[00326|2018-04-14 17:54:04|   info] : testimage.jpg MATCHES: *
-[00327|2018-04-14 17:54:04|   info] : DevelopmentResourceFolder::vGetRawResourceSize: testimage.jpg
-[00328|2018-04-14 17:54:04|   info] : Root Folder: ../../../
-[00329|2018-04-14 17:54:04|   info] : Asset Folder: ../../../assets/
-[00330|2018-04-14 17:54:04|   info] : thisResPath: ..\..\..\assets\testimage.jpg
-[00331|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\actors\player_character.xml" filename: "player_character.xml"
-[00332|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\polskie•Í∆znaki.txt" filename: "polskie•Í∆znaki.txt"
-[00333|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempSecondZip.txt" filename: "tempSecondZip.txt"
-[00334|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAbcdOut.txt" filename: "tempTestAbcdOut.txt"
-[00335|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAbcdOutZip" filename: "tempTestAbcdOutZip"
-[00336|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAllOut.txt" filename: "tempTestAllOut.txt"
-[00337|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOut.txt" filename: "tempTestDirHeaderOut.txt"
-[00338|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOutArraySource.txt" filename: "tempTestDirHeaderOutArraySource.txt"
-[00339|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOutZip.txt" filename: "tempTestDirHeaderOutZip.txt"
-[00340|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFile.txt" filename: "tempTestZipFile.txt"
-[00341|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileOut.txt" filename: "tempTestZipFileOut.txt"
-[00342|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileOutAll.txt" filename: "tempTestZipFileOutAll.txt"
-[00343|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileZipOut.txt" filename: "tempTestZipFileZipOut.txt"
-[00344|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\graphics\tempThirdZip.txt" filename: "tempThirdZip.txt"
-[00345|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\scripts\test.lua" filename: "test.lua"
-[00346|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\strings\en\LC_MESSAGES\watermill.po" filename: "watermill.po"
-[00347|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\strings\pl\LC_MESSAGES\watermill.po" filename: "watermill.po"
-[00348|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\tempGraphics\test.txt" filename: "test.txt"
-[00349|2018-04-14 17:54:04|   info] : RESOURCE NOT  FOUND testimage.jpg
-[00350|2018-04-14 17:54:04|  error] : Resource size returned -1 - Resource not found
-[00351|2018-04-14 17:54:04|   info] : Destroy Resource
-[00352|2018-04-14 17:54:04|   info] : createGameAndView+2
-[00353|2018-04-14 17:54:04|  trace] : Destroy Windows64Calls
-[00354|2018-04-14 17:54:04|  trace] : Main loop+++
-[00355|2018-04-14 17:54:04|   info] : ActorFactory::loadAndReturnRootXmlElement: ../../../assets/ + actors/player_character.xml
-[00356|2018-04-14 17:54:04|   info] : Create Resource
-[00357|2018-04-14 17:54:04|   info] : Orig name: actors/player_character.xml
-[00358|2018-04-14 17:54:04|   info] : Tolower name: actors/player_character.xml
-[00359|2018-04-14 17:54:04|   info] : ResourceCache::getHandle
-[00360|2018-04-14 17:54:04|   info] : ResourceCache::find
-[00361|2018-04-14 17:54:04|   info] : Pattern *.xml
-[00362|2018-04-14 17:54:04|   info] : Pattern *.xml fileName: actors/player_character.xml
-[00363|2018-04-14 17:54:04|   info] : actors/player_character.xml MATCHES: *.xml
-[00364|2018-04-14 17:54:04|   info] : DevelopmentResourceFolder::vGetRawResourceSize: actors/player_character.xml
-[00365|2018-04-14 17:54:04|   info] : Root Folder: ../../../
-[00366|2018-04-14 17:54:04|   info] : Asset Folder: ../../../assets/
-[00367|2018-04-14 17:54:04|   info] : thisResPath: ..\..\..\assets\actors\player_character.xml
-[00368|2018-04-14 17:54:04|   info] : makePreferred: "..\..\..\assets\actors\player_character.xml" filename: "player_character.xml"
-[00369|2018-04-14 17:54:04|   info] : THIS IS THIS: ..\..\..\assets\actors\player_character.xml
-[00370|2018-04-14 17:54:04|   info] : PATH FOUND ..\..\..\assets\actors\player_character.xml File Size 405
-[00371|2018-04-14 17:54:04|   info] : ResourceCache::load
-[00372|2018-04-14 17:54:04|   info] : DevelopmentResourceUnzipFile::vTempReadResource: 
-[00373|2018-04-14 17:54:04|   info] : Create ResourceHandle
-[00374|2018-04-14 17:54:04|   info] : Destroy ResourceHandle
-[00375|2018-04-14 17:54:04|   info] : Destroy Resource
-[00376|2018-04-14 17:54:04|   info] : Destroy Resource
-[00377|2018-04-14 17:54:04|  trace] : "actor" : "
+[00020|2018-04-29 17:49:20|  trace] :   "<xmlcomment>" : " <option name="language" value="en.UTF-8"/> "
+[00021|2018-04-29 17:49:20|  trace] :   "option" : ""
+[00022|2018-04-29 17:49:20|  trace] :     "<xmlattr>" : ""
+[00023|2018-04-29 17:49:20|  trace] :       "name" : "language"
+[00024|2018-04-29 17:49:20|  trace] :       "value" : "pl.UTF-8"
+[00025|2018-04-29 17:49:20|  trace] :   "option" : ""
+[00026|2018-04-29 17:49:20|  trace] :     "<xmlattr>" : ""
+[00027|2018-04-29 17:49:20|  trace] :       "name" : "fullscreen"
+[00028|2018-04-29 17:49:20|  trace] :       "value" : "false"
+[00029|2018-04-29 17:49:20|  trace] : Create DebuggingOptions
+[00030|2018-04-29 17:49:20|   info] : debuggingOptions assetsReadMode: folder
+[00031|2018-04-29 17:49:20|  trace] : Create Windows64Calls
+[00032|2018-04-29 17:49:20|  trace] : Is the only instance in Windows 64: watermill?
+[00033|2018-04-29 17:49:20|  trace] : Is the only instance in Windows 64: watermill.exe?
+[00034|2018-04-29 17:49:20|  trace] : --------------------------
+[00035|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00036|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00037|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00038|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00039|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00040|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00041|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00042|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00043|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00044|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00045|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00046|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00047|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00048|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00049|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00050|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00051|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00052|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00053|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00054|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00055|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00056|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00057|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00058|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00059|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00060|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00061|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00062|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00063|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00064|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00065|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00066|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00067|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00068|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00069|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00070|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00071|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00072|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00073|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00074|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00075|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00076|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00077|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00078|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00079|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00080|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00081|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00082|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00083|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00084|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00085|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00086|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00087|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00088|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00089|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00090|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00091|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00092|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00093|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00094|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00095|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00096|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00097|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00098|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00099|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00100|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00101|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00102|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00103|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00104|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00105|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00106|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00107|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00108|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00109|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00110|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00111|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00112|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00113|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00114|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00115|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00116|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00117|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00118|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00119|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00120|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00121|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00122|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00123|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00124|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00125|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00126|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00127|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00128|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00129|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00130|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00131|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00132|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00133|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00134|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00135|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00136|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00137|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00138|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00139|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00140|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00141|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00142|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00143|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00144|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00145|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00146|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00147|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00148|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00149|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00150|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00151|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: ETDCtrl.exe
+[00152|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: nvcontainer.exe
+[00153|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: sihost.exe
+[00154|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00155|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00156|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: taskhostw.exe
+[00157|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00158|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: Explorer.EXE
+[00159|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: igfxEM.exe
+[00160|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: ShellExperienceHost.exe
+[00161|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: SearchUI.exe
+[00162|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00163|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00164|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: SkypeHost.exe
+[00165|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00166|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00167|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: ETDIntelligent.exe
+[00168|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: MSASCuiL.exe
+[00169|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RAVCpl64.exe
+[00170|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00171|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00172|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RAVBg64.exe
+[00173|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: LenovoNerveCenterTray.exe
+[00174|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00175|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: utility.exe
+[00176|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: DolbyDAX2TrayIcon.exe
+[00177|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: OneDrive.exe
+[00178|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: flux.exe
+[00179|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: 5KPlayer.exe
+[00180|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00181|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00182|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00183|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00184|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00185|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00186|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00187|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00188|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00189|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00190|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00191|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00192|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00193|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00194|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00195|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00196|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00197|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00198|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00199|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00200|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00201|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00202|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00203|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00204|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00205|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: svchost.exe
+[00206|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: HostAppServiceUpdater.exe
+[00207|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: NVIDIA Web Helper.exe
+[00208|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00209|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00210|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: ApplicationFrameHost.exe
+[00211|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: WinStore.App.exe
+[00212|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00213|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: Microsoft.Photos.exe
+[00214|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00215|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00216|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00217|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00218|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: AppVShNotify.exe
+[00219|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00220|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: LockApp.exe
+[00221|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RuntimeBroker.exe
+[00222|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00223|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.SettingsApp.exe
+[00224|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00225|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: geany.exe
+[00226|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: AcroRd32.exe
+[00227|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: AcroRd32.exe
+[00228|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RdrCEF.exe
+[00229|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: RdrCEF.exe
+[00230|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00231|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: Lenovo.Modern.ImController.PluginHost.Device.exe
+[00232|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00233|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00234|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00235|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00236|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00237|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00238|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00239|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00240|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00241|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00242|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00243|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00244|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00245|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00246|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00247|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00248|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00249|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: eclipse.exe
+[00250|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00251|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: git-bash.exe
+[00252|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: mintty.exe
+[00253|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00254|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: bash.exe
+[00255|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00256|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: DllHost.exe
+[00257|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: notepad++.exe
+[00258|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: mintty.exe
+[00259|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00260|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: bash.exe
+[00261|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00262|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: geany.exe
+[00263|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00264|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00265|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00266|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: chrome.exe
+[00267|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: backgroundTaskHost.exe
+[00268|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00269|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: starter.exe
+[00270|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: conhost.exe
+[00271|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: gdb.exe
+[00272|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: Watermill.exe
+[00273|2018-04-29 17:49:20|  trace] : Watermill.exe (PID: 6524)
+[00274|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00275|2018-04-29 17:49:20|  trace] : gameTitle: watermill.exe; szProcessName: <unknown>
+[00276|2018-04-29 17:49:20|  trace] : howMany: 1
+[00277|2018-04-29 17:49:20|  trace] : diskFree: 188415260 [clusters], 733184 [MB], 716 [GB]
+[00278|2018-04-29 17:49:20|  trace] : diskNeeded: 2560 [clusters], 10 [MB]
+[00279|2018-04-29 17:49:20|  trace] : CPU speed needed: 900 [MHz], CPU speed available: 2808 [MHz]
+[00280|2018-04-29 17:49:20|  trace] : percent of memory in use 26
+[00281|2018-04-29 17:49:20|  trace] : total kB of physical memory 33426596
+[00282|2018-04-29 17:49:20|  trace] : free  kB of physical memory 24480132
+[00283|2018-04-29 17:49:20|  trace] : total kB of paging file 38407332
+[00284|2018-04-29 17:49:20|  trace] : free  kB of paging file 28850648
+[00285|2018-04-29 17:49:20|  trace] : total MB of virtual memory 134217727
+[00286|2018-04-29 17:49:20|  trace] : free  MB of virtual memory 134217509
+[00287|2018-04-29 17:49:20|  trace] : free  kB of extended memory 0
+[00288|2018-04-29 17:49:20|  trace] : physical RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00289|2018-04-29 17:49:20|  trace] : physical RAM total: 34228834304 [byte], 32643 [MB] 31 [GB]
+[00290|2018-04-29 17:49:20|  trace] : virtual RAM needed: 1048576 [byte], 1 [MB] 0 [GB]
+[00291|2018-04-29 17:49:20|  trace] : virtual RAM available: 140737259311104 [byte], 1.34218e+008 [MB] 131071 [GB]
+[00292|2018-04-29 17:49:20|   info] : Create IResourceFile(rootFolder)
+[00293|2018-04-29 17:49:20|   info] : Create DevelopmentResourceFolder(rootFolder, assetsFolder)
+[00294|2018-04-29 17:49:20|   info] : Create ResourceCache
+[00295|2018-04-29 17:49:20|   info] : assetsPath: ../../../assets/
+[00296|2018-04-29 17:49:20|  trace] : Create IResourceLoader
+[00297|2018-04-29 17:49:20|  trace] : Create DefaultResourceLoader
+[00298|2018-04-29 17:49:20|   info] : VSAVE: ../../../assets/
+[00299|2018-04-29 17:49:20|   info] : VSAVE DEV: ../../../assetsFolderToFolder/
+[00300|2018-04-29 17:49:20|  trace] : Create IResourceLoader
+[00301|2018-04-29 17:49:20|  trace] : Create XmlResourceLoader
+[00302|2018-04-29 17:49:20|  trace] : Create GameMessages
+[00303|2018-04-29 17:49:20|  trace] : LAN: pl.UTF-8
+[00304|2018-04-29 17:49:20|  trace] : The language code is pl
+[00305|2018-04-29 17:49:20|  trace] : The country code is 
+[00306|2018-04-29 17:49:20|  trace] : name *
+[00307|2018-04-29 17:49:20|  trace] : hello_world
+[00308|2018-04-29 17:49:20|  trace] : hello_world_only_pl_pl
+[00309|2018-04-29 17:49:20|  trace] : hello_world_only_pl
+[00310|2018-04-29 17:49:20|  trace] : hello_world_only_en
+[00311|2018-04-29 17:49:20|  trace] : hello_world_only_default
+[00312|2018-04-29 17:49:20|  trace] : Pr√≥ba kodowania Cze≈õƒá ≈öwiecie
+[00313|2018-04-29 17:49:20|  trace] : Create LuaStateManager
+[00314|2018-04-29 17:49:20|  trace] : lua script: test.lua
+[00315|2018-04-29 17:49:20|  trace] : lua full script: ../../../assets/scripts/test.lua
+[00316|2018-04-29 17:49:20|  trace] : howdy() was called with 3 arguments
+[00317|2018-04-29 17:49:20|  trace] :   argument 1: First
+[00318|2018-04-29 17:49:20|  trace] :   argument 2: Second
+[00319|2018-04-29 17:49:20|  trace] :   argument 3: 112233
+[00320|2018-04-29 17:49:20|   info] : SAFE_DELETE delete: Pc
+[00321|2018-04-29 17:49:20|  trace] : Create EventManager
+[00322|2018-04-29 17:49:20|  trace] : Create DataFiles
+[00323|2018-04-29 17:49:20|  trace] : Create AudioSystem
+[00324|2018-04-29 17:49:20|  trace] : Create VideoSystem
+[00325|2018-04-29 17:49:20|  trace] : videoSystem++++
+[00326|2018-04-29 17:49:20|  trace] : Create SaveManager
+[00327|2018-04-29 17:49:20|  trace] : saveGame: GameEngine\Watermill\1.0
+[00328|2018-04-29 17:49:20|  trace] : userprofile: C:\Users\Krzysztof
+[00329|2018-04-29 17:49:20|  trace] : userProfilePathStr: C:\Users\Krzysztof
+[00330|2018-04-29 17:49:20|  trace] : SaveManager saveGame: GameEngine\Watermill\1.0
+[00331|2018-04-29 17:49:20|  trace] : SaveManager userProfilePathStr: C:\Users\Krzysztof
+[00332|2018-04-29 17:49:20|  trace] : folder: GameEngine
+[00333|2018-04-29 17:49:20|  trace] : path: "C:\Users\Krzysztof\GameEngine"
+[00334|2018-04-29 17:49:20|  trace] : path exists: 1
+[00335|2018-04-29 17:49:20|  trace] : folder: Watermill
+[00336|2018-04-29 17:49:20|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill"
+[00337|2018-04-29 17:49:20|  trace] : path exists: 1
+[00338|2018-04-29 17:49:20|  trace] : folder: 1.0
+[00339|2018-04-29 17:49:20|  trace] : path: "C:\Users\Krzysztof\GameEngine\Watermill\1.0"
+[00340|2018-04-29 17:49:20|  trace] : path exists: 1
+[00341|2018-04-29 17:49:20|  trace] : glutInit+++
+[00342|2018-04-29 17:49:22|  trace] : glutDisplayFunc+++
+[00343|2018-04-29 17:49:22|  trace] : glutMainLoop+++
+[00344|2018-04-29 17:49:22|  trace] : after glutMainLoop+++
+[00345|2018-04-29 17:49:22|   info] : SAFE_DELETE delete: Pc
+[00346|2018-04-29 17:49:22|  trace] : createGameAndView++++
+[00347|2018-04-29 17:49:22|  trace] : WatermillGame::createGameAndView
+[00348|2018-04-29 17:49:22|  trace] : Create BaseGameLogic
+[00349|2018-04-29 17:49:22|  trace] : Create ProcessManager
+[00350|2018-04-29 17:49:22|  trace] : Create WatermillLogic
+[00351|2018-04-29 17:49:22|  trace] : Create ActorFactory
+[00352|2018-04-29 17:49:22|  trace] : Create ComponentFactory
+[00353|2018-04-29 17:49:22|  trace] : zarejestrowano: renderComponent; function: 1
+[00354|2018-04-29 17:49:22|  trace] : zarejestrowano: scriptComponent; function: 1
+[00355|2018-04-29 17:49:22|  trace] : zarejestrowano: transformComponent; function: 1
+[00356|2018-04-29 17:49:22|   info] : Create Resource
+[00357|2018-04-29 17:49:22|   info] : Orig name: TestImage.jpg
+[00358|2018-04-29 17:49:22|   info] : Tolower name: testimage.jpg
+[00359|2018-04-29 17:49:22|   info] : ResourceCache::getHandle
+[00360|2018-04-29 17:49:22|   info] : ResourceCache::find
+[00361|2018-04-29 17:49:22|   info] : Pattern *.xml
+[00362|2018-04-29 17:49:22|   info] : Pattern *.xml fileName: testimage.jpg
+[00363|2018-04-29 17:49:22|   info] : testimage.jpg DOES NOT MATCH *.xml
+[00364|2018-04-29 17:49:22|   info] : Pattern *
+[00365|2018-04-29 17:49:22|   info] : Pattern * fileName: testimage.jpg
+[00366|2018-04-29 17:49:22|   info] : testimage.jpg MATCHES: *
+[00367|2018-04-29 17:49:22|   info] : DevelopmentResourceFolder::vGetRawResourceSize: testimage.jpg
+[00368|2018-04-29 17:49:22|   info] : Root Folder: ../../../
+[00369|2018-04-29 17:49:22|   info] : Asset Folder: ../../../assets/
+[00370|2018-04-29 17:49:22|   info] : thisResPath: ..\..\..\assets\testimage.jpg
+[00371|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\actors\player_character.xml" filename: "player_character.xml"
+[00372|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\polskie•Í∆znaki.txt" filename: "polskie•Í∆znaki.txt"
+[00373|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempSecondZip.txt" filename: "tempSecondZip.txt"
+[00374|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAbcdOut.txt" filename: "tempTestAbcdOut.txt"
+[00375|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAbcdOutZip" filename: "tempTestAbcdOutZip"
+[00376|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestAllOut.txt" filename: "tempTestAllOut.txt"
+[00377|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOut.txt" filename: "tempTestDirHeaderOut.txt"
+[00378|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOutArraySource.txt" filename: "tempTestDirHeaderOutArraySource.txt"
+[00379|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestDirHeaderOutZip.txt" filename: "tempTestDirHeaderOutZip.txt"
+[00380|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFile.txt" filename: "tempTestZipFile.txt"
+[00381|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileOut.txt" filename: "tempTestZipFileOut.txt"
+[00382|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileOutAll.txt" filename: "tempTestZipFileOutAll.txt"
+[00383|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempTestZipFileZipOut.txt" filename: "tempTestZipFileZipOut.txt"
+[00384|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\graphics\tempThirdZip.txt" filename: "tempThirdZip.txt"
+[00385|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\scripts\test.lua" filename: "test.lua"
+[00386|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\strings\en\LC_MESSAGES\watermill.po" filename: "watermill.po"
+[00387|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\strings\pl\LC_MESSAGES\watermill.po" filename: "watermill.po"
+[00388|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\tempGraphics\test.txt" filename: "test.txt"
+[00389|2018-04-29 17:49:22|   info] : RESOURCE NOT  FOUND testimage.jpg
+[00390|2018-04-29 17:49:22|  error] : Resource size returned -1 - Resource not found
+[00391|2018-04-29 17:49:22|   info] : Destroy Resource
+[00392|2018-04-29 17:49:22|   info] : createGameAndView+2
+[00393|2018-04-29 17:49:22|  trace] : Destroy Windows64Calls
+[00394|2018-04-29 17:49:22|  trace] : Main loop+++
+[00395|2018-04-29 17:49:22|   info] : ActorFactory::loadAndReturnRootXmlElement: ../../../assets/ + actors/player_character.xml
+[00396|2018-04-29 17:49:22|   info] : Create Resource
+[00397|2018-04-29 17:49:22|   info] : Orig name: actors/player_character.xml
+[00398|2018-04-29 17:49:22|   info] : Tolower name: actors/player_character.xml
+[00399|2018-04-29 17:49:22|   info] : ResourceCache::getHandle
+[00400|2018-04-29 17:49:22|   info] : ResourceCache::find
+[00401|2018-04-29 17:49:22|   info] : Pattern *.xml
+[00402|2018-04-29 17:49:22|   info] : Pattern *.xml fileName: actors/player_character.xml
+[00403|2018-04-29 17:49:22|   info] : actors/player_character.xml MATCHES: *.xml
+[00404|2018-04-29 17:49:22|   info] : DevelopmentResourceFolder::vGetRawResourceSize: actors/player_character.xml
+[00405|2018-04-29 17:49:22|   info] : Root Folder: ../../../
+[00406|2018-04-29 17:49:22|   info] : Asset Folder: ../../../assets/
+[00407|2018-04-29 17:49:22|   info] : thisResPath: ..\..\..\assets\actors\player_character.xml
+[00408|2018-04-29 17:49:22|   info] : makePreferred: "..\..\..\assets\actors\player_character.xml" filename: "player_character.xml"
+[00409|2018-04-29 17:49:22|   info] : THIS IS THIS: ..\..\..\assets\actors\player_character.xml
+[00410|2018-04-29 17:49:22|   info] : PATH FOUND ..\..\..\assets\actors\player_character.xml File Size 405
+[00411|2018-04-29 17:49:22|   info] : ResourceCache::load
+[00412|2018-04-29 17:49:22|   info] : DevelopmentResourceUnzipFile::vTempReadResource: 
+[00413|2018-04-29 17:49:22|   info] : Create ResourceHandle
+[00414|2018-04-29 17:49:22|   info] : Destroy ResourceHandle
+[00415|2018-04-29 17:49:22|   info] : Destroy Resource
+[00416|2018-04-29 17:49:22|   info] : Destroy Resource
+[00417|2018-04-29 17:49:22|  trace] : "actor" : "
 	
 
 	
 
 	
 "
-[00378|2018-04-14 17:54:04|  trace] :   "<xmlattr>" : ""
-[00379|2018-04-14 17:54:04|  trace] :     "type" : "character"
-[00380|2018-04-14 17:54:04|  trace] :   "transformComponent" : "
+[00418|2018-04-29 17:49:22|  trace] :   "<xmlattr>" : ""
+[00419|2018-04-29 17:49:22|  trace] :     "type" : "character"
+[00420|2018-04-29 17:49:22|  trace] :   "transformComponent" : "
 	    
 	"
-[00381|2018-04-14 17:54:04|  trace] :     "position" : ""
-[00382|2018-04-14 17:54:04|  trace] :       "<xmlattr>" : ""
-[00383|2018-04-14 17:54:04|  trace] :         "x" : "142"
-[00384|2018-04-14 17:54:04|  trace] :         "y" : "241"
-[00385|2018-04-14 17:54:04|  trace] :         "z" : "357"
-[00386|2018-04-14 17:54:04|  trace] :   "renderComponent" : "
+[00421|2018-04-29 17:49:22|  trace] :     "position" : ""
+[00422|2018-04-29 17:49:22|  trace] :       "<xmlattr>" : ""
+[00423|2018-04-29 17:49:22|  trace] :         "x" : "142"
+[00424|2018-04-29 17:49:22|  trace] :         "y" : "241"
+[00425|2018-04-29 17:49:22|  trace] :         "z" : "357"
+[00426|2018-04-29 17:49:22|  trace] :   "renderComponent" : "
 	    
 	"
-[00387|2018-04-14 17:54:04|  trace] :     "color" : ""
-[00388|2018-04-14 17:54:04|  trace] :       "<xmlattr>" : ""
-[00389|2018-04-14 17:54:04|  trace] :         "r" : "0.5"
-[00390|2018-04-14 17:54:04|  trace] :         "g" : "1.0"
-[00391|2018-04-14 17:54:04|  trace] :         "b" : "1.0"
-[00392|2018-04-14 17:54:04|  trace] :         "a" : "1.0"
-[00393|2018-04-14 17:54:04|  trace] :   "scriptComponent" : "
+[00427|2018-04-29 17:49:22|  trace] :     "color" : ""
+[00428|2018-04-29 17:49:22|  trace] :       "<xmlattr>" : ""
+[00429|2018-04-29 17:49:22|  trace] :         "r" : "0.5"
+[00430|2018-04-29 17:49:22|  trace] :         "g" : "1.0"
+[00431|2018-04-29 17:49:22|  trace] :         "b" : "1.0"
+[00432|2018-04-29 17:49:22|  trace] :         "a" : "1.0"
+[00433|2018-04-29 17:49:22|  trace] :   "scriptComponent" : "
         
         
 	"
-[00394|2018-04-14 17:54:04|  trace] :     "scriptObject" : ""
-[00395|2018-04-14 17:54:04|  trace] :       "<xmlattr>" : ""
-[00396|2018-04-14 17:54:04|  trace] :         "constructor" : "addPlayer"
-[00397|2018-04-14 17:54:04|  trace] :         "destructor" : "removePlayer"
-[00398|2018-04-14 17:54:04|  trace] :     "scriptData" : ""
-[00399|2018-04-14 17:54:04|  trace] :       "<xmlattr>" : ""
-[00400|2018-04-14 17:54:04|  trace] :         "actorType" : "player"
-[00401|2018-04-14 17:54:04|  trace] : Create Actor
-[00402|2018-04-14 17:54:04|  trace] : To jest <xmlattr>
-[00403|2018-04-14 17:54:04|  trace] : loadActorNode component: transformComponent
-[00404|2018-04-14 17:54:04|  trace] : Komponent jest zarejestrowany
-[00405|2018-04-14 17:54:04|  trace] : Create ActorComponent
-[00406|2018-04-14 17:54:04|  trace] : Create TransformComponent
-[00407|2018-04-14 17:54:04|  trace] : stworzono komponent: transformComponent
-[00408|2018-04-14 17:54:04|  trace] : Transform x: 142
-[00409|2018-04-14 17:54:04|  trace] : Transform y: 241
-[00410|2018-04-14 17:54:04|  trace] : Transform z: 357
-[00411|2018-04-14 17:54:04|  trace] : Stworzono actorComponent
-[00412|2018-04-14 17:54:04|  trace] : Post add actorComponent actor use_count: 2
-[00413|2018-04-14 17:54:04|  trace] : loadActorNode component: renderComponent
-[00414|2018-04-14 17:54:04|  trace] : Komponent jest zarejestrowany
-[00415|2018-04-14 17:54:04|  trace] : Create ActorComponent
-[00416|2018-04-14 17:54:04|  trace] : Create RenderComponent
-[00417|2018-04-14 17:54:04|  trace] : stworzono komponent: renderComponent
-[00418|2018-04-14 17:54:04|  trace] : Stworzono actorComponent
-[00419|2018-04-14 17:54:04|  trace] : Post add actorComponent actor use_count: 3
-[00420|2018-04-14 17:54:04|  trace] : loadActorNode component: scriptComponent
-[00421|2018-04-14 17:54:04|  trace] : Komponent jest zarejestrowany
-[00422|2018-04-14 17:54:04|  trace] : Create ActorComponent
-[00423|2018-04-14 17:54:04|  trace] : Create ScriptComponent
-[00424|2018-04-14 17:54:04|  trace] : stworzono komponent: scriptComponent
-[00425|2018-04-14 17:54:04|  trace] : Stworzono actorComponent
-[00426|2018-04-14 17:54:04|  trace] : Post add actorComponent actor use_count: 4
-[00427|2018-04-14 17:54:04|  trace] : Post init actor use_count: 4
-[00428|2018-04-14 17:54:04|  trace] : Actor Id: 1
-[00429|2018-04-14 17:54:04|  trace] : RenderComponent Id: 8045164667755041602; r: 0.5; g: 1; b: 1; a: 1
-[00430|2018-04-14 17:54:04|  trace] : ScriptComponent Id: 14575089360167322533; constructor: addPlayer; destructor: removePlayer; actorType: player
-[00431|2018-04-14 17:54:04|  trace] : TransformComponent Id: 15140312264932749549; x: 142; y: 241; z: 357
-[00432|2018-04-14 17:54:04|  trace] : Stworzono actor
-[00433|2018-04-14 17:54:04|  trace] : Destroy TransformComponent
-[00434|2018-04-14 17:54:04|  trace] : Destroy ActorComponent
-[00435|2018-04-14 17:54:04|  trace] : Destroy ScriptComponent
-[00436|2018-04-14 17:54:04|  trace] : Destroy ActorComponent
-[00437|2018-04-14 17:54:04|  trace] : Destroy RenderComponent
-[00438|2018-04-14 17:54:04|  trace] : Destroy ActorComponent
-[00439|2018-04-14 17:54:04|  trace] : Destroy Actor
-[00440|2018-04-14 17:54:04|  trace] : Post destroy actor use_count: 1Post reset actor use_count: 0
-[00441|2018-04-14 17:54:04|   info] : Create HumanView
-[00442|2018-04-14 17:54:04|   info] : vOnRestore HumanView
-[00443|2018-04-14 17:54:04|  trace] :  GLUT window visible
-[00444|2018-04-14 17:54:04|  trace] : GLUT_NOT_VISIBLE: 0, GLUT_VISIBLE: 1
-[00445|2018-04-14 17:54:04|  trace] : GLUT visibilityFunction: 1
-[00446|2018-04-14 17:54:04|   info] : display----
-[00447|2018-04-14 17:54:05|   info] : GLUT TIMER: 1
-[00448|2018-04-14 17:54:05|   info] : GLUT TIMER: 2
-[00449|2018-04-14 17:54:05|   info] : GLUT TIMER: 3
-[00450|2018-04-14 17:54:42|   info] : GLUT onClose
-[00451|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game11GameCodeAppE
-[00452|2018-04-14 17:54:42|  trace] : Destroy WatermillGame
-[00453|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
-[00454|2018-04-14 17:54:42|  trace] : Destroy WatermillLogic
-[00455|2018-04-14 17:54:42|   info] : Destroy HumanView
-[00456|2018-04-14 17:54:42|   info] : Destroy IGameView
-[00457|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
-[00458|2018-04-14 17:54:42|  trace] : Destroy ProcessManager
-[00459|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00460|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game12ActorFactoryE
-[00461|2018-04-14 17:54:42|  trace] : Destroy ActorFactory
-[00462|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game16ComponentFactoryE
-[00463|2018-04-14 17:54:42|  trace] : Destroy ComponentFactory
-[00464|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00465|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00466|2018-04-14 17:54:42|  trace] : Destroy BaseGameLogic
-[00467|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00468|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game11SaveManagerE
-[00469|2018-04-14 17:54:42|  trace] : Destroy SaveManager
-[00470|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00471|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game11VideoSystemE
-[00472|2018-04-14 17:54:42|  trace] : Destroy VideoSystem
-[00473|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00474|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game11AudioSystemE
-[00475|2018-04-14 17:54:42|  trace] : Destroy AudioSystem
-[00476|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00477|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game9DataFilesE
-[00478|2018-04-14 17:54:42|  trace] : Destroy DataFiles
-[00479|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00480|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game12EventManagerE
-[00481|2018-04-14 17:54:42|  trace] : Destroy EventManager
-[00482|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00483|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game15LuaStateManagerE
-[00484|2018-04-14 17:54:42|  trace] : Destroy LuaStateManager
-[00485|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00486|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game12GameMessagesE
-[00487|2018-04-14 17:54:42|  trace] : Destroy GameMessages
-[00488|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00489|2018-04-14 17:54:42|   info] : Destroy ResourceCache
-[00490|2018-04-14 17:54:42|   info] : Destroy DevelopmentResourceZipFile
-[00491|2018-04-14 17:54:42|   info] : Destroy IResourceFile
-[00492|2018-04-14 17:54:42|  trace] : Destroy XmlResourceLoader
-[00493|2018-04-14 17:54:42|  trace] : Destroy IResourceLoader
-[00494|2018-04-14 17:54:42|  trace] : Destroy DefaultResourceLoader
-[00495|2018-04-14 17:54:42|  trace] : Destroy IResourceLoader
-[00496|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game16DebuggingOptionsE
-[00497|2018-04-14 17:54:42|  trace] : Destroy DebuggingOptions
-[00498|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00499|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game13PlayerOptionsE
-[00500|2018-04-14 17:54:42|  trace] : Destroy PlayerOptions
-[00501|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00502|2018-04-14 17:54:42|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
-[00503|2018-04-14 17:54:42|  trace] : Destroy InitOptions
-[00504|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00505|2018-04-14 17:54:42|  trace] : Destroy GameCodeApp
-[00506|2018-04-14 17:54:42|  trace] : SAFE_DELETE successfull
-[00507|2018-04-14 17:54:42|   info] : gameCodeApp init succeeded
+[00434|2018-04-29 17:49:22|  trace] :     "scriptObject" : ""
+[00435|2018-04-29 17:49:22|  trace] :       "<xmlattr>" : ""
+[00436|2018-04-29 17:49:22|  trace] :         "constructor" : "addPlayer"
+[00437|2018-04-29 17:49:22|  trace] :         "destructor" : "removePlayer"
+[00438|2018-04-29 17:49:22|  trace] :     "scriptData" : ""
+[00439|2018-04-29 17:49:22|  trace] :       "<xmlattr>" : ""
+[00440|2018-04-29 17:49:22|  trace] :         "actorType" : "player"
+[00441|2018-04-29 17:49:22|  trace] : Create Actor
+[00442|2018-04-29 17:49:22|  trace] : To jest <xmlattr>
+[00443|2018-04-29 17:49:22|  trace] : loadActorNode component: transformComponent
+[00444|2018-04-29 17:49:22|  trace] : Komponent jest zarejestrowany
+[00445|2018-04-29 17:49:22|  trace] : Create ActorComponent
+[00446|2018-04-29 17:49:22|  trace] : Create TransformComponent
+[00447|2018-04-29 17:49:22|  trace] : stworzono komponent: transformComponent
+[00448|2018-04-29 17:49:22|  trace] : Transform x: 142
+[00449|2018-04-29 17:49:22|  trace] : Transform y: 241
+[00450|2018-04-29 17:49:22|  trace] : Transform z: 357
+[00451|2018-04-29 17:49:22|  trace] : Stworzono actorComponent
+[00452|2018-04-29 17:49:22|  trace] : Post add actorComponent actor use_count: 2
+[00453|2018-04-29 17:49:22|  trace] : loadActorNode component: renderComponent
+[00454|2018-04-29 17:49:22|  trace] : Komponent jest zarejestrowany
+[00455|2018-04-29 17:49:22|  trace] : Create ActorComponent
+[00456|2018-04-29 17:49:22|  trace] : Create RenderComponent
+[00457|2018-04-29 17:49:22|  trace] : stworzono komponent: renderComponent
+[00458|2018-04-29 17:49:22|  trace] : Stworzono actorComponent
+[00459|2018-04-29 17:49:22|  trace] : Post add actorComponent actor use_count: 3
+[00460|2018-04-29 17:49:22|  trace] : loadActorNode component: scriptComponent
+[00461|2018-04-29 17:49:22|  trace] : Komponent jest zarejestrowany
+[00462|2018-04-29 17:49:22|  trace] : Create ActorComponent
+[00463|2018-04-29 17:49:22|  trace] : Create ScriptComponent
+[00464|2018-04-29 17:49:22|  trace] : stworzono komponent: scriptComponent
+[00465|2018-04-29 17:49:22|  trace] : Stworzono actorComponent
+[00466|2018-04-29 17:49:22|  trace] : Post add actorComponent actor use_count: 4
+[00467|2018-04-29 17:49:22|  trace] : Post init actor use_count: 4
+[00468|2018-04-29 17:49:22|  trace] : Actor Id: 1
+[00469|2018-04-29 17:49:22|  trace] : RenderComponent Id: 8045164667755041602; r: 0.5; g: 1; b: 1; a: 1
+[00470|2018-04-29 17:49:22|  trace] : ScriptComponent Id: 14575089360167322533; constructor: addPlayer; destructor: removePlayer; actorType: player
+[00471|2018-04-29 17:49:22|  trace] : TransformComponent Id: 15140312264932749549; x: 142; y: 241; z: 357
+[00472|2018-04-29 17:49:22|  trace] : Stworzono actor
+[00473|2018-04-29 17:49:22|  trace] : Destroy TransformComponent
+[00474|2018-04-29 17:49:22|  trace] : Destroy ActorComponent
+[00475|2018-04-29 17:49:22|  trace] : Destroy ScriptComponent
+[00476|2018-04-29 17:49:22|  trace] : Destroy ActorComponent
+[00477|2018-04-29 17:49:22|  trace] : Destroy RenderComponent
+[00478|2018-04-29 17:49:22|  trace] : Destroy ActorComponent
+[00479|2018-04-29 17:49:22|  trace] : Destroy Actor
+[00480|2018-04-29 17:49:22|  trace] : Post destroy actor use_count: 1Post reset actor use_count: 0
+[00481|2018-04-29 17:49:22|   info] : Create HumanView
+[00482|2018-04-29 17:49:22|   info] : vOnRestore HumanView
+[00483|2018-04-29 17:49:22|  trace] :  GLUT window visible
+[00484|2018-04-29 17:49:22|  trace] : GLUT_NOT_VISIBLE: 0, GLUT_VISIBLE: 1
+[00485|2018-04-29 17:49:22|  trace] : GLUT visibilityFunction: 1
+[00486|2018-04-29 17:49:22|   info] : display----
+[00487|2018-04-29 17:49:22|   info] : GLUT TIMER: 1
+[00488|2018-04-29 17:49:22|   info] : GLUT TIMER: 2
+[00489|2018-04-29 17:49:22|   info] : GLUT TIMER: 3
+[00490|2018-04-29 17:49:23|   info] : GLUT onClose
+[00491|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game11GameCodeAppE
+[00492|2018-04-29 17:49:23|  trace] : Destroy WatermillGame
+[00493|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
+[00494|2018-04-29 17:49:23|  trace] : Destroy WatermillLogic
+[00495|2018-04-29 17:49:23|   info] : Destroy HumanView
+[00496|2018-04-29 17:49:23|   info] : Destroy IGameView
+[00497|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00498|2018-04-29 17:49:23|  trace] : Destroy ProcessManager
+[00499|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00500|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game12ActorFactoryE
+[00501|2018-04-29 17:49:23|  trace] : Destroy ActorFactory
+[00502|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game16ComponentFactoryE
+[00503|2018-04-29 17:49:23|  trace] : Destroy ComponentFactory
+[00504|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00505|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00506|2018-04-29 17:49:23|  trace] : Destroy BaseGameLogic
+[00507|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00508|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game11SaveManagerE
+[00509|2018-04-29 17:49:23|  trace] : Destroy SaveManager
+[00510|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00511|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game11VideoSystemE
+[00512|2018-04-29 17:49:23|  trace] : Destroy VideoSystem
+[00513|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00514|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game11AudioSystemE
+[00515|2018-04-29 17:49:23|  trace] : Destroy AudioSystem
+[00516|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00517|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game9DataFilesE
+[00518|2018-04-29 17:49:23|  trace] : Destroy DataFiles
+[00519|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00520|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game12EventManagerE
+[00521|2018-04-29 17:49:23|  trace] : Destroy EventManager
+[00522|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00523|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game15LuaStateManagerE
+[00524|2018-04-29 17:49:23|  trace] : Destroy LuaStateManager
+[00525|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00526|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game12GameMessagesE
+[00527|2018-04-29 17:49:23|  trace] : Destroy GameMessages
+[00528|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00529|2018-04-29 17:49:23|   info] : Destroy ResourceCache
+[00530|2018-04-29 17:49:23|   info] : Destroy DevelopmentResourceZipFile
+[00531|2018-04-29 17:49:23|   info] : Destroy IResourceFile
+[00532|2018-04-29 17:49:23|  trace] : Destroy XmlResourceLoader
+[00533|2018-04-29 17:49:23|  trace] : Destroy IResourceLoader
+[00534|2018-04-29 17:49:23|  trace] : Destroy DefaultResourceLoader
+[00535|2018-04-29 17:49:23|  trace] : Destroy IResourceLoader
+[00536|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game16DebuggingOptionsE
+[00537|2018-04-29 17:49:23|  trace] : Destroy DebuggingOptions
+[00538|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00539|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game13PlayerOptionsE
+[00540|2018-04-29 17:49:23|  trace] : Destroy PlayerOptions
+[00541|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00542|2018-04-29 17:49:23|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
+[00543|2018-04-29 17:49:23|  trace] : Destroy InitOptions
+[00544|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00545|2018-04-29 17:49:23|  trace] : Destroy GameCodeApp
+[00546|2018-04-29 17:49:23|  trace] : SAFE_DELETE successfull
+[00547|2018-04-29 17:49:23|   info] : gameCodeApp init succeeded

@@ -819,8 +819,93 @@ dalej:
 
 
 
+-- 14/04/2018	---
+tj 12/04/2018
 
+Dodatkowe projekty:
+BaseGame
+BaseGameTest
+
+problemy z rekompilacją całego projektu
+
+usunąć 
+BaseGame/source/LibClass.cpp, LibClass.h, LibMain.cpp
+BaseGameTest/source/LibClassTest.cpp
 		
+Przenieść
+Watermill/test do BaseGameTest
+
+Stworzyć makefile dla 
+BaseGame, BaseGameTest, Watermill i zobaczyć czy rekompiluje się cały projekt
+
+-- 15/04/2018	---
+tj 14/04/2018
+
+uruchomić
+MSYS2 MinGW 64-bit
+
+. ./cdWatermill.sh
+
+mingw32-make.exe -f makefileWatermill1.mk
+
+Poprawić makefileWatermill1.mk		
+
+patrz MainGame/make.pdf str 19 - jak kompilować pliki tylko zmienione
+
+patrz: https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
+
+# c++ source
+$(BUILD_DIR)/%.cpp.o: %.cpp
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	
+patrz: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables	
+		
+--- 18/04/2018		
+tj 15/04/2018
+		
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill\scripts\makefileWatermill1.mk
+
+zrobić makefileWatermill2.mk - kompilacja tylko zmienionych
+		
+---	22/04/2018
+
+Czytaj: 		
+http://make.mad-scientist.net/papers/rules-of-makefiles/
+
+problemy z 
+makefileAtomic1.mk - sciezka ../
+makefileNuclear1.mk - znalezienie targetu: OBJS		
+
+---	25/04/2018
+
+todo:
+makefileMine1.mk
+rekompilacja powtórna plików *.o
+
+---	27/04/2018
+
+błędy
+makefileMine1.mk
+
+do poprawy:
+makefileMine2.mk
+
+--- 28/04/2018
+
+poprawne:
+BaseGame,Watermill
+scripts:
+ runMake.cmd
+ makefile..._ok.mk
+ makefile...Final.mk		
+ makefile..Eclipse.mk		
+ 
+dodać target clean w 
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGame\scripts\makefileBaseGameEclipse1.mk
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\Watermill\scripts\makefileWatermillEclipse1.mk
+
+dodać makefile w BaseGameTest
 		
 *******************
 ***	FUTURE TODO	***

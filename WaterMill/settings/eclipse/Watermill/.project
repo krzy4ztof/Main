@@ -3,6 +3,7 @@
 	<name>Watermill</name>
 	<comment></comment>
 	<projects>
+		<project>BaseGame</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -41,6 +42,11 @@
 			<locationURI>PARENT-3-PROJECT_LOC/game</locationURI>
 		</link>
 		<link>
+			<name>scripts</name>
+			<type>2</type>
+			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/scripts</location>
+		</link>
+		<link>
 			<name>source</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -51,74 +57,9 @@
 			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/test</location>
 		</link>
 		<link>
-			<name>source/actors</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/actors</locationURI>
-		</link>
-		<link>
-			<name>source/debugging</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/debugging</locationURI>
-		</link>
-		<link>
-			<name>source/eventManager</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/eventManager</locationURI>
-		</link>
-		<link>
-			<name>source/gameInitialization</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameInitialization</locationURI>
-		</link>
-		<link>
-			<name>source/gameLogic</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/gameLogic</locationURI>
-		</link>
-		<link>
-			<name>source/luaScripting</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/luaScripting</locationURI>
-		</link>
-		<link>
 			<name>source/main</name>
 			<type>2</type>
 			<locationURI>PARENT-3-PROJECT_LOC/source/main</locationURI>
-		</link>
-		<link>
-			<name>source/mainLoop</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/mainLoop</locationURI>
-		</link>
-		<link>
-			<name>source/resourceCache</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/resourceCache</locationURI>
-		</link>
-		<link>
-			<name>source/saveManager</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/saveManager</locationURI>
-		</link>
-		<link>
-			<name>source/scripts</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/scripts</locationURI>
-		</link>
-		<link>
-			<name>source/testClasses</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/testClasses</locationURI>
-		</link>
-		<link>
-			<name>source/userInterface</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/userInterface</locationURI>
-		</link>
-		<link>
-			<name>source/utilities</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/utilities</locationURI>
 		</link>
 		<link>
 			<name>source/watermillGame</name>

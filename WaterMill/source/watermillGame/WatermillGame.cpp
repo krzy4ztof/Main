@@ -1,6 +1,8 @@
 #include "WatermillGame.h"
 #include "WatermillLogic.h"
-#include "../debugging/Logger.h"
+
+#include "../../../BaseGame/source/debugging/Logger.h"
+//#include <debugging/Logger.h>
 
 #include <iostream> // cout, endl
 #include <string>

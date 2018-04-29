@@ -1,8 +1,21 @@
 #include "WatermillLogic.h"
+
+/*
 #include "../gameLogic/BaseGameState.h"
 #include "../gameLogic/BaseGameLogic.h"
 #include "../debugging/Logger.h"
 #include "../actors/Actor.h"
+ */
+
+#include "../../../BaseGame/source/gameLogic/BaseGameState.h"
+#include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
+#include "../../../BaseGame/source/debugging/Logger.h"
+#include "../../../BaseGame/source/actors/Actor.h"
+//#include <gameLogic/BaseGameState.h>
+//#include <gameLogic/BaseGameLogic.h>
+//#include <debugging/Logger.h>
+//#include <actors/Actor.h>
+
 
 #include <sstream>      // std::stringstream
 #include <memory> // shared_ptr
