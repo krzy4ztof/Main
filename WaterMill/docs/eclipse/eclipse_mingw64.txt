@@ -625,25 +625,5 @@ Run configuration:
 	
 	${basegametest_make}/BaseGameTest.exe
 	
-***********	
-***	git	***
-***********
-
-git checkout -b dev	
-
-git commit -m 'unit tests makefiles'
-
-git push
-git push --set-upstream origin dev
-
-
-git checkout master
-git pull
-
-git checkout dev
-git merge master
-git stash apply
-
-
 
 

@@ -196,7 +196,7 @@ https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 cd ~
 ls -al ~/.ssh
 
-ssh-keygen -t rsa -b 4096 -C "krzy4ztof@poczta.onet.pl"
+ssh-keygen -t rsa -b 4096 -C "mine@mail"
 
 Enter passphrase (empty for no passphrase): [empty]
 Enter same passphrase again: [empty]
@@ -215,6 +215,24 @@ SSH and GPG keys -> New SSH Key
 
 Paste from clipboard into Key field.
 
-passphrase
-GEU3x
+***********************	
+***	pull requests	***
+***********************
+
+git checkout -b dev	
+
+git commit -m 'unit tests makefiles'
+
+git push
+git push --set-upstream origin dev
+
+
+git checkout master
+git pull
+
+git checkout dev
+git merge master
+git stash apply
+
+
 
