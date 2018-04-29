@@ -1,9 +1,29 @@
 #include "GameMain.h"
 
-#include "../gameInitialization/GameCodeApp.h"
+
+
 #include "../watermillGame/WatermillGame.h"
+
+/*
+#include "../gameInitialization/GameCodeApp.h"
+
 #include "../debugging/Logger.h"
 #include "../utilities/Templates.h"
+ */
+
+
+#include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
+#include "../../../BaseGame/source/debugging/Logger.h"
+#include "../../../BaseGame/source/utilities/Templates.h"
+
+//#include <gameInitialization/GameCodeApp.h>
+//#include <debugging/Logger.h>
+//#include <utilities/Templates.h>
+
+//#include <GameCodeApp.h>
+//#include <debugging/Logger.h>
+//#include <utilities/Templates.h>
+
 
 #include <iostream> // cout, endl
 
@@ -41,7 +61,7 @@ namespace watermill {
 		//                 int       nCmdShow)
 		bool returnCode = true;
 
-		logger::init();
+	logger::init("watermill.log");
 		logger::test();
 
 		GameCodeApp * gameCodeApp;

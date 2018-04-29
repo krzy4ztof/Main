@@ -1,8 +1,14 @@
 #ifndef WATERMILLLOGIC_H
 #define WATERMILLLOGIC_H
 
-#include "../gameLogic/BaseGameLogic.h"
-#include "../gameLogic/BaseGameState.h"
+#include "../../../BaseGame/source/gameLogic/BaseGameState.h"
+#include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
+
+//#include <gameLogic/BaseGameLogic.h>
+//#include <gameLogic/BaseGameState.h>
+
+
+
 
 
 namespace watermill {

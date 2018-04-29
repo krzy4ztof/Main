@@ -1,0 +1,210 @@
+
+
+---	4.2 Types of Prerequisites	---
+
+OBJDIR := objdir
+OBJS := $(addprefix $(OBJDIR)/,foo.o bar.o baz.o)
+
+$(OBJDIR)/%.o : %.c
+	$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+all: $(OBJS)
+
+$(OBJS): | $(OBJDIR)
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+
+---	4.4.1 VPATH: Search Path for All Prerequisites	---
+
+VPATH = src:../headers
+
+---	4.11.1 Syntax of Static Pattern Rules	---
+
+targets ...: target-pattern: prereq-patterns ...
+	recipe
+	...
+
+objects = foo.o bar.o
+
+all: $(objects)
+
+$(objects): %.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
+
+
+# $@ = %.o
+# $< = %.c
+
+---	4.13 Generating Prerequisites Automatically	---
+
+cc -M main.c
+	generates the output:
+main.o : main.c defs.h
+
+https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/Preprocessor-Options.html#index-M-822
+
+
+%.d: %.c
+	@set -e; rm -f $@; \
+	$(CC) -M $(CPPFLAGS) $< > $@.$$$$; \
+	sed ’s,\($*\)\.o[ :]*,\1.o $@ : ,g’ < $@.$$$$ > $@; \
+	rm -f $@.$$$$
+	
+	
+---	5.1.2 Using Variables in Recipes	---
+
+shell variable (use two dollar signs). For example:
+LIST = one two three
+all:
+	for i in $(LIST); do \
+		echo $$i; \
+	done
+	
+	
+---	5.7.2 Communicating Variables to a Sub-make	---
+
+		
+
+---	6.3.1 Substitution References	---
+
+
+foo := a.o b.o c.o
+bar := $(foo:.o=.c)
+
+sets ‘bar’ to ‘a.c b.c c.c’.
+
+
+foo := a.o b.o c.o
+bar := $(foo:%.o=%.c)
+
+sets ‘bar’ to ‘a.c b.c c.c’.
+
+	
+---	6.3.2 Computed Variable Names	---
+
+x = y
+y = z
+z = u
+a := $($($(x)))
+
+Here the innermost ‘$(x)’ expands to ‘y’, so ‘$($(x))’ expands to ‘$(y)’ which in turn
+expands to ‘z’; now we have ‘$(z)’, which becomes ‘u’.
+
+---	6.12 Pattern-specific Variable Values	---
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+lib/%.o: CFLAGS := -fPIC -g
+
+%.o: CFLAGS := -g
+
+all: foo.o lib/bar.o
+
+---	7.1 Example of a Conditional	---
+
+
+libs_for_gcc = -lgnu
+normal_libs =
+
+foo: $(objects)
+ifeq ($(CC),gcc)
+	$(CC) -o foo $(objects) $(libs_for_gcc)
+else
+	$(CC) -o foo $(objects) $(normal_libs)
+endif
+
+---	8.2 Functions for String Substitution and Analysis	---
+
+$(subst from,to,text)
+
+$(patsubst pattern,replacement,text)
+
+$(patsubst %.c,%.o,x.c.c bar.c)
+# produces the value ‘x.c.o bar.o’.
+
+
+---	8.3 Functions for File Names	---
+
+$(dir src/foo.c hacks)
+# produces the result ‘src/ ./’.
+
+$(notdir src/foo.c hacks)
+# produces the result ‘foo.c hacks’.
+
+$(addsuffix .c,foo bar)
+# produces the result ‘foo.c bar.c’.
+
+$(addprefix src/,foo bar)
+# produces the result ‘src/foo src/bar’.
+
+---	8.4 Functions for Conditionals	---
+
+$(if condition,then-part[,else-part])
+
+---	8.5 The foreach Function	---
+
+$(foreach var,list,text)
+
+---	8.13 The shell Function	---
+contents := $(shell cat foo)
+
+---	9.6 Testing the Compilation of a Program	---
+
+make - k
+
+---	9.7 Summary of Options	---
+'-d' debug
+'-f' file
+
+---	10.2 Catalogue of Built-In Rules	---
+
+Compiling C++ programs
+	n.o is made automatically from n.cc, n.cpp, or n.C with a recipe of the form
+	‘$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c’. We encourage you to use the suffix
+	‘.cc’ for C++ source files instead of ‘.C’.
+
+
+Linking a single object file
+	n is made automatically from n.o by running the linker (usually
+	called ld) via the C compiler. The precise recipe used is
+	‘$(CC) $(LDFLAGS) n.o $(LOADLIBES) $(LDLIBS)’.
+
+---	10.3 Variables Used by Implicit Rules	---
+
+CXX 
+	Program for compiling C++ programs; default ‘g++’.
+
+RM 
+	Command to remove a file; default ‘rm -f’.
+
+
+CFLAGS 
+	Extra flags to give to the C compiler.
+
+CXXFLAGS 
+	Extra flags to give to the C++ compiler.
+
+LDFLAGS 
+	Extra flags to give to compilers when they are supposed to invoke the linker,
+	‘ld’, such as -L. Libraries (-lfoo) should be added to the LDLIBS variable
+	instead.
+
+LDLIBS 
+	Library flags or names given to compilers when they are supposed to invoke
+	the linker, ‘ld’. LOADLIBES is a deprecated (but still supported) alternative to
+	LDLIBS. Non-library linker flags, such as -L, should go in the LDFLAGS variable.
+
+
+---	10.5.4 How Patterns Match	---
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+%.o : %.f
+	$(COMPILE.F) $(OUTPUT_OPTION) $<
+lib/%.o: lib/%.c
+	$(CC) -fPIC -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+

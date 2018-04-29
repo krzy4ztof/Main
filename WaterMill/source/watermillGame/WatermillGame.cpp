@@ -1,12 +1,19 @@
 #include "WatermillGame.h"
 #include "WatermillLogic.h"
+
+#include "../../../BaseGame/source/debugging/Logger.h"
+//#include <debugging/Logger.h>
+
 #include <iostream> // cout, endl
 #include <string>
-#include "../debugging/Logger.h"
+#include <memory> // shared_ptr, weak_ptr
+
+
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::shared_ptr;
 namespace logger=base_game::logger;
 using base_game::GameCodeApp;
 using base_game::BaseGameLogic;
@@ -23,7 +30,8 @@ namespace watermill {
 		logger::trace("Destroy WatermillGame");
 	}
 
-	BaseGameLogic *WatermillGame::createGameAndView(ResourceCache* resourceCache) {
+BaseGameLogic* WatermillGame::createGameAndView(
+		shared_ptr<ResourceCache> resourceCache) {
 		logger::trace("WatermillGame::createGameAndView");
 		m_pGame = new WatermillLogic();
 		m_pGame->init(resourceCache);

@@ -86,6 +86,41 @@ Add
 C:\msys64\mingw64\bin
 to windows user path variable
 
+
+*******************************
+***	Eclipse Code Analysis	***
+*******************************
+
+Codan Errors Example:
+
+Description	
+	Invalid arguments '
+		Candidates are:
+		void add_sink(const boost::shared_ptr<boost::log::v2_mt_nt5::sinks::sink> &)
+		'
+		
+Resource
+	Logger.cpp
+	
+Path
+	/Watermill/source/debugging		
+
+Type
+	Semantic Error
+	
+Location
+	line 179	
+	
+
+
+Switch off Codan Errors
+
+Window -> Preferences
+	C/C++ -> Code Analysis
+		Syntax and Semantic Errors 
+			false
+			
+
 ***********************
 ***	Eclipse Mingw	***
 ***********************
@@ -111,10 +146,15 @@ Project -> Properties -> C/C++ Build -> Tool Chain Editor
 Current toolchain: MinGW GCC
 
 C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
+
+Other dialect flags:
+	-std=c++1z
+
+C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 Command
 C:\msys64\mingw64\bin\g++
 
-C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Compiler
+C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker
 Command
 C:\msys64\mingw64\bin\g++
 
@@ -169,6 +209,11 @@ G) Boost:
 boost_iostreams-mt
 (link to C:\msys64\mingw64\lib\libboost_iostreams-mt.dll.a)
 
+H) Boost:
+boost_unit_test_framework-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_unit_test_framework-mt.dll.a)
+
+
 minizip
 (link to C:\msys64\mingw64\lib\minizip.dll.a)
 
@@ -193,7 +238,20 @@ Copy
 	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
 into
 	Debug_MinGW\freeglut.dll
-	***************	
+	
+BaseGameTest -> Properties
+	Properties for BaseGameTest
+		C/C++ General -> Paths and Symbols -> 
+			References:
+				BaseGame[Active]
+			Library Paths
+				/BaseGame/Debug_MinGW64
+			Libraries -> Add..
+				Select file from workspace
+					BaseGame			(points to libBaseGame.a)
+					
+	
+***************	
 ***	Glut	***	
 ***************
 tar zxf glut-3.6.tar.gz
@@ -385,3 +443,201 @@ https://www.eclipse.org/forums/index.php/t/277909/
 C)
 Use MSYS2 and rm command to remove Windows.exe
 http://geekthis.net/post/mingw-fix-permission-denied-ld-and-error/
+
+*******************
+***	Unit Tests	***
+*******************
+H) Boost:
+boost_unit_test_framework-mt
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_unit_test_framework-mt.dll.a)
+
+Menu -> Project -> Build Configurations -> Manage...
+New
+
+Name: Test_MinGW64
+Copy settings from
+Existing configuration: Debug_MinGW64
+
+
+right click on 
+test 
+folder
+Resource Configurations -> Exclude from Build...
+select:
+Debug, Release, Debug_MinGW, Debug_MinGW64, Debug_Cygwin, Debug_Linux
+do not select: 
+Test_MinGW64
+
+
+right click on 
+source/main/Main.cpp
+Resource Configurations -> Exclude from Build...
+select:
+Test_MinGW64
+
+
+
+Run Configuratoions
+Test Watermill.exe
+
+Main
+C/C++ Application
+Test_MinGW64/Watermill.exe
+
+Arguments
+--log_level=test_suite
+
+
+
+right click on 
+project
+Properties -> C/C++ Build, Settings, 
+Configuration: Test_MinGW64
+
+Tool Settings, GCC C++ Compiler, Includes, 
+and add the path /.../workspace/ProjectName
+
+Add directory path
+${workspace_loc:/${ProjName}}
+
+Copy
+	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+into
+	Test_MinGW64\freeglut.dll
+
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Configuration: Test_MinGW64
+				Refresh Policy 
+					Resources: Watermill - remove
+					Resources: empty
+
+-----------------------------------
+---	Run Tests from the console	---
+-----------------------------------
+
+run
+MSYS2 MinGW 64-bit
+console
+
+cd /c/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/settings/eclipse/Watermill/Test_MinGW64
+./Watermill.exe
+
+cmd and powershell do not work
+
+----
+Eclipse CDT
+Help -> Eclipse Marketplace
+Cute 
+CUTE C++ Unite Testing Easier
+
+***********************************
+***	Custom Makefile Watermill	***
+***********************************
+
+
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/Watermill/scripts}/runMake.cmd 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/Watermill/scripts}
+NO:
+mingw32-make -f ../../../scripts/makefileWatermillEclipse1.mk
+make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermillEclipse1.mk				
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: watermill_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill\settings\make\Watermill\Debug_MinGW64
+
+
+Run configuration:
+	Name: Watermill-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${watermill_make}\Watermill.exe
+
+
+***********************************
+***	Custom Makefile BaseGame	***
+***********************************
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGame/scripts}/runMake.cmd 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGame/scripts}
+
+
+***************************************
+***	Custom Makefile BaseGameTest	***
+***************************************
+
+
+BaseGameTest -> properties
+	Properties for BaseGameTest
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGameTest/scripts}/runMake.cmd 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGameTest/scripts}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: basegametest_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\BaseGameTest\Debug_MinGW64
+
+
+Run configuration:
+	Name: BaseGameTest-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${basegametest_make}/BaseGameTest.exe
+	
+***********	
+***	git	***
+***********
+
+git checkout -b dev	
+
+git push
+
+git checkout master
+git pull
+
+git checkout dev
+git merge master
+
+
+

@@ -15,7 +15,11 @@
 //#include <stdio.h>
 #include<iostream> // cout, endl
 //#include "../gameInitialization/Macros.h"
-#include "../testClasses/TestClass.h"
+//#include "../testClasses/TestClass.h"
+
+#include "../../../BaseGame/source/testClasses/TestClass.h"
+//#include <testClasses/TestClass.h>
+
 
 //#include <sstream>      // std::stringstream
 #include "GameMain.h"
@@ -39,7 +43,9 @@ void testMain() {
 	//testClass.randomGeneratorRun();
 	//testClass.memoryPoolRun();
 	//testClass.messagesRun();
+
 	testClass.luaRun();
+
 	//testClass.videoFreeGlutRun();
 	//testClass.loggerRun();
 	//testClass.shiftOperatorRun();
@@ -47,12 +53,13 @@ void testMain() {
 	//testClass.writeReadZlibRun();
 }
 
+/*
+ * main (int argc, char* argv[])
+ * 'char** argv'  the same as   'char* argv[]' means pointer to pointer to char
+ * argv - returns address
+ */
+
 int main(int argc, char** argv) {
-	/*
-	 * main (int argc, char* argv[])
-	 * 'char** argv'  the same as   'char* argv[]' means pointer to pointer to char
-	 * argv - returns address
-	 */
 
 	//testMain();
 	//miniZipMain(argc, argv);
@@ -67,4 +74,3 @@ int main(int argc, char** argv) {
 	return res;
 
 }
-
