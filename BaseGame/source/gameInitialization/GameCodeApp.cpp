@@ -12,7 +12,7 @@
  */
 
 #include "GameCodeApp.h"
-#include<iostream> // cout
+#include <iostream> // cout
 #include <string> // string
 
 #include "Macros.h"

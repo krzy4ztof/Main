@@ -44,7 +44,7 @@
 		<link>
 			<name>scripts</name>
 			<type>2</type>
-			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/scripts</location>
+			<location>/home/krzysztof/home/projects/Main/WaterMill/scripts</location>
 		</link>
 		<link>
 			<name>source</name>
@@ -54,7 +54,7 @@
 		<link>
 			<name>test</name>
 			<type>2</type>
-			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/test</location>
+			<location>/home/krzysztof/Desktop/C::/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/test</location>
 		</link>
 		<link>
 			<name>source/main</name>

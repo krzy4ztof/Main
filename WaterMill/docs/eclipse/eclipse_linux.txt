@@ -1,3 +1,34 @@
+***************************
+***	Ubuntu system setup	***
+***************************
+sudo apt install git
+
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+
+sudo apt-get install make
+
+sudo apt install g++
+
+install kdiff
+
+
+-----------------------------------
+---	virtualbox shared folder	---
+-----------------------------------
+
+sudo su -
+cd /media/sf_home
+
+sudo usermod -aG vboxsf krzysztof
+
+sudo adduser krzysztof vboxsf
+
+
+
 ***********************
 ***	Eclipse Linux	***
 ***********************
@@ -72,9 +103,16 @@ G) Boost:
 boost_iostreams
 (link to \usr\lib\x86_64-linux-gnu\libboost_iostreams.a)
 
+H) Boost:
+boost_unit_test_framework
+(link to \usr\lib\x86_64-linux-gnu\libboost_unit_test_framework.a)
+
+
 
 lua
 (link to \usr\local\lib\liblua.a)
+
+
 
 
 Debug Configurations
@@ -89,4 +127,226 @@ C/C++ Application:
 	Debug_Linux/Watermill.exe
 
 
+
+Debug Configurations
+	C/C++ Application
+		Watermill Debug_Linux_Make
+
+***********
+***	LUA	***
+***********
+
+sudo apt install lua5.2
+sudo apt remove lua5.2
+
+Download lua 5.3.4
+Unzip
+
+sudo apt-get install libreadline-dev
+
+cd /home/krzysztof/home/utils/lua-5.3.4
+sudo make linux install
+
+Installs lua.exe, luac.exe, lua.h into
+/usr/local/bin/lua*
+/usr/local/include/lua.h
+/usr/local/lib/liblua.a
+/usr/local/lib.lua/5.3
+
+
+***************
+***	Boost	***
+***************
+
+sudo apt-get install libboost-all-dev
+
+installs
+/usr/include/boost
+
+*******************
+***	Freeglut	***
+*******************
+sudo apt-get install freeglut3-dev
+
+/usr/include/GL
+
+
+*******************
+***	Boost 1.67	***
+*******************
+
+Upgrade boost from 1.5.8 to 1.67 version
+
+current version of boost
+ls /usr/lib/x86_64-linux-gnu/libboost_system.so.1.58.0
+
+include headers:
+ls /usr/include/boost
+
+sudo apt-get install libboost-all-dev
+installs 1.5.8 version
+
+https://www.boost.org/users/download/
+
+~/home/utils/boost_1_67_0.tar.gz
+
+cd ~/home/utils/boost_1_67_0
+
+. ./bootstrap.sh
+./b2
+
+The Boost C++ Libraries were successfully built!
+
+The following directory should be added to compiler include paths:
+
+    /home/krzysztof/home/utils/boost_1_67_0
+
+The following directory should be added to linker library paths:
+
+    /home/krzysztof/home/utils/boost_1_67_0/stage/lib
+
+
+*******************
+***	BaseGame	***
+*******************
+
+Debug Configurations
+	C/C++ Application
+		BaseGame Debug_Linux
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Settings -> Build Artifact
+				Static Library
+			Settings
+			 GCC C++ Compiler -> Dialect
+					ISO C++11 (-std=c++0x)
+
+
+***********************************
+***	Custom Makefile Watermill	***
+***********************************
+
+Build Configuration: Debug_Linux_Make
+
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Tool Chain Editor
+				Current toolchain: Linux GCC
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/Watermill/scripts/linux}/runMake.sh 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/Watermill/scripts/linux}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: watermill_make
+	Value: /home/krzysztof/home/projects/Main/WaterMill/settings/make/Watermill/Debug_Linux_Make
+
+
+Run configuration:
+	Name: Watermill-make
+	Project: Watermill
+	C/C++ Application:
+	
+	${watermill_make}\Watermill
+	Build Configuration: Debug_Linux_Make
+
+
+***********************************
+***	Custom Makefile BaseGame	***
+***********************************
+
+Build Configuration: Debug_Linux_Make
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Tool Chain Editor
+				Current toolchain: Linux GCC
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGame/scripts/linux}/runMake.sh 
+				
+			runMake.sh must have executable permissions
+				
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGame/scripts/linux}
+
+
+***************************************
+***	Custom Makefile BaseGameTest	***
+***************************************
+
+Build Configuration: Debug_Linux_Make
+
+BaseGameTest -> properties
+	Properties for BaseGameTest
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGameTest/scripts/linux}/runMake.sh 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGameTest/scripts/linux}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: basegametest_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\BaseGameTest\Debug_MinGW64
+	Value: /home/krzysztof/home/projects/Main/WaterMill/settings/make/Watermill/Debug_Linux_Make
+
+
+Run configuration:
+	Name: BaseGameTest-make
+	Project: Watermill
+	C/C++ Application:
+	
+	${basegametest_make}/BaseGameTest
+	Build Configuration: Debug_Linux_Make
+	
+
+***************************************
+***	Eclipse Ubuntu Desktop Shortcut	***
+***************************************
+
+
+cd ~/Desktop
+touch 'Eclipse CDT'
+
+Edit:
+
+[Desktop Entry]
+Name=Custom location
+Comment=Location
+Exec=/home/krzysztof/home/utils/eclipse-cpp-oxygen-3/eclipse
+Icon=/home/krzysztof/home/utils/eclipse-cpp-oxygen-3/icon.xpm
+Terminal=false
+Type=Application
+StartupNotify=false
+Name[en_US]=Eclipse CDT
+
+Rename to
+'Eclipse CDT.desktop'
 
