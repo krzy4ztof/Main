@@ -477,7 +477,7 @@ Test_MinGW64
 
 
 
-Run Configuratoions
+Run Configurations
 Test Watermill.exe
 
 Main

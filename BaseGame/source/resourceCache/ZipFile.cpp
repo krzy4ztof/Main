@@ -35,7 +35,7 @@
 
 #include <cstring>// strcpy, stlen
 
-#include <minizip/zip.h> //
+//#include <minizip/zip.h> //
 /*
  * 	zipFile zf = zipOpen(outFileName, APPEND_STATUS_ADDINZIP);
 
@@ -52,7 +52,6 @@ using std::strlen;
 using std::string;
 using std::stringstream;
 using std::ifstream;
-using std::cout;
 using std::endl;
 using std::ios;
 using std::vector;
