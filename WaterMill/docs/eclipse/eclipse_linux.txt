@@ -72,9 +72,18 @@ G) Boost:
 boost_iostreams
 (link to \usr\lib\x86_64-linux-gnu\libboost_iostreams.a)
 
+H) Boost:
+boost_unit_test_framework
+(link to \usr\lib\x86_64-linux-gnu\libboost_unit_test_framework.a)
+
+
 
 lua
 (link to \usr\local\lib\liblua.a)
+
+sudo apt-get install lua
+
+
 
 
 Debug Configurations
@@ -88,5 +97,166 @@ C/C++ Application:
 	${project_path}/Debug_Linux/Watermill.exe
 	Debug_Linux/Watermill.exe
 
+
+
+Debug Configurations
+	C/C++ Application
+		Watermill Debug_Linux_Make
+
+***************
+***	Boost	***
+***************
+
+Upgrade boost from 1.5.8 to 1.67 version
+
+current version of boost
+ls /usr/lib/x86_64-linux-gnu/libboost_system.so.1.58.0
+
+include headers:
+ls /usr/include/boost
+
+sudo apt-get install libboost-all-dev
+installs 1.5.8 version
+
+https://www.boost.org/users/download/
+
+~/home/utils/boost_1_67_0.tar.gz
+
+cd ~/home/utils/boost_1_67_0
+
+. ./bootstrap.sh
+./b2
+
+The Boost C++ Libraries were successfully built!
+
+The following directory should be added to compiler include paths:
+
+    /home/krzysztof/home/utils/boost_1_67_0
+
+The following directory should be added to linker library paths:
+
+    /home/krzysztof/home/utils/boost_1_67_0/stage/lib
+
+
+*******************
+***	BaseGame	***
+*******************
+
+Debug Configurations
+	C/C++ Application
+		BaseGame Debug_Linux
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Settings -> Build Artifact
+				Static Library
+			Settings
+			 GCC C++ Compiler -> Dialect
+					ISO C++11 (-std=c++0x)
+
+
+***********************************
+***	Custom Makefile Watermill	***
+***********************************
+
+Build Configuration: Debug_Linux_Make
+
+Watermill -> properties
+	Properties for Watermill
+		C/C++ Build
+			Tool Chain Editor
+				Current toolchain: Linux GCC
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/Watermill/scripts/linux}/runMake.sh 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/Watermill/scripts/linux}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: watermill_make
+	Value: /home/krzysztof/home/projects/Main/WaterMill/settings/make/Watermill/Debug_Linux_Make
+
+
+Run configuration:
+	Name: Watermill-make
+	Project: Watermill
+	C/C++ Application:
+	
+	${watermill_make}\Watermill
+	Build COnfiguration: Debug_Linux_Make
+
+
+***********************************
+***	Custom Makefile BaseGame	***
+***********************************
+
+Build Configuration: Debug_Linux_Make
+
+BaseGame -> properties
+	Properties for BaseGame
+		C/C++ Build
+			Tool Chain Editor
+				Current toolchain: Linux GCC
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGame/scripts/linux}/runMake.sh 
+				
+			runMake.sh must have executable permissions
+				
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGame/scripts/linux}
+
+
+***************************************
+***	Custom Makefile BaseGameTest	***
+***************************************
+
+Build Configuration: Debug_Linux_Make
+
+BaseGameTest -> properties
+	Properties for BaseGameTest
+		C/C++ Build
+			Tool Chain Editor
+				Current builder: (old - CDT Internal Builder) 
+				  Gnu Make Builder
+		C/C++ Build
+			Use default build command: false
+			Build command: (old - make)
+				${workspace_loc:/BaseGameTest/scripts/linux}/runMake.sh 
+				
+			Generate Makefiles automatically - false 
+				
+			Build directory:	
+				${workspace_loc:/BaseGameTest/scripts/linux}
+
+Run Configurations -> Variables ...
+	Edit Variables -> New ...
+	Variable: basegametest_make
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\BaseGameTest\Debug_MinGW64
+	Value: /home/krzysztof/home/projects/Main/WaterMill/settings/make/Watermill/Debug_Linux_Make
+
+
+Run configuration:
+	Name: BaseGameTest-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${basegametest_make}/BaseGameTest.exe
+	Build COnfiguration: Debug_Linux_Make
+	
 
 
