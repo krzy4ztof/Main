@@ -421,10 +421,16 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1158456079;cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1158456079.;cdt.managedbuild.tool.gnu.c.compiler.base.1237831437;cdt.managedbuild.tool.gnu.c.compiler.input.75618764">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1162126110;cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1162126110.;cdt.managedbuild.tool.gnu.cpp.compiler.base.433059760;cdt.managedbuild.tool.gnu.cpp.compiler.input.584300898">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.529224318;cdt.managedbuild.config.gnu.mingw.so.debug.529224318.;cdt.managedbuild.tool.gnu.c.compiler.base.1065188294;cdt.managedbuild.tool.gnu.c.compiler.input.1312591603">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.529224318;cdt.managedbuild.config.gnu.mingw.so.debug.529224318.;cdt.managedbuild.tool.gnu.cpp.compiler.base.864811275;cdt.managedbuild.tool.gnu.cpp.compiler.input.271392592">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1162126110;cdt.managedbuild.config.gnu.mingw.so.debug.529224318.1162126110.;cdt.managedbuild.tool.gnu.c.compiler.base.235210380;cdt.managedbuild.tool.gnu.c.compiler.input.1294864607">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1129951375;cdt.managedbuild.config.gnu.mingw.so.release.1129951375.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.so.release.1881190240;cdt.managedbuild.tool.gnu.cpp.compiler.input.79656631">

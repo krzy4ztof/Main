@@ -1,3 +1,34 @@
+***************************
+***	Ubuntu system setup	***
+***************************
+sudo apt install git
+
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+
+sudo apt-get install make
+
+sudo apt install g++
+
+install kdiff
+
+
+-----------------------------------
+---	virtualbox shared folder	---
+-----------------------------------
+
+sudo su -
+cd /media/sf_home
+
+sudo usermod -aG vboxsf krzysztof
+
+sudo adduser krzysztof vboxsf
+
+
+
 ***********************
 ***	Eclipse Linux	***
 ***********************
@@ -86,6 +117,8 @@ sudo apt-get install lua
 
 
 
+
+
 Debug Configurations
 	C/C++ Application
 		Watermill Debug_Linux
@@ -103,9 +136,47 @@ Debug Configurations
 	C/C++ Application
 		Watermill Debug_Linux_Make
 
+***********
+***	LUA	***
+***********
+
+sudo apt install lua5.2
+sudo apt remove lua5.2
+
+Download lua 5.3.4
+Unzip
+
+sudo apt-get install libreadline-dev
+
+cd /home/krzysztof/home/utils/lua-5.3.4
+sudo make linux install
+
+Installs lua.exe, luac.exe, lua.h into
+/usr/local/bin/lua*
+/usr/local/include/lua.h
+/usr/local/lib/liblua.a
+/usr/local/lib.lua/5.3
+
 ***************
 ***	Boost	***
 ***************
+
+sudo apt-get install libboost-all-dev
+
+installs
+/usr/include/boost
+
+*******************
+***	Freeglut	***
+*******************
+sudo apt-get install freeglut3-dev
+
+/usr/include/GL
+
+
+*******************
+***	Boost 1.67	***
+*******************
 
 Upgrade boost from 1.5.8 to 1.67 version
 
@@ -191,8 +262,7 @@ Run configuration:
 	C/C++ Application:
 	
 	${watermill_make}\Watermill
-	Build COnfiguration: Debug_Linux_Make
-
+	Build Configuration: Debug_Linux_Make
 
 ***********************************
 ***	Custom Makefile BaseGame	***
@@ -251,12 +321,33 @@ Run Configurations -> Variables ...
 
 
 Run configuration:
-	Name: BaseGameTest-make.exe
+	Name: BaseGameTest-make
 	Project: Watermill
 	C/C++ Application:
 	
-	${basegametest_make}/BaseGameTest.exe
-	Build COnfiguration: Debug_Linux_Make
+	${basegametest_make}/BaseGameTest
+	Build Configuration: Debug_Linux_Make
 	
 
+***************************************
+***	Eclipse Ubuntu Desktop Shortcut	***
+***************************************
 
+
+cd ~/Desktop
+touch 'Eclipse CDT'
+
+Edit:
+
+[Desktop Entry]
+Name=Custom location
+Comment=Location
+Exec=/home/krzysztof/home/utils/eclipse-cpp-oxygen-3/eclipse
+Icon=/home/krzysztof/home/utils/eclipse-cpp-oxygen-3/icon.xpm
+Terminal=false
+Type=Application
+StartupNotify=false
+Name[en_US]=Eclipse CDT
+
+Rename to
+'Eclipse CDT.desktop'
