@@ -3,23 +3,42 @@
 ###################
 ###	compiler	###
 ###################
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 CXX := g++
 
 ###################
 ###	executable	###
 ###################
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 progs   := BaseGameTest
 
 root_dir := ../..
 
 prog_output_dir := $(root_dir)/settings/make/BaseGameTest/Debug_Linux_Make
+<<<<<<< HEAD
+=======
+#prog_output_dir := $(root_dir)/settings/eclipse/Watermill/Debug_MinGW64
+>>>>>>> master
 objprog := $(addprefix $(prog_output_dir)/, $(progs))
 
 #######################
 ### object files	###
 #######################
+<<<<<<< HEAD
 sourcedir := $(root_dir)/source/
 
+=======
+
+sourcedir := $(root_dir)/source/
+
+#objects = Main.o GameMain.o WatermillGame.o WatermillLogic.o
+>>>>>>> master
 full_objects := $(shell find $(sourcedir) -name *.cpp)
 cpp_objects := $(notdir $(full_objects))
 objects := $(cpp_objects:%.cpp=%.o)
@@ -35,8 +54,25 @@ VPATH = $(source_dir_all)
 #######################
 ###	compiler flags	###
 #######################
+<<<<<<< HEAD
 # -g3 debugger level3
 CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
+=======
+
+# boost
+include_dirs := -I/home/krzysztof/home/utils/boost_1_67_0
+
+
+#include_dirs := -I"../../BaseGame/source" 
+#include_dirs += -I"../../../libraries/freeglut/include"
+#include_dirs += -I"/mingw64/include"
+#include_dirs += -I"/mingw64/x86_64-w64-mingw32/include"
+#include_dirs += -I"/usr/local/include"
+
+# -g3 debugger level3
+CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs) 
+#CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
+>>>>>>> master
 
 
 #######################
@@ -61,32 +97,75 @@ LDLIBS += -ldl
 
 lib_path := -L$(root_dir)/../BaseGame/Debug_Linux_Make
 
+<<<<<<< HEAD
 LDFLAGS := $(LDLIBS) $(lib_path) 
 
 ###########################
 ###	pre installation	###
 ###########################
+=======
+#boost
+lib_path += -L/home/krzysztof/home/utils/boost_1_67_0/stage/lib
+
+#LDFLAGS := $(lib_path) $(LDLIBS)
+LDFLAGS := $(LDLIBS) $(lib_path) 
+
+
+###########################
+###	pre installation	###
+###########################
+
+#copy_files := $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
+>>>>>>> master
 copy_files := $(prog_output_dir)/watermill.ini
 
 ###################
 ###	recipies	###
 ###################
+<<<<<<< HEAD
 all: createDir $(objprog)
+=======
+
+all: createDir $(objprog)
+#all: debugPrint createDir $(objprog)
+>>>>>>> master
 
 ###################################
 ###	pre installation receipies	###
 ###################################
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 createDir: $(objdir) $(copy_files)
 
 $(objdir):
 	mkdir -p $(objdir)
 
+<<<<<<< HEAD
 $(prog_output_dir)/watermill.ini: $(root_dir)/../WaterMill/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@
 
 ###########################
 ###	compile receipies	###
 ###########################
+=======
+
+#$(prog_output_dir)/freeglut.dll: ../../../libraries/freeglut/bin/x64/freeglut.dll
+#	cp -f $< $@
+
+$(prog_output_dir)/watermill.ini: $(root_dir)/../WaterMill/settings/eclipse/Watermill/watermill_release.ini
+	cp -f $< $@
+
+#/home/krzysztof/home/projects/Main/BaseGameTest/scripts/linux
+
+
+###########################
+###	compile receipies	###
+###########################
+
+
+>>>>>>> master
 $(objdir)/%.o : %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 	
@@ -96,14 +175,32 @@ $(objprog): $(addprefix $(objdir)/, $(objects))
 #######################
 ###	clean receipe	###
 #######################
+<<<<<<< HEAD
 clean:
 	rm -rf $(prog_output_dir)/* 
+=======
+
+clean:
+	rm -rf $(prog_output_dir)/* 
+#	rm -rf $(objdir)/*
+>>>>>>> master
 
 #######################
 ###	debug receipies	###
 #######################
+<<<<<<< HEAD
 .PHONY: debugPrint debugPrint1 debugPrint2
 
+=======
+
+
+
+#.PHONY: debugPrint denbugPrint1 debugPrint2
+
+
+#SHOW Link.o
+#g++ -L../../BaseGame/scripts/obj -L../../../libraries/freeglut/lib/x64 -L/mingw64/lib -L/mingw64/x86_64-w64-mingw32/lib -L/usr/local/lib -lBaseGame5 -lfreeglut -lpsapi -lopengl32 -llua -lboost_system-mt -lboost_filesystem-mt -lboost_locale-mt -lboost_log-mt -lboost_thread-mt -lboost_log_setup-mt -lboost_iostreams-mt
+>>>>>>> master
 debugPrint:
 	@echo $(shell pwd)
 	@echo;
@@ -128,6 +225,12 @@ debugPrint1:
 	@echo 'SHOW VPATH';
 	@echo $(VPATH);
 	@echo;
+<<<<<<< HEAD
+=======
+	
+	
+	
+>>>>>>> master
 
 debugPrint2:
 	@echo 'SHOW Link.o';

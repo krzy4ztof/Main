@@ -112,6 +112,10 @@ boost_unit_test_framework
 lua
 (link to \usr\local\lib\liblua.a)
 
+sudo apt-get install lua
+
+
+
 
 
 
@@ -132,6 +136,7 @@ Debug Configurations
 	C/C++ Application
 		Watermill Debug_Linux_Make
 
+<<<<<<< HEAD
 ***********
 ***	LUA	***
 ***********
@@ -154,10 +159,13 @@ Installs lua.exe, luac.exe, lua.h into
 /usr/local/lib.lua/5.3
 
 
+=======
+>>>>>>> master
 ***************
 ***	Boost	***
 ***************
 
+<<<<<<< HEAD
 sudo apt-get install libboost-all-dev
 
 installs
@@ -175,6 +183,8 @@ sudo apt-get install freeglut3-dev
 ***	Boost 1.67	***
 *******************
 
+=======
+>>>>>>> master
 Upgrade boost from 1.5.8 to 1.67 version
 
 current version of boost
@@ -259,7 +269,11 @@ Run configuration:
 	C/C++ Application:
 	
 	${watermill_make}\Watermill
+<<<<<<< HEAD
 	Build Configuration: Debug_Linux_Make
+=======
+	Build COnfiguration: Debug_Linux_Make
+>>>>>>> master
 
 
 ***********************************
@@ -319,6 +333,7 @@ Run Configurations -> Variables ...
 
 
 Run configuration:
+<<<<<<< HEAD
 	Name: BaseGameTest-make
 	Project: Watermill
 	C/C++ Application:
@@ -349,4 +364,14 @@ Name[en_US]=Eclipse CDT
 
 Rename to
 'Eclipse CDT.desktop'
+=======
+	Name: BaseGameTest-make.exe
+	Project: Watermill
+	C/C++ Application:
+	
+	${basegametest_make}/BaseGameTest.exe
+	Build COnfiguration: Debug_Linux_Make
+	
+
+>>>>>>> master
 
