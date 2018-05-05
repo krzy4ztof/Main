@@ -907,6 +907,22 @@ C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\Watermill\scripts\mak
 
 dodać makefile w BaseGameTest
 		
+
+---	03/05/2018
+
+Konfiguracja eclipse variables:
+
+${workspace_loc:/BaseGameTest/scripts}/runMake.cmd 
+
+${basegametest_make}/BaseGameTest.exe
+
+
+$(watermill_make)
+
+Error: Program "C:\home\krzysztof\home\projects\Main\WaterMill\scripts\runMake.cmd" not found in PATH		
+		
+		
+		
 *******************
 ***	FUTURE TODO	***
 *******************

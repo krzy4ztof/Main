@@ -249,6 +249,10 @@ BaseGameTest -> Properties
 			Libraries -> Add..
 				Select file from workspace
 					BaseGame			(points to libBaseGame.a)
+
+Folders:
+Add New Folder -> Link to alternative location (Linked Folder)
+	PROJECT_LOC/../../../scripts
 					
 	
 ***************	
@@ -552,6 +556,7 @@ Watermill -> properties
 				
 			Build directory:	
 				${workspace_loc:/Watermill/scripts}
+				
 NO:
 mingw32-make -f ../../../scripts/makefileWatermillEclipse1.mk
 make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermillEclipse1.mk				
@@ -569,6 +574,8 @@ Run configuration:
 	
 	${watermill_make}\Watermill.exe
 
+	Build Configuration: Use Active
+
 
 ***********************************
 ***	Custom Makefile BaseGame	***
@@ -578,6 +585,7 @@ BaseGame -> properties
 	Properties for BaseGame
 		C/C++ Build
 			Tool Chain Editor
+				Current toolchain: MinGW GCC
 				Current builder: (old - CDT Internal Builder) 
 				  Gnu Make Builder
 		C/C++ Build
@@ -600,6 +608,7 @@ BaseGameTest -> properties
 	Properties for BaseGameTest
 		C/C++ Build
 			Tool Chain Editor
+				Current toolchain: MinGW GCC
 				Current builder: (old - CDT Internal Builder) 
 				  Gnu Make Builder
 		C/C++ Build
@@ -625,5 +634,21 @@ Run configuration:
 	
 	${basegametest_make}/BaseGameTest.exe
 	
+	Build Configuration: Use Active
+	
+***********************
+***	Makefile Error	***
+***********************
+In case of makefile problems make sure that
+
+BaseGameTest -> properties
+	Properties for BaseGameTest
+		C/C++ Build
+			Tool Chain Editor
+				Current toolchain: MinGW GCC
+				Current builder: Gnu Make Builder
+				  
+NOT 
+				Current toolchain: Linux GCC
 
 

@@ -44,17 +44,12 @@
 		<link>
 			<name>scripts</name>
 			<type>2</type>
-			<location>/home/krzysztof/home/projects/Main/WaterMill/scripts</location>
+			<locationURI>PARENT-3-PROJECT_LOC/scripts</locationURI>
 		</link>
 		<link>
 			<name>source</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>test</name>
-			<type>2</type>
-			<location>/home/krzysztof/Desktop/C::/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/test</location>
 		</link>
 		<link>
 			<name>source/main</name>

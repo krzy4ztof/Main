@@ -143,7 +143,7 @@ Installs lua.exe, luac.exe, lua.h into
 /usr/local/bin/lua*
 /usr/local/include/lua.h
 /usr/local/lib/liblua.a
-
+/usr/local/lib.lua/5.3
 
 
 ??????????????????
