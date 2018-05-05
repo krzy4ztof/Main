@@ -1,5 +1,4 @@
 
-
-mingw32-make -f makefileBaseGameTestEclipse1.mk %*
+mingw32-make -f makefileBaseGameTest.mk %*
 
 

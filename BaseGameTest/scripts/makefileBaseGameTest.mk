@@ -8,11 +8,11 @@ CXX := g++
 ###################
 ###	executable	###
 ###################
-progs   := Watermill.exe
+progs   := BaseGameTest.exe
 
 root_dir := ..
 
-prog_output_dir := $(root_dir)/settings/make/Watermill/Debug_MinGW64
+prog_output_dir := $(root_dir)/settings/make/BaseGameTest/Debug_MinGW64
 objprog := $(addprefix $(prog_output_dir)/, $(progs))
 
 #######################
@@ -44,6 +44,7 @@ CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs)
 #######################
 ###	linker flags	###
 #######################
+
 LDLIBS := -lBaseGame
 LDLIBS += -lfreeglut
 LDLIBS += -lpsapi
@@ -56,6 +57,7 @@ LDLIBS += -lboost_log-mt
 LDLIBS += -lboost_thread-mt
 LDLIBS += -lboost_log_setup-mt
 LDLIBS += -lboost_iostreams-mt
+LDLIBS += -lboost_unit_test_framework-mt
 
 lib_path := -L"../../BaseGame/Debug_MinGW64" 
 lib_path += -L"../../../libraries/freeglut/lib/x64"
@@ -85,14 +87,12 @@ $(objdir):
 $(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/freeglut.dll
 	cp -f $< $@
 
-$(prog_output_dir)/watermill.ini: $(root_dir)/settings/eclipse/Watermill/watermill_release.ini
+$(prog_output_dir)/watermill.ini: $(root_dir)/../Watermill/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@
 
 ###########################
 ###	compile receipies	###
 ###########################
-
-
 $(objdir)/%.o : %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 	
@@ -102,23 +102,23 @@ $(objprog): $(addprefix $(objdir)/, $(objects))
 #######################
 ###	clean receipe	###
 #######################
-
 clean:
 	rm -rf $(prog_output_dir)/* 
-#	rm -rf $(objdir)/*
 
 #######################
 ###	debug receipies	###
 #######################
+.PHONY: debugPrint debugPrint1 debugPrint2
 
-
-
-.PHONY: debugPrint debugPrint2
-
-
-#SHOW Link.o
-#g++ -L../../BaseGame/scripts/obj -L../../../libraries/freeglut/lib/x64 -L/mingw64/lib -L/mingw64/x86_64-w64-mingw32/lib -L/usr/local/lib -lBaseGame5 -lfreeglut -lpsapi -lopengl32 -llua -lboost_system-mt -lboost_filesystem-mt -lboost_locale-mt -lboost_log-mt -lboost_thread-mt -lboost_log_setup-mt -lboost_iostreams-mt
 debugPrint:
+	@echo 'SHOW sourcedir';
+	@echo $(sourcedir);
+	@echo;
+
+debugPrint1:
+	@echo 'SHOW sourcedir';
+	@echo $(sourcedir);
+	@echo;
 	@echo 'SHOW full_objects';
 	@echo $(full_objects);
 	@echo;
