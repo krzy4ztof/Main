@@ -271,7 +271,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.731121618" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 							<tool command="C:\msys64\mingw64\bin\g++" id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.1925389533" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 								<option id="gnu.cpp.link.option.paths.2082066114" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/Debug_MinGW64}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/scripts/linux}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\msys64\mingw64\x86_64-w64-mingw32\lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\msys64\usr\local\lib&quot;"/>
@@ -310,7 +310,7 @@
 				<externalSettings containerId="BaseGame;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BaseGame"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/Debug_MinGW64"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/scripts/linux"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="BaseGame" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
@@ -371,7 +371,7 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="dl"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.482932873" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/Debug_MinGW64}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/scripts/linux}&quot;"/>
 									<listOptionValue builtIn="false" value="/usr/local/lib"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1452681388" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -396,7 +396,7 @@
 				<externalSettings containerId="BaseGame;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BaseGame"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/Debug_MinGW64"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/scripts/linux"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="BaseGame" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
@@ -534,7 +534,7 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="dl"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.13499981" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/Debug_MinGW64}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BaseGame/scripts/linux}&quot;"/>
 									<listOptionValue builtIn="false" value="/usr/local/lib"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.505301071" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -559,7 +559,7 @@
 				<externalSettings containerId="BaseGame;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BaseGame"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/Debug_MinGW64"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/scripts/linux"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="BaseGame" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
