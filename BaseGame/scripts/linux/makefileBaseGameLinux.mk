@@ -38,24 +38,6 @@ VPATH := $(source_dir_all)
 # -g3 debugger level3
 CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP 
 
-#######################
-###	linker flags	###
-#######################
-
-LDLIBS := -lfreeglut
-LDLIBS += -lpsapi
-LDLIBS += -lopengl32
-LDLIBS += -llua
-LDLIBS += -lboost_system-mt
-LDLIBS += -lboost_filesystem-mt
-LDLIBS += -lboost_locale-mt
-LDLIBS += -lboost_log-mt
-LDLIBS += -lboost_thread-mt
-LDLIBS += -lboost_log_setup-mt
-LDLIBS += -lboost_iostreams-mt
-
-LDFLAGS := $(LDLIBS)
-
 ###################
 ###	recipies	###
 ###################
