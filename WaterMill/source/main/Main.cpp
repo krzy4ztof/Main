@@ -17,7 +17,8 @@
 //#include "../gameInitialization/Macros.h"
 //#include "../testClasses/TestClass.h"
 
-#include "../../../BaseGame/source/testClasses/TestClass.h"
+// #include "../../../BaseGame/source/testClasses/TestClass.h"
+#include "../../../BaseGame/source/debugging/Logger.h"
 //#include <testClasses/TestClass.h>
 
 
@@ -32,19 +33,22 @@ using std::cout;
 using std::endl;
 //using std::stringstream;
 
-using base_game::TestClass;
+//using base_game::TestClass;
 using watermill::GameMain;
 
+namespace logger = base_game::logger;
+
+/*
 void testMain() {
 	TestClass testClass;
 	//testClass.simpleRun();
 	//testClass.run();
 	//testClass.primeSearchRun();
 	//testClass.randomGeneratorRun();
-	//testClass.memoryPoolRun();
+	testClass.memoryPoolRun();
 	//testClass.messagesRun();
 
-	testClass.luaRun();
+	//testClass.luaRun();
 
 	//testClass.videoFreeGlutRun();
 	//testClass.loggerRun();
@@ -52,6 +56,7 @@ void testMain() {
 	//testClass.bitwiseOrOperatorRun();
 	//testClass.writeReadZlibRun();
 }
+ */
 
 /*
  * main (int argc, char* argv[])
@@ -61,9 +66,13 @@ void testMain() {
 
 int main(int argc, char** argv) {
 
-	//testMain();
+	/*
+	logger::init("watermill.log");
+	testMain();
 	//miniZipMain(argc, argv);
-	//return 1;
+	return 1;
+	 */
+
 
 	GameMain gameMain;
 

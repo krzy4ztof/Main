@@ -7,13 +7,14 @@
 
 #define BOOST_TEST_DYN_LINK
 
-#include "ActorFactoryTest.h"
+//#include "ActorFactoryTest.h"
 
 //#include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
 
 #include "../../../BaseGame/source/gameInitialization/InitOptions.h"
 //#include "../../source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/actors/ActorFactory.h"
+#include "../../../BaseGame/source/actors/Actor.h"
 #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 #include "../../../BaseGame/source/resourceCache/IResourceFile.h"
@@ -23,7 +24,7 @@
 // #define BOOST_TEST_MODULE StringUtilsTestModule
 #include <boost/test/unit_test.hpp>
 #include <memory> // shared_ptr, weak_ptr
-
+#include <sstream>      // std::stringstream
 
 using base_game::InitOptions;
 using base_game::IResourceFile;
@@ -31,6 +32,7 @@ using base_game::ResourceCache;
 
 //using base_game::BaseGameLogic;
 using base_game::ActorFactory;
+using base_game::Actor;
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 //using base_game::templates::safe_delete;
@@ -39,6 +41,7 @@ using base_game::DevelopmentResourceFolder;
 
 using std::shared_ptr;
 using std::make_shared;
+using std::stringstream;
 
 //using base_game::ActorFactory;
 
@@ -79,7 +82,9 @@ struct ActorFactoryFixture {
 	ActorFactoryFixture() {
 		BOOST_TEST_MESSAGE("Setting up ActorFactoryFixture");
 
-		logger::init("watermill-test.log");
+		logger::info("Create ActorFactoryFixture");
+
+		//	logger::init("watermill-test.log");
 
 		pInitOptions = new InitOptions;
 
@@ -93,10 +98,10 @@ struct ActorFactoryFixture {
 				pInitOptions->getAssetsFolder(), 50, shPtrZipFile);
 
 
+		pActorFactory = new ActorFactory(shrdPtrResourceCache);
 		// BaseGameLogic niepotrzebne
 		// Stworzyc ResourceCache i ActorFactory
 		//m_pGame = new BaseGameLogic();
-		logger::info("End ActorFactoryFixture");
 	}
 	~ActorFactoryFixture() {
 		BOOST_TEST_MESSAGE("Tearing down ActorFactoryFixture");
@@ -107,7 +112,10 @@ struct ActorFactoryFixture {
 
 //		templates::safe_delete<IResourceFile>(pZipFile);
 		templates::safe_delete<InitOptions>(pInitOptions);
-		logger::destroy();
+		templates::safe_delete<ActorFactory>(pActorFactory);
+
+		logger::info("Destroy ActorFactoryFixture");
+//		logger::destroy();
 	}
 
 
@@ -118,8 +126,48 @@ BOOST_FIXTURE_TEST_SUITE(ActorFactorySuite, ActorFactoryFixture)
 
 BOOST_AUTO_TEST_CASE(createActor) {
 
-	BOOST_TEST(false);
+	shared_ptr<Actor> actor = pActorFactory->createActor(
+			"actors/player_character.xml");
+
+	stringstream ss;
+	ss << "Post init actor use_count: " << actor.use_count();
+	logger::trace(ss);
+
+	if (actor) {
+		actor->describeYourself();
+		logger::trace("Stworzono actor");
+	} else {
+		logger::error("Nie stworzono actor");
+	}
+
+	actor->destroy();
+	ss << "Post destroy actor use_count: " << actor.use_count();
+
+	// Destroy shared_ptr
+	actor.reset();
+	ss << "Post reset actor use_count: " << actor.use_count();
+
+	logger::trace(ss);
+
+	BOOST_TEST(true);
 }
+
+BOOST_AUTO_TEST_CASE(tempTestComponents) {
+
+	shared_ptr<Actor> actor = pActorFactory->createActor(
+			"actors/player_character.xml");
+
+	if (actor) {
+		actor->tempTestComponents();
+		logger::trace("Stworzono actor");
+	} else {
+		logger::error("Nie stworzono actor");
+	}
+
+
+	BOOST_TEST(true);
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
 

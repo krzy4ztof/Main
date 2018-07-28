@@ -70,7 +70,7 @@ namespace base_game {
 	}
 
 	void Actor::tempTestComponents() {
-		logger::trace("Actor::tempTestComponents");
+	logger::info("Actor::tempTestComponents");
 
 		weak_ptr<TransformComponent> transformComp  = getComponent<TransformComponent>(TransformComponent::COMPONENT_NAME);
 

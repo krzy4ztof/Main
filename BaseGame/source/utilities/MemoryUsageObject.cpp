@@ -25,7 +25,7 @@ namespace base_game {
 	MemoryPool* MemoryUsageObject::s_pMemoryPool = nullptr;
 
 	void MemoryUsageObject::initMemoryPool(unsigned int numChunks, const char* debugName) {
-		//cout << "MemoryUsageObject::initMemoryPool" << endl;
+	cout << "MemoryUsageObject::initMemoryPool" << endl;
 
 		if (s_pMemoryPool != nullptr) {
 			GCC_ERROR("s_pMemoryPool is not NULL.  All data will be destroyed.  (Ignorable)");

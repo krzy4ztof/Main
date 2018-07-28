@@ -351,3 +351,33 @@ Name[en_US]=Eclipse CDT
 
 Rename to
 'Eclipse CDT.desktop'
+
+***********************
+***	Mingw64 Errors	***
+***********************
+
+Ignore following problems:
+
+Description: Program "C:msys64mingw64bing++" not found in PATH	
+Resource: BaseGame		
+Location: Project Properties, C++ Preprocessor Include.../Providers, [CDT GCC Built-in Compiler Settings MinGW] options	
+Type: C/C++ Scanner Discovery Problem
+
+
+Description: Program "C:msys64mingw64bing++" not found in PATH
+Resource: Watermill
+Path:	
+Location: Project Properties, C++ Preprocessor Include.../Providers, [CDT GCC Built-in Compiler Settings MinGW] options	
+Type: C/C++ Scanner Discovery Problem
+
+***************************************
+***	Linux/Windows .cproject diff	***
+***************************************
+
+Following files change when are opened in linux / windows
+
+BaseGameTest/.cproject
+Watermill/settings/eclipse/Watermill/.cproject
+
+-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/Debug_MinGW64"/>
++						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/scripts/linux"/>
