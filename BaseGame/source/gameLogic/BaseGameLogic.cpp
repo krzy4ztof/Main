@@ -184,55 +184,6 @@ void BaseGameLogic::onFrameRender(double time, float elapsedTime) {
 
 }
 
-void BaseGameLogic::tempTestProcessManager() {
-	state = running;
-
-	shared_ptr<Process> pProcess1(
-			new TempTestProcess("Initalize Action GROUP 1"));
-	pProcessManager->attachProcess(pProcess1);
-	shared_ptr<Process> pProcess2(new TempTestProcess("Second Action GROUP 1"));
-	pProcess1->attachChild(pProcess2);
-	shared_ptr<Process> pProcess3(new TempTestProcess("Third Action GROUP 1"));
-	pProcess1->attachChild(pProcess3);
-	shared_ptr<Process> pProcess4(new TempTestProcess("Last Action GROUP 1"));
-	pProcess2->attachChild(pProcess4);
-
-	shared_ptr<Process> pDelay(new DelayProcess(500)); // delay for 0.5 second
-	pProcessManager->attachProcess(pDelay);
-
-	shared_ptr<Process> pProcess1g2(
-			new TempTestProcess("Initalize Action GROUP 2"));
-	pDelay->attachChild(pProcess1g2);
-	shared_ptr<Process> pProcess2g2(
-			new TempTestProcess("Second Action GROUP 2"));
-	pProcess1g2->attachChild(pProcess2g2);
-	shared_ptr<Process> pProcess3g2(
-			new TempTestProcess("Third Action GROUP 2"));
-	pProcess2g2->attachChild(pProcess3g2);
-
-	//vOnUpdate(0,0);
-
-	shared_ptr<Process> pProcess1g3(
-			new TempTestProcess("Initalize Action GROUP 3"));
-	pProcessManager->attachProcess(pProcess1g3);
-	shared_ptr<Process> pProcess2g3(
-			new TempTestProcess("Second Action GROUP 3"));
-	pProcess1g3->attachChild(pProcess2g3);
-	shared_ptr<Process> pProcess3g3(
-			new TempTestProcess("Third Action GROUP 3"));
-	pProcess1g3->attachChild(pProcess3g3);
-
-	/*
-	 vOnUpdate(0,1);
-	 vOnUpdate(0,2);
-	 vOnUpdate(0,3);
-	 vOnUpdate(0,4);
-	 vOnUpdate(0,5);
-	 vOnUpdate(0,6);
-	 vOnUpdate(0,7);
-	 */
-
-}
 
 void BaseGameLogic::tempAddViews() {
 
@@ -243,6 +194,7 @@ void BaseGameLogic::tempAddViews() {
 
 }
 
+/*
 void BaseGameLogic::tempTestActors() {
 	vChangeState(spawningPlayersActors);
 
@@ -252,6 +204,7 @@ void BaseGameLogic::tempTestActors() {
 		actorsIterator->second->tempTestComponents();
 	}
 }
+ */
 
 void BaseGameLogic::tempCreateActors() {
 	// See StrongActorPtr BaseGameLogic::VCreateActor(const std::string &actorResource, TiXmlElement* overrides, const Mat4x4* initialTransform, const ActorId serversActorId)

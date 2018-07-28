@@ -21,8 +21,8 @@ public:
 	bool init(std::shared_ptr<ResourceCache> resourceCache);
 
 	void tempCreateActors();
-	void tempTestActors();
-	void tempTestProcessManager();
+	//void tempTestActors();
+	// void tempTestProcessManager();
 	void tempAddViews();
 
 	virtual void vAddView(std::shared_ptr<IGameView> pView,

@@ -20,5 +20,35 @@ MainTest::~MainTest() {
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE WatermillMainModule
+
+#include "../../../BaseGame/source/debugging/Logger.h"
+
 #include <boost/test/unit_test.hpp>
+
+namespace logger = base_game::logger;
+
+namespace base_game_test {
+
+struct WatermillMainFixture {
+	WatermillMainFixture() {
+		logger::init("watermill-test.log");
+
+		logger::info("Start WatermillMainFixture");
+
+
+		logger::info("End WatermillMainFixture");
+	}
+
+
+	~WatermillMainFixture() {
+		logger::info("Destroy WatermillMainFixture");
+
+		logger::destroy();
+	}
+};
+
+BOOST_GLOBAL_FIXTURE(WatermillMainFixture);
+
+}
+
 

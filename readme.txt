@@ -10,6 +10,14 @@ svn co https://krzysztof-pc/svn/svn/MapEditor/trunk/ MapEditorTrunk
 
 git co https://github.com/krzy4ztof/Main
 
+
+***************************
+***	Znaki końca linii	***
+***************************
+Rozwiązanie problemu naprzemiennych commitów z Windows i Linuxa i różnych znaków końca linii w obu systemach.
+
+git config --global core.autocrlf true
+
 ***************************
 ***	Nowe repozytorium	***
 ***************************

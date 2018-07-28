@@ -921,7 +921,61 @@ $(watermill_make)
 
 Error: Program "C:\home\krzysztof\home\projects\Main\WaterMill\scripts\runMake.cmd" not found in PATH		
 		
+-- 05/05/2018
+-- 21/07/2018
+-- 25/07/2018
+-- 27/07/2018
+
+makefile zrobione
+
+todo:
+
+usunąć 
+BaseGame/source/LibClass.cpp, LibClass.h, LibMain.cpp - ok
+BaseGameTest/source/LibClassTest.cpp - ok
 		
+Przenieść
+Watermill/test do BaseGameTest - ok
+		
+
+/Watermill/test/actors/ActorFactoryTest.cpp - ok
+
+
+
+tj 25/03/2018 todo:
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+skasować
+DevelopmentResourceFolder::vTempReadResource
+
+Kontynuacja
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+	
+dodać
+    int allocSize = rawSize + ((loader->VAddNullZero()) ? (1) : (0));
+	char *rawBuffer = loader->VUseRawFile() ? Allocate(allocSize) : GCC_NEW char[allocSize];
+    memset(rawBuffer, 0, allocSize);
+
+oraz todo:
+
+dopisać
+shared_ptr<Actor> ActorFactory::createActor(const string& resourceName)
+
+usunąć
+void BaseGameLogic::tempCreateActors() - OK
+void BaseGameLogic::tempTestProcessManager(); - ok
+void BaseGameLogic::tempAddViews();
+	
+
+usunąć
+firstBoostTest.cpp, secondBoostTest.cpp - ok
+
+usunąć
+/BaseGame/source/testClasses/TestClass.cpp -ok
 		
 *******************
 ***	FUTURE TODO	***

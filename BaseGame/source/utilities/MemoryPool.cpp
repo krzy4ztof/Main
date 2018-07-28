@@ -134,6 +134,8 @@ namespace base_game {
 			// attempt to grow the pool
 			if (!GrowMemoryArray())
 				return NULL;  // couldn't allocate anymore memory
+	} else {
+		cout << "tutaj";
 		}
 
 #ifdef _DEBUG
