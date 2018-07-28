@@ -636,6 +636,22 @@ Run configuration:
 	
 	Build Configuration: Use Active
 	
+
+***********************************
+***	Makefile Build/Run Summary	***
+***********************************
+
+Clean:
+Menu -> Project -> Clean
+
+Build:
+Build -> Debug_MinGW64
+
+Run:
+Watermill-make.exe
+BaseGameTest-make.exe
+	
+	
 ***********************
 ***	Makefile Error	***
 ***********************
@@ -650,5 +666,46 @@ BaseGameTest -> properties
 				  
 NOT 
 				Current toolchain: Linux GCC
+
+
+*******************************
+***	Run	Makefile Manually 	***
+*******************************	
+
+-------------------
+---	BaseGame	---
+-------------------
+
+Use 
+MSyS2 MinGw 64-bit
+
+. ./cdBaseGame.sh
+./runMake.sh
+
+-----------------------
+---	BaseGameTest	---
+-----------------------
+Use 
+MSyS2 MinGw 64-bit
+
+. ./cdBaseGameTest.sh
+./runMake.sh
+
+
+-------------------
+---	Watermill	---
+-------------------
+Use 
+MSyS2 MinGw 64-bit
+
+. ./cdWatermill.sh
+./runMake.sh
+
+
+
+
+
+
+
 
 

@@ -330,9 +330,9 @@ void GameCodeApp::mainLoop() {
 	//TODO: remove tempCreateActors
 	m_pGame->tempCreateActors();
 
-//	m_pGame->tempTestActors();	//ok
+
+	//m_pGame->tempTestActors();	//ok
 	m_pGame->tempAddViews();		//ok
-	//m_pGame->tempTestProcessManager();//ok
 
 	videoSystem->startFreeGlutMainLoop();
 
