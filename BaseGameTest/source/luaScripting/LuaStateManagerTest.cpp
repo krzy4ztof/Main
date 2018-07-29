@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
+
 #include "../../../BaseGame/source/gameInitialization/InitOptions.h"
 #include "../../../BaseGame/source/luaScripting/LuaStateManager.h"
 #include "../../../BaseGame/source/utilities/Templates.h"
@@ -20,6 +22,7 @@ using base_game::LuaStateManager;
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -48,7 +51,8 @@ struct LuaStateManagerFixture {
 
 BOOST_FIXTURE_TEST_SUITE(LuaStateManagerSuite, LuaStateManagerFixture)
 
-BOOST_AUTO_TEST_CASE(luaRun) {
+BOOST_AUTO_TEST_CASE(luaRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+// BOOST_AUTO_TEST_CASE(luaRun) {
 
 	//InitOptions initOptions;
 	//LuaStateManager luaStateManager(initOptions.getAssetsFolder());

@@ -5,6 +5,10 @@
  *      Author: Krzysztof
  */
 
+#define BOOST_TEST_DYN_LINK
+
+#include "../main/MainTest.h"
+
 #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/utilities/MemoryUsageObject.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
@@ -16,6 +20,8 @@ using base_game::MemoryUsageObject;
 
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
+
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -38,7 +44,7 @@ struct MemoryUsageObjectFixture {
 
 BOOST_FIXTURE_TEST_SUITE(MemoryUsageObjectSuite, MemoryUsageObjectFixture)
 
-BOOST_AUTO_TEST_CASE(memoryPoolRun) {
+BOOST_AUTO_TEST_CASE(memoryPoolRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	logger::info("new mem1");
 	MemoryUsageObject* mem1 = new MemoryUsageObject();
@@ -73,7 +79,7 @@ BOOST_AUTO_TEST_CASE(memoryPoolRun) {
 
 }
 
-BOOST_AUTO_TEST_CASE(memoryPoolRunSecond) {
+BOOST_AUTO_TEST_CASE(memoryPoolRunSecond, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	logger::info("new SecondMem1");
 	MemoryUsageObject* mem1 = new MemoryUsageObject();

@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
+
 #include "../../../BaseGame/source/utilities/RandomGenerator.h"
 // #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
@@ -21,6 +23,7 @@ namespace logger = base_game::logger;
 
 using std::stringstream;
 
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -44,7 +47,7 @@ struct RandomGeneratorFixture {
 
 BOOST_FIXTURE_TEST_SUITE(RandomGeneratorSuite, RandomGeneratorFixture)
 
-BOOST_AUTO_TEST_CASE(randomGeneratorRun) {
+BOOST_AUTO_TEST_CASE(randomGeneratorRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	RandomGenerator rnd(1, 6, 0);
 	RandomGenerator rndb(1, 6, 0);

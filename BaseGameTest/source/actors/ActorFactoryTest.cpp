@@ -7,6 +7,7 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
 //#include "ActorFactoryTest.h"
 
 //#include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
@@ -42,6 +43,10 @@ using base_game::DevelopmentResourceFolder;
 using std::shared_ptr;
 using std::make_shared;
 using std::stringstream;
+
+namespace unit_test = boost::unit_test;
+
+// namespace WatermillMainFixture = base_game_test::WatermillMainFixture;
 
 //using base_game::ActorFactory;
 
@@ -124,7 +129,9 @@ struct ActorFactoryFixture {
 BOOST_FIXTURE_TEST_SUITE(ActorFactorySuite, ActorFactoryFixture)
 //BOOST_AUTO_TEST_SUITE(ActorFactorySuite)
 
-BOOST_AUTO_TEST_CASE(createActor) {
+//BOOST_AUTO_TEST_CASE(createActor) {
+
+BOOST_AUTO_TEST_CASE(createActor, * unit_test::enabled()) {
 
 	shared_ptr<Actor> actor = pActorFactory->createActor(
 			"actors/player_character.xml");
@@ -152,11 +159,23 @@ BOOST_AUTO_TEST_CASE(createActor) {
 	BOOST_TEST(true);
 }
 
-BOOST_AUTO_TEST_CASE(tempTestComponents) {
+BOOST_AUTO_TEST_CASE(tempTestComponents, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(tempTestComponents, * unit_test::enable_if<MainTest::ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(tempTestComponents) {
 
 	shared_ptr<Actor> actor = pActorFactory->createActor(
 			"actors/player_character.xml");
 
+	stringstream ss;
+	//ss << "WatermillMainFixture::enable_all_test "
+	//	<< WatermillMainFixture::enable_all_test;
+
+	//ss << "WatermillMainFixtureClass::enable_all_test_class "
+	//	<< MainTest::ENABLE;
+
+
+	ss << "X";
+	logger::info(ss);
 	if (actor) {
 		actor->tempTestComponents();
 		logger::trace("Stworzono actor");
