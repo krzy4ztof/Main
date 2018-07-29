@@ -20,6 +20,9 @@ StringUtilsTest::~StringUtilsTest() {
  */
 
 #define BOOST_TEST_DYN_LINK
+
+#include "../main/MainTest.h"
+
 // #define BOOST_TEST_MODULE StringUtilsTestModule
 #include <boost/test/unit_test.hpp>
 // #include <source/utilities/StringUtils.h>
@@ -31,23 +34,13 @@ using std::string;
 
 using base_game::string_utils::stringToChar;
 
+namespace unit_test = boost::unit_test;
 
-/*
-struct template_objects {
-	template_objects() {
-		BOOST_TEST_MESSAGE("Setting up testing objects");
-	}
-	~template_objects() {
-		BOOST_TEST_MESSAGE("Tearing down testing objects");
-	}
-};
- */
+namespace base_game_test {
 
-//BOOST_FIXTURE_TEST_SUITE(StringUtilsSuite, template_objects)
 BOOST_AUTO_TEST_SUITE(StringUtilsSuite)
 
-
-BOOST_AUTO_TEST_CASE(StringToChar) {
+BOOST_AUTO_TEST_CASE(StringToChar, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 	string input = "StringToCheck";
 	const char* expected = "StringToCheck";
 
@@ -81,3 +74,5 @@ BOOST_AUTO_TEST_CASE(testCase2) {
  */
 
 BOOST_AUTO_TEST_SUITE_END()
+
+} /* namespace base_game_test */

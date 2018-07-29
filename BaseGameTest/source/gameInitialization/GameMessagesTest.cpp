@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
+
 #include "../../../BaseGame/source/gameInitialization/InitOptions.h"
 #include "../../../BaseGame/source/gameInitialization/PlayerOptions.h"
 #include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
@@ -36,6 +38,7 @@ namespace logger = base_game::logger;
 using std::stringstream;
 using std::string;
 
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -71,9 +74,7 @@ struct GameMessagesFixture {
 
 BOOST_FIXTURE_TEST_SUITE(GameMessagesSuite, GameMessagesFixture)
 
-BOOST_AUTO_TEST_CASE(primeSearch) {
-
-
+BOOST_AUTO_TEST_CASE(primeSearch, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	try {
 		pGameMessages->testMessages();

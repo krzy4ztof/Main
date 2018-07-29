@@ -7,10 +7,13 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 
 #include <boost/test/unit_test.hpp>
 namespace logger = base_game::logger;
+
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -28,7 +31,7 @@ struct LoggerFixture {
 
 BOOST_FIXTURE_TEST_SUITE(LoggerSuite, LoggerFixture)
 
-BOOST_AUTO_TEST_CASE(loggerRun) {
+BOOST_AUTO_TEST_CASE(loggerRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	logger::test();
 

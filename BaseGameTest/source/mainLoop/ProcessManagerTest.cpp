@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_DYN_LINK
 
+#include "../main/MainTest.h"
+
 #include "../../../BaseGame/source/mainLoop/DelayProcess.h"
 #include "../../../BaseGame/source/mainLoop/Process.h"
 #include "../../../BaseGame/source/mainLoop/ProcessManager.h"
@@ -27,6 +29,7 @@ namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 
 using std::shared_ptr;
+namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
@@ -58,7 +61,7 @@ struct ProcessManagerFixture {
 
 BOOST_FIXTURE_TEST_SUITE(ProcessManagerSuite, ProcessManagerFixture)
 
-BOOST_AUTO_TEST_CASE(tempTestProcessManager) {
+BOOST_AUTO_TEST_CASE(tempTestProcessManager, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	// state = running;
 
