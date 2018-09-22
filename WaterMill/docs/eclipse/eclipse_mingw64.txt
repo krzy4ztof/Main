@@ -22,13 +22,48 @@ pacman -S cmake
 pacman -S tar
 pacman -S base-devel
 pacman -S zlib
+pacman -S gettext
 
 MinGW 64:
 	pacman -S mingw-w64-lua 5.3.0-1 
 
 Show installed packages:	
 pacman -Q	
+
+***********************
+***	Upgrade mingw64	***
+***********************
+
+http://mingw-w64.org/doku.php
+Version 5 has been released
+v5.0.4: 2018-06-04
+
+Installed version is:
+initial v5 Release: 2016-10-19
+
+How to upgrade previous version to the latest version
+
+
+MinGW64 shell:
+Update the package database and core system packages with:
+	pacman -Syu
+If needed, close MSYS2, run it again from Start menu. Update the rest with:
+	pacman -Su
 	
+ostrzeżenie: terminate other MSYS2 programs before proceeding
+rozwiązywanie zależności…
+szukanie sprzecznych pakietów...
+:: msys2-runtime konfliktuje z catgets. Usunąć catgets? [t/N] t
+:: msys2-runtime konfliktuje z libcatgets. Usunąć libcatgets? [t/N] t
+
+Pakiety (8) bash-4.4.019-3  catgets-1.1-2 [usunięcie]  filesystem-2018.06-1  libcatgets-1.1-2 [usunięcie]  mintty-1~2.9.0-1  msys2-runtime-2.10.0-2  pacman-5.1.1-2  pacman-mirrors-20180604-2
+
+Do pobrania:             17,02 MiB
+Do zainstalowania:       66,65 MiB
+Zmiana po aktualizacji:  16,21 MiB
+	
+	
+
 *******************************
 ***	Setup MinGW64 compiler	***
 *******************************
@@ -42,6 +77,34 @@ Value: C:\msys64\mingw64\bin
 where "C:\msys64\mingw64\bin" is your real path where mingw binaries are stored. (to make sure that you set the right path just go to this directory and find gcc.exe or g++.exe. if you find it it's ok.)
 4) Choose "Append variables to native environment"
 5) Press "Apply" and then "OK"
+
+***************
+***	gettext	***
+***************	
+-------------------
+---	Instalacja	---
+-------------------
+
+Open shell
+MinGW-w64 Win64 Shell
+
+pacman -S gettext
+
+---------------
+--- Użycie	---
+---------------
+
+Edycja pliku:
+/c/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/assets/pl/LC_MESSAGES/watermill.po
+
+1. Otworzyć plik w PoEdit (https://poedit.net/)
+2. Zostanie wygenerowany plik watermill.mo
+
+1. Otworzyć konsolę MinGW
+2. cd /c/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/assets/pl/LC_MESSAGES
+3. msgfmt --output-file=watermill.mo watermill.po
+4. Zostanie wygenerowany plik watermill.mo
+
 
 ***************
 ***	Eclipse	***
@@ -558,8 +621,8 @@ Watermill -> properties
 				${workspace_loc:/Watermill/scripts}
 				
 NO:
-mingw32-make -f ../../../scripts/makefileWatermillEclipse1.mk
-make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermillEclipse1.mk				
+mingw32-make -f ../../../scripts/makefileWatermill.mk
+make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermill.mk				
 
 Run Configurations -> Variables ...
 	Edit Variables -> New ...
@@ -575,6 +638,33 @@ Run configuration:
 	${watermill_make}\Watermill.exe
 
 	Build Configuration: Use Active
+
+
+*******************************************
+***	Force Rebuild Makefile Watermill	***
+*******************************************
+	
+/BaseGameTest/scripts/makefileWatermill.mk
+contains 
+force receipe
+
+to activate this receipe 
+
+1. Create build configuration:
+
+Build:
+Build -> Debug_MinGW64_force (based on Debug_MinGW64)
+
+Build command:	
+${workspace_loc:/Watermill/scripts}/runMake.cmd  force
+
+2. Create run configuration:
+
+Watermill-make.exe force (based on Watermill-make.exe)
+
+Build configuration:
+Debug_MinGw64_force
+
 
 
 ***********************************
@@ -635,7 +725,33 @@ Run configuration:
 	${basegametest_make}/BaseGameTest.exe
 	
 	Build Configuration: Use Active
+
+
+*******************************************
+***	Force Rebuild Makefile BaseGameTest	***
+*******************************************
 	
+/BaseGameTest/scripts/makefileBaseGameTest.mk
+contains 
+force receipe
+
+to activate this receipe 
+
+1. Create build configuration:
+
+Build:
+Build -> Debug_MinGw64_force (based on Debug_MinGw64)
+
+Build command:	
+${workspace_loc:/BaseGameTest/scripts}/runMake.cmd force
+
+2. Create run configuration:
+
+BaseGameTest-make.exe force (based on BaseGameTest-make.exe)
+
+Build configuration:
+Debug_MinGw64_force
+
 
 ***********************************
 ***	Makefile Build/Run Summary	***
@@ -650,6 +766,7 @@ Build -> Debug_MinGW64
 Run:
 Watermill-make.exe
 BaseGameTest-make.exe
+	
 	
 	
 ***********************

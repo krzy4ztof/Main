@@ -37,23 +37,25 @@ public:
 	virtual ~IResourceFile();
 	virtual bool vOpen()=0;
 
-	virtual void vTempReadResource(const Resource& resource)=0;
+//	virtual void vTempReadResource(const Resource& resource)=0;
 	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource)=0;
-
-	//virtual int VGetRawResource(const Resource &r, char *buffer)=0;
+	virtual boost::uintmax_t vGetRawResource(const Resource& resource,
+			char *buffer)=0;
+	
 	//virtual int VGetNumResources() const = 0;
 	//virtual std::string VGetResourceName(int num) const = 0;
 	//virtual bool VIsUsingDevelopmentDirectories(void) const = 0;
 
 
-	virtual bool vSave(const std::string saveMode);
+	virtual bool vSave(const std::string saveMode,
+			const std::string outputName);
 
 protected:
 	std::string m_rootFolder;
 
-	virtual bool vSaveFolderMode()=0;
-	virtual bool vSaveUnzipMode()=0;
-	virtual bool vSaveZipMode()=0;
+	virtual bool vSaveFolderMode(const std::string outputFolderName)=0;
+	virtual bool vSaveUnzipMode(const std::string outputUnzipFileName)=0;
+	virtual bool vSaveZipMode(const std::string outputZipFileName)=0;
 
 private:
 };

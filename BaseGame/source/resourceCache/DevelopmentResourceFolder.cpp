@@ -37,6 +37,7 @@
 
 //using std::ios::binary;
 
+using std::ios;
 using std::string;
 using std::stringstream;
 using std::vector;
@@ -135,6 +136,7 @@ optional<path> DevelopmentResourceFolder::getPath(const Resource &resource) {
 
 }
 
+/*
 void DevelopmentResourceFolder::vTempReadResource(const Resource& resource) {
 	stringstream ss;
 	ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
@@ -143,7 +145,81 @@ void DevelopmentResourceFolder::vTempReadResource(const Resource& resource) {
 	logger::info(ss);
 
 }
+ */
 
+uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
+		char *buffer) {
+
+	stringstream ss;
+
+	optional<path> optPath = this->getPath(resource);
+	if (!optPath.is_initialized()) {
+		ss << "RESOURCE NOT  FOUND " << resource.getName();
+		logger::info (ss);
+		return -1;
+	}
+
+	//} else {
+
+		// __MINGW_EXTENSION typedef unsigned long long   uintmax_t;
+	filtering_istreambuf inBuf;
+	ifstream ifs { optPath.get(), ios::binary };
+	inBuf.push(ifs);
+
+
+	vector<char> vecChar;
+	boost::iostreams::copy(inBuf, boost::iostreams::back_inserter(vecChar));
+
+	ss << "CONTENTS OF: " << resource.getName();
+	logger::info(ss);
+
+	vector<char>::iterator it;
+	for (it = vecChar.begin(); it != vecChar.end(); ++it) {
+		ss << *it;
+	}
+
+	logger::info(ss);
+
+	ss << "vecChar size: " << vecChar.size();
+	logger::info(ss);
+
+
+	std::copy(vecChar.begin(), vecChar.end(), buffer);
+
+	//boost::iostreams::copy(inBuf, buffer);
+
+	// TODO: upewnic sie ze vecCharDec ma taki sam rozmiar co *buffer i skopiowac vecCharDec do *buffer
+
+
+
+		uintmax_t fileSize = file_size(optPath.get());
+
+		return fileSize;
+
+
+	//}
+
+//	return -1;
+}
+
+/*
+ * int DevelopmentResourceZipFile::VGetRawResource(const Resource &r, char *buffer)
+ {
+ if (m_mode == Editor)
+ {
+ int num = Find(r.m_name.c_str());
+ if (num == -1)
+ return -1;
+
+ std::string fullFileSpec = ws2s(m_AssetsDir) + r.m_name.c_str();
+ FILE *f = fopen(fullFileSpec.c_str(), "rb");
+ size_t bytes = fread(buffer, 1, m_AssetFileInfo[num].nFileSizeLow, f);
+ fclose(f);
+ return bytes;
+ }
+
+ return ResourceZipFile::VGetRawResource(r, buffer);
+ */
 
 
 uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
@@ -166,8 +242,9 @@ uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
 	if (!optPath.is_initialized()) {
 		ss << "RESOURCE NOT  FOUND " << resource.getName();
 		logger::info(ss);
-		return -1;
+		return 0;
 
+		// return static_cast<uintmax_t>(-1);
 	} else {
 
 		// __MINGW_EXTENSION typedef unsigned long long   uintmax_t;
@@ -182,7 +259,7 @@ uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
 
 
 	
-	return -1;
+	return 0;
 }
 
 bool DevelopmentResourceFolder::readAssetsDirectory() {
@@ -344,13 +421,14 @@ bool DevelopmentResourceFolder::createFilesAndFolders(const string folderName) {
 	return true;
 }
 
-bool DevelopmentResourceFolder::vSaveFolderMode() {
+bool DevelopmentResourceFolder::vSaveFolderMode(const string outputFolderName) {
 	stringstream ss;
 	ss << "VSAVE: " << m_assetsFolder;
 	logger::info(ss);
 
-	string assetsDevFolder = IResourceFile::ASSETS_FOLDER_TO_FOLDER;
-	string folderFullName = getOutputFolderName(assetsDevFolder);
+	//string assetsDevFolder = IResourceFile::ASSETS_FOLDER_TO_FOLDER;
+	//string folderFullName = getOutputFolderName(assetsDevFolder);
+	string folderFullName = getOutputFolderName(outputFolderName);
 
 	prepareOutputDir(folderFullName);
 	createFilesAndFolders(folderFullName);
@@ -358,14 +436,17 @@ bool DevelopmentResourceFolder::vSaveFolderMode() {
 	return true;
 }
 
-bool DevelopmentResourceFolder::vSaveUnzipMode() {
+bool DevelopmentResourceFolder::vSaveUnzipMode(
+		const string outputUnzipFileName) {
 	stringstream ss;
 	ss << "VSAVE: " << m_assetsFolder;
 	logger::info(ss);
 
-	string assetsUnzipFile = IResourceFile::ASSETS_UNZIP_FILE;
+	//string assetsUnzipFile = IResourceFile::ASSETS_UNZIP_FILE;
 
-	createAssetFile(this->m_rootFolder, assetsUnzipFile,
+	//createAssetFile(this->m_rootFolder, assetsUnzipFile,
+	//		IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE);
+	createAssetFile(this->m_rootFolder, outputUnzipFileName,
 			IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE);
 
 	return true;
@@ -471,6 +552,9 @@ bool DevelopmentResourceFolder::saveAsset(ofstream& ofs,
 		dfh->isCompression = TZipDirFileHeader::Z_DEFLATED;
 	}
 
+	int fileSizeNotCompressed = file_size(resourceFilePath);
+
+	dfh->ucSize = fileSizeNotCompressed;
 	dfh->cSize = vecFileContents.size();
 	dfh->fnameLen = lh.fnameLen;
 	dirFileHeadersList.push_back(dfh);
@@ -552,14 +636,16 @@ bool DevelopmentResourceFolder::createAssetFile(const string folderName,
 	//return true;
 }
 
-bool DevelopmentResourceFolder::vSaveZipMode() {
+bool DevelopmentResourceFolder::vSaveZipMode(const string outputZipFileName) {
 	stringstream ss;
 	ss << "VSAVE: " << m_assetsFolder;
 	logger::info(ss);
 
-	string assetsZipFile = IResourceFile::ASSETS_ZIP_FILE;
+	//string assetsZipFile = IResourceFile::ASSETS_ZIP_FILE;
 
-	createAssetFile(this->m_rootFolder, assetsZipFile,
+	//createAssetFile(this->m_rootFolder, assetsZipFile,
+	//		IResourceFile::ASSETS_SAVE_MODE_ZIPFILE);
+	createAssetFile(this->m_rootFolder, outputZipFileName,
 			IResourceFile::ASSETS_SAVE_MODE_ZIPFILE);
 
 	return true;

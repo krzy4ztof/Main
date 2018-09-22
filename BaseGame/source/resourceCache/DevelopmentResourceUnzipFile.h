@@ -25,14 +25,16 @@ public:
 	virtual ~DevelopmentResourceUnzipFile();
 
 	virtual bool vOpen();
-	virtual void vTempReadResource(const Resource& resource);
+//	virtual void vTempReadResource(const Resource& resource);
 	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource);
+	virtual boost::uintmax_t vGetRawResource(const Resource& resource,
+			char *buffer);
 
 
 protected:
-	virtual bool vSaveFolderMode();
-	virtual bool vSaveUnzipMode();
-	virtual bool vSaveZipMode();
+	virtual bool vSaveFolderMode(const std::string outputFolderName);
+	virtual bool vSaveUnzipMode(const std::string outputUnzipFileName);
+	virtual bool vSaveZipMode(const std::string outputZipFileName);
 
 private:
 	ZipFile *m_pZipFile;

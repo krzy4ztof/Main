@@ -5,8 +5,11 @@
 #include "ScriptComponent.h"
 #include "TransformComponent.h"
 #include "../utilities/Templates.h"
+#include "../resourceCache/ResourceHandle.h"
+#include "../resourceCache/IResourceExtraData.h"
+#include "../resourceCache/XmlResourceExtraData.h"
 
-#include <memory> // shared_ptr
+#include <memory> // shared_ptr, dynamic_pointer_cast
 #include <string> // string
 #include <boost/property_tree/ptree.hpp> // ptree
 #include "../utilities/PropertyTreeUtils.h"
@@ -16,6 +19,7 @@
 #include <boost/optional.hpp> // boost::optional
 
 using std::shared_ptr;
+using std::dynamic_pointer_cast;
 using std::string;
 using boost::property_tree::ptree;
 using value_type = boost::property_tree::ptree::value_type; // typedef std::pair<const Key, self_type>      value_type; See \boost_1_60_0\boost\property_tree\ptree.hpp
@@ -52,10 +56,13 @@ ptree* ActorFactory::loadAndReturnRootXmlElement(const string& resourceName) {
 	// See TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
 
 	stringstream ss;
+
+	/*
 	ss << "ActorFactory::loadAndReturnRootXmlElement: "
 			<< shrdPtrResourceCache->tempGetAssetsFolder() << " + "
 			<< resourceName;
 	logger::info(ss);
+	 */
 
 	Resource resource(resourceName);
 	optional<shared_ptr<ResourceHandle>> pResourceHandle =
@@ -65,16 +72,44 @@ ptree* ActorFactory::loadAndReturnRootXmlElement(const string& resourceName) {
 	// return pExtraData->GetRoot();
 
 
-	ptree* pPtree = new ptree();
 
-	string filename = shrdPtrResourceCache->tempGetAssetsFolder()
-			+ resourceName;
+	// TODO zamiast
+	// read_xml(filename, *pPtree);
+	// użyc:
+	// void read_xml(std::basic_istream<typename Ptree::key_type::value_type> &stream,Ptree &pt,
 
-	read_xml(filename, *pPtree);
 
+	shared_ptr<IResourceExtraData> extraData =
+			pResourceHandle.get()->getExtraData();
+	
+	ss << pResourceHandle.get()->getResource().getName();
+	logger::info(ss);
+
+	ss << extraData->vToString();
+	logger::info(ss);
+
+	ptree* pPtree = nullptr;
+
+	if (shared_ptr<XmlResourceExtraData> xmlExtraData = dynamic_pointer_cast
+			< XmlResourceExtraData > (extraData)) {
+		pPtree = xmlExtraData->getRoot();
+	}
+
+	/*
+	 else {
+
+		pPtree = new ptree();
+		// ptree* pPtree = new ptree();
+		string filename = shrdPtrResourceCache->tempGetAssetsFolder()
+				+ resourceName;
+		read_xml(filename, *pPtree);
+	}
+	 */
+	
 	return pPtree;
 }
 
+/*
 ptree* ActorFactory::loadAndReturnRootXmlElement_222(
 		const string& resourceName) {
 	// See TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
@@ -97,6 +132,7 @@ ptree* ActorFactory::loadAndReturnRootXmlElement_222(
 
 	return pPtree;
 }
+ */
 
 shared_ptr<Actor> ActorFactory::createActor(const string& resourceName) {
 

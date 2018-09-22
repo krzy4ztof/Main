@@ -74,8 +74,8 @@ struct GameMessagesFixture {
 
 BOOST_FIXTURE_TEST_SUITE(GameMessagesSuite, GameMessagesFixture)
 
-BOOST_AUTO_TEST_CASE(primeSearch, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-
+//BOOST_AUTO_TEST_CASE(primeSearch, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+BOOST_AUTO_TEST_CASE(primeSearch, * unit_test::enabled()) {
 	try {
 		pGameMessages->testMessages();
 	} catch (ErrorCode& error) {

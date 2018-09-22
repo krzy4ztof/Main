@@ -73,6 +73,8 @@ copy_files := $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
 ###################
 all: createDir $(objprog)
 
+force: createDir cleanExe $(objprog)
+
 ###################################
 ###	pre installation receipies	###
 ###################################
@@ -88,10 +90,15 @@ $(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/fr
 $(prog_output_dir)/watermill.ini: $(root_dir)/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@
 
+#######################
+###	force receipies	###
+#######################
+cleanExe:
+	rm $(objprog)
+
 ###########################
 ###	compile receipies	###
 ###########################
-
 
 $(objdir)/%.o : %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@

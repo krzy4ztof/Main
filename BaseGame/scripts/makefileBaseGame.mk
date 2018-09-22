@@ -46,6 +46,8 @@ CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs)
 ###################
 all: createDir $(objprog)
 
+force: createDir $(objprog)
+
 ###################################
 ###	pre installation receipies	###
 ###################################

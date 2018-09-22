@@ -20,7 +20,9 @@ public:
 	ZipFile();
 	virtual ~ZipFile();
 
-	bool readFile(int i, void *pBuf);
+	// bool readFile(int i, void *pBuf);
+
+	ZipFileAsset* find(const std::string &name) const;
 
 	bool init(const std::string& resFileName, unsigned short inputSaveMode);
 	bool save(const std::string& outFileName, unsigned short outputSaveMode);

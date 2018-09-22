@@ -37,13 +37,15 @@ public:
 	virtual bool vOpen();
 //	virtual bool vSave(const std::string saveMode);
 
-	virtual void vTempReadResource(const Resource& resource);
+//	virtual void vTempReadResource(const Resource& resource);
 	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource);
+	virtual boost::uintmax_t vGetRawResource(const Resource& resource,
+			char *buffer);
 
 protected:
 	bool readAssetsDirectory(); //const std::string assetsFolder);
 
-	virtual bool vSaveFolderMode();
+	virtual bool vSaveFolderMode(const std::string outputFolderName);
 	bool prepareOutputDir(const std::string folderName);
 	bool createFilesAndFolders(const std::string folderName);
 
@@ -54,9 +56,9 @@ protected:
 	std::string getOutputFolderName(const std::string folderName);
 	bool fileToIgnore(boost::filesystem::path filePath);
 
-	virtual bool vSaveUnzipMode();
+	virtual bool vSaveUnzipMode(const std::string outputUnzipFileName);
 
-	virtual bool vSaveZipMode();
+	virtual bool vSaveZipMode(const std::string outputZipFileName);
 
 	bool createAssetFile(const std::string folderName,
 			const std::string assetsUnzipFile, const std::string saveMode);

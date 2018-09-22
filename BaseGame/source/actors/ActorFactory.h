@@ -30,8 +30,9 @@ namespace base_game {
 	//see TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
 	boost::property_tree::ptree* loadAndReturnRootXmlElement(
 			const std::string& resourceName);
-	boost::property_tree::ptree* loadAndReturnRootXmlElement_222(
-			const std::string& resourceName);
+	//boost::property_tree::ptree* loadAndReturnRootXmlElement_222(
+	//	const std::string& resourceName);
+
 		private:
 			const static std::string ACTOR_NODE_NAME;
 			const static unsigned int INVALID_ACTOR_ID=0;
