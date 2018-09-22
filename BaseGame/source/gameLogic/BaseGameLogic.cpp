@@ -194,7 +194,7 @@ void BaseGameLogic::tempAddViews() {
 
 }
 
-/*
+
 void BaseGameLogic::tempTestActors() {
 	vChangeState(spawningPlayersActors);
 
@@ -204,7 +204,7 @@ void BaseGameLogic::tempTestActors() {
 		actorsIterator->second->tempTestComponents();
 	}
 }
- */
+
 
 void BaseGameLogic::tempCreateActors() {
 	// See StrongActorPtr BaseGameLogic::VCreateActor(const std::string &actorResource, TiXmlElement* overrides, const Mat4x4* initialTransform, const ActorId serversActorId)

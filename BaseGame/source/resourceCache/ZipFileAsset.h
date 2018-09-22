@@ -12,6 +12,7 @@
 #include "TZipLocalHeader.h"
 
 #include <string>
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
 
@@ -20,15 +21,34 @@ public:
 	ZipFileAsset();
 	virtual ~ZipFileAsset();
 
+	TZipDirFileHeader* getZipDirFileHeader();
+	void setZipDirFileHeader(TZipDirFileHeader* header);
+
+	TZipLocalHeader* getZipLocalHeader();
+	void setZipLocalHeader(TZipLocalHeader* header);
+
+	char* getDirData();
+
+	void setDirData(char* data);
+
+	std::string getFileName();
+	void setFileName(std::string name);
+
+
+	unsigned short getFileNameLength();
+	boost::uintmax_t getFileDataSize();
+	boost::uintmax_t getUnzipFileDataSize();
+
+	bool readFile(char* buffer);
+	bool readAndUnzipFile(char* buffer);
+	void describeYourself();
+
+private:
 	TZipDirFileHeader *m_pZipDirFileHeader;
 	TZipLocalHeader *m_pZipLocalHeader;
 	char *m_pDirData;	// Raw data buffer.
 	std::string fileName;
 
-	unsigned short getFileNameLength();
-	unsigned long getFileDataSize();
-
-	void describeYourself();
 
 };
 

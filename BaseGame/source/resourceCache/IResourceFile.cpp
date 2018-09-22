@@ -44,15 +44,15 @@ IResourceFile::~IResourceFile() {
 	logger::info("Destroy IResourceFile");
 }
 
-bool IResourceFile::vSave(const string saveMode) {
+bool IResourceFile::vSave(const string saveMode, const string outputName) {
 
 	if (IResourceFile::ASSETS_SAVE_MODE_FOLDER.compare(saveMode) == 0) {
-		vSaveFolderMode();
+		vSaveFolderMode(outputName);
 	} else if (IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE.compare(saveMode)
 			== 0) {
-		vSaveUnzipMode();
+		vSaveUnzipMode(outputName);
 	} else if (IResourceFile::ASSETS_SAVE_MODE_ZIPFILE.compare(saveMode) == 0) {
-		vSaveZipMode();
+		vSaveZipMode(outputName);
 	}
 
 	return true;

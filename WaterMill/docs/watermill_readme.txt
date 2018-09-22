@@ -976,6 +976,200 @@ firstBoostTest.cpp, secondBoostTest.cpp - ok
 
 usunąć
 /BaseGame/source/testClasses/TestClass.cpp -ok
+
+---	28/07/2018
+--- 29/07/2018
+--- 04/08/2018
+--- 05/08/2018
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+skasować
+DevelopmentResourceFolder::vTempReadResource
+
+Kontynuacja
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+	
+dodać
+    int allocSize = rawSize + ((loader->VAddNullZero()) ? (1) : (0));
+	char *rawBuffer = loader->VUseRawFile() ? Allocate(allocSize) : GCC_NEW char[allocSize];
+    memset(rawBuffer, 0, allocSize);
+
+oraz todo:
+
+dopisać
+shared_ptr<Actor> ActorFactory::createActor(const string& resourceName)
+
+usunąć
+void BaseGameLogic::tempCreateActors()
+	
+dodać
+RawTextFileLoader -> loader.get()->vUseRawFile() -> return true
+Loader do wczytywania bezpośrednio plików tekstowych	
+	
+
+dodać WILDCARD MATCH	- ok zrobione
+
+
+TERAZ !!!! :
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+	
+dodać
+    int allocSize = rawSize + ((loader->VAddNullZero()) ? (1) : (0));
+	char *rawBuffer = loader->VUseRawFile() ? Allocate(allocSize) : GCC_NEW char[allocSize];
+    memset(rawBuffer, 0, allocSize);
+
+TERAZ !!!! DOKONCZYC:
+Napisac metode
+	uintmax_t DevelopmentResourceFolder::vGetRawResource
+która ma zapisywac zawartosc pliku do char *buffer
+wzorowana na
+	bool DevelopmentResourceFolder::saveAssetFileContents
+// TODO: upewnic sie ze vecCharDec ma taki sam rozmiar co *buffer i skopiowac vecCharDec do *buffer
+
+TERAZ !!!!!
+
+Bug w metodzie: OK
+bool XmlResourceLoader::vLoadResource
+podczas:
+handle->setExtraData(shared_ptr<XmlResourceExtraData>(pExtraData));
+
+
+OGÓLNY PLAN:
+Dokończyć metodę 	
+	shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+Następnie wrócić do metody
+	ptree* ActorFactory::loadAndReturnRootXmlElement(const string& resourceName) {
+... i na podstawie 
+	optional<shared_ptr<ResourceHandle>> 
+... za pomocą 	
+	void read_xml(std::basic_istream<typename Ptree::key_type::value_type> &stream,Ptree &pt,
+(zamiast read_xml(filename, *pPtree);)
+... wyczytać xml i zwrócić pPtree;
+Następnie dodac unit_testy na 
+	createActor z uzyciem DevelopmentResourceUnizipFile
+	createActor z uzyciem ResourceZipFile
+	
+	
+TODO: Makefile
+1. Przekompilowac plik A.cpp jeśli zmienił się plik B.h wykorzystywany przez plik A.cpp   --- OK 
+https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
+https://www.gnu.org/software/make/manual/make.html#Automatic-Prerequisites	
+https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
+
+2. W BaseGameTest/Watermill makefile dodac zalezność od BaseGame i przekompilowac gdy BaseGame sie zmieniło	--- OK
+	
+--- 12/08/2018
+--- 15/09/2018
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+
+
+Kontynuacja
+
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+dodać wczytywanie pliku *.txt zgodnie z defaultLoader tak aby rozwinąć fragmenty metody:
+	
+	if (loader.get()->vUseRawFile()) {
+		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
+		pRawBuffer = allocate(allocSize); // zmienic tak na odwrot allocate i new char	
+	
+	if (loader.get()->vUseRawFile()) {
+		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
+
+		pRawBuffer = allocate(allocSize); // zmienic tak na odwrot allocate i new char
+			
+	
+usunąć
+void BaseGameLogic::tempCreateActors()
+	
+dodać
+RawTextFileLoader -> loader.get()->vUseRawFile() -> return true -- OK
+Loader do wczytywania bezpośrednio plików tekstowych	
+	
+Dodac unit_testy na 
+	createActor z uzyciem DevelopmentResourceUnzipFile
+	createActor z uzyciem ResourceZipFile
+	wczytywanie pliku tekstowego z uzyciem DevelopmentResourceUnizipFile  -- OK
+	wczytywanie pliku tekstowego z uzyciem ResourceZipFile  -- OK
+	wczytywanie pliku tekstowego z uzyciem DevelopmentResourceFolder -- OK
+
+Teraz !!!:  -- OK
+metoda uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
+		char *buffer) {
+usunąć z niej 
+	std::cout << *it		
+Dlaczego koniec linii jest dopisywany podwójnie?	
+	
+Teraz !!!:
+unit test dla TextFileLoader z użyciem ResourceZipFile				
+
+Teraz !!! !!!: OK
+Metody
+	ResourceZipFile::vGetRawResource
+	ResourceZipFile::vGetRawResourceSize
+powinny rozpakowac plik
+w tym celu nalezy uzyc
+	uintmax_t ZipFileAsset::getUnzipFileDataSize() {
+ktora odczytuje wartosc
+	m_pZipDirFileHeader->ucSize;
+wiec wczesniej trzeba zapisac wielkosc nieskrompresowanego pliku do
+	m_pZipDirFileHeader->ucSize;
+tak wiec nalezy stworzyc testy na: -- OK
+	1.	odczyt resourceFolder, zapis do zip i odczyt ponowny
+	2.	odczyt resourceFolder, zapis do unzip i odczyt ponowny
+	3.  odczyt resourceFolder, zapis do zip, z zip do unzip, z unzip do resourceFolder
+	4.  odczyt resourceFolder, zapis do unzip, z unzip do zip, z zip do resourceFolder
+aktualnie test 1, czyli: -- OK
+	/BaseGameTest/source/resourceCache/DevelopmentResourceFolderTest.cpp
+należy też zparametryzowac domyślne nazwy plików asset(zip/unzip).zip służących do zapisu i odczytu	
+sprawdzic czy nie zmienić konstruktora: -- OK
+	DevelopmentResourceFolder::DevelopmentResourceFolder(const string rootFolder,
+		const string assetsFolder)
+				
+Teraz: !!! -- OK
+	ZipFileAsset::readAndUnzipFile(
+				
+
+--- 16/09/2018
+
+Kontynuacja:
+ActorFactory::loadAndReturnRootXmlElement
+
+Kontynuacja
+
+Teraz: !!!!
+shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
+	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
+dodać wczytywanie pliku *.txt zgodnie z defaultLoader tak aby rozwinąć fragmenty metody:
+
+Teraz: !!!!	- rozwinąć
+	if (loader.get()->vUseRawFile()) {
+	else {
+		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
+		pRawBuffer = allocate(allocSize); // zmienic tak na odwrot allocate i new char	
+	
+			
+	
+usunąć
+void BaseGameLogic::tempCreateActors()
+		
+Dodac unit_testy na 
+	createActor z uzyciem DevelopmentResourceUnzipFile
+	createActor z uzyciem ResourceZipFile
+
+Wczytywanie z Resource Cache:
+	Massages
+	Lua
+
 		
 *******************
 ***	FUTURE TODO	***

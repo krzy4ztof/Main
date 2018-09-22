@@ -28,6 +28,7 @@
 #include "../resourceCache/IResourceFile.h"
 #include "../resourceCache/ResourceZipFile.h"
 #include "../resourceCache/XmlResourceLoader.h"
+#include "../resourceCache/TextFileLoader.h"
 #include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
@@ -38,6 +39,7 @@
 #include "../resourceCache/DevelopmentResourceUnzipFile.h"
 
 #include <memory> // shared_ptr, weak_ptr, make_shared
+//#include <typeinfo> // typeid
 
 using std::string;
 using std::cout;
@@ -240,26 +242,77 @@ bool GameCodeApp::initInstance() {
 	if (IResourceFile::ASSETS_SAVE_MODE_NONE.compare(saveMode) == 0) {
 		//zipFile = new DevelopmentResourceZipFile(ASSETS_ZIP);
 	} else if (IResourceFile::ASSETS_SAVE_MODE_FOLDER.compare(saveMode) == 0) {
-		zipFile->vSave(saveMode);
+//		string zipClassName = typeid(zipFile.get()).name();
+		string outputName;
+		if (IResourceFile::ASSETS_READ_MODE_FOLDER.compare(readMode) == 0) {
+			outputName = IResourceFile::ASSETS_FOLDER_TO_FOLDER;
+		} else if (IResourceFile::ASSETS_READ_MODE_UNZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_UNZIP_TO_FOLDER;
+		} else if (IResourceFile::ASSETS_READ_MODE_ZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_ZIP_TO_FOLDER;
+		}
+
+		// string outputName = IResourceFile::ASSETS_FOLDER_TO_FOLDER;
+		// + IResourceFile::ASSETS_UNZIP_TO_FOLDER;
+		// IResourceFile::ASSETS_ZIP_TO_FOLDER
+
+		zipFile->vSave(saveMode, outputName);
 
 		//TODO save method invocation
 
 	} else if (IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE.compare(saveMode)
 			== 0) {
-		zipFile->vSave(saveMode);
+		string outputName;
+		if (IResourceFile::ASSETS_READ_MODE_FOLDER.compare(readMode) == 0) {
+			outputName = IResourceFile::ASSETS_UNZIP_FILE;
+		} else if (IResourceFile::ASSETS_READ_MODE_UNZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_UNZIP_TO_UNZIP;
+		} else if (IResourceFile::ASSETS_READ_MODE_ZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_ZIP_TO_UNZIP;
+		}
+		// string outputName = IResourceFile::ASSETS_UNZIP_FILE;
+		// IResourceFile::ASSETS_UNZIP_TO_UNZIP;
+		// IResourceFile::ASSETS_ZIP_TO_UNZIP
+
+
+		zipFile->vSave(saveMode, outputName);
 
 		//TODO save method invocation
 		//zipFile = new ResourceZipFile(ASSETS_ZIP);
 
 	} else if (IResourceFile::ASSETS_SAVE_MODE_ZIPFILE.compare(saveMode) == 0) {
 		//zipFile = new ResourceZipFile(ASSETS_ZIP);
-		zipFile->vSave(saveMode);
+		string outputName;
+		if (IResourceFile::ASSETS_READ_MODE_FOLDER.compare(readMode) == 0) {
+			outputName = IResourceFile::ASSETS_ZIP_FILE;
+		} else if (IResourceFile::ASSETS_READ_MODE_UNZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_UNZIP_TO_ZIP;
+		} else if (IResourceFile::ASSETS_READ_MODE_ZIPFILE.compare(readMode)
+				== 0) {
+			outputName = IResourceFile::ASSETS_ZIP_TO_ZIP;
+		}
+
+		// string outputName = IResourceFile::ASSETS_ZIP_FILE;
+		// IResourceFile::ASSETS_UNZIP_TO_ZIP;
+		// IResourceFile::ASSETS_ZIP_TO_ZIP
+
+
+		zipFile->vSave(saveMode, outputName);
 
 		//TODO save method invocation
 	}
 
 	shrdPtrResourceCache->registerLoader(
 			xml_resource_loader::createXmlResourceLoader());
+
+	shrdPtrResourceCache->registerLoader(
+			text_file_loader::createTextFileLoader());
+
 
 	try {
 		gameMessages = new GameMessages(initOptions->getAssetsFolder(),
@@ -331,7 +384,7 @@ void GameCodeApp::mainLoop() {
 	m_pGame->tempCreateActors();
 
 
-	//m_pGame->tempTestActors();	//ok
+	m_pGame->tempTestActors();	//ok
 	m_pGame->tempAddViews();		//ok
 
 	videoSystem->startFreeGlutMainLoop();

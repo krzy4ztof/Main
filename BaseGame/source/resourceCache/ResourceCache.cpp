@@ -15,7 +15,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp> // read_xml
 #include <boost/optional.hpp> // boost::optional
-
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 using std::string;
 using std::shared_ptr;
@@ -26,6 +26,7 @@ using std::map;
 using boost::property_tree::ptree;
 using boost::property_tree::read_xml;
 using boost::optional;
+using boost::uintmax_t;
 
 namespace base_game {
 
@@ -33,8 +34,8 @@ ResourceCache::ResourceCache(const string& assetsFolder,
 		const unsigned int sizeInMb, shared_ptr<IResourceFile> shPtrResFile) {
 	logger::info("Create ResourceCache");
 
-	cacheSize = sizeInMb * 1024 * 1024;				// total memory size
-	allocated = 0;									// total memory allocated
+	m_cacheSize = sizeInMb * 1024 * 1024;				// total memory size
+	m_allocated = 0;								// total memory allocated
 	m_resourceFile = shPtrResFile;
 	this->assetsFolder = assetsFolder;
 }
@@ -153,32 +154,152 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 
 	}
 
-	int rawSize = m_resourceFile->vGetRawResourceSize(*resource);
-	if (rawSize < 0) {
+	uintmax_t rawSize = m_resourceFile->vGetRawResourceSize(*resource);
+	ss << "rawSize: " << rawSize;
+	logger::info(ss);
+
+	if (rawSize <= 0) {
 		logger::error("Resource size returned -1 - Resource not found");
 
 		return shared_ptr<ResourceHandle> { };
 	}
+
+	uintmax_t allocSize = rawSize;
+
+	// string pat2 = loader->operator ->()->vGetPattern();
+
+	if (loader.get()->vAddNullZero()) {
+		allocSize += 1;
+	}
+
+	char* pRawBuffer = nullptr;
+	if (loader.get()->vUseRawFile()) {
+		pRawBuffer = allocate(allocSize);
+	} else {
+		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
+		pRawBuffer = new char[allocSize];
+	}
+
+	memset(pRawBuffer, 0, allocSize);
+
+	if (pRawBuffer == nullptr) {
+		return shared_ptr<ResourceHandle> { };
+	}
+
+	uintmax_t getRawResource = m_resourceFile->vGetRawResource(*resource,
+			pRawBuffer);
+
+	if (getRawResource <= 0) {
+		return shared_ptr<ResourceHandle> { };
+	}
+
+	ss << "allocSizeX: " << allocSize;
+	logger::info(ss);
+
+
+
+	for (int i = 0; i < allocSize; i++) {
+		ss << *(pRawBuffer + i);
+		// ss << " | ";
+	}
+
+	logger::info(ss);
+
+	char* pBuffer = nullptr;
+	uintmax_t size = 0;
 	
+	if (loader.get()->vUseRawFile()) {
+		pBuffer = pRawBuffer; //pRawBuffer already allocated
+
+		handle = shared_ptr<ResourceHandle> { new ResourceHandle(*resource,
+				pBuffer, rawSize, this) };
+	} else {
+		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
+
+		size = loader.get()->vGetLoadedResourceSize(pRawBuffer, rawSize);
+		pBuffer = allocate(size);
+
+		if (pRawBuffer == nullptr || pBuffer == nullptr) {
+			return shared_ptr<ResourceHandle> { };
+		}
+
+		handle = shared_ptr<ResourceHandle> { new ResourceHandle(*resource,
+				pBuffer, size, this) };
+
+		bool success = loader.get()->vLoadResource(pRawBuffer, rawSize, handle);
+
+		if (loader.get()->vDiscardRawBufferAfterLoad()) {
+			templates::safe_delete_array<char>(pRawBuffer);
+		}
+
+		if (!success) {
+			return shared_ptr<ResourceHandle> { };
+		}
+
+
+	}
+
+	if (handle) {
+		m_resourceHandles.push_front(handle);
+
+		const string resourceName = handle->getResource().getName();
+
+		m_resources[resourceName] = handle;
+	}
 
 	// Load resource with loader
-
 	logger::info("ResourceCache::load");
 
-	return tempLoad(resource);
+	// return tempLoad(resource);
+	return handle;
+
 }
 
+char* ResourceCache::allocate(uintmax_t size) {
+
+	if (!makeRoom(size)) {
+		return nullptr;
+	}
+
+	char* mem = new char[size];
+	if (mem) {
+		m_allocated += size;
+	}
+
+	return mem;
+}
+
+bool ResourceCache::makeRoom(uintmax_t size) {
+	if (size > m_cacheSize) {
+		return false;
+	}
+
+	// return null if there's no possible way to allocate the memory
+	while (size > (m_cacheSize - m_allocated)) {
+		// The cache is empty, and there's still not enough room.
+		if (m_resourceHandles.empty()) // m_lru.empty()
+			return false;
+
+		freeOneResource();
+	}
+
+	return true;
+}
+
+/*
 shared_ptr<ResourceHandle> ResourceCache::tempLoad(Resource *resource) {
 
 	// this->m_resourceFile->vSaveFolderMode();
-	this->m_resourceFile->vTempReadResource(*resource);
+ this->m_resourceFile->vTempReadResource(*resource);
 
 	shared_ptr<IResourceLoader> loader;
 	shared_ptr<ResourceHandle> handle;
 
-	handle = shared_ptr<ResourceHandle>(new ResourceHandle(*resource));
+	handle = shared_ptr<ResourceHandle>(
+			new ResourceHandle(*resource, nullptr, 0, nullptr));
 	return handle;
 }
+ */
 
 optional<shared_ptr<ResourceHandle>> ResourceCache::find(Resource * resource) {
 	logger::info("ResourceCache::find");

@@ -1,0 +1,4 @@
+BaseGame - the main game engine
+BaseGameTest - unit tests for the main engine
+Watermill - the configuration and exe using the main engine
+

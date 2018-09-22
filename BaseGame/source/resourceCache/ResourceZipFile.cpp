@@ -40,40 +40,78 @@ bool ResourceZipFile::vOpen() {
 	return result;
 }
 
+/*
 void ResourceZipFile::vTempReadResource(const Resource& resource) {
 	stringstream ss;
 	ss << "ResourceZipFile::vTempReadResource: ";
 	//		<< resource.getName();
 
 	logger::info(ss);
+}
+ */
 
+uintmax_t ResourceZipFile::vGetRawResource(const Resource& resource,
+		char *buffer) {
+	ZipFileAsset* pZipFileAsset = m_pZipFile->find(resource.getName());
+
+	uintmax_t size = 0;
+	if (pZipFileAsset) {
+//		size = pZipFileAsset->getFileDataSize();
+		size = pZipFileAsset->getUnzipFileDataSize();
+
+		// Unzip !!!
+		// pZipFileAsset->readFile(buffer);
+
+		//pZipFileAsset->readAndUnzipFile(buffer);
+		pZipFileAsset->readAndUnzipFile(buffer);
+	}
+
+	return size;
 }
 
 uintmax_t ResourceZipFile::vGetRawResourceSize(const Resource &resource) {
-	return -1;
+	ZipFileAsset* pZipFileAsset = m_pZipFile->find(resource.getName());
+
+	uintmax_t size = 0;
+	if (pZipFileAsset) {
+		// size = pZipFileAsset->getFileDataSize();
+		size = pZipFileAsset->getUnzipFileDataSize();
+	}
+
+	/*
+	 * 	int resourceNum = m_pZipFile->Find(r.m_name.c_str());
+	 if (resourceNum == -1)
+	 return -1;
+
+	 return m_pZipFile->GetFileLen(resourceNum);
+	 */
+
+	return size;
 }
 
-bool ResourceZipFile::vSaveFolderMode() {
+bool ResourceZipFile::vSaveFolderMode(const string outputFolderName) {
 	stringstream ss;
 	ss << "VSAVE: " << m_rootFolder;
 	logger::info(ss);
 
-	string folderFullName = m_rootFolder + "/"
-			+ IResourceFile::ASSETS_ZIP_TO_FOLDER;
+	string folderFullName = m_rootFolder + "/" + outputFolderName;
+	//		+ IResourceFile::ASSETS_ZIP_TO_FOLDER;
 
 	m_pZipFile->saveAsFolder(folderFullName);
 	return true;
 }
 
-bool ResourceZipFile::vSaveUnzipMode() {
-	string fileName = m_rootFolder + "/" + IResourceFile::ASSETS_ZIP_TO_UNZIP;
+bool ResourceZipFile::vSaveUnzipMode(const string outputUnzipFileName) {
+	string fileName = m_rootFolder + "/" + outputUnzipFileName;
+	// IResourceFile::ASSETS_ZIP_TO_UNZIP;
 	m_pZipFile->save(fileName, ZipFile::NOT_COMPRESSED);
 
 	return true;
 }
 
-bool ResourceZipFile::vSaveZipMode() {
-	string fileName = m_rootFolder + "/" + IResourceFile::ASSETS_ZIP_TO_ZIP;
+bool ResourceZipFile::vSaveZipMode(const string outputZipFileName) {
+	string fileName = m_rootFolder + "/" + outputZipFileName;
+	//IResourceFile::ASSETS_ZIP_TO_ZIP;
 	m_pZipFile->save(fileName, ZipFile::COMPRESSED);
 
 	return true;

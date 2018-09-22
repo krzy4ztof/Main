@@ -1,7 +1,11 @@
 #ifndef IRESOURCELOADER_H
 #define IRESOURCELOADER_H
 
+#include "ResourceHandle.h"
+
 #include <string> // string
+#include <boost/cstdint.hpp> // boost::uintmax_t
+#include <memory> // shared_ptr
 
 namespace base_game {
 	class IResourceLoader {
@@ -11,6 +15,22 @@ namespace base_game {
 
 	virtual std::string vGetPattern()=0;
 
+	virtual bool vUseRawFile()=0;
+
+	virtual bool vDiscardRawBufferAfterLoad()=0;
+
+	virtual bool vAddNullZero() {
+		//TODO: scriptLoader will return true
+		return false;
+	}
+	
+	virtual boost::uintmax_t vGetLoadedResourceSize(char *rawBuffer,
+			boost::uintmax_t rawSize)=0;
+	
+	 virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
+			std::shared_ptr<ResourceHandle> handle)=0;
+
+	
 	/*
 	 * 		virtual std::string VGetPattern()=0;
 	 virtual bool VUseRawFile()=0;

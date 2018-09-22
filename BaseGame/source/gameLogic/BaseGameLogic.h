@@ -21,7 +21,7 @@ public:
 	bool init(std::shared_ptr<ResourceCache> resourceCache);
 
 	void tempCreateActors();
-	//void tempTestActors();
+	void tempTestActors();
 	// void tempTestProcessManager();
 	void tempAddViews();
 
