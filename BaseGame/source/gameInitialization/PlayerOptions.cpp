@@ -35,6 +35,7 @@ using boost::property_tree::read_xml;
 namespace base_game {
 
 	const string PlayerOptions::LANGUAGE = "language";
+const string PlayerOptions::LANGUAGES = "languages";
 
 	const string PlayerOptions::PLAYER_OPTIONS_NODE_NAME = "playerOptions";
 	const string PlayerOptions::OPTION_NODE_NAME = "option";

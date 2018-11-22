@@ -531,132 +531,6 @@ void ZipFile::saveAssetFileName(TZipLocalHeader& lh, ofstream& ofs,
 
 }
 
-bool ZipFile::saveAssetFileName_ok_111(TZipLocalHeader& lh, ofstream& ofs,
-		ZipFileAsset* zipFileAsset, unsigned short outputSaveMode) {
-
-	const string shortFileName = zipFileAsset->getFileName();
-
-	stringstream ss;
-
-	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
-		if (ZipFile::NOT_COMPRESSED == outputSaveMode) {
-			ss << "Saves not compressed file name: " << shortFileName
-					<< " as not compressed";
-			logger::info(ss);
-
-			// lh.fnameLen = shortFileName.length();
-			lh.fnameLen = zipFileAsset->getFileNameLength();
-
-			ss << "shortFileName.length(): " << shortFileName.length()
-					<< " /// zipFileAsset->getFileNameLength(): "
-					<< zipFileAsset->getFileNameLength();
-			logger::info(ss);
-
-			//local header
-			ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
-
-			lh.describeYourself();
-
-			filtering_istreambuf filterFileName;
-
-			array_source source(shortFileName.c_str(),
-					zipFileAsset->getFileNameLength());
-			filterFileName.push(source);
-
-			vector<char> vecFileName;
-			boost::iostreams::copy(filterFileName,
-					boost::iostreams::back_inserter(vecFileName));
-
-			//file name
-			ofs.write(reinterpret_cast<char *>(vecFileName.data()),
-					vecFileName.size());
-
-		} else {
-			ss << "Saves not compressed file name: " << shortFileName
-					<< " as compressed";
-			logger::info(ss);
-
-			ss << "shortFileName.length(): " << shortFileName.length()
-					<< " /// zipFileAsset->getFileNameLength(): "
-					<< zipFileAsset->getFileNameLength();
-			logger::info(ss);
-
-			filtering_istreambuf filterFileName;
-			filterFileName.push(zlib_compressor());
-
-			array_source source(shortFileName.c_str(),
-					zipFileAsset->getFileNameLength());
-			filterFileName.push(source);
-
-			vector<char> vecFileName;
-			boost::iostreams::copy(filterFileName,
-					boost::iostreams::back_inserter(vecFileName));
-
-			//lh.fnameLen = zipFileAsset->getFileNameLength();
-			lh.fnameLen = vecFileName.size();
-			ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
-
-			lh.describeYourself();
-
-			//file name
-			ofs.write(reinterpret_cast<char *>(vecFileName.data()),
-					vecFileName.size());
-
-		}
-	} else {
-		if (ZipFile::NOT_COMPRESSED == outputSaveMode) {
-			ss << "Saves compressed file name: " << shortFileName
-					<< " as not compressed";
-			logger::info(ss);
-
-			//file name
-			filtering_istreambuf filterFileName;
-			filterFileName.push(zlib_decompressor());
-
-			array_source source(shortFileName.c_str(),
-					zipFileAsset->getFileNameLength());
-			filterFileName.push(source);
-
-			vector<char> vecFileName;
-			boost::iostreams::copy(filterFileName,
-					boost::iostreams::back_inserter(vecFileName));
-
-			//local header
-			lh.fnameLen = vecFileName.size();
-			ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
-			lh.describeYourself();
-
-			//file name
-			ofs.write(reinterpret_cast<char *>(vecFileName.data()),
-					vecFileName.size());
-		} else {
-			ss << "Saves compressed file name: " << shortFileName
-					<< " as compressed";
-			logger::info(ss);
-
-			//local header
-			lh.fnameLen = zipFileAsset->getFileNameLength();
-			ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
-			lh.describeYourself();
-
-			//file name
-			filtering_istreambuf filterFileName;
-			array_source source(shortFileName.c_str(),
-					zipFileAsset->getFileNameLength());
-			filterFileName.push(source);
-
-			vector<char> vecFileName;
-			boost::iostreams::copy(filterFileName,
-					boost::iostreams::back_inserter(vecFileName));
-
-			ofs.write(reinterpret_cast<char *>(vecFileName.data()),
-					vecFileName.size());
-
-		}
-	}
-
-}
-
 void ZipFile::saveAssetFileNoCompression(ofstream& ofs,
 		ZipFileAsset* pZipFileAsset, vector<char>& vecFileContents) {
 
@@ -768,122 +642,8 @@ bool ZipFile::saveAssetFileContents(ofstream& ofs, ZipFileAsset* pZipFileAsset,
 
 		}
 	}
-}
 
-bool ZipFile::saveAssetFileContents_ok_111(ofstream& ofs,
-		ZipFileAsset* pZipFileAsset,
-		unsigned short outputSaveMode, vector<char>& vecFileContents) {
-
-	stringstream ss;
-
-	filtering_istreambuf filterAssetFile;
-
-	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
-		if (ZipFile::NOT_COMPRESSED == outputSaveMode) {
-			ss << "Saves not compressed file contents: "
-					<< pZipFileAsset->getFileName() << " as not compressed";
-			logger::info(ss);
-			// Do not push zlib_compressor()
-
-			ss << "file contents size: " << pZipFileAsset->getFileDataSize();
-			logger::info(ss);
-			ss << "file contents: " << pZipFileAsset->getDirData();
-			logger::info(ss);
-
-			array_source source(pZipFileAsset->getDirData(),
-					pZipFileAsset->getFileDataSize());
-
-
-			filterAssetFile.push(source);
-
-			boost::iostreams::copy(filterAssetFile,
-					boost::iostreams::back_inserter(vecFileContents));
-
-			ss << "vecFileContents:";
-			logger::info(ss);
-
-			ss << "";
-
-			for (vector<char>::iterator it = vecFileContents.begin();
-					it != vecFileContents.end(); ++it) {
-				//cout << *it;
-				ss << *it;
-			}
-			ss << "";
-			logger::info(ss);
-			ss << "vecFileContents1.size: " << vecFileContents.size();
-			logger::info(ss);
-
-			ofs.write(reinterpret_cast<char *>(vecFileContents.data()),
-					vecFileContents.size());
-			ss << "vecFileContents2.size: " << vecFileContents.size();
-			logger::info(ss);
-			ss << "XX";
-			logger::info(ss);
-
-		} else {
-			ss << "Saves not compressed file contents: "
-					<< pZipFileAsset->getFileName() << " as compressed";
-			logger::info(ss);
-
-			filterAssetFile.push(zlib_compressor());
-
-			array_source source(pZipFileAsset->getDirData(),
-					pZipFileAsset->getFileDataSize());
-
-
-			filterAssetFile.push(source);
-
-			boost::iostreams::copy(filterAssetFile,
-					boost::iostreams::back_inserter(vecFileContents));
-
-			ofs.write(reinterpret_cast<char *>(vecFileContents.data()),
-					vecFileContents.size());
-
-		}
-	} else {
-		if (ZipFile::NOT_COMPRESSED == outputSaveMode) {
-			ss << "Saves compressed file contents: "
-					<< pZipFileAsset->getFileName()
-					<< " as not compressed";
-			logger::info(ss);
-
-			filterAssetFile.push(zlib_decompressor());
-
-			array_source source(pZipFileAsset->getDirData(),
-					pZipFileAsset->getFileDataSize());
-
-			filterAssetFile.push(source);
-
-			boost::iostreams::copy(filterAssetFile,
-					boost::iostreams::back_inserter(vecFileContents));
-
-			ofs.write(reinterpret_cast<char *>(vecFileContents.data()),
-					vecFileContents.size());
-
-		} else {
-			ss << "Saves compressed file contents: "
-					<< pZipFileAsset->getFileName()
-					<< " as compressed";
-			logger::info(ss);
-
-			array_source source(pZipFileAsset->getDirData(),
-					pZipFileAsset->getFileDataSize());
-			filterAssetFile.push(source);
-			boost::iostreams::copy(filterAssetFile,
-					boost::iostreams::back_inserter(vecFileContents));
-
-			ss << "vecFileContents1.size: " << vecFileContents.size();
-			logger::info(ss);
-
-			ofs.write(reinterpret_cast<char *>(vecFileContents.data()),
-					vecFileContents.size());
-
-			ss << "vecFileContents2.size: " << vecFileContents.size();
-			logger::info(ss);
-		}
-	}
-
+	return true;
 }
 
 bool ZipFile::saveAsset(ofstream& ofs, ZipFileAsset* pZipFileAsset,
@@ -1157,6 +917,25 @@ void ZipFile::copyZipFile(path inPath, ZipFileAsset* pZipFileAsset) {
 
 	filtering_istreambuf filter;
 	filter.push(zlib_decompressor());
+
+	/*
+	ss << "Length: " << pZipFileAsset->getFileDataSize();
+	logger::info(ss);
+
+	ss << "--------- START ZIP-FILE---------";
+	logger::info(ss);
+
+	char* pDirData = pZipFileAsset->getDirData();
+
+	for (int i = 0; i << pZipFileAsset->getFileDataSize(); i++) {
+		ss << *(pDirData + i);
+	}
+	logger::info(ss);
+
+	ss << "---------  END ZIP-FILE  ---------";
+	logger::info(ss);
+	 */
+
 	array_source source(pZipFileAsset->getDirData(),
 			pZipFileAsset->getFileDataSize());
 	filter.push(source);

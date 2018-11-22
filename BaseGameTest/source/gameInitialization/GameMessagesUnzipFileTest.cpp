@@ -18,7 +18,7 @@
 #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 #include "../../../BaseGame/source/resourceCache/IResourceFile.h"
-#include "../../../BaseGame/source/resourceCache/DevelopmentResourceFolder.h"
+#include "../../../BaseGame/source/resourceCache/DevelopmentResourceUnzipFile.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/resourceCache/MessageLoader.h"
 
@@ -34,7 +34,7 @@ using base_game::ErrorCode;
 using base_game::IResourceFile;
 using base_game::ResourceCache;
 
-using base_game::DevelopmentResourceFolder;
+using base_game::DevelopmentResourceUnzipFile;
 
 
 namespace templates = base_game::templates;
@@ -51,9 +51,9 @@ namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
-struct GameMessagesFixture {
+struct GameMessagesUnzipFileFixture {
 
-	// InitOptions* pInitOptions;
+	//InitOptions* pInitOptions;
 	PlayerOptions *pPlayerOptions;
 	GameMessages *pGameMessages;
 	TestGame* pTestGame;
@@ -61,16 +61,17 @@ struct GameMessagesFixture {
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
 
-	GameMessagesFixture() {
-		logger::info("Create GameMessagesFixture");
+	GameMessagesUnzipFileFixture() {
+		logger::info("Create GameMessagesUnzipFileFixture");
 		pTestGame = new TestGame;
 
 		base_game::g_pApp = pTestGame;
 
 		// START GameCodeApp::initAllOptions()
 		InitOptions* pInitOptions = new InitOptions;
-		shrdPtrResourceFile = make_shared<DevelopmentResourceFolder>(
-				pInitOptions->getRootFolder(), pInitOptions->getAssetsFolder());
+		shrdPtrResourceFile = make_shared<DevelopmentResourceUnzipFile>(
+				pInitOptions->getRootFolder(),
+				IResourceFile::ASSETS_UNZIP_FILE);
 
 		pPlayerOptions = new PlayerOptions;
 		pTestGame->setInitOptions(pInitOptions);
@@ -88,24 +89,15 @@ struct GameMessagesFixture {
 			logger::warning(
 					"Failed to initialize resource cache!  Are your paths set up correctly?");
 		}
-		// pTestGame->setResourceCache(shrdPtrResourceCache);
 
 		shrdPtrResourceCache->registerLoader(
 				message_loader::createMessageLoader());
 		
 		pTestGame->setResourceCache(shrdPtrResourceCache);
 
-
-
 		pGameMessages = new GameMessages(shrdPtrResourceCache,
 				pPlayerOptions->getOption(pPlayerOptions->LANGUAGE),
 				pPlayerOptions->getOption(pPlayerOptions->LANGUAGES));
-		//pGameMessages->initByPath(pInitOptions->getAssetsFolder(),
-		//		pPlayerOptions->getOption(pPlayerOptions->LANGUAGE));
-
-		// game_messages::init_locale_pl();
-		//pGameMessages->init(pInitOptions->getAssetsFolder(),
-		//		pPlayerOptions->getOption(pPlayerOptions->LANGUAGE));
 
 		pGameMessages->init();
 
@@ -113,8 +105,8 @@ struct GameMessagesFixture {
 
 }
 
-	~GameMessagesFixture() {
-		logger::info("Destroy GameMessagesFixture");
+	~GameMessagesUnzipFileFixture() {
+		logger::info("Destroy GameMessagesUnzipFileFixture");
 
 		templates::safe_delete<GameMessages>(pGameMessages);
 		templates::safe_delete<PlayerOptions>(pPlayerOptions);
@@ -128,18 +120,14 @@ struct GameMessagesFixture {
 }
 };
 
-BOOST_FIXTURE_TEST_SUITE(GameMessagesSuite, GameMessagesFixture)
+BOOST_FIXTURE_TEST_SUITE(GameMessagesUnzipFileSuite, GameMessagesUnzipFileFixture)
 
-BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-//BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enabled()) {
+BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader, * unit_test::enabled()) {
 	try {
 		pGameMessages->testMessagesGetText();
 		pGameMessages->switchCurrentLanguage("en.UTF-8");
 		pGameMessages->testMessagesGetText();
-
-		// game_messages::init_locale_pl();
-		// pGameMessages->testMessages();
-		// pGameMessages->testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}
@@ -147,20 +135,16 @@ BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 	BOOST_TEST(true);
 }
 
-BOOST_AUTO_TEST_CASE(messagesLoader2, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-//BOOST_AUTO_TEST_CASE(messagesLoader2, * unit_test::enabled()) {
+BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader2, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader2, * unit_test::enabled()) {
 	try {
 		pGameMessages->testMessagesGetText();
-		// game_messages::init_locale_pl();
-		// pGameMessages->testMessages();
-		// pGameMessages->testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}
 
 	BOOST_TEST(true);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

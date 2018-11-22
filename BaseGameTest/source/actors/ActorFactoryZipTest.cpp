@@ -152,8 +152,8 @@ BOOST_FIXTURE_TEST_SUITE(ActorFactoryZipSuite, ActorFactoryZipFixture)
 
 //BOOST_AUTO_TEST_CASE(createActor) {
 
-BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-//BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enabled()) {
+//BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enabled()) {
 
 	string resourceName = "actors\\player_character.xml";
 

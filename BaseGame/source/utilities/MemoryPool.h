@@ -95,7 +95,9 @@ namespace base_game {
 			void SetNext(unsigned char* pBlockToChange, unsigned char* pNewNext);
 
 			// don't allow copy constructor
-			MemoryPool(const MemoryPool& memPool) {}
+	MemoryPool(const MemoryPool& memPool) :
+			m_chunkSize(0), m_memArraySize(0), m_numChunks(0) {
+	}
 
 		public:
 			// construction

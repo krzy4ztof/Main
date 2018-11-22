@@ -134,10 +134,37 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 	filtering_istreambuf filter;
 	filter.push(zlib_decompressor());
 
+	/*
 	string dirDataStr = string_utils::charToString(m_pDirData);
 
+	ss << "Length: " << dirDataStr.length();
+	logger::info(ss);
+
+	ss << "Length FileData: " << getFileDataSize();
+	logger::info(ss);
+
+	ss << "--------- START ASSET---------";
+	logger::info(ss);
+
+	const char* pDirData = dirDataStr.c_str();
+
+	for (int i = 0; i << dirDataStr.length(); i++) {
+		ss << *(pDirData + i);
+	}
+	logger::info(ss);
+
+	ss << "---------  END ASSET ---------";
+	logger::info(ss);
+	 */
+
+	//array_source source(pZipFileAsset->getDirData(),
+	//		pZipFileAsset->getFileDataSize());
+
 	//array_source source(zipString.c_str(), zipString.length());
+
+	string dirDataStr = string_utils::charToString(m_pDirData);
 	array_source source(dirDataStr.c_str(), dirDataStr.length());
+	//array_source source(getDirData(), getFileDataSize());
 
 	// array_source source(*m_pDirData,
 	//		*(m_pDirData + this->getFileDataSize() - 1));

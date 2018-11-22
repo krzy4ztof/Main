@@ -486,7 +486,7 @@ bool DevelopmentResourceFolder::saveAssetFileName(TZipLocalHeader& lh,
 				vecFileName.size());
 
 	}
-
+	return true;
 }
 
 bool DevelopmentResourceFolder::saveAssetFileContents(ofstream& ofs,
@@ -517,6 +517,7 @@ bool DevelopmentResourceFolder::saveAssetFileContents(ofstream& ofs,
 			<< vecFileContents.size();
 	logger::info(ss);
 
+	return true;
 }
 
 bool DevelopmentResourceFolder::saveAsset(ofstream& ofs,

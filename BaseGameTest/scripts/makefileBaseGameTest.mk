@@ -96,7 +96,7 @@ $(prog_output_dir)/watermill.ini: $(root_dir)/../Watermill/settings/eclipse/Wate
 ###	force receipies	###
 #######################
 cleanExe:
-	rm $(objprog)
+	rm -f $(objprog)
 
 ###########################
 ###	compile receipies	###

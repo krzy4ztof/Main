@@ -27,7 +27,8 @@ namespace base_game {
 	const string TransformComponent::ATTR_Y = "<xmlattr>.y";
 	const string TransformComponent::ATTR_Z = "<xmlattr>.z";
 
-	TransformComponent::TransformComponent() {
+TransformComponent::TransformComponent() :
+		x(0), y(0), z(0) {
 		logger::trace("Create TransformComponent");
 	}
 

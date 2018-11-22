@@ -23,6 +23,7 @@
 #include "../../../BaseGame/source/resourceCache/TextFileLoader.h"
 #include "../../../BaseGame/source/resourceCache/Resource.h"
 #include "../../../BaseGame/source/resourceCache/ResourceHandle.h"
+#include "../../../BaseGame/source/resourceCache/MessageLoader.h"
 
 // #define BOOST_TEST_MODULE StringUtilsTestModule
 #include <boost/test/unit_test.hpp>
@@ -43,6 +44,7 @@ namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace xml_resource_loader = base_game::xml_resource_loader;
 namespace text_file_loader = base_game::text_file_loader;
+namespace message_loader = base_game::message_loader;
 
 //using base_game::templates::safe_delete;
 using base_game::DevelopmentResourceFolder;
@@ -83,10 +85,13 @@ struct ResourceCacheFixture {
 	 "Failed to initialize resource cache!  Are your paths set up correctly?");
 	 }
 
-	 shrdPtrResourceCache->registerLoader(
-	 xml_resource_loader::createXmlResourceLoader());
-	 shrdPtrResourceCache->registerLoader(
-	 text_file_loader::createTextFileLoader());
+		shrdPtrResourceCache->registerLoader(
+				xml_resource_loader::createXmlResourceLoader());
+		shrdPtrResourceCache->registerLoader(
+				text_file_loader::createTextFileLoader());
+
+		shrdPtrResourceCache->registerLoader(
+				message_loader::createMessageLoader());
 	 }
 
 	virtual ~ResourceCacheFixture() {
