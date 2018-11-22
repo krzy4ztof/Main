@@ -23,7 +23,8 @@ namespace base_game {
 	const string RenderComponent::ATTR_A = "<xmlattr>.a";
 
 
-	RenderComponent::RenderComponent() {
+	RenderComponent::RenderComponent() :
+		r(0), g(0), b(0), a(0) {
 		logger::trace("Create RenderComponent");
 	}
 

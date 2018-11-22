@@ -38,7 +38,8 @@ using base_game::BaseGameState::running;
 
 namespace base_game {
 
-BaseGameLogic::BaseGameLogic() {
+BaseGameLogic::BaseGameLogic() :
+		lifetime(0) {
 	logger::trace("Create BaseGameLogic");
 	actorFactory = nullptr;
 	pProcessManager = new ProcessManager();

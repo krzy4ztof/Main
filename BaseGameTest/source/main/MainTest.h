@@ -4,6 +4,7 @@
 namespace base_game_test {
 
 const bool MAIN_TEST_ENABLE = false;
+const bool DEVELOPMENT_RESOURCE_FOLDER_TEST_ENABLE = true;
 
 /*
 class MainTest {

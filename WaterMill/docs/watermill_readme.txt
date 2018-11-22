@@ -1142,34 +1142,131 @@ Teraz: !!! -- OK
 --- 16/09/2018
 
 Kontynuacja:
-ActorFactory::loadAndReturnRootXmlElement
+ActorFactory::loadAndReturnRootXmlElement -- OK
 
 Kontynuacja
 
-Teraz: !!!!
+Teraz: !!!! -- OK
 shared_ptr<ResourceHandle> ResourceCache::load(Resource *resource) {
 	// see shared_ptr<ResHandle> ResCache::Load(Resource *r)
 dodać wczytywanie pliku *.txt zgodnie z defaultLoader tak aby rozwinąć fragmenty metody:
 
-Teraz: !!!!	- rozwinąć
+Teraz: !!!!	- rozwinąć -- OK
 	if (loader.get()->vUseRawFile()) {
-	else {
+	else {d
 		// XML cannot be loaded as Raw File. Its contents need to be parsed first.
 		pRawBuffer = allocate(allocSize); // zmienic tak na odwrot allocate i new char	
-	
-			
-	
+		
 usunąć
 void BaseGameLogic::tempCreateActors()
 		
-Dodac unit_testy na 
+Dodac unit_testy na -- OK
 	createActor z uzyciem DevelopmentResourceUnzipFile
 	createActor z uzyciem ResourceZipFile
 
+--- 22/09/2018
+--- 23/09/2018
+--- 29/09/2018
+--- 11/11/2018
+--- 12/11/2018
+--- 15/11/2018
+---	16/11/2018
+--- 17/11/2018
+
+usunąć
+void BaseGameLogic::tempCreateActors()
+
 Wczytywanie z Resource Cache:
-	Massages
+	Messages
 	Lua
 
+Konfiguracja GIT
+https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+git config --global core.autocrlf true
+
+Wczytywanie Messages z resource cache:
+https://www.boost.org/doc/libs/1_67_0/libs/locale/doc/html/messages_formatting.html
+Custom Filesystem Support
+
+Teraz !!!
+Nie działa poprawnie:
+	void GameMessages::init_not_global(string assetsFolder, string language) { -- wylaczone, zastapiane przez game_messages::init_locale_pl_en ze wzgledu na to ze locale trzeba zapisac globalnie
+W następnym kroku stworzyc:
+	GameMessagesLoader
+		
+W tej chwili jest
+void GameMessages::testMessages() {
+	ss.imbue(game_messages::global_locale_pl);
+aby móc korzystać z locale w następnych metodach używających ss -- OK
+
+Zamiast ss << translate() -- OK
+używać
+https://www.boost.org/doc/libs/1_68_0/libs/locale/doc/html/group__message.html#boost_locale_gettext_family -- OK
+i używać róznych locale
+https://www.boost.org/doc/libs/1_67_0/libs/locale/doc/html/working_with_multiple_locales.html
+
+Zwrócić uwagę na wyjatek rzucany w .dll przy zamykaniu aplikacji / unit testów -- nie ma juz wyjatku
+	
+inicjalizacja locale w funkcji
+game_messages::init_locale_pl_en
+
+locale zapisane jako: -- NIE trzeba globalnie zaisywac locale
+extern std::locale global_locale_pl;	
+extern std::locale global_locale_en;		
+	
+		
+Teraz !!!
+Dokończyć:
+void GameMessages::initLanguages(string language, string languages) {
+nastepnie 
+void GameMessages::init() -> //TODO: inicjalizacja wszystkich locale; przekierowanie do temp_messages_file_loader; 
+void GameMessages::initMessages(MessageParams* messageParams)  -> przekierowanie do:
+message_file_loader musi odczytywac z resourceCache i z messageLoader
+
+Teraz !!!
+message_file_loader - jest błąd przy pobieraniu getHandle dla Resource
+		
+Teraz !!!
+message_file_loader - błąd przy wprowadzeniu ss << "extraData: " << extraData->vToString();	
+
+--- 18/11/2018
+
+usunąć
+void BaseGameLogic::tempCreateActors()
+
+Wczytywanie z Resource Cache:
+	Messages
+	Lua
+
+Teraz !!!
+błąd w trakcie testu
+
+GameMessagesZipFileFixture
+	bool ZipFileAsset::readAndUnzipFile(char* buffer) {
+line 149:
+	boost::iostreams::copy(filter, boost::iostreams::back_inserter(vecString));
+	
+rozwiązanie ??? 
+pliki *.mo nie powinny się kompresować w archiwum *.zip		
+
+unknown location(0): fatal error: in "GameMessagesZipFileSuite/messagessZipFileLoader": boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> >: zlib error: iostream error
+../source/gameInitialization/GameMessagesZipFileTest.cpp(126): last checkpoint: "messagessZipFileLoader" fixture ctor
+		
+https://stackoverflow.com/questions/19551213/boost-iostreams-zlib-error-with-custom-source
+		
+		
+[00110|2018-11-22 16:53:20|   info] : copy file into: "..\WaterMill\\assetsZipToFolder\strings\en\lc_messages\watermill.mo"
+[00111|2018-11-22 16:53:22|   info] : Length: 284
+[00112|2018-11-22 16:53:22|   info] : --------- START ZIP-FILE---------
+
+[00126|2018-11-22 16:53:22|   info] : copy file into: "..\WaterMill\\assetsZipToFolder\strings\pl\lc_messages\watermill.mo"
+[00127|2018-11-22 16:53:24|   info] : Length: 295
+[00128|2018-11-22 16:53:24|   info] : --------- START ZIP-FILE---------
+	
+[00269|2018-11-22 16:53:27|   info] : strings\en\lc_messages\watermill.mo MATCHES: *.mo
+[00270|2018-11-22 16:53:27|   info] : rawSize: 424
+[00271|2018-11-22 16:53:33|   info] : Length: 236
+[00272|2018-11-22 16:53:33|   info] : --------- START ASSET---------		
 		
 *******************
 ***	FUTURE TODO	***
@@ -1179,7 +1276,7 @@ Poprawić
 
 bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
 
-Gdy aplikacja uruhamiana jest z CodeBlock, to w przypadku gdy jest otwarty Nautiuls na katalogu .../Watermill, to traktowane jest to jako instancja procesu watermill i aplikacja nie jest uruchamiana.
+Gdy aplikacja uruchamiana jest z CodeBlock, to w przypadku gdy jest otwarty Nautiuls na katalogu .../Watermill, to traktowane jest to jako instancja procesu watermill i aplikacja nie jest uruchamiana.
 
 
 

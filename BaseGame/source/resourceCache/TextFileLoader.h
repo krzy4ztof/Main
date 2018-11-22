@@ -12,6 +12,7 @@
 #include "IResourceLoader.h"
 
 #include <string> // string
+#include <memory> // shared_ptr
 
 namespace base_game {
 

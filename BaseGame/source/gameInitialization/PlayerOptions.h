@@ -9,6 +9,8 @@ namespace base_game {
 	class PlayerOptions {
 		public:
 			const static std::string LANGUAGE;
+	const static std::string LANGUAGES;
+
 
 			PlayerOptions();
 			virtual ~PlayerOptions();

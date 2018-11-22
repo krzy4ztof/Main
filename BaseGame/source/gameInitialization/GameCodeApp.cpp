@@ -62,6 +62,9 @@ GameCodeApp::GameCodeApp() {
 	logger::trace("Create GameCodeApp");
 	g_pApp = this;
 
+	m_pGame = nullptr;
+
+
 	initOptions = nullptr;
 	playerOptions = nullptr;
 	debuggingOptions = nullptr;
@@ -91,8 +94,18 @@ GameCodeApp::GameCodeApp() {
  }*/
 
 GameCodeApp::~GameCodeApp() {
+	logger::trace("Start Destroy GameCodeApp");
 	onClose();
-	logger::trace("Destroy GameCodeApp");
+
+	logger::trace("End Destroy GameCodeApp");
+}
+
+InitOptions* GameCodeApp::getInitOptions() {
+	return this->initOptions;
+}
+
+shared_ptr<ResourceCache> GameCodeApp::getResourceCache() {
+	return this->shrdPtrResourceCache;
 }
 
 bool GameCodeApp::initAllOptions() {
@@ -315,9 +328,24 @@ bool GameCodeApp::initInstance() {
 
 
 	try {
-		gameMessages = new GameMessages(initOptions->getAssetsFolder(),
-				playerOptions->getOption(playerOptions->LANGUAGE));
-		gameMessages->testMessages();
+		gameMessages = new GameMessages(shrdPtrResourceCache,
+				playerOptions->getOption(playerOptions->LANGUAGE),
+				playerOptions->getOption(playerOptions->LANGUAGES));
+
+//		gameMessages = new GameMessages(initOptions->getAssetsFolder(),
+		//			playerOptions->getOption(playerOptions->LANGUAGE));
+
+		//gameMessages->initByPath(initOptions->getAssetsFolder(),
+		//		playerOptions->getOption(playerOptions->LANGUAGE));
+
+		//gameMessages->init(initOptions->getAssetsFolder(),
+		//		playerOptions->getOption(playerOptions->LANGUAGE));
+
+		//game_messages::temp_init_locale_pl();
+		//game_messages::init_locale_en();
+
+		gameMessages->init();
+		gameMessages->testMessagesGetText();
 
 		luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
 		luaStateManager->testLua("test.lua");

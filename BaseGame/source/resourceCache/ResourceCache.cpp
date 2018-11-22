@@ -230,6 +230,13 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 
 		if (loader.get()->vDiscardRawBufferAfterLoad()) {
 			templates::safe_delete_array<char>(pRawBuffer);
+
+			/*
+			if (pRawBuffer) {
+				delete[] (pRawBuffer);
+				(pRawBuffer) = nullptr;
+			}
+			 */
 		}
 
 		if (!success) {

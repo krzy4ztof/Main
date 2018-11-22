@@ -69,11 +69,6 @@ protected:
 	void saveFileNameDecompression(TZipLocalHeader& lh,
 			boost::filesystem::ofstream& ofs, ZipFileAsset* pZipFileAsset);
 
-
-	bool saveAssetFileName_ok_111(TZipLocalHeader& lh,
-			boost::filesystem::ofstream& ofs, ZipFileAsset* zipFileAsset,
-			unsigned short outputSaveMode);
-
 	void saveAssetFileNoCompression(boost::filesystem::ofstream& ofs,
 			ZipFileAsset* pZipFileAsset, std::vector<char>& vecFileContents);
 
@@ -83,12 +78,7 @@ protected:
 	void saveAssetFileDecompression(boost::filesystem::ofstream& ofs,
 			ZipFileAsset* pZipFileAsset, std::vector<char>& vecFileContents);
 
-
 	bool saveAssetFileContents(boost::filesystem::ofstream& ofs,
-			ZipFileAsset* pZipFileAsset, unsigned short outputSaveMode,
-			std::vector<char>& vecFileContents);
-
-	bool saveAssetFileContents_ok_111(boost::filesystem::ofstream& ofs,
 			ZipFileAsset* pZipFileAsset, unsigned short outputSaveMode,
 			std::vector<char>& vecFileContents);
 

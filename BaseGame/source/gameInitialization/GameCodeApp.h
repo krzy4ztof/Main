@@ -70,21 +70,25 @@ public:
 	bool isQuitting();
 	bool hasModalDialog();
 
+	InitOptions* getInitOptions();
+	std::shared_ptr<ResourceCache> getResourceCache();
+
 protected:
 	bool m_bQuitting;			// true if the app is running the exit sequence
 	int m_HasModalDialog;				// determines if a modal dialog is up
 
+	InitOptions *initOptions;
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+
 private:
 	static const int MEGABYTE = 1024 * 1024;
 
-	InitOptions *initOptions;
 	PlayerOptions *playerOptions;
 	GameMessages *gameMessages;
 	LuaStateManager *luaStateManager;
 	EventManager *eventManager;
 	DebuggingOptions *debuggingOptions;
 	// ResourceCache *resourceCache;
-	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 
 	DataFiles *dataFiles;
 	AudioSystem *audioSystem;

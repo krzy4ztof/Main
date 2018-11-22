@@ -21,7 +21,8 @@ using std::stringstream;
 
 namespace base_game {
 
-	ErrorCode::ErrorCode() {
+ErrorCode::ErrorCode() :
+		number(0) {
 		logger::trace("Create ErrorCode");
 	}
 
@@ -33,7 +34,8 @@ namespace base_game {
 		message = error_message;
 	}
 
-	ErrorCode::ErrorCode(const ErrorCode& orig) {
+ErrorCode::ErrorCode(const ErrorCode& orig) :
+		number(0) {
 		logger::trace("Create ErrorCode");
 	}
 

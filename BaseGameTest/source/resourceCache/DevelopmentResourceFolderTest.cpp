@@ -110,16 +110,18 @@ struct DevelopmentResourceFolderFixture {
 
 BOOST_FIXTURE_TEST_SUITE(DevelopmentResourceFolderSuite, DevelopmentResourceFolderFixture)
 
-BOOST_AUTO_TEST_CASE(folderToFolder, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(folderToFolder, * unit_test::enable_if<DEVELOPMENT_RESOURCE_FOLDER_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(folderToFolder, * unit_test::enable_if<true>()) {
+BOOST_AUTO_TEST_CASE(folderToFolder, * unit_test::enable_if<false>()) {
 	resourceFolder->vOpen();
 	resourceFolder->vSave(IResourceFile::ASSETS_SAVE_MODE_FOLDER,
 			IResourceFile::ASSETS_FOLDER_TO_FOLDER);
 	BOOST_TEST(true);
 }
 
-//BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<true>()) {
+//BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<DEVELOPMENT_RESOURCE_FOLDER_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<true>()) {
+BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<false>()) {
 	resourceFolder->vOpen();
 	resourceFolder->vSave(IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE,
 			IResourceFile::ASSETS_UNZIP_FILE);
@@ -133,8 +135,9 @@ BOOST_AUTO_TEST_CASE(folderToUnzipToFolder, * unit_test::enable_if<true>()) {
 	BOOST_TEST(true);
 }
 
-//BOOST_AUTO_TEST_CASE(folderToZipToFolder, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-BOOST_AUTO_TEST_CASE(folderToZipToFolder, * unit_test::enable_if<true>()) {
+//BOOST_AUTO_TEST_CASE(folderToZipToFolder, * unit_test::enable_if<DEVELOPMENT_RESOURCE_FOLDER_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(folderToZipToFolder, * unit_test::enable_if<true>()) {
+BOOST_AUTO_TEST_CASE(folderToZipToFolder, * unit_test::enable_if<false>()) {
 	resourceFolder->vOpen();
 	resourceFolder->vSave(IResourceFile::ASSETS_SAVE_MODE_ZIPFILE,
 			IResourceFile::ASSETS_ZIP_FILE);
