@@ -20,7 +20,10 @@
 #include <boost/iostreams/copy.hpp> //boost::iostreams::copy
 #include <boost/iostreams/device/array.hpp> // boost::iostreams::array_source, boost::iostreams::array_sink
 #include <boost/iostreams/device/back_inserter.hpp> // boost::iostreams::back_insert_device
-
+#include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
+//boost::filesystem::filesystem_error; boost::filesystem::directory_entry; boost::filesystem::exists;
+//boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
+//boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;  boost::filesystem::ifstream;
 
 using std::string;
 using std::stringstream;
@@ -31,6 +34,8 @@ using std::strcpy;
 using boost::iostreams::filtering_istreambuf;
 using boost::iostreams::zlib_decompressor;
 using boost::iostreams::array_source;
+using boost::filesystem::ofstream;
+using boost::filesystem::path;
 
 
 namespace base_game {
@@ -162,9 +167,34 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 
 	//array_source source(zipString.c_str(), zipString.length());
 
+
 	string dirDataStr = string_utils::charToString(m_pDirData);
-	array_source source(dirDataStr.c_str(), dirDataStr.length());
-	//array_source source(getDirData(), getFileDataSize());
+
+	ss << "ZipFileAssset-Length: " << dirDataStr.length();
+	logger::info(ss);
+
+	ss << "ZipFileAssset-Length FileData: " << getFileDataSize();
+	logger::info(ss);
+
+
+	char* pStart = m_pDirData;
+	int i = 0;
+	while (*(pStart + i)) {
+		i++;
+	};
+
+	ss << "ZipFileAssset-dlugosc: " << i;
+	logger::info(ss);
+
+	int sizeAll = sizeof(m_pDirData);
+	int sizeOne = sizeof(m_pDirData[0]);
+	int sizeRes = sizeAll / sizeOne;
+
+
+
+
+	// array_source source(dirDataStr.c_str(), dirDataStr.length() + 1);
+	array_source source(getDirData(), getFileDataSize()); // OK
 
 	// array_source source(*m_pDirData,
 	//		*(m_pDirData + this->getFileDataSize() - 1));
@@ -175,26 +205,29 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 	vector<char> vecString;
 	boost::iostreams::copy(filter, boost::iostreams::back_inserter(vecString));
 
-	string unzipString;
-	ss << "";
+	this->debugSaveAsFile(vecString);
+
+	int position = 0;
 	for (vector<char>::iterator it = vecString.begin(); it != vecString.end();
 			++it) {
-		unzipString.push_back(*it);
-
-		ss << *it;
+		*(buffer + position) = *it;
+		position++;
 	}
-	logger::info(ss);
-	ss << "";
-	logger::info(ss);
 
-	strcpy(buffer, unzipString.c_str());
-
-
-
-	//string unzipString(vecString.data());
-
-//	return unzipString;
 	return true;
+}
+
+void ZipFileAsset::debugSaveAsFile(vector<char> vecString) {
+	stringstream ss;
+	string fileName = "debug_zip_file_asset";	// + getFileName();
+	ss << "Debug-Save-As-File: " << fileName;
+	logger::info(ss);
+
+	path inPath { fileName };
+
+	ofstream ofs(inPath, std::ios::binary);
+	ofs.write(reinterpret_cast<char *>(vecString.data()), vecString.size());
+	ofs.close();
 }
 
 

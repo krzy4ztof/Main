@@ -16,6 +16,10 @@
 #include <boost/property_tree/xml_parser.hpp> // read_xml
 #include <boost/optional.hpp> // boost::optional
 #include <boost/cstdint.hpp> // boost::uintmax_t
+#include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
+//boost::filesystem::filesystem_error; boost::filesystem::directory_entry; boost::filesystem::exists;
+//boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
+//boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;  boost::filesystem::ifstream;
 
 using std::string;
 using std::shared_ptr;
@@ -27,6 +31,8 @@ using boost::property_tree::ptree;
 using boost::property_tree::read_xml;
 using boost::optional;
 using boost::uintmax_t;
+using boost::filesystem::ofstream;
+using boost::filesystem::path;
 
 namespace base_game {
 
@@ -189,6 +195,8 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 	uintmax_t getRawResource = m_resourceFile->vGetRawResource(*resource,
 			pRawBuffer);
 
+	this->debugSaveAsFile(pRawBuffer, allocSize);
+
 	if (getRawResource <= 0) {
 		return shared_ptr<ResourceHandle> { };
 	}
@@ -260,6 +268,27 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 	// return tempLoad(resource);
 	return handle;
 
+}
+
+void ResourceCache::debugSaveAsFile(char* pRawBuffer, uintmax_t allocSize) {
+	stringstream ss;
+	string fileName = "debug_resource_cache";
+	ss << "Debug-Save-As-File: " << fileName;
+	logger::info(ss);
+
+	path inPath { fileName };
+
+	ofstream ofs(inPath, std::ios::binary);
+
+	for (uintmax_t i = 0; i < allocSize; i++) {
+		ofs << *(pRawBuffer + i);
+	}
+
+	//ofs << "x";
+	//ofs << "y";
+
+	// ofs.write(pRawBuffer, allocSize);
+	ofs.close();
 }
 
 char* ResourceCache::allocate(uintmax_t size) {

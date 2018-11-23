@@ -48,6 +48,7 @@ protected:
 
 	bool makeRoom(boost::uintmax_t size);
 	char* allocate(boost::uintmax_t size);
+	void debugSaveAsFile(char* pRawBuffer, uintmax_t allocSize);
 
 private:
 	std::list<std::shared_ptr<ResourceHandle> > m_resourceHandles;	// lru list

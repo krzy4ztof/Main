@@ -12,6 +12,7 @@
 #include "TZipLocalHeader.h"
 
 #include <string>
+#include <vector> //vector
 #include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
@@ -42,6 +43,10 @@ public:
 	bool readFile(char* buffer);
 	bool readAndUnzipFile(char* buffer);
 	void describeYourself();
+
+protected:
+	void debugSaveAsFile(std::vector<char> vecString);
+
 
 private:
 	TZipDirFileHeader *m_pZipDirFileHeader;

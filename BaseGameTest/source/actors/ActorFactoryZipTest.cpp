@@ -205,13 +205,6 @@ BOOST_AUTO_TEST_CASE(tempTestZipComponents, * unit_test::enable_if<MAIN_TEST_ENA
 			"actors\\player_character.xml");
 
 	stringstream ss;
-	//ss << "WatermillMainFixture::enable_all_test "
-	//	<< WatermillMainFixture::enable_all_test;
-
-	//ss << "WatermillMainFixtureClass::enable_all_test_class "
-	//	<< MainTest::ENABLE;
-
-
 	ss << "X";
 	logger::info(ss);
 	if (actor) {

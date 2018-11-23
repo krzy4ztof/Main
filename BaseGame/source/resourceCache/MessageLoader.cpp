@@ -35,6 +35,7 @@ bool MessageLoader::vUseRawFile() {
 
 bool MessageLoader::vDiscardRawBufferAfterLoad() {
 	return true;
+	//return false;
 }
 
 uintmax_t MessageLoader::vGetLoadedResourceSize(char *rawBuffer,

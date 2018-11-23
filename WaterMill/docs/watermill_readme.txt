@@ -1242,9 +1242,9 @@ Teraz !!!
 błąd w trakcie testu
 
 GameMessagesZipFileFixture
-	bool ZipFileAsset::readAndUnzipFile(char* buffer) {
+	bool ZipFileAsset::readAndUnzipFile(char* buffer) { -- OK poprawione 
 line 149:
-	boost::iostreams::copy(filter, boost::iostreams::back_inserter(vecString));
+	boost::iostreams::copy(filter, boost::iostreams::back_inserter(vecString)); -- OK poprawione na: array_source source(getDirData(), getFileDataSize()); // OK	
 	
 rozwiązanie ??? 
 pliki *.mo nie powinny się kompresować w archiwum *.zip		
@@ -1255,18 +1255,41 @@ unknown location(0): fatal error: in "GameMessagesZipFileSuite/messagessZipFileL
 https://stackoverflow.com/questions/19551213/boost-iostreams-zlib-error-with-custom-source
 		
 		
-[00110|2018-11-22 16:53:20|   info] : copy file into: "..\WaterMill\\assetsZipToFolder\strings\en\lc_messages\watermill.mo"
-[00111|2018-11-22 16:53:22|   info] : Length: 284
-[00112|2018-11-22 16:53:22|   info] : --------- START ZIP-FILE---------
+[00569|2018-11-22 19:59:59|   info] : texts\info.txt MATCHES: *.txt
+[00570|2018-11-22 19:59:59|   info] : rawSize: 143
+[00571|2018-11-22 19:59:59|   info] : ZipFileAssset-Length: 104
+[00572|2018-11-22 19:59:59|   info] : ZipFileAssset-Length FileData: 101
+[00573|2018-11-22 19:59:59|   info] : ZipFileAssset-dlugosc: 104		
+		
+[01174|2018-11-22 19:59:59|   info] : actors\player_character.xml MATCHES: *.xml
+[01175|2018-11-22 19:59:59|   info] : rawSize: 401
+[01176|2018-11-22 19:59:59|   info] : ZipFileAssset-Length: 229
+[01177|2018-11-22 19:59:59|   info] : ZipFileAssset-Length FileData: 226
+[01178|2018-11-22 19:59:59|   info] : ZipFileAssset-dlugosc: 229
 
-[00126|2018-11-22 16:53:22|   info] : copy file into: "..\WaterMill\\assetsZipToFolder\strings\pl\lc_messages\watermill.mo"
-[00127|2018-11-22 16:53:24|   info] : Length: 295
-[00128|2018-11-22 16:53:24|   info] : --------- START ZIP-FILE---------
-	
-[00269|2018-11-22 16:53:27|   info] : strings\en\lc_messages\watermill.mo MATCHES: *.mo
-[00270|2018-11-22 16:53:27|   info] : rawSize: 424
-[00271|2018-11-22 16:53:33|   info] : Length: 236
-[00272|2018-11-22 16:53:33|   info] : --------- START ASSET---------		
+[00607|2018-11-22 20:13:25|   info] : strings\en\lc_messages\watermill.mo MATCHES: *.mo
+[00608|2018-11-22 20:13:25|   info] : rawSize: 424
+[00609|2018-11-22 20:13:29|   info] : ZipFileAssset-Length: 236
+[00610|2018-11-22 20:13:29|   info] : ZipFileAssset-Length FileData: 284
+[00611|2018-11-22 20:13:29|   info] : ZipFileAssset-dlugosc: 236
+
+Wnioski:
+bool ZipFileAsset::readAndUnzipFile(char* buffer) {
+dla
+array_source source(getDirData(), getFileDataSize()); // OK
+działa poprawnie dla:
+		ActorFactoryZipSuite (*.xml)
+		ResourceCacheZipFileSuite (*.txt)
+		
+Teraz błąd
+przy wyjsciu z 
+vector<char> messages_file_loader(string const &fileName,
+		string const &encoding) {
+
+rozwiązanie ??? 
+pliki *.mo nie powinny się kompresować w archiwum *.zip		
+		
+		
 		
 *******************
 ***	FUTURE TODO	***
