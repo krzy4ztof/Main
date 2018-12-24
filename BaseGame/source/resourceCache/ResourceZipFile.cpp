@@ -116,4 +116,29 @@ bool ResourceZipFile::vSaveZipMode(const string outputZipFileName) {
 
 	return true;
 }
+
+int ResourceZipFile::vGetNumResources() const {
+
+	if (m_pZipFile == nullptr) {
+		return 0;
+	} else {
+		unsigned short numFiles = m_pZipFile->getNumberOfEntries();
+		return numFiles;
+	}
+}
+
+string ResourceZipFile::vGetResourceName(int num) const {
+	std::string resName = "";
+	if (m_pZipFile == nullptr) {
+		return resName;
+	}
+
+	unsigned short numFiles = m_pZipFile->getNumberOfEntries();
+	if (num >= 0 && num < numFiles) {
+		resName = m_pZipFile->getFilename(num);
+	}
+
+	return resName;
+}
+
 }

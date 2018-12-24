@@ -41,6 +41,8 @@ public:
 	virtual boost::uintmax_t vGetRawResourceSize(const Resource& resource);
 	virtual boost::uintmax_t vGetRawResource(const Resource& resource,
 			char *buffer);
+	virtual int vGetNumResources() const;
+	virtual std::string vGetResourceName(int num) const;
 
 protected:
 	bool readAssetsDirectory(); //const std::string assetsFolder);
@@ -78,6 +80,8 @@ protected:
 			const std::string saveMode, std::vector<char>& vecFileContents);
 
 	boost::optional<boost::filesystem::path> getPath(const Resource &resource);
+
+
 
 private:
 	std::string m_assetsFolder;

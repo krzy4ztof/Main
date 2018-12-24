@@ -32,7 +32,7 @@ public:
 	void initMessages(MessageParams* messageParams);
 	void switchCurrentLanguage(std::string code);
 	void describeYourself();
-	void testMessagesGetText();
+	void temp_testMessagesGetText();
 
 protected:
 

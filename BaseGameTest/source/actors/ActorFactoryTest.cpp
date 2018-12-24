@@ -70,9 +70,6 @@ struct ActorFactoryFixture {
 
 		pInitOptions = new InitOptions;
 
-		//pZipFile = new DevelopmentResourceFolder(pInitOptions->getRootFolder(),
-		//		pInitOptions->getAssetsFolder());
-
 		shPtrResourceFolder = make_shared<DevelopmentResourceFolder>(
 				pInitOptions->getRootFolder(), pInitOptions->getAssetsFolder());
 
@@ -80,7 +77,6 @@ struct ActorFactoryFixture {
 				pInitOptions->getAssetsFolder(), 50, shPtrResourceFolder);
 
 		if (!shrdPtrResourceCache->init()) {
-			// if (!resourceCache->init()) {
 			logger::warning(
 					"Failed to initialize resource cache!  Are your paths set up correctly?");
 		}
@@ -95,12 +91,10 @@ struct ActorFactoryFixture {
 	}
 	~ActorFactoryFixture() {
 		BOOST_TEST_MESSAGE("Tearing down ActorFactoryFixture");
-		//templates::safe_delete < BaseGameLogic > (m_pGame);
 
 		shrdPtrResourceCache.reset();
 		shPtrResourceFolder.reset();
 
-//		templates::safe_delete<IResourceFile>(pZipFile);
 		templates::safe_delete<InitOptions>(pInitOptions);
 		templates::safe_delete<ActorFactory>(pActorFactory);
 

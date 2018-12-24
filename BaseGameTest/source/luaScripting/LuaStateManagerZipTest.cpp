@@ -15,7 +15,7 @@
 #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 #include "../../../BaseGame/source/resourceCache/IResourceFile.h"
-#include "../../../BaseGame/source/resourceCache/DevelopmentResourceFolder.h"
+#include "../../../BaseGame/source/resourceCache/ResourceZipFile.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 
 #include <boost/test/unit_test.hpp>
@@ -25,7 +25,7 @@ using base_game::LuaStateManager;
 using base_game::ResourceCache;
 using base_game::IResourceFile;
 
-using base_game::DevelopmentResourceFolder;
+using base_game::ResourceZipFile;
 
 using std::shared_ptr;
 using std::make_shared;
@@ -41,24 +41,25 @@ namespace unit_test = boost::unit_test;
 
 namespace base_game_test {
 
-struct LuaStateManagerFixture {
+struct LuaStateManagerZipFixture {
 
 	InitOptions* pInitOptions;
 	LuaStateManager *pLuaStateManager;
 
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
-	shared_ptr<IResourceFile> shPtrResourceFolder; // Will be removed in ResourceCache destructor
+	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
-	LuaStateManagerFixture() {
-		logger::info("Create LuaStateManagerFixture");
+	LuaStateManagerZipFixture() {
+		logger::info("Create LuaStateManagerZipFixture");
 
 		pInitOptions = new InitOptions;
 
-		shPtrResourceFolder = make_shared<DevelopmentResourceFolder>(
-				pInitOptions->getRootFolder(), pInitOptions->getAssetsFolder());
+		shrdPtrResourceFile = make_shared<ResourceZipFile>(
+				pInitOptions->getRootFolder(),
+				IResourceFile::ASSETS_ZIP_FILE);
 
 		shrdPtrResourceCache = make_shared<ResourceCache>(
-				pInitOptions->getAssetsFolder(), 50, shPtrResourceFolder);
+				pInitOptions->getAssetsFolder(), 50, shrdPtrResourceFile);
 
 		if (!shrdPtrResourceCache->init()) {
 			logger::warning(
@@ -73,11 +74,11 @@ struct LuaStateManagerFixture {
 
 	}
 
-	~LuaStateManagerFixture() {
-		logger::info("Destroy LuaStateManagerFixture");
+	~LuaStateManagerZipFixture() {
+		logger::info("Destroy LuaStateManagerZipFixture");
 
 		shrdPtrResourceCache.reset();
-		shPtrResourceFolder.reset();
+		shrdPtrResourceFile.reset();
 
 		templates::safe_delete < LuaStateManager > (pLuaStateManager);
 		templates::safe_delete < InitOptions > (pInitOptions);
@@ -85,10 +86,10 @@ struct LuaStateManagerFixture {
 	}
 };
 
-BOOST_FIXTURE_TEST_SUITE(LuaStateManagerSuite, LuaStateManagerFixture)
+BOOST_FIXTURE_TEST_SUITE(LuaStateManagerZipSuite, LuaStateManagerZipFixture)
 
-BOOST_AUTO_TEST_CASE(luaRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-//BOOST_AUTO_TEST_CASE(luaRun, * unit_test::enabled()) {
+BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enabled()) {
 
 
 	//InitOptions initOptions;

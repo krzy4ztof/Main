@@ -652,4 +652,19 @@ bool DevelopmentResourceFolder::vSaveZipMode(const string outputZipFileName) {
 	return true;
 }
 
+int DevelopmentResourceFolder::vGetNumResources() const {
+	vector<path>::size_type numRes = m_paths.size();
+	int numResInt = numRes;
+
+	return numResInt;
+}
+
+string DevelopmentResourceFolder::vGetResourceName(int num) const {
+
+	path resourcePath = m_paths[num];
+	string name = resourcePath.string();
+
+	return name;
+}
+
 } /* namespace base_game */

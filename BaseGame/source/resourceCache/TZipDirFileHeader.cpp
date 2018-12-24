@@ -23,7 +23,7 @@ void TZipDirFileHeader::describeYourself() {
 	stringstream ss;
 
 	ss << "TZipDirFileHeader DescribeYourself";
-	logger::info(ss);
+	logger::trace(ss);
 
 	ss << reinterpret_cast<unsigned long>(sig) << endl << endl;
 
@@ -50,9 +50,9 @@ void TZipDirFileHeader::describeYourself() {
 			<< "EXTATTR: " << extAttr << endl << "HDROFFSET: " << hdrOffset
 			<< endl << std::dec << "%E%";
 
-	logger::info(ss);
+	logger::trace(ss);
 
-	logger::info("TZipDirFileHeader DescribeYourself END");
+	logger::trace("TZipDirFileHeader DescribeYourself END");
 
 }
 

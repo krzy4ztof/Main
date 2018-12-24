@@ -29,6 +29,11 @@
 #include "../resourceCache/ResourceZipFile.h"
 #include "../resourceCache/XmlResourceLoader.h"
 #include "../resourceCache/TextFileLoader.h"
+#include "../resourceCache/MessageLoader.h"
+
+#include "../luaScripting/ScriptResourceLoader.h"
+#include "../luaScripting/LuaStateManager.h"
+
 #include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
@@ -322,9 +327,11 @@ bool GameCodeApp::initInstance() {
 
 	shrdPtrResourceCache->registerLoader(
 			xml_resource_loader::createXmlResourceLoader());
-
 	shrdPtrResourceCache->registerLoader(
 			text_file_loader::createTextFileLoader());
+	shrdPtrResourceCache->registerLoader(message_loader::createMessageLoader());
+	shrdPtrResourceCache->registerLoader(
+			script_resource_loader::createScriptResourceLoader());
 
 
 	try {
@@ -345,9 +352,10 @@ bool GameCodeApp::initInstance() {
 		//game_messages::init_locale_en();
 
 		gameMessages->init();
-		gameMessages->testMessagesGetText();
+		gameMessages->temp_testMessagesGetText();
 
-		luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
+		// luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
+		luaStateManager = new LuaStateManager(shrdPtrResourceCache);
 		luaStateManager->testLua("test.lua");
 
 		eventManager = new EventManager();
@@ -382,7 +390,11 @@ bool GameCodeApp::initInstance() {
 
 		m_pGame = createGameAndView(shrdPtrResourceCache);
 
-		shrdPtrResourceCache->preLoad("*.jpg");
+		//shrdPtrResourceCache->preLoad("*.jpg",
+		//		resource_cache::showPreLoadProgress);
+		shrdPtrResourceCache->preLoad("*.txt",
+				resource_cache::showPreLoadProgress);
+
 		logger::info("createGameAndView+2");
 
 		/*
@@ -407,9 +419,6 @@ bool GameCodeApp::initInstance() {
 void GameCodeApp::mainLoop() {
 	bool done = false;
 	logger::trace("Main loop+++");
-
-	//TODO: remove tempCreateActors
-	m_pGame->tempCreateActors();
 
 
 	m_pGame->tempTestActors();	//ok

@@ -49,7 +49,7 @@ void TZipLocalHeader::describeYourself() {
 	stringstream ss;
 
 	ss << "TZipLocalHeader DescribeYourself";
-	logger::info(ss);
+	logger::trace(ss);
 
 	ss << reinterpret_cast<unsigned long>(sig) << endl << endl;
 
@@ -66,9 +66,9 @@ void TZipLocalHeader::describeYourself() {
 			<< endl << "FNAMELEN: " << fnameLen << endl << "XTRALEN " << xtraLen
 			<< endl << std::dec << "%E%";
 
-	logger::info(ss);
+	logger::trace(ss);
 
-	logger::info("TZipLocalHeader DescribeYourself END");
+	logger::trace("TZipLocalHeader DescribeYourself END");
 
 }
 

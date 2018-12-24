@@ -43,6 +43,7 @@ namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace xml_resource_loader = base_game::xml_resource_loader;
 namespace text_file_loader = base_game::text_file_loader;
+namespace resource_cache = base_game::resource_cache;
 
 //using base_game::templates::safe_delete;
 using base_game::ResourceZipFile;
@@ -154,6 +155,18 @@ BOOST_AUTO_TEST_CASE(textFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 	logger::info(ss);
 
 
+
+	BOOST_TEST(true);
+}
+
+BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enabled()) {
+//BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+
+	stringstream ss;
+
+	//logger::info(ss);
+
+	shrdPtrResourceCache->preLoad("*.txt", resource_cache::showPreLoadProgress);
 
 	BOOST_TEST(true);
 }

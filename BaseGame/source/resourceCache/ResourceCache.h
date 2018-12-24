@@ -25,8 +25,15 @@ public:
 	boost::optional<std::shared_ptr<ResourceHandle>> getHandle(
 			Resource* resource);
 
+	int preLoad(const std::string& pattern,
+			void (*progressCallback)(int, bool&));
+
+//	int preload(const std::string& pattern,
+//				void (*progressCallback)());
+
 	int preLoad(const std::string& pattern);
-	int tempPreLoad(const std::string& pattern);
+	
+	// int tempPreLoad(const std::string& pattern);
 
 	/*
 	 std::string tempGetAssetsFolder() {
@@ -50,6 +57,9 @@ protected:
 	char* allocate(boost::uintmax_t size);
 	void debugSaveAsFile(char* pRawBuffer, uintmax_t allocSize);
 
+	bool wildcardMatch(const std::string& pattern,
+			const std::string& resourceName);
+
 private:
 	std::list<std::shared_ptr<ResourceHandle> > m_resourceHandles;	// lru list
 	std::map<std::string, std::shared_ptr<ResourceHandle> > m_resources;
@@ -61,5 +71,10 @@ private:
 	unsigned int m_allocated;			// total memory allocated
 	std::string assetsFolder;
 };
+
+namespace resource_cache {
+void showPreLoadProgress(int progress, bool& cancel);
+
+}
 }
 #endif // RESOURCECACHE_H

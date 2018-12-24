@@ -206,42 +206,4 @@ void BaseGameLogic::tempTestActors() {
 	}
 }
 
-
-void BaseGameLogic::tempCreateActors() {
-	// See StrongActorPtr BaseGameLogic::VCreateActor(const std::string &actorResource, TiXmlElement* overrides, const Mat4x4* initialTransform, const ActorId serversActorId)
-
-	// see TiXmlElement* XmlResourceLoader::LoadAndReturnRootXmlElement(const char* resourceString)
-
-	//Resource resource("player_character.xml");
-	//resourceCache->getHandle();
-
-	//ptree tree;
-
-	//	actorFactory->createActor("player_character.xml");
-	//shared_ptr<Actor> actor = actorFactory->createActor(tree);
-	shared_ptr<Actor> actor = actorFactory->createActor(
-			"actors/player_character.xml");
-
-	stringstream ss;
-	ss << "Post init actor use_count: " << actor.use_count();
-	logger::trace(ss);
-
-	if (actor) {
-		actor->describeYourself();
-		logger::trace("Stworzono actor");
-	} else {
-		logger::error("Nie stworzono actor");
-	}
-
-	actor->destroy();
-	ss << "Post destroy actor use_count: " << actor.use_count();
-
-	// Destroy shared_ptr
-	actor.reset();
-	ss << "Post reset actor use_count: " << actor.use_count();
-
-	logger::trace(ss);
-
-}
-
 }

@@ -53,25 +53,14 @@ bool MessageLoader::vAddNullZero() {
 
 bool MessageLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 		shared_ptr<ResourceHandle> handle) {
-	// ?
-
 	if (rawSize <= 0) {
 		return false;
 	}
 
 	shared_ptr<MessageResourceExtraData> pExtraData = shared_ptr<
 			MessageResourceExtraData>(new MessageResourceExtraData());
-
 	pExtraData->init(rawBuffer, rawSize);
-
 	handle->setExtraData(pExtraData);
-	/*
-	shared_ptr<XmlResourceExtraData> pExtraData = shared_ptr<
-			XmlResourceExtraData>(new XmlResourceExtraData());
-	pExtraData->parseXml(rawBuffer, rawSize);
-
-	handle->setExtraData(pExtraData);
-	 */
 
 	return true;
 }

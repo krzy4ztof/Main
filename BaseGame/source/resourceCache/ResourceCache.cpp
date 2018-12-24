@@ -11,6 +11,7 @@
 #include <string> // string
 #include <list> // list
 #include <map> // map
+#include <regex>// std::regex, std::match
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp> // read_xml
@@ -21,11 +22,14 @@
 //boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
 //boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;  boost::filesystem::ifstream;
 
+
 using std::string;
 using std::shared_ptr;
 using std::stringstream;
 using std::list;
 using std::map;
+using std::regex;
+using std::regex_match;
 
 using boost::property_tree::ptree;
 using boost::property_tree::read_xml;
@@ -372,10 +376,116 @@ void ResourceCache::freeOneResource() {
 	// be actually free again.
 }
 
-int ResourceCache::preLoad(const string& pattern) {
-	return tempPreLoad(pattern);
+bool ResourceCache::wildcardMatch(const string& pattern,
+		const string& resourceName) {
+
+	stringstream ss;
+	ss << "Pattern " << pattern << " fileName: " << resourceName;
+	logger::info(ss);
+
+	string regexExpr = "^\\S*\\." + pattern + "$";
+
+	// string regexExpr = "^\\S*\\.txt$";
+	regex expr { regexExpr };
+
+	bool matchResult = regex_match(resourceName, expr);
+
+	if (matchResult) {
+		ss << resourceName << " MATCHES: " << pattern;
+		logger::info(ss);
+
+		return true;
+	} else {
+		ss << resourceName << " DOES NOT MATCH " << pattern;
+		logger::info(ss);
+
+		return false;
+
+	}
 }
 
+int ResourceCache::preLoad(const string& pattern) {
+	return this->preLoad(pattern, nullptr);
+}
+
+
+//int ResourceCache::preload(const string& pattern,
+//		void (*progressCallback)()) {
+int ResourceCache::preLoad(const string& pattern,
+		void (*progressCallback)(int, bool&)) {
+//	{
+
+	stringstream ss;
+	if (m_resourceFile == nullptr) {
+		return 0;
+	}
+
+	int numFiles = m_resourceFile->vGetNumResources();
+	int loaded = 0;
+	bool cancel = false;
+
+	for (int i = 0; i < numFiles; ++i) {
+		string resourceName = m_resourceFile->vGetResourceName(i);
+
+		ss << "ResourceName: " << resourceName;
+		logger::info(ss);
+
+
+		Resource resource(resourceName);
+
+		if (this->wildcardMatch(pattern, resourceName)) {
+
+			// shared_ptr<ResourceHandle> handle = this->getHandle(&resource);
+			optional<shared_ptr<ResourceHandle>> handle = getHandle(&resource);
+
+			++loaded;
+		}
+
+		/*
+		if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
+			shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
+					&resource);
+			++loaded;
+		}
+				 */
+
+		if (progressCallback != nullptr) {
+			progressCallback(i * 100 / numFiles, cancel);
+//			progressCallback();
+		}
+	}
+	return loaded;
+
+
+	/*
+	if (m_file == NULL)
+		return 0;
+
+	int numFiles = m_file->VGetNumResources();
+	int loaded = 0;
+	bool cancel = false;
+	for (int i = 0; i < numFiles; ++i) {
+		Resource resource(m_file->VGetResourceName(i));
+
+		if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
+			shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
+					&resource);
+			++loaded;
+		}
+
+		if (progressCallback != NULL) {
+			progressCallback(i * 100 / numFiles, cancel);
+		}
+	}
+	return loaded;
+	 */
+
+
+
+	// return tempPreLoad(pattern);
+}
+
+/*
 int ResourceCache::tempPreLoad(const string& pattern) {
 
 	Resource resource("TestImage.jpg");
@@ -384,6 +494,7 @@ int ResourceCache::tempPreLoad(const string& pattern) {
 
 	return 1;
 }
+ */
 
 /*
  void ResourceCache::tempLoadAndReturnRootXmlElement(const string& resourceName, ptree& tree) {
@@ -395,5 +506,13 @@ int ResourceCache::tempPreLoad(const string& pattern) {
  read_xml(filename, tree);
  }
  */
+
+namespace resource_cache {
+void showPreLoadProgress(int progress, bool& cancel) {
+stringstream ss;
+	ss << "Progress: " << progress << "%";
+logger::info (ss);
+}
+}
 
 }
