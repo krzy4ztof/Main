@@ -44,7 +44,7 @@ void TZipDirHeader::describeYourself() {
 	stringstream ss;
 
 	ss << "TZipDirHeader DescribeYourself";
-	logger::info(ss);
+	logger::trace(ss);
 
 	//ss << reinterpret_cast<unsigned long>(sig) << endl << endl;
 
@@ -62,9 +62,9 @@ void TZipDirHeader::describeYourself() {
 
 			endl << std::dec << "%E%";
 
-	logger::info(ss);
+	logger::trace(ss);
 
-	logger::info("TZipDirHeader DescribeYourself END");
+	logger::trace("TZipDirHeader DescribeYourself END");
 
 }
 }

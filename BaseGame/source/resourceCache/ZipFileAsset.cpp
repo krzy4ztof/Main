@@ -235,20 +235,20 @@ void ZipFileAsset::describeYourself() {
 	stringstream ss;
 
 	ss << "ZipFileAsset DescribeYourself";
-	logger::info(ss);
+	logger::trace(ss);
 
 	ss << "FileName: " << fileName;
-	logger::info(ss);
+	logger::trace(ss);
 
 	m_pZipDirFileHeader->describeYourself();
 
 	m_pZipLocalHeader->describeYourself();
 
 	ss << "FILE CONTENTS: ";
-	logger::info(ss);
+	logger::trace(ss);
 
 	ss << "ZipFileAsset DescribeYourself END";
-	logger::info(ss);
+	logger::trace(ss);
 }
 
 } /* namespace base_game */

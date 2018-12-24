@@ -29,11 +29,15 @@ public:
 	void saveAsFolder(const std::string& outFolderName);
 
 	void describeYourself();
+	unsigned short getNumberOfEntries(); // GetNumFiles()
+	std::string getFilename(int i) const;
+//	std::string getFilename(int i);
+
 
 protected:
 	TZipDirHeader* getZipDirHeader();
 	void reset();
-	unsigned short getNumberOfEntries();
+
 	bool initZipDirHeader();
 	bool initDirFileHeaders(unsigned short nDirEntries);
 
@@ -82,7 +86,9 @@ protected:
 			ZipFileAsset* pZipFileAsset, unsigned short outputSaveMode,
 			std::vector<char>& vecFileContents);
 
-	std::string zipToUnzip(std::string zipString);
+	std::string zipToUnzip(std::string zipString) const;
+	std::string getUnzipFilename(ZipFileAsset* pZipFileAsset) const;
+
 
 private:
 

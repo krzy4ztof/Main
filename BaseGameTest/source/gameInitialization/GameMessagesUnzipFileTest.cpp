@@ -125,9 +125,9 @@ BOOST_FIXTURE_TEST_SUITE(GameMessagesUnzipFileSuite, GameMessagesUnzipFileFixtur
 BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader, * unit_test::enabled()) {
 	try {
-		pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 		pGameMessages->switchCurrentLanguage("en.UTF-8");
-		pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}
@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader, * unit_test::enable_if<MAIN_TEST_
 BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader2, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(messagessUnzipFileLoader2, * unit_test::enabled()) {
 	try {
-		pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}

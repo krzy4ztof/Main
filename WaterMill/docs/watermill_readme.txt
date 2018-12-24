@@ -1230,6 +1230,7 @@ Teraz !!!
 message_file_loader - błąd przy wprowadzeniu ss << "extraData: " << extraData->vToString();	
 
 --- 18/11/2018
+--- 22/11/2018
 
 usunąć
 void BaseGameLogic::tempCreateActors()
@@ -1239,7 +1240,7 @@ Wczytywanie z Resource Cache:
 	Lua
 
 Teraz !!!
-błąd w trakcie testu
+błąd w trakcie testu -- OK
 
 GameMessagesZipFileFixture
 	bool ZipFileAsset::readAndUnzipFile(char* buffer) { -- OK poprawione 
@@ -1286,8 +1287,41 @@ przy wyjsciu z
 vector<char> messages_file_loader(string const &fileName,
 		string const &encoding) {
 
-rozwiązanie ??? 
+rozwiązanie ??? -- OK
 pliki *.mo nie powinny się kompresować w archiwum *.zip		
+		
+
+
+--- 23/11/2018
+--- 24/11/2018
+--- 25/11/2018
+
+usunąć
+void BaseGameLogic::tempCreateActors() -- OK
+
+Wczytywanie z Resource Cache:
+	Lua -- OK 
+		
+Błąd przy uruchamianiu Watermill.exe -> Messages -- OK		
+		
+Dodać
+	LuaStateManagerUnzipTest -- OK
+	LuaStateManagerZipTest -- OK 
+
+--- 26/11/2018
+patrz ksiazka
+resourceCache -> preLoad		
+
+--- 23/12/2018
+dokończyć
+int ResourceCache::preLoad(const string& pattern) {
+
+dodać callback procedure
+dodać
+ResourceCacheUnzipFileTest
+ResourceCacheZipFileTest
+
+		
 		
 		
 		

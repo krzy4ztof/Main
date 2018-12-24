@@ -7,6 +7,8 @@
 
 #include "MessageResourceExtraData.h"
 
+#include "../debugging/Logger.h"
+
 #include <vector> // vector
 #include <string> // string
 
@@ -16,12 +18,12 @@ using std::string;
 namespace base_game {
 
 MessageResourceExtraData::MessageResourceExtraData() {
-	// TODO Auto-generated constructor stub
+	logger::info("Create MessageResourceExtraData");
 
 }
 
 MessageResourceExtraData::~MessageResourceExtraData() {
-	// TODO Auto-generated destructor stub
+	logger::info("Destroy MessageResourceExtraData");
 }
 
 void MessageResourceExtraData::init(char* pRawBuffer, uintmax_t rawSize) {

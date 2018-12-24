@@ -211,7 +211,7 @@ void GameMessages::initMessages(MessageParams* messageParams) {
 	locales[code] = locale(base_locale, messagesFormat);
 }
 
-void GameMessages::testMessagesGetText() {
+void GameMessages::temp_testMessagesGetText() {
 
 	string code = currentLanguage->getCode();
 	locale currentLocale = locales[code];
@@ -292,7 +292,7 @@ vector<char> messages_file_loader(string const &fileName,
 		optional<shared_ptr<ResourceHandle>> pResourceHandle =
 				shrdPtrResourceCache->getHandle(&resource);
 
-		stringstream ss;
+		// stringstream ss;
 
 		ss << "resourceNameXXX: " << pResourceHandle.get()->getName();
 		logger::info(ss);

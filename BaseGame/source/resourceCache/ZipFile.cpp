@@ -112,12 +112,12 @@ void ZipFile::describeYourself() {
 	stringstream ss;
 
 	ss << "ZipFile DescribeYourself";
-	logger::info(ss);
+	logger::trace(ss);
 
 	unsigned short nEntries = this->getNumberOfEntries();
 
 	ss << "Number of Entries: " << nEntries;
-	logger::info(ss);
+	logger::trace(ss);
 
 	TZipDirHeader* pZipDirHeader = getZipDirHeader();
 	if (pZipDirHeader) {
@@ -127,7 +127,7 @@ void ZipFile::describeYourself() {
 	for (map<string, ZipFileAsset*>::iterator it = m_zipContentsMap.begin();
 			it != m_zipContentsMap.end(); ++it) {
 		ss << "m_zipContentsMap key: |" << it->first << "|";
-		logger::info(ss);
+		logger::trace(ss);
 
 		it->second->describeYourself();
 	}
@@ -187,6 +187,13 @@ bool ZipFile::initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pAsset) {
 
 	string unizpFilename;
 
+	unizpFilename = getUnzipFilename(pZipFileAsset);
+
+	ss << "FILE NAME: " << unizpFilename;
+	logger::info(ss);
+
+	// unizpFilename = this->getUnzipFilename(pZipFileAsset);
+	/*
 	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
 		unizpFilename = pZipFileAsset->getFileName();
 		ss << "VEC FILE NAME: " << unizpFilename;
@@ -198,6 +205,7 @@ bool ZipFile::initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pAsset) {
 		logger::info(ss);
 
 	}
+	 */
 
 
 
@@ -773,7 +781,7 @@ bool ZipFile::prepareOutputDir(const string assetsOutFolder) {
 	return true;
 }
 
-string ZipFile::zipToUnzip(string zipString) {
+string ZipFile::zipToUnzip(string zipString) const {
 
 	stringstream ss;
 
@@ -1000,6 +1008,65 @@ ZipFileAsset* ZipFile::find(const string &name) const {
 	}
 
 	return nullptr;
+}
+
+string ZipFile::getUnzipFilename(ZipFileAsset* pZipFileAsset) const {
+	stringstream ss;
+	string unzipFilename = "";
+	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
+		unzipFilename = pZipFileAsset->getFileName();
+		ss << "VEC FILE NAME: " << unzipFilename;
+		logger::info (ss);
+
+	} else {
+		unzipFilename = this->zipToUnzip(pZipFileAsset->getFileName());
+		ss << "UNZIP FILE NAME: " << unzipFilename;
+		logger::info (ss);
+
+	}
+	return unzipFilename;
+}
+
+//string ZipFile::getFilename(int i) {
+string ZipFile::getFilename(int i) const {
+	string fileName = "";
+
+	map<string, ZipFileAsset*>::const_iterator it;
+
+	for (it = m_zipContentsMap.begin(); it != m_zipContentsMap.end(); ++it) {
+		if (i <= 0) {
+			break;
+		}
+		i--;
+	}
+
+	/*
+	for (int index = 1; index <= i; index++) {
+		++it;
+	 }*/
+	ZipFileAsset* zipFileAsset = it->second;
+
+	fileName = getUnzipFilename(zipFileAsset);
+	/*
+	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
+		fileName = zipFileAsset->getFileName();
+	} else {
+		fileName = this->zipToUnzip(zipFileAsset->getFileName());
+	}
+	 */
+
+	return fileName;
+	/*
+	std::string fileName = "";
+	if (i >= 0 && i < m_nEntries) {
+		char pszDest[_MAX_PATH];
+		memcpy(pszDest, m_papDir[i]->GetName(), m_papDir[i]->fnameLen);
+		pszDest[m_papDir[i]->fnameLen] = '\0';
+		fileName = pszDest;
+	}
+	return fileName;
+	 */
+
 }
 
 

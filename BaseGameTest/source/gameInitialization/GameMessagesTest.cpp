@@ -133,13 +133,9 @@ BOOST_FIXTURE_TEST_SUITE(GameMessagesSuite, GameMessagesFixture)
 BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enabled()) {
 	try {
-		pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 		pGameMessages->switchCurrentLanguage("en.UTF-8");
-		pGameMessages->testMessagesGetText();
-
-		// game_messages::init_locale_pl();
-		// pGameMessages->testMessages();
-		// pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}
@@ -150,10 +146,7 @@ BOOST_AUTO_TEST_CASE(messagesLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 BOOST_AUTO_TEST_CASE(messagesLoader2, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(messagesLoader2, * unit_test::enabled()) {
 	try {
-		pGameMessages->testMessagesGetText();
-		// game_messages::init_locale_pl();
-		// pGameMessages->testMessages();
-		// pGameMessages->testMessagesGetText();
+		pGameMessages->temp_testMessagesGetText();
 	} catch (ErrorCode& error) {
 		error.informUser();
 	}

@@ -237,7 +237,6 @@ BOOST_AUTO_TEST_CASE(folderToZipToZipToFolder, * unit_test::enable_if<MAIN_TEST_
 	BOOST_TEST(true);
 }
 
-
 BOOST_AUTO_TEST_SUITE_END()
 
 }

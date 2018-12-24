@@ -42,8 +42,8 @@ public:
 	virtual boost::uintmax_t vGetRawResource(const Resource& resource,
 			char *buffer)=0;
 	
-	//virtual int VGetNumResources() const = 0;
-	//virtual std::string VGetResourceName(int num) const = 0;
+	virtual int vGetNumResources() const = 0;
+	virtual std::string vGetResourceName(int num) const = 0;
 	//virtual bool VIsUsingDevelopmentDirectories(void) const = 0;
 
 
