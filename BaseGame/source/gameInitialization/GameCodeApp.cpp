@@ -390,7 +390,11 @@ bool GameCodeApp::initInstance() {
 
 		m_pGame = createGameAndView(shrdPtrResourceCache);
 
-		shrdPtrResourceCache->preLoad("*.jpg");
+		//shrdPtrResourceCache->preLoad("*.jpg",
+		//		resource_cache::showPreLoadProgress);
+		shrdPtrResourceCache->preLoad("*.txt",
+				resource_cache::showPreLoadProgress);
+
 		logger::info("createGameAndView+2");
 
 		/*

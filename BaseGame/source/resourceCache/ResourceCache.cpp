@@ -482,9 +482,10 @@ int ResourceCache::preLoad(const string& pattern,
 
 
 
-	return tempPreLoad(pattern);
+	// return tempPreLoad(pattern);
 }
 
+/*
 int ResourceCache::tempPreLoad(const string& pattern) {
 
 	Resource resource("TestImage.jpg");
@@ -493,6 +494,7 @@ int ResourceCache::tempPreLoad(const string& pattern) {
 
 	return 1;
 }
+ */
 
 /*
  void ResourceCache::tempLoadAndReturnRootXmlElement(const string& resourceName, ptree& tree) {
