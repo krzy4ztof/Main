@@ -82,6 +82,12 @@ $(objdir):
 $(prog_output_dir)/watermill.ini: $(root_dir)/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@
 
+#######################
+###	force receipies	###
+#######################
+cleanExe:
+	rm -f $(objprog)
+
 ###########################
 ###	compile receipies	###
 ###########################
@@ -96,6 +102,8 @@ $(objprog): $(addprefix $(objdir)/, $(objects))
 #######################
 clean:
 	rm -rf $(prog_output_dir)/* 
+
+force: createDir cleanExe $(objprog)
 
 #######################
 ###	debug receipies	###

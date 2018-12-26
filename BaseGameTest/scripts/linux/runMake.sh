@@ -1,6 +1,6 @@
 #!/bin/sh
-cd ../../BaseGame/scripts
+cd ../../../BaseGame/scripts/linux
 ./runMake.sh $@
 
-cd ../../BaseGameTest/scripts
+cd ../../../BaseGameTest/scripts/linux
 make -f makefileBaseGameTestLinux.mk $@

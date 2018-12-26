@@ -159,8 +159,8 @@ BOOST_AUTO_TEST_CASE(textFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 	BOOST_TEST(true);
 }
 
-BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enabled()) {
-//BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enabled()) {
+BOOST_AUTO_TEST_CASE(preLoadZip, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	stringstream ss;
 
