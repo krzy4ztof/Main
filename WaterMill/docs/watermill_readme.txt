@@ -1321,7 +1321,16 @@ dodać
 ResourceCacheUnzipFileTest
 ResourceCacheZipFileTest
 
-		
+-- 26/12/2018
+Linux
+
+BOOST_AUTO_TEST_CASE(preLoad, * unit_test::enabled()) {
+
+zamiana na male litery	
+[   info] : makePreferred: "../WaterMill/assets/tempGraphics/test.txt" filename: "test.txt"
+[   info] : RESOURCE NOT  FOUND ../watermill/assets/tempgraphics/test.txt
+
+uruchomienie test/watermill z opcją force		
 		
 		
 		

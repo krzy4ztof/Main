@@ -43,6 +43,8 @@ CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
 ###################
 all: createDir $(objprog)
 
+force: createDir $(objprog)
+
 ###################################
 ###	pre installation receipies	###
 ###################################

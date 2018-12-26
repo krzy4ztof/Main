@@ -72,6 +72,8 @@ copy_files := $(prog_output_dir)/watermill.ini
 ###################
 all: createDir $(objprog)
 
+force: createDir cleanExe $(objprog)
+
 ###################################
 ###	pre installation receipies	###
 ###################################
@@ -82,6 +84,12 @@ $(objdir):
 
 $(prog_output_dir)/watermill.ini: $(root_dir)/../WaterMill/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@
+
+#######################
+###	force receipies	###
+#######################
+cleanExe:
+	rm -f $(objprog)
 
 ###########################
 ###	compile receipies	###
