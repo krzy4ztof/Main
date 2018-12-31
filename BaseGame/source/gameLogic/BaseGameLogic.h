@@ -11,6 +11,7 @@
 
 #include <memory> // shared_ptr, weak_ptr
 #include <map> // map
+#include <list> // list
 #include <string> // string
 
 namespace base_game {
@@ -38,6 +39,11 @@ public:
 	// Logic Update
 	virtual void vOnUpdate(float time, float elapsedTime);
 	void onFrameRender(double fTime, float fElapsedTime);
+	std::list<std::shared_ptr<IGameView> > getViews();
+	virtual void describeYourself();
+
+
+	// std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
 protected:
 	float lifetime;			//indicates how long this game has been in session

@@ -1,32 +1,37 @@
-#ifndef IGAMEVIEW_H
-#define IGAMEVIEW_H
+/*
+ * MovementController.h
+ *
+ *  Created on: 30 gru 2018
+ *      Author: Krzysztof
+ */
+
+#ifndef INPUTDEVICES_MOVEMENTCONTROLLER_H_
+#define INPUTDEVICES_MOVEMENTCONTROLLER_H_
+
+#include "IKeyboardHandler.h"
+#include "IPointerHandler.h"
 
 namespace base_game {
-	class IGameView {
-		public:
-			virtual ~IGameView();
 
-	virtual void vOnRestore() = 0;
-	virtual void vOnRender(double fTime, float fElapsedTime) = 0;
-	virtual void vOnAttach(unsigned int vid, unsigned int aid) = 0;
-	virtual void describeYourself() = 0;
+class MovementController: public IKeyboardHandler, public IPointerHandler {
+public:
+	MovementController();
+	virtual ~MovementController();
 
 	virtual bool vOnKeyboardFunc(unsigned char key, int x, int y);
 	virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
 	virtual bool vOnSpecialFunc(int key, int x, int y);
 	virtual bool vOnSpecialUpFunc(int key, int x, int y);
+
 	virtual bool vOnMouseFunc(int button, int state, int x, int y);
 	virtual bool vOnMotionFunc(int x, int y);
 	virtual bool vOnPassiveMotionFunc(int x, int y);
 	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
 
-	virtual void tempVLoadGameDelegate() = 0;
+protected:
+	//m_keys[]
+};
 
+} /* namespace base_game */
 
-		protected:
-
-		private:
-	};
-}
-
-#endif // IGAMEVIEW_H
+#endif /* INPUTDEVICES_MOVEMENTCONTROLLER_H_ */

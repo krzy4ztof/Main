@@ -356,7 +356,8 @@ bool GameCodeApp::initInstance() {
 
 		// luaStateManager = new LuaStateManager(initOptions->getAssetsFolder());
 		luaStateManager = new LuaStateManager(shrdPtrResourceCache);
-		luaStateManager->testLua("test.lua");
+		//luaStateManager->testLua("test.lua");
+		luaStateManager->temp_testLuaResourceCache("test.lua");
 
 		eventManager = new EventManager();
 

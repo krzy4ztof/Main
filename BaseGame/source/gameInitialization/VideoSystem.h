@@ -44,6 +44,7 @@ namespace base_game {
 		void onHideShow(int state);
 		void onIdle();
 		void onTimer(int value);
+
 	}
 }
 #endif /* VIDEOSYSTEM_H */

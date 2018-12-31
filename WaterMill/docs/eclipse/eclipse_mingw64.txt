@@ -3,10 +3,14 @@
 *******************
 Msys packages:
 https://sourceforge.net/p/msys2/wiki/Packages/
+http://repo.msys2.org/mingw/x86_64/
 
 Open shell
 MinGW-w64 Win64 Shell
 
+
+pacman -Syu
+pacman -S git
 
 example:
 mingw/mingw-w64-lua 5.3.0-1 
@@ -23,6 +27,7 @@ pacman -S tar
 pacman -S base-devel
 pacman -S zlib
 pacman -S gettext
+pacman -Syu mingw-w64-x86_64-glfw
 
 MinGW 64:
 	pacman -S mingw-w64-lua 5.3.0-1 
@@ -323,6 +328,16 @@ Add New Folder -> Link to alternative location (Linked Folder)
 ***************
 tar zxf glut-3.6.tar.gz
 	
+	
+
+***************************
+***	Freeglut Mingw64	***
+***************************
+
+pacman -Su mingw-w64-x86_64-freeglut
+
+
+	
 *******************
 ***	Freeglut	***
 *******************
@@ -399,6 +414,14 @@ into
 >> cd ~/lua53
 Run script
 >> lua.exe test.lua
+
+
+*******************
+***	SDL	2.0.9	***
+*******************
+
+Open MSYS2 MinGW 64-bit console
+. ./cdLibraries.sh
 
 ***********
 ***	SDL	***
@@ -479,6 +502,35 @@ pacman -S mingw-w64-x86_64-glew
 Files created:
 C:\msys64\mingw64\lib\libglew32.dll
 
+***************
+***	GLFW	***
+***************
+dołączenie pakietów 
+https://github.com/Alexpux/MINGW-packages
+
+pacman -Syu
+pacman -S git
+
+http://repo.msys2.org/mingw/x86_64/
+
+pacman -Syu mingw-w64-x86_64-glfw
+
+
+***************************
+***	GLFW Unsuccessfull	***
+***************************
+	
+	
+https://www.glfw.org/docs/latest/compile.html
+https://www.glfw.org/docs/latest/compile_guide.html#compile_generate
+
+Open shell
+MinGW-w64 Win64 Shell	
+
+cd C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries
+mkdir glfw-build
+cd glfw-build
+cmake ../glfw-3.2.1
 	
 	
 ***************************************	

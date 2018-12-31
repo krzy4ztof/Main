@@ -19,7 +19,7 @@ namespace base_game {
 
 	char* loadScript(std::string scriptFileName);
 
-	void testLua(std::string scriptFileName); // TO REMOVE
+	// void testLua(std::string scriptFileName); // TO REMOVE
 	void temp_testLuaResourceCache(std::string scriptFileName);
 
 		protected:

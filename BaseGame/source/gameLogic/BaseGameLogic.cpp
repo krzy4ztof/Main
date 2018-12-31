@@ -20,6 +20,7 @@
 #include <string> // string
 #include <utility> // pair, make_pair
 #include <map> // map
+#include <list> // list
 #include <fstream> // ifstream
 
 using boost::property_tree::ptree;
@@ -30,6 +31,7 @@ using std::string;
 using std::make_pair;
 using std::pair;
 using std::map;
+using std::list;
 using std::ifstream;
 using std::endl;
 
@@ -185,16 +187,20 @@ void BaseGameLogic::onFrameRender(double time, float elapsedTime) {
 
 }
 
+list<shared_ptr<IGameView> > BaseGameLogic::getViews() {
+	return m_gameViews;
+}
+
 
 void BaseGameLogic::tempAddViews() {
 
 	IGameView* gameView = new HumanView();
+	gameView->tempVLoadGameDelegate();
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(gameView);
 
 	vAddView(pView, 0);
 
 }
-
 
 void BaseGameLogic::tempTestActors() {
 	vChangeState(spawningPlayersActors);
@@ -205,5 +211,10 @@ void BaseGameLogic::tempTestActors() {
 		actorsIterator->second->tempTestComponents();
 	}
 }
+
+void BaseGameLogic::describeYourself() {
+	logger::info("BaseGameLogic describeYourself");
+}
+
 
 }
