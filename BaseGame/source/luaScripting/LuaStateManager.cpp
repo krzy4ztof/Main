@@ -272,6 +272,7 @@ char* scriptAsChar = loadScript(scriptFileName);
 
 }
 
+/*
 	void LuaStateManager::testLua(string scriptFileName) {
 	string scriptsFolder = "null";
 
@@ -294,6 +295,7 @@ char* scriptAsChar = loadScript(scriptFileName);
 templates::safe_delete_array<char>(scriptNameChar);
 	//	string_utils::safe_delete_char_array(scriptNameChar);
 	}
+ */
 
 
 

@@ -26,4 +26,9 @@ TestGameLogic::~TestGameLogic() {
 void TestGameLogic::vChangeState(BaseGameState newState) {
 }
 
+void TestGameLogic::describeYourself() {
+	logger::info("TestGameLogic describeYourself");
+}
+
+
 } /* namespace base_game_test */

@@ -11,6 +11,7 @@
 #include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 #include "../../../BaseGame/source/actors/Actor.h"
+#include "../../../BaseGame/source/userInterface/IGameView.h"
 //#include <gameLogic/BaseGameState.h>
 //#include <gameLogic/BaseGameLogic.h>
 //#include <debugging/Logger.h>
@@ -19,16 +20,18 @@
 
 #include <sstream>      // std::stringstream
 #include <memory> // shared_ptr
+#include <list> // list
 
 using std::shared_ptr;
 using std::stringstream;
+using std::list;
 
 using base_game::BaseGameLogic;
 using base_game::BaseGameState;
 using base_game::Actor;
 using base_game::BaseGameState::spawningPlayersActors;
 using base_game::BaseGameState::running;
-
+using base_game::IGameView;
 
 namespace logger = base_game::logger;
 
@@ -66,4 +69,22 @@ namespace watermill {
 				}
 		}
 	}
+
+void WatermillLogic::describeYourself() {
+	logger::info("WatermillLogic describeYourself");
+
+	list<shared_ptr<IGameView> >::iterator viewsIterator;
+
+	for (viewsIterator = m_gameViews.begin();
+			viewsIterator != m_gameViews.end(); ++viewsIterator) {
+
+		shared_ptr<IGameView> currentView = *viewsIterator;
+		//(*viewsIterator)->describeYourself();
+		//(*viewsIterator)->vOnAttach(1, 1);
+		currentView->describeYourself();
+
+	}
+
+}
+
 }

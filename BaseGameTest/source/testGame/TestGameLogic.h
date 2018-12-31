@@ -19,6 +19,7 @@ public:
 	virtual ~TestGameLogic();
 
 	virtual void vChangeState(base_game::BaseGameState newState);
+	virtual void describeYourself();
 };
 
 } /* namespace base_game_test */

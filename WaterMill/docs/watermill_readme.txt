@@ -1332,6 +1332,48 @@ zamiana na male litery
 
 uruchomienie test/watermill z opcją force		
 		
+-- 26/12/2018
+		
+Video - keyboard
+		
+-- 28/12/2018		
+		
+Obsłużyć metody
+	virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
+	virtual bool vOnSpecialFunc(int key, int x, int y);
+	virtual bool vOnSpecialUpFunc(int key, int x, int y);
+	virtual bool vOnMouseFunc(int button, int state, int x, int y);
+	virtual bool vOnMotionFunc(int x, int y);
+	virtual bool vOnPassiveMotionFunc(int x, int y);
+	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
+w HumanView			
+		
+
+-- 29/12/2018
+Stworzyć
+MovementController
+podłączyć go pod HumanView i metody vOnKeyboardUpFunc...
+		
+-- 30/12/2018		
+	
+W: 87
+w: 119	
+w + active ctrl (left/right) (shift -or no shift): 23 
+W + active ctrl (left/right) (shift -or no shift): 23 
+
+
+w + active alt (left): 119
+W + active alt (left): 87
+
+right alt - nie ma sygnału
+
+dołączyć
+GLFW 
+lub
+GLEW
+
+patrz 
+docs/eclipse/eclipse_mingw64.txt	
 		
 		
 *******************

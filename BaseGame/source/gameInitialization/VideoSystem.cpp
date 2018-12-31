@@ -30,6 +30,8 @@
 
 #include "GameCodeApp.h"//g_pApp
 #include "../utilities/Templates.h"
+#include "../inputDevices/IKeyboardHandler.h"
+#include "../inputDevices/IPointerHandler.h"
 
 using std::string;
 using std::cout;
@@ -283,6 +285,16 @@ void VideoSystem::startFreeGlut(string title) {
 	glutTimerFunc(200, video_system::onTimer, 2);
 
 	glutTimerFunc(300, video_system::onTimer, 3);
+
+	glutKeyboardFunc(keyboard_handler::onKeyboardFunc);
+	glutKeyboardUpFunc(keyboard_handler::onKeyboardUpFunc);
+	glutSpecialFunc(keyboard_handler::onSpecialFunc);
+	glutSpecialUpFunc(keyboard_handler::onSpecialUpFunc);
+
+	glutMouseFunc(pointer_handler::onMouseFunc);
+	glutMotionFunc(pointer_handler::onMotionFunc);
+	glutPassiveMotionFunc(pointer_handler::onPassiveMotionFunc);
+	glutMouseWheelFunc(pointer_handler::onMouseWheelFunc);
 
 	// !!!!!!!!!!!!!!!!!!!!
 	// Note: glutSetOption is only available with freeglut

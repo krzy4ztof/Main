@@ -18,6 +18,7 @@ namespace watermill {
 			virtual ~WatermillLogic();
 
 			virtual void vChangeState(base_game::BaseGameState newState);
+	virtual void describeYourself();
 
 		protected:
 
