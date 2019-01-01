@@ -19,6 +19,7 @@
 #include "DataFiles.h"
 #include "AudioSystem.h"
 #include "VideoSystem.h"
+#include "VideoSystemGLFW.h"
 #include "ErrorCode.h"
 
 #include "SystemCalls.h"
@@ -83,6 +84,7 @@ GameCodeApp::GameCodeApp() {
 	dataFiles = nullptr;
 	audioSystem = nullptr;
 	videoSystem = nullptr;
+	videoSystemGLFW = nullptr;
 
 	saveManager = nullptr;
 
@@ -364,6 +366,7 @@ bool GameCodeApp::initInstance() {
 		dataFiles = new DataFiles;
 		audioSystem = new AudioSystem;
 		videoSystem = new VideoSystem;
+		videoSystemGLFW = new VideoSystemGLFW;
 
 		logger::trace("videoSystem++++");
 
@@ -385,7 +388,16 @@ bool GameCodeApp::initInstance() {
 
 		saveManager->init(userProfilePath, gameAppDirectory);
 
-		videoSystem->startFreeGlut(GAME_PROCESS_NAME);
+		bool glfw = true;
+
+		if (glfw) {
+			videoSystemGLFW->initialize();
+			// videoSystemGLFW->startGLFW();
+		} else {
+			videoSystem->startFreeGlut(GAME_PROCESS_NAME);
+
+		}
+
 
 		logger::trace("createGameAndView++++");
 
@@ -425,8 +437,17 @@ void GameCodeApp::mainLoop() {
 	m_pGame->tempTestActors();	//ok
 	m_pGame->tempAddViews();		//ok
 
-	videoSystem->startFreeGlutMainLoop();
+	bool glfw = true;
 
+	if (glfw) {
+		//videoSystemGLFW->startGLFW();
+		videoSystemGLFW->mainLoop();
+	} else {
+		videoSystem->startFreeGlutMainLoop();
+
+	}
+
+	
 	while (!done) {
 		// Main loop
 		done = true;
@@ -486,6 +507,7 @@ void GameCodeApp::onClose() {
 	// gameView
 	templates::safe_delete<SaveManager>(saveManager);
 	templates::safe_delete<VideoSystem>(videoSystem);
+	templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
 	templates::safe_delete<AudioSystem>(audioSystem);
 	templates::safe_delete<DataFiles>(dataFiles);
 	templates::safe_delete<EventManager>(eventManager);

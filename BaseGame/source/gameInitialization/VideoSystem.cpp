@@ -56,8 +56,10 @@ void displayFreeGlut() {
 
 	// Draw a Red 1x1 Square centered at origin
 	glBegin (GL_QUADS); // Each set of 4 vertices form a quad
-	//glColor3f(1.0f, 0.0f, 0.0f); // Red
-	glColor3f(1.0f, 1.0f, 0.0f); // Yellow
+	// glColor3f(1.0f, 0.0f, 0.0f); // Red
+	glColor3f(0.0f, 1.0f, 1.0f); //
+
+	//glColor3f(1.0f, 1.0f, 0.0f); // Yellow
 
 	glVertex2f(-0.5f, -0.5f); // x, y
 	glVertex2f(0.5f, -0.5f);
@@ -94,6 +96,11 @@ void onIdle() {
 		//base_game::g_pApp->testGlobal();
 		//base_game::g_pApp->onUpdateGame(timeDouble,elapsedTimeFloat);
 		g_pApp->onUpdateGame(timeDouble, elapsedTimeFloat);
+
+		//gameCode->onFrameRender
+		// baseGameLogic->onFrameRender
+		// HumanView->vOnRender
+		// HumanView->tempOnRender (openGL)
 		g_pApp->onFrameRender(timeDouble, elapsedTimeFloat);
 
 	} else {
@@ -102,43 +109,7 @@ void onIdle() {
 	}
 
 }
-/**/
 
-void renderScene(void) {
-
-	stringstream ss;
-	//float angle = 0.0f;
-
-	// Clear Color and Depth Buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// Reset transformations
-	glLoadIdentity();
-	// Set the camera
-
-#ifdef __linux__
-	// TODO: not working on Windows
-	gluLookAt( 0.0f, 0.0f, 10.0f,
-			0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f);
-
-#endif /* __linux__ */
-	glRotatef(angle, 0.0f, 1.0f, 0.0f);
-
-	glBegin (GL_TRIANGLES);
-	glVertex3f(-2.0f, -2.0f, 0.0f);
-	glVertex3f(2.0f, 0.0f, 0.0);
-	glVertex3f(0.0f, 2.0f, 0.0);
-	glEnd();
-
-	//if (angle < 3.0f){
-	angle += 0.1f;
-	//}
-	glutSwapBuffers();
-
-	//base_game::g_pApp->testGlobal();
-
-}
 
 void onChangeSize(int width, int height) {
 	stringstream ss;

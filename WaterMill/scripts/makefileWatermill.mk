@@ -56,6 +56,7 @@ LDLIBS += -lboost_log-mt
 LDLIBS += -lboost_thread-mt
 LDLIBS += -lboost_log_setup-mt
 LDLIBS += -lboost_iostreams-mt
+LDLIBS += -lglfw3
 
 lib_path := -L"../../BaseGame/Debug_MinGW64" 
 lib_path += -L"../../../libraries/freeglut/lib/x64"
@@ -66,7 +67,7 @@ LDFLAGS := $(lib_path) $(LDLIBS)
 ###########################
 ###	pre installation	###
 ###########################
-copy_files := $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
+copy_files := $(prog_output_dir)/libzstd.dll $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
 
 ###################
 ###	recipies	###
@@ -83,6 +84,9 @@ createDir: $(objdir) $(copy_files)
 $(objdir):
 	mkdir -p $(objdir)
 
+
+$(prog_output_dir)/libzstd.dll: $(root_dir)/../../libraries/libzstd/libzstd.dll
+	cp -f $< $@
 
 $(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/freeglut.dll
 	cp -f $< $@

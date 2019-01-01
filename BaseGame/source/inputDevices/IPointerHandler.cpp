@@ -15,6 +15,7 @@
 #include <sstream>      // std::stringstream
 #include <list> // list
 #include <memory> // shared_ptr, weak_ptr
+#include <GLFW/glfw3.h> // GLFWwindow
 
 using std::stringstream;
 using std::list;
@@ -126,6 +127,97 @@ void onMouseWheelFunc(int wheel, int direction, int x, int y) {
 
 	}
 }
+
+void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
+	stringstream ss;
+	ss << "onCursorPositionCallback: xpos: " << xpos << "; ypos: " << ypos;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnCursorPositionCallback(
+					window, xpos, ypos);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
+void onCursorEnterCallback(GLFWwindow* window, int entered) {
+	stringstream ss;
+	ss << "onCursorEnterCallback: entered: " << entered;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnCursorEnterCallback(window,
+					entered);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
+void onMouseButtonCallback(GLFWwindow* window, int button, int action,
+		int mods) {
+	stringstream ss;
+	ss << "onMouseButtonCallback: button: " << button << "; action: "
+			<< action << "; mods: " << mods;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnMouseButtonCallback(window,
+					button, action, mods);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
+void onScrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
+	stringstream ss;
+	ss << "onScrollCallback: xoffset: " << xoffset << "; yoffset: " << yoffset;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnScrollCallback(window,
+					xoffset, yoffset);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
 
 }
 

@@ -36,7 +36,9 @@ void HumanView::vOnRestore() {
 
 void HumanView::vOnRender(double fTime, float fElapsedTime) {
 	//logger::info("vOnRender HumanView");
-	tempOnRender(fTime, fElapsedTime);
+	//tempOnRender(fTime, fElapsedTime);
+	tempOnRenderGLFW(fTime, fElapsedTime);
+
 
 }
 
@@ -188,6 +190,109 @@ bool HumanView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
 
 }
 
+bool HumanView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
+		int action, int mods) {
+	stringstream ss;
+	ss << "HumanView::onKeyCallback: key: " << key << "; scancode: " << scancode
+			<< "; action: " << action << "; mods: " << mods;
+	// logger::info(ss);
+
+	if (m_KeyboardHandler) {
+		m_KeyboardHandler->vOnKeyCallback(window, key, scancode, action, mods);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnCharCallback(GLFWwindow* window, unsigned int codepoint) {
+	stringstream ss;
+	ss << "HumanView::onCharCallback: codepoint: " << codepoint;
+	//logger::info(ss);
+
+	if (m_KeyboardHandler) {
+		m_KeyboardHandler->vOnCharCallback(window, codepoint);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnCharmodsCallback(GLFWwindow* window, unsigned int codepoint,
+		int mods) {
+	stringstream ss;
+	ss << "HumanView::onCharmodsCallback: codepoint: " << codepoint
+			<< "; mods: " << mods;
+	//logger::info(ss);
+	
+	if (m_KeyboardHandler) {
+		m_KeyboardHandler->vOnCharmodsCallback(window, codepoint, mods);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnCursorPositionCallback(GLFWwindow* window, double xpos,
+		double ypos) {
+	stringstream ss;
+	ss << "HumanView::onCursorPositionCallback: xpos: " << xpos << "; ypos: "
+			<< ypos;
+	//logger::info(ss);
+
+	if (m_PointerHandler) {
+		m_PointerHandler->vOnCursorPositionCallback(window, xpos, ypos);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnCursorEnterCallback(GLFWwindow* window, int entered) {
+	stringstream ss;
+	ss << "HumanView::onCursorEnterCallback: entered: " << entered;
+	//logger::info(ss);
+
+	if (m_PointerHandler) {
+		m_PointerHandler->vOnCursorEnterCallback(window, entered);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnMouseButtonCallback(GLFWwindow* window, int button,
+		int action, int mods) {
+	stringstream ss;
+	ss << "HumanView::onMouseButtonCallback: button: " << button << "; action: "
+			<< action << "; mods: " << mods;
+	//logger::info(ss);
+
+	if (m_PointerHandler) {
+		m_PointerHandler->vOnMouseButtonCallback(window, button, action, mods);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool HumanView::vOnScrollCallback(GLFWwindow* window, double xoffset,
+		double yoffset) {
+	stringstream ss;
+	ss << "HumanView::onScrollCallback: xoffset: " << xoffset << "; yoffset: "
+			<< yoffset;
+	//logger::info(ss);
+
+	if (m_PointerHandler) {
+		m_PointerHandler->vOnScrollCallback(window, xoffset, yoffset);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
 void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 
 	//	stringstream ss;
@@ -195,7 +300,8 @@ void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 
 	// Clear Color and Depth Buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glColor3f(1.0f, 0.0f, 0.0f); // Red
+	//glColor3f(1.0f, 0.0f, 0.0f); // Red
+	glColor3f(0.0f, 1.0f, 1.0f); //blue
 
 	// Reset transformations
 	glLoadIdentity();
@@ -221,6 +327,43 @@ void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 	tempAngle += 0.1f;
 	//}
 	glutSwapBuffers();
+
+}
+
+void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
+
+	//	stringstream ss;
+	//float angle = 0.0f;
+
+	// Clear Color and Depth Buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glColor3f(1.0f, 0.0f, 0.0f); // Red
+	glColor3f(0.0f, 1.0f, 1.0f); //blue
+
+	// Reset transformations
+	glLoadIdentity();
+	// Set the camera
+
+#ifdef __linux__
+	// TODO: not working on Windows
+
+	gluLookAt( 0.0f, 0.0f, 10.0f,
+			0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f);
+
+#endif /* __linux__ */
+	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
+
+	glBegin(GL_TRIANGLES);
+	glVertex3f(-2.0f, -2.0f, 0.0f);
+	glVertex3f(2.0f, 0.0f, 0.0);
+	glVertex3f(0.0f, 2.0f, 0.0);
+	glEnd();
+
+	//if (angle < 3.0f){
+	tempAngle += 0.1f;
+	//}
+	//glutSwapBuffers();
 
 }
 

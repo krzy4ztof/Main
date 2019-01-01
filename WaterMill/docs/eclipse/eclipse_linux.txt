@@ -166,12 +166,27 @@ sudo apt-get install libboost-all-dev
 installs
 /usr/include/boost
 
-*******************
-***	Freeglut	***
-*******************
+***********************
+***	Freeglut Failed	***
+***********************
 sudo apt-get install freeglut3-dev
 
 /usr/include/GL
+
+
+
+Following functions do not work in Ubuntu:
+
+	glutKeyboardFunc(keyboard_handler::onKeyboardFunc);
+	glutKeyboardUpFunc(keyboard_handler::onKeyboardUpFunc);
+	glutSpecialFunc(keyboard_handler::onSpecialFunc);
+	glutSpecialUpFunc(keyboard_handler::onSpecialUpFunc);
+
+	glutMouseFunc(pointer_handler::onMouseFunc);
+	glutMotionFunc(pointer_handler::onMotionFunc);
+	glutPassiveMotionFunc(pointer_handler::onPassiveMotionFunc);
+	glutMouseWheelFunc(pointer_handler::onMouseWheelFunc);
+	
 
 
 *******************
