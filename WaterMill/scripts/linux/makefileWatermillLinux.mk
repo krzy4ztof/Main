@@ -56,10 +56,17 @@ LDLIBS += -lboost_log_setup
 LDLIBS += -lboost_iostreams
 LDLIBS += -lpthread
 LDLIBS += -ldl
+#LDLIBS += -lglfw3
+LDLIBS += -lglfw
+
+#GLFW_LIB := `pkg-config --cflags glfw3`
 
 lib_path := -L$(root_dir)/../BaseGame/Debug_Linux_Make
+lib_path += -L"/usr/lib/x86_64-linux-gnu"
 
-LDFLAGS := $(lib_path) $(LDLIBS)
+LDFLAGS := $(lib_path) $(LDLIBS) 
+
+#$(GLFW_LIB)
 
 ###########################
 ###	pre installation	###
