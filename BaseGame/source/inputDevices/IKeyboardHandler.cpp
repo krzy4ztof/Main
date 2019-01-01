@@ -15,6 +15,7 @@
 #include <sstream>      // std::stringstream
 #include <list> // list
 #include <memory> // shared_ptr, weak_ptr
+#include <GLFW/glfw3.h> // GLFWwindow
 
 using std::stringstream;
 using std::list;
@@ -164,11 +165,83 @@ void onSpecialUpFunc(int key, int x, int y) {
 			if (funcResult) {
 				break; // WARNING! This breaks out of the for loop.
 			}
-
 		}
-
 	}
 }
+
+void onKeyCallback(GLFWwindow* window, int key, int scancode, int action,
+		int mods) {
+
+	stringstream ss;
+	ss << "onKeyCallback: key: " << key << "; scancode: " << scancode
+			<< "; action: " << action << "; mods: " << mods;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnKeyCallback(window, key,
+					scancode, action, mods);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+	//if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS){
+	//	glfwSetWindowShouldClose(window, GLFW_TRUE);
+	//}
+
+}
+
+void onCharCallback(GLFWwindow* window, unsigned int codepoint) {
+	stringstream ss;
+	ss << "onCharCallback: codepoint: " << codepoint;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnCharCallback(window,
+					codepoint);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
+void onCharmodsCallback(GLFWwindow* window, unsigned int codepoint, int mods) {
+	stringstream ss;
+	ss << "onCharmodsCallback: codepoint: " << codepoint << "; mods: " << mods;
+	//logger::info(ss);
+
+	if (g_pApp != nullptr) {
+		BaseGameLogic* baseGame = g_pApp->m_pGame;
+		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+		for (viewsIterator = gameViews.rbegin();
+				viewsIterator != gameViews.rend(); ++viewsIterator) {
+			bool funcResult = (*viewsIterator)->vOnCharmodsCallback(window,
+					codepoint, mods);
+
+			if (funcResult) {
+				break; // WARNING! This breaks out of the for loop.
+			}
+		}
+	}
+}
+
 
 }
 

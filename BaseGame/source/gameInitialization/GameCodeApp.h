@@ -17,6 +17,7 @@
 #include "DataFiles.h"
 #include "AudioSystem.h"
 #include "VideoSystem.h"
+#include "VideoSystemGLFW.h"
 #include "InitOptions.h"
 #include "DebuggingOptions.h"
 #include "PlayerOptions.h"
@@ -93,6 +94,7 @@ private:
 	DataFiles *dataFiles;
 	AudioSystem *audioSystem;
 	VideoSystem *videoSystem;
+	VideoSystemGLFW *videoSystemGLFW;
 	SaveManager *saveManager;
 
 };

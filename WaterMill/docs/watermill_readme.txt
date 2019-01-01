@@ -1375,6 +1375,11 @@ GLEW
 patrz 
 docs/eclipse/eclipse_mingw64.txt	
 		
+
+-- 31/12/2018	
+dodać obsługę klawiatury w GLFW
+zarejestrować callback w:
+int VideoSystemGLFW::initialize() 		
 		
 *******************
 ***	FUTURE TODO	***

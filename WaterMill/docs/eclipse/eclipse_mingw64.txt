@@ -1,12 +1,17 @@
 *******************
 ***	Packages	***
 *******************
+Msys installation:
+https://www.msys2.org/
+
+
+
 Msys packages:
 https://sourceforge.net/p/msys2/wiki/Packages/
 http://repo.msys2.org/mingw/x86_64/
 
 Open shell
-MinGW-w64 Win64 Shell
+Msys2 Shell
 
 
 pacman -Syu
@@ -19,21 +24,33 @@ A powerful light-weight programming language designed for extending applications
 
 GCC:
 pacman -S mingw-w64-x86_64-gcc
-pacman -S mingw-w64-x86_64-boost
-pacman -S make
 pacman -S mingw-w64-x86_64-toolchain
-pacman -S cmake
-pacman -S tar
-pacman -S base-devel
+pacman -S mingw-w64-x86_64-boost
 pacman -S zlib
 pacman -S gettext
-pacman -Syu mingw-w64-x86_64-glfw
+pacman -S make
+pacman -S base-devel
+pacman -S mingw-w64-x86_64-lua 		(5.3.5)
+pacman -S mingw-w64-x86_64-glfw
 
-MinGW 64:
-	pacman -S mingw-w64-lua 5.3.0-1 
 
 Show installed packages:	
 pacman -Q	
+
+
+
+Dodatkowe (nie wiadomo czy potrzebne)
+pacman -S cmake
+pacman -S tar
+
+
+*******************
+***	Libzstd.dll	***
+*******************
+Msys2 po upgradzie msys2-x86_64-20180531.exe
+wymaga libzstd.dll w katalogu pliku Watermill.exe / BaseGameTest.exe
+
+https://www.dll-files.com/libzstd.dll.html
 
 ***********************
 ***	Upgrade mingw64	***
@@ -281,6 +298,9 @@ H) Boost:
 boost_unit_test_framework-mt
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libboost_unit_test_framework-mt.dll.a)
 
+I) GLFW:
+glfw3
+(link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libglfw3.dll.a)
 
 minizip
 (link to C:\msys64\mingw64\lib\minizip.dll.a)
@@ -333,6 +353,8 @@ tar zxf glut-3.6.tar.gz
 ***************************
 ***	Freeglut Mingw64	***
 ***************************
+Open
+Msys2 Shell
 
 pacman -Su mingw-w64-x86_64-freeglut
 
@@ -438,10 +460,10 @@ mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz.sig
 mingw-w64-x86_64-SDL2-2.0.4-1-any.pkg.tar.xz
 
 Open shell
-MinGW-w64 Win64 Shell
+Msys2 Shell
+(NOT MinGW-w64 Win64 Shell)
 
 
-MinGW 64:
 pacman -S mingw-w64-x86_64-SDL2
 
 ---------------------------
@@ -497,6 +519,10 @@ https://sourceforge.net/p/msys2/wiki/Packages/
 mingw/mingw-w64-glew 1.12.0-1 (mingw-w64-x86_64) 
 GLEW, The OpenGL Extension Wrangler Library (mingw-w64)
 
+Open shell
+Msys2 Shell
+(NOT MinGW-w64 Win64 Shell)
+
 pacman -S mingw-w64-x86_64-glew
 
 Files created:
@@ -507,6 +533,10 @@ C:\msys64\mingw64\lib\libglew32.dll
 ***************
 dołączenie pakietów 
 https://github.com/Alexpux/MINGW-packages
+
+Open shell
+Msys2 Shell
+(NOT MinGW-w64 Win64 Shell)
 
 pacman -Syu
 pacman -S git
@@ -525,7 +555,8 @@ https://www.glfw.org/docs/latest/compile.html
 https://www.glfw.org/docs/latest/compile_guide.html#compile_generate
 
 Open shell
-MinGW-w64 Win64 Shell	
+Msys2 Shell
+(NOT MinGW-w64 Win64 Shell)
 
 cd C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries
 mkdir glfw-build

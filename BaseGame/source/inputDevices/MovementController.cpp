@@ -148,4 +148,121 @@ bool MovementController::vOnMouseWheelFunc(int wheel, int direction, int x,
 
 }
 
+bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
+		int scancode,
+		int action, int mods) {
+	stringstream ss;
+	ss << "MovementController::onKeyCallback: key: " << key << "; scancode: "
+			<< scancode
+			<< "; action: " << action << "; mods: " << mods;
+	logger::info(ss);
+
+	if (key == GLFW_KEY_W) {
+		ss << "UP ";
+	} else if (key == GLFW_KEY_S) {
+		ss << "DOWN ";
+	} else if (key == GLFW_KEY_A) {
+		ss << "LEFT ";
+	} else if (key == GLFW_KEY_D) {
+		ss << "RIGHT ";
+	}
+
+	if (action == GLFW_PRESS) {
+		ss << "PRESSED";
+	} else if (action == GLFW_REPEAT) {
+		ss << "REPEATED";
+	} else if (action == GLFW_RELEASE) {
+		ss << "RELEASED";
+	}
+
+	logger::info(ss);
+
+
+	return true;
+}
+
+bool MovementController::vOnCharCallback(GLFWwindow* window,
+		unsigned int codepoint) {
+	stringstream ss;
+	ss << "MovementController::onCharCallback: codepoint: " << codepoint;
+	//logger::info(ss);
+
+	return true;
+}
+
+bool MovementController::vOnCharmodsCallback(GLFWwindow* window,
+		unsigned int codepoint,
+		int mods) {
+	stringstream ss;
+	ss << "MovementController::onCharmodsCallback: codepoint: " << codepoint
+			<< "; mods: " << mods;
+	//logger::info(ss);
+
+	return true;
+}
+
+bool MovementController::vOnCursorPositionCallback(GLFWwindow* window,
+		double xpos,
+		double ypos) {
+	stringstream ss;
+	ss << "MovementController::onCursorPositionCallback: xpos: " << xpos
+			<< "; ypos: "
+			<< ypos;
+	//logger::info(ss);
+
+	return true;
+}
+
+bool MovementController::vOnCursorEnterCallback(GLFWwindow* window,
+		int entered) {
+	stringstream ss;
+	ss << "MovementController::onCursorEnterCallback: entered: " << entered;
+	logger::info(ss);
+
+	return true;
+}
+
+bool MovementController::vOnMouseButtonCallback(GLFWwindow* window, int button,
+		int action, int mods) {
+	stringstream ss;
+	ss << "MovementController::onMouseButtonCallback: button: " << button
+			<< "; action: "
+			<< action << "; mods: " << mods;
+	logger::info(ss);
+
+	if (button == GLFW_MOUSE_BUTTON_LEFT) {
+		ss << "LEFT MOUSE BUTTON ";
+	} else if (button == GLFW_MOUSE_BUTTON_MIDDLE) {
+		ss << "MIDDLE MOUSE BUTTON ";
+	} else if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+		ss << "RIGHT MOUSE BUTTON ";
+	} else if (button == GLFW_MOUSE_BUTTON_LAST) {
+		ss << "LAST MOUSE BUTTON ";
+	}
+
+	if (action == GLFW_PRESS) {
+		ss << "PRESSED";
+	} else if (action == GLFW_REPEAT) {
+		ss << "REPEATED";
+	} else if (action == GLFW_RELEASE) {
+		ss << "RELEASED";
+	}
+
+	logger::info(ss);
+
+	return true;
+}
+
+bool MovementController::vOnScrollCallback(GLFWwindow* window, double xoffset,
+		double yoffset) {
+	stringstream ss;
+	ss << "MovementController::onScrollCallback: xoffset: " << xoffset
+			<< "; yoffset: "
+			<< yoffset;
+	//logger::info(ss);
+
+	return true;
+}
+
+
 } /* namespace base_game */

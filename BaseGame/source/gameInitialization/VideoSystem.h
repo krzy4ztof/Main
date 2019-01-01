@@ -35,7 +35,7 @@ namespace base_game {
 
 	namespace video_system {
 		//float angle; // = 0.0f;
-		void renderScene();
+// void renderScene();
 		void changeSize(int w, int h);
 
 		void displayFreeGlut();

@@ -11,6 +11,8 @@
 #include "IKeyboardHandler.h"
 #include "IPointerHandler.h"
 
+#include <GLFW/glfw3.h> // GLFWwindow
+
 namespace base_game {
 
 class MovementController: public IKeyboardHandler, public IPointerHandler {
@@ -27,6 +29,22 @@ public:
 	virtual bool vOnMotionFunc(int x, int y);
 	virtual bool vOnPassiveMotionFunc(int x, int y);
 	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
+
+	virtual bool vOnKeyCallback(GLFWwindow* window, int key, int scancode,
+			int action, int mods);
+	virtual bool vOnCharCallback(GLFWwindow* window, unsigned int codepoint);
+	virtual bool vOnCharmodsCallback(GLFWwindow* window, unsigned int codepoint,
+			int mods);
+
+	virtual bool vOnCursorPositionCallback(GLFWwindow* window, double xpos,
+			double ypos);
+	virtual bool vOnCursorEnterCallback(GLFWwindow* window, int entered);
+	virtual bool vOnMouseButtonCallback(GLFWwindow* window, int button,
+			int action, int mods);
+	virtual bool vOnScrollCallback(GLFWwindow* window, double xoffset,
+			double yoffset);
+
+
 
 protected:
 	//m_keys[]
