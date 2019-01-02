@@ -1381,6 +1381,15 @@ dodać obsługę klawiatury w GLFW
 zarejestrować callback w:
 int VideoSystemGLFW::initialize() 		
 		
+-- 01/01/2019
+Linux
+Kompilacja GLFW
+
+tworzenie plików *.mo w trakcie instalacji
+komenda:
+msgfmt --output watermill.mo watermill.po 
+		
+		
 *******************
 ***	FUTURE TODO	***
 *******************

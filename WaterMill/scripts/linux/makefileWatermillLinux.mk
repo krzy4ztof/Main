@@ -62,7 +62,7 @@ LDLIBS += -lglfw
 #GLFW_LIB := `pkg-config --cflags glfw3`
 
 lib_path := -L$(root_dir)/../BaseGame/Debug_Linux_Make
-lib_path += -L"/usr/lib/x86_64-linux-gnu"
+#lib_path += -L"/usr/lib/x86_64-linux-gnu"
 
 LDFLAGS := $(lib_path) $(LDLIBS) 
 

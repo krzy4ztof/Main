@@ -36,9 +36,15 @@ void HumanView::vOnRestore() {
 
 void HumanView::vOnRender(double fTime, float fElapsedTime) {
 	//logger::info("vOnRender HumanView");
-	//tempOnRender(fTime, fElapsedTime);
-	tempOnRenderGLFW(fTime, fElapsedTime);
 
+
+	bool glfw = true;
+
+	if (glfw) {
+		tempOnRenderGLFW(fTime, fElapsedTime);
+	} else {
+		tempOnRender(fTime, fElapsedTime);
+	}
 
 }
 

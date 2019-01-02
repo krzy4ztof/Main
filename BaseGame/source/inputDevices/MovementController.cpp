@@ -109,7 +109,7 @@ bool MovementController::vOnMouseFunc(int button, int state, int x, int y) {
 	stringstream ss;
 	ss << "MOVEMENT-CONTROLLER MOUSE: button:" << button << "; state: " << state
 			<< "; x: " << x << "; y: " << y;
-//	logger::info(ss);
+	logger::info(ss);
 	return true; // stops further processing of vOnKeyboardFunc
 
 	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
