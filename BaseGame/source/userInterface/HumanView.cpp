@@ -36,9 +36,15 @@ void HumanView::vOnRestore() {
 
 void HumanView::vOnRender(double fTime, float fElapsedTime) {
 	//logger::info("vOnRender HumanView");
-	//tempOnRender(fTime, fElapsedTime);
-	tempOnRenderGLFW(fTime, fElapsedTime);
 
+
+	bool glfw = true;
+
+	if (glfw) {
+		tempOnRenderGLFW(fTime, fElapsedTime);
+	} else {
+		tempOnRender(fTime, fElapsedTime);
+	}
 
 }
 
@@ -344,14 +350,15 @@ void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 	glLoadIdentity();
 	// Set the camera
 
-#ifdef __linux__
-	// TODO: not working on Windows
 
+	/*
+	 * 	// TODO: not working on LINUX
+	 *
 	gluLookAt( 0.0f, 0.0f, 10.0f,
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f);
+*/
 
-#endif /* __linux__ */
 	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
 	glBegin(GL_TRIANGLES);
@@ -359,6 +366,7 @@ void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 	glVertex3f(2.0f, 0.0f, 0.0);
 	glVertex3f(0.0f, 2.0f, 0.0);
 	glEnd();
+
 
 	//if (angle < 3.0f){
 	tempAngle += 0.1f;

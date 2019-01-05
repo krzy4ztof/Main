@@ -1,9 +1,8 @@
 #!/bin/sh
+
 cd ../../../BaseGame/scripts/linux
 ./runMake.sh $@
 
-cd ../../../Watermill/scripts/linux
+cd ../../../WaterMill/scripts/linux
 make -f makefileWatermillLinux.mk $@
-
-
 

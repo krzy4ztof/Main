@@ -27,6 +27,19 @@ sudo usermod -aG vboxsf krzysztof
 
 sudo adduser krzysztof vboxsf
 
+*******************
+***	dos2unix	***
+*******************
+In case of following error when invoking *.sh file:
+
+krzysztof@krzysztof-VirtualBox:~/home/projects/Main/WaterMill/scripts/linux$ ./runMake.sh
+bash: ./runMake.sh: /bin/sh^M: bad interpreter: No such file or directory
+
+Use dos2unix
+
+sudo apt install dos2unix
+
+dos2unix runMake.sh 
 
 
 ***********************
@@ -135,6 +148,54 @@ C/C++ Application:
 Debug Configurations
 	C/C++ Application
 		Watermill Debug_Linux_Make
+
+*******************
+***	Messages	***
+*******************
+Install Poedit 2
+
+
+Lub
+cd ~/home/projects/Main/WaterMill/assets/strings/en/lc_messages
+msgfmt --output watermill.mo watermill.po 
+
+
+
+***************
+***	GLFW	***
+***************
+sudo apt-get install libglfw3-dev libglfw3
+
+Libraries installed to
+/usr/lib/x86_64-linux-gnu/
+
+libglfw.so
+libglfw.so.3
+libglfw.so.3.2
+
+
+
+***********************************
+***	GLFW source unsuccessfull	***
+***********************************
+download source package
+https://www.glfw.org/download.html
+
+~/home/glfw/glfw-3.2.1
+
+sudo apt install cmake
+
+cd home/glfw/glfw-3.2.1/
+sudo apt-get install doxygen
+sudo apt-get install xorg-dev
+cmake .
+
+krzysztof@krzysztof-VirtualBox:~/home/glfw/glfw-3.2.1$ cmake .
+-- Using X11 for window creation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/krzysztof/home/glfw/glfw-3.2.1
+
 
 ***********
 ***	LUA	***
