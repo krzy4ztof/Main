@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 The project has 5 broken files:
 /home/kletki/my_home/prj/git/Main/WaterMill/assets/strings/en/LC_MESSAGES/watermill.mo
 /home/kletki/my_home/prj/git/Main/WaterMill/assets/strings/pl/LC_MESSAGES/watermill.mo
@@ -207,3 +208,214 @@ sudo apt install dos2unix
 
 cd /home/kletki/my_home/prj/git/Main/WaterMill/source/scripts/codeBlock
 
+=======
+The project has 5 broken files:
+/home/kletki/my_home/prj/git/Main/WaterMill/assets/strings/en/LC_MESSAGES/watermill.mo
+/home/kletki/my_home/prj/git/Main/WaterMill/assets/strings/pl/LC_MESSAGES/watermill.mo
+/home/kletki/my_home/prj/git/Main/WaterMill/docs/netbeans/cygwin64_readme.txt
+/home/kletki/my_home/prj/git/Main/WaterMill/docs/netbeans/mingw64_readme.txt
+/home/kletki/my_home/prj/git/Main/WaterMill/docs/netbeans/mingw_readme.txt
+
+***********
+***	Git	***
+***********
+
+git clone https://github.com/krzy4ztof/Main
+
+*******************
+***	CodeBlocks	***
+*******************
+
+sudo apt-get install codeblocks
+
+sudo add-apt-repository ppa:damien-moore/codeblocks-stable
+sudo apt-get update
+
+sudo apt-get install codeblocks
+
+***************************
+***	Astyle formatting	***
+***************************
+
+Menu -> Setting -> Editor
+Configure editor -> Source formatter
+
+Style: Java
+Indentation: true for all
+
+
+*******************************
+***	Project settings Linux	***
+*******************************
+
+Menu -> Project -> Properties 
+Build targets
+
+Debug_MinGW32 -> Duplicate
+Debug_Linux
+
+Release_MinGW32 -> Duplicate
+Release_Linux
+
+
+
+Project -> Build options
+Project build options -> Linker Settings -> Link Libraries -> Add
+
+
+pthread
+dl
+
+glut
+(link to \usr\lib\x86_64-linux-gnu\libglut.a)
+GL
+(link to \usr\lib\x86_64-linux-gnu\libGL.so)
+GLU
+(link to \usr\lib\x86_64-linux-gnu\libGLU.a)
+
+
+A) Boost:
+boost_system
+(link to \usr\lib\x86_64-linux-gnu\libboost_system.a)	
+B) Boost:
+boost_filesystem
+(link to \usr\lib\x86_64-linux-gnu\libboost_filesystem.a
+C) Boost:
+boost_locale
+(link to \usr\lib\x86_64-linux-gnu\libboost_locale.a)
+D) Boost:
+boost_log
+(link to \usr\lib\x86_64-linux-gnu\libboost_log.a)
+E) Boost:
+boost_thread
+(link to \usr\lib\x86_64-linux-gnu\libboost_thread.a)
+F) Boost:
+boost_log_setup
+(link to \usr\lib\x86_64-linux-gnu\libboost_log_setup.a)
+G) Boost:
+boost_iostreams
+(link to \usr\lib\x86_64-linux-gnu\libboost_iostreams.a)
+
+
+lua
+(link to \usr\local\lib\liblua.a)
+
+
+----------------------------------------------------------
+
+
+Project -> Build options
+Project build options -> Linker Settings -> Link Libraries -> Add
+freeglut
+psapi
+opengl32
+
+
+?? freeglut
+?? psapi
+?? opengl32
+
+
+
+
+***************
+***	Boost	***
+***************
+
+sudo apt-get install libboost-all-dev
+
+***********
+***	LUA	***
+***********
+
+
+sudo apt-get install lua5.3
+sudo apt install lua5.2
+
+
+Zainstalować readline:
+sudo apt-get install libreadline
+sudo apt-get install libreadline-dev
+
+
+cd /home/kletki/my_home/utils/lua53
+curl -R -O http://www.lua.org/ftp/lua-5.3.3.tar.gz
+# Ewentualnie Pobrać https://www.lua.org/ftp/
+# i skopiować do katalogu lua53
+tar zxf lua-5.3.3.tar.gz
+cd lua-5.3.3
+make linux test
+
+
+
+Installing Lua
+>> sudo make linux install
+Installs lua.exe, luac.exe, lua.h into
+/usr/local/bin/lua*
+/usr/local/include/lua.h
+/usr/local/lib/liblua.a
+/usr/local/lib.lua/5.3
+
+
+??????????????????
+>> cp lua53.dll /bin/
+Copy
+C:\msys64\home\Krzysztof\lua53\lua-5.3.3\src\lua53.dll
+into
+C:\msys64\bin
+
+Create script
+~/lua53/lua_script.txt
+>> cd ~/lua53
+Run script
+>> lua.exe lua_script.txt
+
+
+***************
+***	Pragma	***
+***************
+Seeing all predefined macros
+ 	
+
+http://www.willus.com/mingw/_predefined.shtml
+
+echo . | gcc -dM -E - | less
+
+__linux__
+
+*******************
+***	Freeglut	***
+*******************
+sudo apt-get install freeglut3-dev
+
+/usr/include/GL
+
+***********
+***	Log	***
+***********
+
+/home/kletki/my_home/prj/git/Main/WaterMill/settings/codeblocks/Watermill/watermill.log
+
+*******************
+***	CPU speed	***
+*******************
+
+model name	: Intel(R) Core(TM) i7 CPU       Q 720  @ 1.60GHz
+cpu MHz:
+
+
+(1600+1199+933+1600+1466+1466+1333+1199)/8=1349.5
+(1066+933+1600+933+1199+933+1600+1199)
+
+933+933+933 + 1600 +933+933+933+933
+
+
+***************
+***	Bash	***
+***************
+
+sudo apt install dos2unix
+
+cd /home/kletki/my_home/prj/git/Main/WaterMill/source/scripts/codeBlock
+
+>>>>>>> Stashed changes
