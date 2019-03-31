@@ -32,6 +32,8 @@ IKeyboardHandler::~IKeyboardHandler() {
 }
 
 namespace keyboard_handler {
+
+/*
 void onKeyboardFunc(unsigned char key, int x, int y) {
 	stringstream ss;
 
@@ -168,6 +170,7 @@ void onSpecialUpFunc(int key, int x, int y) {
 		}
 	}
 }
+ */
 
 void onKeyCallback(GLFWwindow* window, int key, int scancode, int action,
 		int mods) {

@@ -8,6 +8,7 @@
 #ifndef INPUTDEVICES_IPOINTERHANDLER_H_
 #define INPUTDEVICES_IPOINTERHANDLER_H_
 
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
@@ -21,10 +22,12 @@ public:
 	//virtual bool VOnPointerButtonDown(const Point &pos, const int radius, const std::string &buttonName) = 0;
 	//virtual bool VOnPointerButtonUp(const Point &pos, const int radius, const std::string &buttonName) = 0;
 
+	/* freeglut
 	virtual bool vOnMouseFunc(int button, int state, int x, int y) = 0;
 	virtual bool vOnMotionFunc(int x, int y) = 0;
 	virtual bool vOnPassiveMotionFunc(int x, int y) = 0;
 	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y) = 0;
+*/
 
 	virtual bool vOnCursorPositionCallback(GLFWwindow* window, double xpos,
 			double ypos) = 0;

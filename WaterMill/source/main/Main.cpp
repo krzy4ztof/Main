@@ -11,6 +11,10 @@
  * Created on 28 kwietnia 2016, 17:51
  */
 
+#ifdef __WIN64
+#include <windows.h>
+#endif /* __WIN64 */
+
 #include<iostream> // cout, endl
 #include "GameMain.h"
 
@@ -25,14 +29,23 @@ using watermill::GameMain;
  * argv - returns address
  */
 
-int main(int argc, char** argv) {
+#ifdef __WIN64
+// __WIN64 Only 64 bit
+// MinGW64
+INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
+		INT nCmdShow) {
+	int argc = 0;
+	char** argv = new char*[0];
+#else
+// MinGW
+	int main(int argc, char** argv) {
+#endif /* __WIN64 */
+		GameMain gameMain;
 
-	GameMain gameMain;
+		int res = 0;
+		res = gameMain.init(argc, argv);
+		cout << "MAIN END" << endl;
 
-	int res = 0;
-	res = gameMain.init(argc, argv);
-	cout << "MAIN END" << endl;
+		return res;
 
-	return res;
-
-}
+	}

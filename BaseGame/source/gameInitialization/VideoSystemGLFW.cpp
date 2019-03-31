@@ -12,15 +12,19 @@
 #include "../inputDevices/IPointerHandler.h"
 
 #include <sstream>      // std::stringstream
+// #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h>
 
 using std::stringstream;
 
 namespace base_game {
 
+const int VideoSystemGLFW::WINDOW_WIDTH = 640;
+const int VideoSystemGLFW::WINDOW_HEIGHT = 640; //480;
+
 VideoSystemGLFW::VideoSystemGLFW() {
 	logger::info("Create VideoSystemGLFW");
-	GLFWwindow* window = nullptr;
+	window = nullptr;
 
 }
 
@@ -70,17 +74,45 @@ void VideoSystemGLFW::onIdle() {
 
 }
 
+/*
+int VideoSystemGLFW::tempGLUTinitialize() {
+	char fakeParam[] = "fake";
+	char *fakeargv[] = { fakeParam, NULL };
+	int fakeargc = 1;
+	glutInit(&fakeargc, fakeargv);
+}
+ */
+
 int VideoSystemGLFW::initialize() {
 	/* Initialize the library */
 	if (!glfwInit())
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "GLFW Hello World", NULL, NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,
+			"GLFW Hello World - press R,1,2..",
+			NULL,
+			NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;
 	}
+
+	/* Initialize GLEW */
+	/*
+	GLenum err = glewInit();
+	if (GLEW_OK != err) {
+		return -1;
+	}
+	 */
+
+	// START Tutorial
+	glfwWindowHint(GLFW_SAMPLES, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	// END Tutorial
 
 	glfwSetKeyCallback(window, keyboard_handler::onKeyCallback);
 	glfwSetCharCallback(window, keyboard_handler::onCharCallback);
@@ -94,10 +126,22 @@ int VideoSystemGLFW::initialize() {
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
+	// stempGLUTinitialize();
+
+	/* Initialize GLEW */
+	/* Initialize GLEw after initializing context and (maybe glutInit) */
+	// Initialize GLEW Start Tutorial
+	glewExperimental = true; // Needed for core profile
+	// END Tutorial
+	GLenum err = glewInit();
+	if (GLEW_OK != err) {
+		return -1;
+	}
+
 	return 0;
 }
 
-int VideoSystemGLFW::mainLoop() {
+void VideoSystemGLFW::mainLoop() {
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
 		/* Render here */

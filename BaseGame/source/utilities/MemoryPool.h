@@ -97,6 +97,9 @@ namespace base_game {
 			// don't allow copy constructor
 	MemoryPool(const MemoryPool& memPool) :
 			m_chunkSize(0), m_memArraySize(0), m_numChunks(0) {
+		m_toAllowResize = true;
+		m_ppRawMemoryArray = NULL;
+		m_pHead = NULL;
 	}
 
 		public:

@@ -1389,6 +1389,390 @@ tworzenie plików *.mo w trakcie instalacji
 komenda:
 msgfmt --output watermill.mo watermill.po 
 		
+-- 05/01/2019
+
+Dodać
+MainMenuView - menu startowe
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+oraz:
+TeapotWarsHumanView - główny widok gry
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+
+MainMenuView
+Ma zawierać
+1. Tytuł: Watermill
+2. Przyciski:
+START
+QUIT		
+
+Dodać - OK
+MainMenuController - przy wciśnięciu przycisku Q będzie 'Ładowała' się gra.
+Zostanie wykorzystana metoda
+// m_pGame->tempAddViews();		//ok -> to remove
+i załadowany widok HumanView z obracającym się trójkątem
+		
+Teraz:
+Ładownie napisu - użycie 
+glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, 'w');
+w MainMenuView - przestarzałe patrz:
+https://www.opengl.org/discussion_boards/showthread.php/198009-Using-GLUT-in-GLFW-window
+		
+Czy można stosować freeglut z glfw?
+Jak ładować napisy. Może użyć freetype library?
+Jak ładować image? boost.gil library?		
+		
+
+Dokończyć:
+BmpResourceLoader
+
+Poprawić:		
+	void MainMenuView::tempVLoadGameDelegate()
+	aby ładowała się textura	
+	#include <boost/gil/gil_all.hpp> // do skasowania
+
+
+https://github.com/muggenhor/fishtank/blob/master/fishtank/textures.cpp
+
+
+https://learnopengl.com/Getting-started/Textures
+https://github.com/JoeyDeVries/LearnOpenGL
+
+https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/4.1.textures/textures.cpp
+
+
+TERAZ: - NIE BO SHADER
+zrobić backup i zmienić
+void MainMenuView::tempLoadTexture() {
+i
+void MainMenuView::tempRenderTexture() {
+tak aby użyć tylko kodu
+https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/4.1.textures/textures.cpp
+czyli 
+C:\Users\Krzysztof\home\importantFiles\projects\git\LearnOpenGL\src\1.getting_started\4.1.textures
+razem z plikami
+4.1.texture.fs
+4.1.texture.vs
+
+
+TERAZ: SPRÓBOWAĆ wyświetlić texturę wg:
+https://open.gl/textures
+czyli
+C:\Users\Krzysztof\home\importantFiles\projects\git\Open.GL
+
+
+Temp04shaderTriangleView -> OpenGl SuperBible page 24 (73 z 853)
+
+
+-- 05/01/2019
++
+-- 28/03/2019
+
+OpenGLTests !!!
+zweryfikować działanie shaderów - wpływają na siebie wzajemnie. OK
+
+Błędy:
+1,5,1,5
+2,5,2
+3,5,3
+
+5,1,5
+5,2,5
+5,3,5
+
+2,4,2
+3,4,3
+
+5,4,5
+
+Poprawne
+1,2,3,...
+
+TODO: OK
+stworzyć vActivate i vDeactivate dla:
+T007simpleTextureView, T008indexedFiguresView, T009jpegGilTextureView
+Odkomentować TEMPORARY COMMENTED z T009jpegGilTextureView
+
+
+
+textury przykłady:
+Visual Studio ->
+
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\build-visual2017-64bits\vermillion9.sln
+
+c:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\src\01-triangles\01-triangles.cpp
+
+
+Textured cube:
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/#how-to-load-texture-with-glfw
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\tutorial05_textured_cube
+
+Fonts:
+http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-11-2d-text/
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\tutorial11_2d_fonts
+
+
+TODO: -----
+Teraz
+/OpenGLTests/data/shaders/T00BindexedSimpleCoordTextureView.frag
+zmiana
+ // color = texture(s, (gl_FragCoord.xy) / textureSize(s, 0));                   
+    color = texture(s, (gl_FragCoord.xy + vec2(10,0)) / textureSize(s, 0)); 
+Powoduje przesunięcie tekstury w lewo
+
+W ten sposób można ustawiać współrzędne tekstury.
+Porównać z  (zrobić to w podobny sposób)
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\tutorial11_2d_fonts\
+	TextVertexShader.vertexshader
+	TextVertexShader.fragmentshader
+	
+Dokumentacja	
+OpenGL Programming Guide -> page 710 Appendix C -> texture shader functions
+----------
+
+TODO: ----
+
+T009jpegGilTextureView.cpp - dodać wczytywanie tekstury z pliku
+
+T009jpegGilTextureView::testCopyImage() - odczytywanie wartości pixeli
+T009jpegGilTextureView::vActivate() - kopiowanie wartości pixeli do *data
+
+-----
+
+TERAZ:
+Usunąć Temp01..07..View.cpp
+Zastąpić próbne widoki widokami z OpenGLTests
+tj
+TempT004figuresView.cpp (kopia T004figuresView.cpp z OpenGLTests)
+
+-- 05/01/2019
++
+-- 28/03/2019
+-- 30/03/2019
+
+Dodać
+MainMenuView - menu startowe
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+oraz:
+TeapotWarsHumanView - główny widok gry
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+
+MainMenuView
+Ma zawierać
+1. Tytuł: Watermill
+2. Przyciski:
+START
+QUIT					
+
+Dokończyć:
+BmpResourceLoader
+
+Poprawić:		
+	void MainMenuView::tempVLoadGameDelegate()
+	aby ładowała się textura	
+
+Fonts:
+http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-11-2d-text/
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\tutorial11_2d_fonts
+
+
+TERAZ:
+Usunąć Temp01..07..View.cpp
+Zastąpić próbne widoki widokami z OpenGLTests
+tj
+TempT004figuresView.cpp (kopia T004figuresView.cpp z OpenGLTests)
+
+
+Patrz notatki w metodach:
+
+IGameView* BaseGameLogic::tempSelectView(int key, bool reset) 
+void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
+		unsigned int actorId)
+void BaseGameLogic::tempSwitchView(int key) {
+
+
+DO ZROBIENIA
+usunąć odwołania do freeglut:
+IGameView.h
+
+
+
+
+// UWAGA:
+HumanView powinien cos wyswietlac lub nie w zaleznosci czy jego elementy sa widoczne
+Patrz:
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\GCC4\UserInterface\HumanView.cpp
+
+//
+// HumanView::VOnRender							- Chapter 10, page 274
+//
+void HumanView::VOnRender(double fTime, float fElapsedTime )
+
+			for(ScreenElementList::iterator i=m_ScreenElements.begin(); i!=m_ScreenElements.end(); ++i)
+			{
+				if ( (*i)->VIsVisible() )
+
+Tak wiec:
+to co jest wyswietlane to elementy IScreenElement w zaleznosci od tego czy sa widoczne czy nie
+nie jest wyswietlany humanView jako taki
+wiec nalezy usunac
+tempIsActive
+oraz 
+active
+
+IGameView.h
+
+	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
+
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+		protected:
+	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+
+
+
+
+
+***********************
+***	OpenGL tutorial	***
+***********************
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/
+
+https://github.com/opengl-tutorials/ogl
+
+Git bash:
+cd ~/home/myImportantFiles/projects/git/
+git clone https://github.com/opengl-tutorials/ogl.git
+
+Msys2 Mingw64:
+cd ogl
+mkdir build
+cd build
+cmake ..
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl
+
+Where to build the binaries:
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/visual2017-64bits
+
+Addentry
+CMAKE_INSTALL_PREFIX
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/cmake-install-vs2017-64bits
+
+Configure:
+Specify the generator for this project:
+Visual Studio 15 2017 Win64
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+
+Button -> Generate
+
+
+Open with Visual Studio 2017
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\build\visual2017-64bits\TUtorials.sln
+
+Testowanie opengl: -- TERAZ !!! 
+TempTriangle02View.cpp
+Dodać tutorial05texturedCube.cpp
+UWAZAC NA SCIEZKE DO shaderow ../../../assets/graphics/shaders/
+
+
+***********************
+***	OpenGL red-book	***
+***********************
+
+https://github.com/openglredbook/examples
+
+cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
+git clone https://github.com/openglredbook/examples.git opengl_redbook_example
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example
+
+Where to build the binaries:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\visual2017-64bits
+
+Button->Configure 
+Specify the generator for this project:
+Visual Studio 15 2017 Win64
+
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\install-visual2017-64bits
+
+
+Button -> Generate
+
+
+***************************
+***	OpenGL Super Bible	***
+****************************
+
+https://github.com/openglsuperbible/sb6code
+
+cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
+git clone https://github.com/openglsuperbible/sb6code.git
+
+Download media files zip
+http://www.openglsuperbible.com/example-code/
+
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code
+
+Where to build the binaries:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\build\vs2017
+
+Button->Configure 
+Specify the generator for this project:
+Visual Studio 15 2017
+
+!!! Nie !!! - Visual Studio 15 2017 win64	!!!
+
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\install-vs2017
+
+
+Button -> Generate
+
+
+
+
+***************************
+***	Freeglut vs GLFW	***
+***************************
+
+Freeglut - obsługa myszy i klawiatury działa w Windows i na Linux
+GLFW - obsługa myszy i klawiatury działa w Windows i na Linux
+		
+Freeglut - nie działa odczytywanie kodów przycisków klawiatury w przypadku wciśniętego ALT / CTRL		
+GLFW - odczytywanie kodu przycisku klawiatury bez wzglądu na wciśnięty przycisk ALT / CTRL / SHIFT		
 		
 *******************
 ***	FUTURE TODO	***

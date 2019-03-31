@@ -1,6 +1,7 @@
 #ifndef IGAMEVIEW_H
 #define IGAMEVIEW_H
 
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
@@ -13,6 +14,8 @@ namespace base_game {
 	virtual void vOnAttach(unsigned int vid, unsigned int aid) = 0;
 	virtual void describeYourself() = 0;
 
+	// Start Freeglut
+	/*
 	virtual bool vOnKeyboardFunc(unsigned char key, int x, int y);
 	virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
 	virtual bool vOnSpecialFunc(int key, int x, int y);
@@ -21,6 +24,8 @@ namespace base_game {
 	virtual bool vOnMotionFunc(int x, int y);
 	virtual bool vOnPassiveMotionFunc(int x, int y);
 	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
+	 */
+	// End Freelglut
 
 	virtual bool vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 			int action, int mods);
@@ -37,9 +42,14 @@ namespace base_game {
 
 	
 	virtual void tempVLoadGameDelegate() = 0;
+	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
 
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 
 		protected:
+	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 
 		private:
 	};

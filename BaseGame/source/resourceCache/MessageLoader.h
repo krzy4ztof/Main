@@ -12,6 +12,7 @@
 
 #include <string> // string
 #include <memory> // shared_ptr
+#include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
 

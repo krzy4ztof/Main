@@ -11,6 +11,7 @@
 #include "IKeyboardHandler.h"
 #include "IPointerHandler.h"
 
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
@@ -20,10 +21,12 @@ public:
 	MovementController();
 	virtual ~MovementController();
 
+	/*
 	virtual bool vOnKeyboardFunc(unsigned char key, int x, int y);
 	virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
 	virtual bool vOnSpecialFunc(int key, int x, int y);
 	virtual bool vOnSpecialUpFunc(int key, int x, int y);
+	 */
 
 	virtual bool vOnMouseFunc(int button, int state, int x, int y);
 	virtual bool vOnMotionFunc(int x, int y);
@@ -44,7 +47,7 @@ public:
 	virtual bool vOnScrollCallback(GLFWwindow* window, double xoffset,
 			double yoffset);
 
-
+	void tempStartGame();
 
 protected:
 	//m_keys[]

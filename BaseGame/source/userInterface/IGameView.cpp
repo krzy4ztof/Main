@@ -8,6 +8,19 @@ namespace base_game {
 		logger::info("Destroy IGameView");
 	}
 
+void IGameView::vActivate() {
+	active = true;
+}
+
+void IGameView::vDeactivate() {
+	active = false;
+}
+
+bool IGameView::isActive() {
+	return active;
+}
+
+/*
 bool IGameView::vOnKeyboardFunc(unsigned char key, int x, int y) {
 	return false;
 }
@@ -39,6 +52,7 @@ bool IGameView::vOnPassiveMotionFunc(int x, int y) {
 bool IGameView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
 	return false;
 }
+ */
 
 bool IGameView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 		int action, int mods) {

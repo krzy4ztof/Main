@@ -2,7 +2,9 @@
 #include "../debugging/Logger.h"
 #include "../inputDevices/MovementController.h"
 
-#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+// #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+#include <GLFW/glfw3.h> // GLFWwindow
+//#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
 #include <sstream>      // std::stringstream
 #include <memory> // shared_ptr, weak_ptr, make_shared
 
@@ -17,6 +19,9 @@ HumanView::HumanView() {
 
 	m_PointerHandler = nullptr;
 	m_KeyboardHandler = nullptr;
+
+	m_ViewId = 0;
+	m_ActorId = 0;
 }
 
 HumanView::~HumanView() {
@@ -37,21 +42,22 @@ void HumanView::vOnRestore() {
 void HumanView::vOnRender(double fTime, float fElapsedTime) {
 	//logger::info("vOnRender HumanView");
 
-
+	/*
 	bool glfw = true;
 
 	if (glfw) {
 		tempOnRenderGLFW(fTime, fElapsedTime);
 	} else {
-		tempOnRender(fTime, fElapsedTime);
+		//	tempOnRender(fTime, fElapsedTime);
 	}
-
+	 */
 }
 
 void HumanView::describeYourself() {
 	logger::info("HumanView describeYourself");
 }
 
+/*
 bool HumanView::vOnKeyboardFunc(unsigned char key, int x, int y) {
 	stringstream ss;
 
@@ -125,7 +131,9 @@ bool HumanView::vOnSpecialUpFunc(int key, int x, int y) {
 	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
 }
+ */
 
+/*
 bool HumanView::vOnMouseFunc(int button, int state, int x, int y) {
 	stringstream ss;
 	ss << "HUMAN-VIEW MOUSE: button:" << button << "; state: " << state
@@ -195,6 +203,7 @@ bool HumanView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
 	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
 }
+ */
 
 bool HumanView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 		int action, int mods) {
@@ -298,7 +307,7 @@ bool HumanView::vOnScrollCallback(GLFWwindow* window, double xoffset,
 }
 
 
-
+/*
 void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 
 	//	stringstream ss;
@@ -320,7 +329,7 @@ void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f);
 
-#endif /* __linux__ */
+ #endif //
 	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
 	glBegin (GL_TRIANGLES);
@@ -335,7 +344,9 @@ void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 	glutSwapBuffers();
 
 }
+ */
 
+/*
 void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 
 	//	stringstream ss;
@@ -349,15 +360,6 @@ void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 	// Reset transformations
 	glLoadIdentity();
 	// Set the camera
-
-
-	/*
-	 * 	// TODO: not working on LINUX
-	 *
-	gluLookAt( 0.0f, 0.0f, 10.0f,
-			0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f);
-*/
 
 	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
@@ -374,6 +376,7 @@ void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 	//glutSwapBuffers();
 
 }
+ */
 
 void HumanView::tempVLoadGameDelegate() {
 	shared_ptr<MovementController> movementController = make_shared<

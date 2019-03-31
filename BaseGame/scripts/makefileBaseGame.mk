@@ -35,7 +35,7 @@ VPATH := $(source_dir_all)
 #######################
 ###	compiler flags	###
 #######################
-include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
+#include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
 include_dirs += -I"/usr/local/include"
 
 # -g3 debugger level3

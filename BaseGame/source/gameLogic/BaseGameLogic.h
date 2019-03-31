@@ -24,6 +24,18 @@ public:
 	void tempTestActors();
 	// void tempTestProcessManager();
 	void tempAddViews();
+	/*
+	void tempAdd01View();
+	void tempAdd02View();
+	void tempAdd03View();
+	void tempAdd04View();
+	 */
+	void tempAddView(int number);
+	void tempAddView(IGameView* pView);
+
+	void tempSwitchView(int key);
+	IGameView* tempSelectView(int key, bool reset);
+	void tempOnIdle(double fTime, float fElapsedTime);
 
 	virtual void vAddView(std::shared_ptr<IGameView> pView,
 			unsigned int actorId = Actor::INVALID_ACTOR_ID);
@@ -46,6 +58,7 @@ public:
 	// std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
 protected:
+
 	float lifetime;			//indicates how long this game has been in session
 	BaseGameState state;
 	ProcessManager* pProcessManager;				// a game logic entity
@@ -57,6 +70,8 @@ protected:
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 	virtual ActorFactory* vCreateActorFactory(
 			std::shared_ptr<ResourceCache> resourceCache);
+
+	IGameView* tempCurrentView;
 
 private:
 };
