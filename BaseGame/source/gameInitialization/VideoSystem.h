@@ -24,8 +24,8 @@ namespace base_game {
 			VideoSystem(const VideoSystem& orig);
 			virtual ~VideoSystem();
 			/* */
-			void startFreeGlut(std::string title);
-			void startFreeGlutMainLoop();
+	//void startFreeGlut(std::string title);
+	//void startFreeGlutMainLoop();
 			/*	void display_xxx(); */
 		private:
 
@@ -36,7 +36,9 @@ namespace base_game {
 	namespace video_system {
 		//float angle; // = 0.0f;
 // void renderScene();
-		void changeSize(int w, int h);
+
+/*
+ void changeSize(int w, int h);
 
 		void displayFreeGlut();
 		void onChangeSize(int width, int height);
@@ -45,7 +47,9 @@ namespace base_game {
 		void onIdle();
 		void onTimer(int value);
 
+ */
 	}
+	
 }
 #endif /* VIDEOSYSTEM_H */
 

@@ -19,7 +19,7 @@ namespace base_game {
 		logger::trace("Destroy IResourceLoader");
 	}
 
-bool IResourceLoader::matchesPattern(const std::string fileName) {
+bool IResourceLoader::matchesPattern(const string fileName) {
 	stringstream ss;
 
 	ss << "Pattern " << vGetPattern() << " fileName: " << fileName;

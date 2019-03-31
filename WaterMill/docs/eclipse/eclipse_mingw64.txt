@@ -32,11 +32,18 @@ pacman -S make
 pacman -S base-devel
 pacman -S mingw-w64-x86_64-lua 		(5.3.5)
 pacman -S mingw-w64-x86_64-glfw
+pacman -Su mingw-w64-x86_64-libjpeg            - wymagane przez boost/gil
+// pacman -Su mingw-w64-x86_64-freeglut - usunąć
+pacman -Su mingw-w64-x86_64-glew
+pacman -Su mingw-w64-x86_64-glm
 
 
 Show installed packages:	
 pacman -Q	
 
+Show version of installed packages:
+$ pacman -Q | grep boost
+mingw-w64-x86_64-boost 1.69.0-2
 
 
 Dodatkowe (nie wiadomo czy potrzebne)
@@ -248,23 +255,23 @@ C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 All options
 
 C/C++ General -> Paths and Symbols -> Includes -> GNU C++
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include
+// C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include - usunąć
 C:\msys64\mingw64\include
 C:\msys64\mingw64\x86_64-w64-mingw32\include
 C:\msys64\usr\local\include
 
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x86
+// C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\lib\x86 - usunąć
 C:\msys64\mingw64\lib
 C:\msys64\mingw64\x86_64-w64-mingw32\lib
 C:\msys64\usr\local\lib
 
 
-C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64
+// C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64 - usunąć
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Libraries
-freeglut
+// freeglut - usunąć
 psapi
 opengl32
 
@@ -302,14 +309,22 @@ I) GLFW:
 glfw3
 (link to ..\..\..\..\..\..\..\..\..\msys64\mingw64\lib\libglfw3.dll.a)
 
-minizip
+J) jpeg
+C:\msys64\mingw64\lib\libjpeg.dll.a
+
+K) glew32
+C:\msys64\mingw64\lib\libglew32.dll.a
+
+
+
+Inne minizip
 (link to C:\msys64\mingw64\lib\minizip.dll.a)
 
 
 C/C++ Build -> Settings -> Tool Settings -> Cygwin C++ Compiler
 
 C/C++ Build -> Settings -> Tool Settings -> MinGW C++ Linker -> Libraries -> Libraries (-l)
-freeglut
+// freeglut - usunąć
 opengl32
 psapi
 
@@ -323,9 +338,9 @@ Source folders on build path:
 	Filter (source/scripts/)
 	
 Copy
-	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+//	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll - usunąć
 into
-	Debug_MinGW\freeglut.dll
+//	Debug_MinGW\freeglut.dll
 	
 BaseGameTest -> Properties
 	Properties for BaseGameTest
@@ -356,7 +371,7 @@ tar zxf glut-3.6.tar.gz
 Open
 Msys2 Shell
 
-pacman -Su mingw-w64-x86_64-freeglut
+// pacman -Su mingw-w64-x86_64-freeglut - usunąć
 
 
 	
@@ -651,9 +666,9 @@ Add directory path
 ${workspace_loc:/${ProjName}}
 
 Copy
-	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll
+//	C:\home\myImportantFiles\projects\git\libraries\freeglut\bin\x64\freeglut.dll - usunąć
 into
-	Test_MinGW64\freeglut.dll
+//	Test_MinGW64\freeglut.dll - usunąć
 
 Watermill -> properties
 	Properties for Watermill

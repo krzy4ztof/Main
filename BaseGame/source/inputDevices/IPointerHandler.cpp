@@ -33,6 +33,8 @@ IPointerHandler::~IPointerHandler() {
 }
 
 namespace pointer_handler {
+
+/*
 void onMouseFunc(int button, int state, int x, int y) {
 	stringstream ss;
 	ss << "MOUSE: button:" << button << "; state: " << state << "; x: " << x << "; y: " << y;
@@ -127,6 +129,7 @@ void onMouseWheelFunc(int wheel, int direction, int x, int y) {
 
 	}
 }
+ */
 
 void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
 	stringstream ss;

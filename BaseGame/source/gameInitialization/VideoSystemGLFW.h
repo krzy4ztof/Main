@@ -8,12 +8,20 @@
 #ifndef GAMEINITIALIZATION_VIDEOSYSTEMGLFW_H_
 #define GAMEINITIALIZATION_VIDEOSYSTEMGLFW_H_
 
+// #define GLEW_STATIC
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h>
+// #include <GL/freeglut.h> // TODO: remove
 
 namespace base_game {
 
 class VideoSystemGLFW {
 public:
+
+	const static int WINDOW_WIDTH;
+	const static int WINDOW_HEIGHT;
+
+
 	VideoSystemGLFW();
 	virtual ~VideoSystemGLFW();
 	int startGLFW_222();
@@ -21,7 +29,10 @@ public:
 
 	int initialize();
 	void onIdle();
-	int mainLoop();
+	void mainLoop();
+	//int tempGLUTinitialize();
+
+
 
 protected:
 	GLFWwindow* window;

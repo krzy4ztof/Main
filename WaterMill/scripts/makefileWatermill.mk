@@ -36,6 +36,7 @@ VPATH = $(source_dir_all)
 #######################
 ###	compiler flags	###
 #######################
+#include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
 include_dirs += -I"/usr/local/include"
 
 # -g3 debugger level3
@@ -45,7 +46,7 @@ CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs)
 ###	linker flags	###
 #######################
 LDLIBS := -lBaseGame
-LDLIBS += -lfreeglut
+#LDLIBS += -lfreeglut
 LDLIBS += -lpsapi
 LDLIBS += -lopengl32
 LDLIBS += -llua
@@ -57,9 +58,11 @@ LDLIBS += -lboost_thread-mt
 LDLIBS += -lboost_log_setup-mt
 LDLIBS += -lboost_iostreams-mt
 LDLIBS += -lglfw3
+LDLIBS += -ljpeg
+LDLIBS += -lglew32
 
 lib_path := -L"../../BaseGame/Debug_MinGW64" 
-lib_path += -L"../../../libraries/freeglut/lib/x64"
+#lib_path += -L"../../../libraries/freeglut/lib/x64"
 lib_path += -L"/usr/local/lib"
 
 LDFLAGS := $(lib_path) $(LDLIBS)
@@ -67,7 +70,9 @@ LDFLAGS := $(lib_path) $(LDLIBS)
 ###########################
 ###	pre installation	###
 ###########################
-copy_files := $(prog_output_dir)/libzstd.dll $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
+#copy_files := $(prog_output_dir)/libzstd.dll $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
+copy_files := $(prog_output_dir)/libzstd.dll $(prog_output_dir)/watermill.ini
+
 
 ###################
 ###	recipies	###
@@ -88,8 +93,8 @@ $(objdir):
 $(prog_output_dir)/libzstd.dll: $(root_dir)/../../libraries/libzstd/libzstd.dll
 	cp -f $< $@
 
-$(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/freeglut.dll
-	cp -f $< $@
+#$(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/freeglut.dll
+#	cp -f $< $@
 
 $(prog_output_dir)/watermill.ini: $(root_dir)/settings/eclipse/Watermill/watermill_release.ini
 	cp -f $< $@

@@ -15,7 +15,8 @@
 #include "ErrorCode.h"
 
 //#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
-#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+//#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
 
 //#include <cstring>// strcpy
 
@@ -43,12 +44,14 @@ namespace base_game {
 
 namespace video_system {
 
-float angle = 0.0f;
-int lastTime = 0;
+//float angle = 0.0f;
+//int lastTime = 0;
 
 /* Handler for window-repaint event. Call back when the window first appears and
  whenever the window needs to be re-painted. */
 /**/
+
+/*
 void displayFreeGlut() {
 	logger::info("display----");
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
@@ -69,7 +72,9 @@ void displayFreeGlut() {
 
 	glFlush(); // Render now
 }
+ */
 
+/*
 void onIdle() {
 	stringstream ss;
 
@@ -187,10 +192,11 @@ void changeSize(int w, int h) {
 #ifdef __linux__
 	// TODO: not working on Windows
 	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
-#endif /* __linux__ */
+ #endif // __linux__
 	// Get Back to the Modelview
 	glMatrixMode (GL_MODELVIEW);
 }
+ */
 
 }
 
@@ -215,6 +221,8 @@ VideoSystem::~VideoSystem() {
 /* Main function: GLUT runs as a console application starting at main()  */
 
 /* */
+
+/*
 void VideoSystem::startFreeGlut(string title) {
 
 	char* titleChar = string_utils::stringToChar(title);
@@ -257,10 +265,6 @@ void VideoSystem::startFreeGlut(string title) {
 
 	glutTimerFunc(300, video_system::onTimer, 3);
 
-	glutKeyboardFunc(keyboard_handler::onKeyboardFunc);
-	glutKeyboardUpFunc(keyboard_handler::onKeyboardUpFunc);
-	glutSpecialFunc(keyboard_handler::onSpecialFunc);
-	glutSpecialUpFunc(keyboard_handler::onSpecialUpFunc);
 
 	glutMouseFunc(pointer_handler::onMouseFunc);
 	glutMotionFunc(pointer_handler::onMotionFunc);
@@ -286,8 +290,12 @@ void VideoSystem::startFreeGlut(string title) {
 	templates::safe_delete_array<char>(titleChar);
 	//string_utils::safe_delete_char_array(titleChar);
 }
+ */
 
+/*
 void VideoSystem::startFreeGlutMainLoop() {
 	glutMainLoop(); // Enter the infinitely event-processing loop
 }
+ */
+
 }

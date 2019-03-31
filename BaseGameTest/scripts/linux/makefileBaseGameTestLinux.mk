@@ -44,7 +44,7 @@ CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
 
 LDLIBS := -lBaseGame
 LDLIBS += -llua
-LDLIBS += -lglut
+#LDLIBS += -lglut
 LDLIBS += -lGL
 LDLIBS += -lGLU
 LDLIBS += -lboost_system

@@ -10,6 +10,7 @@ namespace base_game {
 		BGS_WaitingForPlayers,
 		BGS_LoadingGameEnvironment,
 		BGS_WaitingForPlayersToLoadEnvironment,*/
+	initializing,
 		spawningPlayersActors,
 		running
 	};

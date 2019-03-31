@@ -8,8 +8,12 @@
 #include "MovementController.h"
 #include "../debugging/Logger.h"
 
+#include "../gameInitialization/GameCodeApp.h" // g_pApp TODO: to remove
+
 #include <sstream>      // std::stringstream
-#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+// #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+//#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+#include <GLFW/glfw3.h> // GLFWwindow
 
 using std::stringstream;
 using std::shared_ptr;
@@ -25,6 +29,7 @@ MovementController::~MovementController() {
 	logger::info("Destroy MovementController");
 }
 
+/*
 bool MovementController::vOnKeyboardFunc(unsigned char key, int x, int y) {
 	stringstream ss;
 
@@ -104,6 +109,7 @@ bool MovementController::vOnSpecialUpFunc(int key, int x, int y) {
 	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
 }
+ */
 
 bool MovementController::vOnMouseFunc(int button, int state, int x, int y) {
 	stringstream ss;
@@ -175,10 +181,48 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 		ss << "RELEASED";
 	}
 
+	if (key == GLFW_KEY_R && action == GLFW_PRESS) {
+		tempStartGame();
+	}
+
+
+	if (base_game::g_pApp != nullptr) {
+		if (action == GLFW_PRESS) {
+			// GLFW_KEY_8 -> TempT004figuresView
+			// GLFW_KEY_9 -> TempT009jpegGilTextureView
+			base_game::g_pApp->m_pGame->tempSwitchView(key);
+		}
+
+
+		if (key == GLFW_KEY_1) {
+			base_game::g_pApp->m_pGame->tempAddView(1);
+		} else if (key == GLFW_KEY_2) {
+			base_game::g_pApp->m_pGame->tempAddView(2);
+		} else if (key == GLFW_KEY_3) {
+			base_game::g_pApp->m_pGame->tempAddView(3);
+		} else if (key == GLFW_KEY_4) {
+			base_game::g_pApp->m_pGame->tempAddView(4);
+		} else if (key == GLFW_KEY_5) {
+			base_game::g_pApp->m_pGame->tempAddView(5);
+		} else if (key == GLFW_KEY_6) {
+			base_game::g_pApp->m_pGame->tempAddView(6);
+		} else if (key == GLFW_KEY_7) {
+			base_game::g_pApp->m_pGame->tempAddView(7);
+		}
+	}
+
+
 	logger::info(ss);
 
 
 	return true;
+}
+
+void MovementController::tempStartGame() {
+
+	if (g_pApp != nullptr) {
+		g_pApp->m_pGame->tempAddViews();
+	}
 }
 
 bool MovementController::vOnCharCallback(GLFWwindow* window,

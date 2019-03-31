@@ -394,7 +394,7 @@ bool GameCodeApp::initInstance() {
 			videoSystemGLFW->initialize();
 			// videoSystemGLFW->startGLFW();
 		} else {
-			videoSystem->startFreeGlut(GAME_PROCESS_NAME);
+			//	videoSystem->startFreeGlut(GAME_PROCESS_NAME);
 
 		}
 
@@ -435,7 +435,7 @@ void GameCodeApp::mainLoop() {
 
 
 	m_pGame->tempTestActors();	//ok
-	m_pGame->tempAddViews();		//ok
+	// m_pGame->tempAddViews();		//ok -> to remove
 
 	bool glfw = true;
 
@@ -443,7 +443,7 @@ void GameCodeApp::mainLoop() {
 		//videoSystemGLFW->startGLFW();
 		videoSystemGLFW->mainLoop();
 	} else {
-		videoSystem->startFreeGlutMainLoop();
+		//	videoSystem->startFreeGlutMainLoop();
 
 	}
 
