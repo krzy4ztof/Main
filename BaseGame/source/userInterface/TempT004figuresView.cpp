@@ -8,28 +8,44 @@
 #include "TempT004figuresView.h"
 
 // #include "../main/OpenGLShader.h"
-#include "TempShader.hpp"
+//#include "TempShader.hpp"
+#include "../graphics3D/ShaderResourceLoader.h"
+#include "../debugging/Logger.h"
 
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin
 #include <iostream>
 
+#include <string> // string
+#include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
+//boost::filesystem::filesystem_error; boost::filesystem::directory_entry; boost::filesystem::exists;
+//boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
+//boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;
+#include <sstream>      // std::stringstream
 
 using std::cout;
 using std::endl;
+using std::string;
+using boost::filesystem::path;
+using std::stringstream;
+using std::shared_ptr;
 
 namespace base_game {
 
-TempT004figuresView::TempT004figuresView() {
+TempT004figuresView::TempT004figuresView(
+		shared_ptr<ResourceCache> resourceCache) {
 	cout << "Create TempT004figuresView" << endl;
 	programID = 0;
 	positionBuffer = 0;
 	colorBuffer = 0;
+
+	this->shrdPtrResourceCache = resourceCache;
 }
 
 TempT004figuresView::~TempT004figuresView() {
 	cout << "Destroy TempT004figuresView" << endl;
 	this->vTerminate();
+	shrdPtrResourceCache.reset();
 }
 
 void TempT004figuresView::vTerminate() {
@@ -44,13 +60,92 @@ void TempT004figuresView::vInit() {
 	glGenBuffers(1, &positionBuffer);
 	glGenBuffers(1, &colorBuffer);
 
+	stringstream ss;
+
+	/*
+	//path vertPath { this->m_assetsFolder };
+	path vertPath { this->shrdPtrResourceCache->assetsFolder };
+
+	vertPath /= "shaders/TempT004figuresView.vert";
+	//thisResPath /= resource.getName();
+	vertPath = vertPath.make_preferred();
+	 */
+
+	string vertResourceName = "temp_t004_figures_view.vert";
+	//string vertResourceName = vertPath.string();
+	ss << "vertPath: " << vertResourceName;
+	logger::info(ss);
+
+	/*
+	//path fragPath { this->m_assetsFolder };
+	path fragPath { this->shrdPtrResourceCache->assetsFolder };
+
+	fragPath /= "shaders/TempT004figuresView.frag";
+	//thisResPath /= resource.getName();
+	fragPath = fragPath.make_preferred();
+	string fragResourceName = fragPath.string();
+	 */
+	string fragResourceName = "temp_t004_figures_view.frag";
+
+	ss << "fragPath: " << fragResourceName;
+	logger::info(ss);
+
+	//programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
+	ShaderCompiler shaderCompiler(this->shrdPtrResourceCache); // = new ShaderCompiler();
+
+	programID = shaderCompiler.loadShaders(vertResourceName, fragResourceName);
+
 	// Create and compile our GLSL program from the shaders
-	programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
-			"../../../assets/shaders/TempT004figuresView.frag");
+	//programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
+	//	"../../../assets/shaders/TempT004figuresView.frag");
+
+	vActivate();
+}
+
+/*
+void TempT004figuresView::vInit() {
+//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+	glGenBuffers(1, &positionBuffer);
+	glGenBuffers(1, &colorBuffer);
+
+	stringstream ss;
+
+	//path vertPath { this->m_assetsFolder };
+	path vertPath { this->shrdPtrResourceCache->assetsFolder };
+
+	vertPath /= "shaders/TempT004figuresView.vert";
+	//thisResPath /= resource.getName();
+	vertPath = vertPath.make_preferred();
+	string vertResourceName = vertPath.string();
+	ss << "vertPath: " << vertResourceName;
+	logger::info(ss);
+
+
+	//path fragPath { this->m_assetsFolder };
+	path fragPath { this->shrdPtrResourceCache->assetsFolder };
+
+	fragPath /= "shaders/TempT004figuresView.frag";
+	//thisResPath /= resource.getName();
+	fragPath = fragPath.make_preferred();
+	string fragResourceName = fragPath.string();
+	ss << "fragPath: " << fragResourceName;
+	logger::info(ss);
+
+	//programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
+	ShaderCompiler shaderCompiler; // = new ShaderCompiler();
+
+	programID = shaderCompiler.loadShaders(vertResourceName.c_str(),
+			fragResourceName.c_str());
+	
+	// Create and compile our GLSL program from the shaders
+	//programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
+	//	"../../../assets/shaders/TempT004figuresView.frag");
 
 
 	vActivate();
 }
+ */
 
 void TempT004figuresView::vActivate() {
 	HumanView::vActivate();
@@ -141,14 +236,15 @@ void TempT004figuresView::vOnRender(double currentTime, float fElapsedTime) {
 namespace temp_t004_figures_view {
 TempT004figuresView* openGLview = nullptr;
 
-TempT004figuresView* getView(bool reset) {
+TempT004figuresView* getView(bool reset,
+		shared_ptr<ResourceCache> resourceCache) {
 	if (openGLview == nullptr) {
-		openGLview = new TempT004figuresView();
+		openGLview = new TempT004figuresView(resourceCache);
 		openGLview->vInit();
 	} else {
 		if (reset) {
 			delete (openGLview);
-			openGLview = new TempT004figuresView();
+			openGLview = new TempT004figuresView(resourceCache);
 			openGLview->vInit();
 		}
 	}

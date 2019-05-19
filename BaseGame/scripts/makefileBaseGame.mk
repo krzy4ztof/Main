@@ -37,6 +37,7 @@ VPATH := $(source_dir_all)
 #######################
 #include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
 include_dirs += -I"/usr/local/include"
+include_dirs += -I"/mingw64/include/freetype2/"
 
 # -g3 debugger level3
 CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs) 

@@ -232,6 +232,30 @@ void GameMessages::temp_testMessagesGetText() {
 	string helloWorldOnlyDefault = gettext("hello_world_only_default",
 			currentLocale);
 	logger::info(helloWorldOnlyDefault);
+
+	logger::info("-------------START PL-----------------------");
+
+	string plChars = gettext("pl_chars_pl", currentLocale);
+
+	stringstream ss;
+	for (char c : plChars) {
+		ss << std::dec << c << ":" << std::hex << (short) c << std::dec
+				<< "; ";
+	}
+
+	logger::info(ss);
+
+	logger::info("-------------ONLY DEC-----------------------");
+	ss << std::dec;
+
+	for (char c : plChars) {
+		ss << c << ":" << (short) c << "; ";
+	}
+
+	logger::info(ss);
+
+	logger::info("-------------STOP PL------------------------");
+
 }
 
 

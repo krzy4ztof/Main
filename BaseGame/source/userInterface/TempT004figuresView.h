@@ -10,9 +10,13 @@
 
 //#include "../main/IOpenGLView.h"
 #include "HumanView.h"
+#include "../resourceCache/ResourceCache.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
+
+#include <string> //string
+#include <memory> // shared_ptr
 
 namespace base_game {
 // see: Temp06View.h
@@ -20,7 +24,7 @@ namespace base_game {
 //class TempT004figuresView: public IOpenGLView {
 class TempT004figuresView: public HumanView {
 public:
-	TempT004figuresView();
+	TempT004figuresView(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT004figuresView();
 
 	virtual void vInit();
@@ -36,10 +40,15 @@ protected:
 
 	GLuint positionBuffer;
 	GLuint colorBuffer;
+
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	//std::string m_assetsFolder;
+
 };
 
 namespace temp_t004_figures_view {
-TempT004figuresView* getView(bool reset);
+TempT004figuresView* getView(bool reset,
+		std::shared_ptr<ResourceCache> resourceCache);
 }
 
 } /* namespace base_game */

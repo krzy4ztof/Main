@@ -33,10 +33,11 @@ pacman -S base-devel
 pacman -S mingw-w64-x86_64-lua 		(5.3.5)
 pacman -S mingw-w64-x86_64-glfw
 pacman -Su mingw-w64-x86_64-libjpeg            - wymagane przez boost/gil
+pacman -Su mingw-w64-x86_64-libpng            - wymagane przez boost/gil
 // pacman -Su mingw-w64-x86_64-freeglut - usunąć
 pacman -Su mingw-w64-x86_64-glew
 pacman -Su mingw-w64-x86_64-glm
-
+pacman -Su mingw-w64-x86_64-freetype   - czcionki
 
 Show installed packages:	
 pacman -Q	
@@ -178,6 +179,18 @@ Add
 C:\msys64\mingw64\bin
 to windows user path variable
 
+---------------------------
+---	Build All Projects	---
+---------------------------
+Ctrl+B - buduje wszystkie projekty
+Menu -> Project -> Build All	Ctrl +B
+
+Wyłączenie Ctrl+B
+Menu -> Window -> Preferences
+General -> Keys
+
+Command:
+Build All -> Unbind Command
 
 *******************************
 ***	Eclipse Code Analysis	***

@@ -35,6 +35,8 @@
 #include "../luaScripting/ScriptResourceLoader.h"
 #include "../luaScripting/LuaStateManager.h"
 
+#include "../graphics3d/ShaderResourceLoader.h"
+
 #include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
@@ -43,6 +45,7 @@
 #include <sstream>      // std::stringstream
 #include "../resourceCache/DevelopmentResourceFolder.h"
 #include "../resourceCache/DevelopmentResourceUnzipFile.h"
+
 
 #include <memory> // shared_ptr, weak_ptr, make_shared
 //#include <typeinfo> // typeid
@@ -334,6 +337,11 @@ bool GameCodeApp::initInstance() {
 	shrdPtrResourceCache->registerLoader(message_loader::createMessageLoader());
 	shrdPtrResourceCache->registerLoader(
 			script_resource_loader::createScriptResourceLoader());
+
+	shrdPtrResourceCache->registerLoader(
+			vertex_shader_resource_loader::createVertexShaderResourceLoader());
+	shrdPtrResourceCache->registerLoader(
+			fragment_shader_resource_loader::createFragmentShaderResourceLoader());
 
 
 	try {

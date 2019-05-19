@@ -22,6 +22,7 @@
  */
 #include "../userInterface/TempT004figuresView.h"
 #include "../userInterface/TempT009jpegGilTextureView.h"
+#include "../userInterface/TempT00FpolishFontsView.h"
 
 
 #include "../resourceCache/ZipFile.h"
@@ -331,16 +332,21 @@ IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
 	// nie deaktywowac powtornie zdeaktywowanych vidokow
 	// nie aktywowac powtornie aktywowanych widokow
 
-	if (key == GLFW_KEY_8) {
+	if (key == GLFW_KEY_1) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t004_figures_view::getView(reset);
-	} else if (key == GLFW_KEY_9) {
+		gameView = temp_t004_figures_view::getView(reset, shrdPtrResourceCache);
+	} else if (key == GLFW_KEY_2) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
 		gameView = temp_t009_jpeg_gil_texture_view::getView(reset);
+	} else if (key == GLFW_KEY_3) {
+		// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+		//
+		gameView = temp_t00f_polish_fonts_view::getView(reset);
 	}
 
 

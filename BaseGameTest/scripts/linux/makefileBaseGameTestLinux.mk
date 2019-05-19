@@ -58,6 +58,10 @@ LDLIBS += -lboost_unit_test_framework
 LDLIBS += -lpthread
 LDLIBS += -ldl
 LDLIBS += -lglfw
+#LDLIBS += -ljpeg
+#LDLIBS += -lglew32
+#LDLIBS += -lpng16
+#LDLIBS += -lfreetype
 
 lib_path := -L$(root_dir)/../BaseGame/Debug_Linux_Make
 

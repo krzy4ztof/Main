@@ -39,6 +39,9 @@ VPATH = $(source_dir_all)
 # -g3 debugger level3
 CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
 
+#include_dirs += -I"/mingw64/include/freetype2/"
+#CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs)
+
 #######################
 ###	linker flags	###
 #######################
@@ -57,7 +60,10 @@ LDLIBS += -lboost_iostreams
 LDLIBS += -lpthread
 LDLIBS += -ldl
 #LDLIBS += -lglfw3
+#LDLIBS += -ljpeg
 LDLIBS += -lglfw
+#LDLIBS += -lpng16
+#LDLIBS += -lfreetype
 
 #GLFW_LIB := `pkg-config --cflags glfw3`
 
