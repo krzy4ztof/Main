@@ -18,8 +18,6 @@
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
 
-
-
 namespace watermill {
 
 class MainMenuView: public base_game::HumanView {
@@ -35,8 +33,6 @@ public:
 //	void tempRenderTexture_1();
 
 	virtual void vOnRender(double fTime, float fElapsedTime);
-
-
 
 };
 

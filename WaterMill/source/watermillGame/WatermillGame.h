@@ -13,30 +13,28 @@
 //#include <gameLogic/BaseGameLogic.h>
 //#include <resourceCache/ResourceCache.h>
 
-
 /*
-#include "../gameInitialization/GameCodeApp.h"
-#include "../gameLogic/BaseGameLogic.h"
-#include "../resourceCache/ResourceCache.h"
+ #include "../gameInitialization/GameCodeApp.h"
+ #include "../gameLogic/BaseGameLogic.h"
+ #include "../resourceCache/ResourceCache.h"
  */
 
 #include <string>
 #include <memory> // shared_ptr, weak_ptr
 
-
 namespace watermill {
-	class WatermillGame : public base_game::GameCodeApp {
-		public:
-			const static std::string GAME_APP_DIRECTORY;
+class WatermillGame: public base_game::GameCodeApp {
+public:
+	const static std::string GAME_APP_DIRECTORY;
 
-			WatermillGame();
-			virtual ~WatermillGame();
-			virtual std::string vGetGameAppDirectory();
+	WatermillGame();
+	virtual ~WatermillGame();
+	virtual std::string vGetGameAppDirectory();
 
-		protected:
+protected:
 	virtual base_game::BaseGameLogic* createGameAndView(
 			std::shared_ptr<base_game::ResourceCache> resourceCache);
-		private:
-	};
+private:
+};
 }
 #endif // WATERMILLGAME_H

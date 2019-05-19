@@ -7,22 +7,18 @@
 //#include <gameLogic/BaseGameLogic.h>
 //#include <gameLogic/BaseGameState.h>
 
-
-
-
-
 namespace watermill {
-	class WatermillLogic : public base_game::BaseGameLogic {
-		public:
-			WatermillLogic();
-			virtual ~WatermillLogic();
+class WatermillLogic: public base_game::BaseGameLogic {
+public:
+	WatermillLogic();
+	virtual ~WatermillLogic();
 
-			virtual void vChangeState(base_game::BaseGameState newState);
+	virtual void vChangeState(base_game::BaseGameState newState);
 	virtual void describeYourself();
 
-		protected:
+protected:
 
-		private:
-	};
+private:
+};
 }
 #endif // WATERMILLLOGIC_H
