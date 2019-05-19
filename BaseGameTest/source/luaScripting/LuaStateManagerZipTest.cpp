@@ -88,8 +88,8 @@ struct LuaStateManagerZipFixture {
 
 BOOST_FIXTURE_TEST_SUITE(LuaStateManagerZipSuite, LuaStateManagerZipFixture)
 
-//BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
-BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enabled()) {
+BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
+//BOOST_AUTO_TEST_CASE(luaZipRun, * unit_test::enabled()) {
 
 
 	//InitOptions initOptions;

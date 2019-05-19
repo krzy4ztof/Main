@@ -38,6 +38,7 @@ VPATH = $(source_dir_all)
 #######################
 #include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
 include_dirs += -I"/usr/local/include"
+include_dirs += -I"/mingw64/include/freetype2/"
 
 # -g3 debugger level3
 CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs) 
@@ -60,6 +61,8 @@ LDLIBS += -lboost_iostreams-mt
 LDLIBS += -lglfw3
 LDLIBS += -ljpeg
 LDLIBS += -lglew32
+LDLIBS += -lpng16
+LDLIBS += -lfreetype
 
 lib_path := -L"../../BaseGame/Debug_MinGW64" 
 #lib_path += -L"../../../libraries/freeglut/lib/x64"

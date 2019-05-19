@@ -326,31 +326,6 @@ CheckCpp11: 457
 gameCodeApp init succeeded
 
 
-
-***************
-***	TODO	***
-***************
-
-constexpr static string = "watermill.exe";
-
-vector<T>;
-push_back(t);
-
-
-page 117
-void error(string s){
-
-page 117
-throw runtime_error(s);
-}
-
-
-try{
-
-} catch (exception& e){
-cerr << "error: " << e.what() << endl;
-}
-
 ***********
 ***	Git	***
 ***********
@@ -412,6 +387,166 @@ char chrarry_CommandLinePath[100]  ;
 memset(chrarry_CommandLinePath,0,sizeof(chrarry_CommandLinePath));
 
 see LinuxProcessCalls.cpp
+
+***********************
+***	OpenGL tutorial	***
+***********************
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/
+
+https://github.com/opengl-tutorials/ogl
+
+Git bash:
+cd ~/home/myImportantFiles/projects/git/
+git clone https://github.com/opengl-tutorials/ogl.git
+
+Msys2 Mingw64:
+cd ogl
+mkdir build
+cd build
+cmake ..
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl
+
+Where to build the binaries:
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/visual2017-64bits
+
+Addentry
+CMAKE_INSTALL_PREFIX
+C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/cmake-install-vs2017-64bits
+
+Configure:
+Specify the generator for this project:
+Visual Studio 15 2017 Win64
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+
+Button -> Generate
+
+
+Open with Visual Studio 2017
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\build\visual2017-64bits\TUtorials.sln
+
+Testowanie opengl: -- TERAZ !!! 
+TempTriangle02View.cpp
+Dodać tutorial05texturedCube.cpp
+UWAZAC NA SCIEZKE DO shaderow ../../../assets/graphics/shaders/
+
+
+***********************
+***	OpenGL red-book	***
+***********************
+
+https://github.com/openglredbook/examples
+
+cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
+git clone https://github.com/openglredbook/examples.git opengl_redbook_example
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example
+
+Where to build the binaries:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\visual2017-64bits
+
+Button->Configure 
+Specify the generator for this project:
+Visual Studio 15 2017 Win64
+
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\install-visual2017-64bits
+
+
+Button -> Generate
+
+
+***************************
+***	OpenGL Super Bible	***
+****************************
+
+https://github.com/openglsuperbible/sb6code
+
+cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
+git clone https://github.com/openglsuperbible/sb6code.git
+
+Download media files zip
+http://www.openglsuperbible.com/example-code/
+
+
+
+Windows:
+cmake-gui
+
+Where is the source code:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code
+
+Where to build the binaries:
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\build\vs2017
+
+Button->Configure 
+Specify the generator for this project:
+Visual Studio 15 2017
+
+!!! Nie !!! - Visual Studio 15 2017 win64	!!!
+
+
+
+Pojawi się lista nie skonfigurowanych zmiennych.
+Poprawić CMAKE_INSTALL_PREFIX
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\install-vs2017
+
+
+Button -> Generate
+
+
+
+
+***************************
+***	Freeglut vs GLFW	***
+***************************
+
+Freeglut - obsługa myszy i klawiatury działa w Windows i na Linux
+GLFW - obsługa myszy i klawiatury działa w Windows i na Linux
+		
+Freeglut - nie działa odczytywanie kodów przycisków klawiatury w przypadku wciśniętego ALT / CTRL		
+GLFW - odczytywanie kodu przycisku klawiatury bez względu na wciśnięty przycisk ALT / CTRL / SHIFT		
+
+
+***************
+***	TODO	***
+***************
+
+constexpr static string = "watermill.exe";
+
+vector<T>;
+push_back(t);
+
+
+page 117
+void error(string s){
+
+page 117
+throw runtime_error(s);
+}
+
+
+try{
+
+} catch (exception& e){
+cerr << "error: " << e.what() << endl;
+}
 
 
 ***************
@@ -1546,6 +1681,9 @@ Zastąpić próbne widoki widokami z OpenGLTests
 tj
 TempT004figuresView.cpp (kopia T004figuresView.cpp z OpenGLTests)
 
+
+---	START CAŁEGO ZADANIA ---
+
 -- 05/01/2019
 +
 -- 28/03/2019
@@ -1594,8 +1732,8 @@ void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
 void BaseGameLogic::tempSwitchView(int key) {
 
 
-DO ZROBIENIA
-usunąć odwołania do freeglut:
+DO ZROBIENIA 
+usunąć odwołania do freeglut: - OK
 IGameView.h
 
 
@@ -1636,143 +1774,155 @@ IGameView.h
 
 
 
+Błąd -> nacisnięcie 1,2,3 (3 nie ma mapowania na widok -> błąd)
+TODO:
+Ładowanie shaderów z plików/zip-ów zamiast TempShader.cpp
+Ładowanie plików jpeg za pomocą JpgResourceLoader
+Ładowanie plików bmp za pomocą BmpResourceLoader
+
+TODO
+GameCoding Complete page 272 -> framerate, rendertext, screenelements, dialogbox
+
+TODO:
+poprawić
+/OpenGLTests/source/basic/T00CbmpGilTextureView.cpp
+patrz:
+https://www.boost.org/doc/libs/develop/libs/gil/io/doc/html/gil/io/using_io.html
+
+typedef mpl::vector< gray8_image_t
+                   , gray16_image_t
+                   , rgb8_image_t
+                   , rgba_image_t
+                   > my_img_types;
+
+any_image< my_img_types > runtime_image;
+
+read_image( filename
+          , runtime_image
+          , tiff_tag()
+          );
+          
+          
+-- 19/04/2019
+
+C:\Users\Krzysztof\home\myImportantFiles\ZmianaPracy\wiedzaDoPracy\knowledge\informatyka_wiedza\gimp.odt
+
+Zmiana plików *.bmp na *.png z kanałem alpha
+Dodać obsługę formatu png
+          
+-- 20/04/2019
+dokończyć
+C:\Users\Krzysztof\home\myImportantFiles\projects\EclipseCppWorkspace\OpenGLTests\source\basic\T00DpngGilScanlineView.cpp
+
+-- 21/04/2019
+dokończyć
+C:\Users\Krzysztof\home\myImportantFiles\projects\EclipseCppWorkspace\OpenGLTests\source\basic\T00EfontsView.cpp
+wg
+https://learnopengl.com/In-Practice/Text-Rendering
+
+-- 22/04/2019
+-- 25/04/2019
+-- 27/04/2019
+Stworzyć
+T00FpolishFontsView.cpp
+gdzie:
+Będzie możliwa obsługa polskich znaków
+układ współrzędnych będzie zawierał się w skali 0.0f - 1.0f a nie w ilości pixeli.
+połączyć to z boost *.mo, *.po plikami
+
+TODO:
+T00FpolishFontsView::RenderText - obsługa Unicode w transformacji UTF-8
 
 
-
-***********************
-***	OpenGL tutorial	***
-***********************
-http://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/
-
-https://github.com/opengl-tutorials/ogl
-
-Git bash:
-cd ~/home/myImportantFiles/projects/git/
-git clone https://github.com/opengl-tutorials/ogl.git
-
-Msys2 Mingw64:
-cd ogl
-mkdir build
-cd build
-cmake ..
-
-
-Windows:
-cmake-gui
-
-Where is the source code:
-C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl
-
-Where to build the binaries:
-C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/visual2017-64bits
-
-Addentry
-CMAKE_INSTALL_PREFIX
-C:/Users/Krzysztof/home/myImportantFiles/projects/git/ogl/build/cmake-install-vs2017-64bits
-
-Configure:
-Specify the generator for this project:
-Visual Studio 15 2017 Win64
-
-
-Pojawi się lista nie skonfigurowanych zmiennych.
-Poprawić CMAKE_INSTALL_PREFIX
-
-Button -> Generate
-
-
-Open with Visual Studio 2017
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\ogl\build\visual2017-64bits\TUtorials.sln
-
-Testowanie opengl: -- TERAZ !!! 
-TempTriangle02View.cpp
-Dodać tutorial05texturedCube.cpp
-UWAZAC NA SCIEZKE DO shaderow ../../../assets/graphics/shaders/
-
-
-***********************
-***	OpenGL red-book	***
-***********************
-
-https://github.com/openglredbook/examples
-
-cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
-git clone https://github.com/openglredbook/examples.git opengl_redbook_example
-
-
-Windows:
-cmake-gui
-
-Where is the source code:
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example
-
-Where to build the binaries:
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\visual2017-64bits
-
-Button->Configure 
-Specify the generator for this project:
-Visual Studio 15 2017 Win64
-
-
-
-Pojawi się lista nie skonfigurowanych zmiennych.
-Poprawić CMAKE_INSTALL_PREFIX
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\opengl_redbook_example\install-visual2017-64bits
-
-
-Button -> Generate
-
-
-***************************
-***	OpenGL Super Bible	***
-****************************
-
-https://github.com/openglsuperbible/sb6code
-
-cd C:\Users\Krzysztof\home\myImportantFiles\projects\git
-git clone https://github.com/openglsuperbible/sb6code.git
-
-Download media files zip
-http://www.openglsuperbible.com/example-code/
-
-
-
-Windows:
-cmake-gui
-
-Where is the source code:
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code
-
-Where to build the binaries:
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\build\vs2017
-
-Button->Configure 
-Specify the generator for this project:
-Visual Studio 15 2017
-
-!!! Nie !!! - Visual Studio 15 2017 win64	!!!
-
-
-
-Pojawi się lista nie skonfigurowanych zmiennych.
-Poprawić CMAKE_INSTALL_PREFIX
-C:\Users\Krzysztof\home\myImportantFiles\projects\git\sb6code\install-vs2017
-
-
-Button -> Generate
-
-
-
-
-***************************
-***	Freeglut vs GLFW	***
-***************************
-
-Freeglut - obsługa myszy i klawiatury działa w Windows i na Linux
-GLFW - obsługa myszy i klawiatury działa w Windows i na Linux
+Kodowanie:
+http://adsorption.org/awm/info/pl-codes.htm          
 		
-Freeglut - nie działa odczytywanie kodów przycisków klawiatury w przypadku wciśniętego ALT / CTRL		
-GLFW - odczytywanie kodu przycisku klawiatury bez wzglądu na wciśnięty przycisk ALT / CTRL / SHIFT		
+		
+A:41;   :20;  Ä:ffffffc4;  „:ffffff84;   :20;  Ä:ffffffc4;  …:ffffff85;   :20;  
+C:43;   :20;  Ä:ffffffc4;  †:ffffff86;   :20;  Ä:ffffffc4;  ‡:ffffff87;   :20;  
+E:45;   :20;  Ä:ffffffc4;  ?:ffffff98;   :20;  Ä:ffffffc4;  ™:ffffff99;   :20;  
+L:4c;   :20;  Ĺ:ffffffc5;  ?:ffffff81;   :20;  Ĺ:ffffffc5;  ‚:ffffff82;   :20;  
+N:4e;   :20;  Ĺ:ffffffc5;  ?:ffffff83;   :20;  Ĺ:ffffffc5;  „:ffffff84;   :20;  
+O:4f;   :20;  Ă:ffffffc3;  “:ffffff93;   :20;  Ă:ffffffc3;  ł:ffffffb3;   :20;  
+S:53;   :20;  Ĺ:ffffffc5;  š:ffffff9a;   :20;  Ĺ:ffffffc5;  ›:ffffff9b;   :20;  
+X:58;   :20;  Ĺ:ffffffc5;  ą:ffffffb9;   :20;  Ĺ:ffffffc5;  ş:ffffffba;   :20;  
+Z:5a;   :20;  Ĺ:ffffffc5;  »:ffffffbb;   :20;  Ĺ:ffffffc5;  Ľ:ffffffbc;  
+		
+		
+-------------START PL-----------------------
+
+A:41;  :20; Ä:ffffffc4; „:ffffff84;  :20; Ä:ffffffc4; …:ffffff85;  :20; 
+C:43;  :20; Ä:ffffffc4; †:ffffff86;  :20; Ä:ffffffc4; ‡:ffffff87;  :20; 
+E:45;  :20; Ä:ffffffc4; ?:ffffff98;  :20; Ä:ffffffc4; ™:ffffff99;  :20; 
+
+L:4c;  :20; Ĺ:ffffffc5; ?:ffffff81;  :20; Ĺ:ffffffc5; ‚:ffffff82;  :20; 
+N:4e;  :20; Ĺ:ffffffc5; ?:ffffff83;  :20; Ĺ:ffffffc5; „:ffffff84;  :20; 
+
+O:4f;  :20; Ă:ffffffc3; “:ffffff93;  :20; Ă:ffffffc3; ł:ffffffb3;  :20; 
+
+S:53;  :20; Ĺ:ffffffc5; š:ffffff9a;  :20; Ĺ:ffffffc5; ›:ffffff9b;  :20; 
+X:58;  :20; Ĺ:ffffffc5; ą:ffffffb9;  :20; Ĺ:ffffffc5; ş:ffffffba;  :20; 
+Z:5a;  :20; Ĺ:ffffffc5; »:ffffffbb;  :20; Ĺ:ffffffc5; Ľ:ffffffbc; 
+
+
+Unicode w transformacji UTF-8
+https://pl.wikipedia.org/wiki/Kodowanie_polskich_znak%C3%B3w
+
+-------------ONLY DEC (INT) -----------------------
+
+A:65;  :32; Ä:-60; „:-124;  :32; Ä:-60; …:-123;  :32; 
+C:67;  :32; Ä:-60; †:-122;  :32; Ä:-60; ‡:-121;  :32; 
+E:69;  :32; Ä:-60; ?:-104;  :32; Ä:-60; ™:-103;  :32; 
+L:76;  :32; Ĺ:-59; ?:-127;  :32; Ĺ:-59; ‚:-126;  :32; 
+N:78;  :32; Ĺ:-59; ?:-125;  :32; Ĺ:-59; „:-124;  :32; 
+O:79;  :32; Ă:-61; “:-109;  :32; Ă:-61; ł:-77;  :32; 
+S:83;  :32; Ĺ:-59; š:-102;  :32; Ĺ:-59; ›:-101;  :32; 
+X:88;  :32; Ĺ:-59; ą:-71;  :32; Ĺ:-59; ş:-70;  :32; 
+Z:90;  :32; Ĺ:-59; »:-69;  :32; Ĺ:-59; Ľ:-68; 
+
+
+
+
+-------------STOP PL------------------------
+
+
+-- 28/04/2019
+-- 01/05/2019
+-- 03/05/2019
+-- 12/05/2019
+-- 13/05/2019
+-- 18/05/2019
+Powrót do ---	START CAŁEGO ZADANIA ---
+
+Stworzyć:
+PngResourceExtraData - ważne
+ShaderResourceExtraData - ważne
+freetypeLoader - ważne
+
+BmpResourceExtraData - skasować
+JpegResourceExtraData - nie robić
+		
+TODO:		
+TempT00FpolishFontsViewTest.cpp - zrobić shaderLoader zip/unzip/folder + organizacja testFixture - dziedziczenie - OK
+
+Kilka fixture: - OK
+https://www.boost.org/doc/libs/1_66_0/libs/test/doc/html/boost_test/tests_organization/decorators/explicit_decorator_declaration.html		
+BOOST_FIXTURE_TEST_SUITE		
+
+TempT00FpolishFontsViewTest.cpp -> GLuint ShaderCompiler::loadShaders(string vertexShaderName, string fragmentShaderName) i VertexShaderResourceExtraData::compileShader - OK
+FragmentShaderResourceExtraData::compileShader - OK
+
+TERAZ: 
+\ResourceCacheUnzipFileTest.cpp - zapisać shadery do asset.unzip - OK
+TempT00FpolishFontsViewTest.cpp - unzip file, zip file - wczytywanie - OK 		
+BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewZipFileSuite, TempT00FpolishFontsViewZipFileFixture) - naprawić
+
+
+shaders\\temp_t004_figures_view.vert	
+
+string ZipFile::zipToUnzip(string zipString) const {			
+string ZipFile::getUnzipFilename(ZipFileAsset* pZipFileAsset) const {
+		
 		
 *******************
 ***	FUTURE TODO	***

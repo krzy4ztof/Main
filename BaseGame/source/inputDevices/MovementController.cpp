@@ -188,12 +188,12 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 
 	if (base_game::g_pApp != nullptr) {
 		if (action == GLFW_PRESS) {
-			// GLFW_KEY_8 -> TempT004figuresView
-			// GLFW_KEY_9 -> TempT009jpegGilTextureView
+			// GLFW_KEY_1 -> TempT004figuresView
+			// GLFW_KEY_2 -> TempT009jpegGilTextureView
 			base_game::g_pApp->m_pGame->tempSwitchView(key);
 		}
 
-
+		/*
 		if (key == GLFW_KEY_1) {
 			base_game::g_pApp->m_pGame->tempAddView(1);
 		} else if (key == GLFW_KEY_2) {
@@ -209,6 +209,7 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 		} else if (key == GLFW_KEY_7) {
 			base_game::g_pApp->m_pGame->tempAddView(7);
 		}
+		 */
 	}
 
 

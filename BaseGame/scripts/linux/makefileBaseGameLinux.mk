@@ -36,7 +36,10 @@ VPATH := $(source_dir_all)
 ###	compiler flags	###
 #######################
 # -g3 debugger level3
-CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP 
+include_dirs += -I"/mingw64/include/freetype2/"
+
+#CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP 
+CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs) 
 
 ###################
 ###	recipies	###

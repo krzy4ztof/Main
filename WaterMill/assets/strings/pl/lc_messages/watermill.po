@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: hello
@@ -18,3 +18,7 @@ msgstr "Cześć Świecie pl!!!"
 
 msgid "hello_world_only_pl"
 msgstr "Cześć Świecie only pl!!!"
+
+msgid "pl_chars_pl"
+msgstr "A Ą ą C Ć ć E Ę ę L Ł ł N Ń ń O Ó ó S Ś ś X Ź ź Z Ż ż"
+

@@ -18,3 +18,6 @@ msgstr "Hello World en!!!"
 
 msgid "hello_world_only_en"
 msgstr "Hello World only en!!!"
+
+msgid "pl_chars_pl"
+msgstr "A C E L N O S X Z"
