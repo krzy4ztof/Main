@@ -10,24 +10,25 @@
 // macro below.
 //---------------------------------------------------------------------------------------------------------------------
 namespace base_game {
-	class MemoryUsageObject {
-		public:
-			MemoryUsageObject();
-			virtual ~MemoryUsageObject();
+class MemoryUsageObject {
+public:
+	MemoryUsageObject();
+	virtual ~MemoryUsageObject();
 
-			static MemoryPool* s_pMemoryPool;
-			static void initMemoryPool(unsigned int numChunks = 0, const char* debugName = 0);
-			static void destroyMemoryPool(void);
-			static void* operator new(size_t size);
-			static void operator delete(void* pPtr);
-			static void* operator new[](size_t size);
-			static void operator delete[](void* pPtr);
+	static MemoryPool* s_pMemoryPool;
+	static void initMemoryPool(unsigned int numChunks = 0,
+			const char* debugName = 0);
+	static void destroyMemoryPool(void);
+	static void* operator new(size_t size);
+	static void operator delete(void* pPtr);
+	static void* operator new[](size_t size);
+	static void operator delete[](void* pPtr);
 
-		protected:
+protected:
 
-		private:
+private:
 
-	};
+};
 
 }
 #endif // MEMORYUSAGEOBJECT_H

@@ -21,7 +21,6 @@ public:
 	std::string getEncoding();
 	std::string getCode();
 
-
 	void describeYourself();
 
 private:

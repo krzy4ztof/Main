@@ -12,18 +12,17 @@
 #include "../userInterface/IGameView.h"
 #include "../userInterface/HumanView.h"
 /*
-#include "../userInterface/Temp01View.h"
-#include "../userInterface/TempTriangle02View.h"
-#include "../userInterface/Temp03gilView.h"
-#include "../userInterface/Temp04shaderTriangleView.h"
-#include "../userInterface/Temp05View.h"
-#include "../userInterface/Temp06View.h"
-#include "../userInterface/Temp07cubesAnimationView.h"
+ #include "../userInterface/Temp01View.h"
+ #include "../userInterface/TempTriangle02View.h"
+ #include "../userInterface/Temp03gilView.h"
+ #include "../userInterface/Temp04shaderTriangleView.h"
+ #include "../userInterface/Temp05View.h"
+ #include "../userInterface/Temp06View.h"
+ #include "../userInterface/Temp07cubesAnimationView.h"
  */
 #include "../userInterface/TempT004figuresView.h"
 #include "../userInterface/TempT009jpegGilTextureView.h"
 #include "../userInterface/TempT00FpolishFontsView.h"
-
 
 #include "../resourceCache/ZipFile.h"
 
@@ -99,7 +98,6 @@ void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
 // zostaną zastąpione poprzez
 // 		(*viewIterator)->vDeactivate(); // zastapi tempIsActive
 
-
 	// This makes sure that all views have a non-zero view id.
 	int viewId = static_cast<int>(m_gameViews.size());
 
@@ -140,7 +138,6 @@ shared_ptr<Actor> BaseGameLogic::vCreateActor(const string& actorResource) {
 	//	actorFactory->createActor("player_character.xml");
 //	shared_ptr<Actor> pActor = actorFactory->createActor(actorResource, tree);
 	shared_ptr<Actor> pActor = actorFactory->createActor(actorResource);
-
 
 	if (pActor) {
 		pActor->describeYourself();
@@ -242,7 +239,6 @@ list<shared_ptr<IGameView> > BaseGameLogic::getViews() {
 	return m_gameViews;
 }
 
-
 void BaseGameLogic::tempAddViews() {
 
 	IGameView* gameView = new HumanView();
@@ -254,29 +250,29 @@ void BaseGameLogic::tempAddViews() {
 }
 
 /*
-void BaseGameLogic::tempAdd01View() {
-	// IGameView* gameView = new Temp01View();
-	IGameView* gameView = temp_01_view::getView();
-	tempAddView(gameView);
-}
+ void BaseGameLogic::tempAdd01View() {
+ // IGameView* gameView = new Temp01View();
+ IGameView* gameView = temp_01_view::getView();
+ tempAddView(gameView);
+ }
 
-void BaseGameLogic::tempAdd02View() {
-//	IGameView* gameView = new TempTriangle02View();
-	IGameView* gameView = temp_triangle_02_view::getView();
-	tempAddView(gameView);
-}
+ void BaseGameLogic::tempAdd02View() {
+ //	IGameView* gameView = new TempTriangle02View();
+ IGameView* gameView = temp_triangle_02_view::getView();
+ tempAddView(gameView);
+ }
 
-void BaseGameLogic::tempAdd03View() {
-//	IGameView* gameView = new Temp03gilView();
-	IGameView* gameView = temp_03_gil_view::getView();
-	tempAddView(gameView);
-}
+ void BaseGameLogic::tempAdd03View() {
+ //	IGameView* gameView = new Temp03gilView();
+ IGameView* gameView = temp_03_gil_view::getView();
+ tempAddView(gameView);
+ }
 
-void BaseGameLogic::tempAdd04View() {
-//	IGameView* gameView = new Temp03gilView();
-	IGameView* gameView = temp_04_shader_triangle_view::getView();
-	tempAddView(gameView);
-}
+ void BaseGameLogic::tempAdd04View() {
+ //	IGameView* gameView = new Temp03gilView();
+ IGameView* gameView = temp_04_shader_triangle_view::getView();
+ tempAddView(gameView);
+ }
  */
 
 void BaseGameLogic::tempSwitchView(int key) {
@@ -288,8 +284,6 @@ void BaseGameLogic::tempSwitchView(int key) {
 	// IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
 	// lub do
 	// void BaseGameLogic::vAddView(shared_ptr<IGameView> pView, unsigned int actorId) {
-
-
 
 	logger::info("BaseGameLogic switchView");
 
@@ -308,9 +302,9 @@ void BaseGameLogic::tempSwitchView(int key) {
 	}
 
 	/*
-	if (tempCurrentView != nullptr) {
-		tempCurrentView->vActivate();
-	}
+	 if (tempCurrentView != nullptr) {
+	 tempCurrentView->vActivate();
+	 }
 	 */
 }
 
@@ -349,7 +343,6 @@ IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
 		gameView = temp_t00f_polish_fonts_view::getView(reset);
 	}
 
-
 	tempAddView(gameView);
 
 	return gameView;
@@ -360,23 +353,23 @@ void BaseGameLogic::tempAddView(int number) {
 	IGameView* gameView = nullptr;
 
 	/*
-	if (number == 1) {
-		gameView = temp_01_view::getView();
-	} else if (number == 2) {
-		gameView = temp_triangle_02_view::getView();
-	} else if (number == 3) {
-		gameView = temp_03_gil_view::getView();
-	} else if (number == 4) {
-		gameView = temp_04_shader_triangle_view::getView();
-	} else if (number == 5) {
-		gameView = temp_05_view::getView();
-	} else if (number == 6) {
-		gameView = temp_06_view::getView();
-	} else if (number == 7) {
-		gameView = temp_07_cubes_animation_view::getView();
-	}
+	 if (number == 1) {
+	 gameView = temp_01_view::getView();
+	 } else if (number == 2) {
+	 gameView = temp_triangle_02_view::getView();
+	 } else if (number == 3) {
+	 gameView = temp_03_gil_view::getView();
+	 } else if (number == 4) {
+	 gameView = temp_04_shader_triangle_view::getView();
+	 } else if (number == 5) {
+	 gameView = temp_05_view::getView();
+	 } else if (number == 6) {
+	 gameView = temp_06_view::getView();
+	 } else if (number == 7) {
+	 gameView = temp_07_cubes_animation_view::getView();
+	 }
 	 */
-	
+
 	tempAddView(gameView);
 }
 
@@ -400,6 +393,5 @@ void BaseGameLogic::tempTestActors() {
 void BaseGameLogic::describeYourself() {
 	logger::info("BaseGameLogic describeYourself");
 }
-
 
 }

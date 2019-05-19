@@ -3,20 +3,20 @@
 #include <random> // mt19937, uniform_int_distribution
 
 namespace base_game {
-	class RandomGenerator {
-		public:
-			RandomGenerator(int min, int max, int seed);
-			RandomGenerator(int min, int max);
-			virtual ~RandomGenerator();
-			void setSeed(int n);
+class RandomGenerator {
+public:
+	RandomGenerator(int min, int max, int seed);
+	RandomGenerator(int min, int max);
+	virtual ~RandomGenerator();
+	void setSeed(int n);
 
-			int random();
+	int random();
 
-		protected:
+protected:
 
-		private:
-			std::mt19937 generator;
-			std::uniform_int_distribution<int> distribution;
-	};
+private:
+	std::mt19937 generator;
+	std::uniform_int_distribution<int> distribution;
+};
 }
 #endif // RANDOMGENERATOR_H

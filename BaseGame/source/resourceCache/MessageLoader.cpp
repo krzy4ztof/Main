@@ -46,10 +46,10 @@ uintmax_t MessageLoader::vGetLoadedResourceSize(char *rawBuffer,
 }
 
 /*
-bool MessageLoader::vAddNullZero() {
-	//TODO: scriptLoader will return true
-	return true;
-}
+ bool MessageLoader::vAddNullZero() {
+ //TODO: scriptLoader will return true
+ return true;
+ }
  */
 
 bool MessageLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
@@ -65,8 +65,6 @@ bool MessageLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 
 	return true;
 }
-
-
 
 namespace message_loader {
 shared_ptr<IResourceLoader> createMessageLoader() {

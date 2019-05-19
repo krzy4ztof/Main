@@ -7,24 +7,22 @@
 #include <boost/property_tree/ptree.hpp> // ptree
 
 namespace base_game {
-	class ComponentFactory {
-		public:
-			ComponentFactory();
-			virtual ~ComponentFactory();
-			void registerComponent(std::string name, ActorComponent* (*factoryFunction)(void));
-			//ActorComponent create(std::string name);
-			std::shared_ptr<ActorComponent> create(const boost::property_tree::ptree::value_type& componentValueType);
+class ComponentFactory {
+public:
+	ComponentFactory();
+	virtual ~ComponentFactory();
+	void registerComponent(std::string name,
+			ActorComponent* (*factoryFunction)(void));
+	//ActorComponent create(std::string name);
+	std::shared_ptr<ActorComponent> create(
+			const boost::property_tree::ptree::value_type& componentValueType);
 
+protected:
 
-
-
-
-		protected:
-
-		private:
-			//std::map<std::string,std::string> creationFunctions;
-			std::map<std::string,ActorComponent* (*)(void)> creationFunctions;
-	};
+private:
+	//std::map<std::string,std::string> creationFunctions;
+	std::map<std::string, ActorComponent* (*)(void)> creationFunctions;
+};
 
 }
 #endif // COMPONENTFACTORY_H

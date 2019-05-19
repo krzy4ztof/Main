@@ -34,142 +34,142 @@ IKeyboardHandler::~IKeyboardHandler() {
 namespace keyboard_handler {
 
 /*
-void onKeyboardFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ void onKeyboardFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	ss << "KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
-//	logger::info(ss);
+ ss << "KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
+ //	logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		ss << "g_pApp initialized ";
-		logger::info(ss);
+ if (g_pApp != nullptr) {
+ ss << "g_pApp initialized ";
+ logger::info(ss);
 
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
 
-		baseGame->describeYourself();
-
-
-		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
-//		ss << "Views size: " << gameViews.size();
-//		logger::info(ss);
-
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
-
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-
-			shared_ptr<IGameView> currentView = *viewsIterator;
-			currentView->describeYourself();
-			bool funcResult = currentView->vOnKeyboardFunc(key, x, y);
-
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
-
-		}
+ baseGame->describeYourself();
 
 
-	}
+ list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ //		ss << "Views size: " << gameViews.size();
+ //		logger::info(ss);
 
-}
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-void onKeyboardFunc_111(unsigned char key, int x, int y) {
-	stringstream ss;
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
 
-	ss << "KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
-	logger::info(ss);
+ shared_ptr<IGameView> currentView = *viewsIterator;
+ currentView->describeYourself();
+ bool funcResult = currentView->vOnKeyboardFunc(key, x, y);
 
-	if (g_pApp != nullptr) {
-		ss << "g_pApp initialized ";
-		logger::info(ss);
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		// baseGame->describeYourself();
+ }
 
-		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		ss << "Views size: " << gameViews.size();
-		logger::info(ss);
 
-		list<shared_ptr<IGameView> >::iterator viewsIterator;
+ }
 
-		for (viewsIterator = gameViews.begin();
-				viewsIterator != gameViews.end(); ++viewsIterator) {
+ }
 
-			shared_ptr<IGameView> currentView = *viewsIterator;
-			currentView->describeYourself();
-		}
+ void onKeyboardFunc_111(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	}
+ ss << "KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
+ logger::info(ss);
 
-}
+ if (g_pApp != nullptr) {
+ ss << "g_pApp initialized ";
+ logger::info(ss);
 
-void onKeyboardUpFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ // baseGame->describeYourself();
 
-	ss << "KEYBOARD-UP: key:" << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ ss << "Views size: " << gameViews.size();
+ logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ list<shared_ptr<IGameView> >::iterator viewsIterator;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnKeyboardUpFunc(key, x, y);
+ for (viewsIterator = gameViews.begin();
+ viewsIterator != gameViews.end(); ++viewsIterator) {
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ shared_ptr<IGameView> currentView = *viewsIterator;
+ currentView->describeYourself();
+ }
 
-		}
+ }
 
-	}
-}
+ }
 
-void onSpecialFunc(int key, int x, int y) {
-	stringstream ss;
+ void onKeyboardUpFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	ss << "SPECIAL: key:" << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ ss << "KEYBOARD-UP: key:" << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnSpecialFunc(key, x, y);
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnKeyboardUpFunc(key, x, y);
 
-		}
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-	}
-}
+ }
 
-void onSpecialUpFunc(int key, int x, int y) {
-	stringstream ss;
+ }
+ }
 
-	ss << "SPECIAL-UP: " << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ void onSpecialFunc(int key, int x, int y) {
+ stringstream ss;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnSpecialUpFunc(key, x, y);
+ ss << "SPECIAL: key:" << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
-		}
-	}
-}
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnSpecialFunc(key, x, y);
+
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
+
+ }
+
+ }
+ }
+
+ void onSpecialUpFunc(int key, int x, int y) {
+ stringstream ss;
+
+ ss << "SPECIAL-UP: " << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnSpecialUpFunc(key, x, y);
+
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
+ }
+ }
+ }
  */
 
 void onKeyCallback(GLFWwindow* window, int key, int scancode, int action,
@@ -244,7 +244,6 @@ void onCharmodsCallback(GLFWwindow* window, unsigned int codepoint, int mods) {
 		}
 	}
 }
-
 
 }
 

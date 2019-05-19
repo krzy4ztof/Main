@@ -4,17 +4,17 @@
 #include <string> //string
 
 namespace base_game {
-	class Resource {
-		public:
-			Resource(const std::string &name);
-			virtual ~Resource();
+class Resource {
+public:
+	Resource(const std::string &name);
+	virtual ~Resource();
 	const std::string getName() const;
 
-		protected:
+protected:
 
-		private:
-			std::string name;
-	};
+private:
+	std::string name;
+};
 }
 
 #endif // RESOURCE_H

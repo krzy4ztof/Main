@@ -17,7 +17,6 @@ TZipDirHeader::~TZipDirHeader() {
 	logger::info("Destroy TZipDirHeader");
 }
 
-
 void TZipDirHeader::testInitiation() {
 	//unsigned long (4)
 	sig = TZipDirHeader::SIGNATURE;

@@ -42,7 +42,6 @@ using boost::uintmax_t;
 
 namespace base_game {
 
-
 DevelopmentResourceUnzipFile::DevelopmentResourceUnzipFile(
 		const string folderName, const string fileName) :
 		IResourceFile(folderName), m_resFileName(fileName) {
@@ -73,13 +72,13 @@ bool DevelopmentResourceUnzipFile::vOpen() {
 }
 
 /*
-void DevelopmentResourceUnzipFile::vTempReadResource(const Resource& resource) {
-	stringstream ss;
-	ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
-	//		<< resource.getName();
+ void DevelopmentResourceUnzipFile::vTempReadResource(const Resource& resource) {
+ stringstream ss;
+ ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
+ //		<< resource.getName();
 
-	logger::info(ss);
-}
+ logger::info(ss);
+ }
  */
 
 uintmax_t DevelopmentResourceUnzipFile::vGetRawResource(

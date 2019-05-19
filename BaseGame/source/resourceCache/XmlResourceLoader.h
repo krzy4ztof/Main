@@ -8,11 +8,10 @@
 #include <boost/cstdint.hpp> // boost::uintmax_t
 
 namespace base_game {
-	class XmlResourceLoader : public IResourceLoader {
-		public:
-			XmlResourceLoader();
-			virtual ~XmlResourceLoader();
-
+class XmlResourceLoader: public IResourceLoader {
+public:
+	XmlResourceLoader();
+	virtual ~XmlResourceLoader();
 
 	virtual bool vUseRawFile() {
 		return false;
@@ -21,7 +20,7 @@ namespace base_game {
 	virtual bool vDiscardRawBufferAfterLoad() {
 		return true;
 	}
-	
+
 	virtual boost::uintmax_t vGetLoadedResourceSize(char *rawBuffer,
 			boost::uintmax_t rawSize) {
 		return rawSize;
@@ -32,15 +31,13 @@ namespace base_game {
 
 	virtual std::string vGetPattern();
 
+protected:
 
-		protected:
+private:
+};
 
-		private:
-	};
-
-
-	namespace xml_resource_loader {
-		std::shared_ptr<IResourceLoader> createXmlResourceLoader();
-	}
+namespace xml_resource_loader {
+std::shared_ptr<IResourceLoader> createXmlResourceLoader();
+}
 }
 #endif // XMLRESOURCELOADER_H

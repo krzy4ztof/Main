@@ -6,17 +6,17 @@
 #include <string> // string
 
 namespace base_game {
-	class TempTestProcess : public Process {
-		public:
-			TempTestProcess(std::string action);
-			virtual ~TempTestProcess();
+class TempTestProcess: public Process {
+public:
+	TempTestProcess(std::string action);
+	virtual ~TempTestProcess();
 
-		protected:
-			virtual void vOnUpdate(unsigned long deltaMs);
+protected:
+	virtual void vOnUpdate(unsigned long deltaMs);
 
-		private:
-			std::string action;
-	};
+private:
+	std::string action;
+};
 }
 
 #endif // TEMPTESTPROCESS_H

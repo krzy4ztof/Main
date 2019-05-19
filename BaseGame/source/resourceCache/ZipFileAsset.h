@@ -35,7 +35,6 @@ public:
 	std::string getFileName();
 	void setFileName(std::string name);
 
-
 	unsigned short getFileNameLength();
 	boost::uintmax_t getFileDataSize();
 	boost::uintmax_t getUnzipFileDataSize();
@@ -47,13 +46,11 @@ public:
 protected:
 	void debugSaveAsFile(std::vector<char> vecString);
 
-
 private:
 	TZipDirFileHeader *m_pZipDirFileHeader;
 	TZipLocalHeader *m_pZipLocalHeader;
 	char *m_pDirData;	// Raw data buffer.
 	std::string fileName;
-
 
 };
 

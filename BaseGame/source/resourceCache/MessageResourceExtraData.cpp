@@ -38,10 +38,8 @@ vector<char> MessageResourceExtraData::getData() {
 	return data;
 }
 
-
 string MessageResourceExtraData::vToString() {
 	return "MessageResourceExtraData";
 }
-
 
 } /* namespace base_game */

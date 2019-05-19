@@ -6,10 +6,10 @@
 
 namespace base_game {
 
-	namespace property_tree_utils {
-		const boost::property_tree::ptree& empty_ptree();
-		void print_tree(const boost::property_tree::ptree& propertyTree, int level);
-	}
+namespace property_tree_utils {
+const boost::property_tree::ptree& empty_ptree();
+void print_tree(const boost::property_tree::ptree& propertyTree, int level);
+}
 
 }
 #endif // PROPERTYTREEUTILS_H

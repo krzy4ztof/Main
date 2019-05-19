@@ -56,5 +56,4 @@ void TestGame::setResourceCache(shared_ptr<ResourceCache> resourceCache) {
 	this->shrdPtrResourceCache = resourceCache;
 }
 
-
 } /* namespace base_game_test */

@@ -73,7 +73,8 @@ GameMessages::~GameMessages() {
 
 }
 
-void GameMessages::initLanguages(string currentLanguageCode, string languageCodes) {
+void GameMessages::initLanguages(string currentLanguageCode,
+		string languageCodes) {
 	stringstream ss;
 	ss << "LAN: " << currentLanguageCode;
 	logger::info(ss);
@@ -123,7 +124,7 @@ shared_ptr<MessageParams> GameMessages::addLanguage(string code) {
 	if (codeVector.size() > 0) {
 		languageParam = codeVector.at(0);
 		ss << "PARAM[0]: " << languageParam;
-		logger::info (ss);
+		logger::info(ss);
 
 		if (codeVector.size() > 1) {
 			encodingParam = codeVector.at(1);
@@ -186,7 +187,7 @@ void GameMessages::switchCurrentLanguage(string code) {
 		this->currentLanguage = language;
 	} else {
 		ss << "Cannot find language with code: " << code;
-		logger::error (ss);
+		logger::error(ss);
 
 	}
 }
@@ -239,8 +240,7 @@ void GameMessages::temp_testMessagesGetText() {
 
 	stringstream ss;
 	for (char c : plChars) {
-		ss << std::dec << c << ":" << std::hex << (short) c << std::dec
-				<< "; ";
+		ss << std::dec << c << ":" << std::hex << (short) c << std::dec << "; ";
 	}
 
 	logger::info(ss);
@@ -257,8 +257,6 @@ void GameMessages::temp_testMessagesGetText() {
 	logger::info("-------------STOP PL------------------------");
 
 }
-
-
 
 namespace game_messages {
 
@@ -320,7 +318,6 @@ vector<char> messages_file_loader(string const &fileName,
 
 		ss << "resourceNameXXX: " << pResourceHandle.get()->getName();
 		logger::info(ss);
-
 
 		shared_ptr<IResourceExtraData> extraData =
 				pResourceHandle.get()->getExtraData();

@@ -36,7 +36,6 @@ using base_game::ResourceCache;
 
 using base_game::DevelopmentResourceUnzipFile;
 
-
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace game_messages = base_game::game_messages;
@@ -59,7 +58,6 @@ struct GameMessagesUnzipFileFixture {
 	TestGame* pTestGame;
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
-
 
 	GameMessagesUnzipFileFixture() {
 		logger::info("Create GameMessagesUnzipFileFixture");
@@ -92,7 +90,7 @@ struct GameMessagesUnzipFileFixture {
 
 		shrdPtrResourceCache->registerLoader(
 				message_loader::createMessageLoader());
-		
+
 		pTestGame->setResourceCache(shrdPtrResourceCache);
 
 		pGameMessages = new GameMessages(shrdPtrResourceCache,
@@ -103,7 +101,7 @@ struct GameMessagesUnzipFileFixture {
 
 		// END GameCodeApp::initInstance()
 
-}
+	}
 
 	~GameMessagesUnzipFileFixture() {
 		logger::info("Destroy GameMessagesUnzipFileFixture");
@@ -117,7 +115,7 @@ struct GameMessagesUnzipFileFixture {
 
 		templates::safe_delete<TestGame>(pTestGame);
 
-}
+	}
 };
 
 BOOST_FIXTURE_TEST_SUITE(GameMessagesUnzipFileSuite, GameMessagesUnzipFileFixture)

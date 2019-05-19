@@ -49,18 +49,15 @@ bool ScriptResourceLoader::vAddNullZero() {
 	//return false;
 }
 
-
 uintmax_t ScriptResourceLoader::vGetLoadedResourceSize(char *rawBuffer,
 		uintmax_t rawSize) {
 	// ?
 	return rawSize;
 }
 
-
 bool ScriptResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 		shared_ptr<ResourceHandle> handle) {
 	// ?
-
 
 	if (rawSize <= 0) {
 		return false;
@@ -75,20 +72,20 @@ bool ScriptResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 	 */
 
 	/*
-	shared_ptr<ScriptResourceExtraData> pExtraData = shared_ptr<
-			ScriptResourceExtraData>(new ScriptResourceExtraData());
+	 shared_ptr<ScriptResourceExtraData> pExtraData = shared_ptr<
+	 ScriptResourceExtraData>(new ScriptResourceExtraData());
 
-	pExtraData->init(rawBuffer, rawSize);
+	 pExtraData->init(rawBuffer, rawSize);
 
-	handle->setExtraData(pExtraData);
+	 handle->setExtraData(pExtraData);
 	 */
 	/*
-	shared_ptr < MessageResourceExtraData > pExtraData = shared_ptr
-			< MessageResourceExtraData > (new MessageResourceExtraData());
+	 shared_ptr < MessageResourceExtraData > pExtraData = shared_ptr
+	 < MessageResourceExtraData > (new MessageResourceExtraData());
 
-	pExtraData->init(rawBuffer, rawSize);
+	 pExtraData->init(rawBuffer, rawSize);
 
-	handle->setExtraData(pExtraData);
+	 handle->setExtraData(pExtraData);
 	 */
 	/*
 	 shared_ptr<XmlResourceExtraData> pExtraData = shared_ptr<

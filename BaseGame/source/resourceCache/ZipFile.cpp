@@ -133,7 +133,6 @@ void ZipFile::describeYourself() {
 	}
 }
 
-
 void ZipFile::reset() {
 	//TODO: FINAL CANDIDATE?
 	m_fileData.clear();
@@ -141,7 +140,6 @@ void ZipFile::reset() {
 	m_pZipDirHeader = nullptr;
 
 }
-
 
 bool ZipFile::isZipLocalHeaderCorrect(TZipLocalHeader* pZipLocalHeader) {
 	stringstream ss;
@@ -194,24 +192,20 @@ bool ZipFile::initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pAsset) {
 
 	// unizpFilename = this->getUnzipFilename(pZipFileAsset);
 	/*
-	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
-		unizpFilename = pZipFileAsset->getFileName();
-		ss << "VEC FILE NAME: " << unizpFilename;
-		logger::info(ss);
+	 if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
+	 unizpFilename = pZipFileAsset->getFileName();
+	 ss << "VEC FILE NAME: " << unizpFilename;
+	 logger::info(ss);
 
-	} else {
-		unizpFilename = this->zipToUnzip(pZipFileAsset->getFileName());
-		ss << "UNZIP FILE NAME: " << unizpFilename;
-		logger::info(ss);
+	 } else {
+	 unizpFilename = this->zipToUnzip(pZipFileAsset->getFileName());
+	 ss << "UNZIP FILE NAME: " << unizpFilename;
+	 logger::info(ss);
 
-	}
+	 }
 	 */
 
-
-
-
 	pAsset += pZipFileAsset->getFileNameLength();
-
 
 	pZipFileAsset->setDirData(pAsset);
 
@@ -223,10 +217,8 @@ bool ZipFile::initZipFileAsset(ZipFileAsset* pZipFileAsset, char* pAsset) {
 	this->m_zipContentsMap[unizpFilename] = pZipFileAsset;
 	//this->m_zipContentsMap[pZipFileAsset->getFileName()] = pZipFileAsset;
 
-
 	return true;
 }
-
 
 bool ZipFile::isZipFileHeaderCorrect(TZipDirFileHeader* pZipDirFileHeader,
 		int i) {
@@ -272,7 +264,6 @@ bool ZipFile::initDirFileHeaders(unsigned short nDirEntries) {
 		zipFileAsset->setZipDirFileHeader(
 				reinterpret_cast<TZipDirFileHeader*>(pDirFileHeaderData));
 
-
 		if (!isZipFileHeaderCorrect(zipFileAsset->getZipDirFileHeader(), i)) {
 			return false;
 		};
@@ -280,7 +271,6 @@ bool ZipFile::initDirFileHeaders(unsigned short nDirEntries) {
 		int offsetFile = sizeof(TZipLocalHeader)
 				+ zipFileAsset->getZipDirFileHeader()->fnameLen
 				+ zipFileAsset->getZipDirFileHeader()->cSize;
-
 
 		bool result = initZipFileAsset(zipFileAsset, pLocalHeaderData);
 
@@ -301,8 +291,6 @@ bool ZipFile::initDirFileHeaders(unsigned short nDirEntries) {
 	}
 	return true;
 }
-
-
 
 bool ZipFile::initZipDirHeader() {
 	stringstream ss;
@@ -339,7 +327,6 @@ bool ZipFile::init(const std::string& resFileName,
 	path filePath { resFileName };
 
 	boost::filesystem::ifstream assetFile(filePath, std::ios::binary);
-
 
 	if (assetFile.is_open()) {
 		ss << "OPEN OPEN OPEN " << filePath.string();
@@ -409,7 +396,6 @@ unsigned short ZipFile::getNumberOfEntries() {
 	return result;
 }
 
-
 void ZipFile::saveFileNameNoCompression(TZipLocalHeader& lh, ofstream& ofs,
 		ZipFileAsset* pZipFileAsset) {
 	const string fileName = pZipFileAsset->getFileName();
@@ -425,8 +411,7 @@ void ZipFile::saveFileNameNoCompression(TZipLocalHeader& lh, ofstream& ofs,
 	//file name
 	filtering_istreambuf filterFileName;
 
-	array_source source(fileName.c_str(),
-			pZipFileAsset->getFileNameLength());
+	array_source source(fileName.c_str(), pZipFileAsset->getFileNameLength());
 	filterFileName.push(source);
 
 	vector<char> vecFileName;
@@ -446,8 +431,7 @@ void ZipFile::saveFileNameCompression(TZipLocalHeader& lh, ofstream& ofs,
 	filtering_istreambuf filterFileName;
 	filterFileName.push(zlib_compressor());
 
-	array_source source(fileName.c_str(),
-			pZipFileAsset->getFileNameLength());
+	array_source source(fileName.c_str(), pZipFileAsset->getFileNameLength());
 	filterFileName.push(source);
 
 	vector<char> vecFileName;
@@ -463,8 +447,7 @@ void ZipFile::saveFileNameCompression(TZipLocalHeader& lh, ofstream& ofs,
 	lh.describeYourself();
 
 	//file name
-	ofs.write(reinterpret_cast<char *>(vecFileName.data()),
-			vecFileName.size());
+	ofs.write(reinterpret_cast<char *>(vecFileName.data()), vecFileName.size());
 }
 
 void ZipFile::saveFileNameDecompression(TZipLocalHeader& lh, ofstream& ofs,
@@ -476,8 +459,7 @@ void ZipFile::saveFileNameDecompression(TZipLocalHeader& lh, ofstream& ofs,
 	filtering_istreambuf filterFileName;
 	filterFileName.push(zlib_decompressor());
 
-	array_source source(fileName.c_str(),
-			pZipFileAsset->getFileNameLength());
+	array_source source(fileName.c_str(), pZipFileAsset->getFileNameLength());
 	filterFileName.push(source);
 
 	vector<char> vecFileName;
@@ -526,7 +508,6 @@ void ZipFile::saveAssetFileName(TZipLocalHeader& lh, ofstream& ofs,
 			logger::info(ss);
 			this->saveFileNameDecompression(lh, ofs, pZipFileAsset);
 
-
 		} else {
 			ss << "Saves compressed file name: " << fileName
 					<< " as compressed";
@@ -535,7 +516,6 @@ void ZipFile::saveAssetFileName(TZipLocalHeader& lh, ofstream& ofs,
 			this->saveFileNameNoCompression(lh, ofs, pZipFileAsset);
 		}
 	}
-
 
 }
 
@@ -619,30 +599,24 @@ bool ZipFile::saveAssetFileContents(ofstream& ofs, ZipFileAsset* pZipFileAsset,
 			this->saveAssetFileNoCompression(ofs, pZipFileAsset,
 					vecFileContents);
 
-
 		} else {
 			ss << "Saves not compressed file contents: "
 					<< pZipFileAsset->getFileName() << " as compressed";
 			logger::info(ss);
 			this->saveAssetFileCompression(ofs, pZipFileAsset, vecFileContents);
 
-
 		}
 	} else {
 		if (ZipFile::NOT_COMPRESSED == outputSaveMode) {
 			ss << "Saves compressed file contents: "
-					<< pZipFileAsset->getFileName()
-					<< " as not compressed";
+					<< pZipFileAsset->getFileName() << " as not compressed";
 			logger::info(ss);
 			this->saveAssetFileDecompression(ofs, pZipFileAsset,
 					vecFileContents);
 
-
-
 		} else {
 			ss << "Saves compressed file contents: "
-					<< pZipFileAsset->getFileName()
-					<< " as compressed";
+					<< pZipFileAsset->getFileName() << " as compressed";
 			logger::info(ss);
 
 			this->saveAssetFileNoCompression(ofs, pZipFileAsset,
@@ -927,21 +901,21 @@ void ZipFile::copyZipFile(path inPath, ZipFileAsset* pZipFileAsset) {
 	filter.push(zlib_decompressor());
 
 	/*
-	ss << "Length: " << pZipFileAsset->getFileDataSize();
-	logger::info(ss);
+	 ss << "Length: " << pZipFileAsset->getFileDataSize();
+	 logger::info(ss);
 
-	ss << "--------- START ZIP-FILE---------";
-	logger::info(ss);
+	 ss << "--------- START ZIP-FILE---------";
+	 logger::info(ss);
 
-	char* pDirData = pZipFileAsset->getDirData();
+	 char* pDirData = pZipFileAsset->getDirData();
 
-	for (int i = 0; i << pZipFileAsset->getFileDataSize(); i++) {
-		ss << *(pDirData + i);
-	}
-	logger::info(ss);
+	 for (int i = 0; i << pZipFileAsset->getFileDataSize(); i++) {
+	 ss << *(pDirData + i);
+	 }
+	 logger::info(ss);
 
-	ss << "---------  END ZIP-FILE  ---------";
-	logger::info(ss);
+	 ss << "---------  END ZIP-FILE  ---------";
+	 logger::info(ss);
 	 */
 
 	array_source source(pZipFileAsset->getDirData(),
@@ -982,20 +956,18 @@ void ZipFile::saveAsFolder(const string& outFolderName) {
 	createFilesAndFolders(outFolderName);
 }
 
-
-
 // --------------------------------------------------------------------------
 // Function:      ReadFile
 // Purpose:       Uncompress a complete file
 // Parameters:    The file index and the pre-allocated buffer
 // --------------------------------------------------------------------------
 /*
-bool ZipFile::readFile(int i, void *pBuf) {
-	// TODO: decompress file
-	// implememted as ZipFileAsset::readFile(*pBuf)
+ bool ZipFile::readFile(int i, void *pBuf) {
+ // TODO: decompress file
+ // implememted as ZipFileAsset::readFile(*pBuf)
 
-	return true;
-}
+ return true;
+ }
  */
 
 ZipFileAsset* ZipFile::find(const string &name) const {
@@ -1016,12 +988,12 @@ string ZipFile::getUnzipFilename(ZipFileAsset* pZipFileAsset) const {
 	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
 		unzipFilename = pZipFileAsset->getFileName();
 		ss << "VEC FILE NAME: " << unzipFilename;
-		logger::info (ss);
+		logger::info(ss);
 
 	} else {
 		unzipFilename = this->zipToUnzip(pZipFileAsset->getFileName());
 		ss << "UNZIP FILE NAME: " << unzipFilename;
-		logger::info (ss);
+		logger::info(ss);
 
 	}
 	return unzipFilename;
@@ -1041,33 +1013,32 @@ string ZipFile::getFilename(int i) const {
 	}
 
 	/*
-	for (int index = 1; index <= i; index++) {
-		++it;
+	 for (int index = 1; index <= i; index++) {
+	 ++it;
 	 }*/
 	ZipFileAsset* zipFileAsset = it->second;
 
 	fileName = getUnzipFilename(zipFileAsset);
 	/*
-	if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
-		fileName = zipFileAsset->getFileName();
-	} else {
-		fileName = this->zipToUnzip(zipFileAsset->getFileName());
-	}
+	 if (ZipFile::NOT_COMPRESSED == this->isCompressed) {
+	 fileName = zipFileAsset->getFileName();
+	 } else {
+	 fileName = this->zipToUnzip(zipFileAsset->getFileName());
+	 }
 	 */
 
 	return fileName;
 	/*
-	std::string fileName = "";
-	if (i >= 0 && i < m_nEntries) {
-		char pszDest[_MAX_PATH];
-		memcpy(pszDest, m_papDir[i]->GetName(), m_papDir[i]->fnameLen);
-		pszDest[m_papDir[i]->fnameLen] = '\0';
-		fileName = pszDest;
-	}
-	return fileName;
+	 std::string fileName = "";
+	 if (i >= 0 && i < m_nEntries) {
+	 char pszDest[_MAX_PATH];
+	 memcpy(pszDest, m_papDir[i]->GetName(), m_papDir[i]->fnameLen);
+	 pszDest[m_papDir[i]->fnameLen] = '\0';
+	 fileName = pszDest;
+	 }
+	 return fileName;
 	 */
 
 }
-
 
 }

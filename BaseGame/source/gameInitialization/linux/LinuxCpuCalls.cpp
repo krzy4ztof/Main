@@ -50,7 +50,7 @@ namespace base_game {
 
 	}
 
-	using linux_cpu_calls::findSpeedPtr ;
+	using linux_cpu_calls::findSpeedPtr;
 
 	unsigned long LinuxCpuCalls::readCPUSpeed() {
 		string line;
@@ -69,7 +69,7 @@ namespace base_game {
 					logger::trace(ss);
 
 					for ( size_t i = 0; i < matches.size(); ++i )
-						ss << "\tmatches[" << i << "]: " << matches[i];
+					ss << "\tmatches[" << i << "]: " << matches[i];
 					logger::trace(ss);
 
 					string_utils::splitString ( internal, line, ':' );
@@ -119,16 +119,9 @@ namespace base_game {
 			minDouble = *doubleMinPtr;
 		}
 
-
-
-
-
 		ss << "minDouble: " << minDouble;
 		logger::trace(ss);
 		logger::trace("* 5 ");
-
-
-
 
 		vector<double>::iterator doubleIterPtr;
 		double avgSpeed = 0;
@@ -138,20 +131,14 @@ namespace base_game {
 			ss << "avgSpeed: " << avgSpeed << "; curSpeed: " << *doubleIterPtr;
 			logger::trace(ss);
 
-
 			avgSpeed += *doubleIterPtr;
 
 		}
 
-
-
 		avgSpeed = avgSpeed / doubleVectorPtr->size();
-
 
 		ss << "avgSpeed: " << avgSpeed << "; size: " << doubleVectorPtr->size();;
 		logger::trace(ss);
-
-
 
 		if ( doubleVectorPtr ) {
 			logger::trace("delete doubleVectorPtr");
@@ -161,7 +148,6 @@ namespace base_game {
 
 		ss << "del minDouble: " << minDouble;
 		logger::trace(ss);
-
 
 		unsigned long minUnsLong = static_cast <unsigned long> (minDouble);
 

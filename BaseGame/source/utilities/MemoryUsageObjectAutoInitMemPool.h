@@ -8,14 +8,14 @@
 //---------------------------------------------------------------------------------------------------------------------
 
 namespace base_game {
-	class MemoryUsageObjectAutoInitMemPool {
-		public:
-			MemoryUsageObjectAutoInitMemPool();
-			virtual ~MemoryUsageObjectAutoInitMemPool();
+class MemoryUsageObjectAutoInitMemPool {
+public:
+	MemoryUsageObjectAutoInitMemPool();
+	virtual ~MemoryUsageObjectAutoInitMemPool();
 
-		protected:
+protected:
 
-		private:
-	};
+private:
+};
 }
 #endif // MEMORYUSAGEOBJECTAUTOINITMEMPOOL_H

@@ -44,111 +44,110 @@ using boost::algorithm::is_any_of;
 //using boost::algorithm::to_lower;
 
 namespace base_game {
-LinuxProcessCalls::LinuxProcessCalls() {
-	logger::trace("Create LinuxProcessCalls");
-}
+	LinuxProcessCalls::LinuxProcessCalls() {
+		logger::trace("Create LinuxProcessCalls");
+	}
 
-LinuxProcessCalls::~LinuxProcessCalls() {
-	logger::trace("Destroy LinuxProcessCalls");
-}
+	LinuxProcessCalls::~LinuxProcessCalls() {
+		logger::trace("Destroy LinuxProcessCalls");
+	}
 
 //TODO: When running from CodeBlocks isOnlyInstance recognizes nautilus sessions. When Nautilus is opened on ..\Watermill folder, it is treated as application instance
-bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
-	stringstream ss;
-	logger::trace("tutaj");
+	bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
+		stringstream ss;
+		logger::trace("tutaj");
 
-	int howManyGames = 0;
-	path procPath { "/proc/" };
+		int howManyGames = 0;
+		path procPath {"/proc/"};
 
-	try {
-		//file_status fileStatus = status(procPath);
+		try {
+			//file_status fileStatus = status(procPath);
 
-		if (exists(procPath) && is_directory(procPath)) {
-		} else {
+			if (exists(procPath) && is_directory(procPath)) {
+			} else {
 
-			ss << "Couldn't open the " + procPath.string() + " directory";
+				ss << "Couldn't open the " + procPath.string() + " directory";
 
+				logger::error(ss);
+				return false;
+			}
+
+			directory_iterator dirIterator {procPath};
+			while (dirIterator != directory_iterator {}) {
+				directory_entry dirEntry = *dirIterator;
+
+				string lastDir = dirEntry.path().filename().string();
+
+				if (string_utils::isStringNumeric(lastDir)) {
+					path cmdPath = dirEntry.path() / path("cmdline");
+
+					if (exists(cmdPath) && is_regular_file(cmdPath)) {
+
+						ifstream cmdFile;
+
+						cmdFile.open(cmdPath, std::ios::in);
+						string strCmdline;
+
+						if (cmdFile) {
+
+							while (getline(cmdFile, strCmdline)) {
+
+								vector<string> vectorCmd;
+								split(vectorCmd, strCmdline, is_any_of("/"));
+
+								if (!vectorCmd.empty()) {
+									string lastVectorElement;
+
+									lastVectorElement = vectorCmd[vectorCmd.size()
+									- 1];
+
+									if (string_utils::doesStringContainsIgnoreCase(
+													lastVectorElement, gameTitle)) {
+
+										ss << "podobny proces: " + strCmdline;
+										logger::info(ss);
+
+										ss << cmdPath;
+										logger::info(ss);
+
+										howManyGames++;
+
+									}
+								}
+
+							}
+						}
+
+					}
+				}
+
+				dirIterator++;
+			}
+
+		} catch (filesystem_error &error) {
+
+			ss << "Error: " << error.what();
 			logger::error(ss);
+		}
+
+		ss << "tutaj howManyGames: " << howManyGames;
+		logger::info(ss);
+
+		if (howManyGames >= 2) {
+			logger::info("tutaj howManyGames false");
+
+			// First process is this process
+			// Second process is second game process
 			return false;
 		}
 
-		directory_iterator dirIterator { procPath };
-		while (dirIterator != directory_iterator { }) {
-			directory_entry dirEntry = *dirIterator;
+		else {
+			logger::info("tutaj howManyGames true");
 
-			string lastDir = dirEntry.path().filename().string();
-
-			if (string_utils::isStringNumeric(lastDir)) {
-				path cmdPath = dirEntry.path() / path("cmdline");
-
-				if (exists(cmdPath) && is_regular_file(cmdPath)) {
-
-					ifstream cmdFile;
-
-					cmdFile.open(cmdPath, std::ios::in);
-					string strCmdline;
-
-					if (cmdFile) {
-
-						while (getline(cmdFile, strCmdline)) {
-
-							vector<string> vectorCmd;
-							split(vectorCmd, strCmdline, is_any_of("/"));
-
-							if (!vectorCmd.empty()) {
-								string lastVectorElement;
-
-								lastVectorElement = vectorCmd[vectorCmd.size()
-										- 1];
-
-								if (string_utils::doesStringContainsIgnoreCase(
-										lastVectorElement, gameTitle)) {
-
-									ss << "podobny proces: " + strCmdline;
-									logger::info(ss);
-
-									ss << cmdPath;
-									logger::info(ss);
-
-
-									howManyGames++;
-
-								}
-							}
-
-						}
-					}
-
-				}
-			}
-
-			dirIterator++;
+			return true;
 		}
 
-	} catch (filesystem_error &error) {
-
-		ss << "Error: " << error.what();
-		logger::error(ss);
 	}
-
-	ss << "tutaj howManyGames: " << howManyGames;
-	logger::info(ss);
-
-	if (howManyGames >= 2) {
-		logger::info("tutaj howManyGames false");
-
-		// First process is this process
-		// Second process is second game process
-		return false;
-	}
-
-	else {
-		logger::info("tutaj howManyGames true");
-
-		return true;
-	}
-
-}
 }
 
 #endif /* __linux__ */

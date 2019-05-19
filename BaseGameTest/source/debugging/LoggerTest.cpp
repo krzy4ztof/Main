@@ -22,7 +22,7 @@ struct LoggerFixture {
 	LoggerFixture() {
 		logger::info("Create LoggerFixture");
 
-}
+	}
 
 	~LoggerFixture() {
 		logger::info("Destroy LoggerFixture");

@@ -43,13 +43,13 @@ void HumanView::vOnRender(double fTime, float fElapsedTime) {
 	//logger::info("vOnRender HumanView");
 
 	/*
-	bool glfw = true;
+	 bool glfw = true;
 
-	if (glfw) {
-		tempOnRenderGLFW(fTime, fElapsedTime);
-	} else {
-		//	tempOnRender(fTime, fElapsedTime);
-	}
+	 if (glfw) {
+	 tempOnRenderGLFW(fTime, fElapsedTime);
+	 } else {
+	 //	tempOnRender(fTime, fElapsedTime);
+	 }
 	 */
 }
 
@@ -58,151 +58,151 @@ void HumanView::describeYourself() {
 }
 
 /*
-bool HumanView::vOnKeyboardFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ bool HumanView::vOnKeyboardFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	ss << "HUMAN-VIEW KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ ss << "HUMAN-VIEW KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
 
-	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnKeyboardFunc(key, x, y);
-		return true;
-	} else {
-		return false;
-	}
+ if (m_KeyboardHandler) {
+ m_KeyboardHandler->vOnKeyboardFunc(key, x, y);
+ return true;
+ } else {
+ return false;
+ }
 
-	// return true; // stops further processing of vOnKeyboardFunc
+ // return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-}
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ }
 
-bool HumanView::vOnKeyboardUpFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ bool HumanView::vOnKeyboardUpFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	ss << "HUMAN-VIEW KEYBOARD-UP: key:" << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ ss << "HUMAN-VIEW KEYBOARD-UP: key:" << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnKeyboardUpFunc(key, x, y);
-		return true;
-	} else {
-		return false;
-	}
+ if (m_KeyboardHandler) {
+ m_KeyboardHandler->vOnKeyboardUpFunc(key, x, y);
+ return true;
+ } else {
+ return false;
+ }
 
-	// return true; // stops further processing of vOnKeyboardFunc
+ // return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
 
-bool HumanView::vOnSpecialFunc(int key, int x, int y) {
-	stringstream ss;
+ bool HumanView::vOnSpecialFunc(int key, int x, int y) {
+ stringstream ss;
 
-	ss << "HUMAN-VIEW SPECIAL: key:" << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ ss << "HUMAN-VIEW SPECIAL: key:" << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnSpecialFunc(key, x, y);
-		return true;
-	} else {
-		return false;
-	}
+ if (m_KeyboardHandler) {
+ m_KeyboardHandler->vOnSpecialFunc(key, x, y);
+ return true;
+ } else {
+ return false;
+ }
 
-	// return true; // stops further processing of vOnKeyboardFunc
+ // return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-}
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ }
 
-bool HumanView::vOnSpecialUpFunc(int key, int x, int y) {
-	stringstream ss;
+ bool HumanView::vOnSpecialUpFunc(int key, int x, int y) {
+ stringstream ss;
 
-	ss << "HUMAN-VIEW SPECIAL-UP: " << key << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ ss << "HUMAN-VIEW SPECIAL-UP: " << key << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnSpecialUpFunc(key, x, y);
-		return true;
-	} else {
-		return false;
-	}
-	// return true; // stops further processing of vOnKeyboardFunc
+ if (m_KeyboardHandler) {
+ m_KeyboardHandler->vOnSpecialUpFunc(key, x, y);
+ return true;
+ } else {
+ return false;
+ }
+ // return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
  */
 
 /*
-bool HumanView::vOnMouseFunc(int button, int state, int x, int y) {
-	stringstream ss;
-	ss << "HUMAN-VIEW MOUSE: button:" << button << "; state: " << state
-			<< "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ bool HumanView::vOnMouseFunc(int button, int state, int x, int y) {
+ stringstream ss;
+ ss << "HUMAN-VIEW MOUSE: button:" << button << "; state: " << state
+ << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_PointerHandler) {
-		m_PointerHandler->vOnMouseFunc(button, state, x, y);
-		return true;
-	} else {
-		return false;
-	}
-	// return true; // stops further processing of vOnKeyboardFunc
+ if (m_PointerHandler) {
+ m_PointerHandler->vOnMouseFunc(button, state, x, y);
+ return true;
+ } else {
+ return false;
+ }
+ // return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
 
-bool HumanView::vOnMotionFunc(int x, int y) {
-	stringstream ss;
-	ss << "HUMAN-VIEW MOTION: x:" << x << "; y: " << y;
-	//logger::info(ss);
+ bool HumanView::vOnMotionFunc(int x, int y) {
+ stringstream ss;
+ ss << "HUMAN-VIEW MOTION: x:" << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_PointerHandler) {
-		m_PointerHandler->vOnMotionFunc(x, y);
-		return true;
-	} else {
-		return false;
-	}
-	//return true; // stops further processing of vOnKeyboardFunc
+ if (m_PointerHandler) {
+ m_PointerHandler->vOnMotionFunc(x, y);
+ return true;
+ } else {
+ return false;
+ }
+ //return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
 
-bool HumanView::vOnPassiveMotionFunc(int x, int y) {
-	stringstream ss;
-	ss << "HUMAN-VIEW PASSIVE-MOTION: x:" << x << "; y: " << y;
-	//logger::info(ss);
+ bool HumanView::vOnPassiveMotionFunc(int x, int y) {
+ stringstream ss;
+ ss << "HUMAN-VIEW PASSIVE-MOTION: x:" << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_PointerHandler) {
-		m_PointerHandler->vOnPassiveMotionFunc(x, y);
-		return true;
-	} else {
-		return false;
-	}
-	//return true; // stops further processing of vOnKeyboardFunc
+ if (m_PointerHandler) {
+ m_PointerHandler->vOnPassiveMotionFunc(x, y);
+ return true;
+ } else {
+ return false;
+ }
+ //return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
 
-bool HumanView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
-	stringstream ss;
-	ss << "HUMAN-VIEW MOUSE: wheel:" << wheel << "; direction: " << direction
-			<< "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ bool HumanView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
+ stringstream ss;
+ ss << "HUMAN-VIEW MOUSE: wheel:" << wheel << "; direction: " << direction
+ << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (m_PointerHandler) {
-		m_PointerHandler->vOnMouseWheelFunc(wheel, direction, x, y);
-		return true;
-	} else {
-		return false;
-	}
-	//return true; // stops further processing of vOnKeyboardFunc
+ if (m_PointerHandler) {
+ m_PointerHandler->vOnMouseWheelFunc(wheel, direction, x, y);
+ return true;
+ } else {
+ return false;
+ }
+ //return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-}
+ }
  */
 
 bool HumanView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
@@ -239,7 +239,7 @@ bool HumanView::vOnCharmodsCallback(GLFWwindow* window, unsigned int codepoint,
 	ss << "HumanView::onCharmodsCallback: codepoint: " << codepoint
 			<< "; mods: " << mods;
 	//logger::info(ss);
-	
+
 	if (m_KeyboardHandler) {
 		m_KeyboardHandler->vOnCharmodsCallback(window, codepoint, mods);
 		return true;
@@ -306,76 +306,75 @@ bool HumanView::vOnScrollCallback(GLFWwindow* window, double xoffset,
 	}
 }
 
-
 /*
-void HumanView::tempOnRender(double fTime, float fElapsedTime) {
+ void HumanView::tempOnRender(double fTime, float fElapsedTime) {
 
-	//	stringstream ss;
-	//float angle = 0.0f;
+ //	stringstream ss;
+ //float angle = 0.0f;
 
-	// Clear Color and Depth Buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//glColor3f(1.0f, 0.0f, 0.0f); // Red
-	glColor3f(0.0f, 1.0f, 1.0f); //blue
+ // Clear Color and Depth Buffers
+ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ //glColor3f(1.0f, 0.0f, 0.0f); // Red
+ glColor3f(0.0f, 1.0f, 1.0f); //blue
 
-	// Reset transformations
-	glLoadIdentity();
-	// Set the camera
+ // Reset transformations
+ glLoadIdentity();
+ // Set the camera
 
-#ifdef __linux__
-	// TODO: not working on Windows
+ #ifdef __linux__
+ // TODO: not working on Windows
 
-	gluLookAt( 0.0f, 0.0f, 10.0f,
-			0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f);
+ gluLookAt( 0.0f, 0.0f, 10.0f,
+ 0.0f, 0.0f, 0.0f,
+ 0.0f, 1.0f, 0.0f);
 
  #endif //
-	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
+ glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
-	glBegin (GL_TRIANGLES);
-	glVertex3f(-2.0f, -2.0f, 0.0f);
-	glVertex3f(2.0f, 0.0f, 0.0);
-	glVertex3f(0.0f, 2.0f, 0.0);
-	glEnd();
+ glBegin (GL_TRIANGLES);
+ glVertex3f(-2.0f, -2.0f, 0.0f);
+ glVertex3f(2.0f, 0.0f, 0.0);
+ glVertex3f(0.0f, 2.0f, 0.0);
+ glEnd();
 
-	//if (angle < 3.0f){
-	tempAngle += 0.1f;
-	//}
-	glutSwapBuffers();
+ //if (angle < 3.0f){
+ tempAngle += 0.1f;
+ //}
+ glutSwapBuffers();
 
-}
+ }
  */
 
 /*
-void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
+ void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
 
-	//	stringstream ss;
-	//float angle = 0.0f;
+ //	stringstream ss;
+ //float angle = 0.0f;
 
-	// Clear Color and Depth Buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//glColor3f(1.0f, 0.0f, 0.0f); // Red
-	glColor3f(0.0f, 1.0f, 1.0f); //blue
+ // Clear Color and Depth Buffers
+ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ //glColor3f(1.0f, 0.0f, 0.0f); // Red
+ glColor3f(0.0f, 1.0f, 1.0f); //blue
 
-	// Reset transformations
-	glLoadIdentity();
-	// Set the camera
+ // Reset transformations
+ glLoadIdentity();
+ // Set the camera
 
-	glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
+ glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
 
-	glBegin(GL_TRIANGLES);
-	glVertex3f(-2.0f, -2.0f, 0.0f);
-	glVertex3f(2.0f, 0.0f, 0.0);
-	glVertex3f(0.0f, 2.0f, 0.0);
-	glEnd();
+ glBegin(GL_TRIANGLES);
+ glVertex3f(-2.0f, -2.0f, 0.0f);
+ glVertex3f(2.0f, 0.0f, 0.0);
+ glVertex3f(0.0f, 2.0f, 0.0);
+ glEnd();
 
 
-	//if (angle < 3.0f){
-	tempAngle += 0.1f;
-	//}
-	//glutSwapBuffers();
+ //if (angle < 3.0f){
+ tempAngle += 0.1f;
+ //}
+ //glutSwapBuffers();
 
-}
+ }
  */
 
 void HumanView::tempVLoadGameDelegate() {

@@ -30,5 +30,4 @@ void TestGameLogic::describeYourself() {
 	logger::info("TestGameLogic describeYourself");
 }
 
-
 } /* namespace base_game_test */

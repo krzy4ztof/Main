@@ -22,7 +22,6 @@ using boost::algorithm::to_lower;
 //using boost::algorithm::to_lower_copy;
 using boost::algorithm::contains;
 
-
 namespace base_game {
 namespace string_utils {
 
@@ -134,18 +133,14 @@ bool doesStringContainsIgnoreCase(const string& inputString,
 	//string lowerInputString = to_lower_copy(lowerInputString);
 	//string lowerEndingString = to_lower_copy(endingString);
 
-
 	ss
 			<< "doesString #" + lowerInputString + "# ends with #"
 					+ lowerEndingString + "#";
 	logger::trace(ss);
 
-
-	bool result = contains(lowerInputString,
-			lowerEndingString);
+	bool result = contains(lowerInputString, lowerEndingString);
 
 	return result;
-
 
 }
 }

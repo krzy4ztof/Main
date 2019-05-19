@@ -82,7 +82,7 @@ namespace base_game {
 		}
 	}
 
-	using cygwin64_cpu_calls::findSpeedPtr ;
+	using cygwin64_cpu_calls::findSpeedPtr;
 	using cygwin64_cpu_calls::findSpeedRefError;
 	using cygwin64_cpu_calls::findSpeedMove;
 
@@ -103,7 +103,7 @@ namespace base_game {
 					logger::trace(ss);
 
 					for ( size_t i = 0; i < matches.size(); ++i )
-						ss << "\tmatches[" << i << "]: " << matches[i];
+					ss << "\tmatches[" << i << "]: " << matches[i];
 					logger::trace(ss);
 
 					string_utils::splitString ( internal, line, ':' );

@@ -24,24 +24,25 @@
 
 namespace base_game {
 
-	class Windows64Calls : public Windows32Calls {
-		public:
-			Windows64Calls();
-			Windows64Calls(const Windows64Calls& orig);
-			virtual ~Windows64Calls();
-			//bool isOnlyInstance(TCHAR *);
-			bool isOnlyInstance(const std::string&);
-			DWORD readCPUSpeed();
-			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
+class Windows64Calls: public Windows32Calls {
+public:
+	Windows64Calls();
+	Windows64Calls(const Windows64Calls& orig);
+	virtual ~Windows64Calls();
+	//bool isOnlyInstance(TCHAR *);
+	bool isOnlyInstance(const std::string&);
+	DWORD readCPUSpeed();
+	bool checkMemory(const DWORDLONG physicalRAMNeeded,
+			const DWORDLONG virtualRAMNeeded);
 
-			std::string getUserProfilePath();
+	std::string getUserProfilePath();
 
-		private:
-	};
+private:
+};
 
-	namespace windows64calls {
-		std::string tcharToString(TCHAR *);
-	}
+namespace windows64calls {
+std::string tcharToString(TCHAR *);
+}
 }
 #endif /* __WIN64 */
 

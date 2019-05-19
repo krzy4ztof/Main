@@ -81,8 +81,6 @@ protected:
 
 	boost::optional<boost::filesystem::path> getPath(const Resource &resource);
 
-
-
 private:
 	std::string m_assetsFolder;
 

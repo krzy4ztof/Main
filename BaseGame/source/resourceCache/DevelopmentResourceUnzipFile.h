@@ -37,7 +37,6 @@ protected:
 	virtual bool vSaveUnzipMode(const std::string outputUnzipFileName);
 	virtual bool vSaveZipMode(const std::string outputZipFileName);
 
-
 private:
 	ZipFile *m_pZipFile;
 	std::string m_resFileName;

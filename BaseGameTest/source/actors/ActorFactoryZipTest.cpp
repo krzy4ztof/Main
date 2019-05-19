@@ -45,7 +45,6 @@ namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace xml_resource_loader = base_game::xml_resource_loader;
 
-
 //using base_game::templates::safe_delete;
 using base_game::ResourceZipFile;
 
@@ -62,16 +61,15 @@ namespace unit_test = boost::unit_test;
 
 //using base_game::ActorFactory;
 
-
 /*
-ActorFactoryTest::ActorFactoryTest() {
-	// TODO Auto-generated constructor stub
+ ActorFactoryTest::ActorFactoryTest() {
+ // TODO Auto-generated constructor stub
 
-}
+ }
 
-ActorFactoryTest::~ActorFactoryTest() {
-	// TODO Auto-generated destructor stub
-}
+ ActorFactoryTest::~ActorFactoryTest() {
+ // TODO Auto-generated destructor stub
+ }
 
  */
 
@@ -83,18 +81,14 @@ struct ActorFactoryZipFixture {
 	InitOptions* pInitOptions;
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 
-
 	ActorFactory* pActorFactory;
 
 //	IResourceFile* pZipFile = nullptr; // Will be removed in ResourceCache destructor
 	shared_ptr<IResourceFile> shPtrZipFile; // Will be removed in ResourceCache destructor
 
-
 //	ResourceCache(const std::string& assetsFolder, const unsigned int sizeInMb, IResourceFile *file);
 
-
 //	ActorFactory(std::shared_ptr<ResourceCache> resourceCache);
-
 
 	ActorFactoryZipFixture() {
 		BOOST_TEST_MESSAGE("Setting up ActorFactoryZipFixture");
@@ -110,7 +104,6 @@ struct ActorFactoryZipFixture {
 
 		shPtrZipFile = make_shared<ResourceZipFile>(
 				pInitOptions->getRootFolder(), IResourceFile::ASSETS_ZIP_FILE);
-
 
 		shrdPtrResourceCache = make_shared<ResourceCache>(
 				pInitOptions->getAssetsFolder(), 50, shPtrZipFile);
@@ -144,7 +137,6 @@ struct ActorFactoryZipFixture {
 //		logger::destroy();
 	}
 
-
 };
 
 BOOST_FIXTURE_TEST_SUITE(ActorFactoryZipSuite, ActorFactoryZipFixture)
@@ -171,7 +163,7 @@ BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 	}
 
 	Resource resource(resourceName);
-	optional < shared_ptr < ResourceHandle >> pResourceHandle =
+	optional<shared_ptr<ResourceHandle>> pResourceHandle =
 			shrdPtrResourceCache->getHandle(&resource);
 
 	ss << pResourceHandle.get()->getExtraData()->vToString();
@@ -180,7 +172,6 @@ BOOST_AUTO_TEST_CASE(createZipActor, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 
 	ss << "resHandleCount: " << pResourceHandle.get().use_count();
 	logger::info(ss);
-
 
 	actor->destroy();
 	ss << "Post destroy actor use_count: " << actor.use_count();
@@ -214,10 +205,8 @@ BOOST_AUTO_TEST_CASE(tempTestZipComponents, * unit_test::enable_if<MAIN_TEST_ENA
 		logger::error("Nie stworzono actor");
 	}
 
-
 	BOOST_TEST(true);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

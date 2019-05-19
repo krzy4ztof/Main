@@ -32,7 +32,7 @@ public:
 //				void (*progressCallback)());
 
 	int preLoad(const std::string& pattern);
-	
+
 	// int tempPreLoad(const std::string& pattern);
 
 	/*

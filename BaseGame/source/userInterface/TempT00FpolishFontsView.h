@@ -80,7 +80,6 @@ namespace temp_t00f_polish_fonts_view {
 TempT00FpolishFontsView* getView(bool reset);
 }
 
-
 } /* namespace opengl_tests */
 
 #endif /* USERINTERFACE_TEMPT00FPOLISHFONTSVIEW_H_ */

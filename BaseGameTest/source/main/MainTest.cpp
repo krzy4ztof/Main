@@ -6,16 +6,16 @@
  */
 
 /*
-#include "MainTest.h"
+ #include "MainTest.h"
 
-MainTest::MainTest() {
-	// TODO Auto-generated constructor stub
+ MainTest::MainTest() {
+ // TODO Auto-generated constructor stub
 
-}
+ }
 
-MainTest::~MainTest() {
-	// TODO Auto-generated destructor stub
-}
+ MainTest::~MainTest() {
+ // TODO Auto-generated destructor stub
+ }
  */
 
 #define BOOST_TEST_DYN_LINK
@@ -41,7 +41,6 @@ struct WatermillMainFixture {
 		logger::info("End WatermillMainFixture");
 	}
 
-
 	~WatermillMainFixture() {
 		logger::info("Destroy WatermillMainFixture");
 
@@ -52,5 +51,4 @@ struct WatermillMainFixture {
 BOOST_GLOBAL_FIXTURE(WatermillMainFixture);
 
 }
-
 

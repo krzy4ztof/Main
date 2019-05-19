@@ -16,14 +16,14 @@
 
 namespace base_game {
 
-	class DataFiles {
-		public:
-			DataFiles();
-			DataFiles(const DataFiles& orig);
-			virtual ~DataFiles();
-		private:
+class DataFiles {
+public:
+	DataFiles();
+	DataFiles(const DataFiles& orig);
+	virtual ~DataFiles();
+private:
 
-	};
+};
 }
 #endif /* DATAFILES_H */
 

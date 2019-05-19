@@ -98,7 +98,6 @@ struct DevelopmentResourceFolderFixture {
 		unzipResourceFile.reset();
 		unzip2ResourceFile.reset();
 
-
 //		templates::safe_delete<IResourceFile>(pZipFile);
 		templates::safe_delete<InitOptions>(pInitOptions);
 
@@ -183,7 +182,6 @@ BOOST_AUTO_TEST_CASE(folderToZipToUnzipToFolder, * unit_test::enable_if<MAIN_TES
 	zipResourceFile->vOpen();
 	zipResourceFile->vSave(IResourceFile::ASSETS_SAVE_MODE_UNZIPFILE,
 			IResourceFile::ASSETS_ZIP_TO_UNZIP);
-
 
 	unzipResourceFile = make_shared<DevelopmentResourceUnzipFile>(
 			pInitOptions->getRootFolder(), IResourceFile::ASSETS_ZIP_TO_UNZIP);

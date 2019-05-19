@@ -17,22 +17,22 @@
 
 namespace base_game {
 
-	DataFiles::DataFiles() {
-		logger::trace("Create DataFiles");
-		// Initialization
-		bool somethingWentWrong = false;
+DataFiles::DataFiles() {
+	logger::trace("Create DataFiles");
+	// Initialization
+	bool somethingWentWrong = false;
 
-		if (somethingWentWrong) {
-			throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
-		}
+	if (somethingWentWrong) {
+		throw ErrorCode("EC_DATAFILES_PROBLEM", 789);
 	}
+}
 
-	DataFiles::DataFiles(const DataFiles& orig) {
-		logger::trace("Create DataFiles");
-	}
+DataFiles::DataFiles(const DataFiles& orig) {
+	logger::trace("Create DataFiles");
+}
 
-	DataFiles::~DataFiles() {
-		logger::trace("Destroy DataFiles");
-	}
+DataFiles::~DataFiles() {
+	logger::trace("Destroy DataFiles");
+}
 
 }

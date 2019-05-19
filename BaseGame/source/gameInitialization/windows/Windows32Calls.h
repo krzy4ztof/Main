@@ -30,18 +30,19 @@
 
 namespace base_game {
 
-	class Windows32Calls {
-		public:
-			Windows32Calls();
-			Windows32Calls(const Windows32Calls& orig);
-			virtual ~Windows32Calls();
-			bool isOnlyInstance(const std::string&);
-			bool checkHardDisk(const int);
-			DWORD readCPUSpeed();
-			bool checkMemory(const DWORDLONG physicalRAMNeeded, const DWORDLONG virtualRAMNeeded);
-		private:
-			//			bool isAGameProcess(DWORD processID, const std::string& gameTitle);
-	};
+class Windows32Calls {
+public:
+	Windows32Calls();
+	Windows32Calls(const Windows32Calls& orig);
+	virtual ~Windows32Calls();
+	bool isOnlyInstance(const std::string&);
+	bool checkHardDisk(const int);
+	DWORD readCPUSpeed();
+	bool checkMemory(const DWORDLONG physicalRAMNeeded,
+			const DWORDLONG virtualRAMNeeded);
+private:
+	//			bool isAGameProcess(DWORD processID, const std::string& gameTitle);
+};
 }
 #endif /* __WIN32 */
 

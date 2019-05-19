@@ -30,7 +30,7 @@ public:
 	boost::property_tree::ptree* getRoot() {
 		return m_pPtree;
 	}
-;
+	;
 
 	/*
 	 void ParseXml(char* pRawBuffer);

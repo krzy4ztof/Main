@@ -30,9 +30,9 @@ void BmpResourceExtraData::init(char* pRawBuffer, uintmax_t rawSize) {
 //skopiowac pRawBuffer do data
 
 	/*
-	for (int i = 0; i < rawSize; i++) {
-		data.push_back(*(pRawBuffer + i));
-	}
+	 for (int i = 0; i < rawSize; i++) {
+	 data.push_back(*(pRawBuffer + i));
+	 }
 	 */
 }
 

@@ -8,12 +8,10 @@
 #include <memory> // shared_ptr
 
 namespace base_game {
-class DefaultResourceLoader: public IResourceLoader
-{
-    public:
+class DefaultResourceLoader: public IResourceLoader {
+public:
 	DefaultResourceLoader();
-        virtual ~DefaultResourceLoader();
-
+	virtual ~DefaultResourceLoader();
 
 	virtual bool vUseRawFile();
 
@@ -24,7 +22,7 @@ class DefaultResourceLoader: public IResourceLoader
 
 	virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
 			std::shared_ptr<ResourceHandle> handle);
-	
+
 	virtual std::string vGetPattern();
 
 	/*
@@ -37,10 +35,9 @@ class DefaultResourceLoader: public IResourceLoader
 	 virtual std::string VGetPattern() { return "*"; }
 	 */
 
-	
-    protected:
+protected:
 
-    private:
+private:
 };
 }
 

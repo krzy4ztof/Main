@@ -1,16 +1,15 @@
 /*
-    To change this license header, choose License Headers in Project Properties.
-    To change this template file, choose Tools | Templates
-    and open the template in the editor.
-*/
+ To change this license header, choose License Headers in Project Properties.
+ To change this template file, choose Tools | Templates
+ and open the template in the editor.
+ */
 
 /*
-    File:   Cygwin64Calls.cpp
-    Author: Krzysztof
+ File:   Cygwin64Calls.cpp
+ Author: Krzysztof
 
-    Created on 6 maja 2016, 22:02
-*/
-
+ Created on 6 maja 2016, 22:02
+ */
 
 #ifdef __CYGWIN__
 
@@ -49,7 +48,6 @@
 #include "../../utilities/StringUtils.h"
 #include "../../utilities/NumberUtils.h"
 
-
 #define SW_SHOWNORMAL 1
 
 using std::string;
@@ -72,10 +70,10 @@ namespace base_game {
 
 	bool Cygwin64Calls::isOnlyInstance ( const string& gameTitle ) {
 		/*  EnumProcesses lists 64 and 32 bit processes. If you run windmill.exe using MinGW 32 bit first,
-		    then MinGW process will be discovered by EnumProcesses. Cygwin process will not launch
-		    because MinGW process is already running.
-		    Compare to Windows32Calls::IsOnlyInstance(const string&)
-		*/
+		 then MinGW process will be discovered by EnumProcesses. Cygwin process will not launch
+		 because MinGW process is already running.
+		 Compare to Windows32Calls::IsOnlyInstance(const string&)
+		 */
 		Cygwin64ProcessCalls cygwinProcess;
 		stringstream ss;
 		ss << "Is the only instance in Cygwin 64: " << gameTitle << "?";
@@ -106,10 +104,8 @@ namespace base_game {
 
 	bool Cygwin64Calls::checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded) {
 		long pages = sysconf ( _SC_PHYS_PAGES ); // number of pages of physical memory
-		long pages_avail = sysconf ( _SC_AVPHYS_PAGES ); // The number of currently available pages of physical memory.
-		long page_size = sysconf ( _SC_PAGE_SIZE );  // size of page in bytes
-
-
+		long pages_avail = sysconf ( _SC_AVPHYS_PAGES );// The number of currently available pages of physical memory.
+		long page_size = sysconf ( _SC_PAGE_SIZE );// size of page in bytes
 
 		stringstream ss;
 
@@ -130,20 +126,16 @@ namespace base_game {
 		ss << "Cygwin Mem free (MB) (MemFree, LowFree - total virtual memory): " << pages_avail * page_size / 1024 / 1024;
 		logger::trace(ss);
 
-
 		ss << "Memory needed (bytes): " << physicalRAMNeeded;
 		logger::trace(ss);
 		ss << "Cygwin Mem (bytes) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size;
 		logger::trace(ss);
 
-
 		//if ( status.ullTotalPhys < physicalRAMNeeded ) {
-
 
 		unsigned long long pagesULL = number_utils::toUnsignLongLong(pages);
 		unsigned long long pageSizeULL = number_utils::toUnsignLongLong(page_size);
 		unsigned long long pagesAvailULL = number_utils::toUnsignLongLong(pages_avail);
-
 
 		if ( pagesULL * pageSizeULL < physicalRAMNeeded ) {
 			//if ( pages * page_size < physicalRAMNeeded ) {
@@ -152,7 +144,6 @@ namespace base_game {
 			logger::warning("CheckMemory Failure: Not enough physical memory.");
 			return false;
 		}
-
 
 		// Check for enough free memory.
 		if ( pagesAvailULL * pageSizeULL < virtualRAMNeeded ) {

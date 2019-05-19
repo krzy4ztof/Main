@@ -10,7 +10,6 @@
 
 #include "../resourceCache/IResourceLoader.h"
 
-
 #include <boost/cstdint.hpp> // boost::uintmax_t
 #include <string> // string
 #include <memory> // shared_ptr
@@ -30,7 +29,6 @@ public:
 // TODO: gdzie to umiescic?
 	//virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
 	//		std::shared_ptr<ResourceHandle> handle); // ????
-
 
 	// virtual std::string vGetPattern();
 

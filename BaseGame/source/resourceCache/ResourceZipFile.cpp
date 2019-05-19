@@ -41,13 +41,13 @@ bool ResourceZipFile::vOpen() {
 }
 
 /*
-void ResourceZipFile::vTempReadResource(const Resource& resource) {
-	stringstream ss;
-	ss << "ResourceZipFile::vTempReadResource: ";
-	//		<< resource.getName();
+ void ResourceZipFile::vTempReadResource(const Resource& resource) {
+ stringstream ss;
+ ss << "ResourceZipFile::vTempReadResource: ";
+ //		<< resource.getName();
 
-	logger::info(ss);
-}
+ logger::info(ss);
+ }
  */
 
 uintmax_t ResourceZipFile::vGetRawResource(const Resource& resource,

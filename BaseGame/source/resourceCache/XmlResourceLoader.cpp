@@ -12,12 +12,12 @@ using boost::uintmax_t;
 
 namespace base_game {
 XmlResourceLoader::XmlResourceLoader() {
-		logger::trace("Create XmlResourceLoader");
-	}
+	logger::trace("Create XmlResourceLoader");
+}
 
-	XmlResourceLoader::~XmlResourceLoader() {
-		logger::trace("Destroy XmlResourceLoader");
-	}
+XmlResourceLoader::~XmlResourceLoader() {
+	logger::trace("Destroy XmlResourceLoader");
+}
 
 string XmlResourceLoader::vGetPattern() {
 	return "*.xml";
@@ -37,16 +37,14 @@ bool XmlResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 	handle->setExtraData(pExtraData);
 //	handle->setExtraData(shared_ptr<XmlResourceExtraData>(pExtraData));
 
-
 	return true;
 }
 
-
-	namespace xml_resource_loader {
-		shared_ptr<IResourceLoader> createXmlResourceLoader() {
-			XmlResourceLoader* loader = new XmlResourceLoader();
-			shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
-			return pointer;
-		}
-	}
+namespace xml_resource_loader {
+shared_ptr<IResourceLoader> createXmlResourceLoader() {
+	XmlResourceLoader* loader = new XmlResourceLoader();
+	shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
+	return pointer;
+}
+}
 }

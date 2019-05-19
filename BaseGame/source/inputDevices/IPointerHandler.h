@@ -23,11 +23,11 @@ public:
 	//virtual bool VOnPointerButtonUp(const Point &pos, const int radius, const std::string &buttonName) = 0;
 
 	/* freeglut
-	virtual bool vOnMouseFunc(int button, int state, int x, int y) = 0;
-	virtual bool vOnMotionFunc(int x, int y) = 0;
-	virtual bool vOnPassiveMotionFunc(int x, int y) = 0;
-	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y) = 0;
-*/
+	 virtual bool vOnMouseFunc(int button, int state, int x, int y) = 0;
+	 virtual bool vOnMotionFunc(int x, int y) = 0;
+	 virtual bool vOnPassiveMotionFunc(int x, int y) = 0;
+	 virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y) = 0;
+	 */
 
 	virtual bool vOnCursorPositionCallback(GLFWwindow* window, double xpos,
 			double ypos) = 0;
@@ -49,7 +49,6 @@ void onCursorEnterCallback(GLFWwindow* window, int entered);
 void onMouseButtonCallback(GLFWwindow* window, int button, int action,
 		int mods);
 void onScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
-
 
 }
 

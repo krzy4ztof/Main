@@ -11,7 +11,6 @@
 #include "TZipDirHeader.h"
 #include "TZipLocalHeader.h"
 
-
 #include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
 //boost::filesystem::filesystem_error; boost::filesystem::directory_entry; boost::filesystem::exists;
 //boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
@@ -110,9 +109,6 @@ optional<path> DevelopmentResourceFolder::getPath(const Resource &resource) {
 		resourcePath = resourcePath.make_preferred();
 		string resourceName = resourcePath.string();
 
-
-
-
 		ss << "makePreferred: " << resourcePath.make_preferred()
 				<< " filename: " << resourcePath.filename();
 
@@ -137,14 +133,14 @@ optional<path> DevelopmentResourceFolder::getPath(const Resource &resource) {
 }
 
 /*
-void DevelopmentResourceFolder::vTempReadResource(const Resource& resource) {
-	stringstream ss;
-	ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
-	//		<< resource.getName();
+ void DevelopmentResourceFolder::vTempReadResource(const Resource& resource) {
+ stringstream ss;
+ ss << "DevelopmentResourceUnzipFile::vTempReadResource: ";
+ //		<< resource.getName();
 
-	logger::info(ss);
+ logger::info(ss);
 
-}
+ }
  */
 
 uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
@@ -155,17 +151,16 @@ uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
 	optional<path> optPath = this->getPath(resource);
 	if (!optPath.is_initialized()) {
 		ss << "RESOURCE NOT  FOUND " << resource.getName();
-		logger::info (ss);
+		logger::info(ss);
 		return -1;
 	}
 
 	//} else {
 
-		// __MINGW_EXTENSION typedef unsigned long long   uintmax_t;
+	// __MINGW_EXTENSION typedef unsigned long long   uintmax_t;
 	filtering_istreambuf inBuf;
 	ifstream ifs { optPath.get(), ios::binary };
 	inBuf.push(ifs);
-
 
 	vector<char> vecChar;
 	boost::iostreams::copy(inBuf, boost::iostreams::back_inserter(vecChar));
@@ -183,19 +178,15 @@ uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
 	ss << "vecChar size: " << vecChar.size();
 	logger::info(ss);
 
-
 	std::copy(vecChar.begin(), vecChar.end(), buffer);
 
 	//boost::iostreams::copy(inBuf, buffer);
 
 	// TODO: upewnic sie ze vecCharDec ma taki sam rozmiar co *buffer i skopiowac vecCharDec do *buffer
 
+	uintmax_t fileSize = file_size(optPath.get());
 
-
-		uintmax_t fileSize = file_size(optPath.get());
-
-		return fileSize;
-
+	return fileSize;
 
 	//}
 
@@ -221,12 +212,11 @@ uintmax_t DevelopmentResourceFolder::vGetRawResource(const Resource& resource,
  return ResourceZipFile::VGetRawResource(r, buffer);
  */
 
-
 uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
 		const Resource &resource) {
 	stringstream ss;
 	ss << "DevelopmentResourceFolder::vGetRawResourceSize: "
-	<< resource.getName();
+			<< resource.getName();
 // DevelopmentResourceFolder::vTempReadResource: actors/player_character.xml
 
 	logger::info(ss);
@@ -257,8 +247,6 @@ uintmax_t DevelopmentResourceFolder::vGetRawResourceSize(
 
 	}
 
-
-	
 	return 0;
 }
 

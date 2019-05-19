@@ -16,7 +16,6 @@ using std::string;
 using std::shared_ptr;
 using boost::uintmax_t;
 
-
 namespace base_game {
 
 TextureResourceLoader::TextureResourceLoader() {

@@ -9,7 +9,6 @@
 
 using std::string;
 
-
 namespace base_game {
 
 const string IResourceFile::ASSETS_READ_MODE_FOLDER = "folder";

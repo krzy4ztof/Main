@@ -66,31 +66,30 @@ struct ResourceCacheUnzipFileFixture {
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
-
-	 ResourceCacheUnzipFileFixture() {
+	ResourceCacheUnzipFileFixture() {
 		BOOST_TEST_MESSAGE("Setting up ResourceCacheUnzipFileFixture");
 
 		logger::info("Create ResourceCacheUnzipFileFixture");
 
-	 pInitOptions = new InitOptions;
+		pInitOptions = new InitOptions;
 
 		shrdPtrResourceFile = make_shared<DevelopmentResourceUnzipFile>(
 				pInitOptions->getRootFolder(),
 				IResourceFile::ASSETS_UNZIP_FILE);
 
-	 shrdPtrResourceCache = make_shared<ResourceCache>(
+		shrdPtrResourceCache = make_shared<ResourceCache>(
 				pInitOptions->getAssetsFolder(), 50, shrdPtrResourceFile);
 
-	 if (!shrdPtrResourceCache->init()) {
-	 logger::warning(
-	 "Failed to initialize resource cache!  Are your paths set up correctly?");
-	 }
+		if (!shrdPtrResourceCache->init()) {
+			logger::warning(
+					"Failed to initialize resource cache!  Are your paths set up correctly?");
+		}
 
-	 shrdPtrResourceCache->registerLoader(
-	 xml_resource_loader::createXmlResourceLoader());
-	 shrdPtrResourceCache->registerLoader(
-	 text_file_loader::createTextFileLoader());
-	 }
+		shrdPtrResourceCache->registerLoader(
+				xml_resource_loader::createXmlResourceLoader());
+		shrdPtrResourceCache->registerLoader(
+				text_file_loader::createTextFileLoader());
+	}
 
 	virtual ~ResourceCacheUnzipFileFixture() {
 		BOOST_TEST_MESSAGE("Tearing down ResourceCacheUnzipFileFixture");
@@ -108,7 +107,6 @@ struct ResourceCacheUnzipFileFixture {
 
 };
 
-
 BOOST_FIXTURE_TEST_SUITE(ResourceCacheUnzipFileSuite, ResourceCacheUnzipFileFixture)
 //BOOST_AUTO_TEST_SUITE(ActorFactorySuite)
 
@@ -118,7 +116,6 @@ BOOST_FIXTURE_TEST_SUITE(ResourceCacheUnzipFileSuite, ResourceCacheUnzipFileFixt
 BOOST_AUTO_TEST_CASE(textUnzipFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	string resourceName = "texts\\info.txt";
-
 
 	Resource resource(resourceName);
 	optional<shared_ptr<ResourceHandle>> pResourceHandle =
@@ -153,8 +150,6 @@ BOOST_AUTO_TEST_CASE(textUnzipFileLoader, * unit_test::enable_if<MAIN_TEST_ENABL
 	}
 
 	logger::info(ss);
-
-
 
 	BOOST_TEST(true);
 }

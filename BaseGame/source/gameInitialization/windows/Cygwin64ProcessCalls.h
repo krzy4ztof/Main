@@ -6,14 +6,14 @@
 
 namespace base_game {
 	class Cygwin64ProcessCalls {
-		public:
-			Cygwin64ProcessCalls();
-			virtual ~Cygwin64ProcessCalls();
-			bool isOnlyInstance ( const std::string& );
+	public:
+		Cygwin64ProcessCalls();
+		virtual ~Cygwin64ProcessCalls();
+		bool isOnlyInstance ( const std::string& );
 
-		protected:
+	protected:
 
-		private:
+	private:
 	};
 }
 #endif /* __CYGWIN__ */

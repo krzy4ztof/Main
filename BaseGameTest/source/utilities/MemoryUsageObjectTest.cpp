@@ -32,13 +32,12 @@ struct MemoryUsageObjectFixture {
 
 		MemoryUsageObject::initMemoryPool(3, "MemoryUsageObject");
 
-
-}
+	}
 
 	~MemoryUsageObjectFixture() {
 		logger::info("Destroy MemoryUsageObjectFixture");
 		MemoryUsageObject::destroyMemoryPool();
-}
+	}
 
 };
 
@@ -59,7 +58,6 @@ BOOST_AUTO_TEST_CASE(memoryPoolRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) 
 	MemoryUsageObject* mem3 = new MemoryUsageObject();
 	logger::info("new mem4");
 	MemoryUsageObject* mem4 = new MemoryUsageObject();
-
 
 	logger::info("new mem5");
 	MemoryUsageObject* mem5 = new MemoryUsageObject();
@@ -93,7 +91,6 @@ BOOST_AUTO_TEST_CASE(memoryPoolRunSecond, * unit_test::enable_if<MAIN_TEST_ENABL
 	BOOST_TEST(true);
 
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

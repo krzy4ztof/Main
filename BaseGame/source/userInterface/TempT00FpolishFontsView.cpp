@@ -30,7 +30,6 @@
 //#include "../main/vmath.h" // vmath::mat4
 #include "vmath.h" // vmath::mat4
 
-
 // TEMPORARY COMMENTED
 #include <boost/gil.hpp>
 #include <boost/gil/extension/io/png.hpp>
@@ -60,7 +59,7 @@ TempT00FpolishFontsView::~TempT00FpolishFontsView() {
 
 void TempT00FpolishFontsView::vTerminate() {
 	glDeleteVertexArrays(1, &VAO);
-	glDeleteProgram (programID);
+	glDeleteProgram(programID);
 	glDeleteBuffers(1, &VBO);
 
 	/*
@@ -287,9 +286,9 @@ void TempT00FpolishFontsView::vActivate() {
 	 */
 
 	/*
-	glm::mat4 projection = glm::ortho(0.0f,
-			static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_WIDTH), 0.0f,
-			static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_HEIGHT));
+	 glm::mat4 projection = glm::ortho(0.0f,
+	 static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_WIDTH), 0.0f,
+	 static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_HEIGHT));
 	 */
 	glm::mat4 projection = glm::ortho(0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
@@ -299,14 +298,13 @@ void TempT00FpolishFontsView::vActivate() {
 	//glViewport(0, 0, VideoSystemGLFW::WINDOW_WIDTH,
 	//	VideoSystemGLFW::WINDOW_HEIGHT);
 
-
-	glUseProgram (programID);
+	glUseProgram(programID);
 	glUniformMatrix4fv(glGetUniformLocation(programID, "projection"), 1,
 	GL_FALSE, glm::value_ptr(projection));
 
 	//glGenVertexArrays(1, &VAO);
 	//glGenBuffers(1, &VBO);
-	glBindVertexArray (VAO);
+	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, NULL,
 	GL_DYNAMIC_DRAW);
@@ -318,8 +316,7 @@ void TempT00FpolishFontsView::vActivate() {
 }
 
 void TempT00FpolishFontsView::RenderLetter(T00Fcharacter ch, GLfloat& x,
-		GLfloat y,
-		GLfloat scale) {
+		GLfloat y, GLfloat scale) {
 	//T00Fcharacter ch = Characters[*c];
 
 	GLfloat xpos = x + ch.Bearing.x * scale;
@@ -348,8 +345,7 @@ void TempT00FpolishFontsView::RenderLetter(T00Fcharacter ch, GLfloat& x,
 // unsigned char T00FpolishFontsView::RenderFirstLetter(unsigned char charC,
 
 GLubyte TempT00FpolishFontsView::RenderUShortLetter(GLubyte charC,
-		GLubyte prevChar,
-		GLfloat& x, GLfloat y, GLfloat scale) {
+		GLubyte prevChar, GLfloat& x, GLfloat y, GLfloat scale) {
 
 	cout << "charC: " << std::hex << (GLushort) charC << "; prevChar: "
 			<< (GLushort) prevChar << endl;
@@ -411,7 +407,7 @@ void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
 	glUniform3f(glGetUniformLocation(programID, "textColor"), color.x, color.y,
 			color.z);
 	glActiveTexture(GL_TEXTURE0);
-	glBindVertexArray (VAO);
+	glBindVertexArray(VAO);
 
 	// Iterate through all characters
 	std::string::const_iterator c;
@@ -484,7 +480,7 @@ void TempT00FpolishFontsView::vOnRender(double currentTime,
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glUseProgram (programID);
+	glUseProgram(programID);
 
 	RenderText("This is sample text", 25.0f, 25.0f, 1.0f,
 			glm::vec3(0.5, 0.8f, 0.2f));

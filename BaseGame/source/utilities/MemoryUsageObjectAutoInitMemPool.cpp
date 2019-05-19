@@ -5,18 +5,17 @@
 using std::cout;
 using std::endl;
 
-
 namespace base_game {
 
-	static MemoryUsageObjectAutoInitMemPool memoryUsageObjectAutoInitMemPool;
+static MemoryUsageObjectAutoInitMemPool memoryUsageObjectAutoInitMemPool;
 
-	MemoryUsageObjectAutoInitMemPool::MemoryUsageObjectAutoInitMemPool(void) {
-		cout << "Create MemoryUsageObjectAutoInitMemPool" << endl;
-		MemoryUsageObject::initMemoryPool(3, "MemoryUsageObject");
-	}
+MemoryUsageObjectAutoInitMemPool::MemoryUsageObjectAutoInitMemPool(void) {
+	cout << "Create MemoryUsageObjectAutoInitMemPool" << endl;
+	MemoryUsageObject::initMemoryPool(3, "MemoryUsageObject");
+}
 
-	MemoryUsageObjectAutoInitMemPool::~MemoryUsageObjectAutoInitMemPool(void) {
-		MemoryUsageObject::destroyMemoryPool();
-		cout << "Destroy MemoryUsageObjectAutoInitMemPool" << endl;
-	}
+MemoryUsageObjectAutoInitMemPool::~MemoryUsageObjectAutoInitMemPool(void) {
+	MemoryUsageObject::destroyMemoryPool();
+	cout << "Destroy MemoryUsageObjectAutoInitMemPool" << endl;
+}
 }

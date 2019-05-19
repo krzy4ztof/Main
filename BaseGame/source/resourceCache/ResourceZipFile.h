@@ -23,12 +23,10 @@ public:
 	virtual int vGetNumResources() const;
 	virtual std::string vGetResourceName(int num) const;
 
-
 protected:
 	virtual bool vSaveFolderMode(const std::string outputFolderName);
 	virtual bool vSaveUnzipMode(const std::string outputUnzipFileName);
 	virtual bool vSaveZipMode(const std::string outputZipFileName);
-
 
 private:
 	ZipFile *m_pZipFile;

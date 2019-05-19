@@ -16,14 +16,14 @@
 
 namespace base_game {
 
-	class AudioSystem {
-		public:
-			AudioSystem();
-			AudioSystem(const AudioSystem& orig);
-			virtual ~AudioSystem();
-		private:
+class AudioSystem {
+public:
+	AudioSystem();
+	AudioSystem(const AudioSystem& orig);
+	virtual ~AudioSystem();
+private:
 
-	};
+};
 }
 #endif /* AUDIOSYSTEM_H */
 

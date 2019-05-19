@@ -5,7 +5,6 @@
  *      Author: Krzysztof
  */
 
-
 #define BOOST_TEST_DYN_LINK
 
 #include "../main/MainTest.h"
@@ -25,18 +24,17 @@ using std::stringstream;
 
 namespace unit_test = boost::unit_test;
 
-
 namespace base_game_test {
 
 struct PrimeSearchFixture {
 	PrimeSearchFixture() {
 		logger::info("Create PrimeSearchFixture");
 
-}
+	}
 
 	~PrimeSearchFixture() {
 		logger::info("Destroy PrimeSearchFixture");
-}
+	}
 
 	void primeSearchRun(int pixels) {
 		int pixelsArray[pixels];
@@ -85,7 +83,6 @@ BOOST_AUTO_TEST_CASE(primeSearch, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	primeSearchRun(17);
 	primeSearchRun(19);
-
 
 	primeSearchRun(50);
 

@@ -68,23 +68,22 @@ struct ResourceCacheFixture {
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
+	ResourceCacheFixture() {
+		BOOST_TEST_MESSAGE("Setting up ResourceCacheFixture");
 
-	 ResourceCacheFixture() {
-	 BOOST_TEST_MESSAGE("Setting up ResourceCacheFixture");
+		logger::info("Create ResourceCacheFixture");
 
-	 logger::info("Create ResourceCacheFixture");
-
-	 pInitOptions = new InitOptions;
+		pInitOptions = new InitOptions;
 		shrdPtrResourceFile = make_shared<DevelopmentResourceFolder>(
 				pInitOptions->getRootFolder(), pInitOptions->getAssetsFolder());
 
-	 shrdPtrResourceCache = make_shared<ResourceCache>(
+		shrdPtrResourceCache = make_shared<ResourceCache>(
 				pInitOptions->getAssetsFolder(), 50, shrdPtrResourceFile);
 
-	 if (!shrdPtrResourceCache->init()) {
-	 logger::warning(
-	 "Failed to initialize resource cache!  Are your paths set up correctly?");
-	 }
+		if (!shrdPtrResourceCache->init()) {
+			logger::warning(
+					"Failed to initialize resource cache!  Are your paths set up correctly?");
+		}
 
 		shrdPtrResourceCache->registerLoader(
 				xml_resource_loader::createXmlResourceLoader());
@@ -93,7 +92,7 @@ struct ResourceCacheFixture {
 
 		shrdPtrResourceCache->registerLoader(
 				message_loader::createMessageLoader());
-	 }
+	}
 
 	virtual ~ResourceCacheFixture() {
 		BOOST_TEST_MESSAGE("Tearing down ResourceCacheFixture");
@@ -110,7 +109,6 @@ struct ResourceCacheFixture {
 	}
 
 };
-
 
 BOOST_FIXTURE_TEST_SUITE(ResourceCacheSuite, ResourceCacheFixture)
 //BOOST_AUTO_TEST_SUITE(ActorFactorySuite)
@@ -153,8 +151,6 @@ BOOST_AUTO_TEST_CASE(textFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 
 	logger::info(ss);
 
-
-
 	BOOST_TEST(true);
 }
 
@@ -170,14 +166,10 @@ BOOST_AUTO_TEST_CASE(preLoad, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	shrdPtrResourceCache->preLoad("*.txt", resource_cache::showPreLoadProgress);
 
-	
-
 //	shrdPtrResourceCache->preLoad("*.txt", resource_cache::showPreLoadProgress);
 	//shrdPtrResourceCache->preLoad("*.txt",
 	//	resource_cache::showPreLoadProgressNoParam);
 
-	
-	
 	BOOST_TEST(true);
 }
 

@@ -102,7 +102,6 @@ struct ActorFactoryFixture {
 //		logger::destroy();
 	}
 
-
 };
 
 BOOST_FIXTURE_TEST_SUITE(ActorFactorySuite, ActorFactoryFixture)
@@ -129,7 +128,7 @@ BOOST_AUTO_TEST_CASE(createActor, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 	}
 
 	Resource resource(resourceName);
-	optional < shared_ptr < ResourceHandle >> pResourceHandle =
+	optional<shared_ptr<ResourceHandle>> pResourceHandle =
 			shrdPtrResourceCache->getHandle(&resource);
 
 	ss << pResourceHandle.get()->getExtraData()->vToString();
@@ -138,7 +137,6 @@ BOOST_AUTO_TEST_CASE(createActor, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 
 	ss << "resHandleCount: " << pResourceHandle.get().use_count();
 	logger::info(ss);
-
 
 	actor->destroy();
 	ss << "Post destroy actor use_count: " << actor.use_count();
@@ -174,10 +172,8 @@ BOOST_AUTO_TEST_CASE(tempTestComponents, * unit_test::enable_if<MAIN_TEST_ENABLE
 		logger::error("Nie stworzono actor");
 	}
 
-
 	BOOST_TEST(true);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

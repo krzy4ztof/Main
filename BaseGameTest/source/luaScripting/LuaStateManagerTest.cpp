@@ -37,8 +37,6 @@ namespace script_resource_loader = base_game::script_resource_loader;
 
 namespace unit_test = boost::unit_test;
 
-
-
 namespace base_game_test {
 
 struct LuaStateManagerFixture {
@@ -79,9 +77,9 @@ struct LuaStateManagerFixture {
 		shrdPtrResourceCache.reset();
 		shPtrResourceFolder.reset();
 
-		templates::safe_delete < LuaStateManager > (pLuaStateManager);
-		templates::safe_delete < InitOptions > (pInitOptions);
-		
+		templates::safe_delete<LuaStateManager>(pLuaStateManager);
+		templates::safe_delete<InitOptions>(pInitOptions);
+
 	}
 };
 
@@ -89,7 +87,6 @@ BOOST_FIXTURE_TEST_SUITE(LuaStateManagerSuite, LuaStateManagerFixture)
 
 BOOST_AUTO_TEST_CASE(luaRun, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 //BOOST_AUTO_TEST_CASE(luaRun, * unit_test::enabled()) {
-
 
 	//InitOptions initOptions;
 	//LuaStateManager luaStateManager(initOptions.getAssetsFolder());

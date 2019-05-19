@@ -60,15 +60,13 @@ BOOST_AUTO_TEST_CASE(randomGeneratorRun, * unit_test::enable_if<MAIN_TEST_ENABLE
 			<< ":" << rnd.random();
 	logger::info(ss);
 
-	ss << "B: " << rndb.random() << ":" << rndb.random() << ":"
-			<< rndb.random() << ":" << rndb.random() << ":" << rndb.random()
-			<< ":"
+	ss << "B: " << rndb.random() << ":" << rndb.random() << ":" << rndb.random()
+			<< ":" << rndb.random() << ":" << rndb.random() << ":"
 			<< rndb.random() << ":" << rndb.random();
 	logger::info(ss);
 
-	ss << "C: " << rndc.random() << ":" << rndc.random() << ":"
-			<< rndc.random() << ":" << rndc.random() << ":" << rndc.random()
-			<< ":"
+	ss << "C: " << rndc.random() << ":" << rndc.random() << ":" << rndc.random()
+			<< ":" << rndc.random() << ":" << rndc.random() << ":"
 			<< rndc.random() << ":" << rndc.random();
 	logger::info(ss);
 
@@ -84,32 +82,27 @@ BOOST_AUTO_TEST_CASE(randomGeneratorRun, * unit_test::enable_if<MAIN_TEST_ENABLE
 			<< ":" << rnd.random();
 	logger::info(ss);
 
-	ss << "B: " << rndb.random() << ":" << rndb.random() << ":"
-			<< rndb.random() << ":" << rndb.random() << ":" << rndb.random()
-			<< ":"
+	ss << "B: " << rndb.random() << ":" << rndb.random() << ":" << rndb.random()
+			<< ":" << rndb.random() << ":" << rndb.random() << ":"
 			<< rndb.random() << ":" << rndb.random();
 	logger::info(ss);
 
-	ss << "C: " << rndc.random() << ":" << rndc.random() << ":"
-			<< rndc.random() << ":" << rndc.random() << ":" << rndc.random()
-			<< ":"
+	ss << "C: " << rndc.random() << ":" << rndc.random() << ":" << rndc.random()
+			<< ":" << rndc.random() << ":" << rndc.random() << ":"
 			<< rndc.random() << ":" << rndc.random();
 	logger::info(ss);
 
-	ss << "B: " << rndb.random() << ":" << rndb.random() << ":"
-			<< rndb.random() << ":" << rndb.random() << ":" << rndb.random()
-			<< ":"
+	ss << "B: " << rndb.random() << ":" << rndb.random() << ":" << rndb.random()
+			<< ":" << rndb.random() << ":" << rndb.random() << ":"
 			<< rndb.random() << ":" << rndb.random();
 	logger::info(ss);
 
-	ss << "C: " << rndc.random() << ":" << rndc.random() << ":"
-			<< rndc.random() << ":" << rndc.random() << ":" << rndc.random()
-			<< ":"
+	ss << "C: " << rndc.random() << ":" << rndc.random() << ":" << rndc.random()
+			<< ":" << rndc.random() << ":" << rndc.random() << ":"
 			<< rndc.random() << ":" << rndc.random();
 	logger::info(ss);
 	logger::info(ss);
 
-	
 	BOOST_TEST(true);
 
 }

@@ -77,7 +77,6 @@ namespace base_game {
 		return true;
 	}
 
-
 	unsigned long LinuxCalls::readCPUSpeed() {
 		LinuxCpuCalls cpuCalls;
 		unsigned long speed = cpuCalls.readCPUSpeed();
@@ -85,9 +84,8 @@ namespace base_game {
 	}
 	bool LinuxCalls::checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded) {
 		long pages = sysconf ( _SC_PHYS_PAGES ); // number of pages of physical memory
-		long pages_avail = sysconf ( _SC_AVPHYS_PAGES ); // The number of currently available pages of physical memory.
-		long page_size = sysconf ( _SC_PAGE_SIZE );  // size of page in bytes
-
+		long pages_avail = sysconf ( _SC_AVPHYS_PAGES );// The number of currently available pages of physical memory.
+		long page_size = sysconf ( _SC_PAGE_SIZE );// size of page in bytes
 
 		stringstream ss;
 
@@ -108,20 +106,16 @@ namespace base_game {
 		ss << "Linux Mem free (MB) (MemFree, LowFree - total virtual memory): " << pages_avail * page_size / 1024 / 1024;
 		logger::trace(ss);
 
-
 		ss << "Memory needed (bytes): " << physicalRAMNeeded;
 		logger::trace(ss);
 		ss << "Linux Mem (bytes) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size;
 		logger::trace(ss);
 
-
 		//if ( status.ullTotalPhys < physicalRAMNeeded ) {
-
 
 		unsigned long long pagesULL = number_utils::toUnsignLongLong(pages);
 		unsigned long long pageSizeULL = number_utils::toUnsignLongLong(page_size);
 		unsigned long long pagesAvailULL = number_utils::toUnsignLongLong(pages_avail);
-
 
 		if ( pagesULL * pageSizeULL < physicalRAMNeeded ) {
 			//if ( pages * page_size < physicalRAMNeeded ) {
@@ -130,7 +124,6 @@ namespace base_game {
 			logger::warning("CheckMemory Failure: Not enough physical memory.");
 			return false;
 		}
-
 
 		// Check for enough free memory.
 		if ( pagesAvailULL * pageSizeULL < virtualRAMNeeded ) {
@@ -157,7 +150,6 @@ namespace base_game {
 
 		return true;
 	}
-
 
 	string LinuxCalls::getUserProfilePath() {
 		//return "/home/kletki";

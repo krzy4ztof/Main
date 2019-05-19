@@ -16,7 +16,6 @@
 #include "../../../BaseGame/source/utilities/Templates.h"
 #include "../../../BaseGame/source/debugging/Logger.h"
 
-
 #include <boost/test/unit_test.hpp>
 #include <memory> // shared_ptr, weak_ptr
 
@@ -36,7 +35,6 @@ namespace base_game_test {
 struct ProcessManagerFixture {
 	ProcessManager* pProcessManager;				// a game logic entity
 
-
 	ProcessManagerFixture() {
 		BOOST_TEST_MESSAGE("Setting up ProcessManagerFixture");
 
@@ -51,8 +49,7 @@ struct ProcessManagerFixture {
 		BOOST_TEST_MESSAGE("Tearing down ProcessManagerFixture");
 		logger::info("Destroy ProcessManagerFixture");
 
-		templates::safe_delete < ProcessManager > (pProcessManager);
-
+		templates::safe_delete<ProcessManager>(pProcessManager);
 
 //		logger::destroy();
 	}

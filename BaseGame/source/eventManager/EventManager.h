@@ -2,14 +2,14 @@
 #define EVENTMANAGER_H
 
 namespace base_game {
-	class EventManager {
-		public:
-			EventManager();
-			virtual ~EventManager();
+class EventManager {
+public:
+	EventManager();
+	virtual ~EventManager();
 
-		protected:
+protected:
 
-		private:
-	};
+private:
+};
 }
 #endif // EVENTMANAGER_H

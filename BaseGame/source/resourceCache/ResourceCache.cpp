@@ -22,7 +22,6 @@
 //boost::filesystem::is_directory; boost::filesystem::is_regular_file; boost::filesystem::create_directory
 //boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;  boost::filesystem::ifstream;
 
-
 using std::string;
 using std::shared_ptr;
 using std::stringstream;
@@ -208,8 +207,6 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 	ss << "allocSizeX: " << allocSize;
 	logger::info(ss);
 
-
-
 	for (int i = 0; i < allocSize; i++) {
 		ss << *(pRawBuffer + i);
 		// ss << " | ";
@@ -219,7 +216,7 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 
 	char* pBuffer = nullptr;
 	uintmax_t size = 0;
-	
+
 	if (loader.get()->vUseRawFile()) {
 		pBuffer = pRawBuffer; //pRawBuffer already allocated
 
@@ -244,17 +241,16 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::load(Resource* resource) {
 			templates::safe_delete_array<char>(pRawBuffer);
 
 			/*
-			if (pRawBuffer) {
-				delete[] (pRawBuffer);
-				(pRawBuffer) = nullptr;
-			}
+			 if (pRawBuffer) {
+			 delete[] (pRawBuffer);
+			 (pRawBuffer) = nullptr;
+			 }
 			 */
 		}
 
 		if (!success) {
 			return shared_ptr<ResourceHandle> { };
 		}
-
 
 	}
 
@@ -327,18 +323,18 @@ bool ResourceCache::makeRoom(uintmax_t size) {
 }
 
 /*
-shared_ptr<ResourceHandle> ResourceCache::tempLoad(Resource *resource) {
+ shared_ptr<ResourceHandle> ResourceCache::tempLoad(Resource *resource) {
 
-	// this->m_resourceFile->vSaveFolderMode();
+ // this->m_resourceFile->vSaveFolderMode();
  this->m_resourceFile->vTempReadResource(*resource);
 
-	shared_ptr<IResourceLoader> loader;
-	shared_ptr<ResourceHandle> handle;
+ shared_ptr<IResourceLoader> loader;
+ shared_ptr<ResourceHandle> handle;
 
-	handle = shared_ptr<ResourceHandle>(
-			new ResourceHandle(*resource, nullptr, 0, nullptr));
-	return handle;
-}
+ handle = shared_ptr<ResourceHandle>(
+ new ResourceHandle(*resource, nullptr, 0, nullptr));
+ return handle;
+ }
  */
 
 optional<shared_ptr<ResourceHandle>> ResourceCache::find(Resource * resource) {
@@ -408,7 +404,6 @@ int ResourceCache::preLoad(const string& pattern) {
 	return this->preLoad(pattern, nullptr);
 }
 
-
 //int ResourceCache::preload(const string& pattern,
 //		void (*progressCallback)()) {
 int ResourceCache::preLoad(const string& pattern,
@@ -430,7 +425,6 @@ int ResourceCache::preLoad(const string& pattern,
 		ss << "ResourceName: " << resourceName;
 		logger::info(ss);
 
-
 		Resource resource(resourceName);
 
 		if (this->wildcardMatch(pattern, resourceName)) {
@@ -442,12 +436,12 @@ int ResourceCache::preLoad(const string& pattern,
 		}
 
 		/*
-		if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
-			shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
-					&resource);
-			++loaded;
-		}
-				 */
+		 if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
+		 shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
+		 &resource);
+		 ++loaded;
+		 }
+		 */
 
 		if (progressCallback != nullptr) {
 			progressCallback(i * 100 / numFiles, cancel);
@@ -456,44 +450,41 @@ int ResourceCache::preLoad(const string& pattern,
 	}
 	return loaded;
 
-
 	/*
-	if (m_file == NULL)
-		return 0;
+	 if (m_file == NULL)
+	 return 0;
 
-	int numFiles = m_file->VGetNumResources();
-	int loaded = 0;
-	bool cancel = false;
-	for (int i = 0; i < numFiles; ++i) {
-		Resource resource(m_file->VGetResourceName(i));
+	 int numFiles = m_file->VGetNumResources();
+	 int loaded = 0;
+	 bool cancel = false;
+	 for (int i = 0; i < numFiles; ++i) {
+	 Resource resource(m_file->VGetResourceName(i));
 
-		if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
-			shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
-					&resource);
-			++loaded;
-		}
+	 if (WildcardMatch(pattern.c_str(), resource.m_name.c_str())) {
+	 shared_ptr<ResHandle> handle = g_pApp->m_ResCache->GetHandle(
+	 &resource);
+	 ++loaded;
+	 }
 
-		if (progressCallback != NULL) {
-			progressCallback(i * 100 / numFiles, cancel);
-		}
-	}
-	return loaded;
+	 if (progressCallback != NULL) {
+	 progressCallback(i * 100 / numFiles, cancel);
+	 }
+	 }
+	 return loaded;
 	 */
-
-
 
 	// return tempPreLoad(pattern);
 }
 
 /*
-int ResourceCache::tempPreLoad(const string& pattern) {
+ int ResourceCache::tempPreLoad(const string& pattern) {
 
-	Resource resource("TestImage.jpg");
+ Resource resource("TestImage.jpg");
 
-	optional<shared_ptr<ResourceHandle>> handle = getHandle(&resource);
+ optional<shared_ptr<ResourceHandle>> handle = getHandle(&resource);
 
-	return 1;
-}
+ return 1;
+ }
  */
 
 /*
@@ -509,9 +500,9 @@ int ResourceCache::tempPreLoad(const string& pattern) {
 
 namespace resource_cache {
 void showPreLoadProgress(int progress, bool& cancel) {
-stringstream ss;
+	stringstream ss;
 	ss << "Progress: " << progress << "%";
-logger::info (ss);
+	logger::info(ss);
 }
 }
 

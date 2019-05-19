@@ -14,57 +14,59 @@
 
 namespace base_game {
 
-	//        typedef boost::log::sinks::synchronous_sink< boost::log::sinks::text_ostream_backend > text_sink;
-	typedef boost::log::sinks::asynchronous_sink< boost::log::sinks::text_ostream_backend > text_sink;
+//        typedef boost::log::sinks::synchronous_sink< boost::log::sinks::text_ostream_backend > text_sink;
+typedef boost::log::sinks::asynchronous_sink<
+		boost::log::sinks::text_ostream_backend> text_sink;
 
-	typedef boost::log::sinks::asynchronous_sink<boost::log::sinks::text_ostream_backend> ostream_sink;
-	//typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend> ostream_sink;
+typedef boost::log::sinks::asynchronous_sink<
+		boost::log::sinks::text_ostream_backend> ostream_sink;
+//typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend> ostream_sink;
 
-	class Logger {
-		public:
-			static Logger* s_Logger;
+class Logger {
+public:
+	static Logger* s_Logger;
 
-			virtual ~Logger();
-			Logger();
+	virtual ~Logger();
+	Logger();
 	void init(const std::string logFileName);
 
-			void trace(std::string text);
-			void debug(std::string text);
-			void info(std::string text);
-			void warning(std::string text);
-			void error(std::string text);
+	void trace(std::string text);
+	void debug(std::string text);
+	void info(std::string text);
+	void warning(std::string text);
+	void error(std::string text);
 
-			void fatal(std::string text);
+	void fatal(std::string text);
 
-			void test();
-		protected:
+	void test();
+protected:
 
-		private:
+private:
 	// const static std::string LOG_FILENAME;
-			void log(std::string text, boost::log::trivial::severity_level sevLevel);
+	void log(std::string text, boost::log::trivial::severity_level sevLevel);
 
-			boost::log::sources::severity_logger< boost::log::trivial::severity_level > severityLogger;
+	boost::log::sources::severity_logger<boost::log::trivial::severity_level> severityLogger;
 
-			boost::shared_ptr<ostream_sink> outputstream;
-			boost::shared_ptr< text_sink > logfile;
-	};
+	boost::shared_ptr<ostream_sink> outputstream;
+	boost::shared_ptr<text_sink> logfile;
+};
 
-	namespace logger {
+namespace logger {
 void init(const std::string logFileName);
-		void test();
-		void destroy();
-		void trace(std::string text);
-		void trace(std::stringstream& ss);
-		void debug(std::string text);
-		void debug(std::stringstream& ss);
-		void info(std::string text);
-		void info(std::stringstream& ss);
-		void warning(std::string text);
-		void warning(std::stringstream& ss);
-		void error(std::string text);
-		void error(std::stringstream& ss);
-		void fatal(std::string text);
-		void fatal(std::stringstream& ss);
-	}
+void test();
+void destroy();
+void trace(std::string text);
+void trace(std::stringstream& ss);
+void debug(std::string text);
+void debug(std::stringstream& ss);
+void info(std::string text);
+void info(std::stringstream& ss);
+void warning(std::string text);
+void warning(std::stringstream& ss);
+void error(std::string text);
+void error(std::stringstream& ss);
+void fatal(std::string text);
+void fatal(std::stringstream& ss);
+}
 }
 #endif // LOGGER_H
