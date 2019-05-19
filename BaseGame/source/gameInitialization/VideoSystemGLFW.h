@@ -21,7 +21,6 @@ public:
 	const static int WINDOW_WIDTH;
 	const static int WINDOW_HEIGHT;
 
-
 	VideoSystemGLFW();
 	virtual ~VideoSystemGLFW();
 	int startGLFW_222();
@@ -31,8 +30,6 @@ public:
 	void onIdle();
 	void mainLoop();
 	//int tempGLUTinitialize();
-
-
 
 protected:
 	GLFWwindow* window;

@@ -38,8 +38,8 @@ bool BmpResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 		return false;
 	}
 
-	shared_ptr < BmpResourceExtraData > pExtraData = shared_ptr
-			< BmpResourceExtraData > (new BmpResourceExtraData());
+	shared_ptr<BmpResourceExtraData> pExtraData = shared_ptr<
+			BmpResourceExtraData>(new BmpResourceExtraData());
 	pExtraData->init(rawBuffer, rawSize);
 	handle->setExtraData(pExtraData);
 

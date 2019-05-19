@@ -5,9 +5,9 @@
 #include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
-	class IGameView {
-		public:
-			virtual ~IGameView();
+class IGameView {
+public:
+	virtual ~IGameView();
 
 	virtual void vOnRestore() = 0;
 	virtual void vOnRender(double fTime, float fElapsedTime) = 0;
@@ -16,17 +16,16 @@ namespace base_game {
 
 	// Start Freeglut
 	/*
-	virtual bool vOnKeyboardFunc(unsigned char key, int x, int y);
-	virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
-	virtual bool vOnSpecialFunc(int key, int x, int y);
-	virtual bool vOnSpecialUpFunc(int key, int x, int y);
-	virtual bool vOnMouseFunc(int button, int state, int x, int y);
-	virtual bool vOnMotionFunc(int x, int y);
-	virtual bool vOnPassiveMotionFunc(int x, int y);
-	virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
+	 virtual bool vOnKeyboardFunc(unsigned char key, int x, int y);
+	 virtual bool vOnKeyboardUpFunc(unsigned char key, int x, int y);
+	 virtual bool vOnSpecialFunc(int key, int x, int y);
+	 virtual bool vOnSpecialUpFunc(int key, int x, int y);
+	 virtual bool vOnMouseFunc(int button, int state, int x, int y);
+	 virtual bool vOnMotionFunc(int x, int y);
+	 virtual bool vOnPassiveMotionFunc(int x, int y);
+	 virtual bool vOnMouseWheelFunc(int wheel, int direction, int x, int y);
 	 */
 	// End Freelglut
-
 	virtual bool vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 			int action, int mods);
 	virtual bool vOnCharCallback(GLFWwindow* window, unsigned int codepoint);
@@ -40,7 +39,6 @@ namespace base_game {
 	virtual bool vOnScrollCallback(GLFWwindow* window, double xoffset,
 			double yoffset);
 
-	
 	virtual void tempVLoadGameDelegate() = 0;
 	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
 
@@ -48,11 +46,11 @@ namespace base_game {
 	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 
-		protected:
+protected:
 	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 
-		private:
-	};
+private:
+};
 }
 
 #endif // IGAMEVIEW_H

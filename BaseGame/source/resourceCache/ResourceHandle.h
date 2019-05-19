@@ -12,25 +12,21 @@
 namespace base_game {
 class ResourceCache;
 
-
-	class ResourceHandle {
-		public:
+class ResourceHandle {
+public:
 	ResourceHandle(Resource& resource, char *buffer, boost::uintmax_t size,
 			ResourceCache *pResourceCache);
 
-			virtual ~ResourceHandle();
-			Resource getResource();
+	virtual ~ResourceHandle();
+	Resource getResource();
 
 	const std::string getName();
 	boost::uintmax_t getSize() const;
 	char* getBuffer() const;
 
-
 	std::shared_ptr<IResourceExtraData> getExtraData();
 	void setExtraData(std::shared_ptr<IResourceExtraData> extraData);
 
-
-			
 	/*
 	 * 	const std::string GetName() { return m_resource.m_name; }
 	 unsigned int Size() const { return m_size; }
@@ -41,15 +37,15 @@ class ResourceCache;
 	 void SetExtra(shared_ptr<IResourceExtraData> extra) { m_extra = extra; }
 	 */
 
-		protected:
-			Resource m_resource;
+protected:
+	Resource m_resource;
 	char* m_buffer;
 	boost::uintmax_t m_size;
 	std::shared_ptr<IResourceExtraData> m_extraData;
 	ResourceCache *m_pResourceCache;
 
-		private:
-	};
+private:
+};
 }
 
 #endif // RESOURCEHANDLE_H

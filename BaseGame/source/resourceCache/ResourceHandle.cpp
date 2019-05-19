@@ -18,16 +18,16 @@ ResourceHandle::ResourceHandle(Resource& resource, char *buffer,
 		m_resource(resource), m_buffer(buffer), m_size(size), m_pResourceCache(
 				pResourceCache) {
 
-		logger::info("Create ResourceHandle");
-	}
+	logger::info("Create ResourceHandle");
+}
 
-	ResourceHandle::~ResourceHandle() {
-		logger::info("Destroy ResourceHandle");
-	}
+ResourceHandle::~ResourceHandle() {
+	logger::info("Destroy ResourceHandle");
+}
 
-	Resource ResourceHandle::getResource() {
-		return m_resource;
-	}
+Resource ResourceHandle::getResource() {
+	return m_resource;
+}
 
 const string ResourceHandle::getName() {
 	return m_resource.getName();
@@ -42,7 +42,6 @@ char* ResourceHandle::getBuffer() const {
 	return m_buffer;
 }
 ;
-	
 
 std::shared_ptr<IResourceExtraData> ResourceHandle::getExtraData() {
 	return m_extraData;

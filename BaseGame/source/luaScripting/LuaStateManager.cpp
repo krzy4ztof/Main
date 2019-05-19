@@ -32,7 +32,6 @@ namespace base_game {
 // const string LuaStateManager::SCRIPTS_FOLDER = "scripts/";
 const string LuaStateManager::SCRIPTS_FOLDER = "scripts";
 
-
 LuaStateManager::LuaStateManager(shared_ptr<ResourceCache> resourceCache) {
 	logger::trace("Create LuaStateManager");
 
@@ -40,53 +39,52 @@ LuaStateManager::LuaStateManager(shared_ptr<ResourceCache> resourceCache) {
 }
 
 /*
-	LuaStateManager::LuaStateManager(string assetsFolder) {
-		logger::trace("Create LuaStateManager");
-		scriptsFolder = assetsFolder  + SCRIPTS_FOLDER;
-	}
+ LuaStateManager::LuaStateManager(string assetsFolder) {
+ logger::trace("Create LuaStateManager");
+ scriptsFolder = assetsFolder  + SCRIPTS_FOLDER;
+ }
  */
 
-	LuaStateManager::~LuaStateManager() {
-		logger::trace("Destroy LuaStateManager");
+LuaStateManager::~LuaStateManager() {
+	logger::trace("Destroy LuaStateManager");
+}
+
+void LuaStateManager::print_error(lua_State* state) {
+	// The error message is on top of the stack.
+	// Fetch it, print it and then pop it off the stack.
+	const char* message = lua_tostring(state, -1);
+	puts(message);
+	lua_pop(state, 1);
+}
+
+void LuaStateManager::execute(const char* filename) {
+	lua_State *state = luaL_newstate();
+
+	// Make standard libraries available in the Lua object
+	luaL_openlibs(state);
+
+	int result;
+
+	lua_register(state, "howdy", lua_state_manager::howdy);
+
+	// Load the program; this supports both source code and bytecode files.
+	result = luaL_loadfile(state, filename);
+
+	if (result != LUA_OK) {
+		print_error(state);
+		return;
 	}
 
-	void LuaStateManager::print_error(lua_State* state) {
-		// The error message is on top of the stack.
-		// Fetch it, print it and then pop it off the stack.
-		const char* message = lua_tostring(state, -1);
-		puts(message);
-		lua_pop(state, 1);
+	// Finally, execute the program by calling into it.
+	// Change the arguments if you're not running vanilla Lua code.
+
+	result = lua_pcall(state, 0, LUA_MULTRET, 0);
+
+	if (result != LUA_OK) {
+		print_error(state);
+		return;
 	}
-
-
-	void LuaStateManager::execute(const char* filename) {
-		lua_State *state = luaL_newstate();
-
-		// Make standard libraries available in the Lua object
-		luaL_openlibs(state);
-
-		int result;
-
-		lua_register(state,"howdy",lua_state_manager::howdy);
-
-		// Load the program; this supports both source code and bytecode files.
-		result = luaL_loadfile(state, filename);
-
-		if ( result != LUA_OK ) {
-			print_error(state);
-			return;
-		}
-
-		// Finally, execute the program by calling into it.
-		// Change the arguments if you're not running vanilla Lua code.
-
-		result = lua_pcall(state, 0, LUA_MULTRET, 0);
-
-		if ( result != LUA_OK ) {
-			print_error(state);
-			return;
-		}
-	}
+}
 
 /*
  * int LuaState::DoString( const char *str, LuaObject& fenvObj )
@@ -164,7 +162,6 @@ void LuaStateManager::temp_executeBuffer_111(const char* buffer) {
 	logger::info(ss);
 
 	logger::info("---END---");
-	
 
 	lua_register(state, "howdy", lua_state_manager::howdy);
 
@@ -174,7 +171,6 @@ void LuaStateManager::temp_executeBuffer_111(const char* buffer) {
 	result = luaL_loadbuffer(state, buffer, strlen(buffer), buffer);
 
 	// result = luaL_dostring(state, "print(\"Hello Lua String!!\")"); // attempt to call a nil value
-
 
 	if (result != LUA_OK) {
 		print_error(state);
@@ -207,11 +203,8 @@ void LuaStateManager::executeBuffer111(const char* buffer) {
 
 	// Load the program; this supports both source code and bytecode files.
 	//result = luaL_loadfile(state, filename);
-	
-	
-	
-	result = luaL_dostring(state, buffer);
 
+	result = luaL_dostring(state, buffer);
 
 	if (result != LUA_OK) {
 		print_error(state);
@@ -242,7 +235,7 @@ char* LuaStateManager::loadScript(string scriptFileName) {
 	string resourceName = resourcePath.string();
 
 	Resource resource(resourceName);
-	optional < shared_ptr < ResourceHandle >> pResourceHandle =
+	optional<shared_ptr<ResourceHandle>> pResourceHandle =
 			shrdPtrResourceCache->getHandle(&resource);
 
 	// stringstream ss;
@@ -258,71 +251,68 @@ char* LuaStateManager::loadScript(string scriptFileName) {
 
 	return resourceBuffer;
 	/*
-	if (shared_ptr<ScriptResourceExtraData> scriptResourceExtraData =
-			dynamic_pointer_cast < ScriptResourceExtraData > (extraData)) {
-		result = scriptResourceExtraData->getData();
-	}
+	 if (shared_ptr<ScriptResourceExtraData> scriptResourceExtraData =
+	 dynamic_pointer_cast < ScriptResourceExtraData > (extraData)) {
+	 result = scriptResourceExtraData->getData();
+	 }
 	 */
 }
 
 void LuaStateManager::temp_testLuaResourceCache(string scriptFileName) {
-char* scriptAsChar = loadScript(scriptFileName);
+	char* scriptAsChar = loadScript(scriptFileName);
 	temp_executeBuffer(scriptAsChar);
-
 
 }
 
 /*
-	void LuaStateManager::testLua(string scriptFileName) {
-	string scriptsFolder = "null";
+ void LuaStateManager::testLua(string scriptFileName) {
+ string scriptsFolder = "null";
 
-		stringstream ss;
-		ss << "lua script: " << scriptFileName;
-		logger::trace(ss);
+ stringstream ss;
+ ss << "lua script: " << scriptFileName;
+ logger::trace(ss);
 
-		string scriptFullFileName = scriptsFolder + scriptFileName;
-		ss << "lua full script: " << scriptFullFileName;
-		logger::trace(ss);
+ string scriptFullFileName = scriptsFolder + scriptFileName;
+ ss << "lua full script: " << scriptFullFileName;
+ logger::trace(ss);
 
 
-		char* scriptNameChar = string_utils::stringToChar(scriptFullFileName);
+ char* scriptNameChar = string_utils::stringToChar(scriptFullFileName);
 
-		execute(scriptNameChar);
+ execute(scriptNameChar);
 
-		//lua_State *state = luaL_newstate();
-		//lua_close(state);
+ //lua_State *state = luaL_newstate();
+ //lua_close(state);
 
-templates::safe_delete_array<char>(scriptNameChar);
-	//	string_utils::safe_delete_char_array(scriptNameChar);
-	}
+ templates::safe_delete_array<char>(scriptNameChar);
+ //	string_utils::safe_delete_char_array(scriptNameChar);
+ }
  */
 
+namespace lua_state_manager {
 
+int howdy(lua_State* state) {
+	// The number of function arguments will be on top of the stack.
+	int args = lua_gettop(state);
 
-	namespace lua_state_manager {
+	stringstream ss;
+	ss << "howdy() was called with " << args << " arguments";
+	logger::trace(ss);
 
-		int howdy(lua_State* state) {
-			// The number of function arguments will be on top of the stack.
-			int args = lua_gettop(state);
-
-			stringstream ss;
-			ss << "howdy() was called with "<< args <<" arguments";
-			logger::trace(ss);
-
-			for ( int n=1; n<=args; ++n) {
-				ss << "  argument " << n << ": "<< lua_tostring(state, n);
-				logger::trace(ss);
-			}
-
-			// Push the return value on top of the stack. NOTE: We haven't popped the
-			// input arguments to our function. To be honest, I haven't checked if we
-			// must, but at least in stack machines like the JVM, the stack will be
-			// cleaned between each function call.
-
-			lua_pushnumber(state, 123);
-
-			// Let Lua know how many return values we've passed
-			return 1;
-		}
+	for (int n = 1; n <= args; ++n) {
+		ss << "  argument " << n << ": " << lua_tostring(state, n);
+		logger::trace(ss);
 	}
+
+	// Push the return value on top of the stack. NOTE: We haven't popped the
+	// input arguments to our function. To be honest, I haven't checked if we
+	// must, but at least in stack machines like the JVM, the stack will be
+	// cleaned between each function call.
+
+	lua_pushnumber(state, 123);
+
+	// Let Lua know how many return values we've passed
+	return 1;
+}
+}
 }

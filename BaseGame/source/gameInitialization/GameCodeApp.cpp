@@ -46,7 +46,6 @@
 #include "../resourceCache/DevelopmentResourceFolder.h"
 #include "../resourceCache/DevelopmentResourceUnzipFile.h"
 
-
 #include <memory> // shared_ptr, weak_ptr, make_shared
 //#include <typeinfo> // typeid
 
@@ -72,7 +71,6 @@ GameCodeApp::GameCodeApp() {
 	g_pApp = this;
 
 	m_pGame = nullptr;
-
 
 	initOptions = nullptr;
 	playerOptions = nullptr;
@@ -221,7 +219,6 @@ bool GameCodeApp::initInstance() {
 		zipFile = make_shared<DevelopmentResourceFolder>(
 				initOptions->getRootFolder(), initOptions->getAssetsFolder());
 
-
 	} else if (IResourceFile::ASSETS_READ_MODE_UNZIPFILE.compare(readMode)
 			== 0) {
 //		zipFile = new DevelopmentResourceUnzipFile(initOptions->getRootFolder(),
@@ -247,14 +244,13 @@ bool GameCodeApp::initInstance() {
 
 //	shrdPtrResourceCache->
 
-
 	shrdPtrResourceCache = make_shared<ResourceCache>(
 			initOptions->getAssetsFolder(), 50, zipFile);
 
 	// Call to zipFile->vOpen();
 
 	if (!shrdPtrResourceCache->init()) {
-				// if (!resourceCache->init()) {
+		// if (!resourceCache->init()) {
 		logger::warning(
 				"Failed to initialize resource cache!  Are your paths set up correctly?");
 		return false;
@@ -301,7 +297,6 @@ bool GameCodeApp::initInstance() {
 		// IResourceFile::ASSETS_UNZIP_TO_UNZIP;
 		// IResourceFile::ASSETS_ZIP_TO_UNZIP
 
-
 		zipFile->vSave(saveMode, outputName);
 
 		//TODO save method invocation
@@ -324,7 +319,6 @@ bool GameCodeApp::initInstance() {
 		// IResourceFile::ASSETS_UNZIP_TO_ZIP;
 		// IResourceFile::ASSETS_ZIP_TO_ZIP
 
-
 		zipFile->vSave(saveMode, outputName);
 
 		//TODO save method invocation
@@ -342,7 +336,6 @@ bool GameCodeApp::initInstance() {
 			vertex_shader_resource_loader::createVertexShaderResourceLoader());
 	shrdPtrResourceCache->registerLoader(
 			fragment_shader_resource_loader::createFragmentShaderResourceLoader());
-
 
 	try {
 		gameMessages = new GameMessages(shrdPtrResourceCache,
@@ -406,7 +399,6 @@ bool GameCodeApp::initInstance() {
 
 		}
 
-
 		logger::trace("createGameAndView++++");
 
 		m_pGame = createGameAndView(shrdPtrResourceCache);
@@ -441,7 +433,6 @@ void GameCodeApp::mainLoop() {
 	bool done = false;
 	logger::trace("Main loop+++");
 
-
 	m_pGame->tempTestActors();	//ok
 	// m_pGame->tempAddViews();		//ok -> to remove
 
@@ -455,7 +446,6 @@ void GameCodeApp::mainLoop() {
 
 	}
 
-	
 	while (!done) {
 		// Main loop
 		done = true;

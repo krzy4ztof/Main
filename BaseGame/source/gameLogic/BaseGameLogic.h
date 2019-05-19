@@ -25,10 +25,10 @@ public:
 	// void tempTestProcessManager();
 	void tempAddViews();
 	/*
-	void tempAdd01View();
-	void tempAdd02View();
-	void tempAdd03View();
-	void tempAdd04View();
+	 void tempAdd01View();
+	 void tempAdd02View();
+	 void tempAdd03View();
+	 void tempAdd04View();
 	 */
 	void tempAddView(int number);
 	void tempAddView(IGameView* pView);
@@ -53,7 +53,6 @@ public:
 	void onFrameRender(double fTime, float fElapsedTime);
 	std::list<std::shared_ptr<IGameView> > getViews();
 	virtual void describeYourself();
-
 
 	// std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 

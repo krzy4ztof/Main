@@ -23,30 +23,30 @@ namespace base_game {
 
 ErrorCode::ErrorCode() :
 		number(0) {
-		logger::trace("Create ErrorCode");
-	}
+	logger::trace("Create ErrorCode");
+}
 
-	//ErrorCode::ErrorCode(char error_message[], int error_number) {
+//ErrorCode::ErrorCode(char error_message[], int error_number) {
 
-	ErrorCode::ErrorCode(const string& error_message, int error_number) {
-		logger::trace("Create ErrorCode");
-		number = error_number;
-		message = error_message;
-	}
+ErrorCode::ErrorCode(const string& error_message, int error_number) {
+	logger::trace("Create ErrorCode");
+	number = error_number;
+	message = error_message;
+}
 
 ErrorCode::ErrorCode(const ErrorCode& orig) :
 		number(0) {
-		logger::trace("Create ErrorCode");
-	}
+	logger::trace("Create ErrorCode");
+}
 
-	ErrorCode::~ErrorCode() {
-		logger::trace("Destroy ErrorCode");
-	}
+ErrorCode::~ErrorCode() {
+	logger::trace("Destroy ErrorCode");
+}
 
-	void ErrorCode::informUser() {
-		stringstream ss;
-		ss << "Error Code: " << message << "; number: " << number;
-		logger::error(ss);
-	}
+void ErrorCode::informUser() {
+	stringstream ss;
+	ss << "Error Code: " << message << "; number: " << number;
+	logger::error(ss);
+}
 }
 

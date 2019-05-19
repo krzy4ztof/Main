@@ -40,12 +40,12 @@ INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 // MinGW
 	int main(int argc, char** argv) {
 #endif /* __WIN64 */
-		GameMain gameMain;
+	GameMain gameMain;
 
-		int res = 0;
-		res = gameMain.init(argc, argv);
-		cout << "MAIN END" << endl;
+	int res = 0;
+	res = gameMain.init(argc, argv);
+	cout << "MAIN END" << endl;
 
-		return res;
+	return res;
 
-	}
+}

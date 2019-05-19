@@ -6,16 +6,16 @@
  */
 
 /*
-#include "StringUtilsTest.h"
+ #include "StringUtilsTest.h"
 
-StringUtilsTest::StringUtilsTest() {
-	// TODO Auto-generated constructor stub
+ StringUtilsTest::StringUtilsTest() {
+ // TODO Auto-generated constructor stub
 
-}
+ }
 
-StringUtilsTest::~StringUtilsTest() {
-	// TODO Auto-generated destructor stub
-}
+ StringUtilsTest::~StringUtilsTest() {
+ // TODO Auto-generated destructor stub
+ }
 
  */
 
@@ -49,28 +49,25 @@ BOOST_AUTO_TEST_CASE(StringToChar, * unit_test::enable_if<MAIN_TEST_ENABLE>()) {
 	BOOST_TEST(result == expected);
 }
 
-
-
-
 /*
-BOOST_AUTO_TEST_CASE(StringToChar) {
-	int i = 1;
-	BOOST_TEST(i);
-	BOOST_TEST(i == 1);
-}
+ BOOST_AUTO_TEST_CASE(StringToChar) {
+ int i = 1;
+ BOOST_TEST(i);
+ BOOST_TEST(i == 1);
+ }
 
 
 
-BOOST_AUTO_TEST_CASE(testCase1) {
-	int wynik = 1;
-	BOOST_CHECK(wynik);
-}
+ BOOST_AUTO_TEST_CASE(testCase1) {
+ int wynik = 1;
+ BOOST_CHECK(wynik);
+ }
 
-BOOST_AUTO_TEST_CASE(testCase2) {
-	char* wynik = stringToChar("probny");
+ BOOST_AUTO_TEST_CASE(testCase2) {
+ char* wynik = stringToChar("probny");
 
-	BOOST_CHECK(wynik);
-}
+ BOOST_CHECK(wynik);
+ }
  */
 
 BOOST_AUTO_TEST_SUITE_END()

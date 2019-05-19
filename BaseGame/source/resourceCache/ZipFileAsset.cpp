@@ -37,7 +37,6 @@ using boost::iostreams::array_source;
 using boost::filesystem::ofstream;
 using boost::filesystem::path;
 
-
 namespace base_game {
 
 ZipFileAsset::ZipFileAsset() {
@@ -81,7 +80,6 @@ uintmax_t ZipFileAsset::getUnzipFileDataSize() {
 	return 0;
 }
 
-
 TZipDirFileHeader* ZipFileAsset::getZipDirFileHeader() {
 	return this->m_pZipDirFileHeader;
 }
@@ -114,7 +112,6 @@ void ZipFileAsset::setFileName(std::string name) {
 	fileName = name;
 }
 
-
 bool ZipFileAsset::readFile(char* buffer) {
 	// TODO: decompress file
 	// implememted as ZipFileAsset::readFile(*pBuf)
@@ -122,16 +119,16 @@ bool ZipFileAsset::readFile(char* buffer) {
 	for (int i = 0; i < this->getFileDataSize(); i++) {
 		*(buffer + i) = *(m_pDirData + i);
 	}
-	
+
 	return true;
 }
 
 bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 
 	/*
-	for (int i = 0; i < this->getFileDataSize(); i++) {
-		*(buffer + i) = *(m_pDirData + i);
-	}
+	 for (int i = 0; i < this->getFileDataSize(); i++) {
+	 *(buffer + i) = *(m_pDirData + i);
+	 }
 	 */
 
 	stringstream ss;
@@ -140,33 +137,31 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 	filter.push(zlib_decompressor());
 
 	/*
-	string dirDataStr = string_utils::charToString(m_pDirData);
+	 string dirDataStr = string_utils::charToString(m_pDirData);
 
-	ss << "Length: " << dirDataStr.length();
-	logger::info(ss);
+	 ss << "Length: " << dirDataStr.length();
+	 logger::info(ss);
 
-	ss << "Length FileData: " << getFileDataSize();
-	logger::info(ss);
+	 ss << "Length FileData: " << getFileDataSize();
+	 logger::info(ss);
 
-	ss << "--------- START ASSET---------";
-	logger::info(ss);
+	 ss << "--------- START ASSET---------";
+	 logger::info(ss);
 
-	const char* pDirData = dirDataStr.c_str();
+	 const char* pDirData = dirDataStr.c_str();
 
-	for (int i = 0; i << dirDataStr.length(); i++) {
-		ss << *(pDirData + i);
-	}
-	logger::info(ss);
+	 for (int i = 0; i << dirDataStr.length(); i++) {
+	 ss << *(pDirData + i);
+	 }
+	 logger::info(ss);
 
-	ss << "---------  END ASSET ---------";
-	logger::info(ss);
+	 ss << "---------  END ASSET ---------";
+	 logger::info(ss);
 	 */
 
 	//array_source source(pZipFileAsset->getDirData(),
 	//		pZipFileAsset->getFileDataSize());
-
 	//array_source source(zipString.c_str(), zipString.length());
-
 
 	string dirDataStr = string_utils::charToString(m_pDirData);
 
@@ -175,7 +170,6 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 
 	ss << "ZipFileAssset-Length FileData: " << getFileDataSize();
 	logger::info(ss);
-
 
 	char* pStart = m_pDirData;
 	int i = 0;
@@ -190,15 +184,11 @@ bool ZipFileAsset::readAndUnzipFile(char* buffer) {
 	int sizeOne = sizeof(m_pDirData[0]);
 	int sizeRes = sizeAll / sizeOne;
 
-
-
-
 	// array_source source(dirDataStr.c_str(), dirDataStr.length() + 1);
 	array_source source(getDirData(), getFileDataSize()); // OK
 
 	// array_source source(*m_pDirData,
 	//		*(m_pDirData + this->getFileDataSize() - 1));
-
 
 	filter.push(source);
 
@@ -229,7 +219,6 @@ void ZipFileAsset::debugSaveAsFile(vector<char> vecString) {
 	ofs.write(reinterpret_cast<char *>(vecString.data()), vecString.size());
 	ofs.close();
 }
-
 
 void ZipFileAsset::describeYourself() {
 	stringstream ss;

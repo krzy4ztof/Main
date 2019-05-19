@@ -35,100 +35,100 @@ IPointerHandler::~IPointerHandler() {
 namespace pointer_handler {
 
 /*
-void onMouseFunc(int button, int state, int x, int y) {
-	stringstream ss;
-	ss << "MOUSE: button:" << button << "; state: " << state << "; x: " << x << "; y: " << y;
-	//logger::info(ss);
+ void onMouseFunc(int button, int state, int x, int y) {
+ stringstream ss;
+ ss << "MOUSE: button:" << button << "; state: " << state << "; x: " << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnMouseFunc(button, state, x,
-					y);
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnMouseFunc(button, state, x,
+ y);
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-		}
+ }
 
-	}
-}
+ }
+ }
 
-void onMotionFunc(int x, int y) {
-	stringstream ss;
-	ss << "MOTION: x:" << x << "; y: " << y;
-	//logger::info(ss);
+ void onMotionFunc(int x, int y) {
+ stringstream ss;
+ ss << "MOTION: x:" << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnMotionFunc(x, y);
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnMotionFunc(x, y);
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-		}
+ }
 
-	}
-}
+ }
+ }
 
-void onPassiveMotionFunc(int x, int y) {
-	stringstream ss;
-	ss << "PASSIVE-MOTION: x:" << x << "; y: " << y;
-	//logger::info(ss);
+ void onPassiveMotionFunc(int x, int y) {
+ stringstream ss;
+ ss << "PASSIVE-MOTION: x:" << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnPassiveMotionFunc(x, y);
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnPassiveMotionFunc(x, y);
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-		}
+ }
 
-	}
-}
+ }
+ }
 
-void onMouseWheelFunc(int wheel, int direction, int x, int y) {
-	stringstream ss;
-	ss << "MOUSE: wheel:" << wheel << "; direction: " << direction << "; x: "
-			<< x << "; y: " << y;
-	//logger::info(ss);
+ void onMouseWheelFunc(int wheel, int direction, int x, int y) {
+ stringstream ss;
+ ss << "MOUSE: wheel:" << wheel << "; direction: " << direction << "; x: "
+ << x << "; y: " << y;
+ //logger::info(ss);
 
-	if (g_pApp != nullptr) {
-		BaseGameLogic* baseGame = g_pApp->m_pGame;
-		list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
-		list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
+ if (g_pApp != nullptr) {
+ BaseGameLogic* baseGame = g_pApp->m_pGame;
+ list < shared_ptr<IGameView> > gameViews = baseGame->getViews();
+ list<shared_ptr<IGameView> >::reverse_iterator viewsIterator;
 
-		for (viewsIterator = gameViews.rbegin();
-				viewsIterator != gameViews.rend(); ++viewsIterator) {
-			bool funcResult = (*viewsIterator)->vOnMouseWheelFunc(wheel,
-					direction, x, y);
+ for (viewsIterator = gameViews.rbegin();
+ viewsIterator != gameViews.rend(); ++viewsIterator) {
+ bool funcResult = (*viewsIterator)->vOnMouseWheelFunc(wheel,
+ direction, x, y);
 
-			if (funcResult) {
-				break; // WARNING! This breaks out of the for loop.
-			}
+ if (funcResult) {
+ break; // WARNING! This breaks out of the for loop.
+ }
 
-		}
+ }
 
-	}
-}
+ }
+ }
  */
 
 void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
@@ -178,8 +178,8 @@ void onCursorEnterCallback(GLFWwindow* window, int entered) {
 void onMouseButtonCallback(GLFWwindow* window, int button, int action,
 		int mods) {
 	stringstream ss;
-	ss << "onMouseButtonCallback: button: " << button << "; action: "
-			<< action << "; mods: " << mods;
+	ss << "onMouseButtonCallback: button: " << button << "; action: " << action
+			<< "; mods: " << mods;
 	//logger::info(ss);
 
 	if (g_pApp != nullptr) {
@@ -220,7 +220,6 @@ void onScrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
 		}
 	}
 }
-
 
 }
 

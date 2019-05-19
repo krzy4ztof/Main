@@ -18,38 +18,36 @@
 
 namespace base_game {
 
-	class VideoSystem {
-		public:
-			VideoSystem();
-			VideoSystem(const VideoSystem& orig);
-			virtual ~VideoSystem();
-			/* */
+class VideoSystem {
+public:
+	VideoSystem();
+	VideoSystem(const VideoSystem& orig);
+	virtual ~VideoSystem();
+	/* */
 	//void startFreeGlut(std::string title);
 	//void startFreeGlutMainLoop();
-			/*	void display_xxx(); */
-		private:
+	/*	void display_xxx(); */
+private:
 
+};
 
-	};
-
-
-	namespace video_system {
-		//float angle; // = 0.0f;
+namespace video_system {
+//float angle; // = 0.0f;
 // void renderScene();
 
 /*
  void changeSize(int w, int h);
 
-		void displayFreeGlut();
-		void onChangeSize(int width, int height);
-		void onClose();
-		void onHideShow(int state);
-		void onIdle();
-		void onTimer(int value);
+ void displayFreeGlut();
+ void onChangeSize(int width, int height);
+ void onClose();
+ void onHideShow(int state);
+ void onIdle();
+ void onTimer(int value);
 
  */
-	}
-	
+}
+
 }
 #endif /* VIDEOSYSTEM_H */
 

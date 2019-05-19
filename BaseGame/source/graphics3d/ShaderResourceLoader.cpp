@@ -108,11 +108,9 @@ void VertexShaderResourceExtraData::compileShader(char* pRawBuffer,
 	 }
 	 
 	 */
-	
+
 	//GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
 	shaderId = glCreateShader(GL_VERTEX_SHADER);
-
-
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
@@ -171,20 +169,19 @@ void FragmentShaderResourceExtraData::compileShader(char* pRawBuffer,
 
 	/*
 
-	// Read the Fragment Shader code from the file
-	string FragmentShaderCode;
-	ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-	if (FragmentShaderStream.is_open()) {
-		stringstream sstr;
-		sstr << FragmentShaderStream.rdbuf();
-		FragmentShaderCode = sstr.str();
-		FragmentShaderStream.close();
-	}
+	 // Read the Fragment Shader code from the file
+	 string FragmentShaderCode;
+	 ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
+	 if (FragmentShaderStream.is_open()) {
+	 stringstream sstr;
+	 sstr << FragmentShaderStream.rdbuf();
+	 FragmentShaderCode = sstr.str();
+	 FragmentShaderStream.close();
+	 }
 	 */
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
-
 
 	//char const * FragmentSourcePointer = FragmentShaderCode.c_str();
 	//glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
@@ -208,7 +205,7 @@ void FragmentShaderResourceExtraData::compileShader(char* pRawBuffer,
 				&FragmentShaderErrorMessage[0]);
 
 		ss << &FragmentShaderErrorMessage[0];
-		logger::error (ss);
+		logger::error(ss);
 		//printf("%s\n", &FragmentShaderErrorMessage[0]);
 	}
 }
@@ -240,9 +237,8 @@ bool VertexShaderResourceLoader::vLoadResource(char *rawBuffer,
 		return false;
 	}
 
-	shared_ptr<VertexShaderResourceExtraData> pExtraData = shared_ptr
-			< VertexShaderResourceExtraData
-			> (new VertexShaderResourceExtraData());
+	shared_ptr<VertexShaderResourceExtraData> pExtraData = shared_ptr<
+			VertexShaderResourceExtraData>(new VertexShaderResourceExtraData());
 	pExtraData->compileShader(rawBuffer, rawSize);
 
 	handle->setExtraData(pExtraData);
@@ -264,16 +260,15 @@ string FragmentShaderResourceLoader::vGetPattern() {
 }
 
 bool FragmentShaderResourceLoader::vLoadResource(char *rawBuffer,
-		uintmax_t rawSize,
-		shared_ptr<ResourceHandle> handle) {
+		uintmax_t rawSize, shared_ptr<ResourceHandle> handle) {
 
 	if (rawSize <= 0) {
 		return false;
 	}
 
-	shared_ptr<FragmentShaderResourceExtraData> pExtraData = shared_ptr
-			< FragmentShaderResourceExtraData
-			> (new FragmentShaderResourceExtraData());
+	shared_ptr<FragmentShaderResourceExtraData> pExtraData = shared_ptr<
+			FragmentShaderResourceExtraData>(
+			new FragmentShaderResourceExtraData());
 	pExtraData->compileShader(rawBuffer, rawSize);
 
 	handle->setExtraData(pExtraData);
@@ -356,7 +351,6 @@ GLuint ShaderCompiler::loadShaders_old(string vertexShaderName,
 		printf("%s\n", &VertexShaderErrorMessage[0]);
 	}
 
-
 	// Compile Fragment Shader
 //	printf("Compiling shader : %s\n", fragment_file_path);
 	ss << "Compiling shader :  " << fragment_file_path;
@@ -413,11 +407,10 @@ GLuint ShaderCompiler::loadShaders_old(string vertexShaderName,
 
 const string ShaderCompiler::SHADERS_FOLDER = "shaders";
 
-
 shared_ptr<IResourceExtraData> ShaderCompiler::loadShader(
 		string vertexShaderName) {
 	stringstream ss;
-	
+
 	path vertexResourcePath { ShaderCompiler::SHADERS_FOLDER };
 	vertexResourcePath /= vertexShaderName;
 	vertexResourcePath = vertexResourcePath.make_preferred();
@@ -478,7 +471,6 @@ GLuint ShaderCompiler::loadFragmentShader(string fragmentShaderName) {
 	return FragmentShaderID;
 }
 
-
 GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 		string fragmentShaderName) {
 
@@ -493,46 +485,44 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 
 	GLuint FragmentShaderID = loadFragmentShader(fragmentShaderName);
 	/*
-	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+	 GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
 
-	// Read the Fragment Shader code from the file
-	string FragmentShaderCode;
-	ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-	if (FragmentShaderStream.is_open()) {
-		stringstream sstr;
-		sstr << FragmentShaderStream.rdbuf();
-		FragmentShaderCode = sstr.str();
-		FragmentShaderStream.close();
-	}
+	 // Read the Fragment Shader code from the file
+	 string FragmentShaderCode;
+	 ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
+	 if (FragmentShaderStream.is_open()) {
+	 stringstream sstr;
+	 sstr << FragmentShaderStream.rdbuf();
+	 FragmentShaderCode = sstr.str();
+	 FragmentShaderStream.close();
+	 }
 
-	GLint Result = GL_FALSE;
-	int InfoLogLength;
+	 GLint Result = GL_FALSE;
+	 int InfoLogLength;
 	 */
-
 
 	// Compile Fragment Shader
 //	printf("Compiling shader : %s\n", fragment_file_path);
 //	ss << "Compiling shader :  " << fragment_file_path;
 //	logger::info(ss);
-
 	/*
-	char const * FragmentSourcePointer = FragmentShaderCode.c_str();
-	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
-	glCompileShader(FragmentShaderID);
+	 char const * FragmentSourcePointer = FragmentShaderCode.c_str();
+	 glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
+	 glCompileShader(FragmentShaderID);
 
-	// Check Fragment Shader
-	glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
-	glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-	if (InfoLogLength > 0) {
-		std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
-		glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL,
-				&FragmentShaderErrorMessage[0]);
+	 // Check Fragment Shader
+	 glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
+	 glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+	 if (InfoLogLength > 0) {
+	 std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
+	 glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL,
+	 &FragmentShaderErrorMessage[0]);
 
-		ss << &FragmentShaderErrorMessage[0];
-		logger::error(ss);
-		//printf("%s\n", &FragmentShaderErrorMessage[0]);
-	}
+	 ss << &FragmentShaderErrorMessage[0];
+	 logger::error(ss);
+	 //printf("%s\n", &FragmentShaderErrorMessage[0]);
+	 }
 	 */
 
 	GLint Result = GL_FALSE;
@@ -557,7 +547,6 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 		ss << &ProgramErrorMessage[0];
 		logger::error(ss);
 
-
 	}
 
 	glDetachShader(ProgramID, VertexShaderID);
@@ -570,12 +559,10 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 
 }
 
-
 namespace vertex_shader_resource_loader {
 shared_ptr<IResourceLoader> createVertexShaderResourceLoader() {
 	VertexShaderResourceLoader* loader = new VertexShaderResourceLoader();
-	shared_ptr<IResourceLoader> pointer = shared_ptr < IResourceLoader
-			> (loader);
+	shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
 	return pointer;
 }
 }
@@ -583,8 +570,7 @@ shared_ptr<IResourceLoader> createVertexShaderResourceLoader() {
 namespace fragment_shader_resource_loader {
 shared_ptr<IResourceLoader> createFragmentShaderResourceLoader() {
 	FragmentShaderResourceLoader* loader = new FragmentShaderResourceLoader();
-	shared_ptr<IResourceLoader> pointer = shared_ptr < IResourceLoader
-			> (loader);
+	shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
 	return pointer;
 }
 }

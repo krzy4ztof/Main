@@ -17,7 +17,6 @@
 #include <istream> // std::istream, std::basic_istream<char>
 #include <sstream> // std::stringbuf, std::stringstream
 
-
 using boost::property_tree::ptree;
 using boost::property_tree::read_xml;
 using boost::uintmax_t;
@@ -25,7 +24,6 @@ using boost::uintmax_t;
 using std::istream;
 using std::stringbuf;
 using std::stringstream;
-
 
 namespace base_game {
 
@@ -37,7 +35,7 @@ XmlResourceExtraData::XmlResourceExtraData() {
 
 XmlResourceExtraData::~XmlResourceExtraData() {
 	logger::trace("Destroy XmlResourceExtraData");
-	templates::safe_delete<ptree> (m_pPtree);
+	templates::safe_delete<ptree>(m_pPtree);
 }
 
 void XmlResourceExtraData::parseXml(char* pRawBuffer, uintmax_t rawSize) {
@@ -50,7 +48,6 @@ void XmlResourceExtraData::parseXml(char* pRawBuffer, uintmax_t rawSize) {
 
 	logger::info("--START STRINGBUF---");
 
-
 	stringbuf myStreamBuf;
 	//myStreamBuf.setg(pRawBuffer, pRawBuffer, pRawBuffer + rawSize);
 
@@ -58,15 +55,11 @@ void XmlResourceExtraData::parseXml(char* pRawBuffer, uintmax_t rawSize) {
 
 	istream inStream(&myStreamBuf);
 
-
 //	ss << myStreamBuf.str(); //OK
 
 //	logger::info(ss);
 
 	logger::info("--STOP STRINGBUF---");
-
-
-
 
 	read_xml(inStream, *m_pPtree);
 

@@ -66,31 +66,29 @@ struct ResourceCacheZipFileFixture {
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
-
-	 ResourceCacheZipFileFixture() {
+	ResourceCacheZipFileFixture() {
 		BOOST_TEST_MESSAGE("Setting up ResourceCacheZipFileFixture");
 
 		logger::info("Create ResourceCacheZipFileFixture");
 
-	 pInitOptions = new InitOptions;
+		pInitOptions = new InitOptions;
 
 		shrdPtrResourceFile = make_shared<ResourceZipFile>(
-				pInitOptions->getRootFolder(),
-				IResourceFile::ASSETS_ZIP_FILE);
+				pInitOptions->getRootFolder(), IResourceFile::ASSETS_ZIP_FILE);
 
-	 shrdPtrResourceCache = make_shared<ResourceCache>(
+		shrdPtrResourceCache = make_shared<ResourceCache>(
 				pInitOptions->getAssetsFolder(), 50, shrdPtrResourceFile);
 
-	 if (!shrdPtrResourceCache->init()) {
-	 logger::warning(
-	 "Failed to initialize resource cache!  Are your paths set up correctly?");
-	 }
+		if (!shrdPtrResourceCache->init()) {
+			logger::warning(
+					"Failed to initialize resource cache!  Are your paths set up correctly?");
+		}
 
-	 shrdPtrResourceCache->registerLoader(
-	 xml_resource_loader::createXmlResourceLoader());
-	 shrdPtrResourceCache->registerLoader(
-	 text_file_loader::createTextFileLoader());
-	 }
+		shrdPtrResourceCache->registerLoader(
+				xml_resource_loader::createXmlResourceLoader());
+		shrdPtrResourceCache->registerLoader(
+				text_file_loader::createTextFileLoader());
+	}
 
 	virtual ~ResourceCacheZipFileFixture() {
 		BOOST_TEST_MESSAGE("Tearing down ResourceCacheZipFileFixture");
@@ -108,7 +106,6 @@ struct ResourceCacheZipFileFixture {
 
 };
 
-
 BOOST_FIXTURE_TEST_SUITE(ResourceCacheZipFileSuite, ResourceCacheZipFileFixture)
 //BOOST_AUTO_TEST_SUITE(ActorFactorySuite)
 
@@ -118,7 +115,6 @@ BOOST_AUTO_TEST_CASE(textFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 //BOOST_AUTO_TEST_CASE(textZipFileLoader, * unit_test::enable_if<true>()) {
 
 	string resourceName = "texts\\info.txt";
-
 
 	Resource resource(resourceName);
 	optional<shared_ptr<ResourceHandle>> pResourceHandle =
@@ -153,8 +149,6 @@ BOOST_AUTO_TEST_CASE(textFileLoader, * unit_test::enable_if<MAIN_TEST_ENABLE>())
 	}
 
 	logger::info(ss);
-
-
 
 	BOOST_TEST(true);
 }

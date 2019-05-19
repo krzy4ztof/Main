@@ -8,13 +8,13 @@
 
 namespace base_game {
 	class LinuxCpuCalls {
-		public:
-			LinuxCpuCalls();
-			virtual ~LinuxCpuCalls();
-			unsigned long readCPUSpeed();
-		protected:
+	public:
+		LinuxCpuCalls();
+		virtual ~LinuxCpuCalls();
+		unsigned long readCPUSpeed();
+	protected:
 
-		private:
+	private:
 	};
 
 	namespace linux_cpu_calls {

@@ -17,22 +17,22 @@
 
 namespace base_game {
 
-	AudioSystem::AudioSystem() {
-		logger::trace("Create AudioSystem");
+AudioSystem::AudioSystem() {
+	logger::trace("Create AudioSystem");
 
-		// Initialization
-		bool somethingWentWrong = false;
+	// Initialization
+	bool somethingWentWrong = false;
 
-		if (somethingWentWrong) {
-			throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
-		}
+	if (somethingWentWrong) {
+		throw ErrorCode("EC_AUDIOSYSTEM_PROBLEM", 789);
 	}
+}
 
-	AudioSystem::AudioSystem(const AudioSystem& orig) {
-		logger::trace("Create AudioSystem");
-	}
+AudioSystem::AudioSystem(const AudioSystem& orig) {
+	logger::trace("Create AudioSystem");
+}
 
-	AudioSystem::~AudioSystem() {
-		logger::trace("Destroy AudioSystem");
-	}
+AudioSystem::~AudioSystem() {
+	logger::trace("Destroy AudioSystem");
+}
 }

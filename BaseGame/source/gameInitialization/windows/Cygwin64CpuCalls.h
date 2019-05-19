@@ -7,13 +7,13 @@
 
 namespace base_game {
 	class Cygwin64CpuCalls {
-		public:
-			Cygwin64CpuCalls();
-			virtual ~Cygwin64CpuCalls();
-			unsigned long readCPUSpeed();
-		protected:
+	public:
+		Cygwin64CpuCalls();
+		virtual ~Cygwin64CpuCalls();
+		unsigned long readCPUSpeed();
+	protected:
 
-		private:
+	private:
 	};
 
 	namespace cygwin64_cpu_calls {

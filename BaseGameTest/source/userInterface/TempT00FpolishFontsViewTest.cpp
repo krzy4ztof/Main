@@ -5,7 +5,6 @@
  *      Author: Krzysztof
  */
 
-
 #define BOOST_TEST_DYN_LINK
 
 #include "../main/MainTest.h"
@@ -21,7 +20,6 @@
 #include "../../../BaseGame/source/resourceCache/DevelopmentResourceFolder.h"
 #include "../../../BaseGame/source/resourceCache/DevelopmentResourceUnzipFile.h"
 #include "../../../BaseGame/source/resourceCache/ResourceZipFile.h"
-
 
 // --------- START
 #include "../testGame/TestGame.h"
@@ -96,9 +94,9 @@ struct TempT00FpolishFontsViewFixture {
 	virtual shared_ptr<IResourceFile> createIResourceFile()=0;
 
 	/*
-	virtual shared_ptr<IResourceFile> createIResourceFile() {
-		return shared_ptr<IResourceFile>();
-	}
+	 virtual shared_ptr<IResourceFile> createIResourceFile() {
+	 return shared_ptr<IResourceFile>();
+	 }
 	 */
 
 	void setup() {
@@ -145,7 +143,6 @@ struct TempT00FpolishFontsViewFixture {
 
 		//return m_pGame;
 		//pTestGame->createGameAndView(shrdPtrResourceCache);
-
 		base_game::g_pApp = pTestGame;
 
 		//m_pGame = new TestGameLogic();
@@ -155,35 +152,32 @@ struct TempT00FpolishFontsViewFixture {
 		//		gameView = temp_t004_figures_view::getView(false,
 		//			pInitOptions->getAssetsFolder());
 
-
-
 		// ---------
 
 	}
 
 	void teardown() {
 		logger::info("teardown TempT00FpolishFontsViewFixture");
-		
+
 		// -------- START
 
 		shrdPtrResourceCache.reset();
 		resourceFolder.reset();
 
 		/*
-		zipResourceFile.reset();
-		zip2ResourceFile.reset();
-		unzipResourceFile.reset();
-		unzip2ResourceFile.reset();
+		 zipResourceFile.reset();
+		 zip2ResourceFile.reset();
+		 unzipResourceFile.reset();
+		 unzip2ResourceFile.reset();
 		 */
 
 //		templates::safe_delete<IResourceFile>(pZipFile);
 		templates::safe_delete<InitOptions>(pInitOptions);
 
-	
 		templates::safe_delete<IGameView>(gameView);
 		templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
 
-		templates::safe_delete<TestGame> (pTestGame);
+		templates::safe_delete<TestGame>(pTestGame);
 
 		// ------------ START
 
@@ -198,7 +192,6 @@ struct TempT00FpolishFontsViewFixture {
 
 	virtual ~TempT00FpolishFontsViewFixture() {
 		BOOST_TEST_MESSAGE("Tearing down TempT00FpolishFontsViewFixture");
-
 
 		logger::info("Destroy TempT00FpolishFontsViewFixture");
 //		logger::destroy();
@@ -286,10 +279,8 @@ struct TempT00FpolishFontsViewZipFileFixture: public TempT00FpolishFontsViewFixt
 	}
 
 	virtual shared_ptr<IResourceFile> createIResourceFile() {
-		shared_ptr<IResourceFile> resourceFolder = make_shared<
-				ResourceZipFile>(
-				pInitOptions->getRootFolder(),
-				IResourceFile::ASSETS_ZIP_FILE);
+		shared_ptr<IResourceFile> resourceFolder = make_shared<ResourceZipFile>(
+				pInitOptions->getRootFolder(), IResourceFile::ASSETS_ZIP_FILE);
 		return resourceFolder;
 	}
 };
@@ -325,8 +316,7 @@ BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enable_if<false>()) {
 
 	videoSystemGLFW->initialize();
 
-	gameView = temp_t004_figures_view::getView(false,
-			shrdPtrResourceCache);
+	gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
 
 	pTestGame->m_pGame->tempAddView(gameView);
 
@@ -362,6 +352,3 @@ BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<true>()) {
 BOOST_AUTO_TEST_SUITE_END()
 
 }
-
-
-

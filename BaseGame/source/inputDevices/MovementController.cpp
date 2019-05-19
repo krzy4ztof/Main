@@ -30,85 +30,85 @@ MovementController::~MovementController() {
 }
 
 /*
-bool MovementController::vOnKeyboardFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ bool MovementController::vOnKeyboardFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	int intKey = key;
+ int intKey = key;
 
-	ss << "MOVEMENT-CONTROLLER KEYBOARD: key:" << key << "; x: " << x << "; y: "
-			<< y << "; key code: " << intKey;
-	logger::info(ss);
+ ss << "MOVEMENT-CONTROLLER KEYBOARD: key:" << key << "; x: " << x << "; y: "
+ << y << "; key code: " << intKey;
+ logger::info(ss);
 
-	int modifier = glutGetModifiers();
+ int modifier = glutGetModifiers();
 
-	if (modifier == GLUT_ACTIVE_SHIFT) {
-		logger::info("MODIFIER: active shift");
-	} else if (modifier == GLUT_ACTIVE_CTRL) {
-		logger::info("MODIFIER: active ctrl");
-	} else if (modifier == GLUT_ACTIVE_ALT) {
-		logger::info("MODIFIER: active alt");
-	}
+ if (modifier == GLUT_ACTIVE_SHIFT) {
+ logger::info("MODIFIER: active shift");
+ } else if (modifier == GLUT_ACTIVE_CTRL) {
+ logger::info("MODIFIER: active ctrl");
+ } else if (modifier == GLUT_ACTIVE_ALT) {
+ logger::info("MODIFIER: active alt");
+ }
 
-	if (key == 'w' || key == 'W' || key == 23) {
-		logger::info("UP pressed");
-	} else if (key == 's' || key == 'S' || key == 19) {
-		logger::info("DOWN pressed");
-	} else if (key == 'a' || key == 'A' || key == 1) {
-		logger::info("LEFT pressed");
-	} else if (key == 'd' || key == 'D' || key == 4) {
-		logger::info("RIGHT pressed");
-	}
+ if (key == 'w' || key == 'W' || key == 23) {
+ logger::info("UP pressed");
+ } else if (key == 's' || key == 'S' || key == 19) {
+ logger::info("DOWN pressed");
+ } else if (key == 'a' || key == 'A' || key == 1) {
+ logger::info("LEFT pressed");
+ } else if (key == 'd' || key == 'D' || key == 4) {
+ logger::info("RIGHT pressed");
+ }
 
-	ss << "sizeof u_char: " << sizeof(unsigned char) << "; sizeof int"
-			<< sizeof(int);
-	logger::info(ss);
-	
-
-
+ ss << "sizeof u_char: " << sizeof(unsigned char) << "; sizeof int"
+ << sizeof(int);
+ logger::info(ss);
+ 
 
 
-	return true; // stops further processing of vOnKeyboardFunc
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-}
 
-bool MovementController::vOnKeyboardUpFunc(unsigned char key, int x, int y) {
-	stringstream ss;
+ return true; // stops further processing of vOnKeyboardFunc
 
-	ss << "MOVEMENT-CONTROLLER KEYBOARD-UP: key:" << key << "; x: " << x
-			<< "; y: " << y;
-//	logger::info(ss);
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ }
 
-	return true; // stops further processing of vOnKeyboardFunc
+ bool MovementController::vOnKeyboardUpFunc(unsigned char key, int x, int y) {
+ stringstream ss;
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ ss << "MOVEMENT-CONTROLLER KEYBOARD-UP: key:" << key << "; x: " << x
+ << "; y: " << y;
+ //	logger::info(ss);
 
-}
+ return true; // stops further processing of vOnKeyboardFunc
 
-bool MovementController::vOnSpecialFunc(int key, int x, int y) {
-	stringstream ss;
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
 
-	ss << "MOVEMENT-CONTROLLER SPECIAL: key:" << key << "; x: " << x << "; y: "
-			<< y;
-	logger::info(ss);
+ }
 
-	return true; // stops further processing of vOnKeyboardFunc
+ bool MovementController::vOnSpecialFunc(int key, int x, int y) {
+ stringstream ss;
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-}
+ ss << "MOVEMENT-CONTROLLER SPECIAL: key:" << key << "; x: " << x << "; y: "
+ << y;
+ logger::info(ss);
 
-bool MovementController::vOnSpecialUpFunc(int key, int x, int y) {
-	stringstream ss;
+ return true; // stops further processing of vOnKeyboardFunc
 
-	ss << "MOVEMENT-CONTROLLER SPECIAL-UP: " << key << "; x: " << x << "; y: "
-			<< y;
-//	logger::info(ss);
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ }
 
-	return true; // stops further processing of vOnKeyboardFunc
+ bool MovementController::vOnSpecialUpFunc(int key, int x, int y) {
+ stringstream ss;
 
-	// return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+ ss << "MOVEMENT-CONTROLLER SPECIAL-UP: " << key << "; x: " << x << "; y: "
+ << y;
+ //	logger::info(ss);
 
-}
+ return true; // stops further processing of vOnKeyboardFunc
+
+ // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
+
+ }
  */
 
 bool MovementController::vOnMouseFunc(int button, int state, int x, int y) {
@@ -155,12 +155,10 @@ bool MovementController::vOnMouseWheelFunc(int wheel, int direction, int x,
 }
 
 bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
-		int scancode,
-		int action, int mods) {
+		int scancode, int action, int mods) {
 	stringstream ss;
 	ss << "MovementController::onKeyCallback: key: " << key << "; scancode: "
-			<< scancode
-			<< "; action: " << action << "; mods: " << mods;
+			<< scancode << "; action: " << action << "; mods: " << mods;
 	logger::info(ss);
 
 	if (key == GLFW_KEY_W) {
@@ -185,7 +183,6 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 		tempStartGame();
 	}
 
-
 	if (base_game::g_pApp != nullptr) {
 		if (action == GLFW_PRESS) {
 			// GLFW_KEY_1 -> TempT004figuresView
@@ -194,27 +191,25 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 		}
 
 		/*
-		if (key == GLFW_KEY_1) {
-			base_game::g_pApp->m_pGame->tempAddView(1);
-		} else if (key == GLFW_KEY_2) {
-			base_game::g_pApp->m_pGame->tempAddView(2);
-		} else if (key == GLFW_KEY_3) {
-			base_game::g_pApp->m_pGame->tempAddView(3);
-		} else if (key == GLFW_KEY_4) {
-			base_game::g_pApp->m_pGame->tempAddView(4);
-		} else if (key == GLFW_KEY_5) {
-			base_game::g_pApp->m_pGame->tempAddView(5);
-		} else if (key == GLFW_KEY_6) {
-			base_game::g_pApp->m_pGame->tempAddView(6);
-		} else if (key == GLFW_KEY_7) {
-			base_game::g_pApp->m_pGame->tempAddView(7);
-		}
+		 if (key == GLFW_KEY_1) {
+		 base_game::g_pApp->m_pGame->tempAddView(1);
+		 } else if (key == GLFW_KEY_2) {
+		 base_game::g_pApp->m_pGame->tempAddView(2);
+		 } else if (key == GLFW_KEY_3) {
+		 base_game::g_pApp->m_pGame->tempAddView(3);
+		 } else if (key == GLFW_KEY_4) {
+		 base_game::g_pApp->m_pGame->tempAddView(4);
+		 } else if (key == GLFW_KEY_5) {
+		 base_game::g_pApp->m_pGame->tempAddView(5);
+		 } else if (key == GLFW_KEY_6) {
+		 base_game::g_pApp->m_pGame->tempAddView(6);
+		 } else if (key == GLFW_KEY_7) {
+		 base_game::g_pApp->m_pGame->tempAddView(7);
+		 }
 		 */
 	}
 
-
 	logger::info(ss);
-
 
 	return true;
 }
@@ -236,8 +231,7 @@ bool MovementController::vOnCharCallback(GLFWwindow* window,
 }
 
 bool MovementController::vOnCharmodsCallback(GLFWwindow* window,
-		unsigned int codepoint,
-		int mods) {
+		unsigned int codepoint, int mods) {
 	stringstream ss;
 	ss << "MovementController::onCharmodsCallback: codepoint: " << codepoint
 			<< "; mods: " << mods;
@@ -247,12 +241,10 @@ bool MovementController::vOnCharmodsCallback(GLFWwindow* window,
 }
 
 bool MovementController::vOnCursorPositionCallback(GLFWwindow* window,
-		double xpos,
-		double ypos) {
+		double xpos, double ypos) {
 	stringstream ss;
 	ss << "MovementController::onCursorPositionCallback: xpos: " << xpos
-			<< "; ypos: "
-			<< ypos;
+			<< "; ypos: " << ypos;
 	//logger::info(ss);
 
 	return true;
@@ -271,8 +263,7 @@ bool MovementController::vOnMouseButtonCallback(GLFWwindow* window, int button,
 		int action, int mods) {
 	stringstream ss;
 	ss << "MovementController::onMouseButtonCallback: button: " << button
-			<< "; action: "
-			<< action << "; mods: " << mods;
+			<< "; action: " << action << "; mods: " << mods;
 	logger::info(ss);
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT) {
@@ -302,12 +293,10 @@ bool MovementController::vOnScrollCallback(GLFWwindow* window, double xoffset,
 		double yoffset) {
 	stringstream ss;
 	ss << "MovementController::onScrollCallback: xoffset: " << xoffset
-			<< "; yoffset: "
-			<< yoffset;
+			<< "; yoffset: " << yoffset;
 	//logger::info(ss);
 
 	return true;
 }
-
 
 } /* namespace base_game */

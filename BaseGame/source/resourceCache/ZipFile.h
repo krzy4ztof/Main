@@ -33,7 +33,6 @@ public:
 	std::string getFilename(int i) const;
 //	std::string getFilename(int i);
 
-
 protected:
 	TZipDirHeader* getZipDirHeader();
 	void reset();
@@ -88,7 +87,6 @@ protected:
 
 	std::string zipToUnzip(std::string zipString) const;
 	std::string getUnzipFilename(ZipFileAsset* pZipFileAsset) const;
-
 
 private:
 

@@ -8,29 +8,27 @@ using std::uniform_int_distribution;
 
 namespace base_game {
 
-	RandomGenerator::RandomGenerator(int min, int max) {
-		logger::trace("Create RandomGenerator");
-		generator = mt19937();
-		distribution = uniform_int_distribution<int>(min,max);
-	}
+RandomGenerator::RandomGenerator(int min, int max) {
+	logger::trace("Create RandomGenerator");
+	generator = mt19937();
+	distribution = uniform_int_distribution<int>(min, max);
+}
 
+RandomGenerator::RandomGenerator(int min, int max, int seed) {
+	logger::trace("Create RandomGenerator");
+	generator = mt19937(0);
+	distribution = uniform_int_distribution<int>(min, max);
+}
 
-	RandomGenerator::RandomGenerator(int min, int max, int seed) {
-		logger::trace("Create RandomGenerator");
-		generator = mt19937(0);
-		distribution = uniform_int_distribution<int>(min,max);
-	}
+RandomGenerator::~RandomGenerator() {
+	logger::trace("Destroy RandomGenerator");
+}
 
+void RandomGenerator::setSeed(int seed) {
+	generator.seed(seed);
+}
 
-	RandomGenerator::~RandomGenerator() {
-		logger::trace("Destroy RandomGenerator");
-	}
-
-	void RandomGenerator::setSeed(int seed) {
-		generator.seed(seed);
-	}
-
-	int RandomGenerator::random() {
-		return distribution(generator);
-	}
+int RandomGenerator::random() {
+	return distribution(generator);
+}
 }

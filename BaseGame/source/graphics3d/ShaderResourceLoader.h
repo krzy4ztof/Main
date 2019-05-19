@@ -88,7 +88,6 @@ private:
 
 };
 
-
 class ShaderResourceLoader: public IResourceLoader {
 public:
 	ShaderResourceLoader();

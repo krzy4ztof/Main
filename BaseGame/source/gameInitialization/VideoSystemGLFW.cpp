@@ -75,12 +75,12 @@ void VideoSystemGLFW::onIdle() {
 }
 
 /*
-int VideoSystemGLFW::tempGLUTinitialize() {
-	char fakeParam[] = "fake";
-	char *fakeargv[] = { fakeParam, NULL };
-	int fakeargc = 1;
-	glutInit(&fakeargc, fakeargv);
-}
+ int VideoSystemGLFW::tempGLUTinitialize() {
+ char fakeParam[] = "fake";
+ char *fakeargv[] = { fakeParam, NULL };
+ int fakeargc = 1;
+ glutInit(&fakeargc, fakeargv);
+ }
  */
 
 int VideoSystemGLFW::initialize() {
@@ -100,10 +100,10 @@ int VideoSystemGLFW::initialize() {
 
 	/* Initialize GLEW */
 	/*
-	GLenum err = glewInit();
-	if (GLEW_OK != err) {
-		return -1;
-	}
+	 GLenum err = glewInit();
+	 if (GLEW_OK != err) {
+	 return -1;
+	 }
 	 */
 
 	// START Tutorial
@@ -176,7 +176,7 @@ int VideoSystemGLFW::startGLFW_333_ok() {
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
 		/* Render here */
-		glClear (GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
 		this->onIdle();
 
 		/* Swap front and back buffers */

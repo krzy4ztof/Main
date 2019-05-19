@@ -6,21 +6,21 @@
 #include <list> // list
 
 namespace base_game {
-	class ProcessManager {
-		private:
-			std::list<std::shared_ptr<Process>> processList;
+class ProcessManager {
+private:
+	std::list<std::shared_ptr<Process>> processList;
 
-		public:
-			ProcessManager();
-			virtual ~ProcessManager();
+public:
+	ProcessManager();
+	virtual ~ProcessManager();
 
-			// interface
-			void updateProcesses(unsigned long deltaMs);  // updates all attached processes
-			std::weak_ptr<Process> attachProcess(std::shared_ptr<Process> pProcess);  // attaches a process to the process mgr
+	// interface
+	void updateProcesses(unsigned long deltaMs); // updates all attached processes
+	std::weak_ptr<Process> attachProcess(std::shared_ptr<Process> pProcess); // attaches a process to the process mgr
 
-		protected:
+protected:
 
-		private:
-	};
+private:
+};
 }
 #endif // PROCESSMANAGER_H

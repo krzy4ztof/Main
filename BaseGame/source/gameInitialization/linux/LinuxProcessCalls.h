@@ -6,14 +6,14 @@
 
 namespace base_game {
 	class LinuxProcessCalls {
-		public:
-			LinuxProcessCalls();
-			virtual ~LinuxProcessCalls();
-			bool isOnlyInstance ( const std::string& );
+	public:
+		LinuxProcessCalls();
+		virtual ~LinuxProcessCalls();
+		bool isOnlyInstance ( const std::string& );
 
-		protected:
+	protected:
 
-		private:
+	private:
 	};
 }
 #endif /* __linux__ */

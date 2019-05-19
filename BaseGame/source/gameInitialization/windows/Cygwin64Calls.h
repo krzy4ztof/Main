@@ -14,7 +14,6 @@
 #ifndef CYGWIN64CALLS_H
 #define CYGWIN64CALLS_H
 
-
 #ifdef __CYGWIN__
 //#ifdef __LINUX__
 #include "Cygwin64Calls.h"
@@ -24,19 +23,19 @@
 namespace base_game {
 
 	class Cygwin64Calls {
-		public:
-			Cygwin64Calls();
-			Cygwin64Calls(const Cygwin64Calls& orig);
-			virtual ~Cygwin64Calls();
+	public:
+		Cygwin64Calls();
+		Cygwin64Calls(const Cygwin64Calls& orig);
+		virtual ~Cygwin64Calls();
 
-			bool isOnlyInstance(const std::string&);
-			bool checkHardDisk(const int);
-			unsigned long readCPUSpeed();
-			bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
+		bool isOnlyInstance(const std::string&);
+		bool checkHardDisk(const int);
+		unsigned long readCPUSpeed();
+		bool checkMemory(const unsigned long long physicalRAMNeeded, const unsigned long long virtualRAMNeeded);
 
-			std::string getUserProfilePath();
+		std::string getUserProfilePath();
 
-		private:
+	private:
 	};
 }
 #endif /* __CYGWIN__ */

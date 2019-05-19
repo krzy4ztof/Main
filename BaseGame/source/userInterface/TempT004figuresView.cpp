@@ -63,12 +63,12 @@ void TempT004figuresView::vInit() {
 	stringstream ss;
 
 	/*
-	//path vertPath { this->m_assetsFolder };
-	path vertPath { this->shrdPtrResourceCache->assetsFolder };
+	 //path vertPath { this->m_assetsFolder };
+	 path vertPath { this->shrdPtrResourceCache->assetsFolder };
 
-	vertPath /= "shaders/TempT004figuresView.vert";
-	//thisResPath /= resource.getName();
-	vertPath = vertPath.make_preferred();
+	 vertPath /= "shaders/TempT004figuresView.vert";
+	 //thisResPath /= resource.getName();
+	 vertPath = vertPath.make_preferred();
 	 */
 
 	string vertResourceName = "temp_t004_figures_view.vert";
@@ -77,13 +77,13 @@ void TempT004figuresView::vInit() {
 	logger::info(ss);
 
 	/*
-	//path fragPath { this->m_assetsFolder };
-	path fragPath { this->shrdPtrResourceCache->assetsFolder };
+	 //path fragPath { this->m_assetsFolder };
+	 path fragPath { this->shrdPtrResourceCache->assetsFolder };
 
-	fragPath /= "shaders/TempT004figuresView.frag";
-	//thisResPath /= resource.getName();
-	fragPath = fragPath.make_preferred();
-	string fragResourceName = fragPath.string();
+	 fragPath /= "shaders/TempT004figuresView.frag";
+	 //thisResPath /= resource.getName();
+	 fragPath = fragPath.make_preferred();
+	 string fragResourceName = fragPath.string();
 	 */
 	string fragResourceName = "temp_t004_figures_view.frag";
 
@@ -103,48 +103,48 @@ void TempT004figuresView::vInit() {
 }
 
 /*
-void TempT004figuresView::vInit() {
-//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+ void TempT004figuresView::vInit() {
+ //	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-	glGenBuffers(1, &positionBuffer);
-	glGenBuffers(1, &colorBuffer);
+ glGenBuffers(1, &positionBuffer);
+ glGenBuffers(1, &colorBuffer);
 
-	stringstream ss;
+ stringstream ss;
 
-	//path vertPath { this->m_assetsFolder };
-	path vertPath { this->shrdPtrResourceCache->assetsFolder };
+ //path vertPath { this->m_assetsFolder };
+ path vertPath { this->shrdPtrResourceCache->assetsFolder };
 
-	vertPath /= "shaders/TempT004figuresView.vert";
-	//thisResPath /= resource.getName();
-	vertPath = vertPath.make_preferred();
-	string vertResourceName = vertPath.string();
-	ss << "vertPath: " << vertResourceName;
-	logger::info(ss);
-
-
-	//path fragPath { this->m_assetsFolder };
-	path fragPath { this->shrdPtrResourceCache->assetsFolder };
-
-	fragPath /= "shaders/TempT004figuresView.frag";
-	//thisResPath /= resource.getName();
-	fragPath = fragPath.make_preferred();
-	string fragResourceName = fragPath.string();
-	ss << "fragPath: " << fragResourceName;
-	logger::info(ss);
-
-	//programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
-	ShaderCompiler shaderCompiler; // = new ShaderCompiler();
-
-	programID = shaderCompiler.loadShaders(vertResourceName.c_str(),
-			fragResourceName.c_str());
-	
-	// Create and compile our GLSL program from the shaders
-	//programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
-	//	"../../../assets/shaders/TempT004figuresView.frag");
+ vertPath /= "shaders/TempT004figuresView.vert";
+ //thisResPath /= resource.getName();
+ vertPath = vertPath.make_preferred();
+ string vertResourceName = vertPath.string();
+ ss << "vertPath: " << vertResourceName;
+ logger::info(ss);
 
 
-	vActivate();
-}
+ //path fragPath { this->m_assetsFolder };
+ path fragPath { this->shrdPtrResourceCache->assetsFolder };
+
+ fragPath /= "shaders/TempT004figuresView.frag";
+ //thisResPath /= resource.getName();
+ fragPath = fragPath.make_preferred();
+ string fragResourceName = fragPath.string();
+ ss << "fragPath: " << fragResourceName;
+ logger::info(ss);
+
+ //programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
+ ShaderCompiler shaderCompiler; // = new ShaderCompiler();
+
+ programID = shaderCompiler.loadShaders(vertResourceName.c_str(),
+ fragResourceName.c_str());
+ 
+ // Create and compile our GLSL program from the shaders
+ //programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
+ //	"../../../assets/shaders/TempT004figuresView.frag");
+
+
+ vActivate();
+ }
  */
 
 void TempT004figuresView::vActivate() {
@@ -154,18 +154,18 @@ void TempT004figuresView::vActivate() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	/*
-	GLfloat fstTriangle[] = { -1.0f, 0.5f, 0.0f, 1.0f, //
-			-0.5f, 0.5f, 0.0f, 1.0f, //
-			-0.75f, 1.0f, 0.0f, 1.0f };
+	 GLfloat fstTriangle[] = { -1.0f, 0.5f, 0.0f, 1.0f, //
+	 -0.5f, 0.5f, 0.0f, 1.0f, //
+	 -0.75f, 1.0f, 0.0f, 1.0f };
 
-	GLfloat secTriangle[] = { 0.5f, 1.0f, 0.0f, 1.0f, //
-			1.0f, 1.0f, 0.0f, 1.0f, //
-			0.75f, 0.5f, 0.0f, 1.0f };
+	 GLfloat secTriangle[] = { 0.5f, 1.0f, 0.0f, 1.0f, //
+	 1.0f, 1.0f, 0.0f, 1.0f, //
+	 0.75f, 0.5f, 0.0f, 1.0f };
 
-	GLfloat quadr[] = { -1.0f, -1.0f, 0.0f, 1.0f, //
-			-0.5f, -1.0f, 0.0f, 1.0f, //
-			-0.5f, -0.5f, 0.0f, 1.0f, //
-			-1.0f, -0.5f, 0.0f, 1.0f };
+	 GLfloat quadr[] = { -1.0f, -1.0f, 0.0f, 1.0f, //
+	 -0.5f, -1.0f, 0.0f, 1.0f, //
+	 -0.5f, -0.5f, 0.0f, 1.0f, //
+	 -1.0f, -0.5f, 0.0f, 1.0f };
 	 */
 
 	static const GLfloat positions[] = { -1.0f, 0.5f, 0.0f, 1.0f, // fst triangle
@@ -196,7 +196,6 @@ void TempT004figuresView::vActivate() {
 			0.0f, 1.0f, 0.0f, 1.0f, //
 			0.0f, 0.0f, 1.0f, 1.0f, //
 			1.0f, 1.0f, 0.0f, 1.0f };
-
 
 // Bind the second and initialize it
 	glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
@@ -231,7 +230,6 @@ void TempT004figuresView::vOnRender(double currentTime, float fElapsedTime) {
 
 	//16, 32
 }
-
 
 namespace temp_t004_figures_view {
 TempT004figuresView* openGLview = nullptr;

@@ -36,7 +36,6 @@ using base_game::ResourceCache;
 
 using base_game::ResourceZipFile;
 
-
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace game_messages = base_game::game_messages;
@@ -60,7 +59,6 @@ struct GameMessagesZipFileFixture {
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
 
-
 	GameMessagesZipFileFixture() {
 		logger::info("Create GameMessagesZipFileFixture");
 		pTestGame = new TestGame;
@@ -70,8 +68,7 @@ struct GameMessagesZipFileFixture {
 		// START GameCodeApp::initAllOptions()
 		InitOptions* pInitOptions = new InitOptions;
 		shrdPtrResourceFile = make_shared<ResourceZipFile>(
-				pInitOptions->getRootFolder(),
-				IResourceFile::ASSETS_ZIP_FILE);
+				pInitOptions->getRootFolder(), IResourceFile::ASSETS_ZIP_FILE);
 
 		pPlayerOptions = new PlayerOptions;
 		pTestGame->setInitOptions(pInitOptions);
@@ -92,7 +89,7 @@ struct GameMessagesZipFileFixture {
 
 		shrdPtrResourceCache->registerLoader(
 				message_loader::createMessageLoader());
-		
+
 		pTestGame->setResourceCache(shrdPtrResourceCache);
 
 		pGameMessages = new GameMessages(shrdPtrResourceCache,
@@ -104,7 +101,7 @@ struct GameMessagesZipFileFixture {
 		logger::info("End Create GameMessagesZipFileFixture");
 		// END GameCodeApp::initInstance()
 
-}
+	}
 
 	~GameMessagesZipFileFixture() {
 		logger::info("Destroy GameMessagesZipFileFixture");
@@ -118,7 +115,7 @@ struct GameMessagesZipFileFixture {
 
 		templates::safe_delete<TestGame>(pTestGame);
 
-}
+	}
 };
 
 BOOST_FIXTURE_TEST_SUITE(GameMessagesZipFileSuite, GameMessagesZipFileFixture)

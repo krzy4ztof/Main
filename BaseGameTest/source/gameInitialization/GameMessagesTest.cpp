@@ -36,7 +36,6 @@ using base_game::ResourceCache;
 
 using base_game::DevelopmentResourceFolder;
 
-
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 namespace game_messages = base_game::game_messages;
@@ -59,7 +58,6 @@ struct GameMessagesFixture {
 	TestGame* pTestGame;
 	shared_ptr<ResourceCache> shrdPtrResourceCache;
 	shared_ptr<IResourceFile> shrdPtrResourceFile; // Will be removed in ResourceCache destructor
-
 
 	GameMessagesFixture() {
 		logger::info("Create GameMessagesFixture");
@@ -92,10 +90,8 @@ struct GameMessagesFixture {
 
 		shrdPtrResourceCache->registerLoader(
 				message_loader::createMessageLoader());
-		
+
 		pTestGame->setResourceCache(shrdPtrResourceCache);
-
-
 
 		pGameMessages = new GameMessages(shrdPtrResourceCache,
 				pPlayerOptions->getOption(pPlayerOptions->LANGUAGE),
@@ -111,7 +107,7 @@ struct GameMessagesFixture {
 
 		// END GameCodeApp::initInstance()
 
-}
+	}
 
 	~GameMessagesFixture() {
 		logger::info("Destroy GameMessagesFixture");
@@ -125,7 +121,7 @@ struct GameMessagesFixture {
 
 		templates::safe_delete<TestGame>(pTestGame);
 
-}
+	}
 };
 
 BOOST_FIXTURE_TEST_SUITE(GameMessagesSuite, GameMessagesFixture)
@@ -153,7 +149,6 @@ BOOST_AUTO_TEST_CASE(messagesLoader2, * unit_test::enable_if<MAIN_TEST_ENABLE>()
 
 	BOOST_TEST(true);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

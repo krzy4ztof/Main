@@ -8,10 +8,10 @@
 #include <memory> // shared_ptr
 
 namespace base_game {
-	class IResourceLoader {
-		public:
-			IResourceLoader();
-			virtual ~IResourceLoader();
+class IResourceLoader {
+public:
+	IResourceLoader();
+	virtual ~IResourceLoader();
 
 	virtual std::string vGetPattern()=0;
 
@@ -23,14 +23,13 @@ namespace base_game {
 		//TODO: scriptLoader will return true
 		return false;
 	}
-	
+
 	virtual boost::uintmax_t vGetLoadedResourceSize(char *rawBuffer,
 			boost::uintmax_t rawSize)=0;
-	
-	 virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
+
+	virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
 			std::shared_ptr<ResourceHandle> handle)=0;
 
-	
 	/*
 	 * 		virtual std::string VGetPattern()=0;
 	 virtual bool VUseRawFile()=0;
@@ -42,9 +41,9 @@ namespace base_game {
 	 */
 	bool matchesPattern(const std::string fileName);
 
-		protected:
+protected:
 
-		private:
-	};
+private:
+};
 }
 #endif // IRESOURCELOADER_H

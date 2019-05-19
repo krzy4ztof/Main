@@ -11,10 +11,7 @@
 #include "../../../BaseGame/source/debugging/Logger.h"
 #include "../../../BaseGame/source/userInterface/HumanView.h"
 
-
 #include <memory> // shared_ptr, weak_ptr, make_shared
-
-
 
 namespace logger = base_game::logger;
 using base_game::HumanView;
@@ -33,13 +30,10 @@ MainMenuView::~MainMenuView() {
 	logger::info("Destroy MainMenuView");
 }
 
-
-
 void MainMenuView::tempVLoadGameDelegate() {
 	shared_ptr<MainMenuController> mainMenuController = make_shared<
 			MainMenuController>();
 	m_KeyboardHandler = mainMenuController;
-
 
 }
 

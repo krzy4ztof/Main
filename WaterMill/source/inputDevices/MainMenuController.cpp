@@ -66,23 +66,22 @@ bool MainMenuController::vOnKeyCallback(GLFWwindow* window, int key,
 			base_game::g_pApp->m_pGame->tempSwitchView(key);
 		}
 
-
 		/*
-		if (key == GLFW_KEY_1) {
-			base_game::g_pApp->m_pGame->tempAddView(1);
-		} else if (key == GLFW_KEY_2) {
-			base_game::g_pApp->m_pGame->tempAddView(2);
-		} else if (key == GLFW_KEY_3) {
-			base_game::g_pApp->m_pGame->tempAddView(3);
-		} else if (key == GLFW_KEY_4) {
-			base_game::g_pApp->m_pGame->tempAddView(4);
-		} else if (key == GLFW_KEY_5) {
-			base_game::g_pApp->m_pGame->tempAddView(5);
-		} else if (key == GLFW_KEY_6) {
-			base_game::g_pApp->m_pGame->tempAddView(6);
-		} else if (key == GLFW_KEY_7) {
-			base_game::g_pApp->m_pGame->tempAddView(7);
-		}
+		 if (key == GLFW_KEY_1) {
+		 base_game::g_pApp->m_pGame->tempAddView(1);
+		 } else if (key == GLFW_KEY_2) {
+		 base_game::g_pApp->m_pGame->tempAddView(2);
+		 } else if (key == GLFW_KEY_3) {
+		 base_game::g_pApp->m_pGame->tempAddView(3);
+		 } else if (key == GLFW_KEY_4) {
+		 base_game::g_pApp->m_pGame->tempAddView(4);
+		 } else if (key == GLFW_KEY_5) {
+		 base_game::g_pApp->m_pGame->tempAddView(5);
+		 } else if (key == GLFW_KEY_6) {
+		 base_game::g_pApp->m_pGame->tempAddView(6);
+		 } else if (key == GLFW_KEY_7) {
+		 base_game::g_pApp->m_pGame->tempAddView(7);
+		 }
 		 */
 	}
 

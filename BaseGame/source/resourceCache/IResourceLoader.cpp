@@ -11,13 +11,13 @@ using std::regex;
 using std::regex_match;
 
 namespace base_game {
-	IResourceLoader::IResourceLoader() {
-		logger::trace("Create IResourceLoader");
-	}
+IResourceLoader::IResourceLoader() {
+	logger::trace("Create IResourceLoader");
+}
 
-	IResourceLoader::~IResourceLoader() {
-		logger::trace("Destroy IResourceLoader");
-	}
+IResourceLoader::~IResourceLoader() {
+	logger::trace("Destroy IResourceLoader");
+}
 
 bool IResourceLoader::matchesPattern(const string fileName) {
 	stringstream ss;
@@ -47,5 +47,5 @@ bool IResourceLoader::matchesPattern(const string fileName) {
 	}
 
 }
-	
+
 }
