@@ -15,6 +15,7 @@ Msys2 Shell
 
 
 pacman -Syu
+pacman -Su
 pacman -S git
 
 example:
@@ -267,11 +268,24 @@ C:\msys64\mingw64\bin\g++
 C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 All options
 
+[BaseGame]
 C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+Configuration: Debug
 // C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\freeglut\include - usunąć
 C:\msys64\mingw64\include
 C:\msys64\mingw64\x86_64-w64-mingw32\include
 C:\msys64\usr\local\include
+C:\mingw64\include\freetype
+
+
+[Watermill] 
+Project -> Properties -> C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+/BaseGame
+C:\mingw64\include
+C:\msys64\mingw64\x86_64-w64-mingw32\include
+C:\msys64\usr\local\include
+C:\mingw64\include\freetype
+
 
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
@@ -279,6 +293,7 @@ Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
 C:\msys64\mingw64\lib
 C:\msys64\mingw64\x86_64-w64-mingw32\lib
 C:\msys64\usr\local\lib
+
 
 
 // C:\home\myImportantFiles\projects\git\libraries\freeglut\lib\x64 - usunąć
@@ -328,6 +343,8 @@ C:\msys64\mingw64\lib\libjpeg.dll.a
 K) glew32
 C:\msys64\mingw64\lib\libglew32.dll.a
 
+L) png16 (required by boost/gil)
+C:\msys64\mingw64\lib\libpng16.dll.a
 
 
 Inne minizip

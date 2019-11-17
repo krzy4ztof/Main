@@ -21,13 +21,13 @@ void TZipLocalHeader::testInitiation() {
 	// unsigned long (4)
 	sig = TZipLocalHeader::SIGNATURE;
 	// unsigned short (2)
-	isCompression = TZipLocalHeader::Z_NO_COMPRESSION; // Z_NO_COMPRESSION or Z_DEFLATED
+	isCompression = TZipLocalHeader::BASE_GAME_Z_NO_COMPRESSION; // BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	// unsigned short (2)
 	version = 0x1111;
 	// unsigned short (2)
 	flag = 0x2222;
 	// unsigned short (2)
-	compression = TZipLocalHeader::Z_NO_COMPRESSION; // Z_NO_COMPRESSION or Z_DEFLATED
+	compression = TZipLocalHeader::BASE_GAME_Z_NO_COMPRESSION; // BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	// unsigned short (2)
 	modTime = 0x3333;
 	// unsigned short (2)

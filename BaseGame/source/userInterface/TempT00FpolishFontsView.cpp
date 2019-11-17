@@ -7,8 +7,12 @@
 
 #include "TempT00FpolishFontsView.h"
 
+#include "../debugging/Logger.h"
 //#include "../main/OpenGLShader.h"
-#include "TempShader.hpp"
+//#include "TempShader.hpp"
+#include "../graphics3D/ShaderResourceLoader.h"
+#include "../graphics3D/FreeTypeResourceLoader.h"
+#include "../graphics3D/FreeTypeCharacter.h"
 
 //#include "../main/OpenGLwithGLFW.h"
 #include "../gameInitialization/VideoSystemGLFW.h"
@@ -18,6 +22,7 @@
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin
 #include <iostream>
+#include <sstream>      // std::stringstream
 #include <map> // std::map
 #include <string> // std::string
 
@@ -36,25 +41,34 @@
 #include <boost/gil/extension/numeric/sampler.hpp>
 #include <boost/gil/extension/numeric/resample.hpp>
 
-using std::cout;
-using std::endl;
+//using std::cout;
+//using std::endl;
 using std::map;
+using std::shared_ptr;
+using std::string;
+using std::stringstream;
 
 namespace base_game {
 
 const GLubyte TempT00FpolishFontsView::MAX_STD_CHAR = 128;
 
-TempT00FpolishFontsView::TempT00FpolishFontsView() {
-	cout << "Create T00FpolishFontsView" << endl;
+TempT00FpolishFontsView::TempT00FpolishFontsView(
+		shared_ptr<ResourceCache> resourceCache) {
+	logger::info("Create T00FpolishFontsView");
+	// cout << "Create T00FpolishFontsView" << endl;
 	programID = 0;
 	VAO = 0;
 	VBO = 0;
 
+	this->shrdPtrResourceCache = resourceCache;
 }
 
 TempT00FpolishFontsView::~TempT00FpolishFontsView() {
-	cout << "Destroy T00FpolishFontsView" << endl;
+	logger::info("Destroy T00FpolishFontsView");
+	// cout << "Destroy T00FpolishFontsView" << endl;
 	this->vTerminate();
+	shrdPtrResourceCache.reset();
+	characters.reset();
 }
 
 void TempT00FpolishFontsView::vTerminate() {
@@ -72,13 +86,18 @@ void TempT00FpolishFontsView::vTerminate() {
 //	glDeleteTextures(1, &texture);
 }
 
+/*
 void TempT00FpolishFontsView::initCharacter(FT_Face face, FT_ULong char_code,
 		GLushort char_code_out) {
-	cout << "[" << (int) (char_code) << "]:[" << char(char_code) << "] ";
+	stringstream ss;
+
+	ss << "[" << (int) (char_code) << "]:[" << char(char_code) << "] ";
+	logger::info(ss);
 
 	// Load character glyph
 	if (FT_Load_Char(face, char_code, FT_LOAD_RENDER)) {
-		std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
+		logger::error("ERROR::FREETYTPE: Failed to load Glyph");
+		// std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
 		return;
 	}
 	// Generate texture
@@ -102,35 +121,52 @@ void TempT00FpolishFontsView::initCharacter(FT_Face face, FT_ULong char_code,
 	Characters.insert(
 			std::pair<GLushort, T00Fcharacter>(char_code_out, character));
 }
+ */
+
 
 void TempT00FpolishFontsView::debugCharacters() {
+	stringstream ss;
 
-	cout << "--------- DEBUG START-------" << endl;
+	logger::info("--------- DEBUG START TempT00FpolishFontsView -------");
+	//cout << "--------- DEBUG START-------" << endl;
 
-	cout << "debug: " << Characters.size() << endl;
+	ss << "debug: " << characters->size();
+	logger::info(ss);
 
-	std::map<GLushort, T00Fcharacter>::iterator it;
-	for (it = Characters.begin(); it != Characters.end(); ++it) {
-		cout << "Key: " << std::hex << it->first << endl;
+	std::map<GLushort, FreeTypeCharacter>::iterator it;
+	for (it = characters->begin(); it != characters->end(); ++it) {
+		ss << "Key: " << std::hex << it->first; // << endl;
+		logger::info(ss);
+
 	}
 
-	cout << "--------- DEBUG END-------" << endl;
+	logger::info("--------- DEBUG END TempT00FpolishFontsView -------");
+
+	//cout << "--------- DEBUG END-------" << endl;
 
 }
 
+
+/*
 void TempT00FpolishFontsView::initCharacter(FT_Face face, FT_ULong char_code) {
 	this->initCharacter(face, char_code, char_code);
 }
+ */
 
+/*
 void TempT00FpolishFontsView::initFreetypeCharacters(FT_Face face) {
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // Disable byte-alignment restriction
+
+	stringstream ss;
 
 	for (GLubyte c = 0; c < MAX_STD_CHAR; c++) {
 		initCharacter(face, c);
 	}
-	cout << endl;
+	logger::info("");
+	//cout << endl;
+	logger::info("-----------------------");
 
-	cout << "-----------------------" << endl;
+	//cout << "-----------------------" << endl;
 
 //	FT_ULong codes[18] = { 260, 261, 262, 263, 280, 281, 321, 322, 323, 324, 211,
 	//		243, 346, 347, 377, 378, 379, 380 };
@@ -139,10 +175,11 @@ void TempT00FpolishFontsView::initFreetypeCharacters(FT_Face face) {
 			198, 202, 163, 209, 211, 166, 172, 175 };
 
 	for (FT_ULong code : codes) {
-		cout << "[" << (int) (code) << "]:[" << char(code) << "] ";
+		ss << "[" << (int) (code) << "]:[" << char(code) << "] ";
 
 	}
-	cout << endl;
+	logger::info(ss);
+	// cout << endl;
 
 	// A
 	this->initCharacter(face, 0x0104, 0xc484);
@@ -192,7 +229,9 @@ void TempT00FpolishFontsView::initFreetypeCharacters(FT_Face face) {
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 }
+ */
 
+/*
 void TempT00FpolishFontsView::initFreetype() {
 	FT_Library ft = nullptr;
 	FT_Face face = nullptr;
@@ -200,36 +239,35 @@ void TempT00FpolishFontsView::initFreetype() {
 	FT_Error ft_error = FT_Init_FreeType(&ft);
 
 	if (ft_error) {
-		cout << "ERROR::FREETYPE: Could not init FreeType Library" << endl;
+		logger::error("ERROR::FREETYPE: Could not init FreeType Library");
+		//cout << "ERROR::FREETYPE: Could not init FreeType Library" << endl;
 	}
 
-	ft_error = FT_New_Face(ft,
-			"../../../assets/graphics/TempT00FpolishFontsView-ariali.ttf", 0,
-			&face);
+	ft_error =
+			FT_New_Face(ft,
+					"../WaterMill/assets/graphics/temp_t00f_polish_fonts_view-ariali.ttf",
+					0, &face);
 
 	if (ft_error == FT_Err_Unknown_File_Format) {
-		cout << "ERROR::FREETYPE: Failed to load font" << endl
-				<< "... the font file could be opened and read, but it appears"
-				<< endl << "... that its font format is unsupported" << endl;
+		logger::error("ERROR::FREETYPE: Failed to load font");
+		logger::error(
+				"... the font file could be opened and read, but it appears");
+		logger::error("... that its font format is unsupported");
+
 	} else if (ft_error) {
-		cout << "ERROR::FREETYPE: Failed to load font" << endl
-				<< "... another error code means that the font file could not"
-				<< endl << "... be opened or read, or that it is broken..."
-				<< endl;
+		logger::error("ERROR::FREETYPE: Failed to load font");
+		logger::error(
+				"... another error code means that the font file could not");
+		logger::error("... be opened or read, or that it is broken...");
 	}
 
-//	ft_error = FT_Set_Char_Size(face, /* handle to face object           */
-//	0, /* char_width in 1/64th of points  */
-//	16 * 64, /* char_height in 1/64th of points */
-//	300, /* horizontal device resolution    */
-//	300); /* vertical device resolution      */
-
-	ft_error = FT_Set_Pixel_Sizes(face, /* handle to face object */
-	0, /* pixel_width           */
-	48); /* pixel_height          */
+ ft_error = FT_Set_Pixel_Sizes(face, // handle to face object
+ 0, // pixel_width
+ 48); // pixel_height
 
 	if (ft_error) {
-		cout << "ERROR::FREETYPE: Could not set pixel sizes" << endl;
+		logger::error("ERROR::FREETYPE: Could not set pixel sizes");
+		// cout << "ERROR::FREETYPE: Could not set pixel sizes" << endl;
 	}
 
 	initFreetypeCharacters(face);
@@ -238,33 +276,35 @@ void TempT00FpolishFontsView::initFreetype() {
 	FT_Done_FreeType(ft);
 
 }
+ */
 
 void TempT00FpolishFontsView::vInit() {
-	initFreetype();
-	this->debugCharacters();
+	//initFreetype();
+	//this->debugCharacters();
 	// initFreetypeCharacters();
+
+	FreeTypeLoader freeTypeLoader(this->shrdPtrResourceCache);
+	characters = freeTypeLoader.initFreetype();
+	freeTypeLoader.debugCharacters();
+	//Characters = freeTypeLoader.temp_getCharacters();
+
+	this->debugCharacters();
+
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
-	programID = LoadShaders(
-			"../../../assets/shaders/TempT00FpolishFontsView.vert",
-			"../../../assets/shaders/TempT00FpolishFontsView.frag");
+	string vertResourceName = "temp_t00f_polish_fonts_view.vert";
+	string fragResourceName = "temp_t00f_polish_fonts_view.frag";
 
-	/*
-	 readImageInfo();
-	 testCopyImage();
+	ShaderCompiler shaderCompiler(this->shrdPtrResourceCache); // = new ShaderCompiler();
+	programID = shaderCompiler.loadShaders(vertResourceName, fragResourceName);
 
-	 programID = LoadShaders("data/shaders/T00EttfFontsView.vert",
-	 "data/shaders/T00EttfFontsView.frag");
+	//programID = LoadShaders(
+	//		"../../../assets/shaders/temp_t00f_polish_fonts_view.vert",
+	//		"../../../assets/shaders/temp_t00f_polish_fonts_view.frag");
 
-	 //glGenVertexArrays(1, &vao);
-	 glGenBuffers(1, &position_buffer);
-	 glGenBuffers(1, &index_buffer);
-	 //glGenBuffers(1, &color_buffer);
-	 //	glGenTextures(1, &texture);
-	 glGenBuffers(1, &uvbuffer);
-	 */
+
 
 	vActivate();
 }
@@ -315,7 +355,7 @@ void TempT00FpolishFontsView::vActivate() {
 
 }
 
-void TempT00FpolishFontsView::RenderLetter(T00Fcharacter ch, GLfloat& x,
+void TempT00FpolishFontsView::RenderLetter(FreeTypeCharacter ch, GLfloat &x,
 		GLfloat y, GLfloat scale) {
 	//T00Fcharacter ch = Characters[*c];
 
@@ -347,22 +387,32 @@ void TempT00FpolishFontsView::RenderLetter(T00Fcharacter ch, GLfloat& x,
 GLubyte TempT00FpolishFontsView::RenderUShortLetter(GLubyte charC,
 		GLubyte prevChar, GLfloat& x, GLfloat y, GLfloat scale) {
 
-	cout << "charC: " << std::hex << (GLushort) charC << "; prevChar: "
-			<< (GLushort) prevChar << endl;
+	stringstream ss;
+
+	ss << "charC: " << std::hex << (GLushort) charC << "; prevChar: "
+			<< (GLushort) prevChar; // << endl;
+	logger::info(ss);
 
 	GLushort shortC = prevChar * 0x100 + charC;
 
-	cout << "renderUshort -> shortC: " << std::hex << shortC << std::dec
-			<< endl;
+	ss << "renderUshort -> shortC: " << std::hex << shortC << std::dec;
+	//	<< endl;
+	logger::info(ss);
 
-	std::map<GLushort, T00Fcharacter>::iterator it;
+	std::map<GLushort, FreeTypeCharacter>::iterator it;
 
-	T00Fcharacter ch;
-	it = Characters.find(shortC);
+	FreeTypeCharacter ch;
+	// it = Characters.find(shortC);
+	it = characters->find(shortC);
+
 	//it = Characters.find(50308);
 
-	if (it == Characters.end()) {
-		ch = Characters[0x00];
+	//if (it == Characters.end()) {
+	//	ch = Characters[0x00];
+	if (it == characters->end()) {
+		//ch = characters.get()[0x00];
+		//ch = characters->[0x00];
+		ch = characters->at(0x00);
 	} else {
 		ch = it->second;
 	}
@@ -374,28 +424,35 @@ GLubyte TempT00FpolishFontsView::RenderUShortLetter(GLubyte charC,
 
 GLubyte TempT00FpolishFontsView::RenderUByteLetter(GLubyte charC, GLfloat& x,
 		GLfloat y, GLfloat scale) {
+	stringstream ss;
 
-	T00Fcharacter ch;
+	FreeTypeCharacter ch;
 	if (charC >= 0 && charC < MAX_STD_CHAR) {
 		//ch = Characters[*c];
-		ch = Characters[charC];
+		//ch = characters.get()[charC];
 
+		//ch = Characters[charC];
+		ch = characters->at(charC);
 		this->RenderLetter(ch, x, y, scale);
 		//x += (ch.Advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
 
 	} else if (charC == 0xc3) {
-		cout << "0xc3" << endl;
+		//cout << "0xc3" << endl;
+		logger::info("0xc3");
 		return charC;
 	} else if (charC == 0xc4) {
-		cout << "0xc4" << endl;
+		//cout << "0xc4" << endl;
+		logger::info("0xc4");
 		return charC;
 	} else if (charC == 0xc5) {
-		cout << "0xc5" << endl;
+		//cout << "0xc5" << endl;
+		logger::info("0xc5");
 		return charC;
 	} else {
 
-		cout << charC << ": " << std::hex << (short) charC << std::dec << " |"
-				<< (charC) << "|" << endl;
+		ss << charC << ": " << std::hex << (short) charC << std::dec << " |"
+				<< (charC) << "|"; // << endl;
+		logger::info (ss);
 	}
 	return 0x00;
 }
@@ -419,20 +476,27 @@ void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
 
 		GLubyte charC = (*c);
 		if (charC == 0xc3) {
-			cout << "charC - 0xc3" << endl;
+			logger::info("charC - 0xc3");
+
+			//cout << "charC - 0xc3" << endl;
 		} else if (charC == 0xc4) {
-			cout << "charC - 0xc4" << endl;
+			logger::info("charC - 0xc4");
+			//cout << "charC - 0xc4" << endl;
 		} else if (charC == 0xc5) {
-			cout << "charC - 0xc5" << endl;
+			//cout << "charC - 0xc5" << endl;
+			logger::info("charC - 0xc5");
 		}
 
 		GLushort shortC = (*c);
 		if (shortC == 0xffc3) {
-			cout << "shortC - 0xffc3" << endl;
+			//cout << "shortC - 0xffc3" << endl;
+			logger::info("shortC - 0xffc3");
 		} else if (shortC == 0xffc4) {
-			cout << "shortC - 0xffc4" << endl;
+			//cout << "shortC - 0xffc4" << endl;
+			logger::info("shortC - 0xffc4");
 		} else if (shortC == 0xffc5) {
-			cout << "shortC - 0xffc5" << endl;
+			//cout << "shortC - 0xffc5" << endl;
+			logger::info("shortC - 0xffc5");
 		}
 
 		if (prevChar == 0xc3 || prevChar == 0xc4 || prevChar == 0xc5) {
@@ -518,20 +582,23 @@ void TempT00FpolishFontsView::vOnRender(double currentTime,
 namespace temp_t00f_polish_fonts_view {
 TempT00FpolishFontsView* openGLview = nullptr;
 
-TempT00FpolishFontsView* getView(bool reset) {
+//TempT00FpolishFontsView*
+shared_ptr<TempT00FpolishFontsView> getView(bool reset,
+		shared_ptr<ResourceCache> resourceCache) {
 	if (openGLview == nullptr) {
-		openGLview = new TempT00FpolishFontsView();
+		openGLview = new TempT00FpolishFontsView(resourceCache);
 		openGLview->vInit();
 	} else {
 		if (reset) {
 			delete (openGLview);
-			openGLview = new TempT00FpolishFontsView();
+			openGLview = new TempT00FpolishFontsView(resourceCache);
 			openGLview->vInit();
 		}
 	}
-	return openGLview;
+	//return openGLview;
+	return shared_ptr<TempT00FpolishFontsView> { openGLview };
 }
 }
 ///////////
-} /* namespace opengl_tests */
+} /* namespace base_game */
 

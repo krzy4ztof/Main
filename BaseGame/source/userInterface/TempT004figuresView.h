@@ -47,7 +47,8 @@ protected:
 };
 
 namespace temp_t004_figures_view {
-TempT004figuresView* getView(bool reset,
+//TempT004figuresView*
+std::shared_ptr<TempT004figuresView> getView(bool reset,
 		std::shared_ptr<ResourceCache> resourceCache);
 }
 

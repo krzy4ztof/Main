@@ -21,7 +21,7 @@ void TZipDirHeader::testInitiation() {
 	//unsigned long (4)
 	sig = TZipDirHeader::SIGNATURE;
 	//unsigned short (2)
-	isCompression = TZipDirHeader::Z_NO_COMPRESSION; // Z_NO_COMPRESSION or Z_DEFLATED
+	isCompression = TZipDirHeader::BASE_GAME_Z_NO_COMPRESSION; // BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	//unsigned short (2)
 	nDisk = 0x1111;
 	//unsigned short (2)

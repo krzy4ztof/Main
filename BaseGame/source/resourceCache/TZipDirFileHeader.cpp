@@ -61,7 +61,7 @@ void TZipDirFileHeader::testInitiation() {
 	sig = TZipDirFileHeader::SIGNATURE;
 
 	//unsigned short (2)
-	isCompression = TZipDirFileHeader::Z_NO_COMPRESSION; // Z_NO_COMPRESSION or Z_DEFLATED (Z_NOCOMPRESSION = 0)
+	isCompression = TZipDirFileHeader::BASE_GAME_Z_NO_COMPRESSION; // BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED (Z_NOCOMPRESSION = 0)
 
 	//unsigned short (2)
 	verMade = 0x1111;

@@ -6,7 +6,7 @@
  */
 
 #include "TempT004figuresView.h"
-
+#include "../debugging/Logger.h"
 // #include "../main/OpenGLShader.h"
 //#include "TempShader.hpp"
 #include "../graphics3D/ShaderResourceLoader.h"
@@ -23,8 +23,8 @@
 //boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;
 #include <sstream>      // std::stringstream
 
-using std::cout;
-using std::endl;
+//using std::cout;
+//using std::endl;
 using std::string;
 using boost::filesystem::path;
 using std::stringstream;
@@ -34,7 +34,8 @@ namespace base_game {
 
 TempT004figuresView::TempT004figuresView(
 		shared_ptr<ResourceCache> resourceCache) {
-	cout << "Create TempT004figuresView" << endl;
+	logger::info("Create TempT004figuresView");
+	// cout << "Create TempT004figuresView" << endl;
 	programID = 0;
 	positionBuffer = 0;
 	colorBuffer = 0;
@@ -43,7 +44,8 @@ TempT004figuresView::TempT004figuresView(
 }
 
 TempT004figuresView::~TempT004figuresView() {
-	cout << "Destroy TempT004figuresView" << endl;
+	logger::info("Destroy TempT004figuresView");
+	// cout << "Destroy TempT004figuresView" << endl;
 	this->vTerminate();
 	shrdPtrResourceCache.reset();
 }
@@ -62,31 +64,11 @@ void TempT004figuresView::vInit() {
 
 	stringstream ss;
 
-	/*
-	 //path vertPath { this->m_assetsFolder };
-	 path vertPath { this->shrdPtrResourceCache->assetsFolder };
-
-	 vertPath /= "shaders/TempT004figuresView.vert";
-	 //thisResPath /= resource.getName();
-	 vertPath = vertPath.make_preferred();
-	 */
-
 	string vertResourceName = "temp_t004_figures_view.vert";
-	//string vertResourceName = vertPath.string();
 	ss << "vertPath: " << vertResourceName;
 	logger::info(ss);
 
-	/*
-	 //path fragPath { this->m_assetsFolder };
-	 path fragPath { this->shrdPtrResourceCache->assetsFolder };
-
-	 fragPath /= "shaders/TempT004figuresView.frag";
-	 //thisResPath /= resource.getName();
-	 fragPath = fragPath.make_preferred();
-	 string fragResourceName = fragPath.string();
-	 */
 	string fragResourceName = "temp_t004_figures_view.frag";
-
 	ss << "fragPath: " << fragResourceName;
 	logger::info(ss);
 
@@ -234,7 +216,8 @@ void TempT004figuresView::vOnRender(double currentTime, float fElapsedTime) {
 namespace temp_t004_figures_view {
 TempT004figuresView* openGLview = nullptr;
 
-TempT004figuresView* getView(bool reset,
+//TempT004figuresView*
+shared_ptr<TempT004figuresView> getView(bool reset,
 		shared_ptr<ResourceCache> resourceCache) {
 	if (openGLview == nullptr) {
 		openGLview = new TempT004figuresView(resourceCache);
@@ -246,7 +229,8 @@ TempT004figuresView* getView(bool reset,
 			openGLview->vInit();
 		}
 	}
-	return openGLview;
+	//return openGLview;
+	return shared_ptr<TempT004figuresView> { openGLview };
 }
 }
 

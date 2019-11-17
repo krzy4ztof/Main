@@ -9,6 +9,8 @@
 #define USERINTERFACE_TEMPT00FPOLISHFONTSVIEW_H_
 
 #include "HumanView.h"
+#include "../resourceCache/ResourceCache.h"
+#include "../graphics3D/FreeTypeCharacter.h"
 // #include "../main/shader.h"
 
 #include <ft2build.h>
@@ -25,18 +27,20 @@
 
 namespace base_game {
 
+/*
 struct T00Fcharacter {
 	GLuint TextureID;  // ID handle of the glyph texture
 	glm::ivec2 Size;       // Size of glyph
 	glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph
 	GLuint Advance;    // Offset to advance to next glyph
 };
+ */
 
 class TempT00FpolishFontsView: public HumanView {
 public:
 	const static GLubyte MAX_STD_CHAR;
 
-	TempT00FpolishFontsView();
+	TempT00FpolishFontsView(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT00FpolishFontsView();
 
 	virtual void vInit();
@@ -54,13 +58,19 @@ protected:
 
 	// Freetype
 	// FT_Face face;
-	std::map<GLushort, T00Fcharacter> Characters;
+	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters;
+	//std::map<GLushort, T00Fcharacter> Characters;
 
+
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+
+	/*
 	void initFreetype();
 	void initFreetypeCharacters(FT_Face face);
 	void initCharacter(FT_Face face, FT_ULong char_code);
 	void initCharacter(FT_Face face, FT_ULong char_code,
 			GLushort char_code_out);
+	 */
 	void RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale,
 			glm::vec3 color);
 
@@ -70,16 +80,20 @@ protected:
 	GLubyte RenderUShortLetter(GLubyte charC, GLubyte prevChar, GLfloat& x,
 			GLfloat y, GLfloat scale);
 
-	void RenderLetter(T00Fcharacter ch, GLfloat& x, GLfloat y, GLfloat scale);
+//	void RenderLetter(T00Fcharacter ch, GLfloat& x, GLfloat y, GLfloat scale);
+	void RenderLetter(FreeTypeCharacter ch, GLfloat &x, GLfloat y,
+			GLfloat scale);
 
 	void debugCharacters();
 
 };
 
 namespace temp_t00f_polish_fonts_view {
-TempT00FpolishFontsView* getView(bool reset);
+//TempT00FpolishFontsView*
+std::shared_ptr<TempT00FpolishFontsView> getView(bool reset,
+		std::shared_ptr<ResourceCache> resourceCache);
 }
 
-} /* namespace opengl_tests */
+} /* namespace base_game */
 
 #endif /* USERINTERFACE_TEMPT00FPOLISHFONTSVIEW_H_ */

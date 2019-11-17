@@ -10,6 +10,8 @@
 
 //#include "../main/IOpenGLView.h"
 #include "HumanView.h"
+#include "../resourceCache/ResourceCache.h"
+#include "../graphics3D/TextureResourceLoader.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -21,13 +23,14 @@ namespace base_game {
 
 class TempT009jpegGilTextureView: public HumanView {
 public:
-	TempT009jpegGilTextureView();
+	TempT009jpegGilTextureView(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT009jpegGilTextureView();
 
 	virtual void vInit();
 	virtual void vOnRender(double fTime, float fElapsedTime);
 	virtual void vTerminate();
 	virtual void vActivate();
+	//void vActivateOK_jpeg();
 	void vActivateOK();
 	virtual void vDeactivate();
 
@@ -38,21 +41,25 @@ protected:
 	GLuint position_buffer;
 	GLuint index_buffer;
 
-	GLuint texture;
+	// GLuint texture;
 	GLuint uvbuffer;
 
-	boost::gil::rgb8_image_t rgb8_image; // boost::gil::image
+	// boost::gil::rgb8_image_t rgb8_image; // boost::gil::image
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	JpgTextureLoader *jpgTextureLoader;
 
-	void generate_texture(float * data, int width, int height);
-	void image_to_texture(float * data);
+	// void generate_texture(float * data, int width, int height);
+	//void image_to_texture(float * data);
 
-	void loadTexture();
-	void testCopyImage();
+	// void loadTexture();
+	//void testCopyImage();
 
 };
 
 namespace temp_t009_jpeg_gil_texture_view {
-TempT009jpegGilTextureView* getView(bool reset);
+//TempT009jpegGilTextureView*
+std::shared_ptr<TempT009jpegGilTextureView> getView(bool reset,
+		std::shared_ptr<ResourceCache> resourceCache);
 }
 
 } /* namespace base_game */

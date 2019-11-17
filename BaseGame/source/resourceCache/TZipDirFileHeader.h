@@ -14,8 +14,8 @@ public:
 	enum {
 		SIGNATURE = 0xB2B2B2B2,
 		//SIGNATURE = 0x02014b50,
-		Z_NO_COMPRESSION = 0,
-		Z_DEFLATED = 1
+		BASE_GAME_Z_NO_COMPRESSION = 0, // Conflict names with Z_NO_COMPRESSION defined in <zlib.h>
+		BASE_GAME_Z_DEFLATED = 1 // Conflict names with Z_DEFLATED defined in <zlib.h>
 	};
 	// unsigned long - 4 bytes
 	// unsigned short - 2 bytes
@@ -25,11 +25,11 @@ public:
 
 	// 36 + 36 + 8 = 80
 	unsigned long sig = 0;
-	unsigned short isCompression = 0;      // Z_NO_COMPRESSION or Z_DEFLATED
+	unsigned short isCompression = 0; //BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	unsigned short verMade = 0;
 	unsigned short verNeeded = 0;
 	unsigned short flag = 0;
-	unsigned short compression = 0;      // COMP_xxxx
+	unsigned short compression = 0; //BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	unsigned short modTime = 0;
 	unsigned short modDate = 0;
 	unsigned long crc32 = 0;

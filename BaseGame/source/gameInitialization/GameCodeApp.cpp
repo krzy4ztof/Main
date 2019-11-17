@@ -36,6 +36,8 @@
 #include "../luaScripting/LuaStateManager.h"
 
 #include "../graphics3d/ShaderResourceLoader.h"
+#include "../graphics3d/TextureResourceLoader.h"
+#include "../graphics3d/FreeTypeResourceLoader.h"
 
 #include "../gameLogic/BaseGameLogic.h"
 
@@ -336,6 +338,13 @@ bool GameCodeApp::initInstance() {
 			vertex_shader_resource_loader::createVertexShaderResourceLoader());
 	shrdPtrResourceCache->registerLoader(
 			fragment_shader_resource_loader::createFragmentShaderResourceLoader());
+	shrdPtrResourceCache->registerLoader(
+			jpeg_resource_loader::createJpegResourceLoader());
+	shrdPtrResourceCache->registerLoader(
+			png_resource_loader::createPngResourceLoader());
+	shrdPtrResourceCache->registerLoader(
+			free_type_resource_loader::createFreeTypeResourceLoader());
+
 
 	try {
 		gameMessages = new GameMessages(shrdPtrResourceCache,
