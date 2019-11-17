@@ -13,14 +13,14 @@ public:
 	enum {
 		SIGNATURE = 0xA1A1A1A1,
 		//SIGNATURE = 0x04034b50,
-		Z_NO_COMPRESSION = 0,
-		Z_DEFLATED = 1
+		BASE_GAME_Z_NO_COMPRESSION = 0, //Conflict names with Z_NO_COMPRESSION deined in <zlib.h>
+		BASE_GAME_Z_DEFLATED = 1 //Conflict names with Z_DEFLATED defined in <zlib.h>
 	};
 	unsigned long sig = 0;
-	unsigned short isCompression = 0;      // Z_NO_COMPRESSION or Z_DEFLATED
+	unsigned short isCompression = 0; //BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	unsigned short version = 0;
 	unsigned short flag = 0;
-	unsigned short compression = 0;      // Z_NO_COMPRESSION or Z_DEFLATED
+	unsigned short compression = 0; //BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	unsigned short modTime = 0;
 	unsigned short modDate = 0;
 	unsigned long crc32 = 0;

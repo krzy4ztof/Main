@@ -54,20 +54,13 @@ ResourceCache::~ResourceCache() {
 	while (!m_resourceHandles.empty()) {
 		freeOneResource();
 	}
-
 	m_resourceFile.reset();
-	//templates::safe_delete<IResourceFile>(m_resourceFile);
-	//SAFE_DELETE(m_file);
-
-	/*
-	 while (!m_lru.empty())
-	 {
-	 FreeOneResource();
-	 }
-	 SAFE_DELETE(m_file);
-	 */
-
 }
+
+string ResourceCache::getAssetsFolder() {
+	return assetsFolder;
+}
+
 
 bool ResourceCache::init() {
 	bool retValue = false;

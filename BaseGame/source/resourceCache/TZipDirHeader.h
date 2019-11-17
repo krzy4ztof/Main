@@ -13,11 +13,11 @@ public:
 	enum {
 		SIGNATURE = 0xC3C3C3C3,
 		//SIGNATURE = 0x06054b50,
-		Z_NO_COMPRESSION = 0,
-		Z_DEFLATED = 1
+		BASE_GAME_Z_NO_COMPRESSION = 0, //Conflict names with Z_NO_COMPRESSION defined in <zlib.h>
+		BASE_GAME_Z_DEFLATED = 1 //Conflict names with Z_DEFLATED defined in <zlib.h>
 	};
 	unsigned long sig = 0;
-	unsigned short isCompression = 0;      // Z_NO_COMPRESSION or Z_DEFLATED
+	unsigned short isCompression = 0; // BASE_GAME_Z_NO_COMPRESSION or BASE_GAME_Z_DEFLATED
 	unsigned short nDisk = 0;
 	unsigned short nStartDisk = 0;
 	unsigned short nDirEntries = 0;

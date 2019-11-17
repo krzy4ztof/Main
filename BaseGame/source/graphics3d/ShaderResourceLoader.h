@@ -27,7 +27,7 @@ public:
 	ShaderResourceExtraData();
 	virtual ~ShaderResourceExtraData();
 
-	virtual void compileShader(char* pRawBuffer, boost::uintmax_t rawSize);
+	virtual void compileShader(char* pRawBuffer, boost::uintmax_t rawSize)=0;
 	virtual GLuint getShaderId() {
 		return shaderId;
 	}
@@ -147,8 +147,6 @@ public:
 
 	ShaderCompiler(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~ShaderCompiler();
-	GLuint loadShaders_old(std::string vertexShaderName,
-			std::string fragmentShaderName);
 	GLuint loadShaders(std::string vertexShaderName,
 			std::string fragmentShaderName);
 

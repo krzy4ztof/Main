@@ -42,7 +42,7 @@
 
  int ret = zipOpenNewFileInZip(zf, "myfile.txt", &zfi,
  NULL, 0,
- NULL, 0, "my comment for this interior file", Z_DEFLATED, Z_NO_COMPRESSION);
+ NULL, 0, "my comment for this interior file", BASE_GAME_Z_DEFLATED, BASE_GAME_Z_NO_COMPRESSION);
  zipCloseFileInZip(zf);
  zipClose(zf, "my comment for exterior file");
  */
@@ -403,8 +403,8 @@ void ZipFile::saveFileNameNoCompression(TZipLocalHeader& lh, ofstream& ofs,
 	//local header
 	lh.fnameLen = pZipFileAsset->getFileNameLength();
 	//TODO: compression
-	//lh.compression = TZipLocalHeader::Z_DEFLATED; //??
-	//lh.compression = TZipLocalHeader::Z_NO_COMPRESSION; //??
+	//lh.compression = TZipLocalHeader::BASE_GAME_Z_DEFLATED; //??
+	//lh.compression = TZipLocalHeader::BASE_GAME_Z_NO_COMPRESSION; //??
 	ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
 	lh.describeYourself();
 
@@ -441,7 +441,7 @@ void ZipFile::saveFileNameCompression(TZipLocalHeader& lh, ofstream& ofs,
 	//local header
 	lh.fnameLen = vecFileName.size();
 	//TODO: compression
-	//lh.compression = TZipLocalHeader::Z_DEFLATED; //??
+	//lh.compression = TZipLocalHeader::BASE_GAME_Z_DEFLATED; //??
 	ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
 
 	lh.describeYourself();
@@ -469,7 +469,7 @@ void ZipFile::saveFileNameDecompression(TZipLocalHeader& lh, ofstream& ofs,
 	//lh.fnameLen = zipFileAsset->getFileNameLength();
 	lh.fnameLen = vecFileName.size();
 	//TODO: compression
-	//lh.compression = TZipLocalHeader::Z_NO_COMPRESSION; //??
+	//lh.compression = TZipLocalHeader::BASE_GAME_Z_NO_COMPRESSION; //??
 	ofs.write(reinterpret_cast<char *>(&lh), sizeof(lh));
 
 	lh.describeYourself();

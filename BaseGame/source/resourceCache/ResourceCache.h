@@ -27,28 +27,13 @@ public:
 
 	int preLoad(const std::string& pattern,
 			void (*progressCallback)(int, bool&));
-
-//	int preload(const std::string& pattern,
-//				void (*progressCallback)());
-
 	int preLoad(const std::string& pattern);
+	std::string getAssetsFolder();
 
-	// int tempPreLoad(const std::string& pattern);
-
-	/*
-	 std::string tempGetAssetsFolder() {
-	 return assetsFolder;
-	 }
-	 ;
-	 */
-
-	//	void tempLoadAndReturnRootXmlElement(const std::string& resourceName, boost::property_tree::ptree& tree);
 protected:
 	boost::optional<std::shared_ptr<ResourceHandle>> load(Resource* resource);
 	boost::optional<std::shared_ptr<IResourceLoader>> findResourceLoader(
 			const Resource& resource);
-
-	//		std::shared_ptr<ResourceHandle> tempLoad(Resource * r);
 	boost::optional<std::shared_ptr<ResourceHandle>> find(Resource * r);
 	void update(std::shared_ptr<ResourceHandle> handle);
 	void freeOneResource();

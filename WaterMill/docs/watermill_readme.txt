@@ -1705,7 +1705,7 @@ Ma zawierać
 START
 QUIT					
 
-Dokończyć:
+Dokończyć:  Anulowane - OK 
 BmpResourceLoader
 
 Poprawić:		
@@ -1892,15 +1892,35 @@ Z:90;  :32; Ĺ:-59; »:-69;  :32; Ĺ:-59; Ľ:-68;
 -- 12/05/2019
 -- 13/05/2019
 -- 18/05/2019
+-- 19/05/2019
+-- 20/05/2019
+-- 22/05/2019
+-- 23/05/2019
+-- 26/05/2019
+-- 27/05/2019
+-- 01/06/2019
+-- 02/06/2019
+-- 03/06/2019
+-- 19/10/2019
+-- 27/10/2019
+-- 01/11/2019
+-- 02/11/2019
+-- 03/11/2019
+-- 10/11/2019
+-- 13/11/2019
+-- 14/11/2019
+-- 16/11/2019
+
+
 Powrót do ---	START CAŁEGO ZADANIA ---
 
 Stworzyć:
-PngResourceExtraData - ważne
-ShaderResourceExtraData - ważne
+PngResourceExtraData - ważne OK
+ShaderResourceExtraData - ważne OK
 freetypeLoader - ważne
 
-BmpResourceExtraData - skasować
-JpegResourceExtraData - nie robić
+BmpResourceExtraData - skasować OK
+JpegResourceExtraData - nie robić, zrobione OK
 		
 TODO:		
 TempT00FpolishFontsViewTest.cpp - zrobić shaderLoader zip/unzip/folder + organizacja testFixture - dziedziczenie - OK
@@ -1912,18 +1932,177 @@ BOOST_FIXTURE_TEST_SUITE
 TempT00FpolishFontsViewTest.cpp -> GLuint ShaderCompiler::loadShaders(string vertexShaderName, string fragmentShaderName) i VertexShaderResourceExtraData::compileShader - OK
 FragmentShaderResourceExtraData::compileShader - OK
 
-TERAZ: 
 \ResourceCacheUnzipFileTest.cpp - zapisać shadery do asset.unzip - OK
 TempT00FpolishFontsViewTest.cpp - unzip file, zip file - wczytywanie - OK 		
-BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewZipFileSuite, TempT00FpolishFontsViewZipFileFixture) - naprawić
+BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewZipFileSuite, TempT00FpolishFontsViewZipFileFixture) - naprawić - OK
 
 
-shaders\\temp_t004_figures_view.vert	
-
-string ZipFile::zipToUnzip(string zipString) const {			
-string ZipFile::getUnzipFilename(ZipFileAsset* pZipFileAsset) const {
+Zrobione: 		- OK
+	void TempT009jpegGilTextureView::testCopyImage() {
+	bg::read_image("../Watermill/assets/graphics/TempT009jpegGilTextureView.jpg",rgb8_image, bg::jpeg_tag { });   -  zamienić na jpg resource loader
+		
+TempT009jpegGilTextureView::vInit()		- zamienić na ShaderResourceLoader - OK
+TextureResourceLoader	- do zrobienia	- OK
+		
+PATRZ:															- OK
+void ZipFile::saveAssetFileCompression(ofstream& ofs,
+		ZipFileAsset* pZipFileAsset, vector<char>& vecFileContents) {
+	ofs.write(reinterpret_cast<char *>(vecFileContents.data()),
+			vecFileContents.size());		
+		
+https://en.cppreference.com/w/cpp/io/basic_ostream/write				- OK
+		
+void JpegResourceExtraData::loadImage(char* pRawBuffer,	boost::uintmax_t rawSize) { 		 - wczytywanie pliku jpg  - OK
 		
 		
+TextureLoader - Unzip, zip - OK
+zweryfikować instalację msys2 - OK
+
+Zrobione:
+Skopiować
+/OpenGLTests/source/basic/T00DpngGilScanlineView.cpp
+jako
+/BaseGame/source/userInterface/TempT00DpngGilScanlineView.cpp
+
+i stworzyć loader dla png/scanline		
+
+Zrobione:		
+BaseGameTests -> BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewDevFolderSuite, TempT00FpolishFontsViewDevFolderFixture)		
+TempT00DpngGilScanlineView.cpp - zrobic wczytywanie pliku png poprzez TextureLoader tj w TempT009jpegGilTextureView -
+void PngResourceExtraData::loadImage(char *pRawBuffer,
+		boost::uintmax_t rawSize) - naprawic scaline reader lub zrezygnować z niego
+
+
+problem w kompilacji - OK
+Plik TextureResourceLoader:
+kolizja 2-óch headerów:
+#include <boost/gil/extension/io/Jpeg.hpp> // boost::gil::rgb8_image_t
+#include <boost/gil/extension/io/png.hpp> // boost::gil::rgb8_image_t
+
+
+Zrobione - NOK    /   Zamiast tego png/jpg textureloader -OK 
+TextureLoader::init obsługuje tylko plik jpg a nie obsługuje png
+więc zamiast		
+TextureLoader::loadImage
+wprowadzić metoddę 
+TextureLoader::loadTexture - powinno zwracać texturę a nie tylko plik jpg
+i skasować zmienną 
+rgb8_image
+
+Zrobione - OK 
+TextureLoader zamienic na JpgTextureLoader 
+i stworzyc nowy
+PngTextureLoader
+
+Zrobione - OK 
+PngTextureLoader -> Dlaczego nie działa? 
+
+Zrobione - OK 
+freetypeLoader - ważne
+wydzielić FreeTypeResourceLoader z metody void TempT00FpolishFontsView::initFreetype()
+przenieść metody:
+void TempT00FpolishFontsView::initFreetype()
+
+Zrobione - OK 
+uporządkować zmienne Characters
+FreeTypeLoader Characters - dodać niszczenie w destruktorze
+FreeTypeLoader::temp_getCharacters()
+FreeTypeResourceExtraData::Characters - dodać niszczenie w destruktorze
+
+Teraz 
+Dodać FreeTypeRenderer
+void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
+		GLfloat scale, glm::vec3 color) 
+
+
+
+
+---	START CAŁEGO ZADANIA ODNOWIENIE---
+
+-- 17/11/2019
+
+Dodać
+MainMenuView - menu startowe
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+oraz:
+TeapotWarsHumanView - główny widok gry
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+
+MainMenuView
+Ma zawierać
+1. Tytuł: Watermill
+2. Przyciski:
+START
+QUIT					
+
+
+Patrz notatki w metodach:
+
+IGameView* BaseGameLogic::tempSelectView(int key, bool reset) 
+void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
+		unsigned int actorId)
+void BaseGameLogic::tempSwitchView(int key) {
+
+
+// UWAGA:
+HumanView powinien cos wyswietlac lub nie w zaleznosci czy jego elementy sa widoczne
+Patrz:
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\GCC4\UserInterface\HumanView.cpp
+
+//
+// HumanView::VOnRender							- Chapter 10, page 274
+//
+void HumanView::VOnRender(double fTime, float fElapsedTime )
+
+			for(ScreenElementList::iterator i=m_ScreenElements.begin(); i!=m_ScreenElements.end(); ++i)
+			{
+				if ( (*i)->VIsVisible() )
+
+Tak wiec:
+to co jest wyswietlane to elementy IScreenElement w zaleznosci od tego czy sa widoczne czy nie
+nie jest wyswietlany humanView jako taki
+wiec nalezy usunac
+tempIsActive
+oraz 
+active
+
+IGameView.h
+
+	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
+
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+		protected:
+	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+
+Teraz 
+Dodać FreeTypeRenderer
+void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
+		GLfloat scale, glm::vec3 color) 
+          
+
+---------------------------------------------------
+---	Sprawdzenie ile headerów zawiera plik cpp	---
+---------------------------------------------------
+../BaseGame/scripts/checkHeadersBaseGame.sh
+
+
+Chrome bookmarks:
+http://www.opengl-tutorial.org/miscellaneous/an-fps-counter/
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/#shader-compilation
+https://www.khronos.org/registry/OpenGL-Refpages/gl4/
+https://www.boost.org/doc/libs/1_69_0/libs/gil/doc/html/io.html#tutorial
+https://www.freetype.org/freetype2/docs/tutorial/step1.html
+http://repo.msys2.org/mingw/x86_64/
+https://learnopengl.com/In-Practice/Text-Rendering
+https://www.freetype.org/freetype2/docs/tutorial/step1.html#section-2
+
 *******************
 ***	FUTURE TODO	***
 *******************

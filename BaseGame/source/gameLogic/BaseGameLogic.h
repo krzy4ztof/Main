@@ -31,10 +31,14 @@ public:
 	 void tempAdd04View();
 	 */
 	void tempAddView(int number);
-	void tempAddView(IGameView* pView);
+	//void tempAddView(IGameView* pView);
+	void tempAddView(std::shared_ptr<IGameView> pView);
+
 
 	void tempSwitchView(int key);
-	IGameView* tempSelectView(int key, bool reset);
+	//IGameView* tempSelectView(int key, bool reset);
+	std::shared_ptr<IGameView> tempSelectView(int key, bool reset);
+
 	void tempOnIdle(double fTime, float fElapsedTime);
 
 	virtual void vAddView(std::shared_ptr<IGameView> pView,
@@ -70,7 +74,9 @@ protected:
 	virtual ActorFactory* vCreateActorFactory(
 			std::shared_ptr<ResourceCache> resourceCache);
 
-	IGameView* tempCurrentView;
+	//IGameView* tempCurrentView;
+	std::shared_ptr<IGameView> tempCurrentView;
+
 
 private:
 };

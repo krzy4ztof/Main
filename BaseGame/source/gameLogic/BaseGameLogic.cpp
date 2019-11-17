@@ -23,6 +23,8 @@
 #include "../userInterface/TempT004figuresView.h"
 #include "../userInterface/TempT009jpegGilTextureView.h"
 #include "../userInterface/TempT00FpolishFontsView.h"
+#include "../userInterface/TempT00DpngGilScanlineView.h"
+
 
 #include "../resourceCache/ZipFile.h"
 
@@ -287,7 +289,8 @@ void BaseGameLogic::tempSwitchView(int key) {
 
 	logger::info("BaseGameLogic switchView");
 
-	IGameView* gameView = nullptr;
+	// IGameView* gameView = nullptr;
+	shared_ptr<IGameView> gameView;
 
 	if (tempCurrentView != nullptr) {
 		tempCurrentView->vDeactivate();
@@ -308,8 +311,12 @@ void BaseGameLogic::tempSwitchView(int key) {
 	 */
 }
 
-IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
-	IGameView* gameView = nullptr;
+//IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
+shared_ptr<IGameView> BaseGameLogic::tempSelectView(int key, bool reset) {
+
+//	IGameView* gameView = nullptr;
+	shared_ptr<IGameView> gameView;
+
 
 	// Uwaga
 	// Najpierw nalezy sprawdzic czy view jest w BaseGameLogic->m_gameViews
@@ -335,12 +342,20 @@ IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t009_jpeg_gil_texture_view::getView(reset);
+		gameView = temp_t009_jpeg_gil_texture_view::getView(reset,
+				shrdPtrResourceCache);
 	} else if (key == GLFW_KEY_3) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t00f_polish_fonts_view::getView(reset);
+		gameView = temp_t00f_polish_fonts_view::getView(reset,
+				shrdPtrResourceCache);
+	} else if (key == GLFW_KEY_4) {
+		// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+		//
+		gameView = temp_t00d_png_gil_scanline_view::getView(reset,
+				shrdPtrResourceCache);
 	}
 
 	tempAddView(gameView);
@@ -350,7 +365,7 @@ IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
 
 void BaseGameLogic::tempAddView(int number) {
 //	IGameView* gameView = new Temp03gilView();
-	IGameView* gameView = nullptr;
+	shared_ptr<IGameView> gameView;
 
 	/*
 	 if (number == 1) {
@@ -373,7 +388,8 @@ void BaseGameLogic::tempAddView(int number) {
 	tempAddView(gameView);
 }
 
-void BaseGameLogic::tempAddView(IGameView* gameView) {
+void BaseGameLogic::tempAddView(shared_ptr<IGameView> gameView) {
+//void BaseGameLogic::tempAddView(IGameView* gameView) {
 	gameView->tempVLoadGameDelegate();
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(gameView);
 
