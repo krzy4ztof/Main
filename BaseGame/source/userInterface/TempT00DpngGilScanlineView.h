@@ -11,7 +11,8 @@
 // #include "../main/IOpenGLView.h"
 #include "HumanView.h"
 #include "../resourceCache/ResourceCache.h"
-#include "../graphics3D/TextureResourceLoader.h"
+#include "../graphics3d/TextureResourceLoader.h"
+#include "../graphics3d/TextureRenderer.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -36,18 +37,24 @@ public:
 
 protected:
 	// GLuint vertex_array_object;
+	/*
 	GLuint programID;
 	GLuint vao; // vertex_array_object
 	GLuint position_buffer;
 	GLuint index_buffer;
 
-	GLuint texture;
 	GLuint uvbuffer;
+	 */
+
+	//GLuint texture;
 
 	// boost::gil::rgba8_image_t rgba8_image; // boost::gil::image
 
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	std::shared_ptr<SpriteSheet> spriteSheet;
+
 	PngTextureLoader *pngTextureLoader;
+	std::shared_ptr<PngRenderer> pngRenderer;
 
 	// void image_to_texture(float * data);
 

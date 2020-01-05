@@ -16,6 +16,8 @@
 namespace base_game {
 
 struct FreeTypeCharacter {
+	const static GLubyte MAX_STD_CHAR;
+
 	GLuint TextureID;  // ID handle of the glyph texture
 	glm::ivec2 Size;       // Size of glyph
 	glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph

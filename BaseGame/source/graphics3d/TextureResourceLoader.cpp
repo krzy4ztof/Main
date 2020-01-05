@@ -23,6 +23,8 @@
 
 using std::string;
 using std::shared_ptr;
+using std::make_shared;
+
 using std::dynamic_pointer_cast;
 using std::stringstream;
 using std::ios_base;
@@ -246,6 +248,7 @@ TextureLoader::TextureLoader(shared_ptr<ResourceCache> resourceCache) {
 
 TextureLoader::~TextureLoader() {
 	logger::info("Destroy TextureLoader");
+	// spriteSheet.reset();
 }
 
 shared_ptr<IResourceExtraData> TextureLoader::loadImage(string filename) {
@@ -277,64 +280,24 @@ shared_ptr<IResourceExtraData> TextureLoader::loadImage(string filename) {
 	return imgExtraData;
 }
 
-void TextureLoader::init(string fileName) {
-	// stringstream ss;
-	glGenTextures(1, &texture);
-
-//	rgb8_image_t textureData;
-
-	// resourceExtraData = this->loadImage(fileName);
-
-	// shared_ptr<IResourceExtraData> data = this->loadImage(fileName);
-
-	// data->
-
-	/*
-	 const type_info &dataTypePtr = typeid(data);
-
-	 ss << "[TYPE_INFO SH_PT]: " << dataTypePtr.name();
-
-	 logger::info(ss);
-
-	 const type_info &dataType = typeid(data.get());
-
-	 ss << "[TYPE_INFO]: " << dataType.name();
-
-	 logger::info(ss);
-	 */
-
-	/*
-	if (JpegResourceExtraData::CLASS_NAME.compare(data->vToString()) == 0) {
-		if (shared_ptr<JpegResourceExtraData> imageData = dynamic_pointer_cast<
-				JpegResourceExtraData>(data)) {
-
-			rgb8_image = imageData->getImage();
-			//FragmentShaderID = vertexShaderExtraData->getShaderId();
-		}
-		debugCopyImageJpg(rgb8_image);
-	} else if (PngResourceExtraData::CLASS_NAME.compare(data->vToString())
-			== 0) {
-
-		logger::info("PNG image");
-	}
-	 */
-
-
-	//return rgb8_image;
+void TextureLoader::init(string fileName, shared_ptr<SpriteSheet> spriteSheet) {
+//	glGenTextures(1, &(spriteSheet->texture));	// &texture);
 }
 
-void TextureLoader::activate() {
+void TextureLoader::activate(std::shared_ptr<SpriteSheet> spriteSheet) {
 	// START TEXTURE
 	// Now bind it to the context using the GL_TEXTURE_2D binding point
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, spriteSheet->texture); //texture);
 }
 
 void TextureLoader::deactivate() {
 	glBindTexture(GL_TEXTURE_2D, 0);
+	// spriteSheet.reset();
 }
 
 void TextureLoader::terminate() {
-	glDeleteTextures(1, &texture);
+	//glDeleteTextures(1, &(spriteSheet->texture));//&texture);
+//	delete[] data;
 }
 
 
@@ -364,45 +327,25 @@ void TextureLoader::terminate() {
  }
  */
 
-JpgTextureLoader::JpgTextureLoader(shared_ptr<ResourceCache> resourceCache) :
+JpegTextureLoader::JpegTextureLoader(shared_ptr<ResourceCache> resourceCache) :
 		TextureLoader(resourceCache) {
 	// TextureLoader::TextureLoader(resourceCache);
-	logger::info("Create JpgTextureLoader");
+	logger::info("Create JpegTextureLoader");
 	// this->shrdPtrResourceCache = resourceCache;
 }
 
-JpgTextureLoader::~JpgTextureLoader() {
-	logger::info("Destroy JpgTextureLoader");
+JpegTextureLoader::~JpegTextureLoader() {
+	logger::info("Destroy JpegTextureLoader");
 }
 
-void JpgTextureLoader::init(string fileName) {
-	TextureLoader::init(fileName);
+void JpegTextureLoader::init(string fileName,
+		shared_ptr<SpriteSheet> spriteSheet) {
+	TextureLoader::init(fileName, spriteSheet);
 
 	stringstream ss;
-//	glGenTextures(1, &texture);
-
-//	rgb8_image_t textureData;
-
-//	imageData = this->loadImage(fileName);
 
 	shared_ptr<IResourceExtraData> resourceExtraData = this->loadImage(
 			fileName);
-
-	// data->
-
-	/*
-	 const type_info &dataTypePtr = typeid(data);
-
-	 ss << "[TYPE_INFO SH_PT]: " << dataTypePtr.name();
-
-	 logger::info(ss);
-
-	 const type_info &dataType = typeid(data.get());
-
-	 ss << "[TYPE_INFO]: " << dataType.name();
-
-	 logger::info(ss);
-	 */
 
 	if (JpegResourceExtraData::CLASS_NAME.compare(
 			resourceExtraData->vToString()) == 0) {
@@ -410,9 +353,10 @@ void JpgTextureLoader::init(string fileName) {
 				JpegResourceExtraData>(resourceExtraData)) {
 
 			// rgb8_image_t
-			rgb8_image = imageData->getImage();
+			rgb8_image_t rgb8_image = imageData->getImage();
 			debugCopyImageJpg (rgb8_image);
 			//FragmentShaderID = vertexShaderExtraData->getShaderId();
+			image_to_texture(rgb8_image, spriteSheet);
 		}
 
 	} else if (PngResourceExtraData::CLASS_NAME.compare(
@@ -424,45 +368,121 @@ void JpgTextureLoader::init(string fileName) {
 	//return rgb8_image;
 }
 
-void JpgTextureLoader::activate() {
+void JpegTextureLoader::activate(shared_ptr<SpriteSheet> spriteSheet) {
 	// START TEXTURE
 	// Now bind it to the context using the GL_TEXTURE_2D binding point
 	// glBindTexture(GL_TEXTURE_2D, texture);
 	// Specify the amount of storage we want to use for the texture
-	TextureLoader::activate();
+	TextureLoader::activate(spriteSheet);
 
-	int img_width = rgb8_image.width();
-	int img_height = rgb8_image.height();
+	//int img_width = rgb8_image.width();
+	//int img_height = rgb8_image.height();
 
 	//const int texSize = 100; //128
 	glTexStorage2D(GL_TEXTURE_2D,   // 2D texture
 			1,               // 8 mipmap levels
 			GL_RGBA32F,      // 32-bit floating-point RGBA data
-			img_width, img_height);       // 256 x 256 texels
+			spriteSheet->getWidth(), spriteSheet->getHeight()); // 256 x 256 texels
 
-	float *data = new float[img_width * img_height * 4];
+//			img_width, img_height);       // 256 x 256 texels
 
-	// generate_texture() is a function that fills memory with image data
-	//generate_texture(data, texSize, texSize);
-
-	image_to_texture(data);
 
 	// Assume the texture is already bound to the GL_TEXTURE_2D target
 	glTexSubImage2D(GL_TEXTURE_2D,  // 2D texture
 			0,              // Level 0
 			0, 0,           // Offset 0, 0
-			img_width, img_height,     // 256 x 256 texels, replace entire image
+			spriteSheet->getWidth(), spriteSheet->getHeight(), // 256 x 256 texels, replace entire image
+			//	img_width, img_height,     // 256 x 256 texels, replace entire image
 			GL_RGBA,        // Four channel data
 			GL_FLOAT, // Floating point data
 			//GL_INT,       // Floating point data
-			data);       //
+			spriteSheet->data);       //
 
 	// Free the memory we allocated before - \GL now has our data
-	delete[] data;
+//	delete[] data;
 	// STOP TEXTURE
 }
 
-void JpgTextureLoader::image_to_texture(float *data) {
+/*
+ void JpegTextureLoader::activate() {
+ // START TEXTURE
+ // Now bind it to the context using the GL_TEXTURE_2D binding point
+ // glBindTexture(GL_TEXTURE_2D, texture);
+ // Specify the amount of storage we want to use for the texture
+ TextureLoader::activate();
+
+ int img_width = rgb8_image.width();
+ int img_height = rgb8_image.height();
+
+ //const int texSize = 100; //128
+ glTexStorage2D(GL_TEXTURE_2D,   // 2D texture
+ 1,               // 8 mipmap levels
+ GL_RGBA32F,      // 32-bit floating-point RGBA data
+ img_width, img_height);       // 256 x 256 texels
+
+ float *data = new float[img_width * img_height * 4];
+
+ // generate_texture() is a function that fills memory with image data
+ //generate_texture(data, texSize, texSize);
+
+ image_to_texture(data);
+
+ // Assume the texture is already bound to the GL_TEXTURE_2D target
+ glTexSubImage2D(GL_TEXTURE_2D,  // 2D texture
+ 0,              // Level 0
+ 0, 0,           // Offset 0, 0
+ img_width, img_height,     // 256 x 256 texels, replace entire image
+ GL_RGBA,        // Four channel data
+ GL_FLOAT, // Floating point data
+ //GL_INT,       // Floating point data
+ data);       //
+
+ // Free the memory we allocated before - \GL now has our data
+ delete[] data;
+ // STOP TEXTURE
+ }
+ */
+
+void JpegTextureLoader::image_to_texture(rgb8_image_t rgb8_image,
+		shared_ptr<SpriteSheet> spriteSheet) {
+
+	int img_width = rgb8_image.width();
+	int img_height = rgb8_image.height();
+
+	// spriteSheet = make_shared<SpriteSheet>(img_width, img_height);
+	spriteSheet->setWidth(img_width);
+	spriteSheet->setHeight(img_height);
+
+	spriteSheet->data = new float[img_width * img_height * 4];
+//	data = new float[spriteSheet->getWidth() * spriteSheet->getHeight() * 4];
+
+
+	for (int y = 0; y < img_height; y++) {
+		for (int x = 0; x < img_width; x++) {
+
+			//for (int y = 0; y < spriteSheet->getHeight(); y++) {
+			//for (int x = 0; x < spriteSheet->getWidth(); x++) {
+			rgb8_pixel_t px = *const_view(rgb8_image).at(x, y);
+
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 0] =
+					(float) px[0]
+					/ 255;
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 1] =
+					(float) px[1]
+					/ 255;
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 2] =
+					(float) px[2]
+					/ 255;
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 3] =
+					1.0f;
+
+		}
+	}
+
+}
+
+/*
+void JpegTextureLoader::image_to_texture(float *data) {
 
 	int img_width = rgb8_image.width();
 	int img_height = rgb8_image.height();
@@ -483,13 +503,14 @@ void JpgTextureLoader::image_to_texture(float *data) {
 	}
 
 }
+ */
 
-void JpgTextureLoader::debugCopyImageJpg(rgb8_image_t imageData) {
+void JpegTextureLoader::debugCopyImageJpg(rgb8_image_t imageData) {
 	stringstream ss;
 	string assetsFolder = shrdPtrResourceCache->getAssetsFolder();
 	path outImgPath { assetsFolder };
 	outImgPath /= GRAPHICS_FOLDER;
-	outImgPath /= "temp_t009_jpeg_gil_texture_loader_resized.jpg";
+	outImgPath /= "temp_t009_debug_resized.jpg";
 	string outImgString = outImgPath.string();
 	ss << "Orig Image Width: " << imageData.width() << "; Height: "
 			<< imageData.height();
@@ -554,34 +575,14 @@ PngTextureLoader::~PngTextureLoader() {
 	logger::info("Destroy PngTextureLoader");
 }
 
-void PngTextureLoader::init(string fileName) {
-	TextureLoader::init(fileName);
+void PngTextureLoader::init(string fileName,
+		shared_ptr<SpriteSheet> spriteSheet) {
+	TextureLoader::init(fileName, spriteSheet);
 
 	stringstream ss;
-//	glGenTextures(1, &texture);
-
-//	rgb8_image_t textureData;
-
-//	imageData = this->loadImage(fileName);
 
 	shared_ptr<IResourceExtraData> resourceExtraData = this->loadImage(
 			fileName);
-
-	// data->
-
-	/*
-	 const type_info &dataTypePtr = typeid(data);
-
-	 ss << "[TYPE_INFO SH_PT]: " << dataTypePtr.name();
-
-	 logger::info(ss);
-
-	 const type_info &dataType = typeid(data.get());
-
-	 ss << "[TYPE_INFO]: " << dataType.name();
-
-	 logger::info(ss);
-	 */
 
 	if (JpegResourceExtraData::CLASS_NAME.compare(
 			resourceExtraData->vToString()) == 0) {
@@ -596,70 +597,87 @@ void PngTextureLoader::init(string fileName) {
 				PngResourceExtraData>(resourceExtraData)) {
 
 			// rgb8_image_t
-			rgba8_image = imageData->getImage();
+			rgba8_image_t rgba8_image = imageData->getImage();
 			debugCopyImagePng(rgba8_image);
 			//FragmentShaderID = vertexShaderExtraData->getShaderId();
+			image_to_texture(rgba8_image, spriteSheet);
+
 		}
 	}
 
 	//return rgb8_image;
 }
 
-void PngTextureLoader::activate() {
+void PngTextureLoader::activate(std::shared_ptr<SpriteSheet> spriteSheet) {
 	// START TEXTURE
 	// Now bind it to the context using the GL_TEXTURE_2D binding point
 	// glBindTexture(GL_TEXTURE_2D, texture);
 	// Specify the amount of storage we want to use for the texture
-	TextureLoader::activate();
+	TextureLoader::activate(spriteSheet);
 
-	int img_width = rgba8_image.width();
-	int img_height = rgba8_image.height();
+	//int img_width = rgba8_image.width();
+	//int img_height = rgba8_image.height();
 
 	//const int texSize = 100; //128
 	glTexStorage2D(GL_TEXTURE_2D,   // 2D texture
 			1,               // 8 mipmap levels
 			GL_RGBA32F,      // 32-bit floating-point RGBA data
-			img_width, img_height);       // 256 x 256 texels
+			spriteSheet->getWidth(), spriteSheet->getHeight()); // 256 x 256 texels
+//	img_width, img_height);       // 256 x 256 texels
 
-	float *data = new float[img_width * img_height * 4];
+	//float *data = new float[img_width * img_height * 4];
 
 	// generate_texture() is a function that fills memory with image data
 	//generate_texture(data, texSize, texSize);
 
-	image_to_texture(data);
+	//image_to_texture(data);
 
 	// Assume the texture is already bound to the GL_TEXTURE_2D target
 	glTexSubImage2D(GL_TEXTURE_2D,  // 2D texture
 			0,              // Level 0
 			0, 0,           // Offset 0, 0
-			img_width, img_height,     // 256 x 256 texels, replace entire image
+			spriteSheet->getWidth(), spriteSheet->getHeight(), // 256 x 256 texels, replace entire image
+			//img_width, img_height,     // 256 x 256 texels, replace entire image
 			GL_RGBA,        // Four channel data
 			GL_FLOAT, // Floating point data
 			//GL_INT,       // Floating point data
-			data);       //
+			spriteSheet->data);
+	//data);       //
 
 	// Free the memory we allocated before - \GL now has our data
-	delete[] data;
+	// delete[] data;
 	// STOP TEXTURE
 }
 
-void PngTextureLoader::image_to_texture(float *data) {
+//void PngTextureLoader::image_to_texture(float *data) {
+void PngTextureLoader::image_to_texture(rgba8_image_t rgba8_image,
+		shared_ptr<SpriteSheet> spriteSheet) {
 
 	int img_width = rgba8_image.width();
 	int img_height = rgba8_image.height();
+
+	spriteSheet->setWidth(img_width);
+	spriteSheet->setHeight(img_height);
+
+	spriteSheet->data = new float[img_width * img_height * 4];
+
 
 	for (int y = 0; y < img_height; y++) {
 		for (int x = 0; x < img_width; x++) {
 			rgba8_pixel_t px = *const_view(rgba8_image).at(x, y);
 
-			data[((img_height - y - 1) * img_width + x) * 4 + 0] = (float) px[0]
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 0] =
+					(float) px[0]
 					/ 255;
-			data[((img_height - y - 1) * img_width + x) * 4 + 1] = (float) px[1]
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 1] =
+					(float) px[1]
 					/ 255;
-			data[((img_height - y - 1) * img_width + x) * 4 + 2] = (float) px[2]
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 2] =
+					(float) px[2]
 					/ 255;
 //			data[((img_height - y - 1) * img_width + x) * 4 + 3] = 1.0f;
-			data[((img_height - y - 1) * img_width + x) * 4 + 3] = (float) px[3]
+			spriteSheet->data[((img_height - y - 1) * img_width + x) * 4 + 3] =
+					(float) px[3]
 					/ 255;
 
 		}

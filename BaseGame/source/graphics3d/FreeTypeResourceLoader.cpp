@@ -33,7 +33,7 @@ using boost::filesystem::path;
 
 namespace base_game {
 
-const GLubyte FreeTypeResourceExtraData::MAX_STD_CHAR = 128;
+// const GLubyte FreeTypeResourceExtraData::MAX_STD_CHAR = 128;
 
 FreeTypeResourceExtraData::FreeTypeResourceExtraData() {
 	logger::info("Create FreeTypeResourceExtraData");
@@ -107,7 +107,7 @@ void FreeTypeResourceExtraData::initFreetypeCharacters(FT_Face face) {
 
 	stringstream ss;
 
-	for (GLubyte c = 0; c < MAX_STD_CHAR; c++) {
+	for (GLubyte c = 0; c < FreeTypeCharacter::MAX_STD_CHAR; c++) {
 		initCharacter(face, c);
 	}
 	logger::info("");

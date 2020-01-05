@@ -2017,9 +2017,21 @@ void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
 
 
 
----	START CAŁEGO ZADANIA ODNOWIENIE---
-
+---	START CAŁEGO ZADANIA ODNOWIENIE	---
 -- 17/11/2019
+-- 18/11/2019
+-- 20/11/2019
+-- 23/11/2019
+-- 24/11/2019
+-- 28/11/2019
+-- 01/12/2019
+-- 05/12/2019
+-- 08/12/2019
+-- 11/12/2019
+-- 14/12/2019
+-- 15/12/2019
+-- 03/01/2020
+-- 04/01/2020
 
 Dodać
 MainMenuView - menu startowe
@@ -2081,10 +2093,91 @@ IGameView.h
 
 
 Teraz 
-Dodać FreeTypeRenderer
+Dodać FreeTypeRenderer - OK 
 void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
-		GLfloat scale, glm::vec3 color) 
+		GLfloat scale, glm::vec3 color)  - OK
+Dodać PngRenderer          
+Dodać JpgRenderer - OK                  
           
+Teraz - OK
+Praca nad FreeTypeRenderer          
+
+Teraz - OK
+Praca nad FiguresRenderer, patrz TempT004figuresView          
+FiguresRenderer->activate() połączyć z FiguresRenderer->startRender()
+FiguresRenderer->deactivate() jako stopRender()
+FiguresRenderer->temp_render() połączyć z activate jako temp_activate i deactivate jako temp_deactivate
+Stworzyc FiguresRenderer->renderRectangle, ->renderTriangle, -> renderPoint
+stworzyc TempCombinedView, ktory użyje FiguresRenderer i FreeTypeRenderer
+
+Teraz - OK 
+FiguresRenderer -> uporzadkowac activateTriangle, activateRectangle, activatePoint, deactivateRectangle
+
+
+Teraz - OK
+naprawić JpegRenderer::renderRectangle - działa tylko raz
+
+
+Teraz
+Dodać PngRenderer   
+Modyfikacja TempT00DpngGilScanlineView, później dodanie PngRenderer do TempCombinedView       
+Dodać JpegRenderer  
+Modyfikacja TempT009jpegGilTextureView, później dodanie JpegRenderer do TempCombinedView - ok
+PngRenderer i JpegRenderer - obsługa różnych plików img, obsługa pliku img zawierającego różne obrazki - dla jpg ok
+JpegRenderer::renderTriangle - dodać paramtr z teksturą określający plik jpg - ok
+naprawić renderMultiRectangle - OK
+usunąc renderRectangle2, renderRectangle3, activateRectangle2, activateRectangle3 - OK
+
+teraz
+Dodać PngRenderer na podstawie jpgRenderer
+zmodyfikować PngTextureLoader na wzór JpegTextureLoader
+poprawić JpegTextureLoader::activate() tak raz zapisywało do GLuint texture; a potem z niego korzystało
+
+temp_t009_jpeg_gil_texture_view.jpeg
+136x98
+
+temp_g1040.jpg
+177x103
+
+4 obrazki w poziomie
+1px ramka
+1px + 43px obrazek + 1px ramka + 43px + 1px + 43px + 1px  + 43px + 1px
+4 * ( 1 + 43 ) + 1 = 177px
+
+2 obrazki w pionie 
+1px ramka + 50px obrazek + 1px + 50px + 1px
+2 * ( 1 + 50 ) + 1 = 103px
+
+
+poprawic texture_renderer.vert - OK
+void TempT009jpegGilTextureView::vOnRender(double currentTime,	float fElapsedTime) - poprawić renderowanie fragmentu  textury 
+SpriteSheet - będzie zwracało współrzędne textury na podstawie (row,col)
+patrz:
+https://stackoverflow.com/questions/5879403/opengl-texture-coordinates-in-pixel-space
+https://learnopengl.com/Getting-started/Textures
+
+
+dokończyć -ok
+void JpegRenderer::renderRectangle(glm::vec2 zeroPoint,
+		glm::vec2 thrdPoint,
+		std::shared_ptr<SpriteSheet> spriteSheet, int spriteRow,
+		int spriteCol)
+SpriteSheet.cpp - TODO -ok
+
+
+SpriteSheet przeniesc z TextureLoader: float* data, GLUnit texture. -ok
+SpriteSheet inicjalizowany poza TextureLoader -ok
+JpegRenderer przejmie metody activate/deactivate z TextureLoader z parametrem SpriteSheet
+
+
+
+teraz
+Dodać PngRenderer na podstawie jpgRenderer
+zmodyfikować PngTextureLoader na wzór JpegTextureLoader - ok
+przenieść aktywację/deaktywację tekstury z Png/JpegTextureLoader do png/JpegRenderer
+wyregulować ilość frames per sec
+
+
 
 ---------------------------------------------------
 ---	Sprawdzenie ile headerów zawiera plik cpp	---

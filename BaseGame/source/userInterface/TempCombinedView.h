@@ -5,13 +5,16 @@
  *      Author: Krzysztof
  */
 
-#ifndef BASIC_TEMPT004FIGURESVIEW_H_
-#define BASIC_TEMPT004FIGURESVIEW_H_
+#ifndef BASIC_TEMPCOMBINEDVIEW_H_
+#define BASIC_TEMPCOMBINEDVIEW_H_
 
 //#include "../main/IOpenGLView.h"
 #include "HumanView.h"
 #include "../resourceCache/ResourceCache.h"
 #include "../graphics3d/FiguresRenderer.h"
+#include "../graphics3d/FreeTypeRenderer.h"
+#include "../graphics3d/TextureRenderer.h"
+#include "../graphics3d/TextureResourceLoader.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -23,10 +26,10 @@ namespace base_game {
 // see: Temp06View.h
 
 //class TempT004figuresView: public IOpenGLView {
-class TempT004figuresView: public HumanView {
+class TempCombinedView: public HumanView {
 public:
-	TempT004figuresView(std::shared_ptr<ResourceCache> resourceCache);
-	virtual ~TempT004figuresView();
+	TempCombinedView(std::shared_ptr<ResourceCache> resourceCache);
+	virtual ~TempCombinedView();
 
 	virtual void vInit();
 	//virtual void vRender(double fTime, float fElapsedTime);
@@ -47,16 +50,30 @@ protected:
 
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<FiguresRenderer> figuresRenderer;
+	std::shared_ptr<FreeTypeRenderer> freeTypeRenderer;
+
+	std::shared_ptr<JpegTextureLoader> jpegTextureLoader;
+	std::shared_ptr<PngTextureLoader> pngTextureLoader;
+
+	// std::shared_ptr<JpegTextureLoader> jpegTextureLoader2;
+	std::shared_ptr<JpegRenderer> jpegRenderer;
+	std::shared_ptr<PngRenderer> pngRenderer;
+
+	std::shared_ptr<SpriteSheet> spriteSheet;
+	std::shared_ptr<SpriteSheet> spriteSheet2;
+
+	std::shared_ptr<SpriteSheet> spriteSheetPng;
+
 	//std::string m_assetsFolder;
 
 };
 
-namespace temp_t004_figures_view {
+namespace temp_combined_view {
 //TempT004figuresView*
-std::shared_ptr<TempT004figuresView> getView(bool reset,
+std::shared_ptr<TempCombinedView> getView(bool reset,
 		std::shared_ptr<ResourceCache> resourceCache);
 }
 
 } /* namespace base_game */
 
-#endif /* BASIC_TEMPT004FIGURESVIEW_H_ */
+#endif /* BASIC_TEMPCOMBINEDVIEW_H_ */

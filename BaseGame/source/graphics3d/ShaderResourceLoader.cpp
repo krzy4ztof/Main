@@ -50,9 +50,9 @@ ShaderResourceExtraData::~ShaderResourceExtraData() {
 }
 
 /*
-void ShaderResourceExtraData::compileShader(char* pRawBuffer,
-		uintmax_t rawSize) {
-}
+ void ShaderResourceExtraData::compileShader(char* pRawBuffer,
+ uintmax_t rawSize) {
+ }
  */
 
 VertexShaderResourceExtraData::VertexShaderResourceExtraData() {
@@ -63,7 +63,7 @@ VertexShaderResourceExtraData::~VertexShaderResourceExtraData() {
 	logger::info("Destroy VertexShaderResourceExtraData");
 }
 
-void VertexShaderResourceExtraData::compileShader(char* pRawBuffer,
+void VertexShaderResourceExtraData::compileShader(char *pRawBuffer,
 		uintmax_t rawSize) {
 	stringstream ss;
 	logger::info("compileVertexShader");
@@ -108,7 +108,7 @@ FragmentShaderResourceExtraData::~FragmentShaderResourceExtraData() {
 	logger::info("Destroy FragmentShaderResourceExtraData");
 }
 
-void FragmentShaderResourceExtraData::compileShader(char* pRawBuffer,
+void FragmentShaderResourceExtraData::compileShader(char *pRawBuffer,
 		uintmax_t rawSize) {
 	stringstream ss;
 
@@ -276,13 +276,28 @@ GLuint ShaderCompiler::loadFragmentShader(string fragmentShaderName) {
 	return FragmentShaderID;
 }
 
+GLuint ShaderCompiler::loadShaders(string shaderName) {
+	stringstream ss;
+
+	string vertResourceName = shaderName + ".vert";
+	ss << "vertPath: " << vertResourceName;
+	logger::info(ss);
+	string fragResourceName = shaderName + ".frag";
+	ss << "fragPath: " << fragResourceName;
+	logger::info(ss);
+	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
+	GLuint programID = this->loadShaders(vertResourceName,
+			fragResourceName);
+	return programID;
+}
+
 GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 		string fragmentShaderName) {
 
 	stringstream ss;
 
-	const char * vertex_file_path = vertexShaderName.c_str();
-	const char * fragment_file_path = fragmentShaderName.c_str();
+	const char *vertex_file_path = vertexShaderName.c_str();
+	const char *fragment_file_path = fragmentShaderName.c_str();
 
 	GLuint VertexShaderID = loadVertexShader(vertexShaderName);
 	// Create the shaders
@@ -326,7 +341,7 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 
 namespace vertex_shader_resource_loader {
 shared_ptr<IResourceLoader> createVertexShaderResourceLoader() {
-	VertexShaderResourceLoader* loader = new VertexShaderResourceLoader();
+	VertexShaderResourceLoader *loader = new VertexShaderResourceLoader();
 	shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
 	return pointer;
 }
@@ -334,7 +349,7 @@ shared_ptr<IResourceLoader> createVertexShaderResourceLoader() {
 
 namespace fragment_shader_resource_loader {
 shared_ptr<IResourceLoader> createFragmentShaderResourceLoader() {
-	FragmentShaderResourceLoader* loader = new FragmentShaderResourceLoader();
+	FragmentShaderResourceLoader *loader = new FragmentShaderResourceLoader();
 	shared_ptr<IResourceLoader> pointer = shared_ptr<IResourceLoader>(loader);
 	return pointer;
 }

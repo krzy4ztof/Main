@@ -24,6 +24,8 @@
 #include "../userInterface/TempT009jpegGilTextureView.h"
 #include "../userInterface/TempT00FpolishFontsView.h"
 #include "../userInterface/TempT00DpngGilScanlineView.h"
+#include "../userInterface/TempCombinedView.h"
+
 
 
 #include "../resourceCache/ZipFile.h"
@@ -356,6 +358,8 @@ shared_ptr<IGameView> BaseGameLogic::tempSelectView(int key, bool reset) {
 		//
 		gameView = temp_t00d_png_gil_scanline_view::getView(reset,
 				shrdPtrResourceCache);
+	} else if (key - GLFW_KEY_4) {
+		gameView = temp_combined_view::getView(reset, shrdPtrResourceCache);
 	}
 
 	tempAddView(gameView);

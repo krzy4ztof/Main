@@ -12,6 +12,7 @@
 #include "../resourceCache/IResourceLoader.h"
 #include "../resourceCache/ResourceHandle.h"
 #include "../resourceCache/ResourceCache.h"
+#include "SpriteSheet.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -158,33 +159,52 @@ public:
 	TextureLoader(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TextureLoader();
 
-	virtual void init(std::string fileName);
+	virtual void init(std::string fileName,
+			std::shared_ptr<SpriteSheet> spriteSheet);
 //	void debugCopyImageJpg(boost::gil::rgb8_image_t imageData);
-	virtual void activate();
+	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 	void deactivate();
 	void terminate();
+	//std::shared_ptr<SpriteSheet> getSpriteSheet() {
+	//	return spriteSheet;
+	//}
+	
+
 protected:
 	std::shared_ptr<IResourceExtraData> loadImage(std::string fileName);
 	// void image_to_texture(float * data);
 	// std::shared_ptr<IResourceExtraData> resourceExtraData; // zamiast rgb8_image
 // private:
-	GLuint texture;
+	// GLuint texture;
 	// boost::gil::rgb8_image_t rgb8_image;
 	//boost::gil::rgba8_image_t rgba8_image;
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	// std::shared_ptr<SpriteSheet> spriteSheet;
+
+	/*
+	int img_width;
+	int img_height;
+	 */
+	// float *data;
+
 };
 
-class JpgTextureLoader: public TextureLoader {
+class JpegTextureLoader: public TextureLoader {
 public:
-	JpgTextureLoader(std::shared_ptr<ResourceCache> resourceCache);
-	virtual ~JpgTextureLoader();
+	JpegTextureLoader(std::shared_ptr<ResourceCache> resourceCache);
+	virtual ~JpegTextureLoader();
 
 	void debugCopyImageJpg(boost::gil::rgb8_image_t imageData);
-	virtual void init(std::string fileName);
-	virtual void activate();
+	virtual void init(std::string fileName,
+			std::shared_ptr<SpriteSheet> spriteSheet);
+	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 protected:
-	boost::gil::rgb8_image_t rgb8_image;
-	virtual void image_to_texture(float *data);
+	// boost::gil::rgb8_image_t rgb8_image;
+	//virtual void image_to_texture(float *data);
+	void image_to_texture(boost::gil::rgb8_image_t rgb8_image,
+			std::shared_ptr<SpriteSheet> spriteSheet);
+
+
 };
 
 class PngTextureLoader: public TextureLoader {
@@ -193,11 +213,15 @@ public:
 	virtual ~PngTextureLoader();
 
 	void debugCopyImagePng(boost::gil::rgba8_image_t imageData);
-	virtual void init(std::string fileName);
-	virtual void activate();
+	virtual void init(std::string fileName,
+			std::shared_ptr<SpriteSheet> spriteSheet);
+	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 protected:
-	boost::gil::rgba8_image_t rgba8_image;
-	virtual void image_to_texture(float *data);
+	// boost::gil::rgba8_image_t rgba8_image;
+	//virtual void image_to_texture(float *data);
+	void image_to_texture(boost::gil::rgba8_image_t rgba8_image,
+			std::shared_ptr<SpriteSheet> spriteSheet);
+
 };
 
 namespace jpeg_resource_loader {
