@@ -10,7 +10,8 @@
 
 #include "HumanView.h"
 #include "../resourceCache/ResourceCache.h"
-#include "../graphics3D/FreeTypeCharacter.h"
+#include "../graphics3d/FreeTypeCharacter.h"
+#include "../graphics3d/FreeTypeRenderer.h"
 // #include "../main/shader.h"
 
 #include <ft2build.h>
@@ -24,6 +25,7 @@
 #include <map> // std::map
 #include <glm/glm.hpp> // glm::ivec2
 #include <string> // std::string
+#include <memory> // std::shared_ptr
 
 namespace base_game {
 
@@ -38,7 +40,7 @@ struct T00Fcharacter {
 
 class TempT00FpolishFontsView: public HumanView {
 public:
-	const static GLubyte MAX_STD_CHAR;
+	// const static GLubyte MAX_STD_CHAR;
 
 	TempT00FpolishFontsView(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT00FpolishFontsView();
@@ -51,14 +53,15 @@ public:
 	virtual void vDeactivate();
 
 protected:
-	GLuint programID;
-	GLuint VAO, VBO;
+	//GLuint programID;
+	//GLuint VAO, VBO;
+	std::shared_ptr<FreeTypeRenderer> freeTypeRenderer;
 
 	//boost::gil::rgba8_image_t rgba8_image; // boost::gil::image
 
 	// Freetype
 	// FT_Face face;
-	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters;
+	// std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters;
 	//std::map<GLushort, T00Fcharacter> Characters;
 
 
@@ -71,6 +74,8 @@ protected:
 	void initCharacter(FT_Face face, FT_ULong char_code,
 			GLushort char_code_out);
 	 */
+
+	/*
 	void RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale,
 			glm::vec3 color);
 
@@ -85,6 +90,7 @@ protected:
 			GLfloat scale);
 
 	void debugCharacters();
+	 */
 
 };
 

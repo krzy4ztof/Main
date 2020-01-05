@@ -30,6 +30,8 @@
 #include "../../../BaseGame/source/userInterface/TempT004figuresView.h"
 #include "../../../BaseGame/source/userInterface/TempT00DpngGilScanlineView.h"
 #include "../../../BaseGame/source/userInterface/TempT00FpolishFontsView.h"
+#include "../../../BaseGame/source/userInterface/TempCombinedView.h"
+
 
 
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
@@ -54,6 +56,7 @@ namespace temp_t004_figures_view = base_game::temp_t004_figures_view;
 namespace temp_t009_jpeg_gil_texture_view = base_game::temp_t009_jpeg_gil_texture_view;
 namespace temp_t00f_polish_fonts_view = base_game::temp_t00f_polish_fonts_view;
 namespace temp_t00d_png_gil_scanline_view = base_game::temp_t00d_png_gil_scanline_view;
+namespace temp_combined_view = base_game::temp_combined_view;
 
 namespace vertex_shader_resource_loader = base_game::vertex_shader_resource_loader;
 namespace fragment_shader_resource_loader = base_game::fragment_shader_resource_loader;
@@ -267,20 +270,22 @@ struct TempT00FpolishFontsViewZipFileFixture: public TempT00FpolishFontsViewFixt
 
 BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewDevFolderSuite, TempT00FpolishFontsViewDevFolderFixture)
 
-//BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
-BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<false>()) {
+BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
+//BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
-	// gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-	//		shrdPtrResourceCache);
+	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,
+	//	shrdPtrResourceCache);
 	//gameView = temp_t00d_png_gil_scanline_view::getView(false,
 	//		shrdPtrResourceCache);
 
-	gameView = temp_t00f_polish_fonts_view::getView(false,
-			shrdPtrResourceCache);
+	//gameView = temp_t00f_polish_fonts_view::getView(false,
+	//		shrdPtrResourceCache);
+
+	gameView = temp_combined_view::getView(false, shrdPtrResourceCache);
 
 	pTestGame->m_pGame->tempAddView(gameView);
 
@@ -324,19 +329,19 @@ BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_FIXTURE_TEST_SUITE(TempT00FpolishFontsViewZipFileSuite, TempT00FpolishFontsViewZipFileFixture)
 
-BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<true>()) {
-//BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
+//BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<true>()) {
+BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
-//	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-//			shrdPtrResourceCache);
+	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
+			shrdPtrResourceCache);
 //	gameView = temp_t00d_png_gil_scanline_view::getView(false,
 //			shrdPtrResourceCache);
-	gameView = temp_t00f_polish_fonts_view::getView(false,
-			shrdPtrResourceCache);
+//	gameView = temp_t00f_polish_fonts_view::getView(false,
+//			shrdPtrResourceCache);
 
 	pTestGame->m_pGame->tempAddView(gameView);
 

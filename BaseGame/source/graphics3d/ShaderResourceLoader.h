@@ -149,6 +149,7 @@ public:
 	virtual ~ShaderCompiler();
 	GLuint loadShaders(std::string vertexShaderName,
 			std::string fragmentShaderName);
+	GLuint loadShaders(std::string shaderName);
 
 protected:
 	GLuint loadVertexShader(std::string vertexShaderName);

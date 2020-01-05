@@ -7,14 +7,16 @@
 
 #include "TempT004figuresView.h"
 #include "../debugging/Logger.h"
-// #include "../main/OpenGLShader.h"
-//#include "TempShader.hpp"
-#include "../graphics3D/ShaderResourceLoader.h"
+#include "../graphics3d/ShaderResourceLoader.h"
+#include "../graphics3d/FiguresRenderer.h"
 #include "../debugging/Logger.h"
+#include "../gameInitialization/VideoSystemGLFW.h"
 
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin
 #include <iostream>
+#include <memory> // shared_ptr
+#include <glm/gtc/matrix_transform.hpp> // glm::ortho
 
 #include <string> // string
 #include <boost/filesystem.hpp> // boost::filesystem::path; boost::filesystem::recursive_directory_iterator;
@@ -23,19 +25,18 @@
 //boost::filesystem::remove_all; boost::filesystem::copy_file; boost::filesystem::ofstream;
 #include <sstream>      // std::stringstream
 
-//using std::cout;
-//using std::endl;
 using std::string;
 using boost::filesystem::path;
 using std::stringstream;
 using std::shared_ptr;
+using std::make_shared;
 
 namespace base_game {
 
+/*
 TempT004figuresView::TempT004figuresView(
 		shared_ptr<ResourceCache> resourceCache) {
 	logger::info("Create TempT004figuresView");
-	// cout << "Create TempT004figuresView" << endl;
 	programID = 0;
 	positionBuffer = 0;
 	colorBuffer = 0;
@@ -45,25 +46,48 @@ TempT004figuresView::TempT004figuresView(
 
 TempT004figuresView::~TempT004figuresView() {
 	logger::info("Destroy TempT004figuresView");
-	// cout << "Destroy TempT004figuresView" << endl;
 	this->vTerminate();
 	shrdPtrResourceCache.reset();
 }
 
 void TempT004figuresView::vTerminate() {
-
-	// glDeleteVertexArrays(1, &vertex_array_object);
 	glDeleteProgram(programID);
 }
+ */
+
+TempT004figuresView::TempT004figuresView(
+		shared_ptr<ResourceCache> resourceCache) {
+	logger::info("Create TempT004figuresView");
+	//programID = 0;
+	//positionBuffer = 0;
+	//colorBuffer = 0;
+
+	this->shrdPtrResourceCache = resourceCache;
+	figuresRenderer = make_shared<FiguresRenderer>();
+
+}
+
+TempT004figuresView::~TempT004figuresView() {
+	logger::info("Destroy TempT004figuresView");
+	this->vTerminate();
+	shrdPtrResourceCache.reset();
+	figuresRenderer.reset();
+}
+
+void TempT004figuresView::vTerminate() {
+	//glDeleteProgram(programID);
+}
+
 
 void TempT004figuresView::vInit() {
 //	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-	glGenBuffers(1, &positionBuffer);
-	glGenBuffers(1, &colorBuffer);
+//	glGenBuffers(1, &positionBuffer);
+//	glGenBuffers(1, &colorBuffer);
 
 	stringstream ss;
 
+	/*
 	string vertResourceName = "temp_t004_figures_view.vert";
 	ss << "vertPath: " << vertResourceName;
 	logger::info(ss);
@@ -71,15 +95,15 @@ void TempT004figuresView::vInit() {
 	string fragResourceName = "temp_t004_figures_view.frag";
 	ss << "fragPath: " << fragResourceName;
 	logger::info(ss);
+	 */
+	
+	ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
 
-	//programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
-	ShaderCompiler shaderCompiler(this->shrdPtrResourceCache); // = new ShaderCompiler();
+//	GLuint programID = shaderCompiler.loadShaders(vertResourceName,
+//			fragResourceName);
 
-	programID = shaderCompiler.loadShaders(vertResourceName, fragResourceName);
-
-	// Create and compile our GLSL program from the shaders
-	//programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
-	//	"../../../assets/shaders/TempT004figuresView.frag");
+	GLuint programID = shaderCompiler.loadShaders("figures_renderer");
+	figuresRenderer->init(programID);
 
 	vActivate();
 }
@@ -93,37 +117,19 @@ void TempT004figuresView::vInit() {
 
  stringstream ss;
 
- //path vertPath { this->m_assetsFolder };
- path vertPath { this->shrdPtrResourceCache->assetsFolder };
-
- vertPath /= "shaders/TempT004figuresView.vert";
- //thisResPath /= resource.getName();
- vertPath = vertPath.make_preferred();
- string vertResourceName = vertPath.string();
+ string vertResourceName = "temp_t004_figures_view.vert";
  ss << "vertPath: " << vertResourceName;
  logger::info(ss);
 
-
- //path fragPath { this->m_assetsFolder };
- path fragPath { this->shrdPtrResourceCache->assetsFolder };
-
- fragPath /= "shaders/TempT004figuresView.frag";
- //thisResPath /= resource.getName();
- fragPath = fragPath.make_preferred();
- string fragResourceName = fragPath.string();
+ string fragResourceName = "temp_t004_figures_view.frag";
  ss << "fragPath: " << fragResourceName;
  logger::info(ss);
 
- //programID = LoadShaders(vertResourceName.c_str(), fragResourceName.c_str());
- ShaderCompiler shaderCompiler; // = new ShaderCompiler();
+ ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
 
- programID = shaderCompiler.loadShaders(vertResourceName.c_str(),
- fragResourceName.c_str());
- 
- // Create and compile our GLSL program from the shaders
- //programID = LoadShaders("../../../assets/shaders/TempT004figuresView.vert",
- //	"../../../assets/shaders/TempT004figuresView.frag");
-
+ GLuint programID = shaderCompiler.loadShaders(vertResourceName,
+ fragResourceName);
+ figuresRenderer->init(programID);
 
  vActivate();
  }
@@ -135,20 +141,51 @@ void TempT004figuresView::vActivate() {
 	// Dark background
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-	/*
-	 GLfloat fstTriangle[] = { -1.0f, 0.5f, 0.0f, 1.0f, //
-	 -0.5f, 0.5f, 0.0f, 1.0f, //
-	 -0.75f, 1.0f, 0.0f, 1.0f };
+//
+//	 GLfloat fstTriangle[] = { -1.0f, 0.5f, 0.0f, 1.0f, //
+//	 -0.5f, 0.5f, 0.0f, 1.0f, //
+//	 -0.75f, 1.0f, 0.0f, 1.0f };
+//
+//	 GLfloat secTriangle[] = { 0.5f, 1.0f, 0.0f, 1.0f, //
+//	 1.0f, 1.0f, 0.0f, 1.0f, //
+//	 0.75f, 0.5f, 0.0f, 1.0f };
+//
+//	 GLfloat quadr[] = { -1.0f, -1.0f, 0.0f, 1.0f, //
+//	 -0.5f, -1.0f, 0.0f, 1.0f, //
+//	 -0.5f, -0.5f, 0.0f, 1.0f, //
+//	 -1.0f, -0.5f, 0.0f, 1.0f };
+//
 
-	 GLfloat secTriangle[] = { 0.5f, 1.0f, 0.0f, 1.0f, //
-	 1.0f, 1.0f, 0.0f, 1.0f, //
-	 0.75f, 0.5f, 0.0f, 1.0f };
+	//figuresRenderer->activate();
 
-	 GLfloat quadr[] = { -1.0f, -1.0f, 0.0f, 1.0f, //
-	 -0.5f, -1.0f, 0.0f, 1.0f, //
-	 -0.5f, -0.5f, 0.0f, 1.0f, //
-	 -1.0f, -0.5f, 0.0f, 1.0f };
-	 */
+	const GLfloat color[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glClearBufferfv(GL_COLOR, 0, color);
+// Use the program object we created earlier for rendering
+	//glUseProgram(programID);
+
+}
+
+/*
+ void TempT004figuresView::vActivate() {
+ HumanView::vActivate();
+
+ // Dark background
+ glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+ //
+ //	 GLfloat fstTriangle[] = { -1.0f, 0.5f, 0.0f, 1.0f, //
+ //	 -0.5f, 0.5f, 0.0f, 1.0f, //
+ //	 -0.75f, 1.0f, 0.0f, 1.0f };
+ //
+ //	 GLfloat secTriangle[] = { 0.5f, 1.0f, 0.0f, 1.0f, //
+ //	 1.0f, 1.0f, 0.0f, 1.0f, //
+ //	 0.75f, 0.5f, 0.0f, 1.0f };
+ //
+ //	 GLfloat quadr[] = { -1.0f, -1.0f, 0.0f, 1.0f, //
+ //	 -0.5f, -1.0f, 0.0f, 1.0f, //
+ //	 -0.5f, -0.5f, 0.0f, 1.0f, //
+ //	 -1.0f, -0.5f, 0.0f, 1.0f };
+ //	 
 
 	static const GLfloat positions[] = { -1.0f, 0.5f, 0.0f, 1.0f, // fst triangle
 			-0.5f, 0.5f, 0.0f, 1.0f, //
@@ -191,32 +228,73 @@ void TempT004figuresView::vActivate() {
 	glUseProgram(programID);
 
 }
+ */
 
 void TempT004figuresView::vDeactivate() {
 	HumanView::vDeactivate();
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glDisableVertexAttribArray(0);
-	glDisableVertexAttribArray(1);
-	glUseProgram(0);
-}
 
-//void TempT004figuresView::vRender(double currentTime, float fElapsedTime) {
+//	figuresRenderer->deactivate();
+}
+/*
+ void TempT004figuresView::vDeactivate() {
+ HumanView::vDeactivate();
+ glBindBuffer(GL_ARRAY_BUFFER, 0);
+ glDisableVertexAttribArray(0);
+ glDisableVertexAttribArray(1);
+ glUseProgram(0);
+ }
+ */
 void TempT004figuresView::vOnRender(double currentTime, float fElapsedTime) {
 
+	// figuresRenderer->temp_startRender();
+	/*
+	figuresRenderer->temp_activate();
+
+
+	figuresRenderer->temp_render();
+
+	figuresRenderer->temp_deactivate();
+	 */
+
+	glm::mat4 projection = glm::ortho(0.0f,
+			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
+			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
+
+	figuresRenderer->activate(projection);
+
+	//figuresRenderer->temp_render();
+	figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
+			glm::vec2(100.0f, 0.0f), glm::vec2(50.f, 200.0f),
+			glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+
+	figuresRenderer->renderRectangle(glm::vec2(200.0f, 200.0f),
+			glm::vec2(240.0f, 240.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));
+
+	figuresRenderer->renderPoint(glm::vec2(300.0f, 400.0f), 8.0f,
+			glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
+
+	//figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
+	//		glm::vec2(1.0f, 0.0f), glm::vec2(0.5f, 1.0f),
+	//		glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+
+	figuresRenderer->deactivate();
+
+
+
+	/*
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glPointSize(8.0f);
 
 	glDrawArrays(GL_POINTS, 3, 3);
 
 	glDrawArrays(GL_TRIANGLE_FAN, 6, 4);
-
+	 */
 	//16, 32
 }
 
 namespace temp_t004_figures_view {
 TempT004figuresView* openGLview = nullptr;
 
-//TempT004figuresView*
 shared_ptr<TempT004figuresView> getView(bool reset,
 		shared_ptr<ResourceCache> resourceCache) {
 	if (openGLview == nullptr) {
@@ -229,7 +307,6 @@ shared_ptr<TempT004figuresView> getView(bool reset,
 			openGLview->vInit();
 		}
 	}
-	//return openGLview;
 	return shared_ptr<TempT004figuresView> { openGLview };
 }
 }

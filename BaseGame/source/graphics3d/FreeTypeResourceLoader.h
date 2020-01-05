@@ -29,8 +29,6 @@ namespace base_game {
 
 class FreeTypeResourceExtraData: public IResourceExtraData {
 public:
-	const static GLubyte MAX_STD_CHAR;
-
 	FreeTypeResourceExtraData();
 	virtual ~FreeTypeResourceExtraData();
 
