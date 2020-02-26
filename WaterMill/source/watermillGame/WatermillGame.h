@@ -4,6 +4,7 @@
 #include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
 #include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
+#include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 
 //#include <gameInitialization/GameCodeApp.h>
 //#include <gameLogic/BaseGameLogic.h>
@@ -33,7 +34,8 @@ public:
 
 protected:
 	virtual base_game::BaseGameLogic* createGameAndView(
-			std::shared_ptr<base_game::ResourceCache> resourceCache);
+			std::shared_ptr<base_game::ResourceCache> resourceCache,
+			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
 private:
 };
 }

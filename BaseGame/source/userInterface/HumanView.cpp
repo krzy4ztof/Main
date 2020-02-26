@@ -1,10 +1,12 @@
 #include "HumanView.h"
 #include "../debugging/Logger.h"
 #include "../inputDevices/MovementController.h"
+#include "../graphics3d/FpsCounter.h"
+#include "../graphics3d/OpenGLRenderer.h"
+#include "../utilities/Templates.h"
 
 // #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
-//#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
 #include <sstream>      // std::stringstream
 #include <memory> // shared_ptr, weak_ptr, make_shared
 
@@ -13,7 +15,7 @@ using std::make_shared;
 using std::shared_ptr;
 
 namespace base_game {
-HumanView::HumanView() {
+HumanView::HumanView(std::shared_ptr<OpenGLRenderer> openGLRenderer) {
 	logger::info("Create HumanView");
 	tempAngle = 0.0f;
 
@@ -22,12 +24,19 @@ HumanView::HumanView() {
 
 	m_ViewId = 0;
 	m_ActorId = 0;
+	fpsCounter = new FpsCounter();
+	this->openGLRenderer = openGLRenderer;
 }
 
 HumanView::~HumanView() {
+	templates::safe_delete < FpsCounter > (fpsCounter);
 	logger::info("Destroy HumanView");
 	m_KeyboardHandler.reset();
 	m_PointerHandler.reset();
+
+	while (!m_ScreenElements.empty()) {
+		m_ScreenElements.pop_front();
+	}
 }
 
 void HumanView::vOnAttach(unsigned int vid, unsigned int aid) {
@@ -37,173 +46,116 @@ void HumanView::vOnAttach(unsigned int vid, unsigned int aid) {
 
 void HumanView::vOnRestore() {
 	logger::info("vOnRestore HumanView");
+
+	for (ScreenElementList::iterator i = m_ScreenElements.begin();
+			i != m_ScreenElements.end(); ++i) {
+		(*i)->vOnRestore();
+	}
+}
+
+void HumanView::tempVRender(double currentTime, float fElapsedTime) {
+
 }
 
 void HumanView::vOnRender(double fTime, float fElapsedTime) {
-	//logger::info("vOnRender HumanView");
+	//logger::info("HumanView::vOnRender");
+	stringstream ss;
 
-	/*
-	 bool glfw = true;
+	// miliseconds
+	double time = glfwGetTime();
+	double elapsedTime = time - fpsCounter->getLastTime();
+	float elapsedTimeFloat = static_cast<float>(elapsedTime);
 
-	 if (glfw) {
-	 tempOnRenderGLFW(fTime, fElapsedTime);
-	 } else {
-	 //	tempOnRender(fTime, fElapsedTime);
-	 }
-	 */
+	ss << "GLUT RENDER SCENE: time:" << time << "; elapsedTime " << elapsedTime;
+//			<< "; angle: " << angle;
+	//logger::info(ss);
+
+	//if (base_game::g_pApp != nullptr) {
+	//	g_pApp->onUpdateGame(time, elapsedTimeFloat);
+
+		if (fpsCounter->renderNextFrame(time)) {
+
+
+
+			/* Render here */
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+			//g_pApp->onFrameRender(time, elapsedTimeFloat);
+
+			/* Swap front and back buffers */
+		//glfwSwapBuffers (window);
+
+			/* Poll for and process events */
+		//glfwPollEvents();
+
+		// Render the scene
+			if (openGLRenderer->vPreRender()) {
+			this->vRenderText();
+
+			//m_ScreenElements.sort(SortBy_SharedPtr_Content<IScreenElement>());
+			for (ScreenElementList::iterator i = m_ScreenElements.begin();
+					i != m_ScreenElements.end(); ++i) {
+				if ((*i)->vIsVisible()) {
+					(*i)->vOnRender(fTime, fElapsedTime);
+				}
+			}
+
+			this->tempVRender(fTime, fElapsedTime);
+			/*
+			 * VRenderText();
+			 m_ScreenElements.sort(
+			 SortBy_SharedPtr_Content<IScreenElement>());
+			 for(ScreenElementList::iterator i=m_ScreenElements.begin();
+			 i!=m_ScreenElements.end(); ++i)
+			 {
+			 if ( (*i)->VIsVisible() )
+			 {
+			 (*i)->VOnRender(fTime, fElapsedTime);
+			 }
+			 }
+			 // record the last successful paint
+			 m_lastDraw = m_currTick;
+
+			 *
+			 */
+
+		}
+
+		openGLRenderer->vPostRender();
+
+			/*
+			 * // Render the scene
+			 if(g_pApp->m_Renderer->VPreRender())
+			 {
+			 VRenderText();
+			 m_ScreenElements.sort(
+			 SortBy_SharedPtr_Content<IScreenElement>());
+			 for(ScreenElementList::iterator i=m_ScreenElements.begin();
+			 i!=m_ScreenElements.end(); ++i)
+			 {
+			 if ( (*i)->VIsVisible() )
+			 {
+			 (*i)->VOnRender(fTime, fElapsedTime);
+			 }
+			 }
+			 // record the last successful paint
+			 m_lastDraw = m_currTick;
+			 }
+			 g_pApp->m_Renderer->VPostRender();
+			 * 
+			 */
+		}
+//	} else {
+//		ss << "g_pApp not initialized " << time << "; angle: " << angle;
+//		logger::info(ss);
+//	}
+
+
 }
 
 void HumanView::describeYourself() {
 	logger::info("HumanView describeYourself");
 }
-
-/*
- bool HumanView::vOnKeyboardFunc(unsigned char key, int x, int y) {
- stringstream ss;
-
- ss << "HUMAN-VIEW KEYBOARD: key:" << key << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
-
- if (m_KeyboardHandler) {
- m_KeyboardHandler->vOnKeyboardFunc(key, x, y);
- return true;
- } else {
- return false;
- }
-
- // return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
- }
-
- bool HumanView::vOnKeyboardUpFunc(unsigned char key, int x, int y) {
- stringstream ss;
-
- ss << "HUMAN-VIEW KEYBOARD-UP: key:" << key << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_KeyboardHandler) {
- m_KeyboardHandler->vOnKeyboardUpFunc(key, x, y);
- return true;
- } else {
- return false;
- }
-
- // return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
-
- bool HumanView::vOnSpecialFunc(int key, int x, int y) {
- stringstream ss;
-
- ss << "HUMAN-VIEW SPECIAL: key:" << key << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_KeyboardHandler) {
- m_KeyboardHandler->vOnSpecialFunc(key, x, y);
- return true;
- } else {
- return false;
- }
-
- // return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
- }
-
- bool HumanView::vOnSpecialUpFunc(int key, int x, int y) {
- stringstream ss;
-
- ss << "HUMAN-VIEW SPECIAL-UP: " << key << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_KeyboardHandler) {
- m_KeyboardHandler->vOnSpecialUpFunc(key, x, y);
- return true;
- } else {
- return false;
- }
- // return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
- */
-
-/*
- bool HumanView::vOnMouseFunc(int button, int state, int x, int y) {
- stringstream ss;
- ss << "HUMAN-VIEW MOUSE: button:" << button << "; state: " << state
- << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_PointerHandler) {
- m_PointerHandler->vOnMouseFunc(button, state, x, y);
- return true;
- } else {
- return false;
- }
- // return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
-
- bool HumanView::vOnMotionFunc(int x, int y) {
- stringstream ss;
- ss << "HUMAN-VIEW MOTION: x:" << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_PointerHandler) {
- m_PointerHandler->vOnMotionFunc(x, y);
- return true;
- } else {
- return false;
- }
- //return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
-
- bool HumanView::vOnPassiveMotionFunc(int x, int y) {
- stringstream ss;
- ss << "HUMAN-VIEW PASSIVE-MOTION: x:" << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_PointerHandler) {
- m_PointerHandler->vOnPassiveMotionFunc(x, y);
- return true;
- } else {
- return false;
- }
- //return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
-
- bool HumanView::vOnMouseWheelFunc(int wheel, int direction, int x, int y) {
- stringstream ss;
- ss << "HUMAN-VIEW MOUSE: wheel:" << wheel << "; direction: " << direction
- << "; x: " << x << "; y: " << y;
- //logger::info(ss);
-
- if (m_PointerHandler) {
- m_PointerHandler->vOnMouseWheelFunc(wheel, direction, x, y);
- return true;
- } else {
- return false;
- }
- //return true; // stops further processing of vOnKeyboardFunc
-
- // return false; // allows to continue further processing of vOnKeyboardFunc // default -> return 0 (when view is not handling event)
-
- }
- */
 
 bool HumanView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 		int action, int mods) {
@@ -306,77 +258,6 @@ bool HumanView::vOnScrollCallback(GLFWwindow* window, double xoffset,
 	}
 }
 
-/*
- void HumanView::tempOnRender(double fTime, float fElapsedTime) {
-
- //	stringstream ss;
- //float angle = 0.0f;
-
- // Clear Color and Depth Buffers
- glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
- //glColor3f(1.0f, 0.0f, 0.0f); // Red
- glColor3f(0.0f, 1.0f, 1.0f); //blue
-
- // Reset transformations
- glLoadIdentity();
- // Set the camera
-
- #ifdef __linux__
- // TODO: not working on Windows
-
- gluLookAt( 0.0f, 0.0f, 10.0f,
- 0.0f, 0.0f, 0.0f,
- 0.0f, 1.0f, 0.0f);
-
- #endif //
- glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
-
- glBegin (GL_TRIANGLES);
- glVertex3f(-2.0f, -2.0f, 0.0f);
- glVertex3f(2.0f, 0.0f, 0.0);
- glVertex3f(0.0f, 2.0f, 0.0);
- glEnd();
-
- //if (angle < 3.0f){
- tempAngle += 0.1f;
- //}
- glutSwapBuffers();
-
- }
- */
-
-/*
- void HumanView::tempOnRenderGLFW(double fTime, float fElapsedTime) {
-
- //	stringstream ss;
- //float angle = 0.0f;
-
- // Clear Color and Depth Buffers
- glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
- //glColor3f(1.0f, 0.0f, 0.0f); // Red
- glColor3f(0.0f, 1.0f, 1.0f); //blue
-
- // Reset transformations
- glLoadIdentity();
- // Set the camera
-
- glRotatef(tempAngle, 0.0f, 1.0f, 0.0f);
-
- glBegin(GL_TRIANGLES);
- glVertex3f(-2.0f, -2.0f, 0.0f);
- glVertex3f(2.0f, 0.0f, 0.0);
- glVertex3f(0.0f, 2.0f, 0.0);
- glEnd();
-
-
- //if (angle < 3.0f){
- tempAngle += 0.1f;
- //}
- //glutSwapBuffers();
-
- }
- */
-
 void HumanView::tempVLoadGameDelegate() {
 	shared_ptr<MovementController> movementController = make_shared<
 			MovementController>();
@@ -384,4 +265,20 @@ void HumanView::tempVLoadGameDelegate() {
 	m_KeyboardHandler = movementController;
 
 }
+
+/**
+ * Renders text in the console
+ */
+void HumanView::vRenderText() {
+}
+
+void HumanView::vPushElement(shared_ptr<IScreenElement> pElement) {
+	m_ScreenElements.push_front(pElement);
+}
+
+void HumanView::vRemoveElement(shared_ptr<IScreenElement> pElement) {
+	m_ScreenElements.remove(pElement);
+}
+
+
 }

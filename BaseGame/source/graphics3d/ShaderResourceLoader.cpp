@@ -9,7 +9,7 @@
 #include "../debugging/Logger.h"
 #include "../utilities/Templates.h"
 
-// #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
 
 #include <boost/cstdint.hpp> // boost::uintmax_t
@@ -49,12 +49,6 @@ ShaderResourceExtraData::~ShaderResourceExtraData() {
 	shaderId = 0;
 }
 
-/*
- void ShaderResourceExtraData::compileShader(char* pRawBuffer,
- uintmax_t rawSize) {
- }
- */
-
 VertexShaderResourceExtraData::VertexShaderResourceExtraData() {
 	logger::info("Create VertexShaderResourceExtraData");
 }
@@ -68,7 +62,6 @@ void VertexShaderResourceExtraData::compileShader(char *pRawBuffer,
 	stringstream ss;
 	logger::info("compileVertexShader");
 
-	//GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
 	shaderId = glCreateShader(GL_VERTEX_SHADER);
 
 	GLint Result = GL_FALSE;
@@ -129,7 +122,6 @@ void FragmentShaderResourceExtraData::compileShader(char *pRawBuffer,
 
 		ss << &FragmentShaderErrorMessage[0];
 		logger::error(ss);
-		//printf("%s\n", &FragmentShaderErrorMessage[0]);
 	}
 }
 
@@ -165,7 +157,6 @@ bool VertexShaderResourceLoader::vLoadResource(char *rawBuffer,
 	pExtraData->compileShader(rawBuffer, rawSize);
 
 	handle->setExtraData(pExtraData);
-//	handle->setExtraData(shared_ptr<XmlResourceExtraData>(pExtraData));
 
 	return true;
 }
@@ -195,19 +186,32 @@ bool FragmentShaderResourceLoader::vLoadResource(char *rawBuffer,
 	pExtraData->compileShader(rawBuffer, rawSize);
 
 	handle->setExtraData(pExtraData);
-//	handle->setExtraData(shared_ptr<XmlResourceExtraData>(pExtraData));
 
 	return true;
 }
 
 ShaderCompiler::ShaderCompiler(shared_ptr<ResourceCache> resourceCache) {
+	stringstream ss;
 	logger::info("Create ShaderCompiler");
+	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+	logger::info(ss);
+
 	this->shrdPtrResourceCache = resourceCache;
+
+	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+	logger::info(ss);
 }
 
 ShaderCompiler::~ShaderCompiler() {
+	stringstream ss;
 	logger::info("Destroy ShaderCompiler");
+	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+	logger::info(ss);
+
 	shrdPtrResourceCache.reset();
+	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+	logger::info(ss);
+
 }
 
 const string ShaderCompiler::SHADERS_FOLDER = "shaders";
@@ -222,7 +226,6 @@ shared_ptr<IResourceExtraData> ShaderCompiler::loadShader(
 
 	string vertexShaderResourceName = vertexResourcePath.string();
 
-	//string vertexShaderResourceName = ShaderCompiler::SHADERS_FOLDER + "/" + vertexShaderName; //OK dla developmentFolder
 	ss << "vertexResourcePath: " << vertexShaderResourceName;
 	logger::info(ss);
 
@@ -244,7 +247,6 @@ shared_ptr<IResourceExtraData> ShaderCompiler::loadShader(
 
 GLuint ShaderCompiler::loadVertexShader(string vertexShaderName) {
 	stringstream ss;
-	// string resourceName = "actors/player_character.xml";
 
 	shared_ptr<IResourceExtraData> vertexExtraData = loadShader(
 			vertexShaderName);
@@ -261,7 +263,6 @@ GLuint ShaderCompiler::loadVertexShader(string vertexShaderName) {
 
 GLuint ShaderCompiler::loadFragmentShader(string fragmentShaderName) {
 	stringstream ss;
-	// string resourceName = "actors/player_character.xml";
 
 	shared_ptr<IResourceExtraData> vertexExtraData = loadShader(
 			fragmentShaderName);
@@ -285,9 +286,7 @@ GLuint ShaderCompiler::loadShaders(string shaderName) {
 	string fragResourceName = shaderName + ".frag";
 	ss << "fragPath: " << fragResourceName;
 	logger::info(ss);
-	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
-	GLuint programID = this->loadShaders(vertResourceName,
-			fragResourceName);
+	GLuint programID = this->loadShaders(vertResourceName, fragResourceName);
 	return programID;
 }
 
@@ -301,14 +300,11 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 
 	GLuint VertexShaderID = loadVertexShader(vertexShaderName);
 	// Create the shaders
-//	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-
 	GLuint FragmentShaderID = loadFragmentShader(fragmentShaderName);
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
 	// Link the program
-	//printf("Linking program\n");
 	logger::info("Linking program");
 
 	GLuint ProgramID = glCreateProgram();
@@ -323,7 +319,6 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 		std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 		glGetProgramInfoLog(ProgramID, InfoLogLength, NULL,
 				&ProgramErrorMessage[0]);
-		//printf("%s\n", &ProgramErrorMessage[0]);
 		ss << &ProgramErrorMessage[0];
 		logger::error(ss);
 
@@ -337,6 +332,48 @@ GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 
 	return ProgramID;
 
+}
+
+void ShaderCompiler::removeShaders(string shaderName) {
+	stringstream ss;
+
+	string vertResourceName = shaderName + ".vert";
+	ss << "vertPath: " << vertResourceName;
+	logger::info(ss);
+	this->removeShader(vertResourceName);
+
+	string fragResourceName = shaderName + ".frag";
+	ss << "fragPath: " << fragResourceName;
+	logger::info(ss);
+	this->removeShader(fragResourceName);
+
+}
+
+void ShaderCompiler::removeShader(string vertexShaderName) {
+	stringstream ss;
+
+	path vertexResourcePath { ShaderCompiler::SHADERS_FOLDER };
+	vertexResourcePath /= vertexShaderName;
+	vertexResourcePath = vertexResourcePath.make_preferred();
+
+	string vertexShaderResourceName = vertexResourcePath.string();
+
+	ss << "vertexResourcePath: " << vertexShaderResourceName;
+	logger::info(ss);
+
+	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+	logger::info(ss);
+
+
+	shrdPtrResourceCache->debugPrint();
+
+	Resource vertexResource(vertexShaderResourceName);
+	optional<shared_ptr<ResourceHandle>> pResourceHandle =
+			shrdPtrResourceCache->getHandle(&vertexResource);
+
+	if (pResourceHandle.is_initialized()) {
+		this->shrdPtrResourceCache->free(*pResourceHandle);
+	}
 }
 
 namespace vertex_shader_resource_loader {

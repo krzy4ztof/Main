@@ -25,6 +25,10 @@ Resource::Resource(const string &name) {
 }
 
 Resource::~Resource() {
+	stringstream ss;
+	ss << "Name of resource to destroy: " << name;
+	logger::info(ss);
+
 	logger::info("Destroy Resource");
 }
 

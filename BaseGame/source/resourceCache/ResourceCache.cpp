@@ -284,6 +284,28 @@ void ResourceCache::debugSaveAsFile(char* pRawBuffer, uintmax_t allocSize) {
 	ofs.close();
 }
 
+void ResourceCache::debugPrint() {
+	stringstream ss;
+	logger::info("debugPrint -> m_resourceHandles");
+
+	list<shared_ptr<ResourceHandle>>::iterator itHandle;
+	for (itHandle = m_resourceHandles.begin();
+			itHandle != m_resourceHandles.end(); ++itHandle) {
+		ss << (*itHandle)->getName();
+		logger::info(ss);
+	}
+	logger::info("debugPrint -> m_resources");
+
+	map<string, shared_ptr<ResourceHandle> >::iterator itResource;
+	for (itResource = m_resources.begin(); itResource != m_resources.end();
+			++itResource) {
+		ss << itResource->first << " => " << itResource->second->getName();
+		logger::info(ss);
+	}
+	logger::info("debugPrint -> end");
+
+}
+
 char* ResourceCache::allocate(uintmax_t size) {
 
 	if (!makeRoom(size)) {
@@ -331,9 +353,17 @@ bool ResourceCache::makeRoom(uintmax_t size) {
  */
 
 optional<shared_ptr<ResourceHandle>> ResourceCache::find(Resource * resource) {
+	stringstream ss;
+
 	logger::info("ResourceCache::find");
+	string name = resource->getName();
+	ss << "Name: " << name;
+
+	logger::info(ss);
+	this->debugPrint();
+
 	map<string, shared_ptr<ResourceHandle> >::iterator iter = m_resources.find(
-			resource->getName());
+			name);
 	if (iter == m_resources.end())
 		return optional<shared_ptr<ResourceHandle>> { };
 
@@ -345,8 +375,38 @@ optional<shared_ptr<ResourceHandle>> ResourceCache::find(Resource * resource) {
 //
 void ResourceCache::update(shared_ptr<ResourceHandle> handle) {
 	logger::info("ResourceCache::update");
+
+	// check
 	m_resourceHandles.remove(handle);
 	m_resourceHandles.push_front(handle);
+}
+
+/*
+void ResourceCache::freeResource(Resource *resource) {
+	optional<shared_ptr<ResourceHandle>> handle(find(resource));
+	if (handle.is_initialized()) {
+		this->free(*handle);
+		//m_resourceHandles.remove(*handle);
+		//m_resources.erase(resource->getName());
+	}
+}
+ */
+
+void ResourceCache::free(shared_ptr<ResourceHandle> gonner) {
+	debugPrint();
+	m_resourceHandles.remove(gonner);
+	m_resources.erase(gonner->getResource().getName());
+	debugPrint();
+
+	// m_resourceHandles.pop_front();
+
+
+	// Note - the resource might still be in use by something,
+	// so the cache can't actually count the memory freed until the
+	// ResHandle pointing to it is destroyed.
+
+	//m_allocated -= gonner->m_resource.m_size;
+	//delete gonner;
 }
 
 void ResourceCache::freeOneResource() {

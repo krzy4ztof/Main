@@ -22,16 +22,6 @@ public:
 
 	void init(GLuint programID);
 
-	/*
-
-	 void temp_startRender();
-
-	void temp_activate();
-	void temp_deactivate();
-
-	void temp_render();
-	 */
-
 	void activate(glm::mat4 projection);
 	void deactivate();
 
@@ -41,7 +31,6 @@ public:
 			glm::vec4 color);
 	void renderPoint(glm::vec2 point, GLfloat size, glm::vec4 color);
 
-
 protected:
 	void terminate();
 	void activateTriangle(glm::vec2 fstPoint, glm::vec2 secPoint,
@@ -49,15 +38,9 @@ protected:
 	void activateRectangle(glm::vec2 fstPoint, glm::vec2 thrdPoint,
 			glm::vec4 color);
 	void activatePoint(glm::vec2 point, GLfloat size, glm::vec4 color);
-	// void dectivateTriangle();
-
-//	void activateFigure(const GLfloat positions[], const GLfloat colors[]);
-//	void activateFigure(const GLfloat *positions, const GLfloat *colors);
 	void activateFigure(const GLfloat *positions, GLsizeiptr positionsSize,
 			const GLfloat *colors, GLsizeiptr colorsSize);
 
-
-	
 private:
 	GLuint programID;
 	GLuint positionBuffer;

@@ -75,9 +75,6 @@ namespace base_game {
 		 Compare to Windows32Calls::IsOnlyInstance(const string&)
 		 */
 		Cygwin64ProcessCalls cygwinProcess;
-		stringstream ss;
-		ss << "Is the only instance in Cygwin 64: " << gameTitle << "?";
-		logger::trace(ss);
 		bool isOnlyResult = cygwinProcess.isOnlyInstance ( gameTitle );
 		return isOnlyResult;
 	}
@@ -88,11 +85,6 @@ namespace base_game {
 		double diskAvailableMB = si.available / 1024 / 1024;
 		double diskAvailableGB = diskAvailableMB / 1024;
 		double diskNeededMB = diskSpaceNeeded / 1024 / 1024;
-		stringstream ss;
-		ss << "space: " << si.available << " [free], " << diskAvailableMB << " [MB], " << setprecision ( 4 ) << diskAvailableGB << " [GB]";
-		logger::trace(ss);
-		ss << "diskNeeded: " << diskSpaceNeeded << " [needed], " << diskNeededMB << " [MB]";
-		logger::trace(ss);
 		return true;
 	}
 
@@ -106,30 +98,6 @@ namespace base_game {
 		long pages = sysconf ( _SC_PHYS_PAGES ); // number of pages of physical memory
 		long pages_avail = sysconf ( _SC_AVPHYS_PAGES );// The number of currently available pages of physical memory.
 		long page_size = sysconf ( _SC_PAGE_SIZE );// size of page in bytes
-
-		stringstream ss;
-
-		ss << "Cygwin total number of pages " << pages;
-		logger::trace(ss);
-		ss << "Cygwin number of free pages " << pages_avail;
-		logger::trace(ss);
-		ss << "Cygwin size of pages (bytes) " << page_size;
-		logger::trace(ss);
-		ss << "Cygwin Mem (kB) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size / 1024;
-		logger::trace(ss);
-		ss << "Cygwin Mem (MB) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size / 1024 / 1024;
-		logger::trace(ss);
-		ss << "Cygwin size of free pages (bytes) " << pages_avail;
-		logger::trace(ss);
-		ss << "Cygwin Mem free (kB) (MemFree, LowFree - total virtual memory): " << pages_avail * page_size / 1024;
-		logger::trace(ss);
-		ss << "Cygwin Mem free (MB) (MemFree, LowFree - total virtual memory): " << pages_avail * page_size / 1024 / 1024;
-		logger::trace(ss);
-
-		ss << "Memory needed (bytes): " << physicalRAMNeeded;
-		logger::trace(ss);
-		ss << "Cygwin Mem (bytes) (SwapTotal (MemTotal) - total virtual memory): " << pages * page_size;
-		logger::trace(ss);
 
 		//if ( status.ullTotalPhys < physicalRAMNeeded ) {
 
@@ -174,9 +142,6 @@ namespace base_game {
 	string Cygwin64Calls::getUserProfilePath() {
 		char* userProfile = getenv("HOME");
 		if (userProfile != nullptr) {
-			stringstream ss;
-			ss << "HOME: " << userProfile;
-			logger::trace(ss);
 		}
 
 		return string_utils::charToString(userProfile);

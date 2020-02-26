@@ -11,6 +11,7 @@
 #include "../mainLoop/DelayProcess.h"
 #include "../userInterface/IGameView.h"
 #include "../userInterface/HumanView.h"
+#include "../graphics3d/OpenGLRenderer.h"
 /*
  #include "../userInterface/Temp01View.h"
  #include "../userInterface/TempTriangle02View.h"
@@ -43,6 +44,8 @@
 
 using boost::property_tree::ptree;
 using std::shared_ptr;
+using std::make_shared;
+
 using std::weak_ptr;
 using std::stringstream;
 using std::string;
@@ -58,20 +61,18 @@ using base_game::BaseGameState::running;
 
 namespace base_game {
 
-BaseGameLogic::BaseGameLogic() :
+BaseGameLogic::BaseGameLogic(shared_ptr<OpenGLRenderer> openGLRenderer) :
 		lifetime(0) {
 	logger::trace("Create BaseGameLogic");
 	actorFactory = nullptr;
 	pProcessManager = new ProcessManager();
-	tempCurrentView = nullptr;
+	//tempCurrentView = nullptr;
 	state = initializing;
+	this->openGLRenderer = openGLRenderer;
 }
 
 BaseGameLogic::~BaseGameLogic() {
-
-	while (!m_gameViews.empty()) {
-		m_gameViews.pop_front();
-	}
+	removeAllViews();
 
 	templates::safe_delete<ProcessManager>(pProcessManager);
 	templates::safe_delete<ActorFactory>(actorFactory);
@@ -84,6 +85,23 @@ BaseGameLogic::~BaseGameLogic() {
 	actors.clear();
 
 	logger::trace("Destroy BaseGameLogic");
+}
+
+void BaseGameLogic::removeAllViews() {
+
+	std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
+
+	 for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
+	 viewIterator++) {
+		(*viewIterator)->vTerminate();
+	 }
+
+
+	while (!m_gameViews.empty()) {
+
+		m_gameViews.pop_front();
+	}
 }
 
 bool BaseGameLogic::init(shared_ptr<ResourceCache> resourceCache) {
@@ -109,12 +127,12 @@ void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
 
 	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
 			viewIterator++) {
-		(*viewIterator)->tempIsActive = false; // do skasowania
+//		(*viewIterator)->tempIsActive = false; // do skasowania
 
 		//(*viewIterator)->vDeactivate(); // zastapi tempIsActive
 	}
 
-	pView->tempIsActive = true; // do skasowania
+//	pView->tempIsActive = true; // do skasowania
 	//pView->vDeactivate(); // zastapi tempIsActive
 
 	m_gameViews.push_back(pView);
@@ -201,6 +219,63 @@ void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
 		break;
 	}
 
+	case tempActivateFiguresView: {
+		removeAllViews(); //- breaks the game
+
+		shared_ptr<IGameView> pView = make_shared<TempT004figuresView>(
+				shrdPtrResourceCache,
+				openGLRenderer);
+		pView->tempVLoadGameDelegate();
+
+		vAddView(pView);
+
+		break;
+	}
+	case tempActivateJpegView: {
+		removeAllViews(); //- breaks the game
+		shared_ptr<IGameView> pView = make_shared<TempT009jpegGilTextureView>(
+				shrdPtrResourceCache,
+				openGLRenderer);
+		pView->tempVLoadGameDelegate();
+		vAddView(pView);
+
+		break;
+	}
+	case tempActivateFontsView: {
+		removeAllViews(); //- breaks the game
+
+		shared_ptr<IGameView> pView = make_shared<TempT00FpolishFontsView>(
+				shrdPtrResourceCache,
+				openGLRenderer);
+		pView->tempVLoadGameDelegate();
+		vAddView(pView);
+
+		break;
+	}
+	case tempActivatePngView: {
+		removeAllViews(); //- breaks the game
+
+		shared_ptr<IGameView> pView = make_shared<TempT00DpngGilScanlineView>(
+				shrdPtrResourceCache,
+				openGLRenderer);
+		pView->tempVLoadGameDelegate();
+		vAddView(pView);
+
+		break;
+	}
+	case tempActivateCombinedView: {
+		removeAllViews(); //- breaks the game
+
+		shared_ptr<IGameView> pView = make_shared<TempCombinedView>(
+				shrdPtrResourceCache,
+				openGLRenderer);
+		pView->tempVLoadGameDelegate();
+		vAddView(pView);
+
+		break;
+	}
+
+
 	case running: {
 		pProcessManager->updateProcesses(deltaMilliseconds);
 		break;
@@ -208,6 +283,7 @@ void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
 	}
 }
 
+/*
 void BaseGameLogic::tempOnIdle(double fTime, float fElapsedTime) {
 	if (tempCurrentView != nullptr) {
 		if (tempCurrentView->isActive()) {
@@ -215,10 +291,14 @@ void BaseGameLogic::tempOnIdle(double fTime, float fElapsedTime) {
 		}
 	}
 }
+ */
 
+/**
+ * See void CALLBACK GameCodeApp::OnD3D11FrameRender
+ */
 void BaseGameLogic::onFrameRender(double time, float elapsedTime) {
 
-	tempOnIdle(time, elapsedTime);
+	// tempOnIdle(time, elapsedTime);
 
 	/*
 	 for(GameViewList::iterator i=pGame->m_gameViews.begin(),
@@ -232,9 +312,9 @@ void BaseGameLogic::onFrameRender(double time, float elapsedTime) {
 	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
 			viewIterator++) {
 
-		if ((*viewIterator)->tempIsActive) {
+		//if ((*viewIterator)->tempIsActive) {
 			(*viewIterator)->vOnRender(time, elapsedTime);
-		}
+		//}
 	}
 
 }
@@ -243,15 +323,17 @@ list<shared_ptr<IGameView> > BaseGameLogic::getViews() {
 	return m_gameViews;
 }
 
-void BaseGameLogic::tempAddViews() {
+/*
+ void BaseGameLogic::tempAddViews() {
 
-	IGameView* gameView = new HumanView();
+	IGameView *gameView = new HumanView(openGLRenderer);
 	gameView->tempVLoadGameDelegate();
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(gameView);
 
 	vAddView(pView, 0);
 
-}
+ }
+ */
 
 /*
  void BaseGameLogic::tempAdd01View() {
@@ -279,7 +361,7 @@ void BaseGameLogic::tempAddViews() {
  }
  */
 
-void BaseGameLogic::tempSwitchView(int key) {
+void BaseGameLogic::tempSwitchView_del(int key) {
 // Uwaga
 	// 		tempCurrentView->vDeactivate();
 // i
@@ -294,17 +376,17 @@ void BaseGameLogic::tempSwitchView(int key) {
 	// IGameView* gameView = nullptr;
 	shared_ptr<IGameView> gameView;
 
-	if (tempCurrentView != nullptr) {
-		tempCurrentView->vDeactivate();
-	}
+	//if (tempCurrentView != nullptr) {
+		//tempCurrentView->vDeactivate();
+	//}
 
-	gameView = this->tempSelectView(key, false);
+	gameView = this->tempSelectView_del(key, false);
 
-	if (gameView != nullptr) {
-		gameView->vActivate();
-		tempCurrentView = gameView;
+//	if (gameView != nullptr) {
+		//	gameView->vActivate();
+	//	tempCurrentView = gameView;
 
-	}
+//	}
 
 	/*
 	 if (tempCurrentView != nullptr) {
@@ -314,7 +396,7 @@ void BaseGameLogic::tempSwitchView(int key) {
 }
 
 //IGameView* BaseGameLogic::tempSelectView(int key, bool reset) {
-shared_ptr<IGameView> BaseGameLogic::tempSelectView(int key, bool reset) {
+shared_ptr<IGameView> BaseGameLogic::tempSelectView_del(int key, bool reset) {
 
 //	IGameView* gameView = nullptr;
 	shared_ptr<IGameView> gameView;
@@ -335,39 +417,42 @@ shared_ptr<IGameView> BaseGameLogic::tempSelectView(int key, bool reset) {
 	// nie deaktywowac powtornie zdeaktywowanych vidokow
 	// nie aktywowac powtornie aktywowanych widokow
 
+
 	if (key == GLFW_KEY_1) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t004_figures_view::getView(reset, shrdPtrResourceCache);
+//		gameView = temp_t004_figures_view::getView(reset, shrdPtrResourceCache,
+//				openGLRenderer);
 	} else if (key == GLFW_KEY_2) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t009_jpeg_gil_texture_view::getView(reset,
-				shrdPtrResourceCache);
+		//gameView = temp_t009_jpeg_gil_texture_view::getView(reset,
+		//	shrdPtrResourceCache, openGLRenderer);
 	} else if (key == GLFW_KEY_3) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t00f_polish_fonts_view::getView(reset,
-				shrdPtrResourceCache);
+		//gameView = temp_t00f_polish_fonts_view::getView(reset,
+		//		shrdPtrResourceCache, openGLRenderer);
 	} else if (key == GLFW_KEY_4) {
 		// tempCurrentView = temp_t004_figures_view::getView(reset);
 
 		//
-		gameView = temp_t00d_png_gil_scanline_view::getView(reset,
-				shrdPtrResourceCache);
-	} else if (key - GLFW_KEY_4) {
-		gameView = temp_combined_view::getView(reset, shrdPtrResourceCache);
+		//gameView = temp_t00d_png_gil_scanline_view::getView(reset,
+		//		shrdPtrResourceCache, openGLRenderer);
+	} else if (key == GLFW_KEY_5) {
+		//gameView = temp_combined_view::getView(reset, shrdPtrResourceCache,
+		//		openGLRenderer);
 	}
 
-	tempAddView(gameView);
+	tempAddView_del(gameView);
 
 	return gameView;
 }
 
-void BaseGameLogic::tempAddView(int number) {
+void BaseGameLogic::tempAddView_del(int number) {
 //	IGameView* gameView = new Temp03gilView();
 	shared_ptr<IGameView> gameView;
 
@@ -389,10 +474,10 @@ void BaseGameLogic::tempAddView(int number) {
 	 }
 	 */
 
-	tempAddView(gameView);
+	tempAddView_del(gameView);
 }
 
-void BaseGameLogic::tempAddView(shared_ptr<IGameView> gameView) {
+void BaseGameLogic::tempAddView_del(shared_ptr<IGameView> gameView) {
 //void BaseGameLogic::tempAddView(IGameView* gameView) {
 	gameView->tempVLoadGameDelegate();
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(gameView);

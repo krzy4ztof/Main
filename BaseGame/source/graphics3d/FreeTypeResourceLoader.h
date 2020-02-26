@@ -32,13 +32,6 @@ public:
 	FreeTypeResourceExtraData();
 	virtual ~FreeTypeResourceExtraData();
 
-	/*
-	 virtual void compileShader(char* pRawBuffer, boost::uintmax_t rawSize)=0;
-	 virtual GLuint getShaderId() {
-	 return shaderId;
-	 }
-	 */
-
 	void loadFtNewFace(char *rawBuffer, uintmax_t rawSize);
 
 	virtual std::string vToString() {
@@ -58,8 +51,6 @@ protected:
 
 private:
 	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters;
-	// FT_Face face; // = nullptr;
-	// GLuint shaderId;
 };
 
 class FreeTypeResourceLoader: public IResourceLoader {
@@ -68,8 +59,7 @@ public:
 	virtual ~FreeTypeResourceLoader();
 
 	virtual bool vUseRawFile() {
-		return false; // To verify
-		//return true;
+		return false;
 	}
 
 	virtual bool vDiscardRawBufferAfterLoad() {
@@ -78,16 +68,15 @@ public:
 
 	virtual boost::uintmax_t vGetLoadedResourceSize(char *rawBuffer,
 			boost::uintmax_t rawSize) {
-		return rawSize; // To verify
+		return rawSize;
 	}
 
 	virtual bool vLoadResource(char *rawBuffer, boost::uintmax_t rawSize,
-			std::shared_ptr<ResourceHandle> handle); // = 0;
-	virtual std::string vGetPattern(); // = 0;
+			std::shared_ptr<ResourceHandle> handle);
+	virtual std::string vGetPattern();
 
 	virtual bool vAddNullZero() {
-		//TODO: scriptLoader will return true
-		return true; // To verify
+		return true;
 	}
 };
 
@@ -103,15 +92,7 @@ public:
 	void initFreetype_222();
 	void debugCharacters();
 
-	// std::map<GLushort, FreeTypeCharacter> temp_getCharacters();
 protected:
-	/*
-	void initCharacter(FT_Face face, FT_ULong char_code);
-	void initFreetypeCharacters(FT_Face face);
-	void initCharacter(FT_Face face, FT_ULong char_code,
-			GLushort char_code_out);
-	 */
-
 	std::shared_ptr<IResourceExtraData> loadFont(std::string vertexShaderName);
 
 private:

@@ -23,15 +23,6 @@ struct FreeTypeCharacter {
 	glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph
 	GLuint Advance;    // Offset to advance to next glyph
 };
-
-/*
-class FreeTypeCharacter {
-public:
-	FreeTypeCharacter();
-	virtual ~FreeTypeCharacter();
-};
- */
-
 } /* namespace base_game */
 
 #endif /* GRAPHICS3D_FREETYPECHARACTER_H_ */

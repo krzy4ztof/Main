@@ -47,7 +47,7 @@ public:
 	virtual bool vOnScrollCallback(GLFWwindow* window, double xoffset,
 			double yoffset);
 
-	void tempStartGame();
+	// void tempStartGame();
 
 protected:
 	//m_keys[]

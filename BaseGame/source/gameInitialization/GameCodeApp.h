@@ -29,6 +29,8 @@
 #include "../gameLogic/BaseGameLogic.h"
 #include "../saveManager/SaveManager.h"
 
+#include "../graphics3d/OpenGLRenderer.h"
+
 #include <string> // string
 #include <memory> // shared_ptr, weak_ptr
 
@@ -62,12 +64,15 @@ public:
 
 	// You must define these functions to initialize your game.
 	virtual BaseGameLogic *createGameAndView(
-			std::shared_ptr<ResourceCache> resourceCache)=0;
+			std::shared_ptr<ResourceCache> resourceCache,
+			std::shared_ptr<OpenGLRenderer> openGLRenderer)=0;
 	virtual std::string vGetGameAppDirectory()=0;
 
 	//			static void onUpdateGame( double fTime, float fElapsedTime);
 	void onUpdateGame(double fTime, float fElapsedTime);
 	void onFrameRender(double fTime, float fElapsedTime);
+
+
 	bool isQuitting();
 	bool hasModalDialog();
 
@@ -94,8 +99,10 @@ private:
 	DataFiles *dataFiles;
 	AudioSystem *audioSystem;
 	VideoSystem *videoSystem;
-	VideoSystemGLFW *videoSystemGLFW;
+	std::shared_ptr<VideoSystemGLFW> videoSystemGLFW;
+	//VideoSystemGLFW *videoSystemGLFW;
 	SaveManager *saveManager;
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 
 };
 

@@ -25,9 +25,6 @@ namespace base_game {
 class FreeTypeRenderer {
 public:
 	FreeTypeRenderer();
-	// FreeTypeRenderer(std::shared_ptr<ResourceCache> resourceCache);
-	//FreeTypeRenderer(
-	//	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters);
 	virtual ~FreeTypeRenderer();
 
 	void startRender();
@@ -51,7 +48,6 @@ protected:
 	GLubyte renderUShortLetter(GLubyte charC, GLubyte prevChar, GLfloat &x,
 			GLfloat y, GLfloat scale);
 
-//	void RenderLetter(T00Fcharacter ch, GLfloat& x, GLfloat y, GLfloat scale);
 	void renderLetter(FreeTypeCharacter ch, GLfloat &x, GLfloat y,
 			GLfloat scale);
 

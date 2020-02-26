@@ -10,7 +10,16 @@ enum BaseGameState {
 	 BGS_WaitingForPlayers,
 	 BGS_LoadingGameEnvironment,
 	 BGS_WaitingForPlayersToLoadEnvironment,*/
-	initializing, spawningPlayersActors, running
+	initializing,
+	spawningPlayersActors,
+	running,
+	tempActivateWatermillHumanView,
+	tempActivateMainMenuView,
+	tempActivateFiguresView,
+	tempActivateJpegView,
+	tempActivateFontsView,
+	tempActivatePngView,
+	tempActivateCombinedView
 };
 }
 

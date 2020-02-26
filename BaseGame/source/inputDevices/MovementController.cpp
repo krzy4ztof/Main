@@ -179,15 +179,55 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 		ss << "RELEASED";
 	}
 
+	/*
 	if (key == GLFW_KEY_R && action == GLFW_PRESS) {
 		tempStartGame();
 	}
+	 */
 
 	if (base_game::g_pApp != nullptr) {
+		/*
 		if (action == GLFW_PRESS) {
 			// GLFW_KEY_1 -> TempT004figuresView
 			// GLFW_KEY_2 -> TempT009jpegGilTextureView
 			base_game::g_pApp->m_pGame->tempSwitchView(key);
+		}
+		 */
+		if (key == GLFW_KEY_1 && action == GLFW_PRESS) {
+			// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+			//
+			//gameView = temp_t004_figures_view::getView(reset,
+			//		shrdPtrResourceCache, openGLRenderer);
+			base_game::g_pApp->m_pGame->vChangeState(tempActivateFiguresView);
+		} else if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
+			// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+			//
+			//gameView = temp_t009_jpeg_gil_texture_view::getView(reset,
+			//		shrdPtrResourceCache, openGLRenderer);
+			base_game::g_pApp->m_pGame->vChangeState(tempActivateJpegView);
+		} else if (key == GLFW_KEY_3 && action == GLFW_PRESS) {
+			// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+			//
+			//gameView = temp_t00f_polish_fonts_view::getView(reset,
+			//	shrdPtrResourceCache, openGLRenderer);
+			base_game::g_pApp->m_pGame->vChangeState(tempActivateFontsView);
+		} else if (key == GLFW_KEY_4 && action == GLFW_PRESS) {
+			// tempCurrentView = temp_t004_figures_view::getView(reset);
+
+			//
+			//gameView = temp_t00d_png_gil_scanline_view::getView(reset,
+			//		shrdPtrResourceCache, openGLRenderer);
+
+			base_game::g_pApp->m_pGame->vChangeState(tempActivatePngView);
+
+		} else if (key == GLFW_KEY_5 && action == GLFW_PRESS) {
+			//gameView = temp_combined_view::getView(reset, shrdPtrResourceCache,
+			//	openGLRenderer);
+			base_game::g_pApp->m_pGame->vChangeState(tempActivateCombinedView);
+
 		}
 
 		/*
@@ -214,12 +254,15 @@ bool MovementController::vOnKeyCallback(GLFWwindow* window, int key,
 	return true;
 }
 
+/*
 void MovementController::tempStartGame() {
 
 	if (g_pApp != nullptr) {
 		g_pApp->m_pGame->tempAddViews();
 	}
 }
+ */
+
 
 bool MovementController::vOnCharCallback(GLFWwindow* window,
 		unsigned int codepoint) {

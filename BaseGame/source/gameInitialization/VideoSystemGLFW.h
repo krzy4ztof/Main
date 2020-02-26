@@ -8,10 +8,11 @@
 #ifndef GAMEINITIALIZATION_VIDEOSYSTEMGLFW_H_
 #define GAMEINITIALIZATION_VIDEOSYSTEMGLFW_H_
 
+#include "../graphics3d/FpsCounter.h"
+
 // #define GLEW_STATIC
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h>
-// #include <GL/freeglut.h> // TODO: remove
 
 namespace base_game {
 
@@ -23,18 +24,22 @@ public:
 
 	VideoSystemGLFW();
 	virtual ~VideoSystemGLFW();
-	int startGLFW_222();
-	int startGLFW_333_ok();
 
 	int initialize();
 	void onIdle();
+	void onIdle_111();
 	void mainLoop();
 	//int tempGLUTinitialize();
+	bool preRender();
+	bool postRender();
 
 protected:
 	GLFWwindow* window;
-	float angle = 0.0f;
-	double lastTime = 0;
+	// float angle = 0.0f;
+//	double lastTime = 0;
+
+// TODO: Maybe temp_fpsCounter should be shared pointer poining also to HumanView.fpsCounter??
+	FpsCounter *temp_fpsCounter;
 };
 
 } /* namespace base_game */

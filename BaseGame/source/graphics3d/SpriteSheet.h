@@ -17,7 +17,6 @@ namespace base_game {
 
 class SpriteSheet {
 public:
-	//SpriteSheet(int width, int height);
 	SpriteSheet();
 	virtual ~SpriteSheet();
 
@@ -58,8 +57,6 @@ private:
 	int spriteHeight;
 	int rows;
 
-	//GLuint texture;
-	//
 };
 
 } /* namespace base_game */

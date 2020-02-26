@@ -2032,6 +2032,8 @@ void TempT00FpolishFontsView::RenderText(std::string text, GLfloat x, GLfloat y,
 -- 15/12/2019
 -- 03/01/2020
 -- 04/01/2020
+-- 05/01/2020
+-- 06/01/2020
 
 Dodać
 MainMenuView - menu startowe
@@ -2118,7 +2120,7 @@ Teraz - OK
 naprawić JpegRenderer::renderRectangle - działa tylko raz
 
 
-Teraz
+Teraz - OK
 Dodać PngRenderer   
 Modyfikacja TempT00DpngGilScanlineView, później dodanie PngRenderer do TempCombinedView       
 Dodać JpegRenderer  
@@ -2128,7 +2130,7 @@ JpegRenderer::renderTriangle - dodać paramtr z teksturą określający plik jpg
 naprawić renderMultiRectangle - OK
 usunąc renderRectangle2, renderRectangle3, activateRectangle2, activateRectangle3 - OK
 
-teraz
+teraz - OK
 Dodać PngRenderer na podstawie jpgRenderer
 zmodyfikować PngTextureLoader na wzór JpegTextureLoader
 poprawić JpegTextureLoader::activate() tak raz zapisywało do GLuint texture; a potem z niego korzystało
@@ -2157,7 +2159,7 @@ https://stackoverflow.com/questions/5879403/opengl-texture-coordinates-in-pixel-
 https://learnopengl.com/Getting-started/Textures
 
 
-dokończyć -ok
+dokończyć - ok
 void JpegRenderer::renderRectangle(glm::vec2 zeroPoint,
 		glm::vec2 thrdPoint,
 		std::shared_ptr<SpriteSheet> spriteSheet, int spriteRow,
@@ -2171,16 +2173,187 @@ JpegRenderer przejmie metody activate/deactivate z TextureLoader z parametrem Sp
 
 
 
-teraz
-Dodać PngRenderer na podstawie jpgRenderer
+Dodać PngRenderer na podstawie jpgRenderer - ok
 zmodyfikować PngTextureLoader na wzór JpegTextureLoader - ok
+
+teraz
+przenieść aktywację/deaktywację tekstury z Png/JpegTextureLoader do png/JpegRenderer
+wyregulować ilość frames per sec
+usunąć czarną ramkę z *.png
+FpsCounter - dodac regulacje za pomocą klawiszy +/-
+BUG !!! FPSCounter dla fps=-1 wyswietla obraz. Dla fps=60 nic nie wyswietla
+
+
+---	START CAŁEGO ZADANIA ODNOWIENIE	---
+-- 11/01/2020
+-- 12/01/2020
+-- 17/01/2020
+-- 18/01/2020
+-- 23/01/2020
+-- 30/01/2020
+-- 02/02/2020
+-- 26/02/2020
+
+Dodać
+MainMenuView - menu startowe
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+oraz:
+TeapotWarsHumanView - główny widok gry
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+
+MainMenuView
+Ma zawierać
+1. Tytuł: Watermill
+2. Przyciski:
+START
+QUIT					
+
+
+Patrz notatki w metodach:
+
+IGameView* BaseGameLogic::tempSelectView(int key, bool reset) 
+void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
+		unsigned int actorId)
+void BaseGameLogic::tempSwitchView(int key) {
+
+
+// UWAGA:
+HumanView powinien cos wyswietlac lub nie w zaleznosci czy jego elementy sa widoczne
+Patrz:
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\GCC4\UserInterface\HumanView.cpp
+
+//
+// HumanView::VOnRender							- Chapter 10, page 274
+//
+void HumanView::VOnRender(double fTime, float fElapsedTime )
+
+			for(ScreenElementList::iterator i=m_ScreenElements.begin(); i!=m_ScreenElements.end(); ++i)
+			{
+				if ( (*i)->VIsVisible() )
+
+Tak wiec:
+to co jest wyswietlane to elementy IScreenElement w zaleznosci od tego czy sa widoczne czy nie
+nie jest wyswietlany humanView jako taki
+wiec nalezy usunac
+tempIsActive
+oraz 
+active
+
+IGameView.h
+
+	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
+
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+		protected:
+	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+
 przenieść aktywację/deaktywację tekstury z Png/JpegTextureLoader do png/JpegRenderer
 wyregulować ilość frames per sec
 
 
 
+Teraz:
+HumanView::vOnRender
+patrz 274str
+HumanView -> ma sie odwoływac do OpenGLRenderer - ok
+patrz 270str
+
+sprawdzic dlaczego - OK
+void WatermillLogic::vChangeState(BaseGameState newState) {
+		removeAllViews(); // - breaks the game
+		
+MainMenuView::MainMenuView(std::shared_ptr<OpenGLRenderer> openGLRenderer) - dodac BaseUi, MainMenuUI - ok
+
+bool MovementController::vOnKeyCallback(GLFWwindow* window, int key, -> zmienic tj bool MainMenuController::vOnKeyCallback(GLFWwindow* window, int key, -ok
+
+TempXXXView - wydzielic z nich TempXXXScreenElement		
+TempT004figuresUI - ok
+TempT009jpegGilTextureView - ok
+TempT00DpngGilScanlineView - ok
+TempT00FpolishFontsView - ok
+UnitTests + Watermill.exe
+
+
+Teraz:
+usunąć
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
++ poprawic przełączanie widoków w watermill.exe
+
+
+Teraz: Błąd w 
+GLuint ShaderCompiler::loadShaders(string vertexShaderName,
+		string fragmentShaderName) {
+	przy powtornym ładowaniu shaderow
+		
+błąd przy powtórnym użyciu
+optional<shared_ptr<ResourceHandle>> ResourceCache::getHandle(
+		Resource *resource) {
+
+synchronizacja pomiedzy?		
+	std::list<std::shared_ptr<ResourceHandle> > m_resourceHandles;	// lru list
+	std::map<std::string, std::shared_ptr<ResourceHandle> > m_resources;		- find
+		
+błąd przy usuwaniu resource patrz: resourceCache::free()		
+1. uruchomić aplikację
+2. uruchomic figures view - przycisk 1
+3. uruchomic powtórnie figures view - przycisk 1		
+
+błąd w unit testach przy zamykaniu okna - ok
+figures04 - ok
+unit testy:
+jpgView, png, fonts, combined - do poprawy
+		
+
+bug:		
+Watermill.exe
+wcisnac klawisz 3 dwa razy -> polishFontsView
+za drugim razem fonty są kwadratowe
+		
+		
+WatermillLogic.vChangeState()
+	removeAllViews(); 
+		TempT00FpolishFontsView::vTerminate() 
+			TempT00FpolishFontsUI::vTerminate() 
+				FreeTypeRenderer::deactivate()
+				FreeTypeRenderer::~FreeTypeRenderer() 
+					FreeTypeRenderer::terminate()
+	shared_ptr<IGameView> pView = make_shared<TempT00FpolishFontsView>(		
+		TempT00FpolishFontsView::TempT00FpolishFontsView
+			TempT00FpolishFontsUI::TempT00FpolishFontsUI
+	vAddView(pView);
+		 HumanView::vOnRestore()
+			TempT00FpolishFontsUI::vOnRestore()
+				TempT00FpolishFontsUI::temp_init_part() 
+					FreeTypeLoader::initFreetype()
+						FreeTypeLoader::loadFont(string fontFileName) 
+					 FreeTypeLoader::debugCharacters()
+					 FreeTypeRenderer::init
+				TempT00FpolishFontsUI::temp_activate_part()
+					FreeTypeRenderer::activate
+					
+base_game::keyboard_handler::onKeyCallback
+	list<shared_ptr<IGameView> > gameViews = baseGame->getViews();
+		T00FpolishFontsView::~TempT00FpolishFontsView() 
+			TempT00FpolishFontsView::vTerminate()
+				TempT00FpolishFontsUI::vTerminate()
+					TempT00FpolishFontsUI::temp_deactivate_part()
+						glDisable(GL_CULL_FACE);
+						glDisable(GL_BLEND);
+						
+		
+		
+		
 ---------------------------------------------------
----	Sprawdzenie ile headerów zawiera plik cpp	---
+---	Sprawdzenie ile headerów zawiera plik cpp	---	
 ---------------------------------------------------
 ../BaseGame/scripts/checkHeadersBaseGame.sh
 

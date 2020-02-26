@@ -38,6 +38,7 @@
 #include "../graphics3d/ShaderResourceLoader.h"
 #include "../graphics3d/TextureResourceLoader.h"
 #include "../graphics3d/FreeTypeResourceLoader.h"
+#include "../graphics3d/OpenGLRenderer.h"
 
 #include "../gameLogic/BaseGameLogic.h"
 
@@ -185,11 +186,6 @@ bool GameCodeApp::initInstance() {
 		const unsigned long minCpuSpeed = 900; // 0.9Ghz
 
 		unsigned long thisCPU = systemCalls.readCPUSpeed();
-
-		stringstream ss;
-		ss << "CPU speed needed: " << minCpuSpeed
-				<< " [MHz], CPU speed available: " << thisCPU << " [MHz]";
-		logger::trace(ss);
 
 		if (thisCPU < minCpuSpeed) {
 			logger::warning(
@@ -376,9 +372,10 @@ bool GameCodeApp::initInstance() {
 		dataFiles = new DataFiles;
 		audioSystem = new AudioSystem;
 		videoSystem = new VideoSystem;
-		videoSystemGLFW = new VideoSystemGLFW;
 
-		logger::trace("videoSystem++++");
+		videoSystemGLFW = make_shared<VideoSystemGLFW>();
+		// videoSystemGLFW = new VideoSystemGLFW;
+		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW);
 
 		// initialize the directory location you can store save game files
 		//_tcscpy_s(m_saveGameDirectory, GetSaveGameDirectory(GetHwnd(), VGetGameAppDirectory()));
@@ -388,13 +385,8 @@ bool GameCodeApp::initInstance() {
 		string gameAppDirectory = vGetGameAppDirectory();
 
 		stringstream ss;
-		ss << "saveGame: " << gameAppDirectory;
-		logger::trace(ss);
 
 		string userProfilePath = systemCalls.getUserProfilePath();
-
-		ss << "userProfilePathStr: " << userProfilePath;
-		logger::trace(ss);
 
 		saveManager->init(userProfilePath, gameAppDirectory);
 
@@ -408,16 +400,12 @@ bool GameCodeApp::initInstance() {
 
 		}
 
-		logger::trace("createGameAndView++++");
-
-		m_pGame = createGameAndView(shrdPtrResourceCache);
+		m_pGame = createGameAndView(shrdPtrResourceCache, openGLRenderer);
 
 		//shrdPtrResourceCache->preLoad("*.jpg",
 		//		resource_cache::showPreLoadProgress);
 		shrdPtrResourceCache->preLoad("*.txt",
 				resource_cache::showPreLoadProgress);
-
-		logger::info("createGameAndView+2");
 
 		/*
 		 bool done = false;
@@ -440,7 +428,6 @@ bool GameCodeApp::initInstance() {
 
 void GameCodeApp::mainLoop() {
 	bool done = false;
-	logger::trace("Main loop+++");
 
 	m_pGame->tempTestActors();	//ok
 	// m_pGame->tempAddViews();		//ok -> to remove
@@ -470,6 +457,9 @@ bool GameCodeApp::hasModalDialog() {
 	return m_HasModalDialog != 0;
 }
 
+/**
+ * See void CALLBACK GameCodeApp::OnUpdateGame( double fTime, float fElapsedTime, void* pUserContext  )
+ */
 void GameCodeApp::onUpdateGame(double fTime, float fElapsedTime) { //, void* pUserContext  )
 	if (hasModalDialog()) {
 		// don't update the game if a modal dialog is up.
@@ -501,6 +491,7 @@ void GameCodeApp::onUpdateGame(double fTime, float fElapsedTime) { //, void* pUs
 	}
 }
 
+
 void GameCodeApp::onFrameRender(double fTime, float fElapsedTime) { //, void* pUserContext  )
 	m_pGame->onFrameRender(fTime, fElapsedTime);
 
@@ -513,8 +504,12 @@ void GameCodeApp::onClose() {
 	templates::safe_delete<BaseGameLogic>(m_pGame);
 	// gameView
 	templates::safe_delete<SaveManager>(saveManager);
+
 	templates::safe_delete<VideoSystem>(videoSystem);
-	templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
+	//templates::safe_delete<VideoSystem>(openGLRenderer);
+	openGLRenderer.reset();
+	//templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
+	videoSystemGLFW.reset();
 	templates::safe_delete<AudioSystem>(audioSystem);
 	templates::safe_delete<DataFiles>(dataFiles);
 	templates::safe_delete<EventManager>(eventManager);
@@ -531,10 +526,6 @@ void GameCodeApp::onClose() {
 }
 
 void GameCodeApp::testGlobal() {
-	stringstream ss;
-	ss << "test GameCodeApp global ";
-	logger::info(ss);
-
 	if (m_pGame) {
 		//m_pGame->tempTestProcessManager();
 	}

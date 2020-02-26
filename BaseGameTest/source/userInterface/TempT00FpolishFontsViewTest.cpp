@@ -38,11 +38,14 @@
 #include "../../../BaseGame/source/graphics3d/ShaderResourceLoader.h"
 #include "../../../BaseGame/source/graphics3d/TextureResourceLoader.h"
 #include "../../../BaseGame/source/graphics3d/FreeTypeResourceLoader.h"
+#include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 
 // --------- STOP
 
 // #define BOOST_TEST_MODULE StringUtilsTestModule
 #include <boost/test/unit_test.hpp>
+
+using std::stringstream;
 
 using base_game::InitOptions;
 using base_game::IResourceFile;
@@ -51,12 +54,12 @@ namespace templates = base_game::templates;
 namespace logger = base_game::logger;
 
 // -------- START
-namespace temp_t00f_polish_fonts_view = base_game::temp_t00f_polish_fonts_view;
-namespace temp_t004_figures_view = base_game::temp_t004_figures_view;
-namespace temp_t009_jpeg_gil_texture_view = base_game::temp_t009_jpeg_gil_texture_view;
-namespace temp_t00f_polish_fonts_view = base_game::temp_t00f_polish_fonts_view;
-namespace temp_t00d_png_gil_scanline_view = base_game::temp_t00d_png_gil_scanline_view;
-namespace temp_combined_view = base_game::temp_combined_view;
+//namespace temp_t00f_polish_fonts_view = base_game::temp_t00f_polish_fonts_view;
+//namespace temp_t004_figures_view = base_game::temp_t004_figures_view;
+//namespace temp_t009_jpeg_gil_texture_view = base_game::temp_t009_jpeg_gil_texture_view;
+//namespace temp_t00f_polish_fonts_view = base_game::temp_t00f_polish_fonts_view;
+//namespace temp_t00d_png_gil_scanline_view = base_game::temp_t00d_png_gil_scanline_view;
+//namespace temp_combined_view = base_game::temp_combined_view;
 
 namespace vertex_shader_resource_loader = base_game::vertex_shader_resource_loader;
 namespace fragment_shader_resource_loader = base_game::fragment_shader_resource_loader;
@@ -74,6 +77,12 @@ using base_game::ResourceCache;
 using base_game::DevelopmentResourceFolder;
 using base_game::DevelopmentResourceUnzipFile;
 using base_game::ResourceZipFile;
+using base_game::OpenGLRenderer;
+using base_game::TempT004figuresView;
+using base_game::TempT009jpegGilTextureView;
+using base_game::TempT00FpolishFontsView;
+using base_game::TempT00DpngGilScanlineView;
+using base_game::TempCombinedView;
 
 using std::string;
 using std::shared_ptr;
@@ -101,9 +110,13 @@ struct TempT00FpolishFontsViewFixture {
 
 	TestGame* pTestGame;
 
-	VideoSystemGLFW *videoSystemGLFW = nullptr;
+	// VideoSystemGLFW *videoSystemGLFW = nullptr;
+	shared_ptr<VideoSystemGLFW> videoSystemGLFW;
+
+	shared_ptr<OpenGLRenderer> openGLRenderer;
 	//IGameView* gameView = nullptr;
 	shared_ptr<IGameView> gameView;
+	shared_ptr<IGameView> gameView2;
 
 
 // ---------STOP
@@ -117,6 +130,7 @@ struct TempT00FpolishFontsViewFixture {
 	 */
 
 	void setup() {
+		stringstream ss;
 		logger::info("setup TempT00FpolishFontsViewFixture");
 
 		pInitOptions = new InitOptions;
@@ -144,28 +158,57 @@ struct TempT00FpolishFontsViewFixture {
 
 		pTestGame = new TestGame;
 
-		pTestGame->m_pGame = new TestGameLogic();
+		//videoSystemGLFW = new VideoSystemGLFW;
+		videoSystemGLFW = make_shared<VideoSystemGLFW>();
+
+		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW);
+
+		pTestGame->m_pGame = new TestGameLogic(openGLRenderer);
 		base_game::g_pApp = pTestGame;
 
-		videoSystemGLFW = new VideoSystemGLFW;
 		//gameView = temp_t00f_polish_fonts_view::getView(false);
 		//		gameView = temp_t004_figures_view::getView(false,
 		//			pInitOptions->getAssetsFolder());
+
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info (ss);
+		logger::info("END SETUP");
 
 
 	}
 
 	void teardown() {
+		stringstream ss;
 		logger::info("teardown TempT00FpolishFontsViewFixture");
+
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info(ss);
+
+
+		gameView2.reset();
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info(ss);
+
+		gameView.reset();
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info(ss);
+
+		//templates::safe_delete<IGameView>(gameView);
+		openGLRenderer.reset();
+		// templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
+		videoSystemGLFW.reset();
+
+		templates::safe_delete<TestGame>(pTestGame);
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info(ss);
 
 		shrdPtrResourceCache.reset();
 		resourceFolder.reset();
-
 		templates::safe_delete<InitOptions>(pInitOptions);
-		gameView.reset();
-		//templates::safe_delete<IGameView>(gameView);
-		templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
-		templates::safe_delete<TestGame>(pTestGame);
+
+		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
+		logger::info(ss);
+		logger::info("END TearDown");
 	}
 
 	TempT00FpolishFontsViewFixture() {
@@ -276,20 +319,53 @@ BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
 
 	videoSystemGLFW->initialize();
 
-	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
+	//gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache,
+	//		openGLRenderer);
 	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-	//	shrdPtrResourceCache);
+	//		shrdPtrResourceCache, openGLRenderer);
 	//gameView = temp_t00d_png_gil_scanline_view::getView(false,
-	//		shrdPtrResourceCache);
+	//		shrdPtrResourceCache, openGLRenderer);
 
 	//gameView = temp_t00f_polish_fonts_view::getView(false,
-	//		shrdPtrResourceCache);
+	//		shrdPtrResourceCache,
+	//		openGLRenderer);
 
-	gameView = temp_combined_view::getView(false, shrdPtrResourceCache);
+	//gameView = temp_combined_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 
-	pTestGame->m_pGame->tempAddView(gameView);
+	//pTestGame->m_pGame->tempAddView(gameView);
+	//gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	gameView = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+			openGLRenderer);
+	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
+	//		openGLRenderer);
 
-	gameView->vActivate();
+	gameView->tempVLoadGameDelegate();
+	pTestGame->m_pGame->vAddView(gameView);
+	pTestGame->m_pGame->removeAllViews();
+
+	//gameView2 = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView2 = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView2 = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	gameView2 = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+			openGLRenderer);
+
+	//gameView2 = make_shared<TempCombinedView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+
+	gameView2->tempVLoadGameDelegate();
+	pTestGame->m_pGame->vAddView(gameView2);
+
+
+
+	// gameView->vActivate();
 
 	videoSystemGLFW->mainLoop();
 
@@ -306,19 +382,34 @@ BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enable_if<false>()) {
 
 	videoSystemGLFW->initialize();
 
-	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
+	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-//			shrdPtrResourceCache);
+//			shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t00d_png_gil_scanline_view::getView(false,
-//			shrdPtrResourceCache);
+//			shrdPtrResourceCache, openGLRenderer);
 
-	gameView = temp_t00f_polish_fonts_view::getView(false,
-			shrdPtrResourceCache);
+	//gameView = temp_t00f_polish_fonts_view::getView(false,
+	//		shrdPtrResourceCache,
+	//		openGLRenderer);
 
 
-	pTestGame->m_pGame->tempAddView(gameView);
+	//pTestGame->m_pGame->tempAddView(gameView);
+	//gameView->vActivate();
 
-	gameView->vActivate();
+	//gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+//	gameView = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
+//			openGLRenderer);
+	//gameView = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	gameView = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+			openGLRenderer);
+	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+
+	gameView->tempVLoadGameDelegate();
+	pTestGame->m_pGame->vAddView(gameView);
+
 
 	videoSystemGLFW->mainLoop();
 
@@ -335,17 +426,30 @@ BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
 
 	videoSystemGLFW->initialize();
 
-	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache);
-	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-			shrdPtrResourceCache);
+	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
+	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,
+	//		shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t00d_png_gil_scanline_view::getView(false,
-//			shrdPtrResourceCache);
+//			shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t00f_polish_fonts_view::getView(false,
-//			shrdPtrResourceCache);
+//			shrdPtrResourceCache, openGLRenderer);
 
-	pTestGame->m_pGame->tempAddView(gameView);
+	//pTestGame->m_pGame->tempAddView(gameView);
+	//gameView->vActivate();
+	//gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	//gameView = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
+	//		openGLRenderer);
+	gameView = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+			openGLRenderer);
+	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
+	//		openGLRenderer);
 
-	gameView->vActivate();
+	gameView->tempVLoadGameDelegate();
+	pTestGame->m_pGame->vAddView(gameView);
+
 
 	videoSystemGLFW->mainLoop();
 

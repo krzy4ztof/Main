@@ -33,20 +33,14 @@ using boost::filesystem::path;
 
 namespace base_game {
 
-// const GLubyte FreeTypeResourceExtraData::MAX_STD_CHAR = 128;
-
 FreeTypeResourceExtraData::FreeTypeResourceExtraData() {
 	logger::info("Create FreeTypeResourceExtraData");
-	//shaderId = 0;
-	//face = nullptr;
 	characters = make_shared<map<GLushort, FreeTypeCharacter>>();
 
 }
 
 FreeTypeResourceExtraData::~FreeTypeResourceExtraData() {
 	logger::info("Destroy FreeTypeResourceExtraData");
-	//shaderId = 0;
-	//FT_Done_Face(face);
 	characters.reset();
 }
 
@@ -60,11 +54,6 @@ void FreeTypeResourceExtraData::loadFtNewFace(char *rawBuffer,
 		logger::error("ERROR::FREETYPE: Could not init FreeType Library");
 	}
 
-	/*
-	ft_error = FT_New_Face(ft,
-			"../WaterMill/assets/fonts/temp_t00f_polish_fonts_view-ariali.ttf",
-			0, &face);
-	 */
 	const FT_Byte *ftByteBuffer = (unsigned char*) rawBuffer;
 
 	ft_error = FT_New_Memory_Face(ft, ftByteBuffer, rawSize, 0, &face);
@@ -111,10 +100,7 @@ void FreeTypeResourceExtraData::initFreetypeCharacters(FT_Face face) {
 		initCharacter(face, c);
 	}
 	logger::info("");
-	//cout << endl;
 	logger::info("-----------------------");
-
-	//cout << "-----------------------" << endl;
 
 //	FT_ULong codes[18] = { 260, 261, 262, 263, 280, 281, 321, 322, 323, 324, 211,
 	//		243, 346, 347, 377, 378, 379, 380 };
@@ -127,7 +113,6 @@ void FreeTypeResourceExtraData::initFreetypeCharacters(FT_Face face) {
 
 	}
 	logger::info(ss);
-	// cout << endl;
 
 	// A
 	this->initCharacter(face, 0x0104, 0xc484);
@@ -188,7 +173,6 @@ void FreeTypeResourceExtraData::initCharacter(FT_Face face, FT_ULong char_code,
 	// Load character glyph
 	if (FT_Load_Char(face, char_code, FT_LOAD_RENDER)) {
 		logger::error("ERROR::FREETYTPE: Failed to load Glyph");
-		// std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
 		return;
 	}
 	// Generate texture
@@ -214,35 +198,28 @@ void FreeTypeResourceExtraData::initCharacter(FT_Face face, FT_ULong char_code,
 
 void FreeTypeResourceExtraData::debugCharacters() {
 	stringstream ss;
-
 	logger::info("--------- DEBUG START FreeTypeLoader -------");
-	//cout << "--------- DEBUG START-------" << endl;
 
 	ss << "debug: " << characters->size();
 	logger::info(ss);
 
 	std::map<GLushort, FreeTypeCharacter>::iterator it;
 	for (it = characters->begin(); it != characters->end(); ++it) {
-		ss << "Key: " << std::hex << it->first; // << endl;
+		ss << "Key: " << std::hex << it->first;
 		logger::info(ss);
 
 	}
 
 	logger::info("--------- DEBUG END FreeTypeLoader -------");
-
-	//cout << "--------- DEBUG END-------" << endl;
-
 }
 
 
 
 FreeTypeResourceLoader::FreeTypeResourceLoader() {
-	// TODO Auto-generated constructor stub
 	logger::info("Create FreeTypeResourceLoader");
 }
 
 FreeTypeResourceLoader::~FreeTypeResourceLoader() {
-	// TODO Auto-generated destructor stub
 	logger::info("Destroy FreeTypeResourceLoader");
 }
 
@@ -262,7 +239,6 @@ bool FreeTypeResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 	pExtraData->loadFtNewFace(rawBuffer, rawSize);
 
 	 handle->setExtraData(pExtraData);
-	 //	handle->setExtraData(shared_ptr<XmlResourceExtraData>(pExtraData));
 
 	return true;
 }
@@ -270,16 +246,11 @@ bool FreeTypeResourceLoader::vLoadResource(char *rawBuffer, uintmax_t rawSize,
 const string FreeTypeLoader::FONTS_FOLDER = "fonts";
 
 FreeTypeLoader::FreeTypeLoader(shared_ptr<ResourceCache> resourceCache) {
-	// TODO Auto-generated constructor stub
 	logger::info("Create FreeTypeLoader");
 	this->shrdPtrResourceCache = resourceCache;
-	//characters = shared_ptr<map<GLushort, FreeTypeCharacter>>();
-	//characters = make_shared<map<GLushort, FreeTypeCharacter>>();
-
 }
 
 FreeTypeLoader::~FreeTypeLoader() {
-	// TODO Auto-generated destructor stub
 	logger::info("Destroy FreeTypeLoader");
 	shrdPtrResourceCache.reset();
 	characters.reset();
@@ -294,7 +265,6 @@ shared_ptr<IResourceExtraData> FreeTypeLoader::loadFont(string fontFileName) {
 
 	string fontResourceName = fontResourcePath.string();
 
-	//string vertexShaderResourceName = ShaderCompiler::SHADERS_FOLDER + "/" + vertexShaderName; //OK dla developmentFolder
 	ss << "fontResourcePath: " << fontResourceName;
 	logger::info(ss);
 
@@ -316,69 +286,18 @@ shared_ptr<IResourceExtraData> FreeTypeLoader::loadFont(string fontFileName) {
 
 
 shared_ptr<map<GLushort, FreeTypeCharacter>> FreeTypeLoader::initFreetype() {
-	//FT_Library ft = nullptr;
-	//FT_Face face = nullptr;
-
-	/*
-	FT_Error ft_error = FT_Init_FreeType(&ft);
-
-	if (ft_error) {
-		logger::error("ERROR::FREETYPE: Could not init FreeType Library");
-	}
-
-	ft_error = FT_New_Face(ft,
-			"../WaterMill/assets/fonts/temp_t00f_polish_fonts_view-ariali.ttf",
-			0, &face);
-
-	if (ft_error == FT_Err_Unknown_File_Format) {
-		logger::error("ERROR::FREETYPE: Failed to load font");
-		logger::error(
-				"... the font file could be opened and read, but it appears");
-		logger::error("... that its font format is unsupported");
-	} else if (ft_error) {
-		logger::error("ERROR::FREETYPE: Failed to load font");
-		logger::error(
-				"... another error code means that the font file could not");
-		logger::error("... be opened or read, or that it is broken...");
-	}
-
-	ft_error = FT_Set_Pixel_Sizes(face, // handle to face object
-			0, // pixel_width
-			48); // pixel_height
-
-	if (ft_error) {
-		logger::error("ERROR::FREETYPE: Could not set pixel sizes");
-	}
-	 */
-
-
-
 	stringstream ss;
-	// string resourceName = "actors/player_character.xml";
 
 	shared_ptr<IResourceExtraData> fontExtraData = loadFont(
 			"temp_t00f_polish_fonts_view-ariali.ttf");
 
-	//FT_Face face = nullptr;
-
-	//GLuint FragmentShaderID = 0;
 	if (shared_ptr<FreeTypeResourceExtraData> freeTypeExtraData =
 			dynamic_pointer_cast < FreeTypeResourceExtraData
 					>(fontExtraData)) {
-		//face = freeTypeExtraData->getFtFace();
 		characters = freeTypeExtraData->getCharacters();
 	}
 
 	return characters;
-
-	// return FragmentShaderID;
-
-	//initFreetypeCharacters(face);
-
-	// FT_Done_Face(face);
-
-	//FT_Done_FreeType(ft);
-
 }
 
 void FreeTypeLoader::initFreetype_222() {
@@ -389,19 +308,12 @@ void FreeTypeLoader::initFreetype_222() {
 
 	if (ft_error) {
 		logger::error("ERROR::FREETYPE: Could not init FreeType Library");
-		//cout << "ERROR::FREETYPE: Could not init FreeType Library" << endl;
 	}
 
 	ft_error =
 			FT_New_Face(ft,
 			"../WaterMill/assets/fonts/temp_t00f_polish_fonts_view-ariali.ttf",
 					0, &face);
-	/*
-	 ft_error = FT_New_Face(ft,
-	 "../../../assets/graphics/temp_t00f_polish_fonts_view-ariali.ttf",
-	 0,
-	 &face);
-	 */
 
 	if (ft_error == FT_Err_Unknown_File_Format) {
 		logger::error("ERROR::FREETYPE: Failed to load font");
@@ -409,23 +321,12 @@ void FreeTypeLoader::initFreetype_222() {
 				"... the font file could be opened and read, but it appears");
 		logger::error("... that its font format is unsupported");
 
-		/*
-		 cout << "ERROR::FREETYPE: Failed to load font" << endl
-		 << "... the font file could be opened and read, but it appears"
-		 << endl << "... that its font format is unsupported" << endl;
-		 */
 	} else if (ft_error) {
 		logger::error("ERROR::FREETYPE: Failed to load font");
 		logger::error(
 				"... another error code means that the font file could not");
 		logger::error("... be opened or read, or that it is broken...");
 
-		/*
-		 cout << "ERROR::FREETYPE: Failed to load font" << endl
-		 << "... another error code means that the font file could not"
-		 << endl << "... be opened or read, or that it is broken..."
-		 << endl;
-		 */
 	}
 
 //	ft_error = FT_Set_Char_Size(face, /* handle to face object           */
@@ -440,44 +341,27 @@ void FreeTypeLoader::initFreetype_222() {
 
 	if (ft_error) {
 		logger::error("ERROR::FREETYPE: Could not set pixel sizes");
-		// cout << "ERROR::FREETYPE: Could not set pixel sizes" << endl;
 	}
-
-//	initFreetypeCharacters(face);
 
 	FT_Done_Face(face);
 	FT_Done_FreeType(ft);
-
 }
 
 void FreeTypeLoader::debugCharacters() {
 	stringstream ss;
-
 	logger::info("--------- DEBUG START FreeTypeLoader -------");
-	//cout << "--------- DEBUG START-------" << endl;
-
 	ss << "debug: " << characters->size();
 	logger::info(ss);
 
 	std::map<GLushort, FreeTypeCharacter>::iterator it;
 	for (it = characters->begin(); it != characters->end(); ++it) {
-		ss << "Key: " << std::hex << it->first; // << endl;
+		ss << "Key: " << std::hex << it->first;
 		logger::info(ss);
 
 	}
 
 	logger::info("--------- DEBUG END FreeTypeLoader -------");
-
-	//cout << "--------- DEBUG END-------" << endl;
-
 }
-
-/*
-map<GLushort, FreeTypeCharacter> FreeTypeLoader::temp_getCharacters() {
-	return Characters;
-}
- */
-
 
 
 namespace free_type_resource_loader {
