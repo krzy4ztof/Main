@@ -46,9 +46,6 @@ void InitOptions::readFile(const string &filename) {
 
 	if (rootTree.is_initialized()) {
 		rootFolder = rootTree.get().get_value<string>();
-		//resources = resourcesTree.get_value<string>();
-		logger::trace("istnieje MAIN.REsources");
-		logger::trace(rootFolder);
 	} else {
 		string errorMessage = "There is no " + ROOT_FOLDER + " value in "
 				+ INIT_FILENAME;
@@ -60,9 +57,6 @@ void InitOptions::readFile(const string &filename) {
 
 	if (assetsTree.is_initialized()) {
 		assetsFolder = assetsTree.get().get_value<string>();
-		//resources = resourcesTree.get_value<string>();
-		logger::trace("istnieje MAIN.REsources");
-		logger::trace(assetsFolder);
 	} else {
 		string errorMessage = "There is no " + ASSETS_FOLDER + " value in "
 				+ INIT_FILENAME;
@@ -74,9 +68,6 @@ void InitOptions::readFile(const string &filename) {
 
 	if (gameTree.is_initialized()) {
 		gameFolder = gameTree.get().get_value<string>();
-		//resources = resourcesTree.get_value<string>();
-		logger::trace("istnieje MAIN.REsources");
-		logger::trace(gameFolder);
 	} else {
 		string errorMessage = "There is no " + GAME_FOLDER + " value in "
 				+ INIT_FILENAME;
@@ -90,17 +81,11 @@ void InitOptions::checkFile(const string &filename) {
 	ifstream myfile(filename);
 
 	if (myfile.is_open()) {
-		logger::trace("otwarte!!!!");
 		myfile.close();
-
 		readFile(filename);
-
 	} else {
-		logger::trace("NIE otwarte!!!!");
-
 		const boost::filesystem::path& initialPath =
 				boost::filesystem::initial_path();
-
 		string errorMessage = "There is no " + INIT_FILENAME + " in "
 				+ initialPath.string() + " folder ";
 		throw ErrorCode(errorMessage, 111);

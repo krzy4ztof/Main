@@ -27,20 +27,12 @@ using std::stringstream;
 
 namespace base_game {
 
-//FreeTypeRenderer::FreeTypeRenderer(
-//	shared_ptr<map<GLushort, FreeTypeCharacter>> characters) {
 FreeTypeRenderer::FreeTypeRenderer() {
-
 	logger::info("Create FreeTypeRenderer");
-	//this->characters = characters;
-
 	programID = 0;
 	VAO = 0;
 	VBO = 0;
-
 }
-
-
 
 FreeTypeRenderer::~FreeTypeRenderer() {
 	logger::info("Destroy FreeTypeRenderer");
@@ -53,42 +45,19 @@ void FreeTypeRenderer::terminate() {
 	glDeleteBuffers(1, &VBO);
 }
 
-
 void FreeTypeRenderer::init(GLuint programID,
 		std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters) {
-
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-
 	this->programID = programID;
 	this->characters = characters;
 }
 
 void FreeTypeRenderer::activate(glm::mat4 projection) {
-
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	/*
-	 glEnable(GL_CULL_FACE);
-	 glEnable(GL_BLEND);
-	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	 */
-
-	// Tylko dolna cwiartka ekranu
-	//glm::mat4 projection = glm::ortho(0.0f,
-	//static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_WIDTH * 2), 0.0f,
-	//static_cast<GLfloat>(OpenGLwithGLFW::WINDOW_HEIGHT * 2));
-	/*
-	 glm::mat4 projection = glm::ortho(0.0f,
-	 static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
-	 static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
-	 */
-
-	// porownac z:
-	//glViewport(0, 0, VideoSystemGLFW::WINDOW_WIDTH,
-	//	VideoSystemGLFW::WINDOW_HEIGHT);
 	glUseProgram(programID);
 	glUniformMatrix4fv(glGetUniformLocation(programID, "projection"), 1,
 	GL_FALSE, glm::value_ptr(projection));
@@ -101,19 +70,11 @@ void FreeTypeRenderer::activate(glm::mat4 projection) {
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-
 }
 
 void FreeTypeRenderer::deactivate() {
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_BLEND);
-
-	/*
-	 HumanView::vDeactivate();
-
-	 glDisable(GL_CULL_FACE);
-	 glDisable(GL_BLEND);
-	 */
 
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -151,17 +112,15 @@ void FreeTypeRenderer::renderLetter(FreeTypeCharacter ch, GLfloat &x,
 
 GLubyte FreeTypeRenderer::renderUShortLetter(GLubyte charC,
 		GLubyte prevChar, GLfloat &x, GLfloat y, GLfloat scale) {
-
 	stringstream ss;
 
 	ss << "charC: " << std::hex << (GLushort) charC << "; prevChar: "
 			<< (GLushort) prevChar; // << endl;
-	logger::info(ss);
+	//logger::trace(ss);
 
 	GLushort shortC = prevChar * 0x100 + charC;
-
 	ss << "renderUshort -> shortC: " << std::hex << shortC << std::dec;
-	logger::info(ss);
+	//logger::trace(ss);
 
 	std::map<GLushort, FreeTypeCharacter>::iterator it;
 
@@ -190,19 +149,19 @@ GLubyte FreeTypeRenderer::renderUByteLetter(GLubyte charC, GLfloat &x,
 		//x += (ch.Advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
 
 	} else if (charC == 0xc3) {
-		logger::info("0xc3");
+		//logger::info("0xc3");
 		return charC;
 	} else if (charC == 0xc4) {
-		logger::info("0xc4");
+		//logger::info("0xc4");
 		return charC;
 	} else if (charC == 0xc5) {
-		logger::info("0xc5");
+		//logger::info("0xc5");
 		return charC;
 	} else {
 
 		ss << charC << ": " << std::hex << (short) charC << std::dec << " |"
 				<< (charC) << "|";
-		logger::info(ss);
+		//logger::info(ss);
 	}
 	return 0x00;
 }
@@ -213,8 +172,6 @@ void FreeTypeRenderer::startRender() {
 
 void FreeTypeRenderer::renderText(std::string text, GLfloat x, GLfloat y,
 		GLfloat scale, glm::vec3 color) {
-	// Activate corresponding render state
-	//s.Use();
 	glUniform3f(glGetUniformLocation(programID, "textColor"), color.x, color.y,
 			color.z);
 	glActiveTexture(GL_TEXTURE0);
@@ -229,20 +186,20 @@ void FreeTypeRenderer::renderText(std::string text, GLfloat x, GLfloat y,
 
 		GLubyte charC = (*c);
 		if (charC == 0xc3) {
-			logger::info("charC - 0xc3");
+			//	logger::info("charC - 0xc3");
 		} else if (charC == 0xc4) {
-			logger::info("charC - 0xc4");
+			//	logger::info("charC - 0xc4");
 		} else if (charC == 0xc5) {
-			logger::info("charC - 0xc5");
+			//	logger::info("charC - 0xc5");
 		}
 
 		GLushort shortC = (*c);
 		if (shortC == 0xffc3) {
-			logger::info("shortC - 0xffc3");
+			//logger::info("shortC - 0xffc3");
 		} else if (shortC == 0xffc4) {
-			logger::info("shortC - 0xffc4");
+			//logger::info("shortC - 0xffc4");
 		} else if (shortC == 0xffc5) {
-			logger::info("shortC - 0xffc5");
+			//logger::info("shortC - 0xffc5");
 		}
 
 		if (prevChar == 0xc3 || prevChar == 0xc4 || prevChar == 0xc5) {

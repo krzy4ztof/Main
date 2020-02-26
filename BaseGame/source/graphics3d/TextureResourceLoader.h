@@ -39,7 +39,6 @@ public:
 	}
 
 	virtual std::string vToString() {
-		// return "JpegResourceExtraData";
 		return CLASS_NAME;
 	}
 
@@ -54,7 +53,6 @@ public:
 
 	virtual bool vUseRawFile() {
 		return false;
-		//return true;
 	}
 
 	virtual bool vDiscardRawBufferAfterLoad() {
@@ -73,7 +71,6 @@ public:
 	}
 
 	virtual bool vAddNullZero() {
-		//TODO: scriptLoader will return true
 		return false;
 	}
 
@@ -82,17 +79,6 @@ protected:
 private:
 };
 
-/*
-class TextureData {
-public:
-	TextureData();
-	virtual ~TextureData();
-	int width, height;
-	float* data;
-};
- */
-
-//////////////////
 class PngResourceExtraData: public IResourceExtraData {
 public:
 	const static std::string CLASS_NAME;
@@ -101,13 +87,11 @@ public:
 	virtual ~PngResourceExtraData();
 
 	virtual void loadImage(char *pRawBuffer, boost::uintmax_t rawSize);
-	// virtual void loadImage_222(char *pRawBuffer, boost::uintmax_t rawSize);
 	virtual boost::gil::rgba8_image_t getImage() {
 		return rgba8_image;
 	}
 
 	virtual std::string vToString() {
-		// return "PngResourceExtraData";
 		return CLASS_NAME;
 	}
 
@@ -122,7 +106,6 @@ public:
 
 	virtual bool vUseRawFile() {
 		return false;
-		//return true;
 	}
 
 	virtual bool vDiscardRawBufferAfterLoad() {
@@ -141,7 +124,6 @@ public:
 	}
 
 	virtual bool vAddNullZero() {
-		//TODO: scriptLoader will return true
 		return false;
 	}
 
@@ -149,8 +131,6 @@ protected:
 
 private:
 };
-
-////////////////
 
 class TextureLoader {
 public:
@@ -161,32 +141,13 @@ public:
 
 	virtual void init(std::string fileName,
 			std::shared_ptr<SpriteSheet> spriteSheet);
-//	void debugCopyImageJpg(boost::gil::rgb8_image_t imageData);
 	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 	void deactivate();
 	void terminate();
-	//std::shared_ptr<SpriteSheet> getSpriteSheet() {
-	//	return spriteSheet;
-	//}
-	
 
 protected:
 	std::shared_ptr<IResourceExtraData> loadImage(std::string fileName);
-	// void image_to_texture(float * data);
-	// std::shared_ptr<IResourceExtraData> resourceExtraData; // zamiast rgb8_image
-// private:
-	// GLuint texture;
-	// boost::gil::rgb8_image_t rgb8_image;
-	//boost::gil::rgba8_image_t rgba8_image;
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
-	// std::shared_ptr<SpriteSheet> spriteSheet;
-
-	/*
-	int img_width;
-	int img_height;
-	 */
-	// float *data;
-
 };
 
 class JpegTextureLoader: public TextureLoader {
@@ -199,8 +160,6 @@ public:
 			std::shared_ptr<SpriteSheet> spriteSheet);
 	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 protected:
-	// boost::gil::rgb8_image_t rgb8_image;
-	//virtual void image_to_texture(float *data);
 	void image_to_texture(boost::gil::rgb8_image_t rgb8_image,
 			std::shared_ptr<SpriteSheet> spriteSheet);
 
@@ -217,8 +176,6 @@ public:
 			std::shared_ptr<SpriteSheet> spriteSheet);
 	virtual void activate(std::shared_ptr<SpriteSheet> spriteSheet);
 protected:
-	// boost::gil::rgba8_image_t rgba8_image;
-	//virtual void image_to_texture(float *data);
 	void image_to_texture(boost::gil::rgba8_image_t rgba8_image,
 			std::shared_ptr<SpriteSheet> spriteSheet);
 

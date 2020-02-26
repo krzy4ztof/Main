@@ -9,6 +9,8 @@
 #define SOURCE_WATERMILLGAME_MAINMENUVIEW_H_
 
 #include "../../../BaseGame/source/userInterface/HumanView.h"
+#include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
+#include "../../../BaseGame/source/userInterface/MainMenuUI.h"
 //#include <boost/gil/extension/io/jpeg.hpp> // boost::gil::rgb8_image_t
 // #include <GL/freeglut.h> // GLUT, includes glu.h and gl.h
 // #include <GL/glew.h> // include GLEW and new version of GL on Windows
@@ -18,13 +20,16 @@
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
 
+#include <memory> // shared_ptr, weak_ptr
+
 namespace watermill {
 
 class MainMenuView: public base_game::HumanView {
 public:
-	MainMenuView();
+	MainMenuView(std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
 	virtual ~MainMenuView();
 	virtual void tempVLoadGameDelegate();
+	virtual void vTerminate();
 	// void tempOnRenderGLFW(double fTime, float fElapsedTime);
 //	void tempTestImage();
 //	void tempLoadTexture();
@@ -33,9 +38,12 @@ public:
 //	void tempRenderTexture_1();
 
 	virtual void vOnRender(double fTime, float fElapsedTime);
+	virtual void tempVRender(double fTime, float fElapsedTime);
+protected:
+	std::shared_ptr<base_game::MainMenuUI> m_MainMenuUI;
 
 };
 
-} /* namespace base_game */
+} /* namespace watermill */
 
 #endif /* SOURCE_WATERMILLGAME_MAINMENUVIEW_H_ */

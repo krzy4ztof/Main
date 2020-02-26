@@ -30,6 +30,10 @@ public:
 	int preLoad(const std::string& pattern);
 	std::string getAssetsFolder();
 
+//	void freeResource(Resource *resource);
+	void free(std::shared_ptr<ResourceHandle> gonner);
+
+	void debugPrint();
 protected:
 	boost::optional<std::shared_ptr<ResourceHandle>> load(Resource* resource);
 	boost::optional<std::shared_ptr<IResourceLoader>> findResourceLoader(
@@ -37,6 +41,7 @@ protected:
 	boost::optional<std::shared_ptr<ResourceHandle>> find(Resource * r);
 	void update(std::shared_ptr<ResourceHandle> handle);
 	void freeOneResource();
+
 
 	bool makeRoom(boost::uintmax_t size);
 	char* allocate(boost::uintmax_t size);

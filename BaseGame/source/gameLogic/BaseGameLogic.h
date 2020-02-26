@@ -8,6 +8,7 @@
 #include "BaseGameState.h"
 #include "../mainLoop/ProcessManager.h"
 #include "../userInterface/IGameView.h"
+#include "../graphics3d/OpenGLRenderer.h"
 
 #include <memory> // shared_ptr, weak_ptr
 #include <map> // map
@@ -17,7 +18,7 @@
 namespace base_game {
 class BaseGameLogic {
 public:
-	BaseGameLogic();
+	BaseGameLogic(std::shared_ptr<OpenGLRenderer> openGLRenderer);
 	virtual ~BaseGameLogic();
 	bool init(std::shared_ptr<ResourceCache> resourceCache);
 
@@ -30,16 +31,16 @@ public:
 	 void tempAdd03View();
 	 void tempAdd04View();
 	 */
-	void tempAddView(int number);
+	void tempAddView_del(int number);
 	//void tempAddView(IGameView* pView);
-	void tempAddView(std::shared_ptr<IGameView> pView);
+	void tempAddView_del(std::shared_ptr<IGameView> pView);
 
 
-	void tempSwitchView(int key);
+	void tempSwitchView_del(int key);
 	//IGameView* tempSelectView(int key, bool reset);
-	std::shared_ptr<IGameView> tempSelectView(int key, bool reset);
+	std::shared_ptr<IGameView> tempSelectView_del(int key, bool reset);
 
-	void tempOnIdle(double fTime, float fElapsedTime);
+//	void tempOnIdle(double fTime, float fElapsedTime);
 
 	virtual void vAddView(std::shared_ptr<IGameView> pView,
 			unsigned int actorId = Actor::INVALID_ACTOR_ID);
@@ -58,6 +59,7 @@ public:
 	std::list<std::shared_ptr<IGameView> > getViews();
 	virtual void describeYourself();
 
+	void removeAllViews();
 	// std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
 
 protected:
@@ -75,8 +77,8 @@ protected:
 			std::shared_ptr<ResourceCache> resourceCache);
 
 	//IGameView* tempCurrentView;
-	std::shared_ptr<IGameView> tempCurrentView;
-
+//	std::shared_ptr<IGameView> tempCurrentView;
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 
 private:
 };

@@ -12,6 +12,7 @@
 #include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/gameInitialization/InitOptions.h"
+#include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 
 #include <string>
 #include <memory> // shared_ptr, weak_ptr
@@ -32,7 +33,8 @@ public:
 
 protected:
 	virtual base_game::BaseGameLogic* createGameAndView(
-			std::shared_ptr<base_game::ResourceCache> resourceCache);
+			std::shared_ptr<base_game::ResourceCache> resourceCache,
+			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
 private:
 };
 } /* namespace base_game_test */

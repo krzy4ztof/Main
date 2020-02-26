@@ -55,7 +55,6 @@ namespace base_game {
 //TODO: When running from CodeBlocks isOnlyInstance recognizes nautilus sessions. When Nautilus is opened on ..\Watermill folder, it is treated as application instance
 	bool LinuxProcessCalls::isOnlyInstance(const string& gameTitle) {
 		stringstream ss;
-		logger::trace("tutaj");
 
 		int howManyGames = 0;
 		path procPath {"/proc/"};
@@ -104,12 +103,6 @@ namespace base_game {
 									if (string_utils::doesStringContainsIgnoreCase(
 													lastVectorElement, gameTitle)) {
 
-										ss << "podobny proces: " + strCmdline;
-										logger::info(ss);
-
-										ss << cmdPath;
-										logger::info(ss);
-
 										howManyGames++;
 
 									}
@@ -130,20 +123,14 @@ namespace base_game {
 			logger::error(ss);
 		}
 
-		ss << "tutaj howManyGames: " << howManyGames;
-		logger::info(ss);
 
 		if (howManyGames >= 2) {
-			logger::info("tutaj howManyGames false");
-
 			// First process is this process
 			// Second process is second game process
 			return false;
 		}
 
 		else {
-			logger::info("tutaj howManyGames true");
-
 			return true;
 		}
 

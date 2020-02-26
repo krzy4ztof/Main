@@ -27,7 +27,10 @@ public:
 	virtual bool vOnCharmodsCallback(GLFWwindow* window, unsigned int codepoint,
 			int mods);
 
-	void tempStartGame();
+	//void tempStartGame_del();
+	void tempStartMainMenuView();
+	void tempStartWatermillHumanView();
+
 };
 
 } /* namespace base_game */

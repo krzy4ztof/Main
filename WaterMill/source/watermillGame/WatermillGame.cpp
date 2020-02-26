@@ -5,6 +5,7 @@
 #include "../../../BaseGame/source/debugging/Logger.h"
 //#include <debugging/Logger.h>
 #include "../../../BaseGame/source/userInterface/IGameView.h"
+#include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 
 #include <iostream> // cout, endl
 #include <string>
@@ -19,6 +20,7 @@ using base_game::GameCodeApp;
 using base_game::BaseGameLogic;
 using base_game::ResourceCache;
 using base_game::IGameView;
+using base_game::OpenGLRenderer;
 
 namespace watermill {
 const string WatermillGame::GAME_APP_DIRECTORY = "GameEngine\\Watermill\\1.0";
@@ -32,12 +34,13 @@ WatermillGame::~WatermillGame() {
 }
 
 BaseGameLogic* WatermillGame::createGameAndView(
-		shared_ptr<ResourceCache> resourceCache) {
+		shared_ptr<ResourceCache> resourceCache,
+		shared_ptr<OpenGLRenderer> openGLRenderer) {
 	logger::trace("WatermillGame::createGameAndView");
-	m_pGame = new WatermillLogic();
+	m_pGame = new WatermillLogic(openGLRenderer);
 	m_pGame->init(resourceCache);
 
-	IGameView* mainMenuView = new MainMenuView();
+	IGameView *mainMenuView = new MainMenuView(openGLRenderer);
 	mainMenuView->tempVLoadGameDelegate();
 
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(mainMenuView);

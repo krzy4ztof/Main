@@ -27,7 +27,6 @@ TextureRenderer::TextureRenderer() {
 	position_buffer = 0;
 	index_buffer = 0;
 
-	//texture = 0;
 	uvbuffer = 0;
 }
 
@@ -38,7 +37,6 @@ TextureRenderer::~TextureRenderer() {
 	glDeleteProgram(programID);
 	glDeleteBuffers(1, &position_buffer);
 	glDeleteBuffers(1, &uvbuffer);
-
 }
 
 void TextureRenderer::init(GLuint programID) {
@@ -66,99 +64,7 @@ void TextureRenderer::deactivate() {
 	glDisableVertexAttribArray(1);
 
 	glUseProgram(0);
-
 }
-
-PngRenderer::PngRenderer() {
-	logger::info("Create PngRenderer");
-
-}
-
-PngRenderer::~PngRenderer() {
-	logger::info("Destroy PngRenderer");
-}
-
-JpegRenderer::JpegRenderer() {
-	logger::info("Create JpegRenderer");
-}
-
-/*
- JpegRenderer::JpegRenderer() {
- logger::info("Create JpegRenderer");
-
-	programID = 0;
-	vao = 0; // vertex_array_object
-	position_buffer = 0;
-	index_buffer = 0;
-
-	//texture = 0;
-	uvbuffer = 0;
-}
- */
-
-/*
-JpegRenderer::~JpegRenderer() {
-	logger::info("Destroy JpegRenderer");
-	this->terminate();
-}
- */
-
-JpegRenderer::~JpegRenderer() {
-	logger::info("Destroy JpegRenderer");
-}
-
-/*
-void JpegRenderer::terminate() {
-	glDeleteVertexArrays(1, &vao);
-	glDeleteProgram(programID);
-	glDeleteBuffers(1, &position_buffer);
-	glDeleteBuffers(1, &uvbuffer);
-
-	// jpegTextureLoader->terminate();
-}
- */
-
-/*
-void JpegRenderer::init(GLuint programID) {
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &position_buffer);
-	glGenBuffers(1, &index_buffer);
-	glGenBuffers(1, &uvbuffer);
-
-	this->programID = programID;
-}
- */
-
-
-//void JpegRenderer::activate(glm::mat4 projection) {
-//void JpegRenderer::activate() {
-	/*
-	glUseProgram(programID);
-	glUniformMatrix4fv(glGetUniformLocation(programID, "projection"), 1,
-	GL_FALSE, glm::value_ptr(projection));
-	 */
-	//this->temp_activate();
-//	glUseProgram(programID);
-//}
-/*
-void JpegRenderer::activate(glm::mat4 projection) {
-	glUseProgram(programID);
-	glUniformMatrix4fv(glGetUniformLocation(programID, "projection"), 1,
-	GL_FALSE, glm::value_ptr(projection));
-}
- */
-
-/*
-void JpegRenderer::activateTexture(SpriteSheet *spriteSheet) {
-
-	glm::mat4 projection = glm::ortho(0.0f,
-			static_cast<GLfloat>(spriteSheet->getWidth()), 0.0f,
-			static_cast<GLfloat>(spriteSheet->getHeight()));
-
-	glUniformMatrix4fv(glGetUniformLocation(programID, "textureProjection"), 1,
-	GL_FALSE, glm::value_ptr(projection));
-}
- */
 
 void TextureRenderer::activateFigure(const GLushort *vertex_indices,
 		GLsizeiptr vertex_indices_size, const GLfloat *vertex_positions,
@@ -203,31 +109,16 @@ void TextureRenderer::renderRectangle(glm::vec2 zeroPoint,
 	glm::vec2 thrdPointTexture = spriteSheet->getThrdPoint(spriteRow,
 			spriteCol);
 
-	//glm::vec2 zeroPointTexture,
-	//glm::vec2 thrdPointTexture) {
 	this->activateRectangle(zeroPoint, thrdPoint, zeroPointTexture,
 			thrdPointTexture);
 	glDrawElements(GL_TRIANGLES, 2 * 3, GL_UNSIGNED_SHORT, 0);
 
 }
 
-/*
-void JpegRenderer::renderRectangle(glm::vec2 zeroPoint, glm::vec2 thrdPoint) {
-	this->activateRectangle(zeroPoint, thrdPoint, glm::vec2(0.0f, 0.0f),
-			glm::vec2(1.0f, 1.0f));
-
-	glDrawElements(GL_TRIANGLES, 2 * 3, GL_UNSIGNED_SHORT, 0);
-
-}
- */
-
 void TextureRenderer::renderMultiRectangle(glm::vec2 zeroPoint,
 		glm::vec2 thrdPoint, GLfloat numberX, GLfloat numberY) {
 	this->activateRectangle(zeroPoint, thrdPoint, glm::vec2(0.0f, 0.0f),
 			glm::vec2(numberX, numberY));
-	// square, triangle, rectangle, bottom rectangle
-	//glDrawElements(GL_TRIANGLES, 2 * 3 + 3 + 2 * 3 + 2 * 3, GL_UNSIGNED_SHORT,
-	//		0);
 	glDrawElements(GL_TRIANGLES, 2 * 3, GL_UNSIGNED_SHORT, 0);
 }
 
@@ -237,29 +128,13 @@ void TextureRenderer::renderTriangle(glm::vec2 zeroPoint, glm::vec2 fstPoint,
 		glm::vec2 fstPointTexture, glm::vec2 secPointTexture) {
 	this->activateTriangle(zeroPoint, fstPoint, secPoint, zeroPointTexture,
 			fstPointTexture, secPointTexture);
-	/*
-	static const GLfloat black[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	static const GLfloat one = 1.0f;
-
-	glClearBufferfv(GL_COLOR, 0, black);
-	glClearBufferfv(GL_DEPTH, 0, &one);
-	 */
-	// square, triangle, rectangle, bottom rectangle
-	//glDrawElements(GL_TRIANGLES, 2 * 3 + 3 + 2 * 3 + 2 * 3, GL_UNSIGNED_SHORT,
-	//		0);
 
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
-
 }
 
 void TextureRenderer::activateTriangle(glm::vec2 zeroPoint, glm::vec2 fstPoint,
 		glm::vec2 secPoint, glm::vec2 zeroPointTexture,
 		glm::vec2 fstPointTexture, glm::vec2 secPointTexture) {
-
-	// 	static const GLushort vertex_indices[] = {
-
-	//GLushort *vertex_indices = new GLushort[] { 0, 1, 2 };
-
 
 	const GLushort vertex_indices[] = {
 	// triangle
@@ -269,7 +144,6 @@ void TextureRenderer::activateTriangle(glm::vec2 zeroPoint, glm::vec2 fstPoint,
 			0, 1, 2 //
 			};
 
-	// static const GLfloat vertex_positions[] = {
 	const GLfloat vertex_positions[] = {
 	// triangle
 			zeroPoint.x, zeroPoint.y, 1.0f, // 0
@@ -277,7 +151,6 @@ void TextureRenderer::activateTriangle(glm::vec2 zeroPoint, glm::vec2 fstPoint,
 			secPoint.x, secPoint.y, 1.0f // 2
 			};
 
-	// static const GLfloat g_uv_buffer_data[] = {
 	const GLfloat g_uv_buffer_data[] = {
 	// triangle
 	//  2
@@ -310,14 +183,12 @@ void TextureRenderer::activateRectangle(glm::vec2 zeroPoint,
 			2, 1, 3 //
 			};
 
-	// static const GLfloat vertex_positions[] = {zeroPoint.x, zeroPoint.y, 1.0f, // 0
 	const GLfloat vertex_positions[] = { zeroPoint.x, zeroPoint.y, 1.0f, // 0
 			zeroPoint.x, thrdPoint.y, 1.0f, // 1
 	thrdPoint.x, zeroPoint.y, 1.0f,//2
 			thrdPoint.x, thrdPoint.y, 1.0f // 3
 			};
 
-// static const GLfloat g_uv_buffer_data[] = {
 	const GLfloat g_uv_buffer_data[] = {
 	// square
 	// 1-3
@@ -335,83 +206,36 @@ void TextureRenderer::activateRectangle(glm::vec2 zeroPoint,
 
 }
 
-/*
-void JpegRenderer::activateRectangle2() {
-
-	static const GLushort vertex_indices[] = {
-	// square
-	// 1--3
-	// |  |
-	// 0--2
-
-			0, 1, 2, //
-			2, 1, 3 //
-			};
-
-	static const GLfloat vertex_positions[] = {
-	// rectangle
-			-0.75f, -0.75f, 1.0f, // 0
-			-0.75, -0.5f, 1.0f, // 1
-			0.75f, -0.75f, 1.0f, // 2
-			0.75f, -0.5f, 1.0f // 3
-			};
-
-	static const GLfloat g_uv_buffer_data[] = {
-	// square
-	// 1--3
-	// |  |
-	// 0--2
-	// rectangle - 3 texture squares
-			0.0f, 0.0f, // 0
-			0.0f, 1.0f, // 1
-			3.0f, 0.0f, // 2 // where 3.0 - 3 texture squares
-			3.0f, 1.0f // 3
-			};
-
-	this->activateFigure(vertex_indices, sizeof(vertex_indices),
-			vertex_positions, sizeof(vertex_positions), g_uv_buffer_data,
-			sizeof(g_uv_buffer_data));
+PngRenderer::PngRenderer() {
+	logger::info("Create PngRenderer");
 
 }
 
-void JpegRenderer::activateRectangle3() {
-
-	static const GLushort vertex_indices[] = {
-	// square
-	// 1--3
-	// |  |
-	// 0--2
-
-			0, 1, 2, //
-			2, 1, 3 //
-			};
-
-	static const GLfloat vertex_positions[] = {
-	// bottom rectangle
-			-1.0f, -1.0f, 1.0f, // 0
-			-1.0f, -0.8f, 1.0f, // 1
-			1.0f, -1.0f, 1.0f, // 2
-			1.0f, -0.8f, 1.0f // 3
-			};
-
-	static const GLfloat g_uv_buffer_data[] = {
-	// square
-	// 1--3
-	// |  |
-	// 0--2
-	// bottom rectangle - 2 texture triangles
-			0.0f, 0.0f, // 0
-			0.0f, 1.0f, // 1
-			2.0f, 0.0f, // 2 // where 2.0 - 2 texture squares
-			2.0f, 1.0f // 3
-			};
-
-	this->activateFigure(vertex_indices, sizeof(vertex_indices),
-			vertex_positions, sizeof(vertex_positions), g_uv_buffer_data,
-			sizeof(g_uv_buffer_data));
-
+PngRenderer::~PngRenderer() {
+	logger::info("Destroy PngRenderer");
 }
- */
+
+void PngRenderer::activate(glm::mat4 projection) {
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	TextureRenderer::activate(projection);
+}
+
+void PngRenderer::deactivate() {
+	glDisable(GL_BLEND);
+
+	TextureRenderer::deactivate();
+}
+
+JpegRenderer::JpegRenderer() {
+	logger::info("Create JpegRenderer");
+}
+
+JpegRenderer::~JpegRenderer() {
+	logger::info("Destroy JpegRenderer");
+}
+
 
 void PngRenderer::temp_render() {
 	static const GLfloat black[] = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -426,10 +250,6 @@ void PngRenderer::temp_render() {
 }
 
 void PngRenderer::temp_activate() {
-//	HumanView::vActivate();
-
-//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-//	pngTextureLoader->activate(spriteSheet);
 
 	glBindVertexArray(vao);
 
@@ -675,33 +495,6 @@ void JpegRenderer::temp_activate() {
 
 	glUseProgram(programID);
 }
-
-/*
-void JpegRenderer::deactivate() {
-	glBindVertexArray(0);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glDisableVertexAttribArray(0);
-	glDisableVertexAttribArray(1);
-
-	glUseProgram(0);
-
-}
- */
-
-/*
-void JpegRenderer::reset() {
-	glBindVertexArray(0);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glDisableVertexAttribArray(0);
-	glDisableVertexAttribArray(1);
-}
- */
 
 void JpegRenderer::temp_render() {
 	static const GLfloat black[] = { 0.0f, 0.0f, 0.0f, 1.0f };

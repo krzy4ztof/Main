@@ -18,9 +18,6 @@ using glm::vec2;
 
 namespace base_game {
 
-//SpriteSheet::SpriteSheet(int width, int height) :
-//		width(width), height(height), margin(0), columns(1), rows(1), spriteWidth(
-//				width), spriteHeight(height) {
 SpriteSheet::SpriteSheet() :
 		height(0), width(0),
 		margin(0), columns(1), rows(1) {

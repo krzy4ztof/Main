@@ -50,12 +50,6 @@ public:
 		return ShaderResourceExtraData::getShaderId();
 	}
 
-	/*
-	 boost::property_tree::ptree* getRoot() {
-	 return m_pPtree;
-	 };
-	 */
-
 protected:
 
 private:
@@ -76,12 +70,6 @@ public:
 		return ShaderResourceExtraData::getShaderId();
 	}
 
-	/*
-	 boost::property_tree::ptree* getRoot() {
-	 return m_pPtree;
-	 };
-	 */
-
 protected:
 
 private:
@@ -95,7 +83,6 @@ public:
 
 	virtual bool vUseRawFile() {
 		return false;
-		//return true;
 	}
 
 	virtual bool vDiscardRawBufferAfterLoad() {
@@ -112,7 +99,6 @@ public:
 	virtual std::string vGetPattern() = 0;
 
 	virtual bool vAddNullZero() {
-		//TODO: scriptLoader will return true
 		return true;
 	}
 
@@ -150,12 +136,15 @@ public:
 	GLuint loadShaders(std::string vertexShaderName,
 			std::string fragmentShaderName);
 	GLuint loadShaders(std::string shaderName);
+	void removeShaders(std::string shaderName);
+
 
 protected:
 	GLuint loadVertexShader(std::string vertexShaderName);
 	GLuint loadFragmentShader(std::string fragmentShaderName);
 	std::shared_ptr<IResourceExtraData> loadShader(
 			std::string vertexShaderName);
+	void removeShader(std::string shaderName);
 
 private:
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;

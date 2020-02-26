@@ -10,6 +10,8 @@
 #include "../debugging/Logger.h"
 #include "../inputDevices/IKeyboardHandler.h"
 #include "../inputDevices/IPointerHandler.h"
+#include "../graphics3d/FpsCounter.h"
+#include "../utilities/Templates.h"
 
 #include <sstream>      // std::stringstream
 // #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
@@ -25,11 +27,13 @@ const int VideoSystemGLFW::WINDOW_HEIGHT = 640; //480;
 VideoSystemGLFW::VideoSystemGLFW() {
 	logger::info("Create VideoSystemGLFW");
 	window = nullptr;
+	temp_fpsCounter = new FpsCounter();
 
 }
 
 VideoSystemGLFW::~VideoSystemGLFW() {
 	logger::info("Destroy VideoSystemGLFW");
+	templates::safe_delete<FpsCounter>(temp_fpsCounter);
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -37,38 +41,72 @@ VideoSystemGLFW::~VideoSystemGLFW() {
 void VideoSystemGLFW::onIdle() {
 	stringstream ss;
 
+
+
+	if (base_game::g_pApp != nullptr) {
+
+		double time = glfwGetTime();
+		double elapsedTime = time - temp_fpsCounter->getLastTime();
+		float elapsedTimeFloat = static_cast<float>(elapsedTime);
+
+		g_pApp->onUpdateGame(time, elapsedTimeFloat);
+
+		g_pApp->onFrameRender(time, elapsedTimeFloat);
+
+		/* Poll for and process events */
+		glfwPollEvents();
+
+	} else {
+		ss << "g_pApp not initialized " << time; // << "; angle: " << angle;
+		logger::info(ss);
+	}
+
+}
+
+bool VideoSystemGLFW::preRender() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	return true;
+}
+
+bool VideoSystemGLFW::postRender() {
+	/* Swap front and back buffers */
+	glfwSwapBuffers(window);
+
+	/* Poll for and process events */
+//	glfwPollEvents();
+
+	return true;
+}
+
+void VideoSystemGLFW::onIdle_111() {
+	stringstream ss;
+
 	// miliseconds
 	double time = glfwGetTime();
-	double elapsedTime = time - lastTime;
-	lastTime = time;
-
-	//renderScene();
-
-	//			ss << "GLUT IDLE: " << time;
-	//			logger::info(ss);
-
-	//displayFreeGlut();
-
-	// double timeDouble = static_cast<float>(time);
+	double elapsedTime = time - temp_fpsCounter->getLastTime();
 	float elapsedTimeFloat = static_cast<float>(elapsedTime);
 
-	ss << "GLUT RENDER SCENE: time:" << time << "; elapsedTime " << elapsedTime
-			<< "; angle: " << angle;
+	ss << "GLUT RENDER SCENE: time:" << time << "; elapsedTime " << elapsedTime;
+	//<< "; angle: " << angle;
 	//logger::info(ss);
 
 	if (base_game::g_pApp != nullptr) {
-		//base_game::g_pApp->testGlobal();
-		//base_game::g_pApp->onUpdateGame(timeDouble,elapsedTimeFloat);
 		g_pApp->onUpdateGame(time, elapsedTimeFloat);
 
-		//gameCode->onFrameRender
-		// baseGameLogic->onFrameRender
-		// HumanView->vOnRender
-		// HumanView->tempOnRender (openGL)
-		g_pApp->onFrameRender(time, elapsedTimeFloat);
+		if (temp_fpsCounter->renderNextFrame(time)) {
+			/* Render here */
+			glClear(GL_COLOR_BUFFER_BIT);
 
+			g_pApp->onFrameRender(time, elapsedTimeFloat);
+
+			/* Swap front and back buffers */
+			glfwSwapBuffers(window);
+
+			/* Poll for and process events */
+			glfwPollEvents();
+		}
 	} else {
-		ss << "g_pApp not initialized " << time << "; angle: " << angle;
+		ss << "g_pApp not initialized " << time; // << "; angle: " << angle;
 		logger::info(ss);
 	}
 
@@ -133,6 +171,9 @@ int VideoSystemGLFW::initialize() {
 	// Initialize GLEW Start Tutorial
 	glewExperimental = true; // Needed for core profile
 	// END Tutorial
+
+	temp_fpsCounter->setFirstTime(glfwGetTime());
+
 	GLenum err = glewInit();
 	if (GLEW_OK != err) {
 		return -1;
@@ -145,82 +186,14 @@ void VideoSystemGLFW::mainLoop() {
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
 		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT);
 		this->onIdle();
 
 		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
+		//glfwSwapBuffers(window);
 
 		/* Poll for and process events */
-		glfwPollEvents();
+		//glfwPollEvents();
 	}
 }
-
-int VideoSystemGLFW::startGLFW_333_ok() {
-	GLFWwindow* window;
-
-	/* Initialize the library */
-	if (!glfwInit())
-		return -1;
-
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-	if (!window) {
-		glfwTerminate();
-		return -1;
-	}
-
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
-
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window)) {
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
-		this->onIdle();
-
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
-
-	glfwTerminate();
-	return 0;
-}
-
-int VideoSystemGLFW::startGLFW_222() {
-	GLFWwindow* window;
-
-	/* Initialize the library */
-	if (!glfwInit())
-		return -1;
-
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-	if (!window) {
-		glfwTerminate();
-		return -1;
-	}
-
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
-
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window)) {
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
-
-	glfwTerminate();
-	return 0;
-}
-
 } /* namespace base_game */

@@ -76,9 +76,6 @@ bool isAGameProcess(DWORD processID, const string& gameTitle) {
 	}
 
 	stringstream ss;
-	ss << "gameTitleTchar: " << gameTitleTchar << "; szProcessName: "
-			<< szProcessName;
-	logger::trace(ss);
 
 	// strcmp - case sensitive
 	//        int cmpRes = strcmp(szProcessName, gameTitleTchar);
@@ -86,11 +83,6 @@ bool isAGameProcess(DWORD processID, const string& gameTitle) {
 	int cmpRes = strcasecmp(szProcessName, gameTitleTchar);
 
 	if (cmpRes == 0) {
-		ss << cmpRes << TEXT("; szProcess: ") << szProcessName
-				<< TEXT("; szGame: ") << szGameProcessName << TEXT("; Title: ")
-				<< gameTitle;
-		logger::trace(ss);
-		ss << szProcessName << " (PID: " << processID << ")";
 		result = true;
 	}
 	// Release the handle to the process.
@@ -107,15 +99,9 @@ bool Windows32Calls::isOnlyInstance(const string& gameTitle) {
 	 * Compare to Windows64Calls::IsOnlyInstance(const string&)
 	 */
 
-	stringstream ss;
-	ss << "Is the only instance in Windows 32: " << gameTitle << "?";
-	logger::trace(ss);
-
 	string gameTitleExe(gameTitle);
 	gameTitleExe.append(".exe");
 
-	ss << "Is the only instance in Windows 32: " << gameTitleExe << "?";
-	logger::trace(ss);
 
 	// Get the list of process identifiers.
 	DWORD aProcesses[1024], cbNeeded, cProcesses;
@@ -140,9 +126,6 @@ bool Windows32Calls::isOnlyInstance(const string& gameTitle) {
 			}
 		}
 	}
-
-	ss << "howMany: " << howMany;
-	logger::trace(ss);
 
 	if (howMany >= 2) {
 		// First process is this process
@@ -169,12 +152,6 @@ bool Windows32Calls::checkHardDisk(const int diskSpaceNeeded) {
 	double diskNeededMB = diskSpaceNeeded / 1024 / 1024;
 
 	stringstream ss;
-	ss << "diskFree: " << diskfree.avail_clusters << " [clusters], "
-			<< diskAvailableMB << " [MB], " << diskAvailableGB << " [GB]";
-	logger::trace(ss);
-	ss << "diskNeeded: " << neededClusters << " [clusters], " << diskNeededMB
-			<< " [MB]";
-	logger::trace(ss);
 
 	if (diskfree.avail_clusters < neededClusters) {
 		// if you get here you don't have enough disk space!
@@ -219,23 +196,6 @@ bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded,
 	int DIVkb = 1024;
 	int DIV = 1024 * 1024;
 	stringstream ss;
-	ss << "percent of memory in use " << status.dwMemoryLoad;
-	logger::trace(ss);
-	ss << "total kB of physical memory " << status.ullTotalPhys / DIVkb;
-	logger::trace(ss);
-	ss << "free  kB of physical memory " << status.ullAvailPhys / DIVkb;
-	logger::trace(ss);
-	ss << "total kB of paging file " << status.ullTotalPageFile / DIVkb;
-	logger::trace(ss);
-	ss << "free  kB of paging file " << status.ullAvailPageFile / DIVkb;
-	logger::trace(ss);
-	ss << "total MB of virtual memory " << status.ullTotalVirtual / DIV;
-	logger::trace(ss);
-	ss << "free  MB of virtual memory " << status.ullAvailVirtual / DIV;
-	logger::trace(ss);
-	ss << "free  kB of extended memory "
-			<< status.ullAvailExtendedVirtual / DIVkb;
-	logger::trace(ss);
 
 	double ramNeededMB = physicalRAMNeeded / 1024 / 1024;
 	double ramAvailMB = status.ullTotalPhys / 1024 / 1024;
@@ -244,13 +204,6 @@ bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded,
 	double ramAvailGB = status.ullTotalPhys / 1024 / 1024 / 1024;
 	double ramAvailTB = status.ullTotalPhys / 1024 / 1024 / 1024 / 1024;
 
-	ss << "physical RAM needed: " << physicalRAMNeeded << " [byte], "
-			<< ramNeededMB << " [MB] " << ramNeededGB << " [GB]";
-	logger::trace(ss);
-	ss << "physical RAM total: " << status.ullTotalPhys << " [byte], "
-			<< ramAvailMB << " [MB] " << ramAvailGB << " [GB] " << ramAvailTB
-			<< " [TB] ";
-	logger::trace(ss);
 
 	double virtualRamNeededMB = virtualRAMNeeded / 1024 / 1024;
 	double virtualRamAvailMB = status.ullAvailVirtual / 1024 / 1024;
@@ -258,12 +211,6 @@ bool Windows32Calls::checkMemory(const DWORDLONG physicalRAMNeeded,
 	double virtualRamNeededGB = virtualRAMNeeded / 1024 / 1024 / 1024;
 	double virtualRamAvailGB = status.ullAvailVirtual / 1024 / 1024 / 1024;
 
-	ss << "virtual RAM needed: " << virtualRAMNeeded << " [byte], "
-			<< virtualRamNeededMB << " [MB] " << virtualRamNeededGB << " [GB]";
-	logger::trace(ss);
-	ss << "virtual RAM available: " << status.ullAvailVirtual << " [byte], "
-			<< virtualRamAvailMB << " [MB] " << virtualRamAvailGB << " [GB]";
-	logger::trace(ss);
 
 	if (status.ullTotalPhys < physicalRAMNeeded) {
 		// you don't have enough physical memory. Tell the player to go get a real
