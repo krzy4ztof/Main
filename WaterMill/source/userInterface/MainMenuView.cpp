@@ -56,7 +56,7 @@ void MainMenuView::tempVRender(double currentTime, float fElapsedTime) {
 
 void MainMenuView::vOnRender(double fTime, float fElapsedTime) {
 	HumanView::vOnRender(fTime, fElapsedTime);
-	logger::info("MainMenuView::vOnRender");
+	//logger::info("MainMenuView::vOnRender");
 	//logger::info("vOnRender HumanView");
 
 	//tempOnRenderGLFW(fTime, fElapsedTime);

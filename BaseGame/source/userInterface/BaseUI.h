@@ -17,6 +17,7 @@ public:
 	BaseUI();
 	virtual ~BaseUI();
 
+	virtual void vOnUpdate(int);
 	virtual bool vIsVisible() const;
 	virtual void vSetVisible(bool visible);
 protected:

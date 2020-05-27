@@ -119,7 +119,10 @@ bool MainMenuController::vOnKeyCallback(GLFWwindow* window, int key,
 			base_game::g_pApp->m_pGame->vChangeState(tempActivateCombinedView);
 
 
+		} else if (key == GLFW_KEY_ESCAPE) {
+
 		}
+
 
 		/*
 		 else if (action == GLFW_PRESS) {

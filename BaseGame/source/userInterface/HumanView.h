@@ -7,6 +7,7 @@
 #include "../graphics3d/FpsCounter.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "IScreenElement.h"
+#include "../mainLoop/ProcessManager.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
@@ -26,6 +27,7 @@ public:
 	virtual void vOnRestore();
 	virtual void vOnRender(double fTime, float fElapsedTime);
 	virtual void vOnAttach(unsigned int vid, unsigned int aid);
+	virtual void vOnUpdate(unsigned long deltaMs);
 	virtual void describeYourself();
 
 
@@ -55,6 +57,7 @@ protected:
 
 	unsigned int m_ViewId;
 	unsigned int m_ActorId;
+	ProcessManager *pProcessManager;				// a game logic entity
 	std::shared_ptr<IPointerHandler> m_PointerHandler;
 	std::shared_ptr<IKeyboardHandler> m_KeyboardHandler;
 	std::shared_ptr<OpenGLRenderer> openGLRenderer;

@@ -55,11 +55,13 @@ void FpsCounter::debugReport(double time, double elapsedTime,
 	stringstream ss;
 	double totalTime = time - firstTime;
 
+
 	ss << "GLUT RENDER SCENE: time:" << time << "; elapsedTime " << elapsedTime
 			<< "; counter: " << counter << "; totalTime: " << totalTime
 			<< "; totalCounter: " << totalCounter;
 
 	logger::info (ss);
+
 	// [   info] : GLUT RENDER SCENE: time:11.1505; elapsedTime 10.0065; counter: 1120
 //
 //			[   info] : GLUT RENDER SCENE: time:10.0008; elapsedTime 10.0008; counter: 5278; totalTime: 10.0008; totalCounter: 5278
@@ -89,7 +91,7 @@ bool FpsCounter::renderNextFrame(double time) {
 
 	if (fps <= 0) {
 		if (elapsedTime >= 10.0) { // screenRefershRate) {
-			this->debugReport(time, elapsedTime, 10.0);
+			//this->debugReport(time, elapsedTime, 10.0);
 
 			counter = 0;
 			lastTime = time;
@@ -98,7 +100,7 @@ bool FpsCounter::renderNextFrame(double time) {
 
 	if (fps > 0) {
 		if (elapsedTime >= screenRefershRate) {
-			this->debugReport(time, elapsedTime, screenRefershRate);
+			//this->debugReport(time, elapsedTime, screenRefershRate);
 			counter = 0;
 			lastTime = time;
 			return true;
