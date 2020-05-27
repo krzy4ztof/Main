@@ -19,6 +19,7 @@ public:
 
 	virtual void vOnRestore();
 	virtual void vOnRender(double fTime, float fElapsedTime);
+	virtual void vOnUpdate(int deltaMS);
 
 	virtual int vGetZOrder() const;
 	virtual void vSetZOrder(int const zOrder) const;

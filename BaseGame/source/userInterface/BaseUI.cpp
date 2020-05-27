@@ -28,4 +28,8 @@ void BaseUI::vSetVisible(bool visible) {
 	m_bIsVisible = visible;
 }
 
+void BaseUI::vOnUpdate(int) {
+
+}
+
 } /* namespace base_game */

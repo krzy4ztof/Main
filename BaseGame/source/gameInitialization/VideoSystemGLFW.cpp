@@ -164,6 +164,7 @@ int VideoSystemGLFW::initialize() {
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
+	glfwSwapInterval(1);
 	// stempGLUTinitialize();
 
 	/* Initialize GLEW */

@@ -12,6 +12,7 @@ public:
 	virtual void vOnRestore() = 0;
 	virtual void vOnRender(double fTime, float fElapsedTime) = 0;
 	virtual void vOnAttach(unsigned int vid, unsigned int aid) = 0;
+	virtual void vOnUpdate(unsigned long deltaMs)=0;
 	virtual void describeYourself() = 0;
 
 	virtual bool vOnKeyCallback(GLFWwindow* window, int key, int scancode,
@@ -41,5 +42,23 @@ protected:
 private:
 };
 }
+
+/*
+ * class IGameView
+ {
+ public:
+ virtual HRESULT VOnRestore()=0;
+ virtual void VOnRender(double fTime, float fElapsedTime)=0;
+ virtual HRESULT VOnLostDevice()=0;
+ virtual GameViewType VGetType()=0;
+ virtual GameViewId VGetId() const=0;
+ virtual void VOnAttach(GameViewId vid, ActorId aid)=0;
+
+ virtual LRESULT CALLBACK VOnMsgProc( AppMsg msg )=0;
+ virtual void VOnUpdate(unsigned long deltaMs)=0;
+
+ virtual ~IGameView() { };
+ };
+ */
 
 #endif // IGAMEVIEW_H

@@ -281,6 +281,37 @@ void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
 		break;
 	}
 	}
+
+	std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
+	// update all game views
+	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
+			viewIterator++) {
+
+		//if ((*viewIterator)->tempIsActive) {
+		(*viewIterator)->vOnUpdate(deltaMilliseconds);
+		//}
+	}
+
+	// update game actors
+	map<unsigned int, shared_ptr<Actor>>::iterator actorsIterator;
+	for (actorsIterator = actors.begin(); actorsIterator != actors.end();
+			actorsIterator++) {
+		actorsIterator->second->update(deltaMilliseconds);
+	}
+	/*
+	 // update all game views
+	 for (GameViewList::iterator it = m_gameViews.begin(); it != m_gameViews.end(); ++it)
+	 {
+	 (*it)->VOnUpdate(deltaMilliseconds);
+	 }
+
+	 // update game actors
+	 for (ActorMap::const_iterator it = m_actors.begin(); it != m_actors.end(); ++it)
+	 {
+	 it->second->Update(deltaMilliseconds);
+	 }
+	 */
 }
 
 /*

@@ -29,4 +29,8 @@ size_t ActorComponent::getIdFromName(string name) {
 	return hash_value;
 }
 
+void ActorComponent::vUpdate(int deltaMs) {
+
+}
+
 }
