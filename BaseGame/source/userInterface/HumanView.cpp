@@ -4,6 +4,7 @@
 #include "../graphics3d/FpsCounter.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../utilities/Templates.h"
+#include "../mainLoop/ProcessManager.h"
 
 // #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
@@ -26,9 +27,11 @@ HumanView::HumanView(std::shared_ptr<OpenGLRenderer> openGLRenderer) {
 	m_ActorId = 0;
 	fpsCounter = new FpsCounter();
 	this->openGLRenderer = openGLRenderer;
+	pProcessManager = new ProcessManager();
 }
 
 HumanView::~HumanView() {
+	templates::safe_delete<ProcessManager>(pProcessManager);
 	templates::safe_delete < FpsCounter > (fpsCounter);
 	logger::info("Destroy HumanView");
 	m_KeyboardHandler.reset();
@@ -151,6 +154,32 @@ void HumanView::vOnRender(double fTime, float fElapsedTime) {
 //	}
 
 
+}
+
+void HumanView::vOnUpdate(unsigned long deltaMilliseconds) {
+
+	pProcessManager->updateProcesses(deltaMilliseconds);
+
+	// m_Console.Update(deltaMilliseconds);
+
+	for (ScreenElementList::iterator i = m_ScreenElements.begin();
+			i != m_ScreenElements.end(); ++i) {
+		(*i)->vOnUpdate(deltaMilliseconds);
+	}
+	/*
+	m_pProcessManager->UpdateProcesses(deltaMilliseconds);
+
+	m_Console.Update(deltaMilliseconds);
+
+	// This section of code was added post-press. It runs through the screenlist
+	// and calls VOnUpdate. Some screen elements need to update every frame, one
+	// example of this is a 3D scene attached to the human view.
+	//
+	for (ScreenElementList::iterator i = m_ScreenElements.begin();
+			i != m_ScreenElements.end(); ++i) {
+		(*i)->VOnUpdate(deltaMilliseconds);
+	}
+	 */
 }
 
 void HumanView::describeYourself() {

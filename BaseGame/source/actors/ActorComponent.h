@@ -28,6 +28,7 @@ public:
 
 	virtual void describeYourself() = 0;
 	virtual void vPostInit() = 0;
+	virtual void vUpdate(int deltaMs);
 
 	static size_t getIdFromName(std::string name);
 protected:

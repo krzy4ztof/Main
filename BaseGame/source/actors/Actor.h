@@ -19,6 +19,7 @@ public:
 	void describeYourself();
 	void postInit();
 	void destroy();
+	void update(int deltaMs);
 
 	unsigned int getId(void) const {
 		return id;

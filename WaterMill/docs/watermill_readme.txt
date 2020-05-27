@@ -2193,6 +2193,7 @@ BUG !!! FPSCounter dla fps=-1 wyswietla obraz. Dla fps=60 nic nie wyswietla
 -- 30/01/2020
 -- 02/02/2020
 -- 26/02/2020
+-- 01/03/2020
 
 Dodać
 MainMenuView - menu startowe
@@ -2280,7 +2281,7 @@ TempT00FpolishFontsView - ok
 UnitTests + Watermill.exe
 
 
-Teraz:
+Teraz: - ok
 usunąć
 	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
 	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
@@ -2289,20 +2290,20 @@ usunąć
 + poprawic przełączanie widoków w watermill.exe
 
 
-Teraz: Błąd w 
+Teraz: Błąd w - ok
 GLuint ShaderCompiler::loadShaders(string vertexShaderName,
 		string fragmentShaderName) {
 	przy powtornym ładowaniu shaderow
 		
-błąd przy powtórnym użyciu
+błąd przy powtórnym użyciu - ok
 optional<shared_ptr<ResourceHandle>> ResourceCache::getHandle(
 		Resource *resource) {
 
-synchronizacja pomiedzy?		
+synchronizacja pomiedzy?	- ok	
 	std::list<std::shared_ptr<ResourceHandle> > m_resourceHandles;	// lru list
 	std::map<std::string, std::shared_ptr<ResourceHandle> > m_resources;		- find
 		
-błąd przy usuwaniu resource patrz: resourceCache::free()		
+błąd przy usuwaniu resource patrz: resourceCache::free()	- ok	
 1. uruchomić aplikację
 2. uruchomic figures view - przycisk 1
 3. uruchomic powtórnie figures view - przycisk 1		
@@ -2313,7 +2314,7 @@ unit testy:
 jpgView, png, fonts, combined - do poprawy
 		
 
-bug:		
+bug:		- ok
 Watermill.exe
 wcisnac klawisz 3 dwa razy -> polishFontsView
 za drugim razem fonty są kwadratowe
@@ -2349,8 +2350,88 @@ base_game::keyboard_handler::onKeyCallback
 						glDisable(GL_CULL_FACE);
 						glDisable(GL_BLEND);
 						
+Teraz -ok
+void BaseGameLogic::vOnUpdate(float time, float elapsedTime) - koniec metody
+tj
+void BaseGameLogic::VOnUpdate(float time, float elapsedTime)
+
+HumanView::vOnUpdate - przygotowac	- ok
+
+teraz:
+GameCodeComplete page 286
+Custom Dialog box
 		
 		
+--- RESTART CAŁEGO ZADANIA ODNOWIENIE	---
+-- 08/03/2020
+
+Dodać
+MainMenuView - menu startowe
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+oraz:
+TeapotWarsHumanView - główny widok gry
+patrz: 
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
+
+MainMenuView
+Ma zawierać
+1. Tytuł: Watermill
+2. Przyciski:
+START
+QUIT					
+
+
+Patrz notatki w metodach:
+
+IGameView* BaseGameLogic::tempSelectView(int key, bool reset) 
+void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
+		unsigned int actorId)
+void BaseGameLogic::tempSwitchView(int key) {
+
+
+// UWAGA:
+HumanView powinien cos wyswietlac lub nie w zaleznosci czy jego elementy sa widoczne
+Patrz:
+C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\GCC4\UserInterface\HumanView.cpp
+
+//
+// HumanView::VOnRender							- Chapter 10, page 274
+//
+void HumanView::VOnRender(double fTime, float fElapsedTime )
+
+			for(ScreenElementList::iterator i=m_ScreenElements.begin(); i!=m_ScreenElements.end(); ++i)
+			{
+				if ( (*i)->VIsVisible() )
+
+Tak wiec:
+to co jest wyswietlane to elementy IScreenElement w zaleznosci od tego czy sa widoczne czy nie
+nie jest wyswietlany humanView jako taki
+wiec nalezy usunac
+tempIsActive
+oraz 
+active
+
+IGameView.h
+
+	bool tempIsActive = false; // To remove -> zdublowane z active, ktore tez bedzie usuniete
+
+	virtual void vActivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual void vDeactivate(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+	virtual bool isActive(); // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+		protected:
+	bool active = false; // To remove -> wyswietlanie bedzie zalezalo od tego czy elementy sa widoczne
+
+
+przenieść aktywację/deaktywację tekstury z Png/JpegTextureLoader do png/JpegRenderer
+wyregulować ilość frames per sec
+
+
+
+teraz:
+GameCodeComplete page 286
+Custom Dialog box		
 		
 ---------------------------------------------------
 ---	Sprawdzenie ile headerów zawiera plik cpp	---	

@@ -73,6 +73,20 @@ void Actor::destroy() {
 	components.clear();
 }
 
+void Actor::update(int deltaMs) {
+	map<size_t, shared_ptr<ActorComponent>>::iterator componentsIterator;
+	for (componentsIterator = components.begin();
+			componentsIterator != components.end(); componentsIterator++) {
+		componentsIterator->second->vUpdate(deltaMs);
+	}
+	/*
+	 for (ActorComponents::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	 {
+	 it->second->VUpdate(deltaMs);
+	 }
+	 */
+}
+
 void Actor::tempTestComponents() {
 	logger::info("Actor::tempTestComponents");
 

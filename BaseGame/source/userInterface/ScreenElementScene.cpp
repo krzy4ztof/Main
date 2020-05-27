@@ -44,4 +44,10 @@ void ScreenElementScene::vOnRender(double fTime, float fElapsedTime) {
 // TODO: implement
 }
 
+void ScreenElementScene::vOnUpdate(int deltaMS) {
+//	OnUpdate(deltaMS);
+}
+;
+
+
 } /* namespace base_game */
