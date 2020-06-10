@@ -8,6 +8,7 @@
 #ifndef SOURCE_WATERMILLGAME_MAINMENUVIEW_H_
 #define SOURCE_WATERMILLGAME_MAINMENUVIEW_H_
 
+#include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/userInterface/HumanView.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 #include "../../../BaseGame/source/userInterface/MainMenuUI.h"
@@ -22,11 +23,12 @@
 
 #include <memory> // shared_ptr, weak_ptr
 
-namespace watermill {
+namespace watermill_base {
 
 class MainMenuView: public base_game::HumanView {
 public:
-	MainMenuView(std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
+	MainMenuView(std::shared_ptr<base_game::ResourceCache> resourceCache,
+			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
 	virtual ~MainMenuView();
 	virtual void tempVLoadGameDelegate();
 	virtual void vTerminate();
@@ -40,6 +42,7 @@ public:
 	virtual void vOnRender(double fTime, float fElapsedTime);
 	virtual void tempVRender(double fTime, float fElapsedTime);
 protected:
+	std::shared_ptr<base_game::ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<base_game::MainMenuUI> m_MainMenuUI;
 
 };

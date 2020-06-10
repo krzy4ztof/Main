@@ -1,6 +1,9 @@
 #include "GameMain.h"
 
 #include "../watermillGame/WatermillGame.h"
+//#include "../../../WatermillBase/source/main/GameMainExample.h"
+#include "GameMainExample.h"
+
 
 /*
  #include "../gameInitialization/GameCodeApp.h"
@@ -31,7 +34,7 @@ namespace templates = base_game::templates;
 //namespace game_code_app=base_game::game_code_app;
 using base_game::GameCodeApp;
 
-namespace watermill {
+namespace watermill_base {
 
 GameMain::GameMain() {
 	cout << "Create GameMain" << endl;
@@ -42,6 +45,9 @@ GameMain::~GameMain() {
 }
 
 int GameMain::init(int argc, char** argv) {
+
+	watermill_base::GameMainExample gme;
+	gme.init();
 
 	//TODO: see
 	// C:\home\myNormalFiles\GameCoding\source-archive\gamecode4\trunk\Source

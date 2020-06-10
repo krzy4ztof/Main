@@ -5,7 +5,7 @@
 //#include "../gameInitialization/DebuggingOptions.h"
 //#include "../gameInitialization/PlayerOptions.h"
 
-namespace watermill {
+namespace watermill_base {
 class GameMain {
 public:
 	GameMain();

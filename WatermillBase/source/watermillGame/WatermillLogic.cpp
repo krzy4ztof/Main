@@ -62,7 +62,7 @@ using base_game::TempCombinedView;
 
 namespace logger = base_game::logger;
 
-namespace watermill {
+namespace watermill_base {
 WatermillLogic::WatermillLogic(shared_ptr<OpenGLRenderer> openGLRenderer) :
 		BaseGameLogic(openGLRenderer) {
 	logger::trace("Create WatermillLogic");
@@ -95,7 +95,8 @@ void WatermillLogic::vChangeState(BaseGameState newState) {
 	case tempActivateWatermillHumanView: {
 		removeAllViews(); // - breaks the game
 
-		IGameView *watermillHumanView = new WatermillHumanView(openGLRenderer);
+		IGameView *watermillHumanView = new WatermillHumanView(
+				shrdPtrResourceCache, openGLRenderer);
 		watermillHumanView->tempVLoadGameDelegate();
 
 		shared_ptr<IGameView> pView = shared_ptr<IGameView>(watermillHumanView);
@@ -107,7 +108,8 @@ void WatermillLogic::vChangeState(BaseGameState newState) {
 	case tempActivateMainMenuView: {
 		removeAllViews(); //- breaks the game
 
-		IGameView *mainMenuView = new MainMenuView(openGLRenderer);
+		IGameView *mainMenuView = new MainMenuView(shrdPtrResourceCache,
+				openGLRenderer);
 		mainMenuView->tempVLoadGameDelegate();
 
 		shared_ptr<IGameView> pView = shared_ptr<IGameView>(mainMenuView);

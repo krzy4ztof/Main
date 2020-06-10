@@ -13,7 +13,7 @@
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
 
-namespace watermill {
+namespace watermill_base {
 
 class MainMenuController: public base_game::IKeyboardHandler {
 public:

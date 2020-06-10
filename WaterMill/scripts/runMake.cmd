@@ -1,4 +1,4 @@
-cd ../../BaseGame/scripts
+cd ../../WatermillBase/scripts
 call runMake.cmd %*
 
 cd ../../Watermill/scripts

@@ -16,12 +16,12 @@
 #endif /* __WIN64 */
 
 #include<iostream> // cout, endl
-#include "GameMain.h"
+#include "../../../WatermillBase/source/main/GameMain.h"
 
 using std::cout;
 using std::endl;
 
-using watermill::GameMain;
+using watermill_base::GameMain;
 
 /*
  * main (int argc, char* argv[])

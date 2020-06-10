@@ -12,7 +12,7 @@ progs   := Watermill
 
 root_dir := ../..
 
-prog_output_dir := $(root_dir)/settings/make/Watermill/Debug_Linux_Make
+prog_output_dir := $(root_dir)/settings/make/Debug_Linux_Make
 objprog := $(addprefix $(prog_output_dir)/, $(progs))
 
 #######################
@@ -45,7 +45,10 @@ CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
 #######################
 ###	linker flags	###
 #######################
-LDLIBS := -lBaseGame
+# -lWatermillBase MUST be included before -lBaseGame
+# when -lBaseGame is included before -lWatermillBase then undefined reference errors occur
+LDLIBS := -lWatermillBase
+LDLIBS += -lBaseGame
 LDLIBS += -llua
 LDLIBS += -lglut
 LDLIBS += -lGL
@@ -67,7 +70,8 @@ LDLIBS += -lglfw
 
 #GLFW_LIB := `pkg-config --cflags glfw3`
 
-lib_path := -L$(root_dir)/../BaseGame/Debug_Linux_Make
+lib_path := -L$(root_dir)/../WatermillBase/settings/make/Debug_Linux_Make
+lib_path := -L$(root_dir)/../BaseGame/settings/make/Debug_Linux_Make
 #lib_path += -L"/usr/lib/x86_64-linux-gnu"
 
 LDFLAGS := $(lib_path) $(LDLIBS) 

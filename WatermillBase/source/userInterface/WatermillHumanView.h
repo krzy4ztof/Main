@@ -8,16 +8,17 @@
 #ifndef SOURCE_USERINTERFACE_WATERMILLHUMANVIEW_H_
 #define SOURCE_USERINTERFACE_WATERMILLHUMANVIEW_H_
 
+#include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/userInterface/HumanView.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 #include "../../../BaseGame/source/userInterface/ScreenElementScene.h"
 #include <memory> // shared_ptr, weak_ptr
 
-namespace watermill {
+namespace watermill_base {
 
 class WatermillHumanView: public base_game::HumanView {
 public:
-	WatermillHumanView(
+	WatermillHumanView(std::shared_ptr<base_game::ResourceCache> resourceCache,
 			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
 	virtual ~WatermillHumanView();
 	virtual void vTerminate();
@@ -28,6 +29,7 @@ public:
 
 	void temp_InitScene();
 protected:
+	std::shared_ptr<base_game::ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<base_game::ScreenElementScene> m_ScreenElementScene;
 };
 
