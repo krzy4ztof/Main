@@ -12,6 +12,7 @@
 #include "../../../BaseGame/source/userInterface/HumanView.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
 #include "../../../BaseGame/source/userInterface/ScreenElementScene.h"
+#include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 
 #include <memory> // shared_ptr, weak_ptr
 
@@ -19,16 +20,18 @@ namespace logger = base_game::logger;
 using base_game::HumanView;
 using base_game::OpenGLRenderer;
 using base_game::ScreenElementScene;
+using base_game::ResourceCache;
 
 using std::make_shared;
 using std::shared_ptr;
 
-namespace watermill {
+namespace watermill_base {
 
-WatermillHumanView::WatermillHumanView(
-		std::shared_ptr<OpenGLRenderer> openGLRenderer) :
+WatermillHumanView::WatermillHumanView(shared_ptr<ResourceCache> resourceCache,
+		shared_ptr<OpenGLRenderer> openGLRenderer) :
 		HumanView(openGLRenderer) {
 	logger::info("Create WatermillHumanView");
+	this->shrdPtrResourceCache = resourceCache;
 	temp_InitScene();
 }
 
@@ -41,6 +44,7 @@ WatermillHumanView::~WatermillHumanView() {
 
 void WatermillHumanView::vTerminate() {
 	m_ScreenElementScene->vTerminate();
+	shrdPtrResourceCache.reset();
 }
 
 void WatermillHumanView::temp_InitScene() {

@@ -52,24 +52,9 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>source/inputDevices</name>
-			<type>2</type>
-			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/source/inputDevices</location>
-		</link>
-		<link>
 			<name>source/main</name>
 			<type>2</type>
 			<locationURI>PARENT-3-PROJECT_LOC/source/main</locationURI>
-		</link>
-		<link>
-			<name>source/userInterface</name>
-			<type>2</type>
-			<location>C:/Users/Krzysztof/home/myImportantFiles/projects/git/Main/WaterMill/source/userInterface</location>
-		</link>
-		<link>
-			<name>source/watermillGame</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/source/watermillGame</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

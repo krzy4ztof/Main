@@ -23,7 +23,7 @@
 #include <string>
 #include <memory> // shared_ptr, weak_ptr
 
-namespace watermill {
+namespace watermill_base {
 class WatermillGame: public base_game::GameCodeApp {
 public:
 	const static std::string GAME_APP_DIRECTORY;

@@ -9,11 +9,14 @@ CXX := g++
 ###	executable	###
 ###################
 progs   := Watermill.exe
+#progs   := libWatermill.a
+
 
 root_dir := ..
-
-prog_output_dir := $(root_dir)/settings/make/Watermill/Debug_MinGW64
+prog_output_dir := $(root_dir)/settings/make/Debug_MinGW64
+#lib_output_dir := ${root_dir}/Debug_MinGW64
 objprog := $(addprefix $(prog_output_dir)/, $(progs))
+#objprog := $(addprefix $(lib_output_dir)/, $(progs))
 
 #######################
 ### object files	###
@@ -37,7 +40,7 @@ VPATH = $(source_dir_all)
 ###	compiler flags	###
 #######################
 #include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
-include_dirs += -I"/usr/local/include"
+#include_dirs += -I"/usr/local/include"
 include_dirs += -I"/mingw64/include/freetype2/"
 
 # -g3 debugger level3
@@ -46,7 +49,11 @@ CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs)
 #######################
 ###	linker flags	###
 #######################
-LDLIBS := -lBaseGame
+# -lWatermillBase MUST be included before -lBaseGame
+# when -lBaseGame is included before -lWatermillBase then undefined reference errors occur
+LDLIBS := -lWatermillBase
+LDLIBS += -lBaseGame
+#LDLIBS += -lWatermillBase
 #LDLIBS += -lfreeglut
 LDLIBS += -lpsapi
 LDLIBS += -lopengl32
@@ -64,7 +71,9 @@ LDLIBS += -lglew32
 LDLIBS += -lpng16
 LDLIBS += -lfreetype
 
-lib_path := -L"../../BaseGame/Debug_MinGW64" 
+lib_path := -L$(root_dir)/../WatermillBase/settings/make/Debug_MinGW64
+lib_path += -L$(root_dir)/../BaseGame/settings/make/Debug_MinGW64
+#lib_path += -L"../../WatermillBase/Debug_MinGW64" 
 #lib_path += -L"../../../libraries/freeglut/lib/x64"
 lib_path += -L"/usr/local/lib"
 
@@ -117,6 +126,9 @@ $(objdir)/%.o : %.cpp
 	
 $(objprog): $(addprefix $(objdir)/, $(objects)) 
 	$(CXX) $^ $(LDFLAGS) -o $@
+#$(objprog): $(addprefix $(objdir)/, $(objects))
+#	ar -r $@ $^
+
 
 #######################
 ###	clean receipe	###

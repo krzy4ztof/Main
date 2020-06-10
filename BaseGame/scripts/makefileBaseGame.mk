@@ -11,7 +11,7 @@ CXX := g++
 progs := libBaseGame.a
 
 root_dir := ..
-lib_output_dir := ${root_dir}/Debug_MinGW64
+lib_output_dir := ${root_dir}/settings/make/Debug_MinGW64
 
 objprog := $(addprefix $(lib_output_dir)/, $(progs))
 

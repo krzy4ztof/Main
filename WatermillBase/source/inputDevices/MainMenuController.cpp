@@ -33,7 +33,7 @@ using std::stringstream;
 using std::make_shared;
 using std::shared_ptr;
 
-namespace watermill {
+namespace watermill_base {
 
 MainMenuController::MainMenuController() {
 	logger::info("Create MainMenuController");

@@ -1,0 +1,55 @@
+---------------------------
+---	WatermillBaseTest	---
+---------------------------
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WatermillBaseTest
+
+Basic settings:
+Source: source
+
+---------------
+---	Eclipse	---
+---------------
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd 
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
+
+----
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64_force
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd 
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
+
+---
+
+
+Project -> Properties -> C/C++ Build -> Tool Chain Editor 
+Current toolchain: MinGW GCC
+Current builder: Gnu Make Builder
+
+Project Explorer -> WatermillBaseTest -> Popup Menu -> Denug As -> Debug Configurations 
+	C/C++ Application -> 'BaseGameTest-make.exe' duplicate -> 'WatermillBaseTest-make.exe'
+		Variables.. -> Edit Variables -> New...
+			Name: watermillbasetest_make
+			Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WatermillBaseTest\settings\make\Debug_MinGW64
+		C/C++ Application: ${watermillbasetest_make}/WatermillBaseTest.exe	
+		Build Configuration: Debug_MinGW64
+
+
+	C/C++ Application -> 'BaseGameTest-make.exe force' duplicate -> 'WatermillBaseTest-make.exe force'
+		C/C++ Application: ${watermillbasetest_make}/WatermillBaseTest.exe	
+		Build Configuration: Debug_MinGW64
+		
+		
+		

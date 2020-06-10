@@ -12,7 +12,7 @@ progs   := BaseGameTest.exe
 
 root_dir := ..
 
-prog_output_dir := $(root_dir)/settings/make/BaseGameTest/Debug_MinGW64
+prog_output_dir := $(root_dir)/settings/make/Debug_MinGW64
 objprog := $(addprefix $(prog_output_dir)/, $(progs))
 
 #######################
@@ -65,7 +65,7 @@ LDLIBS += -lglew32
 LDLIBS += -lpng16
 LDLIBS += -lfreetype
 
-lib_path := -L"../../BaseGame/Debug_MinGW64" 
+lib_path := -L"../../BaseGame/settings/make/Debug_MinGW64" 
 # lib_path += -L"../../../libraries/freeglut/lib/x64"
 lib_path += -L"/usr/local/lib"
 

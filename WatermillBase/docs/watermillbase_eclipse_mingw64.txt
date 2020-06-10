@@ -1,0 +1,13 @@
+-----------------------
+---	WatermillBase	---
+-----------------------
+New Project -> C/C++ Project
+C++ Managed Build
+Executable 
+Toolchains: MinGW GCC
+
+Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WatermillBase
+
+Basic settings:
+Source: source
+

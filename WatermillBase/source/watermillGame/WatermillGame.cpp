@@ -22,7 +22,7 @@ using base_game::ResourceCache;
 using base_game::IGameView;
 using base_game::OpenGLRenderer;
 
-namespace watermill {
+namespace watermill_base {
 const string WatermillGame::GAME_APP_DIRECTORY = "GameEngine\\Watermill\\1.0";
 
 WatermillGame::WatermillGame() {
@@ -40,7 +40,7 @@ BaseGameLogic* WatermillGame::createGameAndView(
 	m_pGame = new WatermillLogic(openGLRenderer);
 	m_pGame->init(resourceCache);
 
-	IGameView *mainMenuView = new MainMenuView(openGLRenderer);
+	IGameView *mainMenuView = new MainMenuView(resourceCache, openGLRenderer);
 	mainMenuView->tempVLoadGameDelegate();
 
 	shared_ptr<IGameView> pView = shared_ptr<IGameView>(mainMenuView);

@@ -13,6 +13,7 @@
 #include "../../../BaseGame/source/userInterface/MainMenuUI.h"
 
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
+#include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 
 #include <memory> // shared_ptr, weak_ptr, make_shared
 
@@ -20,16 +21,18 @@ namespace logger = base_game::logger;
 using base_game::HumanView;
 using base_game::OpenGLRenderer;
 using base_game::MainMenuUI;
+using base_game::ResourceCache;
 
 using std::make_shared;
 using std::shared_ptr;
 
-namespace watermill {
+namespace watermill_base {
 
-MainMenuView::MainMenuView(std::shared_ptr<OpenGLRenderer> openGLRenderer) :
+MainMenuView::MainMenuView(shared_ptr<ResourceCache> resourceCache,
+		shared_ptr<OpenGLRenderer> openGLRenderer) :
 		HumanView(openGLRenderer) {
 	logger::info("Create MainMenuView");
-
+	this->shrdPtrResourceCache = resourceCache;
 	m_MainMenuUI.reset(new MainMenuUI);
 	vPushElement(m_MainMenuUI);
 }
@@ -42,6 +45,7 @@ MainMenuView::~MainMenuView() {
 
 void MainMenuView::vTerminate() {
 	m_MainMenuUI->vTerminate();
+	shrdPtrResourceCache.reset();
 }
 
 void MainMenuView::tempVLoadGameDelegate() {

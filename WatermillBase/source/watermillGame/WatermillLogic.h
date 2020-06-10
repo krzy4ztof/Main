@@ -9,7 +9,7 @@
 //#include <gameLogic/BaseGameState.h>
 #include <memory> // shared_ptr, weak_ptr
 
-namespace watermill {
+namespace watermill_base {
 class WatermillLogic: public base_game::BaseGameLogic {
 public:
 	WatermillLogic(std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);

@@ -668,6 +668,7 @@
 		<configuration configurationName="Debug_MinGW64"/>
 		<configuration configurationName="Debug_Cygwin"/>
 		<configuration configurationName="Test_MinGW64"/>
+		<configuration configurationName="Debug_MinGW64_force"/>
 		<configuration configurationName="Debug_MinGW">
 			<resource resourceType="PROJECT" workspacePath="/Watermill"/>
 		</configuration>

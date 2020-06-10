@@ -248,8 +248,14 @@ Create link locations relative to: PROJECT_LOC
 Project -> Properties -> C/C++ Build -> Manage Configurations
 Add Debug_MinGW64
 
+Project -> Properties -> C/C++ Build -> Builder Settings
+Build command:	${workspace_loc:/Watermill/scripts}/runMake.cmd 
+Build directory:	${workspace_loc:/Watermill/scripts}
+
+
 Project -> Properties -> C/C++ Build -> Tool Chain Editor 
 Current toolchain: MinGW GCC
+Current builder: Gnu Make Builder
 
 C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler
 
@@ -755,7 +761,7 @@ make -f ${workspace_loc}\\${ProjName}\scripts\makefileWatermill.mk
 Run Configurations -> Variables ...
 	Edit Variables -> New ...
 	Variable: watermill_make
-	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill\settings\make\Watermill\Debug_MinGW64
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WaterMill\settings\make\Debug_MinGW64
 
 
 Run configuration:
@@ -842,7 +848,7 @@ BaseGameTest -> properties
 Run Configurations -> Variables ...
 	Edit Variables -> New ...
 	Variable: basegametest_make
-	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\BaseGameTest\Debug_MinGW64
+	Value: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\BaseGameTest\settings\make\Debug_MinGW64
 
 
 Run configuration:
