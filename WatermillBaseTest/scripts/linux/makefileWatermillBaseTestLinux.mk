@@ -8,7 +8,7 @@ CXX := g++
 ###################
 ###	executable	###
 ###################
-progs   := Watermill
+progs   := WatermillBaseTest
 
 root_dir := ../..
 
@@ -36,10 +36,9 @@ VPATH = $(source_dir_all)
 #######################
 ###	compiler flags	###
 #######################
-# -g3 debugger level3
-#CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
-
 include_dirs += -I"/usr/include/freetype2/"
+
+# -g3 debugger level3
 CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs)
 
 #######################
@@ -57,6 +56,7 @@ LDLIBS += -lboost_log
 LDLIBS += -lboost_thread
 LDLIBS += -lboost_log_setup
 LDLIBS += -lboost_iostreams
+LDLIBS += -lboost_unit_test_framework
 
 LDLIBS += -lglfw
 LDLIBS += -ljpeg
@@ -69,33 +69,27 @@ LDLIBS += -lGL
 LDLIBS += -lpthread
 LDLIBS += -ldl
 
-#LDLIBS += -lglut
-#LDLIBS += -lGL
-#LDLIBS += -lGLU
-
-#LDLIBS += -lpthread
-#LDLIBS += -ldl
-#LDLIBS += -lglfw
-
-#GLFW_LIB := `pkg-config --cflags glfw3`
-
 lib_path := -L$(root_dir)/../WatermillBase/settings/make/Debug_Linux_Make
 lib_path += -L$(root_dir)/../BaseGame/settings/make/Debug_Linux_Make
-#lib_path += -L"/usr/lib/x86_64-linux-gnu"
+# lib_path += -L"../../../libraries/freeglut/lib/x64"
+#lib_path += -L"/usr/local/lib"
 
-LDFLAGS := $(lib_path) $(LDLIBS) 
-
-#$(GLFW_LIB)
+LDFLAGS := $(lib_path) $(LDLIBS)
 
 ###########################
 ###	pre installation	###
 ###########################
+#copy_files := $(prog_output_dir)/libzstd.dll $(prog_output_dir)/freeglut.dll $(prog_output_dir)/watermill.ini
+#copy_files := $(prog_output_dir)/libzstd.dll  $(prog_output_dir)/watermill.ini
 copy_files :=  $(prog_output_dir)/watermill.ini
+
 
 ###################
 ###	recipies	###
 ###################
 all: createDir $(objprog)
+
+force: createDir cleanExe $(objprog)
 
 ###################################
 ###	pre installation receipies	###
@@ -105,7 +99,13 @@ createDir: $(objdir) $(copy_files)
 $(objdir):
 	mkdir -p $(objdir)
 
-$(prog_output_dir)/watermill.ini: $(root_dir)/settings/eclipse/Watermill/watermill_release.ini
+$(prog_output_dir)/libzstd.dll: $(root_dir)/../../libraries/libzstd/libzstd.dll
+	cp -f $< $@
+
+#$(prog_output_dir)/freeglut.dll: $(root_dir)/../../libraries/freeglut/bin/x64/freeglut.dll
+#	cp -f $< $@
+
+$(prog_output_dir)/watermill.ini: $(root_dir)/watermill_release.ini
 	cp -f $< $@
 
 #######################
@@ -129,16 +129,20 @@ $(objprog): $(addprefix $(objdir)/, $(objects))
 clean:
 	rm -rf $(prog_output_dir)/* 
 
-force: createDir cleanExe $(objprog)
-
 #######################
 ###	debug receipies	###
 #######################
-.PHONY: debugPrint debugPrint2
+.PHONY: debugPrint debugPrint1 debugPrint2
 
-#SHOW Link.o
-#g++ -L../../BaseGame/scripts/obj -L../../../libraries/freeglut/lib/x64 -L/mingw64/lib -L/mingw64/x86_64-w64-mingw32/lib -L/usr/local/lib -lBaseGame5 -lfreeglut -lpsapi -lopengl32 -llua -lboost_system-mt -lboost_filesystem-mt -lboost_locale-mt -lboost_log-mt -lboost_thread-mt -lboost_log_setup-mt -lboost_iostreams-mt
 debugPrint:
+	@echo 'SHOW sourcedir';
+	@echo $(sourcedir);
+	@echo;
+
+debugPrint1:
+	@echo 'SHOW sourcedir';
+	@echo $(sourcedir);
+	@echo;
 	@echo 'SHOW full_objects';
 	@echo $(full_objects);
 	@echo;
@@ -154,6 +158,9 @@ debugPrint:
 	@echo 'SHOW VPATH';
 	@echo $(VPATH);
 	@echo;
+	
+	
+	
 
 debugPrint2:
 	@echo 'SHOW Link.o';
@@ -165,3 +172,9 @@ debugPrint2:
 	@echo 'SHOW COMPILE.cpp';
 	@echo $(COMPILE.cpp);
 	@echo;
+
+
+	
+
+	
+

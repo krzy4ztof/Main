@@ -8,10 +8,11 @@ CXX := g++
 ###############
 ###	library	###
 ###############
-progs := libBaseGame.a
+progs := libWatermillBase.a
 
 root_dir := ../..
-lib_output_dir := ${root_dir}/settings/make/Debug_Linux_Make
+#lib_output_dir := ${root_dir}/Debug_MinGW64
+lib_output_dir := $(root_dir)/settings/make/Debug_Linux_Make
 
 objprog := $(addprefix $(lib_output_dir)/, $(progs))
 
@@ -24,7 +25,7 @@ full_objects := $(shell find $(root_source) -name "*.cpp")
 cpp_objects := $(notdir $(full_objects))
 objects := $(cpp_objects:%.cpp=%.o)
 
-objdir := $(lib_output_dir)/make_obj
+objdir := $(lib_output_dir)/make_obj_eclipse
 
 ###################
 ###	cpp files	###
@@ -35,11 +36,12 @@ VPATH := $(source_dir_all)
 #######################
 ###	compiler flags	###
 #######################
-# -g3 debugger level3
+#include_dirs += -I"/c/Users/Krzysztof/home/myImportantFiles/projects/git/libraries/freeglut/include"
+#include_dirs += -I"/usr/local/include"
 include_dirs += -I"/usr/include/freetype2/"
 
-#CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP 
-CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs) 
+# -g3 debugger level3
+CXXFLAGS := -Wall -g3 -MMD -MP $(include_dirs) 
 
 ###################
 ###	recipies	###
@@ -68,7 +70,6 @@ $(objprog): $(addprefix $(objdir)/, $(objects))
 #######################
 ###	clean receipe	###
 #######################
-
 clean:
 	rm -rf $(lib_output_dir)/*
 	
@@ -117,3 +118,5 @@ debugPrint2:
 	@echo 'SHOW COMPILE.cpp';
 	@echo $(COMPILE.cpp);
 	@echo;
+
+

@@ -77,7 +77,11 @@ void VertexShaderResourceExtraData::compileShader(char *pRawBuffer,
 	ss << "--------------";
 	logger::info(ss);
 
-	glShaderSource(shaderId, 1, &pRawBuffer, NULL);
+    glShaderSource(shaderId, 1, &pRawBuffer, NULL);
+	//GLint shaderSize = (int) rawSize;
+	//const GLint* pShaderSize = const_cast<GLint*>(&shaderSize);
+	//glShaderSource(shaderId, 1, &pRawBuffer, pShaderSize);
+
 	glCompileShader(shaderId);
 
 	// Check Vertex Shader

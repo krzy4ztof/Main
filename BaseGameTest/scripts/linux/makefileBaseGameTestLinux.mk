@@ -36,17 +36,16 @@ VPATH = $(source_dir_all)
 ###	compiler flags	###
 #######################
 # -g3 debugger level3
-CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP
+include_dirs += -I"/usr/include/freetype2/"
+
+# -g3 debugger level3
+CXXFLAGS := -Wall -std=c++0x -g3 -MMD -MP $(include_dirs)
 
 #######################
 ###	linker flags	###
 #######################
-
-LDLIBS := -lBaseGame
+LDLIBS += -lBaseGame
 LDLIBS += -llua
-#LDLIBS += -lglut
-LDLIBS += -lGL
-LDLIBS += -lGLU
 LDLIBS += -lboost_system
 LDLIBS += -lboost_filesystem
 LDLIBS += -lboost_locale
@@ -55,13 +54,17 @@ LDLIBS += -lboost_thread
 LDLIBS += -lboost_log_setup
 LDLIBS += -lboost_iostreams
 LDLIBS += -lboost_unit_test_framework
+
+LDLIBS += -lglfw
+LDLIBS += -ljpeg
+LDLIBS += -lGLEW
+LDLIBS += -lpng16
+LDLIBS += -lfreetype
+
+LDLIBS += -lGL
+
 LDLIBS += -lpthread
 LDLIBS += -ldl
-LDLIBS += -lglfw
-#LDLIBS += -ljpeg
-#LDLIBS += -lglew32
-#LDLIBS += -lpng16
-#LDLIBS += -lfreetype
 
 lib_path := -L$(root_dir)/../BaseGame/settings/make/Debug_Linux_Make
 

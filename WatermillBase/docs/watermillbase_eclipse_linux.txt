@@ -1,0 +1,9 @@
+-----------------------
+---	WatermillBase	---
+-----------------------
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_Linux_Make
+
+Properties -> C/C++ Build -> Tool Chain Editor -> Current toolchain: Linux GCC
+
