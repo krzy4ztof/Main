@@ -11,3 +11,20 @@ Location: C:\Users\Krzysztof\home\myImportantFiles\projects\git\Main\WatermillBa
 Basic settings:
 Source: source
 
+---
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBase/scripts}/runMake.cmd
+	Build directory:	${workspace_loc:/WatermillBase/scripts}
+
+----
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_MinGW64_force
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBase/scripts}/runMake.cmd force 
+	Build directory:	${workspace_loc:/WatermillBase/scripts}

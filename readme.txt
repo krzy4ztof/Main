@@ -242,5 +242,9 @@ git checkout dev
 git merge master
 git stash apply
 
+(dev)
+git fetch --all
+git rebase origin/master
+
 
 

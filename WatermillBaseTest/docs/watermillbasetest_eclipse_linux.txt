@@ -19,17 +19,17 @@ Project -> Properties -> C/C++ Build -> Manage Configurations
 Add Debug_Linux_Make
 
 	Project -> Properties -> C/C++ Build -> Builder Settings
-	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd 
-	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts/linux}/runMake.sh 
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts/linux}
 
 ----
 
 Project -> Properties -> C/C++ Build -> Manage Configurations
-Add Debug_MinGW64_force
+Add Debug_Linux_Make_force
 
 	Project -> Properties -> C/C++ Build -> Builder Settings
-	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd 
-	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts/linux}/runMake.cmd 
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts/linux}
 
 ---
 
