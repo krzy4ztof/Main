@@ -75,6 +75,7 @@ GCC C++ Compiler -> Debugging -> Debug Level
 
 C/C++ General -> Paths and Symbols -> Includes -> GNU C++
 /usr/local/include
+/usr/include/freetype
 
 Project -> Properties -> C/C++ General -> Paths and Symbols -> Library Path
 /usr/local/lib
@@ -196,6 +197,48 @@ krzysztof@krzysztof-VirtualBox:~/home/glfw/glfw-3.2.1$ cmake .
 -- Generating done
 -- Build files have been written to: /home/krzysztof/home/glfw/glfw-3.2.1
 
+***************
+***	GLEW	***
+***************
+download source package
+https://sourceforge.net/projects/glew/
+
+~/home/glew/glew-2.1.0.tgz
+extract
+copy ~/home/glew/glew-2.1.0/include/GL/glew.h, wglew.h
+to
+~/usr/include/GL/glew.h, wglew.h
+
+cp /usr/include/GL 
+sudo cp ~/home/glew/glew-2.1.0/include/GL/glew.h .
+sudo cp ~/home/glew/glew-2.1.0/include/GL/wglew.h .
+
+
+sudo apt-get install libglew2.1
+
+
+Libraries installed to
+/usr/lib/x86_64-linux-gnu/
+
+
+libGLEW.so
+libGLEW.so.2.1
+libGLEW.so.2.1.0
+
+sudo apt-get install libglew-dev
+
+***********
+***	GLM	***
+***********
+
+https://glm.g-truc.net/0.9.9/index.html
+download as 
+~/home/glm/glm-0.9.9.7.zip
+unzip into
+~/home/glm/glm/
+
+cp /usr/include/
+sudo cp -avr ~/home/glm/glm/glm/ ./glm
 
 ***********
 ***	LUA	***
@@ -226,6 +269,9 @@ sudo apt-get install libboost-all-dev
 
 installs
 /usr/include/boost
+
+sudo apt-get install libjpeg-dev
+
 
 ***********************
 ***	Freeglut Failed	***
@@ -457,3 +503,29 @@ Watermill/settings/eclipse/Watermill/.cproject
 
 -						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/Debug_MinGW64"/>
 +						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BaseGame/scripts/linux"/>
+
+***************
+***	Bash	***
+***************
+
+cd ~/home/projects/Main/WaterMill/scripts/linux
+sed -i -e 's/\r$//' runMake.sh 
+sed -i -e 's/\r$//' runWatermill.sh 
+
+
+cd ~/home/projects/Main/BaseGame/scripts/linux
+sed -i -e 's/\r$//' runMake.sh 
+
+cd ~/home/projects/Main/BaseGameTest/scripts/linux
+sed -i -e 's/\r$//' runMake.sh 
+
+cd ~/home/projects/Main/WaterMillBase/scripts/linux
+sed -i -e 's/\r$//' runMake.sh 
+
+cd ~/home/projects/Main/WaterMillBaseTest/scripts/linux
+sed -i -e 's/\r$//' runMake.sh 
+
+cd ~/home/projects/Main/WaterMill/assets/shaders
+sed -i -e 's/\r$//' *
+
+

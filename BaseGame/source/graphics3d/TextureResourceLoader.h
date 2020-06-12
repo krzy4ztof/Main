@@ -20,7 +20,7 @@
 #include <boost/cstdint.hpp> // boost::uintmax_t
 #include <string> // string
 #include <memory> // shared_ptr
-#include <boost/gil/extension/io/Jpeg.hpp> // boost::gil::rgb8_image_t
+#include <boost/gil/extension/io/jpeg.hpp> // boost::gil::rgb8_image_t
 #include <boost/gil/extension/io/png.hpp> // boost::gil::rgb8_image_t
 
 

@@ -1,88 +1,146 @@
-[00001|2020-06-10 20:36:12|   info] : Start WatermillMainFixture
-[00002|2020-06-10 20:36:12|   info] : End WatermillMainFixture
-[00003|2020-06-10 20:36:12|   info] : Create TempT00FpolishFontsViewFixture
-[00004|2020-06-10 20:36:12|   info] : Create MainMenuViewDevFolderFixture
-[00005|2020-06-10 20:36:12|   info] : setup MainMenuViewDevFolderFixture
-[00006|2020-06-10 20:36:12|   info] : setup MainMenuViewFixture
-[00007|2020-06-10 20:36:12|  trace] : Create InitOptions
-[00008|2020-06-10 20:36:12|  trace] : "MAIN" : ""
-[00009|2020-06-10 20:36:12|  trace] :   "Root" : "../WaterMill/"
-[00010|2020-06-10 20:36:12|  trace] :   "Assets" : "../WaterMill/assets/"
-[00011|2020-06-10 20:36:12|  trace] :   "Game" : "../WaterMill/game/"
-[00012|2020-06-10 20:36:12|   info] : Create IResourceFile(rootFolder)
-[00013|2020-06-10 20:36:12|   info] : Create DevelopmentResourceFolder(rootFolder, assetsFolder)
-[00014|2020-06-10 20:36:12|   info] : Create ResourceCache
-[00015|2020-06-10 20:36:12|   info] : assetsPath: ../WaterMill/assets/
-[00016|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00017|2020-06-10 20:36:12|  trace] : Create DefaultResourceLoader
-[00018|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00019|2020-06-10 20:36:12|   info] : Create ShaderResourceLoader
-[00020|2020-06-10 20:36:12|   info] : Create VertexShaderResourceLoader
-[00021|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00022|2020-06-10 20:36:12|   info] : Create ShaderResourceLoader
-[00023|2020-06-10 20:36:12|   info] : Create FragmentShaderResourceLoader
-[00024|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00025|2020-06-10 20:36:12|   info] : Create JpegResourceLoader
-[00026|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00027|2020-06-10 20:36:12|   info] : Create PngResourceLoader
-[00028|2020-06-10 20:36:12|  trace] : Create IResourceLoader
-[00029|2020-06-10 20:36:12|   info] : Create FreeTypeResourceLoader
-[00030|2020-06-10 20:36:12|  trace] : Create GameCodeApp
-[00031|2020-06-10 20:36:12|  trace] : Create WatermillGame
-[00032|2020-06-10 20:36:12|   info] : Create VideoSystemGLFW
-[00033|2020-06-10 20:36:12|   info] : Create FpsCounter
-[00034|2020-06-10 20:36:12|   info] : Create OpenGLRenderer
-[00035|2020-06-10 20:36:12|  trace] : Create BaseGameLogic
-[00036|2020-06-10 20:36:12|  trace] : Create ProcessManager
-[00037|2020-06-10 20:36:12|  trace] : Create WatermillLogic
-[00038|2020-06-10 20:36:12|   info] : resourceCacheUseCount: 1
-[00039|2020-06-10 20:36:12|   info] : END SETUP
-[00040|2020-06-10 20:36:21|   info] : Create HumanView
-[00041|2020-06-10 20:36:21|   info] : Create FpsCounter
-[00042|2020-06-10 20:36:21|  trace] : Create ProcessManager
-[00043|2020-06-10 20:36:21|   info] : Create MainMenuView
-[00044|2020-06-10 20:36:21|   info] : Create IScreenElement
-[00045|2020-06-10 20:36:21|   info] : Create BaseUI
-[00046|2020-06-10 20:36:21|   info] : Create MainMenuUI
-[00047|2020-06-10 20:36:21|   info] : Create IKeyboardHandler
-[00048|2020-06-10 20:36:21|   info] : Create MainMenuController
-[00049|2020-06-10 20:36:21|   info] : vOnRestore HumanView
-[00050|2020-06-10 20:36:21|   info] : Create HumanView
-[00051|2020-06-10 20:36:21|   info] : Create FpsCounter
-[00052|2020-06-10 20:36:21|  trace] : Create ProcessManager
-[00053|2020-06-10 20:36:21|   info] : Create MainMenuView
-[00054|2020-06-10 20:36:21|   info] : Create IScreenElement
-[00055|2020-06-10 20:36:21|   info] : Create BaseUI
-[00056|2020-06-10 20:36:21|   info] : Create MainMenuUI
-[00057|2020-06-10 20:36:21|   info] : Create IKeyboardHandler
-[00058|2020-06-10 20:36:21|   info] : Create MainMenuController
-[00059|2020-06-10 20:36:21|   info] : vOnRestore HumanView
-[00060|2020-06-10 20:36:23|   info] : MainMenuController::onKeyCallback: key: 50; scancode: 3; action: 1; mods: 0
-[00061|2020-06-10 20:36:23|   info] : Create HumanView
-[00062|2020-06-10 20:36:23|   info] : Create FpsCounter
-[00063|2020-06-10 20:36:23|  trace] : Create ProcessManager
-[00064|2020-06-10 20:36:23|   info] : Create TempT009jpegGilTextureView
-[00065|2020-06-10 20:36:23|   info] : Create IScreenElement
-[00066|2020-06-10 20:36:23|   info] : Create BaseUI
-[00067|2020-06-10 20:36:23|   info] : Create TempT009jpegGilTextureUI
-[00068|2020-06-10 20:36:23|   info] : Create SpriteSheet
-[00069|2020-06-10 20:36:23|   info] : Create SpriteSheet
-[00070|2020-06-10 20:36:23|   info] : Create TextureLoader
-[00071|2020-06-10 20:36:23|   info] : Create JpegTextureLoader
-[00072|2020-06-10 20:36:23|   info] : Create TextureRenderer
-[00073|2020-06-10 20:36:23|   info] : Create JpegRenderer
-[00074|2020-06-10 20:36:23|   info] : Create ShaderCompiler
-[00075|2020-06-10 20:36:23|   info] : resourceCacheUseCount: 0
-[00076|2020-06-10 20:36:24|   info] : resourceCacheUseCount: 0
-[00077|2020-06-10 20:36:24|   info] : Create IKeyboardHandler
-[00078|2020-06-10 20:36:24|   info] : Create IPointerHandler
-[00079|2020-06-10 20:36:24|   info] : Create MovementController
-[00080|2020-06-10 20:36:24|   info] : vOnRestore HumanView
-[00081|2020-06-10 20:36:24|   info] : imgResourceName: graphics\temp_t009_jpeg_gil_texture_view.jpg
-[00082|2020-06-10 20:36:24|   info] : Create Resource
-[00083|2020-06-10 20:36:24|   info] : Orig name: graphics\temp_t009_jpeg_gil_texture_view.jpg
-[00084|2020-06-10 20:36:24|   info] : Tolower name: graphics\temp_t009_jpeg_gil_texture_view.jpg
-[00085|2020-06-10 20:36:24|   info] : ResourceCache::getHandle
-[00086|2020-06-10 20:36:24|   info] : ResourceCache::find
-[00087|2020-06-10 20:36:24|   info] : Name: graphics\temp_t009_jpeg_gil_texture_view.jpg
-[00088|2020-06-10 20:36:24|   info] : debugPrint -> m_resourceHandles
+[00001|2020-06-12 13:44:58|   info] : Start WatermillMainFixture
+[00002|2020-06-12 13:44:58|   info] : End WatermillMainFixture
+[00003|2020-06-12 13:44:58|   info] : Create TempT00FpolishFontsViewFixture
+[00004|2020-06-12 13:44:58|   info] : Create MainMenuViewDevFolderFixture
+[00005|2020-06-12 13:44:58|   info] : setup MainMenuViewDevFolderFixture
+[00006|2020-06-12 13:44:58|   info] : setup MainMenuViewFixture
+[00007|2020-06-12 13:44:58|  trace] : Create InitOptions
+[00008|2020-06-12 13:44:58|  trace] : "MAIN" : ""
+[00009|2020-06-12 13:44:58|  trace] :   "Root" : "../WaterMill/"
+[00010|2020-06-12 13:44:58|  trace] :   "Assets" : "../WaterMill/assets/"
+[00011|2020-06-12 13:44:58|  trace] :   "Game" : "../WaterMill/game/"
+[00012|2020-06-12 13:44:58|   info] : Create IResourceFile(rootFolder)
+[00013|2020-06-12 13:44:58|   info] : Create DevelopmentResourceFolder(rootFolder, assetsFolder)
+[00014|2020-06-12 13:44:58|   info] : Create ResourceCache
+[00015|2020-06-12 13:44:58|   info] : assetsPath: ../WaterMill/assets/
+[00016|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00017|2020-06-12 13:44:58|  trace] : Create DefaultResourceLoader
+[00018|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00019|2020-06-12 13:44:58|   info] : Create ShaderResourceLoader
+[00020|2020-06-12 13:44:58|   info] : Create VertexShaderResourceLoader
+[00021|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00022|2020-06-12 13:44:58|   info] : Create ShaderResourceLoader
+[00023|2020-06-12 13:44:58|   info] : Create FragmentShaderResourceLoader
+[00024|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00025|2020-06-12 13:44:58|   info] : Create JpegResourceLoader
+[00026|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00027|2020-06-12 13:44:58|   info] : Create PngResourceLoader
+[00028|2020-06-12 13:44:58|  trace] : Create IResourceLoader
+[00029|2020-06-12 13:44:58|   info] : Create FreeTypeResourceLoader
+[00030|2020-06-12 13:44:58|  trace] : Create GameCodeApp
+[00031|2020-06-12 13:44:58|  trace] : Create WatermillGame
+[00032|2020-06-12 13:44:58|   info] : Create VideoSystemGLFW
+[00033|2020-06-12 13:44:58|   info] : Create FpsCounter
+[00034|2020-06-12 13:44:58|   info] : Create OpenGLRenderer
+[00035|2020-06-12 13:44:58|  trace] : Create BaseGameLogic
+[00036|2020-06-12 13:44:58|  trace] : Create ProcessManager
+[00037|2020-06-12 13:44:58|  trace] : Create WatermillLogic
+[00038|2020-06-12 13:44:58|   info] : resourceCacheUseCount: 1
+[00039|2020-06-12 13:44:58|   info] : END SETUP
+[00040|2020-06-12 13:44:59|   info] : Create HumanView
+[00041|2020-06-12 13:44:59|   info] : Create FpsCounter
+[00042|2020-06-12 13:44:59|  trace] : Create ProcessManager
+[00043|2020-06-12 13:44:59|   info] : Create MainMenuView
+[00044|2020-06-12 13:44:59|   info] : Create IScreenElement
+[00045|2020-06-12 13:44:59|   info] : Create BaseUI
+[00046|2020-06-12 13:44:59|   info] : Create MainMenuUI
+[00047|2020-06-12 13:44:59|   info] : Create IKeyboardHandler
+[00048|2020-06-12 13:44:59|   info] : Create MainMenuController
+[00049|2020-06-12 13:44:59|   info] : vOnRestore HumanView
+[00050|2020-06-12 13:44:59|   info] : Create HumanView
+[00051|2020-06-12 13:44:59|   info] : Create FpsCounter
+[00052|2020-06-12 13:44:59|  trace] : Create ProcessManager
+[00053|2020-06-12 13:44:59|   info] : Create MainMenuView
+[00054|2020-06-12 13:44:59|   info] : Create IScreenElement
+[00055|2020-06-12 13:44:59|   info] : Create BaseUI
+[00056|2020-06-12 13:44:59|   info] : Create MainMenuUI
+[00057|2020-06-12 13:44:59|   info] : Create IKeyboardHandler
+[00058|2020-06-12 13:44:59|   info] : Create MainMenuController
+[00059|2020-06-12 13:44:59|   info] : vOnRestore HumanView
+[00060|2020-06-12 13:45:01|   info] : teardown MainMenuViewDevFolderFixture
+[00061|2020-06-12 13:45:01|   info] : teardown MainMenuViewFixture
+[00062|2020-06-12 13:45:01|   info] : resourceCacheUseCount: 2
+[00063|2020-06-12 13:45:01|   info] : resourceCacheUseCount: 2
+[00064|2020-06-12 13:45:01|   info] : Destroy MainMenuView
+[00065|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00066|2020-06-12 13:45:01|  trace] : Destroy ProcessManager
+[00067|2020-06-12 13:45:01|  trace] : SAFE_DELETE successfull
+[00068|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN9base_game10FpsCounterE
+[00069|2020-06-12 13:45:01|   info] : Destroy FpsCounter
+[00070|2020-06-12 13:45:01|  trace] : SAFE_DELETE successfull
+[00071|2020-06-12 13:45:01|   info] : Destroy HumanView
+[00072|2020-06-12 13:45:01|   info] : Destroy MainMenuController
+[00073|2020-06-12 13:45:01|   info] : Destroy IKeyboardHandler
+[00074|2020-06-12 13:45:01|   info] : Destroy MainMenuUI
+[00075|2020-06-12 13:45:01|   info] : Destroy BaseUI
+[00076|2020-06-12 13:45:01|   info] : Destroy IScreenElement
+[00077|2020-06-12 13:45:01|   info] : Destroy IGameView
+[00078|2020-06-12 13:45:01|   info] : resourceCacheUseCount: 2
+[00079|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN14watermill_base13WatermillGameE
+[00080|2020-06-12 13:45:01|  trace] : Destroy WatermillGame
+[00081|2020-06-12 13:45:01|  trace] : Start Destroy GameCodeApp
+[00082|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN9base_game13BaseGameLogicE
+[00083|2020-06-12 13:45:01|  trace] : Destroy WatermillLogic
+[00084|2020-06-12 13:45:01|   info] : Destroy MainMenuView
+[00085|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00086|2020-06-12 13:45:01|  trace] : Destroy ProcessManager
+[00087|2020-06-12 13:45:01|  trace] : SAFE_DELETE successfull
+[00088|2020-06-12 13:45:01|  trace] : SAFE_DELETE delete: PN9base_game10FpsCounterE
+[00089|2020-06-12 13:45:02|   info] : Destroy FpsCounter
+[00090|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00091|2020-06-12 13:45:02|   info] : Destroy HumanView
+[00092|2020-06-12 13:45:02|   info] : Destroy MainMenuController
+[00093|2020-06-12 13:45:02|   info] : Destroy IKeyboardHandler
+[00094|2020-06-12 13:45:02|   info] : Destroy MainMenuUI
+[00095|2020-06-12 13:45:02|   info] : Destroy BaseUI
+[00096|2020-06-12 13:45:02|   info] : Destroy IScreenElement
+[00097|2020-06-12 13:45:02|   info] : Destroy IGameView
+[00098|2020-06-12 13:45:02|  trace] : SAFE_DELETE delete: PN9base_game14ProcessManagerE
+[00099|2020-06-12 13:45:02|  trace] : Destroy ProcessManager
+[00100|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00101|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00102|2020-06-12 13:45:02|  trace] : Destroy BaseGameLogic
+[00103|2020-06-12 13:45:02|   info] : Destroy OpenGLRenderer
+[00104|2020-06-12 13:45:02|   info] : Destroy VideoSystemGLFW
+[00105|2020-06-12 13:45:02|  trace] : SAFE_DELETE delete: PN9base_game10FpsCounterE
+[00106|2020-06-12 13:45:02|   info] : Destroy FpsCounter
+[00107|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00108|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00109|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00110|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00111|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00112|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00113|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00114|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00115|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00116|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00117|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00118|2020-06-12 13:45:02|  trace] : SAFE_DELETE pointer null
+[00119|2020-06-12 13:45:02|  trace] : End Destroy GameCodeApp
+[00120|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00121|2020-06-12 13:45:02|   info] : resourceCacheUseCount: 1
+[00122|2020-06-12 13:45:02|   info] : Destroy ResourceCache
+[00123|2020-06-12 13:45:02|   info] : Destroy FreeTypeResourceLoader
+[00124|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00125|2020-06-12 13:45:02|   info] : Destroy PngResourceLoader
+[00126|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00127|2020-06-12 13:45:02|   info] : Destroy JpegResourceLoader
+[00128|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00129|2020-06-12 13:45:02|   info] : Destroy FragmentShaderResourceLoader
+[00130|2020-06-12 13:45:02|   info] : Destroy ShaderResourceLoader
+[00131|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00132|2020-06-12 13:45:02|   info] : Destroy VertexShaderResourceLoader
+[00133|2020-06-12 13:45:02|   info] : Destroy ShaderResourceLoader
+[00134|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00135|2020-06-12 13:45:02|  trace] : Destroy DefaultResourceLoader
+[00136|2020-06-12 13:45:02|  trace] : Destroy IResourceLoader
+[00137|2020-06-12 13:45:02|   info] : Destroy DevelopmentResourceZipFile
+[00138|2020-06-12 13:45:02|   info] : Destroy IResourceFile
+[00139|2020-06-12 13:45:02|  trace] : SAFE_DELETE delete: PN9base_game11InitOptionsE
+[00140|2020-06-12 13:45:02|  trace] : Destroy InitOptions
+[00141|2020-06-12 13:45:02|  trace] : SAFE_DELETE successfull
+[00142|2020-06-12 13:45:02|   info] : resourceCacheUseCount: 0
+[00143|2020-06-12 13:45:02|   info] : END TearDown
+[00144|2020-06-12 13:45:02|   info] : Destroy MainMenuViewDevFolderFixture
+[00145|2020-06-12 13:45:02|   info] : Destroy MainMenuViewFixture
+[00146|2020-06-12 13:45:02|   info] : Destroy WatermillMainFixture

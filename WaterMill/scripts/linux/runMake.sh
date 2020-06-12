@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ../../../BaseGame/scripts/linux
+cd ../../../WatermillBase/scripts/linux
 ./runMake.sh $@
 
 cd ../../../WaterMill/scripts/linux

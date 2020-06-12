@@ -1,0 +1,4 @@
+
+
+C/C++ General -> Paths and Symbols -> Includes -> GNU C++
+/usr/include/freetype2
