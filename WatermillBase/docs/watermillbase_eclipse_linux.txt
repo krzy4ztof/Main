@@ -7,3 +7,21 @@ Add Debug_Linux_Make
 
 Properties -> C/C++ Build -> Tool Chain Editor -> Current toolchain: Linux GCC
 
+---
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_Linux_Make
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBase/scripts/linux}/runMake.sh 
+	Build directory:	${workspace_loc:/WatermillBase/scripts/linux}
+
+----
+
+Project -> Properties -> C/C++ Build -> Manage Configurations
+Add Debug_Linux_Make_force
+
+	Project -> Properties -> C/C++ Build -> Builder Settings
+	Build command:	${workspace_loc:/WatermillBase/scripts/linux}/runMake.cmd 
+	Build directory:	${workspace_loc:/WatermillBase/scripts/linux}
+
+---
