@@ -16,20 +16,20 @@ Source: source
 ---------------
 
 Project -> Properties -> C/C++ Build -> Manage Configurations
-Add Debug_Linux_Make
+Add Debug_MinGW64
 
 	Project -> Properties -> C/C++ Build -> Builder Settings
-	Build command:	${workspace_loc:/WatermillBaseTest/scripts/linux}/runMake.sh 
-	Build directory:	${workspace_loc:/WatermillBaseTest/scripts/linux}
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
 
 ----
 
 Project -> Properties -> C/C++ Build -> Manage Configurations
-Add Debug_Linux_Make_force
+Add Debug_MinGW64_force
 
 	Project -> Properties -> C/C++ Build -> Builder Settings
-	Build command:	${workspace_loc:/WatermillBaseTest/scripts/linux}/runMake.sh force 
-	Build directory:	${workspace_loc:/WatermillBaseTest/scripts/linux}
+	Build command:	${workspace_loc:/WatermillBaseTest/scripts}/runMake.cmd force 
+	Build directory:	${workspace_loc:/WatermillBaseTest/scripts}
 
 ---
 
