@@ -17,11 +17,15 @@
 // #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h>
 
+#include <memory> // shared_ptr
+
 using std::stringstream;
+using std::shared_ptr;
+using std::make_shared;
 
 namespace base_game {
 
-const int VideoSystemGLFW::WINDOW_WIDTH = 640;
+const int VideoSystemGLFW::WINDOW_WIDTH = 1024; //640;
 const int VideoSystemGLFW::WINDOW_HEIGHT = 640; //480;
 
 VideoSystemGLFW::VideoSystemGLFW() {
@@ -33,9 +37,23 @@ VideoSystemGLFW::VideoSystemGLFW() {
 
 VideoSystemGLFW::~VideoSystemGLFW() {
 	logger::info("Destroy VideoSystemGLFW");
+	//glfwSetCursor(window, NULL);
+	//glfwDestroyCursor(cursor);
 	templates::safe_delete<FpsCounter>(temp_fpsCounter);
 	glfwDestroyWindow(window);
 	glfwTerminate();
+}
+
+/*
+shared_ptr<GLFWwindow> VideoSystemGLFW::getWindow() {
+	shared_ptr<GLFWwindow> ptr(window);
+	return ptr;
+	//return shared_ptr<GLFWwindow>(window);
+}
+ */
+
+GLFWwindow* VideoSystemGLFW::getWindow() {
+	return window;
 }
 
 void VideoSystemGLFW::onIdle() {
@@ -160,6 +178,9 @@ int VideoSystemGLFW::initialize() {
 	glfwSetCursorEnterCallback(window, pointer_handler::onCursorEnterCallback);
 	glfwSetMouseButtonCallback(window, pointer_handler::onMouseButtonCallback);
 	glfwSetScrollCallback(window, pointer_handler::onScrollCallback);
+
+//	cursor = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
+//	glfwSetCursor(window, cursor);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);

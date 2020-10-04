@@ -82,7 +82,7 @@ GameCodeApp::GameCodeApp() {
 	// resourceCache = nullptr;
 	shrdPtrResourceCache = nullptr;
 
-	gameMessages = nullptr;
+	//gameMessages = nullptr;
 	luaStateManager = nullptr;
 	eventManager = nullptr;
 	dataFiles = nullptr;
@@ -343,7 +343,7 @@ bool GameCodeApp::initInstance() {
 
 
 	try {
-		gameMessages = new GameMessages(shrdPtrResourceCache,
+		gameMessages = make_shared<GameMessages>(shrdPtrResourceCache,
 				playerOptions->getOption(playerOptions->LANGUAGE),
 				playerOptions->getOption(playerOptions->LANGUAGES));
 
@@ -375,7 +375,8 @@ bool GameCodeApp::initInstance() {
 
 		videoSystemGLFW = make_shared<VideoSystemGLFW>();
 		// videoSystemGLFW = new VideoSystemGLFW;
-		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW);
+		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW,
+				shrdPtrResourceCache);
 
 		// initialize the directory location you can store save game files
 		//_tcscpy_s(m_saveGameDirectory, GetSaveGameDirectory(GetHwnd(), VGetGameAppDirectory()));
@@ -400,7 +401,10 @@ bool GameCodeApp::initInstance() {
 
 		}
 
-		m_pGame = createGameAndView(shrdPtrResourceCache, openGLRenderer);
+		openGLRenderer->initRenderers();
+
+		m_pGame = createGameAndView(shrdPtrResourceCache, openGLRenderer,
+				gameMessages);
 
 		//shrdPtrResourceCache->preLoad("*.jpg",
 		//		resource_cache::showPreLoadProgress);
@@ -514,7 +518,9 @@ void GameCodeApp::onClose() {
 	templates::safe_delete<DataFiles>(dataFiles);
 	templates::safe_delete<EventManager>(eventManager);
 	templates::safe_delete<LuaStateManager>(luaStateManager);
-	templates::safe_delete<GameMessages>(gameMessages);
+	//templates::safe_delete<GameMessages>(gameMessages);
+	gameMessages.reset();
+
 
 	//templates::safe_delete<ResourceCache>(resourceCache);
 	shrdPtrResourceCache.reset();

@@ -17,7 +17,7 @@
 #include "../graphics3d/TextureResourceLoader.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../graphics3d/ShaderResourceLoader.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -27,7 +27,7 @@
 
 namespace base_game {
 
-class TempCombinedUI: public BaseUI {
+class TempCombinedUI: public TempUI {
 public:
 	TempCombinedUI(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempCombinedUI();

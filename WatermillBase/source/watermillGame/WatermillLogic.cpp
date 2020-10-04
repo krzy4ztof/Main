@@ -20,6 +20,7 @@
 #include "../../../BaseGame/source/userInterface/TempT00FpolishFontsView.h"
 #include "../../../BaseGame/source/userInterface/TempT00DpngGilScanlineView.h"
 #include "../../../BaseGame/source/userInterface/TempCombinedView.h"
+#include "../../../BaseGame/source/gameInitialization/GameMessages.h"
 
 //#include <gameLogic/BaseGameState.h>
 //#include <gameLogic/BaseGameLogic.h>
@@ -49,8 +50,13 @@ using base_game::BaseGameState::tempActivateFontsView;
 using base_game::BaseGameState::tempActivatePngView;
 using base_game::BaseGameState::tempActivateCombinedView;
 
+using base_game::BaseGameState::showQuitMsgBox;
+using base_game::BaseGameState::confirmQuitMsgBox;
+using base_game::BaseGameState::cancelQuitMsgBox;
+
 using base_game::IGameView;
 using base_game::OpenGLRenderer;
+using base_game::GameMessages;
 
 using base_game::TempT004figuresView;
 using base_game::TempT009jpegGilTextureView;
@@ -63,13 +69,16 @@ using base_game::TempCombinedView;
 namespace logger = base_game::logger;
 
 namespace watermill_base {
-WatermillLogic::WatermillLogic(shared_ptr<OpenGLRenderer> openGLRenderer) :
+WatermillLogic::WatermillLogic(shared_ptr<OpenGLRenderer> openGLRenderer,
+		shared_ptr<GameMessages> gameMessages) :
 		BaseGameLogic(openGLRenderer) {
 	logger::trace("Create WatermillLogic");
+	this->gameMessages = gameMessages;
 }
 
 WatermillLogic::~WatermillLogic() {
 	logger::trace("Destroy WatermillLogic");
+	gameMessages.reset();
 }
 
 void WatermillLogic::vChangeState(BaseGameState newState) {
@@ -109,7 +118,7 @@ void WatermillLogic::vChangeState(BaseGameState newState) {
 		removeAllViews(); //- breaks the game
 
 		IGameView *mainMenuView = new MainMenuView(shrdPtrResourceCache,
-				openGLRenderer);
+				openGLRenderer, gameMessages);
 		mainMenuView->tempVLoadGameDelegate();
 
 		shared_ptr<IGameView> pView = shared_ptr<IGameView>(mainMenuView);
@@ -177,6 +186,19 @@ void WatermillLogic::vChangeState(BaseGameState newState) {
 	case running: {
 		break;
 	}
+
+	case showQuitMsgBox: {
+		break;
+	}
+
+	case confirmQuitMsgBox: {
+		break;
+	}
+
+	case cancelQuitMsgBox: {
+		break;
+	}
+
 	}
 }
 

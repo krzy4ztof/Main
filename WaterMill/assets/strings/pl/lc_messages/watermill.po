@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: hello
@@ -22,3 +22,26 @@ msgstr "Cześć Świecie only pl!!!"
 msgid "pl_chars_pl"
 msgstr "A Ą ą C Ć ć E Ę ę L Ł ł N Ń ń O Ó ó S Ś ś X Ź ź Z Ż ż"
 
+msgid "pl_chars_a"
+msgstr ".A.Ą.ą."
+
+msgid "main_menu_start"
+msgstr "Start"
+
+msgid "main_menu_quit"
+msgstr "Zakończ"
+
+msgid "main_menu_instructions"
+msgstr "Instrukcje"
+
+msgid "main_menu_watermill"
+msgstr "Młyn"
+
+msgid "quit_msgbox_are_you_sure_to_quit"
+msgstr "Czy napewno zakończyć?"
+
+msgid "quit_msgbox_yes"
+msgstr "Tak"
+
+msgid "quit_msgbox_no"
+msgstr "Nie"

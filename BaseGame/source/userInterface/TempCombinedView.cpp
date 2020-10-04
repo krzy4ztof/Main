@@ -18,7 +18,7 @@
 #include "../graphics3d/OpenGLRenderer.h"
 
 #include "../gameInitialization/VideoSystemGLFW.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin
@@ -89,7 +89,7 @@ void TempCombinedUI::vTerminate() {
 		 *
 		 */
 		shaderCompiler->removeShaders("texture_renderer");
-		shaderCompiler->removeShaders("temp_t00f_polish_fonts_view");
+		shaderCompiler->removeShaders("fonts_renderer");
 		shaderCompiler->removeShaders("figures_renderer");
 	} else {
 		logger::info("shader compiler destroyed");
@@ -140,7 +140,7 @@ void TempCombinedUI::temp_init_part() {
 	freeTypeLoader.debugCharacters();
 
 	GLuint freeTypeProgramID = shaderCompiler->loadShaders(
-			"temp_t00f_polish_fonts_view");
+			"fonts_renderer");
 
 	freeTypeRenderer->init(freeTypeProgramID, characters);
 	freeTypeRenderer->debugCharacters();
@@ -348,7 +348,7 @@ void TempCombinedView::vInit() {
 	freeTypeLoader.debugCharacters();
 
 	GLuint freeTypeProgramID = shaderCompiler.loadShaders(
-			"temp_t00f_polish_fonts_view");
+	 "fonts_renderer");
 	
 	freeTypeRenderer->init(freeTypeProgramID, characters);
 	freeTypeRenderer->debugCharacters();

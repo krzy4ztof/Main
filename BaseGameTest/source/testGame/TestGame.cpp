@@ -14,6 +14,7 @@
 #include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
+#include "../../../BaseGame/source/gameInitialization/GameMessages.h"
 
 #include <memory> // shared_ptr, weak_ptr
 
@@ -24,6 +25,7 @@ using base_game::BaseGameLogic;
 using base_game::ResourceCache;
 using base_game::InitOptions;
 using base_game::OpenGLRenderer;
+using base_game::GameMessages;
 
 namespace base_game_test {
 
@@ -40,7 +42,8 @@ TestGame::~TestGame() {
 
 BaseGameLogic* TestGame::createGameAndView(
 		shared_ptr<ResourceCache> resourceCache,
-		shared_ptr<OpenGLRenderer> openGLRenderer) {
+		shared_ptr<OpenGLRenderer> openGLRenderer,
+		shared_ptr<GameMessages> gameMessages) {
 	logger::trace("TestGame::createGameAndView");
 	m_pGame = new TestGameLogic(openGLRenderer);
 	m_pGame->init(resourceCache);

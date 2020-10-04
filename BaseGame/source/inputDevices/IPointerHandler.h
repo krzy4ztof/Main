@@ -39,10 +39,12 @@ public:
 };
 
 namespace pointer_handler {
+/*
 void onMouseFunc(int button, int state, int x, int y);
 void onMotionFunc(int x, int y);
 void onPassiveMotionFunc(int x, int y);
 void onMouseWheelFunc(int wheel, int direction, int x, int y);
+ */
 
 void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 void onCursorEnterCallback(GLFWwindow* window, int entered);

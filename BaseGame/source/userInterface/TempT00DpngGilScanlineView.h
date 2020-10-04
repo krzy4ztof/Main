@@ -14,7 +14,7 @@
 #include "../graphics3d/TextureRenderer.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../graphics3d/ShaderResourceLoader.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -22,7 +22,7 @@
 #include <boost/gil/extension/io/png.hpp> // boost::gil::rgb8_image_t
 
 namespace base_game {
-class TempT00DpngGilScanlineUI: public BaseUI {
+class TempT00DpngGilScanlineUI: public TempUI {
 public:
 	TempT00DpngGilScanlineUI(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT00DpngGilScanlineUI();

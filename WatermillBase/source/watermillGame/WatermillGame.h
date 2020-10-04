@@ -32,10 +32,14 @@ public:
 	virtual ~WatermillGame();
 	virtual std::string vGetGameAppDirectory();
 
+	void setResourceCache(
+			std::shared_ptr<base_game::ResourceCache> resourceCache);
+
 protected:
 	virtual base_game::BaseGameLogic* createGameAndView(
 			std::shared_ptr<base_game::ResourceCache> resourceCache,
-			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
+			std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer,
+			std::shared_ptr<base_game::GameMessages> gameMessages);
 private:
 };
 }

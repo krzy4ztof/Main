@@ -31,14 +31,14 @@ public:
 	 void tempAdd03View();
 	 void tempAdd04View();
 	 */
-	void tempAddView_del(int number);
+	//void tempAddView_del(int number);
 	//void tempAddView(IGameView* pView);
-	void tempAddView_del(std::shared_ptr<IGameView> pView);
+	//void tempAddView_del(std::shared_ptr<IGameView> pView);
 
 
-	void tempSwitchView_del(int key);
+	//void tempSwitchView_del(int key);
 	//IGameView* tempSelectView(int key, bool reset);
-	std::shared_ptr<IGameView> tempSelectView_del(int key, bool reset);
+	//std::shared_ptr<IGameView> tempSelectView_del(int key, bool reset);
 
 //	void tempOnIdle(double fTime, float fElapsedTime);
 

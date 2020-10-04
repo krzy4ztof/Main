@@ -39,6 +39,8 @@ pacman -Su mingw-w64-x86_64-libpng            - wymagane przez boost/gil
 pacman -Su mingw-w64-x86_64-glew
 pacman -Su mingw-w64-x86_64-glm
 pacman -Su mingw-w64-x86_64-freetype   - czcionki
+pacman -S mingw-w64-x86_64-cmake
+pacman -S mingw-w64-x86_64-cmake-doc-qt
 
 Show installed packages:	
 pacman -Q	
@@ -952,9 +954,18 @@ MSyS2 MinGw 64-bit
 . ./cdWatermill.sh
 ./runMake.sh
 
+***************
+***	CMake	***
+***************
 
+C:\msys64\var\lib\pacman\local\mingw-w64-x86_64-cmake-3.17.3-1
+C:\msys64\mingw64\share\cmake-3.17
+C:\msys64\mingw64\share\doc\cmake
 
+C:\msys64\var\lib\pacman\local\mingw-w64-x86_64-cmake-doc-qt-3.17.3-1
+C:\msys64\mingw64\share\qt5\doc
 
+C:\Users\Krzysztof\home\myImportantFiles\projects\git\libraries\cmake-3.17.4\Help\guide\tutorial\Step1
 
 
 

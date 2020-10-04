@@ -14,7 +14,7 @@
 #include "../graphics3d/TextureRenderer.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../graphics3d/ShaderResourceLoader.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -25,7 +25,7 @@
 
 namespace base_game {
 // see Temp03gilView.h
-class TempT009jpegGilTextureUI: public BaseUI {
+class TempT009jpegGilTextureUI: public TempUI {
 public:
 	TempT009jpegGilTextureUI(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT009jpegGilTextureUI();

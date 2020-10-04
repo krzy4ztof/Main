@@ -89,7 +89,6 @@ public:
 	virtual ~FreeTypeLoader();
 
 	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> initFreetype();
-	void initFreetype_222();
 	void debugCharacters();
 
 protected:

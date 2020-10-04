@@ -32,6 +32,9 @@ public:
 	void initMessages(MessageParams* messageParams);
 	void switchCurrentLanguage(std::string code);
 	void describeYourself();
+
+	std::string getText(std::string text);
+
 	void temp_testMessagesGetText();
 
 protected:

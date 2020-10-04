@@ -11,6 +11,7 @@
 #include "../gameInitialization/GameCodeApp.h"//g_pApp
 #include "../gameLogic/BaseGameLogic.h"
 #include "../userInterface/IGameView.h"
+#include "../gameInitialization/VideoSystemGLFW.h"
 
 #include <sstream>      // std::stringstream
 #include <list> // list
@@ -133,7 +134,13 @@ namespace pointer_handler {
 
 void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
 	stringstream ss;
-	ss << "onCursorPositionCallback: xpos: " << xpos << "; ypos: " << ypos;
+	// ypos = <0,639>
+	// VideoSystemGLFW::WINDOW_HEIGHT = 640
+	double yposOrtho = VideoSystemGLFW::WINDOW_HEIGHT - ypos - 1;
+
+
+	ss << "onCursorPositionCallback: xpos: " << xpos << "; ypos: " << ypos
+			<< "; yposOrtho: " << yposOrtho;
 	//logger::info(ss);
 
 	if (g_pApp != nullptr) {
@@ -144,7 +151,7 @@ void onCursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
 		for (viewsIterator = gameViews.rbegin();
 				viewsIterator != gameViews.rend(); ++viewsIterator) {
 			bool funcResult = (*viewsIterator)->vOnCursorPositionCallback(
-					window, xpos, ypos);
+					window, xpos, yposOrtho);
 
 			if (funcResult) {
 				break; // WARNING! This breaks out of the for loop.

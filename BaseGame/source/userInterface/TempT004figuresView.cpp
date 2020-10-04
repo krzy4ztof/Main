@@ -12,6 +12,7 @@
 #include "../debugging/Logger.h"
 #include "../gameInitialization/VideoSystemGLFW.h"
 #include "../graphics3d/OpenGLRenderer.h"
+#include "TempUI.h"
 
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin

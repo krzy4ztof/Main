@@ -13,7 +13,7 @@
 #include "../graphics3d/FiguresRenderer.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../graphics3d/ShaderResourceLoader.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLuint
@@ -24,7 +24,7 @@
 namespace base_game {
 // see: Temp06View.h
 
-class TempT004figuresUI: public BaseUI {
+class TempT004figuresUI: public TempUI {
 public:
 	TempT004figuresUI(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT004figuresUI();

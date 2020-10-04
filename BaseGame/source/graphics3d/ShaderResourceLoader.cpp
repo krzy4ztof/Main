@@ -77,13 +77,14 @@ void VertexShaderResourceExtraData::compileShader(char *pRawBuffer,
 	ss << "--------------";
 	logger::info(ss);
 
-	glShaderSource(shaderId, 1, &pRawBuffer, NULL);
+	//glShaderSource(shaderId, 1, &pRawBuffer, NULL);
 	/*
 	 * Shader size given instead of NULL
-	//GLint shaderSize = (int) rawSize;
-	//const GLint *pShaderSize = const_cast<GLint*>(&shaderSize);
-	//glShaderSource(shaderId, 1, &pRawBuffer, pShaderSize);
 	 */
+	GLint shaderSize = (int) rawSize;
+	const GLint *pShaderSize = const_cast<GLint*>(&shaderSize);
+	glShaderSource(shaderId, 1, &pRawBuffer, pShaderSize);
+
 
 	glCompileShader(shaderId);
 
