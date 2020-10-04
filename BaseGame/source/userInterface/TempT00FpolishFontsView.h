@@ -14,7 +14,7 @@
 #include "../graphics3d/FreeTypeRenderer.h"
 #include "../graphics3d/OpenGLRenderer.h"
 #include "../graphics3d/ShaderResourceLoader.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -29,7 +29,7 @@
 
 namespace base_game {
 
-class TempT00FpolishFontsUI: public BaseUI {
+class TempT00FpolishFontsUI: public TempUI {
 public:
 	TempT00FpolishFontsUI(std::shared_ptr<ResourceCache> resourceCache);
 	virtual ~TempT00FpolishFontsUI();

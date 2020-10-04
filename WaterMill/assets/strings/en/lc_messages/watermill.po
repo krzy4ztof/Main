@@ -21,3 +21,26 @@ msgstr "Hello World only en!!!"
 
 msgid "pl_chars_pl"
 msgstr "A C E L N O S X Z"
+
+msgid "main_menu_start"
+msgstr "Start"
+
+msgid "main_menu_quit"
+msgstr "Quit"
+
+msgid "main_menu_instructions"
+msgstr "Instructions"
+
+msgid "main_menu_watermill"
+msgstr "Watermill"
+
+msgid "quit_msgbox_are_you_sure_to_quit"
+msgstr "Are you sure to quit?"
+
+msgid "quit_msgbox_yes"
+msgstr "Yes"
+
+msgid "quit_msgbox_no"
+msgstr "No"
+
+

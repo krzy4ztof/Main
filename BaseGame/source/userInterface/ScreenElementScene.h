@@ -9,6 +9,8 @@
 #define USERINTERFACE_SCREENELEMENTSCENE_H_
 
 #include "IScreenElement.h"
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+#include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
 
@@ -27,6 +29,20 @@ public:
 	virtual bool vIsVisible() const;
 	virtual void vSetVisible(bool visible);
 	virtual void vTerminate();
+
+	virtual bool vOnKeyCallback(GLFWwindow *window, int key, int scancode,
+			int action, int mods);
+	virtual bool vOnCharCallback(GLFWwindow *window, unsigned int codepoint);
+	virtual bool vOnCharmodsCallback(GLFWwindow *window, unsigned int codepoint,
+			int mods);
+
+	virtual bool vOnCursorPositionCallback(GLFWwindow *window, double xpos,
+			double ypos);
+	virtual bool vOnCursorEnterCallback(GLFWwindow *window, int entered);
+	virtual bool vOnMouseButtonCallback(GLFWwindow *window, int button,
+			int action, int mods);
+	virtual bool vOnScrollCallback(GLFWwindow *window, double xoffset,
+			double yoffset);
 
 };
 

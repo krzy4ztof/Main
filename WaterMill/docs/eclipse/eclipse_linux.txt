@@ -160,7 +160,18 @@ Lub
 cd ~/home/projects/Main/WaterMill/assets/strings/en/lc_messages
 msgfmt --output watermill.mo watermill.po 
 
+***********
+***	GL	***
+***********
 
+glxinfo
+sudo apt install mesa-utils
+
+glxinfo | grep "OpenGL version"
+OpenGL version string: 3.1 Mesa 20.0.4
+
+sudo apt install mesa-common-dev
+sudo apt autoremove
 
 ***************
 ***	GLFW	***

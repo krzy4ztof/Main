@@ -212,6 +212,15 @@ void GameMessages::initMessages(MessageParams* messageParams) {
 	locales[code] = locale(base_locale, messagesFormat);
 }
 
+std::string GameMessages::getText(std::string text) {
+	string code = currentLanguage->getCode();
+	locale currentLocale = locales[code];
+
+	string translatedText = gettext(text.c_str(), currentLocale);
+	return translatedText;
+}
+
+
 void GameMessages::temp_testMessagesGetText() {
 
 	string code = currentLanguage->getCode();

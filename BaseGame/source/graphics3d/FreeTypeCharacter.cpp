@@ -10,5 +10,7 @@
 namespace base_game {
 
 const GLubyte FreeTypeCharacter::MAX_STD_CHAR = 128;
+const GLuint FreeTypeCharacter::PIXEL_HEIGHT = 48;
+
 
 } /* namespace base_game */

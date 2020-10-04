@@ -15,7 +15,7 @@
 #include "../graphics3d/OpenGLRenderer.h"
 
 #include "../gameInitialization/VideoSystemGLFW.h"
-#include "BaseUI.h"
+#include "TempUI.h"
 
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <math.h> // cos, sin
@@ -82,7 +82,7 @@ void TempT00FpolishFontsUI::vTerminate() {
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
 		 */
-		shaderCompiler->removeShaders("temp_t00f_polish_fonts_view");
+		shaderCompiler->removeShaders("fonts_renderer");
 	} else {
 		logger::info("shader compiler destroyed");
 	}
@@ -111,14 +111,14 @@ void TempT00FpolishFontsUI::temp_init_part() {
 			freeTypeLoader.initFreetype();
 	freeTypeLoader.debugCharacters();
 
-	//string vertResourceName = "temp_t00f_polish_fonts_view.vert";
-	//string fragResourceName = "temp_t00f_polish_fonts_view.frag";
+	//string vertResourceName = "fonts_renderer.vert";
+	//string fragResourceName = "fonts_renderer.frag";
 
 	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
 	//GLuint programID = shaderCompiler->loadShaders(vertResourceName,
 	//		fragResourceName);
 	GLuint programID = shaderCompiler->loadShaders(
-			"temp_t00f_polish_fonts_view");
+			"fonts_renderer");
 
 	freeTypeRenderer->init(programID, characters);
 	freeTypeRenderer->debugCharacters();
@@ -222,8 +222,8 @@ void TempT00FpolishFontsView::vInit() {
 			freeTypeLoader.initFreetype();
 	freeTypeLoader.debugCharacters();
 
-	string vertResourceName = "temp_t00f_polish_fonts_view.vert";
-	string fragResourceName = "temp_t00f_polish_fonts_view.frag";
+	 string vertResourceName = "fonts_renderer.vert";
+	 string fragResourceName = "fonts_renderer.frag";
 
 	ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
 	GLuint programID = shaderCompiler.loadShaders(vertResourceName,

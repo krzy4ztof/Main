@@ -2364,22 +2364,23 @@ Custom Dialog box
 		
 --- RESTART CAŁEGO ZADANIA ODNOWIENIE	---
 -- 08/03/2020
+-- 20/06/2020
 
 Dodać
-MainMenuView - menu startowe
+MainMenuView - menu startowe - OK
 patrz: 
 C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
 oraz:
-TeapotWarsHumanView - główny widok gry
+TeapotWarsHumanView - główny widok gry - OK
 patrz: 
 C:\Users\Krzysztof\home\importantFiles\projects\git\gamecode4win10\Source\TeapotWars\TeapotWars.cpp
 
-MainMenuView
+MainMenuView - OK
 Ma zawierać
-1. Tytuł: Watermill
-2. Przyciski:
-START
-QUIT					
+1. Tytuł: Watermill - OK
+2. Przyciski: - OK
+START - OK
+QUIT - OK			
 
 
 Patrz notatki w metodach:
@@ -2431,7 +2432,122 @@ wyregulować ilość frames per sec
 
 teraz:
 GameCodeComplete page 286
-Custom Dialog box		
+Custom Dialog box		 - OK
+
+Teraz:
+MainMenuUI::MainMenuUI() { - stworzyc ekran startowy - OK
+		
+		
+Teraz: !!!
+void HumanView::vOnRender(double fTime, float fElapsedTime) {
+Line 98: //m_ScreenElements.sort(SortBy_SharedPtr_Content<IScreenElement>()); - odkomentowac
+uzyc 
+int MessageBox::vGetZOrder() const {
+	return 99;
+}
+patrz
+interfaces.h
+template<class T>
+struct SortBy_SharedPtr_Content
+{
+    bool operator()(const shared_ptr<T> &lhs, const shared_ptr<T> &rhs) const
+        { return *lhs < *rhs; }
+};
+
+
+-- 19/08/2020 TODO:
+1.[OK] GameUIButton::vOnMouseButtonCallback - action, button - obsluga
+2.[OK] Quit button - callback dodac
+3.[OK] GameUIButton -> offsetX, offsetY ustawiac inaczej niz poprzez void GameUIButton::onRenderBox()
+	void GameUIDialog::renderPane(double fTime, float fElapsedTime) {
+		gameUIPane->onRender(fTime, fElapsedTime, x, y);
+	}
+
+4.[OK] keyboard_handler::onKeyCallback wywolywany 2 razy: z glfwGetWin32Monitor i z glfwCreateWindowSurface		
+ MessageBoxUI::vOnKeyCallback - action - wcisniecie i opuszczenie przycisku rozroznic. Aby nie bylo dwa razy wywolywany callback
+ 		
+-- 24/08/2020 TODO
+GameCodingComplete4th.pdf 291 (336 z 959)
+[OK] void MainMenuUI::init() - dodac tlumaczenia z watermill.po
+[OK] void QuitMessageBoxUI::init() - dodac tlumaczenia z watermill.po
+
+-- 29/08/2020 TODO
+poprawic tłumaczenia polskie - OK
+poedit - kodowanie - OK
+eclipse - kodowanie	 - OK
+wyśrodkować tekst - patrz: void FreeTypeRenderer::renderText - OK
+
+-- 15/09/2020 TODO
+napis: Instrukcje - wyżej - patrz FreeTypeCharacter->bearing??? - OK
+napis: Młyn - wysrodkowac - OK
+napis: Czy napewno koniec? - wysrodkowac - OK 
+
+
+-- 20/09/2020 TODO
+GameCodingComplete4th.pdf 292 (337 z 959)
+[OK] kursor myszy
+
+[OK] patrz: bool GameUIButton::vOnCursorPositionCallback(GLFWwindow *window, double xpos,
+		double ypos)
+
+-- 24/09/2020 NEXT
+GameCodingComplete4th.pdf 293 (338 z 959)
+make modal dialog - freeze application when waiting for reply
+
+-----------------------
+---	polskie znaki	---
+-----------------------
+
+msgid "pl_chars_a"
+msgstr ".A.Ą.ą."
+char code: char
+46 '.'		
+65 'A'
+46 '.'
+
+
+Duze polskie A:
+
+Name : charC
+	Details:196 'Ä'
+	Default:196 'Ä'
+	Decimal:-60
+	Hex:0xc4
+	Binary:11000100
+	Octal:0304
+Details:132 '„'
+	Default:132 '„'
+	Decimal:-124
+	Hex:0x84
+	Binary:10000100
+	Octal:0204
+
+46 '.'
+Male polskie a:
+
+Name : charC
+	Details:196 'Ä'
+	Default:196 'Ä'
+	Decimal:-60
+	Hex:0xc4
+	Binary:11000100
+	Octal:0304
+Name : charC
+	Details:133 '…'
+	Default:133 '…'
+	Decimal:-123
+	Hex:0x85
+	Binary:10000101
+	Octal:0205	
+
+https://learnpolishtoday.com/mini-polish-tips/unicode-codehtml-code-for-polish-letters-and-symbols
+
+ą	&#261;	U+0105
+Ą	&#260;	U+0104
+
+Ą ą Ć ć Ę ę Ł ł Ń ń Ó ó Ś ś Ź ź Ż ż
+
+
 		
 ---------------------------------------------------
 ---	Sprawdzenie ile headerów zawiera plik cpp	---	
@@ -2449,6 +2565,17 @@ https://www.freetype.org/freetype2/docs/tutorial/step1.html
 http://repo.msys2.org/mingw/x86_64/
 https://learnopengl.com/In-Practice/Text-Rendering
 https://www.freetype.org/freetype2/docs/tutorial/step1.html#section-2
+
+
+
+
+
+
+Linux:
+
+[  error] : 0:1(10): error: GLSL 4.30 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.00 ES, and 3.00 ES
+
+
 
 *******************
 ***	FUTURE TODO	***

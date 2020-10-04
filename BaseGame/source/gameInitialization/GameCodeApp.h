@@ -65,7 +65,8 @@ public:
 	// You must define these functions to initialize your game.
 	virtual BaseGameLogic *createGameAndView(
 			std::shared_ptr<ResourceCache> resourceCache,
-			std::shared_ptr<OpenGLRenderer> openGLRenderer)=0;
+			std::shared_ptr<OpenGLRenderer> openGLRenderer,
+			std::shared_ptr<GameMessages> gameMessages)=0;
 	virtual std::string vGetGameAppDirectory()=0;
 
 	//			static void onUpdateGame( double fTime, float fElapsedTime);
@@ -90,7 +91,7 @@ private:
 	static const int MEGABYTE = 1024 * 1024;
 
 	PlayerOptions *playerOptions;
-	GameMessages *gameMessages;
+	std::shared_ptr<GameMessages> gameMessages;
 	LuaStateManager *luaStateManager;
 	EventManager *eventManager;
 	DebuggingOptions *debuggingOptions;

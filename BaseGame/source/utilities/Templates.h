@@ -63,6 +63,14 @@ void safe_delete_array(className* p) {
 
 }
 
+template<class T>
+struct sortBySharedPtrContent {
+	bool operator()(const std::shared_ptr<T> &lhs,
+			const std::shared_ptr<T> &rhs) const {
+		return (*lhs < *rhs);
+	}
+};
+
 /*
  void safe_delete_char_array(char* p) {
  if (p) {

@@ -96,6 +96,9 @@ void HumanView::vOnRender(double fTime, float fElapsedTime) {
 			this->vRenderText();
 
 			//m_ScreenElements.sort(SortBy_SharedPtr_Content<IScreenElement>());
+			m_ScreenElements.sort(
+					templates::sortBySharedPtrContent<IScreenElement>());
+
 			for (ScreenElementList::iterator i = m_ScreenElements.begin();
 					i != m_ScreenElements.end(); ++i) {
 				if ((*i)->vIsVisible()) {
@@ -193,9 +196,19 @@ bool HumanView::vOnKeyCallback(GLFWwindow* window, int key, int scancode,
 			<< "; action: " << action << "; mods: " << mods;
 	// logger::info(ss);
 
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnKeyCallback(window, key, scancode, action, mods)) {
+				return true;
+			}
+		}
+	}
+
 	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnKeyCallback(window, key, scancode, action, mods);
-		return true;
+		return m_KeyboardHandler->vOnKeyCallback(window, key, scancode, action,
+				mods);
+		// return true;
 	} else {
 		return false;
 	}
@@ -206,9 +219,17 @@ bool HumanView::vOnCharCallback(GLFWwindow* window, unsigned int codepoint) {
 	ss << "HumanView::onCharCallback: codepoint: " << codepoint;
 	//logger::info(ss);
 
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnCharCallback(window, codepoint)) {
+				return true;
+			}
+		}
+	}
+
 	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnCharCallback(window, codepoint);
-		return true;
+		return m_KeyboardHandler->vOnCharCallback(window, codepoint);
 	} else {
 		return false;
 	}
@@ -221,9 +242,17 @@ bool HumanView::vOnCharmodsCallback(GLFWwindow* window, unsigned int codepoint,
 			<< "; mods: " << mods;
 	//logger::info(ss);
 
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnCharmodsCallback(window, codepoint, mods)) {
+				return true;
+			}
+		}
+	}
+
 	if (m_KeyboardHandler) {
-		m_KeyboardHandler->vOnCharmodsCallback(window, codepoint, mods);
-		return true;
+		return m_KeyboardHandler->vOnCharmodsCallback(window, codepoint, mods);
 	} else {
 		return false;
 	}
@@ -236,9 +265,28 @@ bool HumanView::vOnCursorPositionCallback(GLFWwindow* window, double xpos,
 			<< ypos;
 	//logger::info(ss);
 
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnCursorPositionCallback(window, xpos, ypos)) {
+				return true;
+			}
+		}
+	}
+
+	/*
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->VIsVisible()) {
+			if ((*i)->VOnMsgProc(msg)) {
+				return 1;
+			}
+		}
+	}
+	 */
+
 	if (m_PointerHandler) {
-		m_PointerHandler->vOnCursorPositionCallback(window, xpos, ypos);
-		return true;
+		return m_PointerHandler->vOnCursorPositionCallback(window, xpos, ypos);
 	} else {
 		return false;
 	}
@@ -248,10 +296,17 @@ bool HumanView::vOnCursorEnterCallback(GLFWwindow* window, int entered) {
 	stringstream ss;
 	ss << "HumanView::onCursorEnterCallback: entered: " << entered;
 	//logger::info(ss);
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnCursorEnterCallback(window, entered)) {
+				return true;
+			}
+		}
+	}
 
 	if (m_PointerHandler) {
-		m_PointerHandler->vOnCursorEnterCallback(window, entered);
-		return true;
+		return m_PointerHandler->vOnCursorEnterCallback(window, entered);
 	} else {
 		return false;
 	}
@@ -263,10 +318,18 @@ bool HumanView::vOnMouseButtonCallback(GLFWwindow* window, int button,
 	ss << "HumanView::onMouseButtonCallback: button: " << button << "; action: "
 			<< action << "; mods: " << mods;
 	//logger::info(ss);
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnMouseButtonCallback(window, button, action, mods)) {
+				return true;
+			}
+		}
+	}
 
 	if (m_PointerHandler) {
-		m_PointerHandler->vOnMouseButtonCallback(window, button, action, mods);
-		return true;
+		return m_PointerHandler->vOnMouseButtonCallback(window, button, action,
+				mods);
 	} else {
 		return false;
 	}
@@ -278,10 +341,17 @@ bool HumanView::vOnScrollCallback(GLFWwindow* window, double xoffset,
 	ss << "HumanView::onScrollCallback: xoffset: " << xoffset << "; yoffset: "
 			<< yoffset;
 	//logger::info(ss);
+	for (ScreenElementList::reverse_iterator i = m_ScreenElements.rbegin();
+			i != m_ScreenElements.rend(); ++i) {
+		if ((*i)->vIsVisible()) {
+			if ((*i)->vOnScrollCallback(window, xoffset, yoffset)) {
+				return true;
+			}
+		}
+	}
 
 	if (m_PointerHandler) {
-		m_PointerHandler->vOnScrollCallback(window, xoffset, yoffset);
-		return true;
+		return m_PointerHandler->vOnScrollCallback(window, xoffset, yoffset);
 	} else {
 		return false;
 	}
@@ -292,7 +362,6 @@ void HumanView::tempVLoadGameDelegate() {
 			MovementController>();
 	m_PointerHandler = movementController;
 	m_KeyboardHandler = movementController;
-
 }
 
 /**

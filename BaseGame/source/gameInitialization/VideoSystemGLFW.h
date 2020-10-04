@@ -14,6 +14,8 @@
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h>
 
+#include <memory> // shared_ptr
+
 namespace base_game {
 
 class VideoSystemGLFW {
@@ -33,10 +35,14 @@ public:
 	bool preRender();
 	bool postRender();
 
+	GLFWwindow* getWindow();
+
 protected:
-	GLFWwindow* window;
+	GLFWwindow *window;
+	//std::shared_ptr<GLFWwindow> window;
 	// float angle = 0.0f;
 //	double lastTime = 0;
+	//GLFWcursor *cursor;
 
 // TODO: Maybe temp_fpsCounter should be shared pointer poining also to HumanView.fpsCounter??
 	FpsCounter *temp_fpsCounter;

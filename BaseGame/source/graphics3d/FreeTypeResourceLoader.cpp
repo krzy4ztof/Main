@@ -70,9 +70,15 @@ void FreeTypeResourceExtraData::loadFtNewFace(char *rawBuffer,
 		logger::error("... be opened or read, or that it is broken...");
 	}
 
-	ft_error = FT_Set_Pixel_Sizes(face, // handle to face object
+
+	 ft_error = FT_Set_Pixel_Sizes(face, // handle to face object
 			0, // pixel_width
-			48); // pixel_height
+			FreeTypeCharacter::PIXEL_HEIGHT); // pixel_height
+
+
+	//ft_error = FT_Set_Pixel_Sizes(face, // handle to face object
+	//		0, // pixel_width
+	//		48 * 3); // pixel_height
 
 	if (ft_error) {
 		logger::error("ERROR::FREETYPE: Could not set pixel sizes");
@@ -192,6 +198,7 @@ void FreeTypeResourceExtraData::initCharacter(FT_Face face, FT_ULong char_code,
 			face->glyph->bitmap.width, face->glyph->bitmap.rows), glm::ivec2(
 			face->glyph->bitmap_left, face->glyph->bitmap_top),
 			face->glyph->advance.x };
+	//, face->size->metrics.height };
 	characters->insert(
 			std::pair<GLushort, FreeTypeCharacter>(char_code_out, character));
 }
@@ -288,8 +295,17 @@ shared_ptr<IResourceExtraData> FreeTypeLoader::loadFont(string fontFileName) {
 shared_ptr<map<GLushort, FreeTypeCharacter>> FreeTypeLoader::initFreetype() {
 	stringstream ss;
 
+	//string fontName = "gochi-hand-regular.ttf"; -- missing polish letters
+	//string fontName = "fonts-arialif.ttf";
+	string fontName = "segoeprb.ttf";
+
+
+
+	//shared_ptr<IResourceExtraData> fontExtraData = loadFont(
+	//		"gochi-hand-regular.ttf");
+
 	shared_ptr<IResourceExtraData> fontExtraData = loadFont(
-			"temp_t00f_polish_fonts_view-ariali.ttf");
+				fontName);
 
 	if (shared_ptr<FreeTypeResourceExtraData> freeTypeExtraData =
 			dynamic_pointer_cast < FreeTypeResourceExtraData
@@ -298,53 +314,6 @@ shared_ptr<map<GLushort, FreeTypeCharacter>> FreeTypeLoader::initFreetype() {
 	}
 
 	return characters;
-}
-
-void FreeTypeLoader::initFreetype_222() {
-	FT_Library ft = nullptr;
-	FT_Face face = nullptr;
-
-	FT_Error ft_error = FT_Init_FreeType(&ft);
-
-	if (ft_error) {
-		logger::error("ERROR::FREETYPE: Could not init FreeType Library");
-	}
-
-	ft_error =
-			FT_New_Face(ft,
-			"../WaterMill/assets/fonts/temp_t00f_polish_fonts_view-ariali.ttf",
-					0, &face);
-
-	if (ft_error == FT_Err_Unknown_File_Format) {
-		logger::error("ERROR::FREETYPE: Failed to load font");
-		logger::error(
-				"... the font file could be opened and read, but it appears");
-		logger::error("... that its font format is unsupported");
-
-	} else if (ft_error) {
-		logger::error("ERROR::FREETYPE: Failed to load font");
-		logger::error(
-				"... another error code means that the font file could not");
-		logger::error("... be opened or read, or that it is broken...");
-
-	}
-
-//	ft_error = FT_Set_Char_Size(face, /* handle to face object           */
-//	0, /* char_width in 1/64th of points  */
-//	16 * 64, /* char_height in 1/64th of points */
-//	300, /* horizontal device resolution    */
-//	300); /* vertical device resolution      */
-
-	ft_error = FT_Set_Pixel_Sizes(face, /* handle to face object */
-	0, /* pixel_width           */
-	48); /* pixel_height          */
-
-	if (ft_error) {
-		logger::error("ERROR::FREETYPE: Could not set pixel sizes");
-	}
-
-	FT_Done_Face(face);
-	FT_Done_FreeType(ft);
 }
 
 void FreeTypeLoader::debugCharacters() {

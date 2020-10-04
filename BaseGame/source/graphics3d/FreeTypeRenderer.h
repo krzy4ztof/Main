@@ -22,6 +22,16 @@
 
 namespace base_game {
 
+/*
+class FreeTypeTextSize {
+public:
+	FreeTypeTextSize(GLfloat length, GLfloat height);
+	virtual ~FreeTypeTextSize();
+
+	GLfloat length, height;
+};
+ */
+
 class FreeTypeRenderer {
 public:
 	FreeTypeRenderer();
@@ -39,6 +49,8 @@ public:
 
 	void debugCharacters();
 
+	glm::vec2 getTextSize(std::string text, GLfloat scale);
+
 protected:
 	void terminate();
 
@@ -50,6 +62,13 @@ protected:
 
 	void renderLetter(FreeTypeCharacter ch, GLfloat &x, GLfloat y,
 			GLfloat scale);
+
+	GLushort convertBytesToShort(GLubyte charC, GLubyte prevChar);
+
+	glm::vec2 getUByteLetterSize(GLubyte charC, GLfloat scale);
+	glm::vec2 getUShortLetterSize(GLubyte charC, GLubyte prevChar,
+			GLfloat scale);
+	glm::vec2 getLetterSize(FreeTypeCharacter ch, GLfloat scale);
 
 private:
 	GLuint programID;

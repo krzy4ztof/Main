@@ -12,7 +12,7 @@
 
 //#include "ActorFactoryTest.h"
 
-//#include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
+#include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
 
 #include "../../../BaseGame/source/gameInitialization/InitOptions.h"
 //#include "../../source/gameLogic/BaseGameLogic.h"
@@ -48,16 +48,23 @@
 #include "../../../BaseGame/source/graphics3d/TextureResourceLoader.h"
 #include "../../../BaseGame/source/graphics3d/FreeTypeResourceLoader.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
+#include "../../../BaseGame/source/gameInitialization/GameMessages.h"
+#include "../../../BaseGame/source/gameInitialization/PlayerOptions.h"
+#include "../../../BaseGame/source/resourceCache/MessageLoader.h"
 
 // --------- STOP
 
 // #define BOOST_TEST_MODULE StringUtilsTestModule
 #include <boost/test/unit_test.hpp>
+#include <string> // std::string
 
 using std::stringstream;
 
 using base_game::InitOptions;
 using base_game::IResourceFile;
+using base_game::GameMessages;
+using base_game::PlayerOptions;
+using base_game::GameCodeApp;
 
 namespace templates = base_game::templates;
 namespace logger = base_game::logger;
@@ -75,6 +82,7 @@ namespace fragment_shader_resource_loader = base_game::fragment_shader_resource_
 namespace jpeg_resource_loader = base_game::jpeg_resource_loader;
 namespace png_resource_loader = base_game::png_resource_loader;
 namespace free_type_resource_loader = base_game::free_type_resource_loader;
+namespace message_loader = base_game::message_loader;
 
 using base_game::IGameView;
 using base_game::VideoSystemGLFW;
@@ -101,6 +109,7 @@ namespace unit_test = boost::unit_test;
 
 using std::shared_ptr;
 using std::make_shared;
+using std::string;
 
 namespace watermill_base_test {
 
@@ -123,6 +132,9 @@ struct MainMenuViewFixture {
 	shared_ptr<VideoSystemGLFW> videoSystemGLFW;
 
 	shared_ptr<OpenGLRenderer> openGLRenderer;
+	shared_ptr<GameMessages> gameMessages;
+	PlayerOptions *pPlayerOptions;
+
 	//IGameView* gameView = nullptr;
 	shared_ptr<IGameView> gameView;
 	shared_ptr<IGameView> gameView2;
@@ -163,7 +175,8 @@ struct MainMenuViewFixture {
 				png_resource_loader::createPngResourceLoader());
 		shrdPtrResourceCache->registerLoader(
 				free_type_resource_loader::createFreeTypeResourceLoader());
-
+		shrdPtrResourceCache->registerLoader(
+				message_loader::createMessageLoader());
 
 		//pTestGame = new TestGame;
 		pWatermillGame = new WatermillGame;
@@ -171,10 +184,26 @@ struct MainMenuViewFixture {
 		//videoSystemGLFW = new VideoSystemGLFW;
 		videoSystemGLFW = make_shared<VideoSystemGLFW>();
 
-		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW);
+		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW,
+				shrdPtrResourceCache);
+
+		pPlayerOptions = new PlayerOptions;
+		string playerOptionsFilePath = pInitOptions->getGameFolder()
+				+ GameCodeApp::PLAYER_OPTIONS_XML;
+		pPlayerOptions->load(playerOptionsFilePath);
+
+		gameMessages = make_shared<GameMessages>(shrdPtrResourceCache,
+				pPlayerOptions->getOption(pPlayerOptions->LANGUAGE),
+				pPlayerOptions->getOption(pPlayerOptions->LANGUAGES));
+
+		pWatermillGame->setResourceCache(shrdPtrResourceCache);
+		gameMessages->init();
+//		openGLRenderer->initRenderers();
+//		openGLRenderer->vOnRestore();
 
 		//pTestGame->m_pGame = new TestGameLogic(openGLRenderer);
-		pWatermillGame->m_pGame = new WatermillLogic(openGLRenderer);
+		pWatermillGame->m_pGame = new WatermillLogic(openGLRenderer,
+				gameMessages);
 		// base_game::g_pApp = pTestGame;
 		base_game::g_pApp = pWatermillGame;
 
@@ -206,6 +235,8 @@ struct MainMenuViewFixture {
 		ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
 		logger::info(ss);
 
+		templates::safe_delete<PlayerOptions>(pPlayerOptions);
+		gameMessages.reset();
 		//templates::safe_delete<IGameView>(gameView);
 		openGLRenderer.reset();
 		// templates::safe_delete<VideoSystemGLFW>(videoSystemGLFW);
@@ -333,55 +364,25 @@ BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
 //BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
+	openGLRenderer->initRenderers();
 
-	//gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache,
-	//		openGLRenderer);
-	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,
-	//		shrdPtrResourceCache, openGLRenderer);
-	//gameView = temp_t00d_png_gil_scanline_view::getView(false,
-	//		shrdPtrResourceCache, openGLRenderer);
-
-	//gameView = temp_t00f_polish_fonts_view::getView(false,
-	//		shrdPtrResourceCache,
-	//		openGLRenderer);
-
-	//gameView = temp_combined_view::getView(false, shrdPtrResourceCache, openGLRenderer);
-
-	//pTestGame->m_pGame->tempAddView(gameView);
-	//gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-	//gameView = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-	//gameView = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-	gameView = make_shared < MainMenuView
-			> (shrdPtrResourceCache,
-			openGLRenderer);
-	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
-	//		openGLRenderer);
+	gameView = make_shared<MainMenuView>(shrdPtrResourceCache, openGLRenderer,
+			gameMessages);
 
 	gameView->tempVLoadGameDelegate();
-	//pTestGame->m_pGame->vAddView(gameView);
 	pWatermillGame->m_pGame->vAddView(gameView);
-	//pTestGame->m_pGame->removeAllViews();
+
+	/*
 	pWatermillGame->m_pGame->removeAllViews();
 
-	//gameView2 = make_shared<TempT004figuresView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-	//gameView2 = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-	//gameView2 = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
-	//		openGLRenderer);
 	gameView2 = make_shared < MainMenuView
 			> (shrdPtrResourceCache,
 			openGLRenderer);
 
-	//gameView2 = make_shared<TempCombinedView>(shrdPtrResourceCache,
-	//		openGLRenderer);
-
 	gameView2->tempVLoadGameDelegate();
-	//pTestGame->m_pGame->vAddView(gameView2);
 	pWatermillGame->m_pGame->vAddView(gameView2);
+	 */
+
 
 
 	// gameView->vActivate();
@@ -400,6 +401,7 @@ BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
+	openGLRenderer->initRenderers();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
@@ -423,7 +425,8 @@ BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enable_if<false>()) {
 	//		openGLRenderer);
 	gameView = make_shared < MainMenuView
 			> (shrdPtrResourceCache,
-			openGLRenderer);
+			openGLRenderer,
+			gameMessages);
 	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
 	//		openGLRenderer);
 
@@ -446,6 +449,7 @@ BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
+	openGLRenderer->initRenderers();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,
@@ -465,7 +469,8 @@ BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
 	//		openGLRenderer);
 	gameView = make_shared < MainMenuView
 			> (shrdPtrResourceCache,
-			openGLRenderer);
+			openGLRenderer,
+			gameMessages);
 	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
 	//		openGLRenderer);
 
