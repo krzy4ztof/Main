@@ -32,7 +32,7 @@
 #include "../resourceCache/ZipFile.h"
 
 #include <boost/property_tree/ptree.hpp>
-#include <memory> // shared_ptr, weak_ptr
+#include <memory> // shared_ptr, weak_ptr, static_pointer_cast
 #include "../debugging/Logger.h"
 #include <sstream>      // std::stringstream
 #include <string> // string
@@ -55,6 +55,7 @@ using std::map;
 using std::list;
 using std::ifstream;
 using std::endl;
+using std::static_pointer_cast;
 
 using base_game::BaseGameState::spawningPlayersActors;
 using base_game::BaseGameState::running;
@@ -104,6 +105,30 @@ void BaseGameLogic::removeAllViews() {
 	}
 }
 
+shared_ptr<HumanView> BaseGameLogic::getHumanView() {
+	shared_ptr<HumanView> humanView;
+	std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
+	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
+			viewIterator++) {
+		if ((*viewIterator)->vGetType() == GameView_Human) {
+			//humanView = (*viewIterator)->get();
+
+			shared_ptr<IGameView> pIGameView(*viewIterator);
+			//humanView = static_cast<shared_ptr<HumanView>>(&*pIGameView);
+			//humanView = static_cast<shared_ptr<HumanView>>(pIGameView);
+			//humanView = static_cast<shared_ptr<HumanView>>(*pIGameView);
+
+			humanView = static_pointer_cast<HumanView>(pIGameView);
+
+
+			//pView = static_cast<HumanView *>(&*pIGameView);
+			break;
+		}
+	}
+	return humanView;
+}
+
 bool BaseGameLogic::init(shared_ptr<ResourceCache> resourceCache) {
 
 	actorFactory = vCreateActorFactory(resourceCache);
@@ -123,7 +148,9 @@ void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
 	// This makes sure that all views have a non-zero view id.
 	int viewId = static_cast<int>(m_gameViews.size());
 
+	/*
 	std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
 
 	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
 			viewIterator++) {
@@ -131,6 +158,7 @@ void BaseGameLogic::vAddView(shared_ptr<IGameView> pView,
 
 		//(*viewIterator)->vDeactivate(); // zastapi tempIsActive
 	}
+	 */
 
 //	pView->tempIsActive = true; // do skasowania
 	//pView->vDeactivate(); // zastapi tempIsActive
@@ -313,6 +341,41 @@ void BaseGameLogic::vOnUpdate(float time, float elapsedTime) {
 	 }
 	 */
 }
+
+void BaseGameLogic::vOnUpdateModal(float time, float elapsedTime) {
+	/*
+	 * if (m_pGame) {
+	 int timeNow = timeGetTime();
+	 int deltaMilliseconds = timeNow - currentTime;
+	 for (GameViewList::iterator i = m_pGame->m_gameViews.begin();
+	 i != m_pGame->m_gameViews.end(); ++i) {
+	 (*i)->VOnUpdate(deltaMilliseconds);
+	 }
+	 currentTime = timeNow;
+	 DXUTRender3DEnvironment();
+	 }
+	 *
+	 */
+
+	//int deltaMilliseconds = int(elapsedTime * 1000.0f);
+	int deltaMilliseconds = int(elapsedTime);
+
+	lifetime += elapsedTime;
+
+	stringstream ss;
+
+	std::list<std::shared_ptr<IGameView> >::iterator viewIterator;
+
+	// update all game views
+	for (viewIterator = m_gameViews.begin(); viewIterator != m_gameViews.end();
+			viewIterator++) {
+
+		//if ((*viewIterator)->tempIsActive) {
+		(*viewIterator)->vOnUpdate(deltaMilliseconds);
+		//}
+	}
+}
+
 
 /*
 void BaseGameLogic::tempOnIdle(double fTime, float fElapsedTime) {

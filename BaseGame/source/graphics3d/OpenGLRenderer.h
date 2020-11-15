@@ -50,6 +50,8 @@ public:
 	//std::shared_ptr<SpriteSheet> spriteSheetLogo;
 	std::shared_ptr<PngTextureLoader> pngTextureLoader;
 	std::shared_ptr<PngRenderer> pngRenderer;
+	std::shared_ptr<JpegTextureLoader> jpegTextureLoader;
+	std::shared_ptr<JpegRenderer> jpegRenderer;
 
 	std::shared_ptr<ShaderCompiler> shaderCompiler;
 

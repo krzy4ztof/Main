@@ -9,6 +9,8 @@
 #define GAMEINITIALIZATION_VIDEOSYSTEMGLFW_H_
 
 #include "../graphics3d/FpsCounter.h"
+#include "../userInterface/IScreenElement.h"
+
 
 // #define GLEW_STATIC
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
@@ -36,6 +38,7 @@ public:
 	bool postRender();
 
 	GLFWwindow* getWindow();
+	std::shared_ptr<FpsCounter> getFpsCounter();
 
 protected:
 	GLFWwindow *window;
@@ -44,8 +47,7 @@ protected:
 //	double lastTime = 0;
 	//GLFWcursor *cursor;
 
-// TODO: Maybe temp_fpsCounter should be shared pointer poining also to HumanView.fpsCounter??
-	FpsCounter *temp_fpsCounter;
+	std::shared_ptr<FpsCounter> temp_fpsCounter;
 };
 
 } /* namespace base_game */

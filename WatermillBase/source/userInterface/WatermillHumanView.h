@@ -28,6 +28,7 @@ public:
 	virtual void tempVRender(double fTime, float fElapsedTime);
 
 	void temp_InitScene();
+
 protected:
 	std::shared_ptr<base_game::ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<base_game::ScreenElementScene> m_ScreenElementScene;

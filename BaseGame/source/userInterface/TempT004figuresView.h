@@ -26,7 +26,10 @@ namespace base_game {
 
 class TempT004figuresUI: public TempUI {
 public:
-	TempT004figuresUI(std::shared_ptr<ResourceCache> resourceCache);
+	//TempT004figuresUI(std::shared_ptr<ResourceCache> resourceCache);
+	TempT004figuresUI(
+			std::shared_ptr<OpenGLRenderer> openGLRenderer);
+	
 	virtual ~TempT004figuresUI();
 
 	virtual void vOnRestore();
@@ -39,10 +42,14 @@ public:
 	void temp_vOnRender(double fTime, float fElapsedTime);
 	virtual void vTerminate();
 
+
 protected:
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
+	/*
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<FiguresRenderer> figuresRenderer;
 	std::shared_ptr<ShaderCompiler> shaderCompiler;
+	 */
 
 };
 
@@ -59,6 +66,7 @@ public:
 	//virtual void vDeactivate();
 
 	virtual void tempVRender(double fTime, float fElapsedTime);
+
 
 protected:
 	//std::shared_ptr<ResourceCache> shrdPtrResourceCache;

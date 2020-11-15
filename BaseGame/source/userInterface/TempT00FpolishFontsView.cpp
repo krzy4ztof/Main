@@ -45,18 +45,24 @@ using std::string;
 using std::stringstream;
 
 namespace base_game {
+
 TempT00FpolishFontsUI::TempT00FpolishFontsUI(
-		shared_ptr<ResourceCache> resourceCache) {
+		shared_ptr<OpenGLRenderer> openGLRenderer) {
+//TempT00FpolishFontsUI::TempT00FpolishFontsUI(
+//		shared_ptr<ResourceCache> resourceCache) {
 	logger::info("Create TempT00FpolishFontsUI");
 
+	this->openGLRenderer = openGLRenderer;
+	/*
 	this->shrdPtrResourceCache = resourceCache;
 	freeTypeRenderer = make_shared<FreeTypeRenderer>();
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
-
+	 */
 }
 
 TempT00FpolishFontsUI::~TempT00FpolishFontsUI() {
 	logger::info("Destroy TempT00FpolishFontsUI");
+	openGLRenderer.reset();
 	vTerminate();
 
 }
@@ -64,8 +70,9 @@ TempT00FpolishFontsUI::~TempT00FpolishFontsUI() {
 void TempT00FpolishFontsUI::vTerminate() {
 	this->temp_deactivate_part();
 	//this->vTerminate();
+	/*
 	if (shaderCompiler) {
-		/*
+	 *
 		 * There is some bug in
 		 * (Fragment/Vertex)ShaderResourceExtraData::compileShader
 		 * so, we need to remove shaders here.
@@ -81,7 +88,7 @@ void TempT00FpolishFontsUI::vTerminate() {
 		 * The bug should be fixed and we should not removeShaders("figures_renderer") here
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
-		 */
+	 *
 		shaderCompiler->removeShaders("fonts_renderer");
 	} else {
 		logger::info("shader compiler destroyed");
@@ -90,6 +97,7 @@ void TempT00FpolishFontsUI::vTerminate() {
 
 	freeTypeRenderer.reset();
 	shrdPtrResourceCache.reset();
+	 */
 }
 
 int TempT00FpolishFontsUI::vGetZOrder() const {
@@ -106,6 +114,7 @@ void TempT00FpolishFontsUI::vOnRestore() {
 }
 
 void TempT00FpolishFontsUI::temp_init_part() {
+	/*
 	FreeTypeLoader freeTypeLoader(this->shrdPtrResourceCache);
 	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters =
 			freeTypeLoader.initFreetype();
@@ -122,7 +131,7 @@ void TempT00FpolishFontsUI::temp_init_part() {
 
 	freeTypeRenderer->init(programID, characters);
 	freeTypeRenderer->debugCharacters();
-
+	 */
 	//vActivate();
 }
 
@@ -139,7 +148,7 @@ void TempT00FpolishFontsUI::temp_activate_part() {
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
 
-	freeTypeRenderer->activate(projection);
+	openGLRenderer->freeTypeRenderer->activate(projection);
 }
 
 void TempT00FpolishFontsUI::temp_deactivate_part() {
@@ -150,8 +159,14 @@ void TempT00FpolishFontsUI::temp_deactivate_part() {
 	glDisable(GL_BLEND);
 	 */
 
+	/*
 	if (freeTypeRenderer) {
 		freeTypeRenderer->deactivate();
+	}
+	 */
+
+	if (openGLRenderer) {
+		openGLRenderer->freeTypeRenderer->deactivate();
 	}
 }
 
@@ -167,14 +182,17 @@ void TempT00FpolishFontsUI::temp_vOnRender(double fTime,
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	freeTypeRenderer->startRender();
+	openGLRenderer->freeTypeRenderer->startRender();
 
-	freeTypeRenderer->renderText("This is sample text", 25.0f, 25.0f, 1.0f,
+	openGLRenderer->freeTypeRenderer->renderText("This is sample text", 25.0f,
+			25.0f, 1.0f,
 			glm::vec3(0.5, 0.8f, 0.2f));
-	freeTypeRenderer->renderText("(C) LearnOpenGL.com", 540.0f, 570.0f, 0.5f,
+	openGLRenderer->freeTypeRenderer->renderText("(C) LearnOpenGL.com", 540.0f,
+			570.0f, 0.5f,
 			glm::vec3(0.3, 0.7f, 0.9f));
 
-	freeTypeRenderer->renderText("Ąą Ćć Ęę Łł Ńń Óó Źź Żż", 0.0f, 0.0f, 0.5f,
+	openGLRenderer->freeTypeRenderer->renderText("Ąą Ćć Ęę Łł Ńń Óó Źź Żż",
+			0.0f, 0.0f, 0.5f,
 			glm::vec3(0.3, 0.7f, 0.9f));
 
 }
@@ -191,7 +209,8 @@ TempT00FpolishFontsView::TempT00FpolishFontsView(
 		std::shared_ptr<OpenGLRenderer> openGLRenderer) :
 		HumanView(openGLRenderer) {
 	logger::info("Create T00FpolishFontsView");
-	tempT00FpolishFontsUI.reset(new TempT00FpolishFontsUI(resourceCache));
+	//tempT00FpolishFontsUI.reset(new TempT00FpolishFontsUI(resourceCache));
+	tempT00FpolishFontsUI.reset(new TempT00FpolishFontsUI(openGLRenderer));
 	vPushElement(tempT00FpolishFontsUI);
 
 	/*

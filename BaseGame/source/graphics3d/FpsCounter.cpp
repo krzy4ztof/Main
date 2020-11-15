@@ -91,7 +91,7 @@ bool FpsCounter::renderNextFrame(double time) {
 
 	if (fps <= 0) {
 		if (elapsedTime >= 10.0) { // screenRefershRate) {
-			//this->debugReport(time, elapsedTime, 10.0);
+			// this->debugReport(time, elapsedTime, 10.0);
 
 			counter = 0;
 			lastTime = time;

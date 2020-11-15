@@ -226,7 +226,6 @@ void MainMenuUI::init() {
 }
 
 void MainMenuUI::vTerminate() {
-
 }
 
 int MainMenuUI::vGetZOrder() const {
@@ -380,7 +379,14 @@ void MainMenuUI::cursorOverButton(void *voidMainMenuUI,
 
 void MainMenuUI::tempOpenQuitMessageBox() {
 	//vPushElement(m_MessageBox);
-	tempQuitMessageBox->vSetVisible(true);
+	//tempQuitMessageBox->vSetVisible(true);
+	boolean result = tempQuitMessageBox->askIfShouldQuit();
+
+	stringstream ss;
+	ss << "AskIfShouldQuit: " << result;
+	logger::info(ss);
+
+	logger::info("");
 }
 
 void MainMenuUI::tempCursorOverButton(boolean cursorOverButton) {

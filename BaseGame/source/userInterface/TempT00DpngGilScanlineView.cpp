@@ -36,26 +36,35 @@ using std::make_shared;
 namespace base_game {
 
 TempT00DpngGilScanlineUI::TempT00DpngGilScanlineUI(
-		shared_ptr<ResourceCache> resourceCache) {
+		shared_ptr<OpenGLRenderer> openGLRenderer) {
+//TempT00DpngGilScanlineUI::TempT00DpngGilScanlineUI(
+//		shared_ptr<ResourceCache> resourceCache) {
 	logger::info("Create TempT00DpngGilScanlineUI");
-
-	this->shrdPtrResourceCache = resourceCache;
+	this->openGLRenderer = openGLRenderer;
 	spriteSheet = make_shared<SpriteSheet>();
+
+	/*
+	this->shrdPtrResourceCache = resourceCache;
 	pngTextureLoader = new PngTextureLoader(this->shrdPtrResourceCache);
 
 	pngRenderer = make_shared<PngRenderer>();
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
+	 */
 }
 
 TempT00DpngGilScanlineUI::~TempT00DpngGilScanlineUI() {
 	logger::info("Destroy TempT00DpngGilScanlineUI");
+	openGLRenderer.reset();
 	vTerminate();
 
 }
 
 void TempT00DpngGilScanlineUI::vTerminate() {
+	spriteSheet.reset();
+
+	/*
 	if (shaderCompiler) {
-		/*
+	 *
 		 * There is some bug in
 		 * (Fragment/Vertex)ShaderResourceExtraData::compileShader
 		 * so, we need to remove shaders here.
@@ -71,7 +80,7 @@ void TempT00DpngGilScanlineUI::vTerminate() {
 		 * The bug should be fixed and we should not removeShaders("figures_renderer") here
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
-		 */
+	 *
 		shaderCompiler->removeShaders("texture_renderer");
 	} else {
 		logger::info("shader compiler destroyed");
@@ -83,9 +92,9 @@ void TempT00DpngGilScanlineUI::vTerminate() {
 	pngTextureLoader->terminate();
 
 	templates::safe_delete<PngTextureLoader>(pngTextureLoader);
-	spriteSheet.reset();
 
 	shrdPtrResourceCache.reset();
+	 */
 }
 
 int TempT00DpngGilScanlineUI::vGetZOrder() const {
@@ -102,16 +111,19 @@ void TempT00DpngGilScanlineUI::vOnRestore() {
 }
 
 void TempT00DpngGilScanlineUI::temp_init_part() {
-	pngTextureLoader->init("temp_t00d_png_gil_scanline_view_pools_alpha.png",
+	openGLRenderer->pngTextureLoader->init(
+			"temp_t00d_png_gil_scanline_view_pools_alpha.png",
 			spriteSheet);
 	spriteSheet->setMargin(1);
 	spriteSheet->setColumns(4);
 
 	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
+	/*
 	GLuint programID = shaderCompiler->loadShaders("texture_renderer");
 
 	pngRenderer->init(programID);
-
+	 */
+	
 	//vActivate();
 }
 
@@ -137,22 +149,22 @@ void TempT00DpngGilScanlineUI::temp_vOnRender(double fTime,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
 
-	pngRenderer->activate(projection);
-	pngTextureLoader->activate(spriteSheet);
+	openGLRenderer->pngRenderer->activate(projection);
+	openGLRenderer->pngTextureLoader->activate(spriteSheet);
 
-	pngRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
+	openGLRenderer->pngRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
 			glm::vec2(180.0f, 180.0f), spriteSheet, 0, 1);
 
-	pngRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
+	openGLRenderer->pngRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
 			glm::vec2(100.0f, 500.0f), glm::vec2(50.f, 600.0f), // triangle
 			glm::vec2(0.0f, 0.0f), // texture
 			glm::vec2(0.25f, 0.0f), glm::vec2(0.125f, 0.5f));
 
-	pngRenderer->renderMultiRectangle(glm::vec2(180.0f, 180.0f),
+	openGLRenderer->pngRenderer->renderMultiRectangle(glm::vec2(180.0f, 180.0f),
 			glm::vec2(480.0f, 380.0f), 2.0f, 5.0f);
 
-	pngTextureLoader->deactivate();
-	pngRenderer->deactivate();
+	openGLRenderer->pngTextureLoader->deactivate();
+	openGLRenderer->pngRenderer->deactivate();
 
 }
 
@@ -164,7 +176,9 @@ TempT00DpngGilScanlineView::TempT00DpngGilScanlineView(
 		HumanView(openGLRenderer) {
 	logger::info("Create T00DpngGilScanlineView");
 
-	tempT00DpngGilScanlineUI.reset(new TempT00DpngGilScanlineUI(resourceCache));
+	//tempT00DpngGilScanlineUI.reset(new TempT00DpngGilScanlineUI(resourceCache));
+	tempT00DpngGilScanlineUI.reset(
+			new TempT00DpngGilScanlineUI(openGLRenderer));
 	vPushElement(tempT00DpngGilScanlineUI);
 	/*
 	this->shrdPtrResourceCache = resourceCache;

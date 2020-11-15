@@ -51,6 +51,8 @@ public:
 	virtual void vPushElement(std::shared_ptr<IScreenElement> pElement);
 	virtual void vRemoveElement(std::shared_ptr<IScreenElement> pElement);
 
+	virtual GameViewType vGetType();
+
 protected:
 	virtual void vRenderText();
 
@@ -63,7 +65,7 @@ protected:
 	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 
 	float tempAngle;
-	FpsCounter *fpsCounter;
+	std::shared_ptr<FpsCounter> fpsCounter;
 	ScreenElementList m_ScreenElements;
 
 	/*

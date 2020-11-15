@@ -23,6 +23,7 @@ using base_game::ResourceCache;
 using base_game::IGameView;
 using base_game::OpenGLRenderer;
 using base_game::GameMessages;
+using base_game::VideoSystemGLFW;
 
 namespace watermill_base {
 const string WatermillGame::GAME_APP_DIRECTORY = "GameEngine\\Watermill\\1.0";
@@ -59,6 +60,11 @@ string WatermillGame::vGetGameAppDirectory() {
 
 void WatermillGame::setResourceCache(shared_ptr<ResourceCache> resourceCache) {
 	this->shrdPtrResourceCache = resourceCache;
+}
+
+void WatermillGame::setVideoSystemGLFW(
+		shared_ptr<VideoSystemGLFW> videoSystemGLFW) {
+	this->videoSystemGLFW = videoSystemGLFW;
 }
 
 }

@@ -319,7 +319,7 @@ BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
 //BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
-	//openGLRenderer->initRenderers();
+	openGLRenderer->initRenderers();
 
 	//gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache,
 	//		openGLRenderer);
@@ -335,14 +335,14 @@ BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
 	//gameView = temp_combined_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 
 	//pTestGame->m_pGame->tempAddView(gameView);
-	//gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
-	//		openGLRenderer);
+	gameView = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+			openGLRenderer);
 	//gameView = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
 	//		openGLRenderer);
 	//gameView = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
 	//		openGLRenderer);
-	gameView = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
-			openGLRenderer);
+	//gameView = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+	//		openGLRenderer);
 	//gameView = make_shared<TempCombinedView>(shrdPtrResourceCache,
 	//		openGLRenderer);
 
@@ -350,14 +350,14 @@ BOOST_AUTO_TEST_CASE(viewDevFolder, * unit_test::enable_if<true>()) {
 	pTestGame->m_pGame->vAddView(gameView);
 	pTestGame->m_pGame->removeAllViews();
 
-	//gameView2 = make_shared<TempT004figuresView>(shrdPtrResourceCache,
-	//		openGLRenderer);
+	gameView2 = make_shared<TempT004figuresView>(shrdPtrResourceCache,
+			openGLRenderer);
 	//gameView2 = make_shared<TempT009jpegGilTextureView>(shrdPtrResourceCache,
 	//		openGLRenderer);
 	//gameView2 = make_shared<TempT00DpngGilScanlineView>(shrdPtrResourceCache,
 	//		openGLRenderer);
-	gameView2 = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
-			openGLRenderer);
+	//gameView2 = make_shared<TempT00FpolishFontsView>(shrdPtrResourceCache,
+	//		openGLRenderer);
 
 	//gameView2 = make_shared<TempCombinedView>(shrdPtrResourceCache,
 	//		openGLRenderer);
@@ -383,7 +383,7 @@ BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewUnzipFile, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
-	//openGLRenderer->initRenderers();
+	openGLRenderer->initRenderers();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 //	gameView = temp_t009_jpeg_gil_texture_view::getView(false,
@@ -428,7 +428,7 @@ BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enable_if<false>()) {
 //BOOST_AUTO_TEST_CASE(viewZipFile, * unit_test::enabled()) {
 
 	videoSystemGLFW->initialize();
-	//openGLRenderer->initRenderers();
+	openGLRenderer->initRenderers();
 
 	// gameView = temp_t004_figures_view::getView(false, shrdPtrResourceCache, openGLRenderer);
 	//gameView = temp_t009_jpeg_gil_texture_view::getView(false,

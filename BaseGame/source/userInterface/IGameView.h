@@ -5,12 +5,24 @@
 #include <GLFW/glfw3.h> // GLFWwindow
 
 namespace base_game {
+
+enum GameViewType {
+	GameView_Human,
+	GameView_Remote,
+	GameView_AI,
+	GameView_Recorder,
+	GameView_Other
+};
+
 class IGameView {
 public:
 	virtual ~IGameView();
 
 	virtual void vOnRestore() = 0;
 	virtual void vOnRender(double fTime, float fElapsedTime) = 0;
+
+	virtual GameViewType vGetType()=0;
+
 	virtual void vOnAttach(unsigned int vid, unsigned int aid) = 0;
 	virtual void vOnUpdate(unsigned long deltaMs)=0;
 	virtual void describeYourself() = 0;

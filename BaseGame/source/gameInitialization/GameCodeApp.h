@@ -30,6 +30,8 @@
 #include "../saveManager/SaveManager.h"
 
 #include "../graphics3d/OpenGLRenderer.h"
+#include "../userInterface/QuitMessageBoxUI.h"
+#include "../userInterface/HumanView.h"
 
 #include <string> // string
 #include <memory> // shared_ptr, weak_ptr
@@ -80,12 +82,17 @@ public:
 	InitOptions* getInitOptions();
 	std::shared_ptr<ResourceCache> getResourceCache();
 
+	int modal(std::shared_ptr<QuitMessageBoxUI> pMessageBox, int defaultAnswer);
+	std::shared_ptr<HumanView> getHumanView();
+	int pumpUntilMessage(std::shared_ptr<QuitMessageBoxUI> pMessageBox);
+	
 protected:
 	bool m_bQuitting;			// true if the app is running the exit sequence
 	int m_HasModalDialog;				// determines if a modal dialog is up
 
 	InitOptions *initOptions;
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	std::shared_ptr<VideoSystemGLFW> videoSystemGLFW;
 
 private:
 	static const int MEGABYTE = 1024 * 1024;
@@ -100,7 +107,7 @@ private:
 	DataFiles *dataFiles;
 	AudioSystem *audioSystem;
 	VideoSystem *videoSystem;
-	std::shared_ptr<VideoSystemGLFW> videoSystemGLFW;
+
 	//VideoSystemGLFW *videoSystemGLFW;
 	SaveManager *saveManager;
 	std::shared_ptr<OpenGLRenderer> openGLRenderer;

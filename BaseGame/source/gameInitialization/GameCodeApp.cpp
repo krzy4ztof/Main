@@ -14,6 +14,8 @@
 #include "GameCodeApp.h"
 #include <iostream> // cout
 #include <string> // string
+#include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
+#include <GLFW/glfw3.h>
 
 #include "Macros.h"
 #include "DataFiles.h"
@@ -39,16 +41,20 @@
 #include "../graphics3d/TextureResourceLoader.h"
 #include "../graphics3d/FreeTypeResourceLoader.h"
 #include "../graphics3d/OpenGLRenderer.h"
+#include "../graphics3d/FpsCounter.h"
+
 
 #include "../gameLogic/BaseGameLogic.h"
 
 #include "../debugging/Logger.h"
 #include "../utilities/Templates.h"
 
-#include <sstream>      // std::stringstream
 #include "../resourceCache/DevelopmentResourceFolder.h"
 #include "../resourceCache/DevelopmentResourceUnzipFile.h"
+#include "../userInterface/QuitMessageBoxUI.h"
 
+
+#include <sstream>      // std::stringstream
 #include <memory> // shared_ptr, weak_ptr, make_shared
 //#include <typeinfo> // typeid
 
@@ -538,5 +544,157 @@ void GameCodeApp::testGlobal() {
 
 }
 
+//
+// GameCodeApp::GetHumanView()					- not described in the book
+//
+//    FUTURE WORK - This function should accept a player number for split screen games
+//
+shared_ptr<HumanView> GameCodeApp::getHumanView() {
+	return m_pGame->getHumanView();
 }
 
+//
+// class GameCodeApp::Modal						- Chapter 10, page 293
+//
+//int GameCodeApp::Modal(shared_ptr<IScreenElement> pModalScreen, int defaultAnswer)
+int GameCodeApp::modal(shared_ptr<QuitMessageBoxUI> pMessageBox,
+		int defaultAnswer) {
+	stringstream ss;
+	shared_ptr<HumanView> humanView = getHumanView();
+
+	if (!humanView) {
+		// Whoops! There's no human view attached.
+		return defaultAnswer;
+	}
+
+	if (m_HasModalDialog & 0x10000000) {
+		logger::warning("Too Many nested dialogs!");
+		return defaultAnswer;
+	}
+
+	/*
+	GCC_ASSERT(GetHwnd() != NULL && _T("Main Window is NULL!"));
+	if ((GetHwnd() != NULL) && IsIconic(GetHwnd())) {
+		FlashWhileMinimized();
+	}
+	 */
+
+	m_HasModalDialog <<= 1;
+	m_HasModalDialog |= 1;
+
+	//pView->VPushElement(pModalScreen);
+	///humanView->vPushElement(pMessageBox);
+
+//	LPARAM lParam = 0;
+//	int result = pumpUntilMessage(g_MsgEndModal, NULL, &lParam);
+	int result = pumpUntilMessage(pMessageBox);
+
+	/*
+	if (lParam != 0) {
+		if (lParam == g_QuitNoPrompt)
+			result = defaultAnswer;
+		else
+			result = (int) lParam;
+	}
+	 */
+
+	//pView->VRemoveElement(pModalScreen);
+	//humanView->vRemoveElement(pMessageBox);
+	m_HasModalDialog >>= 1;
+
+	return result;
+}
+
+//
+// class GameCodeApp::PumpUntilMessage			- Chapter 10, page 295
+//
+//int GameCodeApp::PumpUntilMessage(UINT msgEnd, WPARAM *pWParam,
+//		LPARAM *pLParam) {
+
+int GameCodeApp::pumpUntilMessage(shared_ptr<QuitMessageBoxUI> pMessageBox) {
+	//int currentTime = timeGetTime();
+	double currentTime = glfwGetTime();
+	shared_ptr<FpsCounter> pFpsCounter = videoSystemGLFW->getFpsCounter();
+	/*
+	MSG msg;
+	for (;;) {
+		if ( PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE)) {
+			if (msg.message == WM_CLOSE) {
+				m_bQuitting = true;
+				GetMessage(&msg, NULL, 0, 0);
+				break;
+			} else {
+				// Default processing
+				if (GetMessage(&msg, NULL, NULL, NULL)) {
+					TranslateMessage(&msg);
+					DispatchMessage(&msg);
+				}
+
+				// Are we done?
+				if (msg.message == msgEnd)
+					break;
+			}
+		} else {
+			// Update the game views, but nothing else!
+			// Remember this is a modal screen.
+			if (m_pGame) {
+				int timeNow = timeGetTime();
+				int deltaMilliseconds = timeNow - currentTime;
+				for (GameViewList::iterator i = m_pGame->m_gameViews.begin();
+						i != m_pGame->m_gameViews.end(); ++i) {
+					(*i)->VOnUpdate(deltaMilliseconds);
+				}
+				currentTime = timeNow;
+				DXUTRender3DEnvironment();
+			}
+		}
+	}
+	if (pLParam)
+		*pLParam = msg.lParam;
+	if (pWParam)
+		*pWParam = msg.wParam;
+	 */
+
+	for (;;) {
+		bool shouldEnd = pMessageBox->isShouldQuit();
+		if (shouldEnd) {
+			break;
+
+
+		/*
+		if ( PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE)) {
+			if (msg.message == WM_CLOSE) {
+				m_bQuitting = true;
+				GetMessage(&msg, NULL, 0, 0);
+				break;
+			} else {
+				// Default processing
+				if (GetMessage(&msg, NULL, NULL, NULL)) {
+					TranslateMessage (&msg);
+					DispatchMessage(&msg);
+				}
+
+				// Are we done?
+				if (msg.message == msgEnd)
+					break;
+		 */
+		} else {
+
+			// Update the game views, but nothing else!
+			// Remember this is a modal screen.
+			if (m_pGame) {
+				double lastTime = pFpsCounter->getLastTime();
+				double elapsedTime = currentTime - lastTime;
+				float elapsedTimeFloat = static_cast<float>(elapsedTime);
+				m_pGame->vOnUpdateModal(float(currentTime), elapsedTimeFloat);
+				m_pGame->onFrameRender(float(currentTime), elapsedTimeFloat);
+				glfwPollEvents();
+			}
+		}
+	}
+
+	return 0;
+}
+
+
+}
