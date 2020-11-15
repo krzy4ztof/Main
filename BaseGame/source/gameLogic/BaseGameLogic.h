@@ -8,6 +8,7 @@
 #include "BaseGameState.h"
 #include "../mainLoop/ProcessManager.h"
 #include "../userInterface/IGameView.h"
+#include "../userInterface/HumanView.h"
 #include "../graphics3d/OpenGLRenderer.h"
 
 #include <memory> // shared_ptr, weak_ptr
@@ -55,12 +56,15 @@ public:
 
 	// Logic Update
 	virtual void vOnUpdate(float time, float elapsedTime);
+	virtual void vOnUpdateModal(float time, float elapsedTime);
+
 	void onFrameRender(double fTime, float fElapsedTime);
 	std::list<std::shared_ptr<IGameView> > getViews();
 	virtual void describeYourself();
 
 	void removeAllViews();
 	// std::list<std::shared_ptr<IGameView> > m_gameViews; // views that are attached to our game
+	std::shared_ptr<HumanView> getHumanView();
 
 protected:
 

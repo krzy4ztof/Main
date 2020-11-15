@@ -4,7 +4,7 @@
  *  Created on: 6 lip 2020
  *      Author: Krzysztof
  */
-
+#include "../gameInitialization/GameCodeApp.h" //g_pApp
 #include "QuitMessageBoxUI.h"
 #include "../debugging/Logger.h"
 #include "../resourceCache/ResourceCache.h"
@@ -23,6 +23,7 @@
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
 #include <string> // string
+#include <memory> // shared_from_this
 
 using std::stringstream;
 using std::shared_ptr;
@@ -33,7 +34,7 @@ namespace base_game {
 
 QuitMessageBoxUI::QuitMessageBoxUI(shared_ptr<OpenGLRenderer> openGLRenderer,
 		shared_ptr<GameMessages> gameMessages) :
-		modal(true) {
+		modal(true), temp_shouldQuit(false) {
 	logger::info("Create QuitMessageBoxUI");
 	this->openGLRenderer = openGLRenderer;
 	this->gameMessages = gameMessages;
@@ -334,10 +335,20 @@ void QuitMessageBoxUI::closeQuitMessageBoxNo(void *voidMessageBoxUI) {
 void QuitMessageBoxUI::tempCloseQuitMessageBox() {
 	//vRemoveElement(m_MessageBox);
 	this->vSetVisible(false);
+	temp_shouldQuit = true;
 	stringstream ss;
 	ss << "QuitMessageBoxUI::tempCloseQuitMessageBox";
 	logger::info(ss);
 	//m_MessageBox.reset();
+}
+
+bool QuitMessageBoxUI::isShouldQuit() {
+	return temp_shouldQuit;
+}
+
+void QuitMessageBoxUI::onOpening() {
+	vSetVisible(true);
+	temp_shouldQuit = false;
 }
 
 void QuitMessageBoxUI::cursorOverButton(void *voidMessageBoxUI,
@@ -419,6 +430,36 @@ bool QuitMessageBoxUI::vOnScrollCallback(GLFWwindow *window, double xoffset,
 	return modal;
 }
 
+bool QuitMessageBoxUI::askIfShouldQuit() {
+	onOpening();
+
+	/*
+	for (;;) {
+		logger::info("loop");
+
+	 // Poll for and process events
+	 // glfwPollEvents();
+		glfwWaitEvents();
+	}
+	 */
+
+	//shared_ptr<QuitMessageBoxUI> msgBox = make_shared<QuitMessageBoxUI>(this);
+	shared_ptr<QuitMessageBoxUI> msgBox = shared_from_this();
+
+	int result = 0;
+	if (base_game::g_pApp != nullptr) {
+		result = base_game::g_pApp->modal(msgBox, 0);
+	}
+
+	if (result) {
+		return true;
+	} else {
+		return false;
+	}
+
+	//openGLRenderer->videoSystemGLFW
+	// return true;
+}
 
 
 

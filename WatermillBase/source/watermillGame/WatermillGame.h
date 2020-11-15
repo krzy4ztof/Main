@@ -2,9 +2,11 @@
 #define WATERMILLGAME_H
 
 #include "../../../BaseGame/source/gameInitialization/GameCodeApp.h"
+#include "../../../BaseGame/source/gameInitialization/VideoSystemGLFW.h"
 #include "../../../BaseGame/source/gameLogic/BaseGameLogic.h"
 #include "../../../BaseGame/source/resourceCache/ResourceCache.h"
 #include "../../../BaseGame/source/graphics3d/OpenGLRenderer.h"
+
 
 //#include <gameInitialization/GameCodeApp.h>
 //#include <gameLogic/BaseGameLogic.h>
@@ -35,6 +37,9 @@ public:
 	void setResourceCache(
 			std::shared_ptr<base_game::ResourceCache> resourceCache);
 
+	void setVideoSystemGLFW(
+			std::shared_ptr<base_game::VideoSystemGLFW> videoSystemGLFW);
+	
 protected:
 	virtual base_game::BaseGameLogic* createGameAndView(
 			std::shared_ptr<base_game::ResourceCache> resourceCache,

@@ -24,7 +24,9 @@
 namespace base_game {
 class TempT00DpngGilScanlineUI: public TempUI {
 public:
-	TempT00DpngGilScanlineUI(std::shared_ptr<ResourceCache> resourceCache);
+	//TempT00DpngGilScanlineUI(std::shared_ptr<ResourceCache> resourceCache);
+	TempT00DpngGilScanlineUI(
+			std::shared_ptr<OpenGLRenderer> openGLRenderer);
 	virtual ~TempT00DpngGilScanlineUI();
 
 	virtual void vOnRestore();
@@ -38,13 +40,16 @@ public:
 	void temp_vOnRender(double fTime, float fElapsedTime);
 
 protected:
-	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 	std::shared_ptr<SpriteSheet> spriteSheet;
+
+	/*
+	 std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 
 	PngTextureLoader *pngTextureLoader;
 	std::shared_ptr<PngRenderer> pngRenderer;
 	std::shared_ptr<ShaderCompiler> shaderCompiler;
-
+	 */
 };
 
 class TempT00DpngGilScanlineView: public HumanView {
@@ -60,6 +65,7 @@ public:
 //	virtual void vActivate();
 //	virtual void vDeactivate();
 	virtual void tempVRender(double fTime, float fElapsedTime);
+
 
 protected:
 	std::shared_ptr<TempT00DpngGilScanlineUI> tempT00DpngGilScanlineUI;

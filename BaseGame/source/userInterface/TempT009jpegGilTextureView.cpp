@@ -35,27 +35,38 @@ using std::make_shared;
 namespace base_game {
 
 TempT009jpegGilTextureUI::TempT009jpegGilTextureUI(
-		shared_ptr<ResourceCache> resourceCache) {
+		shared_ptr<OpenGLRenderer> openGLRenderer) {
+//TempT009jpegGilTextureUI::TempT009jpegGilTextureUI(
+//		shared_ptr<ResourceCache> resourceCache) {
 	logger::info("Create TempT009jpegGilTextureUI");
+	this->openGLRenderer = openGLRenderer;
 
-	this->shrdPtrResourceCache = resourceCache;
 	spriteSheet = make_shared<SpriteSheet>();
 	spriteSheet2 = make_shared<SpriteSheet>();
+
+	/*
+	 this->shrdPtrResourceCache = resourceCache;
 
 	jpegTextureLoader = new JpegTextureLoader(this->shrdPtrResourceCache);
 
 	jpegRenderer = make_shared<JpegRenderer>();
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
+	 */
 }
 
 TempT009jpegGilTextureUI::~TempT009jpegGilTextureUI() {
 	logger::info("Destroy TempT009jpegGilTextureUI");
+	openGLRenderer.reset();
 	vTerminate();
 }
 
 void TempT009jpegGilTextureUI::vTerminate() {
+	spriteSheet2.reset();
+	spriteSheet.reset();
+
+	/*
 	if (shaderCompiler) {
-		/*
+	 *
 		 * There is some bug in
 		 * (Fragment/Vertex)ShaderResourceExtraData::compileShader
 		 * so, we need to remove shaders here.
@@ -71,7 +82,7 @@ void TempT009jpegGilTextureUI::vTerminate() {
 		 * The bug should be fixed and we should not removeShaders("figures_renderer") here
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
-		 */
+	 *
 		shaderCompiler->removeShaders("texture_renderer");
 	} else {
 		logger::info("shader compiler destroyed");
@@ -83,8 +94,7 @@ void TempT009jpegGilTextureUI::vTerminate() {
 	jpegRenderer.reset();
 	templates::safe_delete<JpegTextureLoader>(jpegTextureLoader);
 	shrdPtrResourceCache.reset();
-	spriteSheet2.reset();
-	spriteSheet.reset();
+	 */
 }
 
 int TempT009jpegGilTextureUI::vGetZOrder() const {
@@ -120,19 +130,22 @@ void TempT009jpegGilTextureUI::temp_init_part() {
 
 	 */
 
-	jpegTextureLoader->init("temp_t009_jpeg_gil_texture_view.jpg",
+	openGLRenderer->jpegTextureLoader->init(
+			"temp_t009_jpeg_gil_texture_view.jpg",
 			spriteSheet2);
 
-	jpegTextureLoader->init("temp_g1040.jpg", spriteSheet);
+	openGLRenderer->jpegTextureLoader->init("temp_g1040.jpg", spriteSheet);
 
 	spriteSheet->setMargin(1);
 	spriteSheet->setColumns(4);
 	spriteSheet->setRows(2);
 
 	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache); // = new ShaderCompiler();
+	/*
 	GLuint programID = shaderCompiler->loadShaders("texture_renderer");
 	jpegRenderer->init(programID);
-
+	 */
+	
 	//vActivate();
 }
 
@@ -158,36 +171,37 @@ void TempT009jpegGilTextureUI::temp_vOnRender(double fTime,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
 
-	jpegRenderer->activate(projection);
-	jpegTextureLoader->activate(spriteSheet);
+	openGLRenderer->jpegRenderer->activate(projection);
+	openGLRenderer->jpegTextureLoader->activate(spriteSheet);
 
-	jpegRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
+	openGLRenderer->jpegRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
 			glm::vec2(180.0f, 180.0f), spriteSheet, 1, 2); // glm::vec2(0.5f, 0.5f),
 
-	jpegRenderer->renderTriangle(glm::vec2(120.0f, 500.0f),
+	openGLRenderer->jpegRenderer->renderTriangle(glm::vec2(120.0f, 500.0f),
 			glm::vec2(160.0f, 500.0f), glm::vec2(160.f, 600.0f), // triangle
 			glm::vec2(0.75f, 0.0f), // texture
 			glm::vec2(0.875f, 0.0f), glm::vec2(0.875f, 0.5f));
 
-	jpegRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
+	openGLRenderer->jpegRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
 			glm::vec2(100.0f, 500.0f), glm::vec2(50.f, 600.0f), // triangle
 			glm::vec2(0.0f, 0.0f), // texture
 			glm::vec2(0.25f, 0.0f), glm::vec2(0.125f, 0.5f));
 
-	jpegRenderer->renderMultiRectangle(glm::vec2(180.0f, 180.0f),
+	openGLRenderer->jpegRenderer->renderMultiRectangle(
+			glm::vec2(180.0f, 180.0f),
 			glm::vec2(480.0f, 380.0f), 2.0f, 5.0f);
 
-	jpegTextureLoader->activate(spriteSheet2);
+	openGLRenderer->jpegTextureLoader->activate(spriteSheet2);
 
 	int width2 = spriteSheet2->getWidth();
 	int height2 = spriteSheet2->getHeight();
 
-	jpegRenderer->renderRectangle(glm::vec2(400.0f, 400.0f),
+	openGLRenderer->jpegRenderer->renderRectangle(glm::vec2(400.0f, 400.0f),
 			glm::vec2(430.0f, 430.0f), //rectangle
 			spriteSheet2, 0, 0);
 
-	jpegTextureLoader->deactivate();
-	jpegRenderer->deactivate();
+	openGLRenderer->jpegTextureLoader->deactivate();
+	openGLRenderer->jpegRenderer->deactivate();
 
 }
 
@@ -199,7 +213,9 @@ TempT009jpegGilTextureView::TempT009jpegGilTextureView(
 		HumanView(openGLRenderer) {
 	logger::info("Create TempT009jpegGilTextureView");
 
-	tempT009jpegGilTextureUI.reset(new TempT009jpegGilTextureUI(resourceCache));
+	//tempT009jpegGilTextureUI.reset(new TempT009jpegGilTextureUI(resourceCache));
+	tempT009jpegGilTextureUI.reset(
+			new TempT009jpegGilTextureUI(openGLRenderer));
 	vPushElement(tempT009jpegGilTextureUI);
 
 	/*

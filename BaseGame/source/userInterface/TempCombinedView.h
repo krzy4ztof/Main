@@ -29,7 +29,8 @@ namespace base_game {
 
 class TempCombinedUI: public TempUI {
 public:
-	TempCombinedUI(std::shared_ptr<ResourceCache> resourceCache);
+	// TempCombinedUI(std::shared_ptr<ResourceCache> resourceCache);
+	TempCombinedUI(std::shared_ptr<OpenGLRenderer> openGLRenderer);
 	virtual ~TempCombinedUI();
 
 	virtual void vOnRestore();
@@ -43,22 +44,27 @@ public:
 	virtual void vTerminate();
 
 protected:
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 
+	/*
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<FiguresRenderer> figuresRenderer;
 	std::shared_ptr<FreeTypeRenderer> freeTypeRenderer;
 
-	std::shared_ptr<JpegTextureLoader> jpegTextureLoader;
+
 	std::shared_ptr<PngTextureLoader> pngTextureLoader;
 
+	 std::shared_ptr<JpegTextureLoader> jpegTextureLoader;
 	std::shared_ptr<JpegRenderer> jpegRenderer;
+
 	std::shared_ptr<PngRenderer> pngRenderer;
+	 */
 
 	std::shared_ptr<SpriteSheet> spriteSheet;
 	std::shared_ptr<SpriteSheet> spriteSheet2;
 
 	std::shared_ptr<SpriteSheet> spriteSheetPng;
-	std::shared_ptr<ShaderCompiler> shaderCompiler;
+	//std::shared_ptr<ShaderCompiler> shaderCompiler;
 
 };
 
@@ -77,7 +83,6 @@ public:
 	virtual void vTerminate();
 //	virtual void vActivate();
 //	virtual void vDeactivate();
-
 
 
 protected:

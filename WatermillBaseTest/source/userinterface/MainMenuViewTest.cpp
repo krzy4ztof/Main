@@ -184,6 +184,9 @@ struct MainMenuViewFixture {
 		//videoSystemGLFW = new VideoSystemGLFW;
 		videoSystemGLFW = make_shared<VideoSystemGLFW>();
 
+		pWatermillGame->setVideoSystemGLFW(videoSystemGLFW);
+
+
 		openGLRenderer = make_shared<OpenGLRenderer>(videoSystemGLFW,
 				shrdPtrResourceCache);
 

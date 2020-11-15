@@ -95,6 +95,11 @@ void MainMenuView::tempVRender(double currentTime, float fElapsedTime) {
 
 void MainMenuView::vOnRender(double fTime, float fElapsedTime) {
 	HumanView::vOnRender(fTime, fElapsedTime);
+
+	stringstream ss;
+	ss << "MainMenuView::vOnRender /Time: " << fTime << " /Elapsed: "
+			<< fElapsedTime;
+	logger::info(ss);
 	//logger::info("MainMenuView::vOnRender");
 	//logger::info("vOnRender HumanView");
 

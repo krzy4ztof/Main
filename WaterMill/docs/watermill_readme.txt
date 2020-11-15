@@ -2491,8 +2491,37 @@ GameCodingComplete4th.pdf 292 (337 z 959)
 		double ypos)
 
 -- 24/09/2020 NEXT
+-- 17/10/2020
 GameCodingComplete4th.pdf 293 (338 z 959)
-make modal dialog - freeze application when waiting for reply
+[???] make modal dialog - freeze application when waiting for reply
+
+[OK] bool QuitMessageBoxUI::askIfShouldQuit() {
+	//openGLRenderer->videoSystemGLFW
+	glfwWaitEvents(); ???? https://www.glfw.org/docs/latest/input_guide.html
+
+-- 01/11/2020
+GameCodingComplete4th.pdf 298 (343 z 959)
+
+void CALLBACK MainMenuUI::_OnGUIEvent( UINT nEvent, int nControlID, CDXUTControl* pControl, void *pUserContext )
+void CALLBACK StandardHUD::OnGUIEvent( UINT nEvent, int nControlID, CDXUTControl* pControl, void *pUserContext )
+
+GameCodingComplete4th.pdf 300 (345 z 959)
+Math -> polygon hit test -> i koniec rozdziału
+
+-- 13/11/2020
+
+TempT009jpegGilTextureUI - wzor:TempT004figuresUI
+	ok 1. konstruktor TempT004figuresUI(shared_ptr<OpenGLRenderer> openGLRenderer) - openGLRenderer w parametrze
+	ok 2. void TempT004figuresUI::vTerminate() - ma byc pusta
+	3. parametry figuresRenderer, shaderCompiler usunac, zastapic przez openGLRenderer->figuresRenderer
+	4. void TempT004figuresUI::temp_init_part() - usunac komendy:
+				GLuint programID = openGLRenderer->shaderCompiler->loadShaders("figures_renderer");
+				openGLRenderer->figuresRenderer->init(programID);
+	
+tak samo: 
+	TempT00DpngGilScanlineUI
+	TempT00FpolishFontsUI
+	TempCombinedUI
 
 -----------------------
 ---	polskie znaki	---

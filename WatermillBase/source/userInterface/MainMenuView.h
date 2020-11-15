@@ -65,6 +65,7 @@ public:
 			std::shared_ptr<base_game::GameMessages> gameMessages);
 	void openQuitMessageBox();
 	//void tempCloseQuitMessageBox();
+
 protected:
 	//std::shared_ptr<base_game::ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<MainMenuUI> m_MainMenuUI;

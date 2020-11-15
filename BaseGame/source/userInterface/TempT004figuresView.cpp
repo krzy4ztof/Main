@@ -35,20 +35,32 @@ using std::make_shared;
 
 namespace base_game {
 
-TempT004figuresUI::TempT004figuresUI(shared_ptr<ResourceCache> resourceCache) {
+//TempT004figuresUI::TempT004figuresUI(shared_ptr<ResourceCache> resourceCache) {
+TempT004figuresUI::TempT004figuresUI(
+		shared_ptr<OpenGLRenderer> openGLRenderer) {
+
 	logger::info("Create TempT004figuresUI");
 
+	this->openGLRenderer = openGLRenderer;
+
+	/*
 	this->shrdPtrResourceCache = resourceCache;
 	figuresRenderer = make_shared<FiguresRenderer>();
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
+	 */
 }
 
 TempT004figuresUI::~TempT004figuresUI() {
 	logger::info("Destroy TempT004figuresUI");
+	openGLRenderer.reset();
 	vTerminate();
 }
 
 void TempT004figuresUI::vTerminate() {
+}
+
+/*
+void TempT004figuresUI::vTerminate_old_to_delete() {
 	stringstream ss;
 	ss << "resourceCacheUseCount: " << shrdPtrResourceCache.use_count();
 	logger::info(ss);
@@ -58,7 +70,7 @@ void TempT004figuresUI::vTerminate() {
 	logger::info(ss);
 
 	if (shaderCompiler) {
-		/*
+ *
 		 * There is some bug in
 		 * (Fragment/Vertex)ShaderResourceExtraData::compileShader
 		 * so, we need to remove shaders here.
@@ -74,7 +86,7 @@ void TempT004figuresUI::vTerminate() {
 		 * The bug should be fixed and we should not removeShaders("figures_renderer") here
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
-		 */
+ *
 
 		shaderCompiler->removeShaders("figures_renderer");
 	} else {
@@ -96,6 +108,7 @@ void TempT004figuresUI::vTerminate() {
 	logger::info(ss);
 
 }
+ */
 
 int TempT004figuresUI::vGetZOrder() const {
 	return 1;
@@ -114,8 +127,14 @@ void TempT004figuresUI::temp_init_part() {
 	stringstream ss;
 
 	//ShaderCompiler shaderCompiler(this->shrdPtrResourceCache);
-	GLuint programID = shaderCompiler->loadShaders("figures_renderer");
-	figuresRenderer->init(programID);
+
+	/*
+	 * programID already initialized in OpenGLRenderer::initRenderers()
+	GLuint programID = openGLRenderer->shaderCompiler->loadShaders(
+			"figures_renderer");
+	openGLRenderer->figuresRenderer->init(programID);
+	 */
+
 
 	// vActivate();
 }
@@ -139,19 +158,20 @@ void TempT004figuresUI::temp_vOnRender(double fTime, float fElapsedTime) {
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
 
-	figuresRenderer->activate(projection);
+	openGLRenderer->figuresRenderer->activate(projection);
 
-	figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
+	openGLRenderer->figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
 			glm::vec2(100.0f, 0.0f), glm::vec2(50.f, 200.0f),
 			glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
-	figuresRenderer->renderRectangle(glm::vec2(200.0f, 200.0f),
+	openGLRenderer->figuresRenderer->renderRectangle(glm::vec2(200.0f, 200.0f),
 			glm::vec2(240.0f, 240.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));
 
-	figuresRenderer->renderPoint(glm::vec2(300.0f, 400.0f), 8.0f,
+	openGLRenderer->figuresRenderer->renderPoint(glm::vec2(300.0f, 400.0f),
+			8.0f,
 			glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
 
-	figuresRenderer->deactivate();
+	openGLRenderer->figuresRenderer->deactivate();
 }
 
 TempT004figuresView::TempT004figuresView(
@@ -160,7 +180,8 @@ TempT004figuresView::TempT004figuresView(
 		HumanView(openGLRenderer) {
 	logger::info("Create TempT004figuresView");
 
-	tempT004figuresUI.reset(new TempT004figuresUI(resourceCache));
+	// tempT004figuresUI.reset(new TempT004figuresUI(resourceCache));
+	tempT004figuresUI.reset(new TempT004figuresUI(openGLRenderer));
 	vPushElement(tempT004figuresUI);
 
 	//this->shrdPtrResourceCache = resourceCache;
@@ -238,6 +259,8 @@ void TempT004figuresView::tempVRender(double currentTime, float fElapsedTime) {
 void TempT004figuresView::vOnRender(double currentTime, float fElapsedTime) {
 	HumanView::vOnRender(currentTime, fElapsedTime);
 }
+
+
 
 /*
 namespace temp_t004_figures_view {

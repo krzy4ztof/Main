@@ -12,6 +12,7 @@
 #include "../inputDevices/IPointerHandler.h"
 #include "../graphics3d/FpsCounter.h"
 #include "../utilities/Templates.h"
+#include "../userInterface/IScreenElement.h"
 
 #include <sstream>      // std::stringstream
 // #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
@@ -31,7 +32,7 @@ const int VideoSystemGLFW::WINDOW_HEIGHT = 640; //480;
 VideoSystemGLFW::VideoSystemGLFW() {
 	logger::info("Create VideoSystemGLFW");
 	window = nullptr;
-	temp_fpsCounter = new FpsCounter();
+	temp_fpsCounter = make_shared<FpsCounter>();
 
 }
 
@@ -39,9 +40,14 @@ VideoSystemGLFW::~VideoSystemGLFW() {
 	logger::info("Destroy VideoSystemGLFW");
 	//glfwSetCursor(window, NULL);
 	//glfwDestroyCursor(cursor);
-	templates::safe_delete<FpsCounter>(temp_fpsCounter);
+	//templates::safe_delete<FpsCounter>(temp_fpsCounter);
+	temp_fpsCounter.reset();
 	glfwDestroyWindow(window);
 	glfwTerminate();
+}
+
+shared_ptr<FpsCounter> VideoSystemGLFW::getFpsCounter() {
+	return temp_fpsCounter;
 }
 
 /*

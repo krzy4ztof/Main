@@ -42,36 +42,53 @@ using std::shared_ptr;
 using std::make_shared;
 
 namespace base_game {
-TempCombinedUI::TempCombinedUI(shared_ptr<ResourceCache> resourceCache) {
+TempCombinedUI::TempCombinedUI(shared_ptr<OpenGLRenderer> openGLRenderer) {
+// TempCombinedUI::TempCombinedUI(shared_ptr<ResourceCache> resourceCache) {
 	logger::info("Create TempCombinedUI");
 
+	this->openGLRenderer = openGLRenderer;
+	spriteSheet = make_shared<SpriteSheet>();
+	spriteSheet2 = make_shared<SpriteSheet>();
+	spriteSheetPng = make_shared<SpriteSheet>();
+
+	/*
+	jpegTextureLoader = make_shared<JpegTextureLoader>(
+			openGLRenderer->shrdPtrResourceCache);
+	jpegRenderer = make_shared<JpegRenderer>();
+	 */
+
+	/*
 	this->shrdPtrResourceCache = resourceCache;
 
 	figuresRenderer = make_shared<FiguresRenderer>();
 	freeTypeRenderer = make_shared<FreeTypeRenderer>();
 
-	spriteSheet = make_shared<SpriteSheet>();
-	spriteSheet2 = make_shared<SpriteSheet>();
-	spriteSheetPng = make_shared<SpriteSheet>();
 
-	jpegTextureLoader = make_shared<JpegTextureLoader>(
-			this->shrdPtrResourceCache);
 	pngTextureLoader = make_shared<PngTextureLoader>(
 			this->shrdPtrResourceCache);
 
-	jpegRenderer = make_shared<JpegRenderer>();
 	pngRenderer = make_shared<PngRenderer>();
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
+	 */
 }
 
 TempCombinedUI::~TempCombinedUI() {
 	logger::info("Destroy TempCombinedUI");
+	openGLRenderer.reset();
 	vTerminate();
 }
 
 void TempCombinedUI::vTerminate() {
+
+	spriteSheetPng.reset();
+	spriteSheet2.reset();
+	spriteSheet.reset();
+
+
+
+	/*
 	if (shaderCompiler) {
-		/*
+	 *
 		 * There is some bug in
 		 * (Fragment/Vertex)ShaderResourceExtraData::compileShader
 		 * so, we need to remove shaders here.
@@ -87,7 +104,7 @@ void TempCombinedUI::vTerminate() {
 		 * The bug should be fixed and we should not removeShaders("figures_renderer") here
 		 * VertexShaderResourceExtraData::compileShader should save results in the cache for further usage
 		 *
-		 */
+	 *
 		shaderCompiler->removeShaders("texture_renderer");
 		shaderCompiler->removeShaders("fonts_renderer");
 		shaderCompiler->removeShaders("figures_renderer");
@@ -104,13 +121,11 @@ void TempCombinedUI::vTerminate() {
 	pngTextureLoader.reset();
 	jpegTextureLoader.reset();
 
-	spriteSheetPng.reset();
-	spriteSheet2.reset();
-	spriteSheet.reset();
 
 	freeTypeRenderer.reset();
 	figuresRenderer.reset();
 	shrdPtrResourceCache.reset();
+	 */
 }
 
 int TempCombinedUI::vGetZOrder() const {
@@ -130,6 +145,8 @@ void TempCombinedUI::temp_init_part() {
 	stringstream ss;
 
 	// shaderCompiler(this->shrdPtrResourceCache);
+
+	/*
 	GLuint programID = shaderCompiler->loadShaders("figures_renderer");
 
 	figuresRenderer->init(programID);
@@ -137,6 +154,8 @@ void TempCombinedUI::temp_init_part() {
 	FreeTypeLoader freeTypeLoader(this->shrdPtrResourceCache);
 	std::shared_ptr<std::map<GLushort, FreeTypeCharacter>> characters =
 			freeTypeLoader.initFreetype();
+	
+
 	freeTypeLoader.debugCharacters();
 
 	GLuint freeTypeProgramID = shaderCompiler->loadShaders(
@@ -144,25 +163,30 @@ void TempCombinedUI::temp_init_part() {
 
 	freeTypeRenderer->init(freeTypeProgramID, characters);
 	freeTypeRenderer->debugCharacters();
+	 */
 
-	jpegTextureLoader->init("temp_t009_jpeg_gil_texture_view.jpg",
+	openGLRenderer->jpegTextureLoader->init(
+			"temp_t009_jpeg_gil_texture_view.jpg",
 			spriteSheet2);
-	jpegTextureLoader->init("temp_g1040.jpg", spriteSheet);
+	openGLRenderer->jpegTextureLoader->init("temp_g1040.jpg", spriteSheet);
 	spriteSheet->setMargin(1);
 	spriteSheet->setColumns(4);
 	spriteSheet->setRows(2);
 
-	pngTextureLoader->init("temp_t00d_png_gil_scanline_view_pools_alpha.png",
+	openGLRenderer->pngTextureLoader->init(
+			"temp_t00d_png_gil_scanline_view_pools_alpha.png",
 			spriteSheetPng);
 
 	spriteSheetPng->setMargin(1);
 	// spriteSheetPng->setMargin(3);
 	spriteSheetPng->setColumns(4);
 
+	/*
 	GLuint jpegProgramID = shaderCompiler->loadShaders("texture_renderer");
 
 	jpegRenderer->init(jpegProgramID);
 	pngRenderer->init(jpegProgramID);
+	 */
 
 //	vActivate();
 }
@@ -189,85 +213,91 @@ void TempCombinedUI::temp_vOnRender(double fTime, float fElapsedTime) {
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_WIDTH), 0.0f,
 			static_cast<GLfloat>(VideoSystemGLFW::WINDOW_HEIGHT));
 
-	jpegRenderer->activate(projection);
-	jpegTextureLoader->activate(spriteSheet);
+	openGLRenderer->jpegRenderer->activate(projection);
+	openGLRenderer->jpegTextureLoader->activate(spriteSheet);
 
-	jpegRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
+	openGLRenderer->jpegRenderer->renderRectangle(glm::vec2(60.0f, 60.0f),
 			glm::vec2(180.0f, 180.0f), spriteSheet, 1, 2);
 
-	jpegRenderer->renderTriangle(glm::vec2(120.0f, 500.0f),
+	openGLRenderer->jpegRenderer->renderTriangle(glm::vec2(120.0f, 500.0f),
 			glm::vec2(160.0f, 500.0f), glm::vec2(160.f, 600.0f), // triangle
 			glm::vec2(0.75f, 0.0f), glm::vec2(0.875f, 0.0f), // texture
 			glm::vec2(0.875f, 0.5f));
 
-	jpegRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
+	openGLRenderer->jpegRenderer->renderTriangle(glm::vec2(0.0f, 500.0f),
 			glm::vec2(100.0f, 500.0f), glm::vec2(50.f, 600.0f), // triangle
 			glm::vec2(0.0f, 0.0f), glm::vec2(0.25f, 0.0f), // texture
 			glm::vec2(0.125f, 0.5f));
 
-	jpegRenderer->renderMultiRectangle(glm::vec2(180.0f, 180.0f),
+	openGLRenderer->jpegRenderer->renderMultiRectangle(
+			glm::vec2(180.0f, 180.0f),
 			glm::vec2(480.0f, 380.0f), 2.0f, 5.0f);
 
-	jpegTextureLoader->activate(spriteSheet2);
+	openGLRenderer->jpegTextureLoader->activate(spriteSheet2);
 
-	jpegRenderer->renderRectangle(glm::vec2(400.0f, 400.0f),
+	openGLRenderer->jpegRenderer->renderRectangle(glm::vec2(400.0f, 400.0f),
 			glm::vec2(430.0f, 430.0f), //rectangle
 			spriteSheet2, 0, 0);
 
-	jpegRenderer->deactivate();
+	openGLRenderer->jpegRenderer->deactivate();
 
-	figuresRenderer->activate(projection);
+	openGLRenderer->figuresRenderer->activate(projection);
 
-	figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
+	openGLRenderer->figuresRenderer->renderTriangle(glm::vec2(0.0f, 0.0f),
 			glm::vec2(100.0f, 0.0f), glm::vec2(50.f, 200.0f),
 			glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
-	figuresRenderer->renderTriangle(glm::vec2(120.0f, 0.0f),
+	openGLRenderer->figuresRenderer->renderTriangle(glm::vec2(120.0f, 0.0f),
 			glm::vec2(220.0f, 0.0f), glm::vec2(170.f, 200.0f),
 			glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
-	figuresRenderer->renderRectangle(glm::vec2(200.0f, 200.0f),
+	openGLRenderer->figuresRenderer->renderRectangle(glm::vec2(200.0f, 200.0f),
 			glm::vec2(240.0f, 240.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));
 
-	figuresRenderer->renderRectangle(glm::vec2(250.0f, 200.0f),
+	openGLRenderer->figuresRenderer->renderRectangle(glm::vec2(250.0f, 200.0f),
 			glm::vec2(290.0f, 240.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));
 
-	figuresRenderer->renderPoint(glm::vec2(300.0f, 400.0f), 8.0f,
+	openGLRenderer->figuresRenderer->renderPoint(glm::vec2(300.0f, 400.0f),
+			8.0f,
 			glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
 
-	figuresRenderer->renderPoint(glm::vec2(350.0f, 400.0f), 8.0f,
+	openGLRenderer->figuresRenderer->renderPoint(glm::vec2(350.0f, 400.0f),
+			8.0f,
 			glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
 
-	figuresRenderer->deactivate();
+	openGLRenderer->figuresRenderer->deactivate();
 
-	freeTypeRenderer->activate(projection);
+	openGLRenderer->freeTypeRenderer->activate(projection);
 
-	freeTypeRenderer->startRender();
-	freeTypeRenderer->renderText("This is sample text", 25.0f, 25.0f, 1.0f,
+	openGLRenderer->freeTypeRenderer->startRender();
+	openGLRenderer->freeTypeRenderer->renderText("This is sample text", 25.0f,
+			25.0f, 1.0f,
 			glm::vec3(0.5, 0.8f, 0.2f));
-	freeTypeRenderer->renderText("(C) LearnOpenGL.com", 540.0f, 570.0f, 0.5f,
+	openGLRenderer->freeTypeRenderer->renderText("(C) LearnOpenGL.com", 540.0f,
+			570.0f, 0.5f,
 			glm::vec3(0.3, 0.7f, 0.9f));
-	freeTypeRenderer->renderText("Ąą Ćć Ęę Łł Ńń Óó Źź Żż", 0.0f, 0.0f, 0.5f,
+	openGLRenderer->freeTypeRenderer->renderText("Ąą Ćć Ęę Łł Ńń Óó Źź Żż",
+			0.0f, 0.0f, 0.5f,
 			glm::vec3(0.3, 0.7f, 0.9f));
 	// 0.0f, 0.0f -x, y dolny rog ekranu
 
-	freeTypeRenderer->deactivate();
+	openGLRenderer->freeTypeRenderer->deactivate();
 
-	pngRenderer->activate(projection);
-	pngTextureLoader->activate(spriteSheetPng);
+	openGLRenderer->pngRenderer->activate(projection);
+	openGLRenderer->pngTextureLoader->activate(spriteSheetPng);
 
-	pngRenderer->renderRectangle(glm::vec2(160.0f, 60.0f),
+	openGLRenderer->pngRenderer->renderRectangle(glm::vec2(160.0f, 60.0f),
 			glm::vec2(280.0f, 180.0f), spriteSheetPng, 0, 1);
 
-	pngRenderer->renderTriangle(glm::vec2(200.0f, 500.0f),
+	openGLRenderer->pngRenderer->renderTriangle(glm::vec2(200.0f, 500.0f),
 			glm::vec2(300.0f, 500.0f), glm::vec2(250.f, 600.0f), // triangle
 			glm::vec2(0.0f, 0.0f), // texture
 			glm::vec2(0.25f, 0.0f), glm::vec2(0.125f, 0.5f));
 
-	pngRenderer->renderMultiRectangle(glm::vec2(280.0f, 180.0f),
+	openGLRenderer->pngRenderer->renderMultiRectangle(glm::vec2(280.0f, 180.0f),
 			glm::vec2(580.0f, 380.0f), 2.0f, 1.0f);
 
-	pngRenderer->deactivate();
+	openGLRenderer->pngRenderer->deactivate();
 }
 
 ///
@@ -277,7 +307,8 @@ TempCombinedView::TempCombinedView(
 		std::shared_ptr<OpenGLRenderer> openGLRenderer) :
 		HumanView(openGLRenderer) {
 	logger::info("Create TempCombinedView");
-	tempCombinedUI.reset(new TempCombinedUI(resourceCache));
+	//tempCombinedUI.reset(new TempCombinedUI(resourceCache));
+	tempCombinedUI.reset(new TempCombinedUI(openGLRenderer));
 	vPushElement(tempCombinedUI);
 
 	/*

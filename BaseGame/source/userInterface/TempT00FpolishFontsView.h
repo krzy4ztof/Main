@@ -31,7 +31,9 @@ namespace base_game {
 
 class TempT00FpolishFontsUI: public TempUI {
 public:
-	TempT00FpolishFontsUI(std::shared_ptr<ResourceCache> resourceCache);
+	//TempT00FpolishFontsUI(std::shared_ptr<ResourceCache> resourceCache);
+	TempT00FpolishFontsUI(
+			std::shared_ptr<OpenGLRenderer> openGLRenderer);
 	virtual ~TempT00FpolishFontsUI();
 
 	virtual void vOnRestore();
@@ -47,10 +49,13 @@ public:
 	void temp_vOnRender(double fTime, float fElapsedTime);
 
 protected:
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
+
+	/*
 	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
 	std::shared_ptr<FreeTypeRenderer> freeTypeRenderer;
 	std::shared_ptr<ShaderCompiler> shaderCompiler;
-
+	 */
 };
 
 class TempT00FpolishFontsView: public HumanView {

@@ -25,14 +25,15 @@ HumanView::HumanView(std::shared_ptr<OpenGLRenderer> openGLRenderer) {
 
 	m_ViewId = 0;
 	m_ActorId = 0;
-	fpsCounter = new FpsCounter();
+	fpsCounter = openGLRenderer->videoSystemGLFW->getFpsCounter(); // new FpsCounter();
 	this->openGLRenderer = openGLRenderer;
 	pProcessManager = new ProcessManager();
 }
 
 HumanView::~HumanView() {
 	templates::safe_delete<ProcessManager>(pProcessManager);
-	templates::safe_delete < FpsCounter > (fpsCounter);
+	//templates::safe_delete < FpsCounter > (fpsCounter);
+	fpsCounter.reset();
 	logger::info("Destroy HumanView");
 	m_KeyboardHandler.reset();
 	m_PointerHandler.reset();
@@ -376,6 +377,10 @@ void HumanView::vPushElement(shared_ptr<IScreenElement> pElement) {
 
 void HumanView::vRemoveElement(shared_ptr<IScreenElement> pElement) {
 	m_ScreenElements.remove(pElement);
+}
+
+GameViewType HumanView::vGetType() {
+	return GameView_Human;
 }
 
 

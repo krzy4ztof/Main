@@ -38,7 +38,12 @@ OpenGLRenderer::OpenGLRenderer(shared_ptr<VideoSystemGLFW> videoSystemGLFW,
 	freeTypeRenderer = make_shared<FreeTypeRenderer>();
 	pngTextureLoader = make_shared<PngTextureLoader>(
 			this->shrdPtrResourceCache);
+	jpegTextureLoader = make_shared<JpegTextureLoader>(
+			this->shrdPtrResourceCache);
+
 	pngRenderer = make_shared<PngRenderer>();
+	jpegRenderer = make_shared<JpegRenderer>();
+
 	shaderCompiler = make_shared<ShaderCompiler>(this->shrdPtrResourceCache);
 	cursorRenderer = make_shared<CursorRenderer>();
 
@@ -81,6 +86,7 @@ void OpenGLRenderer::initRenderers() {
 
 	GLuint pngProgramID = shaderCompiler->loadShaders("texture_renderer");
 	pngRenderer->init(pngProgramID);
+	jpegRenderer->init(pngProgramID);
 
 	cursorRenderer->init(videoSystemGLFW->getWindow());
 }
@@ -119,8 +125,11 @@ void OpenGLRenderer::terminateRenderers() {
 	figuresRenderer.reset();
 
 	pngRenderer.reset();
+	jpegRenderer.reset();
 	pngTextureLoader->terminate();
+	jpegTextureLoader->terminate();
 	pngTextureLoader.reset();
+	jpegTextureLoader.reset();
 //	spriteSheetLogo.reset();
 
 //	shrdPtrResourceCache.reset();

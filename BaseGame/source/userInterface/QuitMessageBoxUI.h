@@ -19,11 +19,12 @@
 
 #include <GL/glew.h>  // MUST be included before freeglut.h and glfw3.h
 #include <GLFW/glfw3.h> // GLFWwindow
-
+#include <memory> //enable_shared_from_this
 
 namespace base_game {
 
-class QuitMessageBoxUI: public BaseUI {
+class QuitMessageBoxUI: public BaseUI, public std::enable_shared_from_this<
+		QuitMessageBoxUI> {
 public:
 	//MessageBoxUI(std::shared_ptr<base_game::ResourceCache> resourceCache,
 	//		std::shared_ptr<base_game::OpenGLRenderer> openGLRenderer);
@@ -74,6 +75,11 @@ public:
 	void setModal(bool modal);
 	bool isModal();
 
+	// static int MessageBox::Ask(MessageBox_Questions question);
+	bool askIfShouldQuit();
+	bool isShouldQuit();
+	void onOpening();
+
 protected:
 	//void initRenderer();
 	void activateRenderer();
@@ -81,6 +87,7 @@ protected:
 	std::shared_ptr<GameMessages> gameMessages;
 	std::shared_ptr<GameUIDialog> gameUIDialog;
 	bool modal;
+	bool temp_shouldQuit;
 
 //	void deactivateRenderer();
 

@@ -27,7 +27,9 @@ namespace base_game {
 // see Temp03gilView.h
 class TempT009jpegGilTextureUI: public TempUI {
 public:
-	TempT009jpegGilTextureUI(std::shared_ptr<ResourceCache> resourceCache);
+	//TempT009jpegGilTextureUI(std::shared_ptr<ResourceCache> resourceCache);
+	TempT009jpegGilTextureUI(
+			std::shared_ptr<OpenGLRenderer> openGLRenderer);
 	virtual ~TempT009jpegGilTextureUI();
 
 	virtual void vOnRestore();
@@ -41,14 +43,18 @@ public:
 	void temp_vOnRender(double fTime, float fElapsedTime);
 
 protected:
-	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
-	JpegTextureLoader *jpegTextureLoader;
+	std::shared_ptr<OpenGLRenderer> openGLRenderer;
 
 	std::shared_ptr<SpriteSheet> spriteSheet;
 	std::shared_ptr<SpriteSheet> spriteSheet2;
+
+	/*
+	std::shared_ptr<ResourceCache> shrdPtrResourceCache;
+	JpegTextureLoader *jpegTextureLoader;
+
 	std::shared_ptr<JpegRenderer> jpegRenderer;
 	std::shared_ptr<ShaderCompiler> shaderCompiler;
-
+	 */
 };
 
 
@@ -65,6 +71,7 @@ public:
 	void vActivateOK();
 //	virtual void vDeactivate();
 	virtual void tempVRender(double fTime, float fElapsedTime);
+
 
 protected:
 	std::shared_ptr<TempT009jpegGilTextureUI> tempT009jpegGilTextureUI;
